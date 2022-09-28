@@ -1,0 +1,104 @@
+\documentclass[oneside]{gsm-l} % Remove oneside for printing
+%    For the GSM series, theorem heads are set in bold and not indented.
+%    To use the standard "amsbook" style for theorem heads instead,
+%    comment out the previous \documentclass line and use this one:
+%\documentclass[theoremb]{gsm-l}
+
+%    For use when working on individual chapters
+%\includeonly{}
+
+%    Include other referenced packages here.
+\input{ryantibs}
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+
+%    For a single index; for multiple indexes, see the manual
+%    "AMS Author Handbook, Monograph Classes", included in the
+%    author package).
+\makeindex
+
+\begin{document}
+
+\frontmatter
+
+\title{Convex Optimization for Statistics and Machine Learning, 
+  Part I: Analysis}
+\author{Ryan J. Tibshirani}
+
+%    The 2010 edition of the Mathematics Subject Classification is
+%    the current definitive version. 
+%\subjclass[2010]{Primary }
+%\keywords{}
+
+\maketitle
+
+%    Dedication.  If the dedication is longer than a few lines,
+%    remove the centering instructions and the line break.
+%\cleardoublepage
+%\thispagestyle{empty}
+%\vspace*{13.5pc}
+%\begin{center}
+%  Dedication text (use \\[2pt] for line break if necessary)
+%\end{center}
+%\cleardoublepage
+
+\setcounter{page}{5} % Change page number to 7 if a dedication is present
+\setcounter{tocdepth}{1} % Depth 1 means include sections
+\tableofcontents
+
+%    Include unnumbered chapters (preface, acknowledgments, etc.) here.
+%\include{}
+
+\mainmatter
+%    Include main chapters here.
+
+% Note: * means it can be skipped without interrupting the flow of main ideas 
+
+\part{Introduction}
+\include{why_read_this_book}
+\include{how_read_this_book}
+%\include{} % what about deep learning/modern MLopt?
+%\include{} % how to read this book
+
+\part{Fundamentals}
+\include{convex_sets_functions}
+\include{optimization_basics}
+\include{canonical_problems}
+
+\part{Subdifferential Theory}
+\include{subgradients}
+\include{proximal_mappings}
+\include{convex_conjugates} 
+
+\part{Duality and Optimality}
+\include{duality_linear}
+\include{duality_general}
+\include{kkt}
+\include{dual_correspondences}
+
+\part{Advanced Topics}
+
+% Uniqueness without strict convexity
+\include{caratheodory_theorems}
+% Parametric convex programming?
+% Infinite-dimensional optimization?
+
+\appendix
+\include{app_basic_topology}
+\include{app_multivariate_calculus}
+\include{app_linear_algebra}
+% Numerical linear algebra?
+
+\backmatter
+%    Bibliographies can be prepared with BibTeX using amsplain,
+%    amsalpha, or (for author-year style) natbib.
+{\RaggedRight
+\bibliographystyle{amsalpha}
+\bibliography{ryantibs}}
+
+%    See note above about multiple indexes.
+\input{cross_references}
+\printindex
+
+\end{document}

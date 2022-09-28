@@ -1,0 +1,960 @@
+\chapter{Canonical Problem Forms}
+\label{chap:canonical_problems}
+
+\section{Linear Programs}
+\label{sec:linear_programs}
+
+It will be useful to develop a categorization of convex optimization problems,
+as this will help us reason about problems from a variety of perspectives, in
+the remainder of this book. The first class we study is that of \emph{linear
+  programs (LPs)}. An LP is an optimization problem of the form   
+\index{linear program}
+\index{polyhedron}
+\begin{equation}
+\label{eq:linear_program}
+\begin{alignedat}{2}
+&\minimize_x \quad && c^\T x \\
+&\st && Ax \leq b \\
+& && Gx = h, 
+\end{alignedat}
+\end{equation}
+for $c \in \R^d$ and matrix-vector pairs $A,b$ and $G,h$ of compatible
+dimensions. Its name refers to the fact that the criterion and all constraint
+functions are linear (to be precise, affine) functions. Note that the
+constraints above can be written as $x \in P$, for a polyhedron $P$. 
+Importantly, observe that an LP is always a convex optimization problem.     
+
+\begin{Example}
+The following are classic examples of linear programs. 
+
+\begin{enumerate}[label=\alph*.]
+\item The \emph{diet problem} is an LP to find the cheapest combination of 
+  foods that satisfies some nutritional requirements:
+  \begin{alignat*}{2}
+    &\minimize_x \quad && \sum_{j=1}^n c_j x_j \\
+    &\st \quad && \sum_{j=1}^n a_{ij} x_j \geq b_i, \; i=1,\ldots,m \\  
+    & && x \geq 0,
+  \end{alignat*}
+  where $c_j$ is the cost per unit of food $j$, $b_i$ is the minimum required
+  intake of nutrient $i$, and $a_{ij}$ is the content of nutrient $i$ per unit
+  of food $j$. At the solution, $x^\star_j$ is the number of units of food $j$ 
+  in the optimal diet. 
+
+\item The \emph{transportation problem} is an LP to find the cheapest way to
+  ship items from given sources to destinations:
+  \begin{alignat*}{2}
+   &\minimize_x \quad && \sum_{i=1}^m \sum_{j=1}^n c_{ij} x_{ij} \\ 
+   &\st \quad && \sum_{j=1}^n x_{ij} \leq s_i, \; i=1,\dots,m \\
+   & && \sum_{i=1}^m x_{ij} \geq d_j, \; j=1,\dots,n \\
+   & && x \geq 0,
+ \end{alignat*}
+ where $c_{ij}$ is the per unit shipping cost from $i$ to $j$, $s_i$ is the
+ supply at source $i$, and $d_j$ is the demand at destination $j$. At the
+ solution, $x^\star_{ij}$ is the number of units shipped from $i$ to $j$ in the
+ optimal shipping scheme. 
+\end{enumerate}
+\end{Example} 
+
+In general, not only for LPs but for all problem classes (QPs, SDPs, and so on),
+we will call a problem an LP provided that it is equivalent to one. For example,
+we still call \eqref{eq:linear_program} an LP when the minimization is replaced
+by maximization.  
+
+Next we list some basic properties of linear programs. 
+
+\paragraph{Standard form.}
+
+A linear program can always be written in the form (Exercise
+\ref{ex:linear_quadratic_std} part a)  
+\index{standard form!linear program}
+\begin{equation}
+\label{eq:linear_program_std}
+\begin{alignedat}{2}
+&\minimize_x \quad && c^\T x \\
+&\st && Ax = b \\
+& && x \geq 0,
+\end{alignedat}
+\end{equation}
+which is known as \emph{standard form}. 
+
+\paragraph{Recasting $\ell_1$ and $\ell_\infty$ penalties.}
+\parlab{par:l1_linf_linear}
+
+In an optimization problem, $\ell_1$ and $\ell_\infty$ norm penalties can always 
+be recast using linear penalties and constraints: the problem  
+\index{l1 norm@$\ell_1$ norm}
+\index{linf norm@$\ell_\infty$ norm}
+\begin{alignat*}{2}
+&\minimize_x \quad && f(x) + \lambda \|x\|_1 + \gamma \|x\|_\infty \\ 
+&\st && x \in C
+\end{alignat*}
+is equivalent to (Exercise \ref{ex:l1_linf_linear} part a)
+\begin{alignat*}{2}
+&\minimize_{x,y,z} \quad && f(x) + \lambda \one^\T y + \gamma z \\  
+&\st && -y \leq x \leq y \\
+& && -z\one \leq x \leq z\one \\
+& && x \in C, \; y,z \geq 0.
+\end{alignat*}
+When $f$ is linear and $C$ is a polyhedron, the above problem is an LP. 
+Furthermore, the analogous equivalence holds for $\ell_1$ and $\ell_\infty$  
+constraints (see Exercise \ref{ex:l1_linf_linear} part b). 
+
+\medskip
+
+\begin{Example}
+The first two examples below are problems that are related to the lasso, and are
+LPs by Property \parref{par:l1_linf_linear}. The last two are related to the
+SVM, and are LPs by inspection.        
+
+\begin{enumerate}[label=\alph*.]
+\item Given a response vector $y \in \R^n$ and feature matrix $X \in \R^{n
+    \times d}$, the \emph{basis pursuit} problem seeks a sparse subset of the
+  columns of $X$ that can serve as a linear basis for $y$:
+  \index{basis pursuit} 
+  \index{lasso}
+  \begin{equation}
+  \label{eq:basis_pursuit}
+  \begin{alignedat}{2}
+  &\minimize_\beta \quad && \|\beta\|_1 \\
+  &\st && X\beta = y.
+  \end{alignedat}
+  \end{equation}
+  This can be seen as a special case of the lasso problem \eqref{eq:lasso} as
+  $\lambda \to 0$. 
+  % TODO: should we refer to parameterized convex problems section?
+
+\item Under the same setup as in the last example, the \emph{Dantzig selector} 
+  seeks a sparse subset of the columns of $X$ that can serve an approximate
+  linear basis for $y$: 
+  \index{Dantzig selector}
+  \begin{equation}
+  \label{eq:dantzig_selector}
+  \begin{alignedat}{2}
+  &\minimize_\beta \quad && \|\beta\|_1 \\
+  &\st && \|X^\T (y - X\beta) \|_\infty \leq \lambda, 
+  \end{alignedat}
+  \end{equation}
+  where $\lambda \geq 0$ is a tuning parameter. The constraint in
+  \eqref{eq:dantzig_selector} can be seen as a relaxation of the familiar
+  zero-gradient condition $X^\T (y-X\beta) = 0$ for the least squares problem,
+  in which we minimize $\|y-X\beta\|_2^2$ over $\beta$. 
+
+\item Given class labels $y_i \in \{ -1, 1\}$ and feature vectors $x_i \in
+  \R^d$, $i=1,\ldots,n$, the following problem seeks a linear classifier (to
+  predict $y_i$ from the sign of $\beta_0 + x_i^\T \beta$) with minimal sum of
+  violation costs to the margin condition:  
+  \index{support vector machine}
+  \begin{equation}
+  \label{eq:svm_hinge_only}
+  \begin{alignedat}{2}
+  &\minimize_{\beta_0,\beta,\xi} \quad && \sum_{i=1}^n \xi_i \\  
+  &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\ldots,n \\
+  & && \xi \geq 0.
+  \end{alignedat}
+  \end{equation}
+  This can be seen as a special case of the SVM problem \eqref{eq:svm} as 
+  $C \to \infty$. 
+
+\item Under the same setup as in the last example, consider the feasibility 
+  problem where we seek a linear classifier that linearly separates the two
+  classes:    
+  \begin{equation}
+  \label{eq:svm_feasibility}
+  \begin{alignedat}{2}
+    &\find \quad && (\beta_0,\beta) \\
+    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1, \;  i=1,\ldots,n. 
+  \end{alignedat}
+  \end{equation}
+  This is called a \emph{linear feasibility problem} (an LP that is also a
+  feasibility problem). 
+\end{enumerate}
+\end{Example}
+
+\section{Quadratic Programs}
+\label{sec:quadratic_programs}
+
+The second class we consider is that of \emph{quadratic programs (QPs)}. A QP is 
+of the form        
+\index{quadratic program}
+\begin{equation}
+\label{eq:quadratic_program}
+\begin{alignedat}{2}
+&\minimize_x \quad && c^\T x + \frac{1}{2} x^\T Q x \\ 
+&\st && Ax \leq b \\
+& && Gx = h,
+\end{alignedat}
+\end{equation}
+for $c \in \R^d$, $Q \in \SS_+^d$, and matrix-vector pairs $A,b$ and $G,h$
+of compatible dimensions. The name here refers to the fact that the criterion is
+a quadratic function; the constraint functions are still linear, as in
+\eqref{eq:linear_program}. We emphasize that in our definition, the matrix $Q$ 
+that determines the quadratic in \eqref{eq:quadratic_program} is \emph{assumed
+  to be positive semidefinite}, and thus a QP in this book is always convex. To 
+distinguish, we will refer to a problem of the form \eqref{eq:quadratic_program}
+with $Q \not\succeq 0$ as a \emph{nonconvex QP}.             
+
+Next we list some basic properties of quadratic programs.
+
+\paragraph{LPs are QPs.} 
+
+Observe that every LP \eqref{eq:linear_program} is a QP
+\eqref{eq:quadratic_program} (simply with $Q=0$).  
+
+\paragraph{Standard form.}
+
+As with an LP, a QP can always be written in the form (Exercise
+\ref{ex:linear_quadratic_std} part b)    
+\index{standard form!quadratic program}
+\begin{equation}
+\label{eq:quadratic_program_std}
+\begin{alignedat}{2}
+&\minimize_x \quad && c^\T x + \frac{1}{2} x^\T Q x \\
+&\st && Ax = b \\
+& && x \geq 0,
+\end{alignedat}
+\end{equation}
+which is again known as standard form.
+
+\paragraph{Closed-form solution for equality constraints only.}
+
+The QP 
+\begin{alignat*}{2}
+&\minimize_x \quad && c^\T x + \frac{1}{2} x^\T Q x \\
+&\st && Ax = b
+\end{alignat*}
+has a closed-form solution which can be found by solving the Lagrange 
+multiplier condition \eqref{eq:lagrange_multiplier} (a special case of the
+first-order optimality condition), together with the linear constraints:    
+\index{Karush-Kuhn-Tucker matrix}
+\[
+\begin{bmatrix} Q & A^\T \\ A & 0 \end{bmatrix}  
+\begin{bmatrix} x \\ v \end{bmatrix} =
+\begin{bmatrix} 0 \\ -b \end{bmatrix}.
+\]
+The matrix on the left-hand side above is often called the \emph{KKT matrix}, as
+the above condition can be derived using the Karush-Kuhn-Tucker (KKT)
+conditions, which we cover later in Chapter \ref{chap:kkt}. 
+
+\medskip
+
+\begin{Example}
+The first example below is a classic quadratic program from economics. The
+second is a QP by Property \parref{par:l1_linf_linear}, and the third is a QP by
+inspection.     
+
+\begin{enumerate}[label=\alph*.]
+\item The \emph{portfolio selection problem} is a QP to construct a financial
+  portfolio by trading off performance and risk:  
+  \index{portfolio selection}
+  \begin{alignat*}{2}
+  &\maximize_x \quad && \mu^\T x - \frac{\gamma}{2} x^\T \Sigma x \\ 
+  &\st \quad && \one^\T x = 1 \\
+  & && x \geq 0,
+  \end{alignat*}
+  where $\mu$ is the vector of expected returns on the assets, $\Sigma$ is the 
+  covariance matrix of returns on the assets, and $\gamma \geq 0$ is tuning
+  parameter called the risk tolerance factor in this context. The solution
+  $w^\star$ is the vector of optimal portfolio holdings. 
+
+\index{lasso}
+\item The lasso problem \eqref{eq:lasso} is a QP. 
+
+\index{support vector machine}
+\item The SVM problem \eqref{eq:svm} is a QP.
+\end{enumerate}
+\end{Example}
+
+\section{Semidefinite Programs}
+\label{sec:semidefinite_programs}
+
+Now we move on to consider the class of \emph{semidefinite programs} (SDPs). An
+SDP is of the form 
+\index{semidefinite program}
+\index{linear matrix inequality}
+\begin{equation}
+\label{eq:semidefinite_program}
+\begin{alignedat}{2}
+&\minimize_x \quad && c^\T x \\
+&\st \quad && x_1 A_1 + \cdots + x_d A_d \preceq B \\  
+& && Gx = h,
+\end{alignedat}
+\end{equation}
+for $c \in \R^d$, symmetric matrices $A_1,\ldots,A_d,B$ of equal dimensions, and
+a matrix-vector pair $G,h$ of compatible dimensions. Though less obvious than 
+the case of LPs and QPs, an SDP \eqref{eq:semidefinite_program} is always a
+convex problem; this follows from the fact that the constraints in
+\eqref{eq:semidefinite_program}, which are known as \emph{linear matrix
+inequalities}, always form a convex set (Exercise
+\ref{ex:linear_matrix_ineq}). Notably, we do not require the matrices
+$A_1,\ldots,A_d,B$ to be positive semidefinite (they are only assumed to be  
+symmetric). One might then ask: where does the name semidefinite program come  
+from? It is a reflection of the fact that in an SDP, the usual ordering $\leq$
+on vectors (recall that this is interpreted componentwise) is replaced by the
+ordering $\preceq$ induced by the positive semidefinite cone (recall that we
+write $X \preceq Y$ to mean $X-Y \succeq 0$ for matrices $X,Y$).
+
+Below we list some basic properties of semidefinite programs.
+
+\paragraph{LPs are SDPs.} 
+
+Every LP \eqref{eq:linear_program} is an SDP
+\eqref{eq:semidefinite_program}. To see this, first note that for vectors $x,y$
+it holds that $x \leq y \iff \diag(x) \preceq \diag(y)$, where $\diag(x)$
+denotes the diagonal matrix with diagonal elements equal to the elements of $x$
+and likewise for $\diag(y)$. Then, note that $Ax \leq b$ is equivalent to the
+linear matrix inequality
+\[
+x_1 \diag(A_1) + x_2 \diag(A_2) + \cdots x_d \diag(A_d) \preceq \diag(b),
+\]
+where $A_1,\ldots,A_d$ denote the columns of $A$, proving that
+\eqref{eq:linear_program} is of the form \eqref{eq:semidefinite_program}.
+
+\paragraph{QPs are SDPs.}
+\parlab{par:qps_are_sdps}
+
+Every QP \eqref{eq:quadratic_program} is an SDP
+\eqref{eq:semidefinite_program}, though this is less obvious than the result for 
+LPs. To see this, note that for any matrix $Q \succeq 0$, vector $x$, and $t
+\geq 0$ we have  
+\index{Schur complement}
+\begin{equation}
+\label{eq:quadratic_semidefinite}
+x^\T Q x \leq t \iff 
+\begin{bmatrix} t I & Q^{1/2} x \\ x^\T Q^{1/2} & t \end{bmatrix} \succeq 0, 
+\end{equation}
+using properties of Schur complements. (Here $Q^{1/2}$ denotes the symmetric  
+square root of $Q$.) As the right-hand side above can be shown to be 
+equivalent to a linear matrix inequality, a QP can therefore be rewritten in 
+SDP form (Exercise \ref{ex:qps_are_sdps}).
+
+\paragraph{Standard form.}
+
+As with LPs and QPs, an SDP has an equivalent standard form. However,
+unlike LPs and QPs, this is somewhat of a big jump from its original form
+\eqref{eq:semidefinite_program}: as we will see, it brings us from a
+vector-valued variable in the optimization problem to matrix-valued one. To
+recall some notation first: for symmetric matrices $X,Y$, we write their inner
+product as $\langle X, Y \rangle = \tr(XY)$. Now we are ready to present the
+standard form of an SDP:
+\index{standard form!semidefinite program}
+\begin{equation}
+\label{eq:semidefinite_program_std}
+\begin{alignedat}{2}
+&\minimize_X \quad && \langle C, X \rangle \\
+&\st && \langle A_i, X \rangle = b_i, \; i=1,\ldots,m \\
+& && X \succeq 0.
+\end{alignedat}
+\end{equation}
+for symmetric matrices $C,A_1,\ldots,A_m$ and scalars
+$b_1,\ldots,b_m$. Establishing the equivalence between
+\eqref{eq:semidefinite_program} and \eqref{eq:semidefinite_program_std} is much
+more nontrivial than the corresponding standard form result for LPs and QPs, 
+and each direction requires its own proof (whereas for LPs and QPs, it was 
+obvious by direct inspection that the standard form programs were themselves LPs
+and QPs according to the original definitions); see Exercise
+\ref{ex:semidefinite_program_std}.    
+
+Just as there is a clear link between an LP and SDP in their original forms
+\eqref{eq:linear_program} and \eqref{eq:semidefinite_program}, the latter 
+being a matrix-based generalization of the former, there is a clear link
+between their standard forms \eqref{eq:linear_program_std} and
+\eqref{eq:semidefinite_program_std}, the latter again being a matrix-based 
+generalization of the former. This link is formally pursued in Exercise
+\ref{ex:lps_are_sdps_std}.  
+
+\paragraph{Recasting operator norm penalties.}
+\parlab{par:operator_norm_semidefinite}
+
+In an optimization problem, we can always recast an operator norm penalty using    
+semidefinite constraints: the problem 
+\index{operator norm}
+\begin{alignat*}{2}
+&\minimize_X \quad && f(X) + \lambda \|X\|_{\op} \\
+&\st && x \in C
+\end{alignat*}
+(where recall $\|X\|_{\op}$ is the largest singular value of $X$, as in
+\eqref{eq:operator_norm}) is equivalent to  
+\begin{alignat*}{2}
+&\minimize_{X,t} \quad && f(X) + \lambda t \\
+&\st && \begin{bmatrix} t I & X \\ 
+X^\T & t I \end{bmatrix} \succeq 0 \\
+& && X \in C.
+\end{alignat*}
+This can be shown using elementary arguments (properties of Schur complements),
+and when $f$ is linear and $C$ is the intersection of a linear subspace and the
+positive semidefinite cone, as in \eqref{eq:semidefinite_program_std}, the above
+problem is an SDP (Exercise \ref{ex:operator_norm_semidefinite} part a). A
+similar equivalence holds for operator norm constraints (Exercise
+\ref{ex:operator_norm_semidefinite} part b).
+
+\paragraph{Recasting trace norm penalties.}
+\parlab{par:trace_norm_semidefinite}
+
+A trace norm penalty also has an equivalent semidefinite form: the problem    
+\index{trace norm}
+\begin{alignat*}{2}
+&\minimize_X \quad && f(X) + \lambda \|X\|_{\tr} \\
+&\st && x \in C
+\end{alignat*}
+(where recall $\|X\|_{\tr}$ is the sum of singular values of $X$, as in  
+\eqref{eq:trace_norm}) is equivalent to 
+\begin{alignat*}{2}
+&\minimize_{X,U,V} \quad && f(X) + \lambda(\tr(U) + \tr(V)) \\ 
+&\st && \begin{bmatrix} U & \frac{1}{2} X^\T \\ 
+\frac{1}{2} X & V \end{bmatrix} \succeq 0 \\
+& && X \in C.
+\end{alignat*}  
+If $f$ is linear and $C$ is the intersection of a linear subspace and the
+positive semidefinite cone, as in \eqref{eq:semidefinite_program_std}, then the
+above problem is again an SDP. Trace norm constraints yield a similar
+equivalence. Compared to the operator norm equivalences in Property
+\parref{par:operator_norm_semidefinite}, these trace norm equivalences are more
+intricate to prove; we return to them later through the lens of SDP duality in
+Exercise \ref{ex:trace_norm_semidefinite}.
+
+\medskip
+
+% \begin{Remark}
+% We note that transforming an SDP from the form in
+% \eqref{eq:semidefinite_program} to standard form in
+% \eqref{eq:semidefinite_program_std}, or vice versa, is not always practically
+% advisable. The transformation can greatly inflate the dimensionality of the
+% problem, and introduce many extra constraints (see Exercise
+% \ref{ex:semidefinite_program_std} for details), which can lead to increased
+% inefficiency when applying an optimization algorithm to compute a solution 
+% in practice. 
+% \end{Remark}
+
+\begin{Example}
+The first two examples in what follows are important SDPs in statistics and
+machine learning. The last is a famous example of an SDP from theoretical
+computer science. 
+
+\begin{enumerate}[label=\alph*.]
+\item Finding the best rank $k$ approximation of a matrix, which is the
+  optimization problem underlying principal components analysis (PCA), is 
+  equivalent (recall Example \ref{xa:best_rank_approximation}) to maximizing a
+  linear function \eqref{eq:fantope_projection} over the Fantope
+  \eqref{eq:fantope}. This is an SDP. Further, we can use an $\ell_1$ penalty in
+  order to sparsify the approximation,   
+  \index{principal components analysis}    
+  \index{Fantope}
+  \index{l1 norm@$\ell_1$ norm}
+  \begin{equation}
+  \label{eq:fantope_projection_l1}
+  \maximize_P \quad \langle S, P \rangle - \lambda \|\vek(P)\|_1 
+  \quad \st \quad P \in \cF_k, 
+  \end{equation}
+  where $\vek(\cdot)$ is the vectorization operator, which is still an SDP
+  by Property \parref{par:l1_linf_linear} (and linearity of the vectorization
+  operator).  
+
+\item Suppose that we observe only some of the entries of a matrix $X \in \R^{n
+    \times d}$, namely, those indexed by a set $\Omega \subseteq \{1,\ldots,n\} 
+  \times \{1,\ldots,d\}$. The following problem seeks a low rank approximation
+  to the observed entries in $X$: 
+  \index{matrix completion}
+  \index{trace norm}
+  \begin{equation}
+  \label{eq:matrix_completion}
+  \minimize_\Theta \quad \frac{1}{2}\|P_\Omega(X - \Theta)\|_F^2 + \lambda
+  \|\Theta\|_{\tr}.  
+  \end{equation}
+  Here $P_\Omega$ is the linear map that acts as the identity on entries in the
+  set $\Omega$, and returns zero otherwise; that is, $P_\Omega(Z)$ is matrix of
+  the same dimensions as $Z$, with entries   
+  \[
+  [P_\Omega(Z)]_{ij} = \begin{cases}
+   Z_{ij} & (i,j) \in \Omega \\
+   0 & (i,j) \notin \Omega
+  \end{cases};
+  \]
+  and $\lambda \geq 0$ is a tuning parameter. The solution in
+  \eqref{eq:matrix_completion} is a known as a kind of \emph{matrix completion}
+  estimator; in particular, one defined via trace norm penalization. Combining
+  Properties \parref{par:qps_are_sdps} and \parref{par:trace_norm_semidefinite},
+  we can see that problem \eqref{eq:matrix_completion} is an SDP.
+
+\item Let $G$ be an undirected weighted graph, with nodes labeled
+  $1,\ldots,n$, and where $w_{ij} \geq 0$ denotes the weight on the edge between 
+  nodes $i,j$. For a subset $S \subseteq \{1,\ldots,n\}$, we say that $S$ 
+  and $S^c = \{1,\ldots,n\} \setminus S$ form a \emph{cut} in the graph $G$,
+  whose size is defined as the sum of edge weights among edges that ``cross the
+  cut'':  
+  \[
+  \mathrm{cut}_G(S) = \sum_{i \in S,  \, j \in S^c} w_{ij}.
+  \]
+  The \emph{max cut} problem (as its name suggests) seeks the cut in $G$ that
+  with maximal size among all possible cuts, which can formulated as the
+  following optimization problem:
+  \index{max cut}
+  \begin{equation}
+  \label{eq:max_cut}
+  \begin{alignedat}{2}
+  &\maximize_u \quad && \frac{1}{2} \sum_{i<j} w_{ij} (1 - u_iu_j) \\ 
+  &\st && |u_i| = 1, \; i-1,\ldots,n.
+  \end{alignedat}
+  \end{equation}
+  In \eqref{eq:max_cut}, any feasible point $u$ has entries that are either 1 
+  or $-1$, indicating membership in the sets $S$ or $S^c$ that determine the 
+  cut, and the criterion is precisely \smash{$\mathrm{cut}_G(S)$}, since each
+  summand contributes $2w_{ij}$ if $u_i$ and $u_j$ disagree in sign, and 0
+  otherwise. This is clearly not a convex problem (the constraint set
+  $\{-1,1\}^n$ is nonconvex). Consider:
+  \begin{equation}
+  \label{eq:max_cut_relaxed}
+  \begin{alignedat}{2}
+  &\maximize_U \quad && \frac{1}{2} \sum_{i<j} w_{ij} (1 - u_i^\T u_j) \\   
+  &\st && \|u_i\|_2 = 1, \; i-1,\ldots,n.
+  \end{alignedat}
+  \end{equation}
+  In \eqref{eq:max_cut}, each $u_i$ is a scalar, but in
+  \eqref{eq:max_cut_relaxed}, each $u_i$ is a vector, in (say)
+  $\R^d$. Furthermore, the latter is a relaxation of the former, because in 
+  \eqref{eq:max_cut_relaxed}, if we restrict each $u_i$ to be aligned with
+  $e_i$, the $i\th$ coordinate basis vector in $\R^d$, then we recover
+  \eqref{eq:max_cut}. 
+
+  Importantly, it turns out that \eqref{eq:max_cut_relaxed} is equivalent to an
+  SDP. In general, a matrix $X \in \SS^n$ is positive semidefinite if and only
+  if we can factorize it as $X = U^\T U$ for some $U \in \R^{n \times d}$ and $d  
+  \leq n$ (one direction of the equivalence here is obvious, the other can be
+  verified using an eigendecomposition). Hence, interpreting $u_i$ as the $i\th$ 
+  column of $U$, for $i=1,\ldots,n$, we can reparametrize 
+  \eqref{eq:max_cut_relaxed} as 
+  \index{convex relaxation}
+  \begin{equation}
+  \label{eq:max_cut_relaxed_sdp}
+  \begin{alignedat}{2}
+  &\maximize_X \quad && \frac{1}{2} \sum_{i<j} w_{ij} (1 - X_{ij}) \\   
+   &\st && X_{ii} = 1, \; i-1,\ldots,n \\
+   & && X \succeq 0,
+  \end{alignedat}
+  \end{equation}
+  which is an instance of a standard form SDP
+  \eqref{eq:semidefinite_program_std}. The Goemans-Williamson max cut
+  approximation algorithm solves \eqref{eq:max_cut_relaxed_sdp} and then
+  applies a randomized rounding scheme to form a set $S'$. It can be shown that
+  \smash{$\mathrm{cut}_G(S') \geq 0.878 \cdot \mathrm{cut}_G(S^\star)$},   
+  where $S^\star$ is formed from the solution in \eqref{eq:max_cut} (that is,
+  \smash{$\mathrm{cut}_G(S^\star)$} is the max cut in $G$).  
+\end{enumerate}
+\end{Example}
+
+\section{Cone Programs*}
+\label{sec:cone_programs}
+
+The most general form we consider is the \emph{cone program}, which can be
+written as 
+\index{cone program}
+\index{convex cone}
+\begin{equation}
+\label{eq:cone_program}
+\begin{alignedat}{2}
+&\minimize_x \quad && c^\T x \\
+&\st \quad && Ax + b \in K \\  
+& && Gx = h,
+\end{alignedat}
+\end{equation}
+for $c \in \R^d$, matrix-vector pairs $A,b$ and $G,h$ of compatible dimensions,
+and a convex cone $K$. A cone program, as defined in \eqref{eq:cone_program},
+is always a convex optimization problem. 
+
+We list some basic properties of cone programs.
+
+\paragraph{SDPs are cone programs.}
+
+Every SDP \eqref{eq:semidefinite_program} is a cone program
+\eqref{eq:cone_program}. To check this claim, we need to show how to translate
+the linear matrix inequality $x_1 A_1 + \cdots + x_d A_d \preceq B$ into the
+form $Ax + b \in K$ for some convex cone $K$. This can be achieved by taking $A$
+to be the linear map such that $Ax = -\vek(x_1 A_1 + \cdots + x_d A_d)$, $b =
+\vek(B)$, and $K = \vek(\SS^n_+)$, the vectorization of the positive
+semidefinite cone in dimension $n$, where $n$ denotes the number of rows
+(or columns) of the symmetric matrices $A_1,\ldots,A_d,B$.   
+\index{positive semidefinite cone}
+
+Combined with the containments established thus far, this establishes the
+following hierarchy of problem classes in convex optimization (written
+informally, but intuitively): 
+\[
+\text{LPs} \subseteq \text{QPs} \subseteq \text{SDPs} \subseteq \text{cone 
+  programs}. 
+\]
+Exercise \ref{ex:socps_are_sdps} gives a refinement of this hierarchy. 
+
+\paragraph{Standard form.}
+
+Like LPs, QPs, and SDPs, a cone program has an equivalent standard form:
+\index{standard form!cone program}
+\begin{equation}
+\label{eq:cone_program_std}
+\begin{alignedat}{2}
+&\minimize_x \quad && c^\T x \\
+&\st \quad && Ax = b \\  
+& && x \in K.
+\end{alignedat}
+\end{equation}
+The proof that any cone program \eqref{eq:cone_program} can be written in the
+form \eqref{eq:cone_program_std} follows from similar steps to the analogous
+result for SDPs, established in Exercise \ref{ex:semidefinite_program_std} parts 
+a and b.    
+
+\medskip
+
+\begin{Example}
+Demonstrating the generality of cone programs, the following two examples show
+how arguably the most common GLM optimization problems outside of linear
+regression \eqref{eq:linear_regression} (itself a QP) are cone programs. See
+Exercise \ref{ex:geometric_program} for details.
+
+\begin{enumerate}[label=\alph*., ref=\alph*]
+\index{logistic regression}
+\item \parlab{xa:logistic_regression_cone}
+  Logistic regression \eqref{eq:logistic_regression} is a cone program. 
+
+\index{Poisson regression}
+\item \parlab{xa:poisson_regression_cone}
+  Poisson regression \eqref{eq:poisson_regression} is a cone program. 
+\end{enumerate}
+\end{Example}
+
+\SkipTocEntry\section*{Chapter Notes}
+
+LPs, QPs, SDPs, and cone programs are of great interest in convex optimization,
+and there are many excellent books that focus on just one of these problem
+classes alone. These classes not only form a clean hierarchy, but in a sense
+they also serve as interesting historical landmarks, reflecting a progression in 
+the focus of research in mathematical optimization over the years: systematic
+study of LPs began in the 1940s, QPs in the 1950s, GPs (see Exercise 
+\ref{ex:geometric_program}) in the 1960s, and SDPs and cone programs only more
+recently, in the 1990s. We will not attempt to give even a brief account of the
+history, nor a list of classic references on LPs, SDPs, and so on, as
+comprehensive historical review and extensive bibliographies can be readily
+found elsewhere; for example, the bibliography section in Chapter 4 of
+\cite{boyd2004convex} provides pointers to many nice books and review articles.
+
+Basis pursuit was proposed by \cite{chen1998atomic}, and the Dantzig selector by
+\cite{candes2007dantzig} (the name of the latter was chosen as a tribute to
+George Dantzig's contributions to linear programming). It is not as easy to
+trace back the origins of the linear classification problems
+\eqref{eq:svm_hinge_only} and \eqref{eq:svm_feasibility}. The latter dates back
+to at least \cite{rosenblatt1958perceptron}, who proposed the \emph{perceptron}
+algorithm for solving \eqref{eq:svm_feasibility}. The formulation of portfolio
+selection as a QP is due to \cite{markowitz1952portfolio}, which is considered
+the birth of modern portfolio theory (and sparked increased interest in
+quadratic programming).
+
+Matrix completion via trace norm regularization was first studied in
+\cite{candes2009exact, candes2010power}, though it appears that
+\cite{mazumder2010spectral} were first to promote the ``noisy'' version of the
+problem that we consider in \eqref{eq:matrix_completion} to serious
+consideration. The $\ell_1$-penalized Fantope projection problem in
+\eqref{eq:fantope_projection_l1} was proposed by \cite{vu2013fantope}. The
+Goemans-Williamson max cut approximation algorithm is due to
+\cite{goemans1995improved} (and sparked increased interest in semidefinite
+programming). 
+
+\clearpage
+
+\begin{xcb}{Exercises}
+\begin{enumerate}[label=\thechapter.\arabic*]
+\settowidth{\leftmargini}{0.00.\hskip\labelsep}
+\index{standard form!linear program}
+\index{standard form!quadratic program}
+\item \label{ex:linear_quadratic_std} 
+  In this exercise, we show that every LP and every QP can be written in
+  standard form.  
+
+\begin{enumerate}[label=\alph*.]
+\index{slack variable}
+\item Starting with an LP \eqref{eq:linear_program}, argue that we can transform  
+  the inequality constraints into equality constraints by introducing slack
+  variables. Argue further that we can decompose $x = x^+ - x^-$, where $x^+, 
+  x^- \geq 0$ (often referred to as a decomposition into \emph{positive and
+    negative parts}), thus showing \eqref{eq:linear_program} is equivalent to a
+  problem with only linear equality constraints and nonnegativity constraints, 
+  that is, a problem in standard form \eqref{eq:linear_program_std}.    
+
+\item Apply the same argument as in the last part to a QP
+  \eqref{eq:quadratic_program}.
+\end{enumerate}
+
+\index{l1 norm@$\ell_1$ norm}
+\index{linf norm@$\ell_\infty$ norm}
+\item \label{ex:l1_linf_linear} 
+  We will prove that $\ell_1$ and $\ell_\infty$ penalties and constraints in
+  optimization problems can be recast as linear ones.  
+
+\begin{enumerate}[label=\alph*.]
+\item Beginning with the equivalence claimed in Property
+  \parref{par:l1_linf_linear}, consider the second problem stated there. Prove
+  that at optimality, the criterion equals $f(x) + \lambda \|x\|_1 + \gamma
+  \|x\|_\infty$. Use this to argue that the two problems in Property
+  \parref{par:l1_linf_linear} are equivalent.  
+
+\item Now for the analogous constrained equivalence, prove that
+  \begin{alignat*}{2}
+  &\minimize_x \quad && f(x) \\ 
+  &\st && \|x\|_1 \leq s \\
+  & && \|x\|_\infty \leq t \\
+  & && x \in C
+  \end{alignat*}
+  and 
+  \begin{alignat*}{2}
+  &\minimize_{x,y,z} \quad && f(x) \\  
+  &\st && \one^\T y \leq s \\
+  & && z \leq t \\
+  & && -y \leq x \leq y \\
+  & && -z\one \leq x \leq z\one \\
+  & && x \in C, \; y,z \geq 0.
+  \end{alignat*}
+  are equivalent problems.
+\end{enumerate}
+
+\index{linear matrix inequailty}
+\item \label{ex:linear_matrix_ineq}
+  We study the convexity of sets defined by linear matrix inequalities. 
+
+\begin{enumerate}[label=\alph*.]
+\item Prove that we can subsume equality constraints into linear matrix
+  inequalities; that is, a set of the form   
+  \[
+  \{x : x_1A_1 + \cdots + x_d A_d \preceq B, \, Gx = h\}
+  \]
+  can always be rewritten into one of the form 
+  \[
+  \{x : x_1A_1 + \cdots + x_d A_d \preceq B\}
+  \]
+  with $A_1,\ldots,A_d,B$ redefined appropriately. This allows us to check that
+  the constraint set in \eqref{eq:semidefinite_program} is convex by just
+  checking the convexity of the linear matrix inequality set in the last
+  display.  
+
+\item Prove that the set in the last display is convex for any symmetric
+  matrices $A_1,\ldots,A_d,B$, by simply checking the definition of convexity.  
+
+\item Reprove the result in the part last by using the fact that the positive 
+  semidefinite cone is convex, and applying an appropriate a 
+  convexity-preserving transformation.  
+\end{enumerate}
+
+\index{standard form!semidefinite program}
+\item \label{ex:semidefinite_program_std} 
+  We will show that \eqref{eq:semidefinite_program} and
+  \eqref{eq:semidefinite_program_std} are equivalent problem forms. 
+
+\begin{enumerate}[label=\alph*.]
+\item We begin by showing that \eqref{eq:semidefinite_program} can be 
+  rewritten in the form \eqref{eq:semidefinite_program_std}. Using Exercise  
+  \ref{ex:linear_matrix_ineq} part a, argue that we can ignore the equality
+  constraints $Gx = h$ in \eqref{eq:semidefinite_program} without a loss of
+  generality; and by decomposing $x$ into positive and negative parts as in
+  Exercise \ref{ex:linear_quadratic_std} part a (and relabeling variables
+  appropriately), argue that we can assume $x \geq 0$ in
+  \eqref{eq:semidefinite_program} without a loss of generality. Thus to be
+  clear, we have transformed \eqref{eq:semidefinite_program} into  
+  \begin{alignat*}{2}
+  &\minimize_x \quad && c^\T x \\
+  &\st \quad && x_1A_1 + \cdots + x_d A_d \preceq B \\  
+  & && x \geq 0,
+  \end{alignat*}
+  without a loss of generality. 
+
+\item By defining \smash{$Y = B - \sum_{i=1}^n x_iA_i$} and 
+  \[
+  Z = \begin{bmatrix} \diag(x) & 0 \\ 0 & Y \end{bmatrix},
+  \]
+  argue that the problem from the last part can be rewritten in terms of a
+  linear criterion in $Z$, subject to linear equality constraints and $Z \succeq
+  0$, that is, rewritten in the standard form
+  \eqref{eq:semidefinite_program_std}.       
+
+\item Now we show that \eqref{eq:semidefinite_program_std} can be recast in
+  the form \eqref{eq:semidefinite_program}. To do so, we will make use of the
+  vectorization operator $\vek(\cdot)$: this takes a matrix and returns a
+  vector by appending the columns of the matrix one after another. Argue that
+  the criterion in problem \eqref{eq:semidefinite_program_std} can be written as 
+  $\langle C, X \rangle = \vek(C)^\T \vek(X)$. Argue further that the equality
+  constraints $\langle A_i, X \rangle = b_i$, $i=1,\ldots,m$ can be written as
+  \[
+  \begin{bmatrix}
+  \vek(A_1)^\T \vek(X) & 0 & \ldots & 0 \\
+  0 & \vek(A_2)^\T \vek(X) & \ldots & 0 \\
+  \vdots & & & \\
+  0 & 0 & \ldots & \vek(A_m)^\T \vek(X) \\
+  \end{bmatrix} = b.
+  \]
+
+\item Show that the last display is equivalent to a linear matrix inequality 
+  in $\vek(X)$; and the positive semidefinite constraint $X \succeq 0$ is also
+  equivalent to a linear matrix inequality in $\vek(X)$. Putting this together
+  proves that \eqref{eq:semidefinite_program_std} is of SDP form
+  \eqref{eq:semidefinite_program}.      
+\end{enumerate}
+
+\item \label{ex:lps_are_sdps_std} 
+  Show that an LP \eqref{eq:linear_program_std} in standard form is a special case
+  of an SDP \eqref{eq:semidefinite_program_std} in standard form. Hint: use $x 
+  \geq 0 \iff \diag(x) \succeq 0$, and note that we can impose the condition
+  that a matrix $X$ is diagonal via linear equality constraints on $X$.   
+
+\item \label{ex:qps_are_sdps}
+  We prove that a QP \eqref{eq:quadratic_program} is a special case of an SDP
+  \eqref{eq:semidefinite_program}. 
+
+\begin{enumerate}[label=\alph*.]
+\item Prove the equivalence in \eqref{eq:quadratic_semidefinite} using
+  properties of Schur complements, as reviewed in Appendix
+  \ref{chap:linear_algebra}. 
+
+\item Show that the right-hand side in \eqref{eq:quadratic_semidefinite} can be
+  expressed as a linear matrix inequality in $(x,t)$, and use this to show that  
+  \eqref{eq:quadratic_program} can be transformed into SDP form.
+\end{enumerate}
+
+\index{operator norm}
+\item \label{ex:operator_norm_semidefinite}
+  We will prove that operator norm penalties and constraints in optimization 
+  problems exhibit equivalent forms involving linear matrix inequalities and 
+  positive semidefinite constraints. 
+
+\begin{enumerate}[label=\alph*.]
+\item Beginning with the equivalence claimed in Property
+  \parref{par:operator_norm_semidefinite}, consider the second problem stated 
+  there. Prove using properties of Schur complements that
+  \index{Schur complement}
+  \[
+  \begin{bmatrix} t I & X \\ X^\T & t I \end{bmatrix} \succeq 0 
+  \iff \|X\|_{\op} \leq t.
+  \]
+  Hence prove that at optimality, the criterion equals $f(x) + \lambda
+  \|X\|_{\op}$, and argue that the two problems in Property
+  \parref{par:operator_norm_semidefinite} are equivalent.    
+
+\item Now for the constrained analogs, by similar arguments, prove that   
+  \begin{alignat*}{2}
+  &\minimize_X \quad && f(X) \\
+  &\st && \|X\|_{\op} \leq s \\
+  & && x \in C
+  \end{alignat*}
+  and
+  \begin{alignat*}{2}
+  &\minimize_X \quad && f(X) \\
+  &\st && \begin{bmatrix} s I & X \\ 
+    X^\T & s I \end{bmatrix} \succeq 0 \\
+  & && X \in C
+  \end{alignat*}
+  are equivalent problems.
+\end{enumerate}
+
+\item A \emph{second-order cone program} (SOCP) is of the form
+  \index{second order cone program}
+  \begin{equation}
+  \label{eq:second_order_cone_program}
+  \begin{alignedat}{2}
+  &\minimize_x \quad && c^\T x \\
+  &\st \quad && \|A_i x + b_i\|_2 \leq c_i^\T x + d_i, \; i=1,\ldots,m \\
+  & && Gx = h,
+  \end{alignedat}
+  \end{equation}
+  for $c \in \R^d$, matrix-vector pairs $A_i,b_i$, $i=1,\ldots,m$ and $G,h$ of 
+  compatible dimensions, as well as $c_i \in \R^d$, $d_i \in \R$,
+  $i=1,\ldots,m$. Prove that an SOCP \eqref{eq:second_order_cone_program} is 
+  actually a cone program \eqref{eq:cone_program}. Hint: observe that $\|A_i x +   
+  b_i\|_2 \leq c_i^\T x + d_i$ is equivalent to $(A_i x + b_i, c_i^\T x + d_i)$
+  lying in what is called a \emph{second-order cone}, which is simply a norm
+  cone \eqref{eq:norm_cone} with $\|\cdot\| = \|\cdot\|_2$.   
+
+\item A generalization of a QP is a \emph{quadratically-constrained quadratic
+    program} (QCQP), which is of the form 
+  \index{quadratically-constrained quadratic program} 
+  \begin{equation}
+  \label{eq:quadratically_constrained_quadratic_program}
+  \begin{alignedat}{2}
+  &\minimize_x \quad && \frac{1}{2} x^\T Q x + c^\T x \\ 
+  &\st && \frac{1}{2} x^\T Q_i x + c_i^\T x + b_i \leq 0, \; i=1,\ldots,m \\    
+  & && Gx = h,
+  \end{alignedat}
+  \end{equation}
+  for $Q \in \SS^d_+$, $c \in \R^d$, a matrix-vector pair of compatible 
+  dimensions $G,h$, and $Q_i \in \SS^d_+$, $c \in \R^d$, $b_i \in \R$,
+  $i=1,\ldots,m$. Note that when $Q_i=0$, $i=1,\ldots,m$, this reduces to a
+  QP. Show that a QCQP \eqref{eq:quadratically_constrained_quadratic_program} is
+  a second-order cone program \eqref{eq:second_order_cone_program}. Hint: show
+  first that, without a loss of generality, we may consider a problem of the
+  form \eqref{eq:quadratically_constrained_quadratic_program} with $Q=0$. Then
+  observe that (in general):
+  \[
+  \frac{1}{2} x^\T Q x \leq t \iff \bigg\| \bigg( \frac{1}{\sqrt{2}} Q^{1/2} x,
+  \, \frac{1}{2} (1-t) \bigg) \bigg\|_2 \leq \frac{1}{2} (1+t),
+  \]
+  where $Q^{1/2}$ denotes the symmetric square root of $Q$.
+
+\item \label{ex:socps_are_sdps}
+  Show, using the property in \eqref{eq:quadratic_semidefinite} for $Q=I$, that
+  an SOCP \eqref{eq:second_order_cone_program} is an SDP
+  \eqref{eq:semidefinite_program}. 
+
+  \smallskip
+  (Note that this establishes, combined with the last exercise and all of the
+  containments in this chapter, the following hierarchy for classes of convex
+  problems:
+  \[
+  \text{LPs} \subseteq \text{QPs} \subseteq \text{QCQPs} \subseteq \text{SOCPs}
+  \subseteq \text{SDPs} \subseteq \text{cone programs},
+  \]
+  written informally, but intuitively.)
+
+\item \label{ex:geometric_program}
+  A \emph{geometric program} (GP) is of the form
+  \index{geometric program}
+  \begin{equation}
+  \label{eq:geometric_program}
+  \begin{alignedat}{2}
+  &\minimize_x \quad && \sum_{k=1}^{K_0} \exp(a_{0k}^\T x + b_{0k}) \\
+  &\st && \sum_{k=1}^{K_i} \exp(a_{ik}^\T x + b_{ik}) \leq 1, \; i=1,\ldots,m \\  
+  & && Gx = h, 
+  \end{alignedat}
+  \end{equation}
+  where $a_{ik} \in \R^d$, $b_{ik} \in \R$, for $k=1,\ldots,K_i$ and
+  $i=0,\ldots,m$, as well as a matrix-vector $G,h$ of compatible
+  dimensions. Note that when $K_i=1$ for each $i=0,\ldots,m$, this reduces to
+  an LP by taking a log transform of the criterion and both sides of all
+  inequality constraints. But a GP is much more general than an LP. In this  
+  exercise we explore connections to cone programs, logistic regression, and
+  Poisson regression. 
+
+\begin{enumerate}[label=\alph*.]
+\item Prove that \eqref{eq:geometric_program} can be rewritten as 
+  \begin{alignat*}{2}
+  &\minimize_{x,y} \quad && c_0^\T y_0 \\
+  &\st && c_i^\T y_i \leq 1, i=1,\ldots,m \\
+  & && \exp(a_{ik}^\T x) \leq y_{ik}, \; k=1,\ldots,K_i, \; i=0,\ldots,m \\ 
+  & && Gx = h,
+  \end{alignat*}
+  for suitably defined $c_i \in \R_+^{K_i}$, $i=0,\ldots,m$. 
+
+\item Using the representation from the last part, prove that a GP is a cone
+  program \eqref{eq:cone_program}. Hint: consider the convex cone in $\R^3$
+  given by     
+  \[
+  \{(u,v,w) \in \R_+ \times \R_+ \times \R : v \log(v/u) \leq w \}.  
+  \]
+  To see that this is a convex set, note that the map $(u,v) \to v \log(v/u)$
+  (over $\R_{++}^2$) is the perspective transform of the negative  
+  logarithm.    
+
+\index{logistic regression}
+\item Prove that logistic regression \eqref{eq:logistic_regression} is a GP
+  \eqref{eq:geometric_program}, and thus a cone program by part b, which
+  establishes the claim in Example \parref{xa:logistic_regression_cone}. 
+  Hint: observe that $\log(1+e^u) \leq v \iff e^{-v} + e^{u-v} \leq 1$.   
+
+\index{Poisson regression}
+\item Lastly, using similar arguments to part b, show that Poisson
+  regression \eqref{eq:poisson_regression} is a cone program, establishing the
+  claim in Example \parref{xa:poisson_regression_cone}.
+\end{enumerate}
+\end{enumerate}
+\end{xcb}

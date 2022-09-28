@@ -1,0 +1,6 @@
+\psfrag{x1}{$x_1$}
+\psfrag{x2}{$x_2$}
+\psfrag{fx1}{$f(x_1)$}
+\psfrag{fx2}{$f(x_2)$}
+\psfrag{segment}{$tf(x_1) + (1-t)f(x_2)$}
+\psfrag{tangent}{$f(x) + \nabla f(x_2)^{\mathsf{T}}(x-x_2)$}

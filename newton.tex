@@ -1,0 +1,86 @@
+\chapter{Newton's Method}
+\label{chap:newton}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\section{Iteratively Reweighted Least Squares*}
+\label{sec:irls}
+
+% (c, 1 pt) Suppose that we model $\theta = X \beta$, where $X \in \R^{n\times p}$
+% is a feature matrix.  Note that under this parametrization, the exponential
+% family model in \eqref{eq:expfam} is called a generalized linear model (GLM).
+% Prove that the domain of $\beta$, $B = \{\beta : X\beta \in C\}$, is a convex
+% set.      
+
+% \bigskip
+% \noindent
+% {\bf Solution.}  Observe $B=X^{-1}(C)$, the inverse image of $C$ under a linear
+% map, which is convex as $C$ is convex.
+
+% \bigskip
+% \noindent
+% (d, 3 pts) Show that maximizing the log likelihood in \eqref{eq:expfam}, when
+% $\theta=X\beta$, is equivalent to 
+% \begin{equation}
+% \label{eq:glm_loglik}
+% \min_\beta \; -y^T X \beta + b(X \beta).
+% \end{equation}
+% Argue that this is a convex optimization problem.  What choice of $b$ recovers
+% linear regression?  What choice recovers logistic regression?
+
+% \bigskip
+% \noindent
+% {\bf Solution.}  The log of the density is 
+% $$
+% y^T \theta - b(\theta) + \log f_0(y).
+% $$
+% Plugging in $\theta=X\beta$, and maximizing over $\theta$, is equivalent to
+% \eqref{eq:glm_loglik}.  This is convex because the criterion is a linear
+% function plus the composition of $b$ (convex) with a linear function.  The
+% choice $b(u) = u_1^2/2 + \cdots + u_n^2/2$ recovers linear regression.  The
+% choice $b(u)=\log(1+e^{u_1} + \cdots + \log(1+e^{u_p})$ recovers logistic
+% regression.  
+
+% \bigskip
+% \noindent
+% (e, 4 pts) Let
+% $$
+% \mu_\beta = \nabla b(X\beta) \;\;\;\ \text{and} \;\;\; V_\beta = \nabla^2 b
+% (X\beta).  
+% $$
+% Show that pure Newton's method (with step size $t=1$) applied to
+% \eqref{eq:glm_loglik} is equivalent to the updates
+% $$
+% \beta^+ = (X^T V_\beta X)^{-1} X^T V_\beta z_\beta,
+% $$
+% where $z_\beta = X \beta + V_\beta^{-1} (y - \mu_\beta)$.  Explain why this is
+% called {\it iteratively reweighted least squares} (IRLS): what optimization
+% problem (for fixed $\beta$) would have $\beta^+$ as its solution?
+
+% \bigskip
+% \noindent
+% {\bf Solution.}  The gradient and Hessian of the criterion are
+% $$
+% \nabla f(\beta) = -X^T (y - \mu_\beta) \;\;\; \text{and} \;\;\;  
+% \nabla^2 f(\beta) = X^T V_\beta X.
+% $$
+% The Newton update is
+% \begin{align*}
+% \beta^+ &= \beta  - (\nabla^2 f(\beta))^{-1} \nabla f(\beta) \\
+% &= \beta + (X^T V_\beta X)^{-1} X^T (y - \mu_\beta) \\
+% &= (X^T V_\beta X)^{-1} X^T \big(V_\beta X \beta + (y - \mu_\beta)\big) \\ 
+% &= (X^T V_\beta X)^{-1} X^T V_\beta z_\beta,
+% \end{align*}
+% where $z_\beta = X \beta + V_\beta^{-1} (y - \mu_\beta)$.  This is called
+% iteratively reweighted least squares because it is equivalent to doing a
+% weighted linear regression of a pseudoresponse $z_\beta$ on features $X$ with
+% weights $V_\beta$, i.e., 
+% $$
+% \beta^+ = \argmin_\alpha \; (z_\beta-X\alpha)^T V_\beta (z_\beta-X\alpha). 
+% $$

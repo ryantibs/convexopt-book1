@@ -1,0 +1,60 @@
+\chapter{Linear Algebra}
+\label{chap:linear_algebra}
+
+column vectors are the default
+inner product, transpose
+column space, row space, null space
+row and null are orthocomplements
+introduce span operator, null operator
+pseudoinverse. % identities! composition of pseudoinverse and transpose
+eigendecompositions
+symmetric square root
+positive definite, positive semidefinite
+loewner ordering % we write $X \preceq Y$ to mean $X-Y \succeq 0$  
+projectors
+orthocomplement
+
+matrices can be treated as a vector space 
+vectorization operator
+
+eigenvalues of block matrices
+schur complement:
+$$
+\begin{bmatrix} A & B \\ B^T & C \end{bmatrix} \succeq 0
+\iff A - BC^{-1} B^T \succeq 0
+$$
+for $A,C$ symmetric and $C \succ 0$
+
+=====
+Basic linear algebra facts, here
+  $\lambda(X)=(\lambda_1(X),\ldots,\lambda_n(X))$: 
+\begin{alignat*}{2}
+X \in \SS^n &\implies \lambda(X)\in \R^n \\
+X \in \SS^n_+ &\iff \lambda(X)\in \R^n_+ \\
+X \in \SS^n_{++} &\iff \lambda(X)\in \R^n_{++}
+\end{alignat*}
+
+We can define an inner product over $\SS^n$: given $X,Y\in \SS^n$,
+$$
+\langle X, Y \rangle = \tr(XY) 
+$$
+
+We can define a partial ordering over $\SS^n$: 
+  given $X,Y\in \SS^n$, 
+$$
+X\succeq Y \iff X-Y \in \SS^n_+
+$$
+Note: for $x,y \in \R^n$, $\diag(x) \succeq \diag(y) \iff x \geq y$
+(recall, the latter is interpreted elementwise)
+=====
+
+\section{Singular Value Decomposition}
+\label{sec:singular_value_decomposition}
+
+singular value decomposition. rotation, stretch, rotation
+relationship between singular values and eigenvalues
+NOT true unless positive semidefinite! 
+look at the operator norm of a nonpositive definite matrix ... can't relate it to the eigenvalues
+
+min-max (courant-fischer-weyl) theorem
+https://qchu.wordpress.com/2017/03/13/singular-value-decomposition/

@@ -1,0 +1,7 @@
+\psfrag{s1}{$s_1$}
+\psfrag{s2}{$s_2$}
+\psfrag{x1}{$x_1$}
+\psfrag{x2}{$x_2$}
+\psfrag{fx1}{$f(x_1)$}
+\psfrag{fx2}{$f(x_2)$}
+\psfrag{tangent}{$f(x) + s_2^{\mathsf{T}}(x-x_2)$}
