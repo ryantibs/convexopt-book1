@@ -767,7 +767,7 @@ By the proximal subgradient characterization
 \eqref{eq:proximal_subgradient_characterization}, we have $x - z_x \in \partial
 f(z_x)$ and $y - z_y \in \partial f(z_y)$, and by subgradient monotonicity
 \eqref{eq:subgradient_monotonicity}, the first term on the right-hand side above
-is nonzero. This proves the firm nonexpansiveness of $\prox_f$, as desired. 
+is nonnegative. This proves the firm nonexpansiveness of $\prox_f$, as desired.  
 
 Again, as in the case of projections (proved in part d of Exercise
 \ref{ex:projection_firm_nonexpansiveness}), firm nonexpansiveness
@@ -830,16 +830,16 @@ f_\lambda(x) \leq f(x), \quad \text{for all $x$}.
 \]
 Fourth, it is not hard to see that $f_\lambda$ and $f$ have the same set of
 minimizers (Exercise \ref{ex:moreau_envelope} part a), which means that
-minimization of $f$ and of $f_\lambda$ are equivalent problems. Fifth, as a 
-property that is tied to the fourth one  (Exercise \ref{ex:moreau_envelope} part 
-b), the point $z = \prox_{\lambda f}(x)$ achieves the infimum in
-\eqref{eq:moreau_envelope_lambda}, that is, 
+minimization of $f$ and of $f_\lambda$ are equivalent problems. Fifth, a
+property tied to the fourth one  (Exercise \ref{ex:moreau_envelope} part b), the
+point $z = \prox_{\lambda f}(x)$ achieves the infimum in
+\eqref{eq:moreau_envelope_lambda}, that is,   
 \begin{equation}
 \label{eq:moreau_envelope_prox}
 f_\lambda(x) = \frac{1}{2\lambda} \|x - \prox_{\lambda f}(x)\|_2^2 + 
 f \big( \prox_{\lambda f}(x) \big).
 \end{equation}
-Fifth, and perhaps most importantly, the Moreau envelope $f_\lambda$ is
+Sixth, and perhaps most importantly, the Moreau envelope $f_\lambda$ is 
 differentiable, and satisfies  
 \index{Moreau envelope!gradient}
 \begin{equation}
@@ -870,11 +870,11 @@ The third implication of the gradient relation
 \eqref{eq:moreau_envelope_gradient} requires a bit more background to
 explain. It turns out that the Moreau envelope is a uniquely identifying
 transform, in the following sense: if two closed convex functions have matching
-Moreau envelopes, then they must be the same function.  This is a fundamental
-property. Furthermore, the relationship between the proximal operator and the
-gradient of the Moreau envelope \eqref{eq:moreau_envelope_gradient} then
-transfers this identifiability property to the former (up to an additive
-constant). We state these results next, to conclude the chapter.   
+Moreau envelopes, then they must be the same function. Furthermore, the
+relationship between the proximal operator and the gradient of the Moreau
+envelope \eqref{eq:moreau_envelope_gradient} then transfers this identifiability
+property to the former (up to an additive constant). These results are stated
+next, to conclude the chapter.      
 
 \index{Moreau envelope!identification theorem}
 \index{proximal mapping!identification theorem}

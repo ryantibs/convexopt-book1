@@ -660,7 +660,8 @@ of points lying in the ``least smooth'' category, along any slice through the
 graph of a convex function $f$. The categorization is as follows: when $k =
 \dm(\spa(\partial f(x)))$, the dimension of the linear span $\partial f(x)$, we
 say that $x$ is \emph{category $k$} point in the subdifferential $\partial
-f(x)$. Thus, for convex $f$:  
+f(x)$. Thus, for convex $f$, at a point $x$ where $f$ does not attain its 
+infimum: 
 \begin{itemize}
 \item $x$ is category 0 $\iff$ $f$ not subdifferentiable at $x$;
 \item $x$ is category 1 $\iff$ $f$ is differentiable at $x$;
@@ -669,7 +670,7 @@ f(x)$. Thus, for convex $f$:
 \item and so on, up through category $d$, where $\dom(f) \subseteq \R^d$. 
 \end{itemize}
 Points in category 1 can be thought of as the ``most smooth'', and points in
-category $d$ as the ``least smooth'' (among categories 1 through d, excluding
+category $d$ as the ``least smooth'' (among categories 1 through $d$, excluding
 0)---for $x$ in category $d$, the normal cone to the sublevel set $\{y : f(y)
 \leq f(x)\}$ at $x$ is $d$-dimensional, which means the sublevel set looks
 ``pointy'' at $x$, like a vertex on a polyhedron, or the bottom left and top
@@ -677,7 +678,7 @@ right points along the level set drawn in Figure \ref{fig:subgradient_normal}.
 
 We already know from Theorem \ref{thm:smoothness_properties} part (iii) that
 categories 2 through $d$ are, altogether, ``rare'' compared to category 1: the
-union of category 2 through d points only make up a set of Lebesgue measure
+union of category 2 through $d$ points only make up a set of Lebesgue measure 
 zero in $\interior(\dom(f))$. But in fact, we can say something much finer along
 any slice through the graph of a convex function $f$: here, it turns out, $f$
 can only have a \emph{countable} number of points in category $d$, the ``least
