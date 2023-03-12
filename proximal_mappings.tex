@@ -1,7 +1,7 @@
 \chapter{Proximal Mappings}
 \label{chap:proximal_mappings}
 
-\section{Definition and Properties}
+\section{Definition and properties}
 
 In this chapter we cover a useful concept that generalizes the notion of
 (Euclidean) projection onto a given set: the \emph{proximal mapping} (also
@@ -12,7 +12,7 @@ by
 \index{proximal mapping}
 \begin{equation}
 \label{eq:proximal_mapping}
-\prox_f(x) = \argmin_z \bigg( \frac{1}{2} \|x - z\|_2^2 + f(z) \bigg).
+\prox_f(x) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 + f(z) \bigg\}. 
 \end{equation}
 Here and throughout, we use $\argmin_{z \in S} \, F(z)$ to denote the set of
 minimizers of a function $F$ over a set $S$, and $\argmin_z \, F(z)$ to denote 
@@ -37,16 +37,16 @@ this chapter,
 \index{proximal mapping}
 \begin{equation}
 \label{eq:proximal_mapping_lambda}
-\prox_{\lambda f}(x) = \argmin_z \bigg( \frac{1}{2\lambda} \|x - z\|_2^2 +
-f(z) \bigg),  
+\prox_{\lambda f}(x) = \argmin_z \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + 
+f(z) \bigg\},  
 \end{equation}
 which is simply the proximal map associated with the scaled
 function $\lambda f$ for $\lambda > 0$. An intimately related object is 
 \index{Moreau envelope}
 \begin{equation}
 \label{eq:moreau_envelope_lambda}
-f_\lambda(x) = \inf_z \bigg( \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
-\bigg), 
+f_\lambda(x) = \inf_z \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
+\bigg\}, 
 \end{equation}
 called the \emph{Moreau envelope} of $\lambda f$, which will be studied a bit
 later in Chapter \ref{sec:moreau_envelope}. 
@@ -218,8 +218,8 @@ for the proximal operator.
   where $\sigma$ is the vector of singular values (the diagonal of $\Sigma$),
   $S_\lambda$ is the soft-thresholding operator defined above, and we use $A =
   \diag(a)$ to construct a diagonal matrix $A$ from a vector of diagonal
-  elements $a$. The operator $M_\lambda = \prox_{\lambda f}$ here is called 
-  \emph{matrix soft- thresholding}. % RJT: spacing fix
+  elements $a$. The proximal operator here is typically denoted $M_\lambda$, and
+  called \emph{matrix soft-thresholding}.
   \index{matrix soft-thresholding}
 
 \item \parlab{xa:frobenius_norm_proximal_mapping}  
@@ -233,7 +233,7 @@ for the proximal operator.
 
 \item \parlab{xa:l0_norm_proximal_mapping}   
   For $f(x) = \|x\|_0$, the $\ell_0$ norm (recall this returns the number of
-  nonzero values, as in \eqref{eq:l0_norm}; it is nonconvex and \emph{not} 
+  nonzero values, as in \eqref{eq:l0_norm}; it is nonconvex and \emph{not}  
   actually a norm) we have (Exercise \ref{ex:lp_norm_proximal_mapping} part c):   
   \index{l0 norm@$\ell_0$ norm!proximal mapping}
   \index{hard-thresholding}
@@ -278,16 +278,16 @@ specialized  algorithms.
   operator 
   \index{exponential family!proximal mapping}
   \[
-  \prox_{\lambda f}(\eta) = \argmin_{u} \bigg( \frac{1}{2} \|\eta - u\|_2^2 +
-  \lambda \sum_{i=1}^n \Big( \psi(u_i) - T(y_i) u_i \Big) \bigg) 
+  \prox_{\lambda f}(\eta) = \argmin_{u} \bigg\{ \frac{1}{2} \|\eta - u\|_2^2 +
+  \lambda \sum_{i=1}^n \Big( \psi(u_i) - T(y_i) u_i \Big) \bigg\}
   \]
   is not generally available in closed-form, but is efficiently computable for
   differentiable convex $\psi$ (recall that $\psi$ is always convex in any
   exponential family distribution). First note that the proximal map decomposes
   across coordinates: for each $i=1,\ldots,n$,    
   \[
-  [\prox_{\lambda f}(\eta)]_i = \argmin_{u_i} \bigg( \frac{1}{2} (\eta_i -
-  u_i)^2 + \lambda \Big( \psi(u_i) - T(y_i) u_i \Big) \bigg). 
+  [\prox_{\lambda f}(\eta)]_i = \argmin_{u_i} \bigg\{ \frac{1}{2} (\eta_i -
+  u_i)^2 + \lambda \Big( \psi(u_i) - T(y_i) u_i \Big) \bigg\}. 
   \]
   The first-order optimality condition for the above problem is 
   \[
@@ -307,8 +307,8 @@ specialized  algorithms.
   This is a convex function (it is a seminorm). Its proximal operator    
   \index{total variation (TV) penalty!proximal mapping}
   \[
-  \prox_{\lambda f}(z) = \argmin_z \bigg( \frac{1}{2} \|x - z\|_2^2 +
-  \lambda \sum_{i=1}^{d-1} |z_{i+1} - z_i| \bigg)
+  \prox_{\lambda f}(z) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 + 
+  \lambda \sum_{i=1}^{d-1} |z_{i+1} - z_i| \bigg\}
   \]
   is efficiently computable (in linear-time, by which we mean the number of
   operations grows linearly in the dimension $d$) with dynamic programming or  
@@ -327,8 +327,8 @@ specialized  algorithms.
   \ldots, |x_d|$. This is a convex function (it is indeed a norm, reducing to
   the $\ell_1$ norm for $\lambda_1 = \cdots = \lambda_d$). Its proximal map   
   \[
-  \prox_f(z) = \argmin_z \bigg( \frac{1}{2} \|x - z\|_2^2 +
-  \sum_{i=1}^d \lambda_i |z|_{(i)} \bigg)
+  \prox_f(z) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 +
+  \sum_{i=1}^d \lambda_i |z|_{(i)} \bigg\}
   \]
   can be reduced to isotonic projection, as in \eqref{eq:isotonic_projection},
   and is thus efficiently computable (in linear-time) with the pool adjacent
@@ -336,7 +336,7 @@ specialized  algorithms.
 \end{enumerate}
 \end{Example}
 
-\section{Proximal Calculus}
+\section{Proximal calculus}
 
 We describe rules that are helpful in the calculation of proximal operators; 
 throughout $f,f_1,f_2$ are assumed to be closed and convex functions with
@@ -422,7 +422,7 @@ orthogonal then
 \]
 (See Exercise \ref{ex:proximal_linear} part b for a slight generalization.) 
 
-\section{Proximal Optimality Condition}
+\section{Proximal optimality condition}
 \label{sec:proximal_optimality}
 
 For closed and convex $f$, it turns out that $f(x) \leq f(y)$ for all $y$ if and only if
@@ -481,10 +481,10 @@ exact same conclusion holds for an arbitrary loss $f$.
   \[
   \beta = S_{\lambda t} \big( \beta + t X^\T (y - X\beta) \big),
   \]
-  where $S_{\lambda t}$ is the soft-tresholding operator at the level $\lambda
-  t$, as in \eqref{eq:soft_thresholding}. This certifies that the lasso problem
-  admits a sparse solution (as the output of $S_{\lambda t}$ is directly
-  sparse), with generally a greater degree of sparsity for a larger $\lambda$.    
+  where $S_{\lambda t}$ denotes soft-thresholding operator at the level
+  $\lambda t$, as in \eqref{eq:soft_thresholding}. This certifies that the lasso
+  problem admits a sparse solution (as the output of $S_{\lambda t}$ is sparse),
+  with generally a greater degree of sparsity for a larger $\lambda$.     
 
 \item How do we know that the trace norm penalty in the matrix completion
   problem \eqref{eq:matrix_completion} induces a low-rank structure in its
@@ -497,11 +497,11 @@ exact same conclusion holds for an arbitrary loss $f$.
   \[
   \Theta = M_{\lambda t} \big( \Theta + t P_\Omega (X - \Theta) \big),
   \]
-  where $M_{\lambda t}$ denotes matrix soft-thresholding at the level $\lambda
+  with $M_{\lambda t}$ denoting matrix soft-thresholding at the level $\lambda
   t$, as in Example \parref{xa:trace_norm_proximal_mapping}. This certifies that
   the matrix completion problem admits a low-rank solution (as the output of
-  $M_{\lambda t}$ is directly low-rank), with generally a smaller rank for a
-  larger $\lambda$.    
+  $M_{\lambda  t}$ is low-rank), with generally a smaller rank for a larger
+  $\lambda$.      
 \end{enumerate}
 \end{Example}
 
@@ -513,7 +513,7 @@ penalty \eqref{eq:tv} shows that the proximal output has a piecewise constant
 structure), then the proximal optimality condition can be used to infer that
 this structure carries over to more general optimization problems.  
 
-\section{Euclidean Projection}
+\section{Euclidean projection}
 
 Now we turn to discussing (Euclidean) projection, which is the special case
 \eqref{eq:proximal_mapping_projection} of a proximal map when $f = I_C$, the
@@ -739,7 +739,7 @@ z) + z^\T y' = 0 + 0$ for any $y' \in L^\perp$, the first term being zero due to
 to the fact that $z \in L$ and $y' \in L$. This confirms \smash{$P_{L^\perp}(x) 
   = x - P_L(x)$} and proves \eqref{eq:projection_decomposition}.   
 
-\section{Proximal Nonexpansiveness*}
+\section{Proximal nonexpansiveness*}
 \label{sec:proximal_nonexpansiveness}
 
 We examine firm nonexpansiveness of the proximal mapping. As usual, we take $f$
@@ -792,16 +792,16 @@ from which we can see that proximal \emph{nonexpansiveness} and \emph{residual
 \end{align}
 respectively.
 
-\section{Moreau-Yosida Regularization*}
+\section{Moreau-Yosida regularization*}
 \label{sec:moreau_envelope} 
 
 In this last section, we return to discussing the Moreau envelope $f_\lambda$ of
 a closed convex function $f$, as defined in \eqref{eq:moreau_envelope_lambda}.
-Repeating its definition here for convenience, for $\lambda > 0$,
+Repeating its definition here for convenience, for $\lambda > 0$:
 \index{Moreau envelope}
 \[
-f_\lambda(x) = \inf_z \bigg( \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
-\bigg).
+f_\lambda(x) = \inf_z \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
+\bigg\}.
 \]
 The Moreau envelope $f_\lambda$ can be seen as a smoothed or regularized version
 of $f$, and accordingly it is also known as \emph{Moreau-Yosida regularization}.
@@ -848,7 +848,7 @@ differentiable, and satisfies
 \end{equation}
 This fact is always true regardless of the smoothness of $f$; it is not as
 immediately apparent as the above facts, and its proof is outlined in Exercise
-\ref{ex:moreau_envelope} part d.  
+\ref{ex:moreau_envelope} parts c and d.  
 
 This latter property, on smoothness of the Moreau envelope, is useful for many 
 reasons. First, it has important algorithmic implications, because (as already
@@ -985,8 +985,8 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   on $\R^{k \times d}$, its proximal map is  
   \begin{equation}
   \label{eq:proximal_mapping_matrix}
-  \prox_{\lambda f}(X) = \argmin_z \bigg( \frac{1}{2} \|X -
-  Z\|_F^2 + \lambda f(Z) \bigg), 
+  \prox_{\lambda f}(X) = \argmin_z \bigg\{ \frac{1}{2} \|X -
+  Z\|_F^2 + \lambda f(Z) \bigg\}, 
   \end{equation}
   which is consistent with interpreting the space $k \times d$ of matrices as a
   $kd$-dimensional vector space defined by its entries, and applying the usual
@@ -1259,10 +1259,10 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   \]
   where we abbreviate $r_x = x - P_C(x)$ and $r_y = x - P_C(y)$.
 
-\item Show using the Cauchy-Schwartz inequality that
+\item Show using the Cauchy-Schwarz inequality that
   \eqref{eq:projection_firm_nonexpansiveness1} implies
   \eqref{eq:projection_nonexpansiveness}. Show similarly using part b and the
-  Cauchy-Schwartz inequality that \eqref{eq:projection_firm_nonexpansiveness1}
+  Cauchy-Schwarz inequality that \eqref{eq:projection_firm_nonexpansiveness1}
   implies \eqref{eq:projection_residual_nonexpansiveness}.
 
 \item Show finally that firm nonexpansiveness implies 
@@ -1351,7 +1351,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   \cite{rockafellar2009variational}, it helps to introduce the general concept 
   of an \emph{infimal convolution} of functions $f,g$: 
   \[
-  (f \infconv g)(x) = \inf_z \, f(z) + g(x-z).
+  (f \infconv g)(x) = \inf_z \Big\{ f(z) + g(x-z) \Big\}.
   \]
   In this notation, observe that \smash{$f_\lambda = f \infconv \|\cdot\|_2^2 / 
     (2\lambda)$}, that is, the Moreau envelope is the infimal convolution of $f$
@@ -1362,12 +1362,12 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
 \item Assume that $f \infconv h = g \infconv h$ for a closed, convex, and
   coercive function $h$. Prove that for any value of $\lambda > 0$,  
   \[
-  \inf_x \big( f_\lambda(x) - v^\T x \big) = \inf_x \big( g_\lambda(x) - v^\T x
-  \big), \quad \text{for all $v$}.
+  \inf_x \Big\{ f_\lambda(x) - v^\T x \Big\} = \inf_x \Big\{ g_\lambda(x) - v^\T
+  x \Big\}, \quad \text{for all $v$}.
   \]
   Hint: first observe that $f_\lambda \infconv h = g_\lambda \infconv h$ by the
   commutative property of infimal convolutions. Then use basic algebra to
-  decompose \smash{$\inf_x \, ( f_\lambda \infconv h(x) - v^\T x )$} into two
+  decompose \smash{$\inf_x \, \{ f_\lambda \infconv h(x) - v^\T x \}$} into two
   terms, one depending only on $f_\lambda$, and the other only on $h$. Compare
   this to the expression we get when $f$ is replaced by $g$. 
 
@@ -1376,9 +1376,9 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   generality) $f(x) > g(x)$, and hence $f_\lambda(x) > g_\lambda(x)$ for small 
   enough $\lambda > 0$. Show that for $v = \nabla f_\lambda(x)$, we get   
   \[
-  \inf_y \Big( f_\lambda(y) - v^\T y \Big) = 
+  \inf_y \Big\{ f_\lambda(y) - v^\T y \Big\} = 
   f_\lambda(x) - v^\T x > g_\lambda(x) - v^\T x \geq 
-  \inf_y \Big( g_\lambda(y) - v^\T y \Big),
+  \inf_y \Big\{ g_\lambda(y) - v^\T y \Big\},
   \]
   which would violate the result from part a.
 
@@ -1396,7 +1396,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   function $f$, by   
   \begin{equation}
   \label{eq:scaled_proximal_mapping}
-  \prox_f^H(x) = \argmin_z \bigg( \frac{1}{2} \|x - z\|_H^2 + f(z) \bigg),
+  \prox_f^H(x) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_H^2 + f(z) \bigg\}, 
   \end{equation}
   where $\|\cdot\|_H$ denotes the scaled Euclidean norm, defined by $\|x\|_H^2 = 
   x^\T H x$. The parts of this exercise that follow walk through several nice

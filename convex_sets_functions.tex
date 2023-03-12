@@ -1,7 +1,7 @@
 \chapter{Convex Sets and Functions}
 \label{chap:convex_sets_functions}
 
-\section{Convex Sets}  
+\section{Convex sets}  
 \label{sec:convex_sets}
 
 Convex sets are the main building blocks for the study of convex functions and
@@ -149,7 +149,7 @@ of its effective domain); see Exercise \ref{ex:subgradient_existence}.
 \label{fig:set_theorems}
 \end{figure}
 
-\section{Convex Functions}
+\section{Convex functions}
 \label{sec:convex_functions}
 
 We now move from sets to functions, which may be a more familiar object of study
@@ -301,12 +301,11 @@ variable $X$ that is supported on $\dom(f)$, we have
 \label{eq:jensen}
 f( \E[X] ) \leq \E[ f(X) ],
 \end{equation}
-(provided these expectations exist). Oppositely, if $f$ is concave then
-$f( \E[X] ) \geq \E[ f(X) ]$ (provided such expectations exist). These
-inequalities can be seen as generalizations of the defining properties of
-convexity and concavity, \eqref{eq:convex_function} and
-\eqref{eq:concave_function}, respectively, from discrete to arbitrary
-distributions.
+provided the expectations exist. Oppositely, if $f$ is concave then $f( \E[X]
+) \geq \E[ f(X) ]$, again provided the expectations exist. These inequalities
+can be seen as generalizations of the defining properties of convexity and
+concavity, \eqref{eq:convex_function} and \eqref{eq:concave_function},
+respectively, from discrete to arbitrary distributions.
 
 \begin{Remark}
 \label{rem:extended_value}
@@ -333,7 +332,7 @@ well-defined arithmetic within the extended real numbers, that can be more
 fluid when working with functions that can take infinite values.
 \end{Remark}
 
-\section{Equivalent Characterizations}
+\section{Equivalent characterizations}
 \label{sec:equivalent_characterizations}
 
 There are a number of interesting alternative characterizations of convexity for
@@ -422,7 +421,7 @@ using the second-order characterization
 \end{enumerate}
 \end{Example}
 
-\section{Operations Preserving Convexity}
+\section{Operations preserving convexity}
 \label{sec:operations_preserving_convexity}
 
 To check the convexity of a given set or function, we can of course apply the
@@ -509,6 +508,7 @@ F(x) = a_1f_1(x) + \cdots + a_nf_n(x)
 is convex.
 
 \paragraph{Partial supremum.} 
+\parlab{par:function_supremum}
 
 Let $f$ be a function acting on a block variable $(x,z)$. If $f(\cdot,z)$ is
 convex for each $z \in Z$ (meaning, $x \mapsto f(x,z)$ is convex), then the
@@ -607,7 +607,7 @@ Many common loss functions in statistical estimation and machine learning are
 convex, and this can be readily checked using the results from this section or
 the last; see Exercise \ref{ex:loss_functions}.             
 
-\section{Smoothness and Growth*}
+\section{Smoothness and growth*}
 \label{sec:smoothness_growth}
 
 We say that a function $F$ is \emph{Lipschitz continuous} with parameter $L>0$
@@ -759,7 +759,7 @@ the subsequent chapters, we must account for it, both analytically and
 algorithmically, and subgradients will be one of our primary tools for doing
 so. 
 
-\section{Cones and Polyhedra*}
+\section{Cones and polyhedra*}
 \label{sec:cones_polyhedra}
 
 We cover cones and polyhedra in a bit more detail, two classes of sets that 
@@ -1226,8 +1226,8 @@ infimum.
   equivalent characterizations of convexity (including
   \eqref{eq:gradient_monotonicity}). 
 
-\item Show that $\text{(i)} \implies \text{(iv)}$ by the Cauchy-Schwartz
-  inequality, proving the first display in Theorem
+\item Show that $\text{(i)} \implies \text{(iv)}$ by the Cauchy-Schwarz
+  inequality, which proves the first display in Theorem
   \ref{thm:lipschitz_smoothness}.  
 
 \index{Lipschitz smoothness} 
@@ -1244,8 +1244,9 @@ infimum.
   characterizations of convexity (including
   \eqref{eq:gradient_monotonicity}). 
 
-\item Show that $\text{(iv)} \implies \text{(i)}$ by the Cauchy-Schwartz
-  inequality, proving the first display in Theorem \ref{thm:strong_convexity}. 
+\item Show that $\text{(iv)} \implies \text{(i)}$ by the Cauchy-Schwarz
+  inequality, which proves the first display in Theorem
+  \ref{thm:strong_convexity}.  
 
 \index{strong convexity}
 \item When $f$ is twice differentiable, show that $\text{(v)} \implies
@@ -1279,7 +1280,7 @@ infimum.
   \big(\nabla f(x) - \nabla f(y)\big)^\T (x - y) \geq \frac{1}{L}\|\nabla f(y) -
   \nabla f(x)\|_2^2. 
   \]
-  Use Cauchy-Schwartz to conclude that $f$ is Lipschitz smooth, as desired.
+  Use Cauchy-Schwarz to conclude that $f$ is Lipschitz smooth, as desired.
 
   \smallskip
   A remark on the proof technique: there is an interesting parallel between the  

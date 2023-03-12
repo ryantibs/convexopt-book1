@@ -1,7 +1,7 @@
 \chapter{Optimization Basics}
 \label{chap:optimization_basics}
 
-\section{Optimization Problems}
+\section{Optimization problems}
 \label{sec:optimization_problems}
 
 Equipped with a working knowledge of convex sets and functions, the basic
@@ -102,7 +102,7 @@ the context.
 
 \begin{Example}
 The following are examples of two central optimization problems in statistics  
-and machine learning. Both problems are convex.
+and machine learning. Both problems are convex. 
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
 \item Given responses $y_i \in \R$ and associated feature vectors $x_i \in
@@ -175,7 +175,7 @@ A \emph{convex feasibility problem} is one in which the constraint functions
 satisfy the usual requirements: $g_i$, $i=1,\ldots,m$ are convex and $h_j$,
 $j=1,\ldots,k$ are affine.   
 
-\section{Properties of Convex Problems} 
+\section{Properties of convex problems} 
 \label{sec:properties_convex_problems}
 
 Below we describe several important properies of convex optimization problems,
@@ -360,7 +360,7 @@ convex optimization.
 \label{fig:variational_inequality}
 \end{figure}
 
-\section{Problem Transformations}
+\section{Problem transformations}
 
 We walk through various general transformations of optimization problems that
 can make a problem easier to solve or easier to understand. In each case, we do
@@ -688,7 +688,7 @@ mathematician Ky Fan.
 \index{Fantope}
 \end{Example}
 
-\section{Existence of Minima*}
+\section{Existence of minima*}
 \label{sec:existence_minima}
 \index{optimization problem!existence of solution}
 
@@ -898,7 +898,7 @@ has a nonempty but noncompact solution set, which has the form $S^\star = S + L$
 for a compact set $S$ and linear subspace $L$.   
 \end{Corollary}
 
-\section{Maximum Likelihood*}
+\section{Maximum likelihood*}
 \label{sec:maximum_likelihood}
 
 \emph{Maximum likelihood estimation} is a central problem in statistics: given 
@@ -958,7 +958,7 @@ in statistics). The function $\psi$ is called the \emph{log-partition function}.
 % $h$ is the \emph{base measure}
 A remarkable fact: in any exponential family distribution, the log-partition
 function $\psi$ is automatically convex, by virtue of the fact that
-$p_\eta$ must be a bonafide density and therefore must integrate to one (sum to
+$p_\eta$ must be a bona fide density and therefore must integrate to one (sum to
 one, in the discrete case); see Exercise \ref{ex:exponential_family}. This means
 that the map $\eta \mapsto p_\eta(z)$ is always log-concave (for fixed $z$),
 and the resulting maximum likelihood problem    
@@ -1038,8 +1038,8 @@ We finish this section by reviewing a few classical results on the existence of
 solutions in linear, logistic, and Poisson regression. These results are, in
 effect, consequences of Weierstrass' theorem for convex functions, Theorem
 \ref{thm:weierstrass_convex}. Later, in Chapter
-\ref{sec:conjugates_dual_problems}, we will give a generalization via duality
-arguments (this also provides simple proofs for the logistic and Poisson
+\ref{sec:conjugates_dual_problems}, we will derive a generalization via duality
+arguments (this will also provide simple proofs for the logistic and Poisson 
 results).        
 
 \index{maximum likelihood estimation!existence of solution}
@@ -1121,8 +1121,10 @@ apparently developed the idea much earlier; the standard soft-margin
 formulation, which is used in this book, is due to \cite{cortes1995support}. The
 lasso and the SVM (especially its kernel version) are of course cornerstone
 methods in modern statistics and machine learning, and there are many excellent
-books that cover them in great detail, including \cite{hastie2009elements}, 
-\cite{scholkopf2002learning}, and \cite{hastie2015statistical}.
+books that cover them in great detail, including \cite{hastie2009elements,
+  scholkopf2002learning, hastie2015statistical}. We will also dive into greater
+detail on the lasso and the SVM in Chapters \ref{chap:lasso} and \ref{chap:svm},
+respectively.   
 
 Lastly, maximum likelihood plays a central role in classical statistical
 inference, and there are numerous books that cover the topic nicely, for example
@@ -1200,8 +1202,8 @@ case can be found in \cite{haberman1973log}.
   \index{Lagrangian function}
   \begin{equation}
   \label{eq:saddle_point}
-  \minimize_x \quad \sup_{u \geq 0, \, v} \, \underbrace{f(x) + \sum_{i=1}^m u_i 
-    g_i(x) + \sum_{j=1}^k v_j h_j(x)}_{L(x,u,v)}. 
+  \minimize_x \quad \sup_{u \geq 0, \, v} \bigg\{ \underbrace{f(x) +
+    \sum_{i=1}^m u_i g_i(x) + \sum_{j=1}^k v_j h_j(x)}_{L(x,u,v)} \bigg\}.  
   \end{equation}
   This is sometimes referred to as the \emph{saddle point} or \emph{min-max}
   form of problem \eqref{eq:optimization}; and the innermost function, labeled
