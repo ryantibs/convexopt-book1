@@ -6,19 +6,19 @@
 In this chapter we cover a useful concept that generalizes the notion of
 (Euclidean) projection onto a given set: the \emph{proximal mapping} (also
 called proximal map, or proximal operator) associated with a function $f : \R^d
-\to [-\infty, \infty]$. This is a set-valued map, denoted by $\prox_f$, which
+\to [-\infty, \infty]$. This is a set-valued map, denoted by $\prox_f$, that
 maps each $x \in \R^d$ to a subset of $\R^d$ (possibly the empty set), defined
-by         
+by          
 \index{proximal mapping}
 \begin{equation}
 \label{eq:proximal_mapping}
 \prox_f(x) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 + f(z) \bigg\}. 
 \end{equation}
-Here and throughout, we use $\argmin_{z \in S} \, F(z)$ to denote the set of
-minimizers of a function $F$ over a set $S$, and $\argmin_z \, F(z)$ to denote 
-the set of minimizers of $F$ over its entire effective domain. We abide by the
-common convention that $\argmin$ returns the minimizer itself when the latter is
-unique (not the set containing the minimizer).     
+Here and throughout, we denote by $\argmin_{z \in S} F(z)$ the set of
+minimizers of a function $F$ over a set $S$, and denote by $\argmin_z F(z)$ 
+the set of minimizers of $F$ over its entire effective domain. We will abide by
+the common convention that $\argmin$ returns the minimizer itself when the
+latter is unique (not the set containing the minimizer).     
 
 As mentioned, we can think of $\prox_f$ as a generalization of the projecton map
 onto a set. Indeed for $f = I_C$, the characteristic function of a set $C$,  
@@ -28,7 +28,7 @@ onto a set. Indeed for $f = I_C$, the characteristic function of a set $C$,
 \prox_f(x) = P_C(x) = \argmin_{z \in C} \, \|x - z\|_2.
 \end{equation}
 Keeping this connection in mind will generally be helpful for developing
-intuition about proximal maps because, as we will see in what follows, the
+intuition about proximal maps because---as we will see in what follows---the  
 proximal map associated with a closed convex function shares several useful
 properties of projection onto a closed convex set. 
 
@@ -51,15 +51,15 @@ f_\lambda(x) = \inf_z \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
 called the \emph{Moreau envelope} of $\lambda f$, which will be studied a bit
 later in Chapter \ref{sec:moreau_envelope}. 
 
-We now discuss some basic properties and interpretations of proximal mappings. 
+We now discuss some basic properties and interpretations of proximal
+mappings. We generally assume henceforth that $f \not= \infty$ ($\dom(f) \not= 
+\emptyset$) to rule out trivialities when studying proximal maps.      
 
 \paragraph{Existence and uniqueness.}
 
 First we discuss a case where the proximal mapping acts as a well-defined 
-function, from $\R^d$ to $\R^d$. Henceforth, we implicitly assume $f \not=
-\infty$, so that $\dom(f) \not= \emptyset$, to rule out a trivial case in
-defining the proximal mapping. If $f$ is closed and convex, then for any
-$\lambda > 0$ the function  
+function, from $\R^d$ to $\R^d$. If $f$ is closed and convex, then for any
+$\lambda > 0$ the function    
 \[
 z \mapsto \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
 \]
@@ -70,31 +70,29 @@ and be unique. Existence comes from Weirstrass' theorem (Theorem
 \ref{thm:weierstrass}), along with the fact that strongly convex functions are
 coercive (Exercise \ref{ex:strong_convexity_coercive}). Uniqueness comes from
 the fact that strictly (thus strongly) convex functions have at most one
-minimizer (Exercise \ref{ex:convex_solution} part d). We summarize this result
-in the next theorem. 
+minimizer (Exercise \ref{ex:convex_solution} part d). We summarize this next. 
 
 \index{proximal mapping!existence and uniqueness}
 \begin{Theorem}
 \label{thm:proximal_existence_uniqueness}
-For a closed and convex function $f : \R^d \to (-\infty, \infty]$, and $\lambda
-> 0$, the proximal map \eqref{eq:proximal_mapping_lambda} is a well-defined
-function: it maps each point in $x \in \R^d$ to a point $\prox_{\lambda f}(x)
-\in \R^d$.  
+For a closed and convex function $f : \R^d \to (-\infty, \infty]$ with nonempty
+domain, and for any $\lambda > 0$, the proximal map
+\eqref{eq:proximal_mapping_lambda} is a well-defined function: it maps each
+point in $x \in \R^d$ to a point $\prox_{\lambda f}(x) \in \R^d$.   
 \end{Theorem}
 \vspace{-3pt}
 
 \paragraph{Subgradient characterization.}
 
-For closed convex $f$, the subgradient optimality condition for the optimization
-problem 
+For closed convex $f$, the optimization problem 
 \[
 \minimize_z \quad \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
 \]
-reads $0 \in (z - x) / \lambda + \partial f(z)$, that is, $x - z \in \lambda 
-\partial f(z)$. (Note that convexity is used here to write the subdifferential
-of $\|x - z\|_2^2/(2z) + f(z)$, with respect to $z$, as a sum of the
-subdifferentials for each term.) Therefore by subgradient optimality, we get $z
-= \prox_{\lambda f}(x)$ if and only if 
+has a subgradient optimality condition: $0 \in (z - x) / \lambda + \partial
+f(z)$, that is, $x - z \in \lambda \partial f(z)$. (Convexity is used here to
+write the subdifferential of a sum as a sum of subdifferentials, by Property 
+\parref{par:subgradient_sum}.) Therefore by subgradient optimality, we get $z =
+\prox_{\lambda f}(x)$ if and only if 
 \index{proximal mapping!subgradient characterization}
 \begin{equation}
 \label{eq:proximal_subgradient_characterization}
@@ -505,13 +503,13 @@ exact same conclusion holds for an arbitrary loss $f$.
 \end{enumerate}
 \end{Example}
 
-The idea demonstrated in the last example carries over even beyond the case of a
-closed-form proximal mapping: if we have a specialized algorithm to compute the
-proximal map, and the steps of such an algorithm reveal certain structure (for
+The idea demonstrated in the last example extends beyond the case of a
+closed-form proximal mapping: if we have a specialized algorithm for computing
+the proximal mapping of $g$ and its steps reveal certain structure (for
 example, the dynamic programming algorithm for the proximal map of the TV
-penalty \eqref{eq:tv} shows that the proximal output has a piecewise constant
-structure), then the proximal optimality condition can be used to infer that
-this structure carries over to more general optimization problems.  
+penalty \eqref{eq:tv} shows that the output admits a piecewise constant
+structure), then proximal optimality \eqref{eq:proximal_optimality_fg} confirms
+that this structure persists more generally, when minimizing $f+g$.
 
 \section{Euclidean projection}
 
@@ -594,14 +592,14 @@ convex sets.
 \index{positive semidefinite cone!projection operator}
 \item For $C = \SS^d_+$, the positive semidefinite cone, the projection operator
   onto $C$ (from the ambient space $\SS^d$ of symmetric $d \times d$ matrices)
-  is given by $P_C(X) = U \Sigma_+ U^\T$, where $X = U \Sigma U^\T$ denotes the    
-  eigendecomposition of $X$, and $\Sigma_+$ is the elementwise positive part of
+  is $P_C(X) = U \Sigma_+ U^\T$, where $X = U \Sigma U^\T$ is the
+  eigendecomposition of $X$, and $\Sigma_+$ is the elementwise positive part of  
   $\Sigma$. 
 \end{enumerate}
 \end{Example}
 
-Like proximal operators, if not available in closed-form, then projections may
-still be efficiently computable using specialized algorithms.   
+Like proximal operators, even when not available in closed-form, some
+projections may still be efficiently computable using specialized algorithms.   
 
 \begin{Example}
 The following are examples of some interesting projection operators that are not  
@@ -615,7 +613,7 @@ algorithms.
   called the \emph{probability simplex}, the projection $P_C(x)$ can be
   computed efficiently with a specialized algorithm whose cost is dominated by 
   sorting the entries of $x$ (and is thus nearly linear-time); see Exercise 
-  \ref{ex:simplex_projection} for details.            
+  \ref{ex:simplex_projection}.
 
 \index{projection!onto $\ell_1$ ball}
 \item For $C = \{x : \|x\|_1 \leq 1\}$, the unit $\ell_1$ ball, the projection
@@ -636,11 +634,10 @@ algorithms.
 \end{enumerate}
 \end{Example}
 
-Next, we describe two key properties of projection maps. Both of these
-properties admit direct analogs for proximal maps; the analog for the first 
-property is covered in shortly in Chapter \ref{sec:proximal_nonexpansiveness};
-the analog for the second requires the notion of conjugate functions, and is
-given later in Chapter \ref{sec:moreau_decomposition}.    
+Below we describe two key properties of projection maps. Both properties admit
+direct analogs for proximal maps, the first covered shortly in Chapter
+\ref{sec:proximal_nonexpansiveness}, and the second later in Chapter
+\ref{sec:moreau_decomposition}.      
 
 \paragraph{Nonexpansiveness.}
 \parlab{par:projection_nonexpansivess}
@@ -880,12 +877,12 @@ next, to conclude the chapter.
 \index{proximal mapping!identification theorem}
 \begin{Theorem}
 \label{thm:moreau_proximal_identification}
-For closed convex $f,g : \R^d \to (-\infty, \infty]$, the following properties
-hold: 
+For closed convex $f,g : \R^d \to (-\infty, \infty]$ with nonempty domains, the
+following properties hold: 
 \begin{enumerate}[label=(\roman*)]
 \item if $f_\lambda = g_\lambda$ for any $\lambda > 0$, then $f = g$; 
 \item if $\prox_{\lambda f} = \prox_{\lambda g}$ for any $\lambda > 0$, then $f
-  = g + c$, for some constant $c$. 
+  = g + c$, for some constant $c \in \R$. 
 \end{enumerate} 
 \end{Theorem}
 
@@ -1064,7 +1061,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   rank function, from Example \parref{xa:rank_proximal_mapping}. 
 \end{enumerate}
 
-\item For \smash{$f(x) = \inf_{z \in C} \, \|x - z\|_2 = \|x - P_C(x)\|_2$},
+\item For \smash{$f(x) = \inf_{z \in C} \|x - z\|_2 = \|x - P_C(x)\|_2$},
   where $C$ is a closed convex set, prove that   
   \[
   \prox_{\lambda f}(x) = 
@@ -1279,7 +1276,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
 \index{proximal mapping!fixed-point equation}
 \item In this exercise, we study a \emph{contractive} property of proximal
   operators (and projections): for closed convex $f$ and $\lambda > 0$, show
-  that if $f(x^\star) = f^\star = \inf_x \, f(x)$, then   
+  that if $f(x^\star) = f^\star = \inf_x f(x)$, then   
   \[
   \| \prox_{\lambda f}(x) - x^\star\|_2 < \|x - x^\star\|_2, \quad \text{for
     all $x$ with $f(x) > f^\star$}.
@@ -1366,7 +1363,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   \]
   Hint: first observe that $f_\lambda \infconv h = g_\lambda \infconv h$ by the
   commutative property of infimal convolutions. Then use basic algebra to
-  decompose \smash{$\inf_x \, \{ f_\lambda \infconv h(x) - v^\T x \}$} into two
+  decompose \smash{$\inf_x \, \{ f_\lambda \infconv h(x) - v^\T x \}$} into two 
   terms, one depending only on $f_\lambda$, and the other only on $h$. Compare
   this to the expression we get when $f$ is replaced by $g$. 
 

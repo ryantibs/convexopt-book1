@@ -178,7 +178,7 @@ $j=1,\ldots,k$ are affine.
 \section{Properties of convex problems} 
 \label{sec:properties_convex_problems}
 
-Below we describe several important properies of convex optimization problems,
+Next we describe several important properies of convex optimization problems,
 beginning with the most important one.
 
 \paragraph{Local solutions are global solutions.} 
@@ -404,8 +404,8 @@ For any function $g$, it holds that (Exercise \ref{ex:inf_sup_rules} part a):
 \[
 \inf_{x_1, x_2} \, g(x_1, x_2) = \inf_{x_1} \, G(x_1), 
 \]
-where $G(x_1) = \inf_{x_2} \, g(x_1,x_2)$. If we work from the characteristic
-formulation \eqref{eq:characteristic_formulation} of a general optimization
+where $G(x_1) = \inf_{x_2} g(x_1,x_2)$. If we work from the characteristic
+formulation \eqref{eq:characteristic_formulation}, for a general optimization
 problem, and we treat $x$ as a block variable $x=(x_1,x_2)$, then we can apply
 the above result to $g = f + I_C$: this tells us that we can perform
 partial optimization---namely, optimization over $x_2$---to produce an
@@ -422,8 +422,8 @@ is equivalent to
 \[
 \minimize_{x_1} \quad F(x_1) \quad \st \quad x_1 \in \tilde{C},
 \]
-with \smash{$F(x_1) = \inf_{x_2 : (x_1,x_2) \in C} \, f(x_1,x_2) = f(x_1,
-  x^\star_2(x_1))$}, and \smash{$\tilde{C} = \{x_1 : \text{$(x_1, x^\star_2 
+with \smash{$F(x_1) = \inf_{x_2 : (x_1,x_2) \in C} f(x_1,x_2) = f(x_1,
+  x^\star_2(x_1))$}, and \smash{$\tilde{C} = \{x_1 : \text{$(x_1, x^\star_2  
     (x_1)) \in C$} \}$}. It is worth noting that the setting of convex
 optimization, where $f$ and $C$ are convex in the former problem (second-to-last  
 display), we know by Property \parref{par:function_infimum} that the latter
@@ -1397,9 +1397,9 @@ hold in general, without further assumptions.
 \item Show that the set of minima $S^\star$ of $f$ is nonempty and compact,
   by part a and Cantor's intersection theorem (Exercise
   \ref{ex:cantor_intersection}). Hint: to get started, observe that for any 
-  sequence \smash{$\{t_k\}_{k=1}^\infty$} with $t_k \to f^\star = \inf_x \,
-  f(x)$ as $k \to \infty$, we have \smash{$S^\star = \cap_{k=1}^\infty \{x :
-    f(x) \leq t_k\}$}.  
+  sequence \smash{$\{t_k\}_{k=1}^\infty$} with $t_k \to f^\star = \inf_x f(x)$
+  as $k \to \infty$, we have \smash{$S^\star = \cap_{k=1}^\infty \{x : f(x) \leq
+    t_k\}$}.   
 
 \item Show that conditions (i) and (ii) in the theorem each imply the existence
   of $t$ such that $\{x : f(x) \leq t\}$ is bounded. 

@@ -41,7 +41,7 @@ The set of all subgradients of $f$ at $x$ is called its \emph{subdifferential}
 at $x$, which we denote by $\partial f(x)$. One can check that $\partial f(x)$
 is always a closed convex set (regardless of whether $f$ itself is convex).  If
 $\partial f(x)$ is nonempty, then $f$ is said to be \emph{subdifferentiable} at
-$x$. Sometimes, we will use a subscript on the subdifferential operator to
+$x$. Sometimes we will use a subscript on the subdifferential operator to
 emphasize the variable under consideration. For example, when $f$ is a function 
 of a block variable $(x,y)$, we use $\partial_x f(x,y)$ for the subdifferential
 of the function $f(\cdot, y)$ at $x$, with its second argument fixed at $y$.
@@ -176,7 +176,7 @@ representation of the norm in question. % and for these we refer to exercises
   s_i \in \begin{cases}
   [0,1] & \hphantom{-} x_i = \|x\|_\infty \\   
   [-1,0] & -x_i = \|x\|_\infty \\
-  \{0\} & \, |x_i| < \|x\|_\infty
+  \{0\} & \, |x_i| < \|x\|_\infty 
   \end{cases}, \quad i=1,\ldots,d,
   \]
   where $\|s\|_1 \leq 1$. We see that the $\ell_\infty$ norm is differentiable
@@ -248,19 +248,19 @@ and $\cap_{i=1}^n \relint(\dom(f_i)) \not= \emptyset$, then for any $x \in
 
 Let $f$ be a function acting on a block variable $(x,z)$. If $f(\cdot,z)$ is
 convex for each $z \in Z$, then the partial supremum \smash{$F = \sup_{z \in Z}
-  \, f(\cdot,z)$} satisfies, for any $x \in \dom(F)$,
+  f(\cdot,z)$} satisfies, for any $x \in \dom(F)$,
 \index{partial supremum!subgradients}
 \[
 \partial F(x) \supseteq \closure\left( \conv\Bigg( \bigcup_{z \in \bar{Z}(x)} 
   \partial_x f(x, z) \Bigg)\right),  
 \]
 where \smash{$\bar{Z}(x) = \{z \in Z : f(x,z) = F(x)\}$}, the set of points at
-which the supremum at $x$ is achieved. In other words, for fixed $z$, the
-subgradient (with respect to $x$) of any function $f(\cdot, z)$ that achieves
-the supremum is a subgradient of $F$, along with limits of convex combinations
-of such subgradients. Moreover, if $\relint(\dom(F)) \not= \emptyset$, $Z$ is
-compact, $f$ is continuous on $\relint(\dom(F)) \times Z$, and $f(\cdot,z)$ is 
-\emph{closed} and convex for each $z \in Z$, then
+which the supremum at $x$ is achieved. In other words, for any $z$ such that
+$f(x,z)$ achieves the supremum, the subgradients of the function $f(\cdot, z)$
+at $x$ are subgradients of $F$ at $x$, along with limits of convex combinations
+of them. Moreover, if $\relint(\dom(F)) \not= \emptyset$, $Z$ is compact, $f$ is
+continuous on $\relint(\dom(F)) \times Z$, and $f(\cdot,z)$ is \emph{closed}
+and convex for each $z \in Z$, then         
 \begin{equation}
 \label{eq:danskin_bertsekas}
 \partial F(x) = \conv\Bigg( \bigcup_{z  \in \bar{Z}(x)} \partial_x f(x, z)
@@ -276,8 +276,8 @@ satisfies \smash{$\partial F(x) =  \conv(\cup_{i : f_i(x) = F(x)} \, \partial
 \parlab{par:subgradient_infimum}
 
 Let $f$ be a function acting on a block variable $(x,z)$. If $f$ is convex and
-$Z$ is a convex set, then the partial infimum \smash{$F = \inf_{z \in Z} \,
-  f(\cdot,z)$} satisfies, for any $x \in \dom(F)$ such that $F(x) > -\infty$, 
+$Z$ is a convex set, then the partial infimum \smash{$F = \inf_{z \in Z}
+  f(\cdot,z)$} satisfies, for any $x \in \dom(F)$ such that $F(x) > -\infty$,  
 where we now denote \smash{$\bar{Z}(x) = \{z \in Z : f(x,z) = F(z)\}$}, 
 \index{partial infimum!subgradients}
 \[
@@ -338,9 +338,10 @@ The following examples can be checked using subgradient calculus rules.
   simply observe that we can write  
   \index{dual norm}  
   \index{norm!ball}
-  \[
+  \begin{equation}
+  \label{eq:norm_dual}
   \|x\| = \sup_{\|z\|_* \leq 1} \, z^\T x,
-  \]
+  \end{equation}
   and therefore by the Danskin-Bertsekas theorem \eqref{eq:danskin_bertsekas}, 
   \index{norm!subgradients}
   \begin{equation}
@@ -358,7 +359,7 @@ The following examples can be checked using subgradient calculus rules.
   \]
   Here $\|\cdot\|_*$ the dual norm of $\|\cdot\|$, as in the last example.
 
-\item For $f(x) = \inf_{z \in C} \, \|x - z\|_2$, where $C$ is closed and
+\item For $f(x) = \inf_{z \in C} \|x - z\|_2$, where $C$ is closed and
   convex, suppose $x \notin C$. Letting $P_C$ denote the (Euclidean)
   projection operator onto $C$, which satisfies $\|x - P_C(x)\|_2 = f(x)$, we
   have  
@@ -441,16 +442,16 @@ monotone gradient condition \eqref{eq:gradient_monotonicity} satisfied by a
 differentiable convex function. 
 
 It is natural to ask whether there is a converse to the subgradient monotonicity
-condition. For gradients, recall, there is indeed a converse result: for
-differentiable $f$, if $(\nabla f(x) - \nabla (y))^\T (x-y) \geq 0$ for all
-$x,y$, then $f$ is convex (Exercise \ref{ex:gradient_monotonicity}). However,
-for subgradients we need to be careful at the outset, in even just posing the
+condition. For gradients, recall, there is a converse result: if $f$ is
+differentiable, and $(\nabla f(x) - \nabla (y))^\T (x-y) \geq 0$ for all $x,y$,
+then $f$ is convex (Exercise \ref{ex:gradient_monotonicity}). However, for
+subgradients we will need to be careful at the outset, in even just posing the
 question precisely. For example, if $\partial f(x) = \emptyset$ for all $x$, as
 would be the case for (say) differentiable and strictly concave $f$, then
-\eqref{eq:subgradient_monotonicity} is vacuously true, but clearly $f$ cannot be   
+\eqref{eq:subgradient_monotonicity} is vacuously true, but clearly $f$ is not
 convex. On the other hand, if we assumed that subgradients exist on
 $\relint(\dom(f))$, then $f$ would already be convex (provided $f$ is closed;
-recall Theorem \ref{thm:subgradient_existence}).   
+recall Theorem \ref{thm:subgradient_existence}).
 
 A way to pose the converse question precisely is as follows. Given a set-valued
 operator $T$, with $T(x) \subseteq \R^d$ for each $x \in \R^d$ (and possibly
@@ -747,11 +748,11 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
 \settowidth{\leftmargini}{0.00.\hskip\labelsep}
 \index{supporting hyperplane theorem!converse}
 \item \label{ex:converse_supporting_hyperplane}
-  We will prove the following converse to the supporting hyperplane theorem: if
-  $C$ is closed and $\relint(C) \not= \emptyset$, and every point $x_0 \in
-  \relbd(C)$ has a supporting hyperplane (there exists $a\not=0$ and $b$ such
-  that $a^\T x_0 = b$ and $a^\T x \leq b$ for all $x \in C$), then $C$ must be 
-  convex. 
+  This exercise proves the following converse to the supporting hyperplane
+  theorem: if $C$ is a closed set, $\relint(C) \not= \emptyset$, and every $x_0
+  \in \relbd(C)$ has a supporting hyperplane (there exists $a\not=0$ and $b$  
+  such that $a^\T x_0 = b$ and $a^\T x \leq b$ for all $x \in C$), then $C$     
+  must be convex.   
 
   We will assume, without a loss of generality, that $C$ is full-dimensional
   ($\aff(C) = \R^d$), so its relative interior and relative boundary are its
@@ -794,7 +795,7 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
 
 \index{subgradient!existence}
 \item \label{ex:subdifferentiability_implies_convexity}
-  We will prove the second part of Theorem \ref{thm:subgradient_existence}, by 
+  We will now prove the second part of Theorem \ref{thm:subgradient_existence},  
   using the converse supporting hyperplane theorem from Exercise
   \ref{ex:converse_supporting_hyperplane}. Let $f$ satisfy the conditions of the 
   theorem: $f : \R^d \to (-\infty, \infty]$ is closed and has a subgradient and   
@@ -831,11 +832,15 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
 \item \label{ex:affine_minorant}
   Prove that a convex function $f$ is equal to the pointwise supremum of its
   affine minorants on the relative interior of its effective domain, 
-  \[
+  \begin{equation}
+  \label{eq:affine_minorant}
   f(x) = \sup \{ g(x) : \text{$g$ is affine, and $g \leq f$} \}, \quad \text{for
     all $x \in \relint(\dom(f))$},
-  \]
+  \end{equation}
   where we write $g \leq f$ to mean that $g(x) \leq f(x)$ for all $x$.
+
+  % Theorem 12.1 in Rockafellar (1970), which actually proves that for closed
+  % convex f this is true on the entire domain 
 
 \index{directional derivative}
 \item \label{ex:directional_derivative}
