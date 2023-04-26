@@ -823,24 +823,22 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
 
 \index{subgradient!uniqueness}
 \item \label{ex:subgradient_nonuniqueness} 
-  Give two examples of a function $f$ that has a unique subgradient at a point
-  $x$ but is nondifferentiable at $x$, where in one example $f$ is discontinuous 
-  at $x$, and in another continuous. Hint: by Theorem
-  \ref{thm:subgradient_uniqueness}, the function $f$ here will have to be  
-  nonconvex.
+  Give two distinct examples of a function $f$ that is nondifferentiable at a
+  point $x$ and yet still has a unique subgradient at $x$, where in one example
+  $f$ is discontinuous at $x$, and in another continuous. Hint: by Theorem 
+  \ref{thm:subgradient_uniqueness}, the functions $f$ here will have to be 
+  nonconvex. 
 
 \item \label{ex:affine_minorant}
-  Prove that a convex function $f$ is equal to the pointwise supremum of its
-  affine minorants on the relative interior of its effective domain, 
+  Prove for a convex function $f$, by using the existence of subgradients on
+  $\relint(\dom(f))$, that $f$ is equal to the pointwise supremum of its affine
+  minorants:
   \begin{equation}
   \label{eq:affine_minorant}
   f(x) = \sup \{ g(x) : \text{$g$ is affine, and $g \leq f$} \}, \quad \text{for
     all $x \in \relint(\dom(f))$},
   \end{equation}
   where we write $g \leq f$ to mean that $g(x) \leq f(x)$ for all $x$.
-
-  % Theorem 12.1 in Rockafellar (1970), which actually proves that for closed
-  % convex f this is true on the entire domain 
 
 \index{directional derivative}
 \item \label{ex:directional_derivative}
@@ -909,7 +907,6 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   f(x) = s$. Hint: to prove the above display, first note that for any $v$ with
   unit norm, by Exercise \ref{ex:directional_derivative} part d (which we know
   applies, because $s$ cannot be unique if $x \notin \interior(\dom(f))$, by
-  % the last statement in 
   Theorem \ref{thm:subgradient_boundedness}), 
   \[
   0 = F_x'(0; v) = \lim_{t \to 0^+} \frac{F_x(tv)}{t}.

@@ -196,6 +196,10 @@ gradient map is a homeomorphism (with inverse being graident of conjugate)
 
 \subsection{Moreau envelope, revisited}
 
+Chapters 11 and 12 or Rockafellar masterful geometric treatment of
+conjugacy. Exercise \ref{ex:affine_minorant_revisited} gives a glimpse of what
+the geometric view can provide
+
 The connection between the moreau envelope and regularization is due to Hedy
 Attouch in 1977  
 
@@ -250,13 +254,65 @@ of smoothing
   f(x) = \sup \{ g(x) : \text{$g$ is affine, and $g \leq f$} \}, \quad \text{for
     all $x \in \dom(f)$}.
   \end{equation}
-  (Note the difference to \eqref{eq:affine_minorant}: the above is stated to
-  hold for all $x \in \dom(f)$.)  TODO
+ % Theorem 12.1 in Rockafellar (1970)
+  Note that we really only need to prove that the equality holds for $x \in
+  \dom(f) \setminus \relint(\dom(f))$, as the result was already established on
+  $\relint(\dom(f))$ (using the existence of subgradients) in Exercise  
+  \ref{ex:affine_minorant}. Nonetheless, in this exercise we will adopt a
+  different, geometric approach to establishing
+  \eqref{eq:affine_minorant_revisited} that seamlessly applies to all $x \in
+  \dom(f)$.    
 
 \begin{enumerate}[label=\alph*.]
-\item 
+\item First we establish a geometric analog of
+  \eqref{eq:affine_minorant_revisited}. For a closed convex set $C$, prove that: 
+  \begin{equation}
+  \label{eq:halfspace_intersection}
+  \text{$C$ is the intersection of all closed halfspaces $H \supseteq C$}.
+  \end{equation}
+  % Theorem 11.5 in Rockafellar (1970)
+  Hint: this is basically the same as the fact proved in Exercise
+  \ref{ex:converse_supporting_hyperplane} part a. You can either translate this  
+  result appropriately in order to prove \eqref{eq:halfspace_intersection}, or
+  you can prove \eqref{eq:halfspace_intersection} directly using the strict
+  version of the separating hyperplane theorem, from Exercise \ref{ex:farkas}: 
+  show that the intersection of all closed halfspaces containing $C$ must
+  exclude any point $a \notin C$ by applying the strict separating hyperplane
+  theorem to $C$ and $D=\{a\}$.      
 
+\item Apply the fact from part a to the closed and convex set $C = \epi(f)$
+  (since $f$ is assumed to be closed and convex) to yield:
+  \[
+  \text{$\epi(f)$ is the intersection of all closed ``upper'' or ``vertical''
+    halfspaces $H \supseteq C$},
+  \]
+  where if $H$ is a halfspace defined by the normal vector $(a,b) \in \R^d
+  \times \R$, then we call $H$ an ``upper'' halfspace when $b>0$, and a
+  ``vertical'' halfspace when $b=0$. Hint: a ``lower'' halfspace, with $b<0$,
+  can never contain $\epi(f)$.    
+
+\item Show that we can exclude vertical halfspaces from the last display:
+  \[
+  \text{$\epi(f)$ is the intersection of all closed ``upper'' halfspaces $H
+    \supseteq C$}.  
+  \]
+  Hint: it is sufficient to show that for any closed vertical halfspace $V
+  \supseteq \epi(f)$, and any point $(x_0,t_0) \notin V$, there exists a closed 
+  upper halfspace $H_0 \supseteq \epi(f)$ such that $(x_0,t_0) \notin H_0$ as 
+  well. This can be constructed by as follows. Denote $V = \{ (x,t) : a_1^\T x
+  \leq c_1 \}$, and let $H = \{ (x,t) : a_2^\T x + b_2 t \leq c_2 \}$ be any 
+  upper halfspace (such that $b_2>0$) that contains $\epi(f)$. For $\lambda>0$, 
+  define $H_0^\lambda = \{ (x,t) : (\lambda a_1 + a_2)^\T x + b_2 t \leq \lambda
+  c_1 + c_2 \}$. Then show that for any $\lambda>0$, the upper halfspace
+  $H_0^\lambda$ contains $\epi(f)$, while for sufficiently large
+  $\lambda>0$, it excludes $(x_0,t_0)$.
+
+% Note: why does H exist here? Because f is not identically equal to -\infty.
+
+\item Show that the result from part d is equivalent to
+  \eqref{eq:affine_minorant_revisited}.  
 \end{enumerate}
+
 
 \item \label{ex:double_conjugate_convex_minorant}
   Show that 
@@ -281,9 +337,9 @@ of smoothing
 
 \item \label{ex:support_function_conjugate}
   Prove the statement in Example \parref{xa:support_function_conjugate}. Hint:
-  argue that $I_C$ is a closed and convex function (since $C$ is a closed and
-  convex set), then use \eqref{eq:double_conjugate_reduction} and the fact from 
-  Example \parref{xa:characteristic_function_conjugate}.
+  argue that, since $C$ is a closed and convex set, $I_C$ is a closed and convex
+  function, then use \eqref{eq:double_conjugate_reduction} and the fact from 
+  Example \parref{xa:characteristic_function_conjugate}. 
 
 \item \label{ex:norm_conjugate}
   Prove the statement in Example \parref{xa:norm_conjugate}. Hint: argue that,
