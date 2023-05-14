@@ -373,9 +373,8 @@ If \smash{$F(x) = f(x) + \frac{m}{2} \|x - a\|_2^2$}, where $m \geq 0$, then
 where $t = 1/(1+m)$. 
 
 \paragraph{General sum.}
-\label{par:proximal_general_sum}
 
-If $F(x) = f(x) + g(x)$ (a general sum, and \emph{not} separable), then
+If $F(x) = f(x) + g(x)$ (a general sum and \emph{not} separable), then 
 $\prox_F$ is not in general easily computable from $\prox_f$ and
 $\prox_g$. However, in some special cases the proximal map of $F$ can be
 expressed via composition of the maps of $f,g$:   
@@ -412,9 +411,9 @@ phenomenon \eqref{eq:proximal_general_sum}.
 \paragraph{Linear composition.}
 \parlab{par:proximal_linear}
 
-If $F(x) = f(Ax)$ for a matrix $A \in \R^{k \times d}$, then in general
-$\prox_F$ is not easily computable from $A$ and $\prox_f$. However, if $A$ is
-orthogonal then 
+If $F(x) = f(Ax)$ for a matrix $A \in \R^{k \times d}$, then $\prox_F$ is not in
+general easily computable from $A$ and $\prox_f$. However, if $A$ is orthogonal
+then  
 \[
 \prox_F(x) = A^\T \prox_f(Ax).
 \]
@@ -1346,6 +1345,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   maps. Following the development of Theorem 3.34 in
   \cite{rockafellar2009variational}, it helps to introduce the general concept 
   of an \emph{infimal convolution} of functions $f,g$: 
+  \index{infimal convolution}
   \[
   (f \infconv g)(x) = \inf_z \Big\{ f(z) + g(x-z) \Big\}.
   \]
@@ -1369,7 +1369,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
 
 \item Now under the same assumption $f \infconv h = g \infconv h$, show that $f
   = g$. Hint: if $f \not= g$ then for some $x$ we will have (without a loss of
-  generality) $f(x) > g(x)$, and hence $f_\lambda(x) > g_\lambda(x)$ for small 
+  generality) $f(x) > g(x)$, and thus $f_\lambda(x) > g_\lambda(x)$ for small 
   enough $\lambda > 0$. Show that for $v = \nabla f_\lambda(x)$, we get   
   \[
   \inf_y \Big\{ f_\lambda(y) - v^\T y \Big\} = 
@@ -1378,10 +1378,10 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   \]
   which would violate the result from part a.
 
-\item Fix any $\lambda > 0$. Apply the result from part b to $h(x) = 
-  \|x\|_2^2/2$ in order to prove part (i) in Theorem
+\item Fix $\lambda > 0$. Apply the result from part b to $h(x) =
+  \|x\|_2^2/(2\lambda)$, in order to prove part (i) in Theorem
   \ref{thm:moreau_proximal_identification}. Use the gradient relation
-  \eqref{eq:moreau_envelope_gradient} to prove part (ii) in the theorem. 
+  \eqref{eq:moreau_envelope_gradient} to prove part (ii) in the theorem.  
 \end{enumerate}
 
 \index{scaled proximal mapping}

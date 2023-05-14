@@ -476,7 +476,7 @@ P(x,z) = x/z.
 \]
 Note $\dom(P)=\R^d \times \R_{++}$ (where recall $\R_{++}$ denotes the    
 positive reals). If $C \subseteq \dom(P)$ is convex then the perspective image
-$P(C)$ is convex. Also, if $D \subseteq \R^d$ is convex then the perspective
+$P(C)$ is convex; and if $D \subseteq \R^d$ is convex then the perspective
 preimage $P^{-1}(D)$ is convex.  
 
 \paragraph{Linear-fractional images and preimages.} 
@@ -489,7 +489,7 @@ f(x) = \frac{Ax + b}{c^\T x + e},
 \]
 with $\dom(f) = \{x : c^\T x + e > 0\}$. Supposing that $A \in \R^{k
   \times d}$, if $C \subseteq \R^d$ is convex and $C \subseteq \dom(f)$ then 
-the linear-fractional image $f(C)$ is convex. Also, if $D \subseteq \R^k$ is 
+the linear-fractional image $f(C)$ is convex; and if $D \subseteq \R^k$ is 
 convex then the linear-fractional preimage $f^{-1}(D)$ is convex.
 
 \medskip
@@ -650,13 +650,13 @@ Then the following relations hold:
 \[
 \text{(i)} \implies \text{(ii)} \iff \text{(iii)} \iff \text{(iv)}. 
 \]
-If $f$ is twice differentiable, then (ii)--(iv) are also equivalent to the
-statement: 
+If $f$ is twice continuously differentiable, then (ii)--(iv) are also equivalent
+to the statement: 
 \begin{enumerate}
 \item[(v)] $\nabla^2 f(x) \preceq LI$, for all $x \in \dom(f)$.
 \end{enumerate} 
-Lastly, for convex $f$, statements (i)--(iv) are all equivalent, and for twice
-differentiable convex $f$, statements (i)--(v) are all equivalent. 
+Lastly, for convex $f$, statements (i)--(iv) are all equivalent, and for twice  
+continuously differentiable convex $f$, statements (i)--(v) are all equivalent. 
 \end{Theorem}
 
 Interestingly, the concept of strong convexity admits a similar string of
@@ -681,8 +681,8 @@ Then the following relations hold:
 \[
 \text{(i)} \impliedby \text{(ii)} \iff \text{(iii)} \iff \text{(iv)}. 
 \]
-If $f$ is twice differentiable, then (ii)--(iv) are also equivalent to the
-statement: 
+If $f$ is twice continuously differentiable, then (ii)--(iv) are also equivalent
+to the statement: 
 \begin{enumerate}
 \item[(v)] $\nabla^2 f(x) \succeq mI$, for all $x \in \dom(f)$.
 \end{enumerate}
@@ -1231,8 +1231,8 @@ infimum.
   \ref{thm:lipschitz_smoothness}.  
 
 \index{Lipschitz smoothness} 
-\item When $f$ is twice differentiable, show that $\text{(v)} \implies
-  \text{(iii)}$ by studying a first-order Taylor expansion of $f$ with
+\item When $f$ is twice continuously differentiable, show that $\text{(v)}
+  \implies \text{(iii)}$ using a first-order Taylor expansion of $f$ with 
   remainder; show that $\text{(iv)} \implies \text{(v)}$ by expressing $\nabla^2
   f(x) h$ as the directional derivative of $\nabla f(x)$ in the direction $h$,
   applying (iv), and taking $h$ to be the top eigenvector of $\nabla^2
@@ -1249,8 +1249,8 @@ infimum.
   \ref{thm:strong_convexity}.  
 
 \index{strong convexity}
-\item When $f$ is twice differentiable, show that $\text{(v)} \implies
-  \text{(iii)}$ by studying a first-order Taylor expansion of $f$ with
+\item When $f$ is twice continuously differentiable, show that $\text{(v)}
+  \implies \text{(iii)}$ using a first-order Taylor expansion of $f$ with 
   remainder; show that $\text{(iv)} \implies \text{(v)}$ by expressing $\nabla^2
   f(x) h$ as the directional derivative of $\nabla f(x)$ in the direction $h$,
   applying (iv), and taking $h$ to be the bottom eigenvector of $\nabla^2

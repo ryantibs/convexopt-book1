@@ -6,8 +6,8 @@
 This chapter introduces a concept that is deeply connected to subgradients and
 proximal mappings (as covered in the last two chapters), and to duality theory
 (as will be covered next). In fact, just as with subgradients, proximal
-mappings, and duality, the topic of the current chapter is simultaneously simple
-and elementary, as well as highly nontrivial and powerful.    
+operators, and duality, the topic of the current chapter is simultaneously
+simple and elementary, as well as highly nontrivial and powerful.    
 
 Given a function $f : \R^d \to [-\infty, \infty]$, its \emph{convex conjugate}
 $f^*$ (also simply called its conjugate) is another function on $\R^d$ defined
@@ -21,9 +21,12 @@ f^*(u) = \sup_x \, \Big\{ u^\T x - f(x) \Big\}.
 The mapping from $f \mapsto f^*$ is also called the \emph{Legendre-Fenchel
   transform}. At the outset, we remark that $f^*$ is always convex, by the
 partial supremum rule in Property \parref{par:function_supremum} (the map
-$u \mapsto u^\T x - f(x)$ is convex, indeed, it is affine, for each $x$). To 
-be clear, this is true regardless of the convexity of $f$, which is why $f^*$ is 
-called its convex conjugate.  
+$u \mapsto u^\T x - f(x)$ is affine and thus convex for each $x$). 
+Moreover, the function $f^*$ is always closed, since its epigraph can be
+expressed as an intersection of closed halfspaces, which is a closed set
+(Exercise \ref{ex:conjugate_closed}). To be clear, these properties---the
+closedness and convexity of $f^*$---hold regardless of whether $f$ itself is
+closed or convex.      
 
 A useful interpretation of $f^*$ is as follows: at each point $u$, the value
 $f^*(u)$ is the maximum gap between a linear function with ``slope'' $u$ and
@@ -42,9 +45,9 @@ convex conjugate, which we revisit shortly when we discuss double conjugation.
 \label{fig:conjugate}
 \end{figure}
 
-Next we describe important properties of convex conjugates. Henceforth we
-generally assume that $f \not= \infty$ ($\dom(f) \not= \emptyset$) to avoid
-trivialities when studying convex conjugates.      
+Next we describe several important properties of convex conjugates. We generally
+assume that $f \not= \infty$ ($\dom(f) \not= \emptyset$) henceforth to avoid 
+trivialities when studying convex conjugates.        
 
 \paragraph{Fenchel's inequality.}
 
@@ -106,15 +109,15 @@ in place of $f$, we get
 f^{**}(x) = \sup_u \, \Big\{ x^\T u - f^*(u) \Big\},
 \end{equation}
 and by the same rationale given previously, we note that $f^{**}$ is always
-convex. Applying Fenchel's inequality \eqref{eq:fenchel_inequality}, that is,
-$f^*(u) \geq x^\T u - f(x)$, to the term inside the supremum gives    
+closed and convex. Applying Fenchel's inequality \eqref{eq:fenchel_inequality},
+that is, $f^*(u) \geq x^\T u - f(x)$, to the term inside the supremum gives    
 \[
 f^{**} \leq f,
 \]
-or in other words, the double conjugate $f^{**}$ minorizes the original function
-$f$. In fact, the double conjugate function $f^{**}$ is not just any (convex)
-minorant of $f$, it is the pointwise supremum of all affine minorants of $f$
-(Exercise \ref{ex:double_conjugate_affine_minorant}):       
+or, in other words, the double conjugate $f^{**}$ minorizes the original
+function $f$. In fact, the double conjugate function $f^{**}$ is not just any
+(convex) minorant of $f$, it is the pointwise supremum of all affine minorants
+of $f$ (Exercise \ref{ex:double_conjugate_affine_minorant}):       
 \begin{equation}
 \label{eq:double_conjugate_affine_minorant} 
 f^{**}(x) = \sup \{ g(x) : \text{$g$ is affine, and $g \leq f$} \}, \quad
@@ -172,14 +175,81 @@ the details to exercises.
   f^* = I_{\{u \,:\, \|u\|_* \leq 1\}},
   \]
   the characteristic function of the unit ball in the dual norm
-  $\|\cdot\|_*$. (Chapter \ref{sec:dual_norms} will develop the connection
-  between $\|\cdot\|$ and $\|\cdot\|_*$ in more detail.)  
+  $\|\cdot\|_*$. (In Chapter \ref{sec:dual_norms}, we will develop the
+  connection between $\|\cdot\|$ and $\|\cdot\|_*$ in more detail.)  
 \end{enumerate}
 \end{Example}
 
 \section{Conjugate calculus}
 
-should check rockafellar and bertsekas
+We describe rules that will be helpful in calculating convex conjugates.  
+
+\paragraph{Scaling.}
+
+It helps to first introduce some notation. For a function $f$ and $a>0$, we
+write $af$ to denote the function defined by $(af)(x) = af(x)$, whereas we write
+$fa$ for the function defined by $(fa)(x) = af(x/a)$. We refer to the operation
+$f \mapsto af$ as \emph{left scaling}, and the operation $f \mapsto fa$ as
+\emph{right scaling}.
+
+Now we are ready to describe the relationship between scaling and conjugacy: for
+any function $f$ and $a>0$, it holds that $(fa)^* = af^*$. Moreover, for closed 
+and convex $f$, we have $(af)^* = f^*a$. In short, for closed and convex
+functions, left and right scaling are dual operations under conjugacy. 
+
+\paragraph{Translation.}
+
+The simplest translation rule is as follows: for any function $f$ and $a \in
+\R$, writing $f+a$ for the function defined by $(f+a)(x) = f(x)+a$, it holds
+that $(f+a)^* = f^*-a$. That is, addition and subtraction by a real constant are
+dual to each other.
+
+Another translation rule: if $F(x) = f(x-a)$, for any $f$ and $a \in \R^d$, then
+$F^*(u) = f^*(u) + a^\T u$, and if $F(x) = f(x) + a^\T x$, then $F^*(u) =
+f^*(u-a)$. That is, translation of the domain by a vector $a$ and addition by a
+linear function with ``slope'' $a$ are dual to each other. 
+
+\paragraph{Linear composition.}
+
+Similar to scaling, we first introduce some notation. For $A \in \R^{d \times
+  k}$, and a function $f$ on $\R^d$, we write $fA$ to denote the function (on
+$\R^k$) defined by $(fA)(x) = f(Ax)$. Also, for a function $f$ on $\R^k$, we
+write $Af$ to denote the function (on $\R^d$) defined by 
+\[
+(Af)(y) = \inf_{Ax=y} \, f(x).
+\]
+We refer to the operation $f \mapsto Af$ as \emph{left composition}, and $f
+\mapsto fA$ as \emph{right composition}.
+
+Now we can describe the relationship between composition and conjugacy: for any
+function $f$ on $\R^k$ and $A \in \R^{d \times k}$, it holds that $(Af)^* =
+f^*A^\T$. Moreover, for a closed and convex function $f$ on $\R^d$, we have 
+$(fA)^* = A^\T f^*$. In other words, for closed and convex functions, left and
+right composition are dual to each other.     
+
+\paragraph{Separable sum.}
+
+If $F(x) = f_1(x_1) + f_2(x_2)$ for a block variable $x = (x_1, x_2)$, then
+$F^*(u) = f_1^*(u_1) + f_2^*(u_2)$ for $u = (u_1,u_2)$. 
+
+\paragraph{General sum.}
+\parlab{par:conjugate_general_sum}
+
+In order to explain what happens for a general sum of functions, which is one of
+the most interesting calculus rule for convex conjugates, we need to 
+recall the notion of an \emph{infimal convolution} of functions $f,g$ (first
+introduced in Exercise \ref{ex:moreau_proximal_identification}): this is a
+function denoted $f \infconv g$, and defined by  
+\index{infimal convolution!conjugate}
+\[
+(f \infconv g)(x) = \inf_z \Big\{ f(z) + g(x-z) \Big\}.
+\]
+For any $f,g$, a straightforward calculation shows that $(f \infconv g)^* = f^*
++ g^*$. Meanwhile, for closed and convex $f,g$, we have $(f + g)^* = f^*
+\infconv g^*$. That is, for closed and convex functions, infimal convolution and
+addition are dual to each other. This provides an interesting perspective on the
+Moreau envelope (a special case of an infimal convolution), which we return to
+in Chapter \ref{sec:moreau_revisited}.   
 
 \section{Conjugates and smoothness*}
 \label{sec:conjugates_smoothness}
@@ -189,12 +259,17 @@ discuss relationships between smoothness of f, f*
 define Legendre function (essential smoothness, essential strict convexity).
 gradient map is a homeomorphism (with inverse being graident of conjugate) 
 
+Chapter 26 of Rockafellar
+
 \section{Proximal connections*}
 
 \subsection{Moreau decomposition}
 \label{sec:moreau_decomposition}
 
 \subsection{Moreau envelope, revisited}
+\label{sec:moreau_revisited}
+
+\SkipTocEntry\section*{Chapter Notes}
 
 Chapters 11 and 12 or Rockafellar masterful geometric treatment of
 conjugacy. Exercise \ref{ex:affine_minorant_revisited} gives a glimpse of what
@@ -208,13 +283,21 @@ infimal convolution and conjugates and addition
 relationship between conjugates and moreau envelopes, which shows it as a form
 of smoothing 
 
+\clearpage
+
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{0.00.\hskip\labelsep}
+\item \label{ex:conjugate_closed}
+  Prove that the epigraph of $f^*$ in \eqref{eq:conjugate} can be expressed as  
+  \[
+  \epi(f^*) = \{ (u,s) : u^\T x \leq f(x) + s, \, \text{for all $x$} \},
+  \]
+  which as an intersection of closed halfspaces, and is hence closed. 
+
 \index{convex conjugate!subgradients}
 \item \label{ex:conjugate_subgradients}
-  In this exercise, we examine subgradients of the conjugate function
-  \eqref{eq:conjugate}.  
+  This exercise examines subgradients of the conjugate function.
 
 \begin{enumerate}[label=\alph*.]
 \item Show that $x \in \partial f^*(u)$ for any $x$ that achieves the supremum
@@ -231,10 +314,9 @@ of smoothing
 \end{enumerate}
 
 \item \label{ex:double_conjugate_affine_minorant}
-  In this exercise, we establish the fact in
-  \eqref{eq:double_conjugate_affine_minorant}, for $x \in \dom(f)$, by proving
-  separately that the left-hand side is at most and at least the right-hand
-  side.    
+  We prove the fact in \eqref{eq:double_conjugate_affine_minorant}, for $x \in
+  \dom(f)$, by proving separately that the left-hand side is at most and at
+  least the right-hand side.     
 
 \begin{enumerate}[label=\alph*.]
 \item Prove that $f^{**}(x) \geq \sup \{ g(x) : \text{$g$ is affine, and $g \leq
@@ -259,9 +341,8 @@ of smoothing
   \dom(f) \setminus \relint(\dom(f))$, as the result was already established on
   $\relint(\dom(f))$ (using the existence of subgradients) in Exercise  
   \ref{ex:affine_minorant}. Nonetheless, in this exercise we will adopt a
-  different, geometric approach to establishing
-  \eqref{eq:affine_minorant_revisited} that seamlessly applies to all $x \in
-  \dom(f)$.    
+  different approach to establishing \eqref{eq:affine_minorant_revisited} that
+  seamlessly applies to all $x \in \dom(f)$.    
 
 \begin{enumerate}[label=\alph*.]
 \item First we establish a geometric analog of
@@ -313,7 +394,6 @@ of smoothing
   \eqref{eq:affine_minorant_revisited}.  
 \end{enumerate}
 
-
 \item \label{ex:double_conjugate_convex_minorant}
   Show that 
   \begin{equation}
@@ -347,6 +427,9 @@ of smoothing
   the relation in \eqref{eq:norm_dual} and the fact from Example 
   \parref{xa:support_function_conjugate}.  
  
+\item Prove that for $p,q \geq 1$ with $1/p + 1/q = 1$, and $f(x) =
+  \|x\|_p^p/p$, we have $f^*(u) = \|u\|_q^q/q$.  
+
 \item \label{ex:conjugates_smoothness}
 
 \item linf proximal mapping from Moreau decomposition
