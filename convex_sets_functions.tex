@@ -607,8 +607,7 @@ Many common loss functions in statistical estimation and machine learning are
 convex, and this can be readily checked using the results from this section or
 the last; see Exercise \ref{ex:loss_functions}.             
 
-\section{Smoothness and growth*}
-\label{sec:smoothness_growth}
+\section{Growth conditions*}
 
 We say that a function $F$ is \emph{Lipschitz continuous} with parameter $L>0$
 if 
@@ -698,16 +697,18 @@ of these conditions also proceed symmetrically, as outlined in Exercise
 play: Lipschitz smoothness of a function is intimately tied to strong convexity
 of its conjugate.
 
+\section{Smoothness properties*}
+
 Much of this chapter studies convex functions through the lens of their
 gradients (or Hessians). Of course, a convex function need not be differentiable
-(or twice differentiable). Take, for example, $f(x) = |x|$: convex, but not 
-differentiable at $x=0$. Meanwhile, for a univariate convex function, the only
-possibility for a point of nondifferentiability seems intuitively to be a
-``kink'', like the behavior of the absolute value function at the origin. This
-leads us to wonder, more generally: to what extent can a convex function lack
-smoothness? Can a convex function be arbitrarily nonsmooth? Or does the property
-of convexity impose restrictions on how ``much'' nondifferentiability is 
-``allowed''? The next theorem answers this last question affirmatively. 
+(or twice differentiable); the function $f(x) = |x|$, for example, is convex but
+not differentiable at $x=0$. Meanwhile, if we stick to the univariate case,
+then it seems intuitively that for a convex function the only possibilities for 
+nondifferentiability are ``kink'' points, like the behavior of the absolute
+value function at the origin. This leads us to wonder: to what extent can a
+convex function lack smoothness in general? Can it be arbitrarily nonsmooth, or 
+does convexity itself impose restrictions on how ``much'' nonsmootheness is
+permitted? The next theorem answers these questions.
 
 \index{Lipschitz smoothness} 
 \index{Rademacher's theorem} 
@@ -731,15 +732,20 @@ Let $f$ be a convex function. Then the following hold:
 \end{Theorem}
 
 We remark that property (i) actually holds at every point in
-$\relint(\dom(f))$, and we only write $\interior(\dom(f))$ in the theorem      
-statement theorem to preserve symmetry in the presentation of
-(i)--(iv). We also remark that property (iii) follows from (ii): that locally 
-Lipschitz functions are differentiable almost everywhere is a result known as
-\emph{Rademacher's theorem}. Property (iv), the almost everywhere twice
-differentiability of convex functions, is known as \emph{Aleksandrov's
-  theorem}. To be explicit, when we say that a certain property holds for almost 
-every point in a set $S$, we mean that it holds on a set $E \subseteq S$ such
-that $S \setminus E$ has Lebesgue measure zero.   
+$\relint(\dom(f))$,\footnote{The precise statement here is that the restriction
+  of $f$ to $\relint(\dom(f))$ is continuous; that is, for each $x \in
+  \relint(\dom(f))$, we have \smash{$\lim_{k \to \infty} f(x_k) \to f(x)$}
+  whenever \smash{$\lim_{k \to \infty} x_k= x$} and \smash{$\{x_k\}_{k=1}^\infty
+    \subseteq \relint(\dom(f))$}.} 
+and we only write $\interior(\dom(f))$ in the theorem statement theorem to
+preserve symmetry in the presentation of (i)--(iv). We also remark that property 
+(iii) follows from (ii): that locally Lipschitz functions are differentiable
+almost everywhere is a result known as \emph{Rademacher's theorem}. Property
+(iv), the almost everywhere twice differentiability of convex functions, is
+known as \emph{Aleksandrov's theorem}. To be explicit, when we say that a
+certain property holds for almost every point in a set $S$, we mean that it
+holds on a set $E \subseteq S$ such that $S \setminus E$ has Lebesgue measure
+zero.
 
 % Continuity: for example, Theorem 10.1 in Rockafellar (1970)
 % Local Lipschitz: for example, Theorem 6.7 in Evans & Gariepy (2015) 
