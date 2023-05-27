@@ -87,13 +87,14 @@ next result records these equivalences.
 
 \index{convex conjugate!subgradients}
 \begin{Theorem}
+\label{thm:conjugate_subgradients}
 For closed and convex $f$ with nonempty domain, the following statements are all 
 equivalent:
 \begin{enumerate}[label=(\roman*)]
 \item $x$ achieves the supremum in \eqref{eq:conjugate};
 \item $f(x) + f^*(u) = x^\T u$;
 \item $u \in \partial f(x)$;
-\item $x \in \partial f^*(x)$.
+\item $x \in \partial f^*(u)$.
 \end{enumerate}
 \end{Theorem}
 \vspace{-3pt}
@@ -238,8 +239,7 @@ $F^*(u) = f_1^*(u_1) + f_2^*(u_2)$ for $u = (u_1,u_2)$.
 In order to explain what happens for a general sum of functions, which is one of
 the most interesting calculus rule for convex conjugates, we need to 
 recall the notion of an \emph{infimal convolution} of functions $f,g$ (first
-introduced in Exercise \ref{ex:moreau_proximal_identification}): this is a
-function denoted $f \infconv g$, and defined by  
+introduced in Exercise \ref{ex:moreau_proximal_identification}): 
 \index{infimal convolution!conjugate}
 \[
 (f \infconv g)(x) = \inf_z \Big\{ f(z) + g(x-z) \Big\}.
@@ -252,14 +252,84 @@ Moreau envelope (a special case of an infimal convolution), which we return to
 in Chapter \ref{sec:moreau_revisited}.   
 
 \section{Conjugates and smoothness*}
-\label{sec:conjugates_smoothness}
+\label{sec:conjugate_smoothness}
 
-discuss relationships between smoothness of f, f* 
+The smoothness of a function $f$ and convexity properties of its convex
+conjugate $f^*$ turn out to be strongly related. To explore these connections,
+we must first define some concepts. A function $f$ on $\R^d$ is said to be
+\emph{essentially smooth} if the following three properties hold, for $C =
+\interior(\dom(f))$:    
+\begin{enumerate}[label=(\roman*)]
+\item $C \not= \emptyset$;
+\item $f$ is differentiable on $C$;
+\item $\lim_{k \to \infty} \|\nabla f(x_k)\|_2 \to \infty$ whenever $\lim_{k \to
+    \infty} x_k \to x \in \boundary(C)$, and \smash{$\{x_k\}_{k=1}^\infty
+    \subseteq C$}. 
+\end{enumerate}
+An important special case is a function that is finite and differentiable on all
+of $\R^d$. It turns out for a closed convex function $f$ that condition (iii)
+is equivalent to $\partial f(x) = \emptyset$ for $x \notin \interior(\dom(f))$.   
 
-define Legendre function (essential smoothness, essential strict convexity).
-gradient map is a homeomorphism (with inverse being graident of conjugate) 
+A function $f$ is said to be \emph{essentially strictly convex} if it is
+strictly convex on all convex subsets $S$ of $ \{x : \partial f(x) \not=
+\emptyset\}$. (Here we say $f$ is strictly convex on $S$ to mean
+\eqref{eq:strictly_convex_function} holds for $x,y \in S$.) An important special 
+case is a function that is finite and strictly convex on all of $\R^d$. 
 
-Chapter 26 of Rockafellar
+The next result shows that conjugacy provides the bridge between the last two
+concepts.  
+
+\begin{Theorem}
+\label{thm:conjugate_essentials}
+A closed convex function $f$ is essentially strictly convex if and only if $f^*$
+is essentially smooth. 
+\end{Theorem}
+
+% Theorem 26.3 in Rockafellar (1970)
+
+As $f^{**} = f$ for closed convex functions, we can also read off as a
+conclusion from Theorem \ref{thm:conjugate_essentials} that $f$ is essentially
+smooth if and only if $f^*$ is essentially strictly convex. The proof of Theorem 
+\ref{thm:conjugate_essentials} is driven by the connection between subgradients
+of $f$ and $f^*$ from Theorem \ref{thm:conjugate_subgradients}, and is outlined
+in Exercise \ref{ex:conjugate_essentials}.
+
+In fact, combined with the relationship between subgradients of $f$ and $f^*$,
+Theorem \ref{thm:conjugate_essentials} leads to an interesting conclusion. To
+help make this conclusion more salient, we will introduce one further concept: a
+function that is both essentially smooth and essentially strictly convex is said
+to be of \emph{Legendre type}. Using this nomenclature, Theorem
+\ref{thm:conjugate_essentials} tells us that a closed convex function $f$ is of
+Legendre type if and only if $f^*$ is. Theorem \ref{thm:conjugate_subgradients}
+then says that for any such $f$, and $x \in \interior(\dom(f))$, we have $u =
+\nabla f(x) \iff x = \nabla f^*(u)$. The next theorem summarizes.
+
+\begin{Theorem}
+\label{thm:conjugate_legendre}
+A closed convex function $f$ is of Legendre type if and only if $f^*$
+is. Moreover, for $f,f^*$ of Legendre type, the gradient map
+\[
+\nabla f : \interior(\dom(f)) \to \interior(\dom(f^*))
+\]
+is invertible, with inverse $(\nabla f)^{-1} = \nabla f^*$. 
+\end{Theorem}
+
+% Theorem 26.5 in Rockafellar (1970)
+
+Lastly, beyond the above connections, there is a crisp quantitative connection
+between convexity properties of $f$ and smoothness properties of $f^*$. 
+
+\begin{Theorem}
+\label{thm:conjugate_smoothness}
+Let $f$ be a closed convex function. Then $f$ is strongly convex with parameter
+$m>0$ if and only if $\nabla f^*$ is Lipschitz with parameter $1/m>0$. 
+\end{Theorem}
+
+The duality behind strong convexity and Lipschitz smoothness, as made precise in
+Theorem \ref{thm:conjugate_smoothness}, is sometimes called the
+\emph{Baillon-Haddad theorem}. Its proof is outlined in Exercise
+\ref{ex:conjugate_smoothness}. We note that this theorem explains the symmetry 
+behind Theorems \ref{thm:lipschitz_smoothness} and \ref{thm:strong_convexity}.
 
 \section{Proximal connections*}
 
@@ -271,9 +341,17 @@ Chapter 26 of Rockafellar
 
 \SkipTocEntry\section*{Chapter Notes}
 
+If Moreau is the master of the proximal operator, then Rockafellar is the master
+of conjugacy
+
 Chapters 11 and 12 or Rockafellar masterful geometric treatment of
 conjugacy. Exercise \ref{ex:affine_minorant_revisited} gives a glimpse of what
 the geometric view can provide
+
+Chapter 15 of Rockafellar extensive treatment of conjugate calculus
+Chapter 26 of Rockafellar treatment of functions of Legendre type
+
+% https://arxiv.org/pdf/0906.0807.pdf
 
 The connection between the moreau envelope and regularization is due to Hedy
 Attouch in 1977  
@@ -430,7 +508,77 @@ of smoothing
 \item Prove that for $p,q \geq 1$ with $1/p + 1/q = 1$, and $f(x) =
   \|x\|_p^p/p$, we have $f^*(u) = \|u\|_q^q/q$.  
 
-\item \label{ex:conjugates_smoothness}
+\item Prove the conjugate sum rules in Property
+  \parref{par:conjugate_general_sum} (both the rule for general $f,g$, and the
+  rule for closed and convex $f,g$).  
+
+\item \label{ex:conjugate_essentials} 
+  In this exercise, we will prove Theorem \ref{thm:conjugate_essentials}.
+
+\begin{enumerate}[label=\alph*.]
+\item Suppose that $f$ is not essentially strictly convex. Then there exist
+  $x_1 \not= x_2$ such that $\partial f(x_1) \not= \emptyset, \partial f(x_2)
+  \not= \emptyset$ and $t \in (0,1)$ such that $f(tx_1 + (1-t)x_2) = tf(x_1) +
+  (1-t)f(x_2)$. Let $x = tx_1 + (1-t)x_2$ and $u \in \partial f(x)$. Prove that
+  $u \in \partial f(x_1)$ and $u \in \partial f(x_2)$.  
+
+\item Prove using Theorem \ref{thm:conjugate_subgradients} that $\partial
+  f^*(u)$ has at least two elements, and thus $f^*$ cannot be differentiable at
+  $u$. Note that this proves the ``only if'' direction in Theorem
+  \ref{thm:conjugate_essentials}.  
+
+% This last part is true because of the equivalence of (iii) in the definition
+% of essential strong convexity and the fact the subgradient is empty outside of 
+% $\interior(dom(f))$ 
+
+\item Instead suppose that $f^*$ is not essentially smooth. Then there exists
+  $u$ such that $\partial f^*(u)$ contains at least two elements $x_1 \not= 
+  x_2$. Prove using Theorem \ref{thm:conjugate_subgradients} that $u \in
+  \partial f(x_1)$ and $u \in \partial f(x_2)$, and hence $f$ cannot be strictly
+  convex along the line segment joining $x_1$ and $x_2$. Note that this proves
+  the ``if'' direction in Theorem \ref{thm:conjugate_essentials}. Hint: prove
+  that combining the subgradient conditions together at $x_1$ and $x_2$ gives  
+  \[
+  f(y) \geq tf(x_1) + (1-t)f(x_2) + u^\T (y - tx_1 + (1-t)x_2),
+  \]
+  for all $y$ and all $t \in (0,1)$. Set $y = tx_1 + (1-t)x_2$, and use
+  convexity of $f$, to get the desired result. 
+\end{enumerate}
+
+\item \label{ex:conjugate_smoothness}
+  In this exercise, we will prove Theorem \ref{thm:conjugate_smoothness}.
+
+\begin{enumerate}[label=\alph*.]
+\item Suppose that $f$ is strongly convex with parameter $m$. Fix any $u,v$ and
+  define a function $F_u(x) = f(x) - u^\T x$, as well as $x = \nabla f^*(u)$ and
+  $y = \nabla f^*(v)$. Show that
+  \[
+  F_u(y) \geq F_u(x) + \frac{m}{2} \|y-x\|_2^2.
+  \]
+  Hint: argue that $F_u$ is strongly convex with parameter $m$ and is minimized
+  at $x_u$, and then use Theorem \ref{thm:strong_convexity} property (iii).
+
+\item Exchange the roles of $u,v$, and add the resulting statement to the above
+  display to yield 
+  \[
+  (u-v)^\T (x-y) \geq m \|x-y\|_2^2.
+  \]
+  Use Cauchy-Schwarz to prove that $\|\nabla f^*(u) - \nabla f^*(v)\|_2 \leq
+  (1/m) \|u-v\|_2$, and conclude that $\nabla f^*$ is Lipschitz with constant
+  $1/m$.   
+
+\item Now suppose that $\nabla f^*$ is Lipschitz with parameter $1/m$. Again fix
+  any $u,v$ and denote $x = \nabla f^*(u)$ and $y = \nabla f^*(v)$. Show that
+  \[
+  (x-y)^\T (u-v) \leq (1/m)\|u-v\|_2^2.
+  \]
+  Hint: use Theorem \ref{thm:lipschitz_smoothness} property (iv). NO!
+
+\item Prove using the subgradient relation in Theorem
+  \ref{thm:conjugate_subgradients} and property (iv) in Theorem
+  \ref{thm:strong_convexity_nonsmooth} that $f$ is strongly convex with
+  parameter $m$. NO!
+\end{enumerate}
 
 \item linf proximal mapping from Moreau decomposition
 

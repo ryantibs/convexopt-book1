@@ -693,7 +693,7 @@ convexity as dual concepts, informally speaking, since they give rise to
 conditions that are symmetric in nature. (Perhaps not surprisingly, the proofs
 of these conditions also proceed symmetrically, as outlined in Exercise
 \ref{ex:lipschitz_smoothness}.)  In fact, as we will see later in Chapter 
-\ref{sec:conjugates_smoothness}, there is a deeper (formal) dual relation at
+\ref{sec:conjugate_smoothness}, there is a deeper (formal) dual relation at
 play: Lipschitz smoothness of a function is intimately tied to strong convexity
 of its conjugate.
 
@@ -1265,8 +1265,9 @@ infimum.
 
 \item For convex $f$, prove the final part of Theorem
   \ref{thm:lipschitz_smoothness} by showing $\text{(iv)} \implies \text{(i)}$,
-  using the following steps. First, define $F_x(z) = f(z) - \nabla f(x)^\T
-  z$. Argue that $F_x$ satisfies (iv), and thus also satisfies (iii), that is,   
+  using the following steps. Fix any $x,y$ and define $F_x(z) = f(z) - \nabla
+  f(x)^\T z$. Argue that $F_x$ satisfies (iv), and thus also satisfies (iii),
+  that is,    
   \[
   F_x(z) \leq F_x(y) + \nabla F_x(y)^\T (z-y) + \frac{L}{2}\|z-y\|_2^2. 
   \]
@@ -1283,22 +1284,19 @@ infimum.
   Exchange the roles of $x,y$, and add the resulting statement to the above
   display to get
   \[
-  \big(\nabla f(x) - \nabla f(y)\big)^\T (x - y) \geq \frac{1}{L}\|\nabla f(y) -
-  \nabla f(x)\|_2^2. 
+  \big(\nabla f(x) - \nabla f(y)\big)^\T (x - y) \geq \frac{1}{L}\|\nabla f(x) -
+  \nabla f(y)\|_2^2. 
   \]
   Use Cauchy-Schwarz to conclude that $f$ is Lipschitz smooth, as desired.
 
   \smallskip
   A remark on the proof technique: there is an interesting parallel between the  
-  argument here and that used to prove that the conjugate a strongly
+  argument here and that used to prove that the conjugate of a strongly
   convex function is Lipschitz smooth; see Exercise
-  \ref{ex:conjugates_smoothness}. The last display above is equivalent to the
-  conclusion that the conjugate $f^*$ of $f$ is strongly convex with parameter 
-  $1/L$. To check this, set $u = \nabla f(x)$, $v = \nabla f(y)$, and note
-  that $\nabla f^*(u) = x$ and $\nabla f^*(v) = y$. In comparison, the argument
-  in Exercise \ref{ex:conjugates_smoothness} starts with the premise of strong  
-  convexity, and then proceeds in the other direction, by essentially reversing
-  the steps in the above argument.    
+  \ref{ex:conjugate_smoothness} parts a and b. % The last display above is
+  % equivalent to the conclusion that the conjugate $f^*$ of $f$ is strongly
+  % convex with parameter $1/L$. To check this, set $u = \nabla f(x)$, $v =
+  % \nabla f(y)$, and note that $\nabla f^*(u) = x$ and $\nabla f^*(v) = y$. 
 \end{enumerate}
 
 \item We explore Theorems \ref{thm:lipschitz_smoothness} and
