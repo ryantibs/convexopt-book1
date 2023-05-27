@@ -551,12 +551,12 @@ of smoothing
 \begin{enumerate}[label=\alph*.]
 \item Suppose that $f$ is strongly convex with parameter $m$. Fix any $u,v$ and
   define a function $F_u(x) = f(x) - u^\T x$, as well as $x = \nabla f^*(u)$ and
-  $y = \nabla f^*(v)$. Show that
+  $y = \nabla f^*(v)$. Show (since $F_u$ is strongly convex) that 
   \[
   F_u(y) \geq F_u(x) + \frac{m}{2} \|y-x\|_2^2.
   \]
-  Hint: argue that $F_u$ is strongly convex with parameter $m$ and is minimized
-  at $x_u$, and then use Theorem \ref{thm:strong_convexity} property (iii).
+  Hint:  use Theorem \ref{thm:strong_convexity} property (iii) and the fact that
+  $F_u$ is minimized at $x_u$. 
 
 \item Exchange the roles of $u,v$, and add the resulting statement to the above
   display to yield 
@@ -567,17 +567,32 @@ of smoothing
   (1/m) \|u-v\|_2$, and conclude that $\nabla f^*$ is Lipschitz with constant
   $1/m$.   
 
-\item Now suppose that $\nabla f^*$ is Lipschitz with parameter $1/m$. Again fix
-  any $u,v$ and denote $x = \nabla f^*(u)$ and $y = \nabla f^*(v)$. Show that
+\item Now suppose that $\nabla f^*$ is Lipschitz with parameter $1/m$. For
+  simplicity, let $g=f^*$ and $L=1/m$. Fix any $u,v$ and define a function
+  $G_u(z) = g(z) - \nabla g(u)^\T z$. Show (since $G_u$ is Lipschitz smooth) 
+  that  
   \[
-  (x-y)^\T (u-v) \leq (1/m)\|u-v\|_2^2.
+  G_u(z) \leq G_u(v) + \nabla G_u(v)^\T (z-v) + \frac{L}{2}\|z-v\|_2^2. 
   \]
-  Hint: use Theorem \ref{thm:lipschitz_smoothness} property (iv). NO!
+  Hint: use Theorem \ref{thm:lipschitz_smoothness} property (iii).
 
-\item Prove using the subgradient relation in Theorem
-  \ref{thm:conjugate_subgradients} and property (iv) in Theorem
-  \ref{thm:strong_convexity_nonsmooth} that $f$ is strongly convex with
-  parameter $m$. NO!
+\item Minimize each side of the above display over $z$, and rearrange, to get  
+  % LHS is minimized when $z = u$
+  % RHS is minimized when $z - v = (\nabla g(u) - \nabla g(v)) / L$
+  \[
+  g(v) \leq g(u) + \nabla g(u)^\T (v-u) + \frac{1}{2L}\|\nabla g(u) - \nabla 
+  g(v)\|_2^2. 
+  \]
+
+\item Exchange the roles of $u,v$, and add the resulting statement to the above
+  display to yield 
+  \[
+  \big(\nabla g(u) - \nabla g(v)\big)^\T (u-v) \geq \frac{1}{L}\|\nabla g(u) -
+  \nabla g(v)\|_2^2. 
+  \]
+  Use the subgradient relation in Theorem \ref{thm:conjugate_subgradients} and
+  Theorem \ref{thm:strong_convexity_nonsmooth} property (iv) to conclude $f$ is
+  strongly convex with parameter $m$. 
 \end{enumerate}
 
 \item linf proximal mapping from Moreau decomposition

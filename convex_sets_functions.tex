@@ -1273,9 +1273,9 @@ infimum.
   \]
   Minimize each side of the above display over $z$. (Hint: use the fact that a 
   differentiable convex function is minimized by setting its gradient to zero
-  applied to each of the left- and right-hand sides separately.)
-  % LHS is minimized when $z - y = (\nabla f(x) - \nabla f(y)) / L$
-  % RHS is minimized when $z = x$
+  applied to each of the left- and right-hand sides separately.) 
+  % LHS is minimized when $z = x$
+  % RHS is minimized when $z - y = (\nabla f(x) - \nabla f(y)) / L$
   Show that, after rearrangement, this yields
   \[
   f(y) \geq f(x) + \nabla f(x)^\T (y-x) + \frac{1}{2L}\|\nabla f(y) - \nabla
@@ -1284,19 +1284,16 @@ infimum.
   Exchange the roles of $x,y$, and add the resulting statement to the above
   display to get
   \[
-  \big(\nabla f(x) - \nabla f(y)\big)^\T (x - y) \geq \frac{1}{L}\|\nabla f(x) -
+  \big(\nabla f(x) - \nabla f(y)\big)^\T (x-y) \geq \frac{1}{L}\|\nabla f(x) -
   \nabla f(y)\|_2^2. 
   \]
   Use Cauchy-Schwarz to conclude that $f$ is Lipschitz smooth, as desired.
 
   \smallskip
   A remark on the proof technique: there is an interesting parallel between the  
-  argument here and that used to prove that the conjugate of a strongly
-  convex function is Lipschitz smooth; see Exercise
-  \ref{ex:conjugate_smoothness} parts a and b. % The last display above is
-  % equivalent to the conclusion that the conjugate $f^*$ of $f$ is strongly
-  % convex with parameter $1/L$. To check this, set $u = \nabla f(x)$, $v =
-  % \nabla f(y)$, and note that $\nabla f^*(u) = x$ and $\nabla f^*(v) = y$. 
+  argument here and that used to prove that a function is strongly convex if and
+  only if its conjugate is Lipschitz smooth; see Exercise
+  \ref{ex:conjugate_smoothness}.
 \end{enumerate}
 
 \item We explore Theorems \ref{thm:lipschitz_smoothness} and
