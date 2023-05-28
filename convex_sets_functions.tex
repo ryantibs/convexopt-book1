@@ -965,7 +965,6 @@ infimum.
 \item Prove that if $X$ is a random variable supported on a convex set $C
   \subseteq \R^d$ (and $\E(X)$ exists) then $\E(X) \in C$.  
 
-\index{convex function!sublevel set}
 \item \label{ex:convex_sublevel}
   Show that if $f$ is a convex function, then $\{x : f(x) \leq t \}$, called the
   \emph{sublevel set} of $f$ at level $t$, is a convex set. Show that the
@@ -1033,12 +1032,12 @@ infimum.
 
 \item Prove that the second bullet point in Property
   \parref{par:function_composition} can be collapsed into the first: if the
-  conditions of the property hold, and there exists $i$ such that $f$
-  nonincreasing in its $i\th$ argument and $g_i$ concave, then we can simply
-  reparametrize by flipping the signs of the appropriate arguments/component
-  functions so that we can write \smash{$F = \tilde{f} \circ \tilde{g}$} for
-  \smash{$\tilde{f}$} nondecreasing in each argument, and \smash{$\tilde{g}$} 
-  with all component functions convex. 
+  conditions stated in the property hold, and there exists $i$ such that $f$ 
+  nonincreasing in its $i\th$ argument and $g_i$ concave, then we can
+  reparametrize by flipping the signs of the appropriate arguments/component 
+  functions, and thus we can write \smash{$F = \tilde{f} \circ \tilde{g}$} for  
+  \smash{$\tilde{f}$} nondecreasing in each argument and \smash{$\tilde{g}$} 
+  having all component functions convex. 
 
 \item Prove that Property \parref{par:function_composition} can be extended to
   the case where $g$ takes infinite values, in the following way. If $f : \R^k

@@ -271,6 +271,7 @@ An important special case is a function that is finite and differentiable on all
 of $\R^d$. It turns out for a closed convex function $f$ that condition (iii)
 is equivalent to $\partial f(x) = \emptyset$ for $x \notin \interior(\dom(f))$.   
 
+\index{strictly convex}
 A function $f$ is said to be \emph{essentially strictly convex} if it is
 strictly convex on all convex subsets $S$ of $ \{x : \partial f(x) \not=
 \emptyset\}$. (Here we say $f$ is strictly convex on $S$ to mean
@@ -322,6 +323,8 @@ is invertible, with inverse $(\nabla f)^{-1} = \nabla f^*$.
 Lastly, beyond the above connections, there is a crisp quantitative connection
 between convexity properties of $f$ and smoothness properties of $f^*$. 
 
+\index{Lipschitz smoothness}
+\index{strong convexity}
 \index{Baillon-Haddad theorem}
 \begin{Theorem}
 \label{thm:conjugate_smoothness}
@@ -444,6 +447,7 @@ of smoothing
   exclude any point $a \notin C$ by applying the strict separating hyperplane
   theorem to $C$ and $D=\{a\}$.      
 
+\index{epigraph}
 \item Apply the fact from part a to the closed and convex set $C = \epi(f)$
   (since $f$ is assumed to be closed and convex) to yield:
   \[
@@ -477,6 +481,7 @@ of smoothing
   \eqref{eq:affine_minorant_revisited}.  
 \end{enumerate}
 
+\index{conjugate!double}
 \item \label{ex:double_conjugate_convex_minorant}
   Show that 
   \begin{equation}
@@ -498,12 +503,14 @@ of smoothing
   \eqref{eq:double_conjugate_affine_minorant} and
   \eqref{eq:affine_minorant_revisited}.  
 
+\index{support function!conjugate}
 \item \label{ex:support_function_conjugate}
   Prove the statement in Example \parref{xa:support_function_conjugate}. Hint:
   argue that, since $C$ is a closed and convex set, $I_C$ is a closed and convex
   function, then use \eqref{eq:double_conjugate_reduction} and the fact from 
   Example \parref{xa:characteristic_function_conjugate}. 
 
+\index{norm!conjugate}
 \item \label{ex:norm_conjugate}
   Prove the statement in Example \parref{xa:norm_conjugate}. Hint: argue that,
   since $\|\cdot\|_*$ is a norm, it is a closed and convex function, then use
@@ -550,6 +557,9 @@ of smoothing
   convexity of $f$, to get the desired result. 
 \end{enumerate}
 
+\index{Lipschitz smoothness}
+\index{strong convexity}
+\index{Baillon-Haddad theorem}
 \item \label{ex:conjugate_smoothness}
   In this exercise, we will prove Theorem \ref{thm:conjugate_smoothness}.
 
@@ -601,8 +611,10 @@ of smoothing
   % We're implicitly using the fact that \nabla g is surjective ... leave as is?
 \end{enumerate}
 
+\index{linf norm@$\ell_\infty$ norm!proximal mapping}
 \item linf proximal mapping from Moreau decomposition
 
+\index{operator norm!proximal mapping}
 \item Operator norm proximal map from linf and Exercise
   \ref{ex:matrix_norm_proximal_mapping2}   
 
