@@ -12,8 +12,7 @@ simple and elementary, as well as highly nontrivial and powerful.
 Given a function $f : \R^d \to [-\infty, \infty]$, its \emph{convex conjugate}
 $f^*$ (also simply called its conjugate) is another function on $\R^d$ defined
 as        
-\index{convex conjugate}
-\index{Legendre-Fenchel transform}
+\index{conjugate}
 \begin{equation}
 \label{eq:conjugate}
 f^*(u) = \sup_x \, \Big\{ u^\T x - f(x) \Big\}.
@@ -85,7 +84,7 @@ established below, we can conclude that this describes \emph{all} of the
 elements of $\partial f^*(u)$ (Exercise \ref{ex:conjugate_subgradients}). The 
 next result records these equivalences. 
 
-\index{convex conjugate!subgradients}
+\index{conjugate!subgradients}
 \begin{Theorem}
 \label{thm:conjugate_subgradients}
 For closed and convex $f$ with nonempty domain, the following statements are all 
@@ -104,7 +103,7 @@ equivalent:
 The conjugate of $f^*$ is known as the \emph{double conjugate} of $f$ and
 denoted $f^{**}$. Simply applying the definition \eqref{eq:conjugate} with $f^*$
 in place of $f$, we get 
-\index{convex conjugate!double}
+\index{conjugate!double}
 \begin{equation}
 \label{eq:double_conjugate}
 f^{**}(x) = \sup_u \, \Big\{ x^\T u - f^*(u) \Big\},
@@ -172,6 +171,7 @@ the details to exercises.
   For $f(x) = \|x\|$, where $\|\cdot\|$ is an arbitrary norm, its conjugate is
   (Exercise \ref{ex:norm_conjugate}):  
   \index{norm!conjugate}
+  \index{dual norm}
   \[
   f^* = I_{\{u \,:\, \|u\|_* \leq 1\}},
   \]
@@ -222,6 +222,7 @@ write $Af$ to denote the function (on $\R^d$) defined by
 We refer to the operation $f \mapsto Af$ as \emph{left composition}, and $f
 \mapsto fA$ as \emph{right composition}.
 
+\index{composition!conjugate}
 Now we can describe the relationship between composition and conjugacy: for any
 function $f$ on $\R^k$ and $A \in \R^{d \times k}$, it holds that $(Af)^* =
 f^*A^\T$. Moreover, for a closed and convex function $f$ on $\R^d$, we have 
@@ -296,14 +297,16 @@ in Exercise \ref{ex:conjugate_essentials}.
 
 In fact, combined with the relationship between subgradients of $f$ and $f^*$,
 Theorem \ref{thm:conjugate_essentials} leads to an interesting conclusion. To
-help make this conclusion more salient, we will introduce one further concept: a
-function that is both essentially smooth and essentially strictly convex is said
-to be of \emph{Legendre type}. Using this nomenclature, Theorem
-\ref{thm:conjugate_essentials} tells us that a closed convex function $f$ is of
-Legendre type if and only if $f^*$ is. Theorem \ref{thm:conjugate_subgradients}
-then says that for any such $f$, and $x \in \interior(\dom(f))$, we have $u =
-\nabla f(x) \iff x = \nabla f^*(u)$. The next theorem summarizes.
+make this conclusion more salient, we introduce one more definition: a function
+said to be of \emph{Legendre type} if it is essentially smooth and essentially
+strictly convex. Using this nomenclature, and the fact that $f^{**}=f$ for
+closed convex functions, Theorem \ref{thm:conjugate_essentials} says that a
+closed convex function $f$ is of Legendre type if and only if $f^*$ is. Theorem
+\ref{thm:conjugate_subgradients} then says that for any such $f$ and $x \in
+\interior(\dom(f))$, we have $u = \nabla f(x) \iff x = \nabla f^*(u)$. This is   
+summarized next. 
 
+\index{Legendre function}
 \begin{Theorem}
 \label{thm:conjugate_legendre}
 A closed convex function $f$ is of Legendre type if and only if $f^*$
@@ -319,6 +322,7 @@ is invertible, with inverse $(\nabla f)^{-1} = \nabla f^*$.
 Lastly, beyond the above connections, there is a crisp quantitative connection
 between convexity properties of $f$ and smoothness properties of $f^*$. 
 
+\index{Baillon-Haddad theorem}
 \begin{Theorem}
 \label{thm:conjugate_smoothness}
 Let $f$ be a closed convex function. Then $f$ is strongly convex with parameter
@@ -368,12 +372,13 @@ of smoothing
 \settowidth{\leftmargini}{0.00.\hskip\labelsep}
 \item \label{ex:conjugate_closed}
   Prove that the epigraph of $f^*$ in \eqref{eq:conjugate} can be expressed as  
+  \index{conjugate!epigraph}
   \[
   \epi(f^*) = \{ (u,s) : u^\T x \leq f(x) + s, \, \text{for all $x$} \},
   \]
   which as an intersection of closed halfspaces, and is hence closed. 
 
-\index{convex conjugate!subgradients}
+\index{conjugate!subgradients}
 \item \label{ex:conjugate_subgradients}
   This exercise examines subgradients of the conjugate function.
 
@@ -593,6 +598,7 @@ of smoothing
   Use the subgradient relation in Theorem \ref{thm:conjugate_subgradients} and
   Theorem \ref{thm:strong_convexity_nonsmooth} property (iv) to conclude $f$ is
   strongly convex with parameter $m$. 
+  % We're implicitly using the fact that \nabla g is surjective ... leave as is?
 \end{enumerate}
 
 \item linf proximal mapping from Moreau decomposition
