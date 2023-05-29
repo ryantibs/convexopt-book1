@@ -36,11 +36,11 @@ convex conjugate, which we revisit shortly when we discuss double conjugation.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.7\textwidth]{fig/subgradient.pdf}
-\caption{The conjugate $f^*$ at $u$ is the maximum gap between a linear function
-  with slope $u$ and $f(x)$, which is illustrated by the dotted line. The double
-  conjugate $f^{**}$ is the pointwise supremum of all affine minorants to $f$,
-  that is, the greatest closed convex minorant to $f$, which is illustrated by
-  the dashed line.}
+\caption{The conjugate $f^*$ evaluated at $u$ is the maximum gap between a
+  linear function with slope $u$ and $f(x)$, which is illustrated by the dotted
+  line. The double conjugate $f^{**}$ is the pointwise supremum of all affine
+  minorants to $f$ (the greatest closed convex minorant to $f$), illustrated by
+  the dashed line.}    
 \label{fig:conjugate}
 \end{figure}
 
@@ -136,16 +136,25 @@ through the proof of this and related facts.
 \medskip
 
 \begin{Example}
-Below are examples of convex conjugates for a few well-known functions of
-interest. The calculations for most are straightforward, and for others we defer
-the details to exercises. 
+Below are examples of convex conjugates for some functions of interest. The
+calculations for most are straightforward, and for others we defer the details
+to exercises.  
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
-\item For $f(x) = \frac{1}{2} x^\T Q x$, where $Q \succ 0$, its conjugate is
-  $f^*(u) = \frac{1}{2} u^\T Q^{-1} u$.
+\item \parlab{xa:quadratic_conjugate}
+  For $f(x) = \frac{1}{2} x^\T Q x$, where $Q \succ 0$, its conjugate is $f^*(u)
+  = \frac{1}{2} u^\T Q^{-1} u$. 
+
+\item \parlab{xa:logistic_conjugate}
+  For $f(x) = \sum_{i=1}^d \log(1+e^{-x_i})$, its conjugate is 
+  \[
+  f^*(u) = \sum_{i=1}^d \big( -u_i \log(-u_i) + (1+u_i) \log(1+u_i) \big), 
+  \] 
+  with $\dom(f^*) = [-1,0]^d$ (and where we interpret $0 \log(0) = 0$). 
 
 \item For $f(x) = \sum_{i=1}^d x_i \log(x_i)$, its conjugate is $f^*(u) =
   \sum_{i=1}^d \exp(u_i - 1)$. 
+\index{negative entropy function!conjugate}
 
 \item \parlab{xa:characteristic_function_conjugate}   
   For $f = I_C$, the characteristic function of an arbitrary set $C$, its
@@ -176,8 +185,7 @@ the details to exercises.
   f^* = I_{\{u \,:\, \|u\|_* \leq 1\}},
   \]
   the characteristic function of the unit ball in the dual norm
-  $\|\cdot\|_*$. (In Chapter \ref{sec:dual_norms}, we will develop the
-  connection between $\|\cdot\|$ and $\|\cdot\|_*$ in more detail.)  
+  $\|\cdot\|_*$.
 \end{enumerate}
 \end{Example}
 
@@ -222,12 +230,12 @@ write $Af$ to denote the function (on $\R^d$) defined by
 We refer to the operation $f \mapsto Af$ as \emph{left composition}, and $f
 \mapsto fA$ as \emph{right composition}.
 
-\index{composition!conjugate}
 Now we can describe the relationship between composition and conjugacy: for any
 function $f$ on $\R^k$ and $A \in \R^{d \times k}$, it holds that $(Af)^* =
 f^*A^\T$. Moreover, for a closed and convex function $f$ on $\R^d$, we have 
 $(fA)^* = A^\T f^*$. In other words, for closed and convex functions, left and
 right composition are dual to each other.     
+\index{composition!conjugate}
 
 \paragraph{Separable sum.}
 
@@ -252,6 +260,12 @@ addition are dual to each other. This provides an interesting perspective on the
 Moreau envelope (a special case of an infimal convolution), which we return to
 in Chapter \ref{sec:moreau_revisited}.   
 
+\medskip
+
+\begin{Example}
+
+\end{Example}
+
 \section{Conjugates and smoothness*}
 \label{sec:conjugate_smoothness}
 
@@ -271,12 +285,12 @@ An important special case is a function that is finite and differentiable on all
 of $\R^d$. It turns out for a closed convex function $f$ that condition (iii)
 is equivalent to $\partial f(x) = \emptyset$ for $x \notin \interior(\dom(f))$.   
 
-\index{strictly convex}
 A function $f$ is said to be \emph{essentially strictly convex} if it is
 strictly convex on all convex subsets $S$ of $ \{x : \partial f(x) \not=
 \emptyset\}$. (Here we say $f$ is strictly convex on $S$ to mean
 \eqref{eq:strictly_convex_function} holds for $x,y \in S$.) An important special 
 case is a function that is finite and strictly convex on all of $\R^d$. 
+\index{strict convexity}
 
 The next result shows that conjugacy provides the bridge between the last two
 concepts.  
@@ -332,11 +346,28 @@ Let $f$ be a closed convex function. Then $f$ is strongly convex with parameter
 $m>0$ if and only if $\nabla f^*$ is Lipschitz with parameter $1/m>0$. 
 \end{Theorem}
 
-The duality behind strong convexity and Lipschitz smoothness, as made precise in
-Theorem \ref{thm:conjugate_smoothness}, is sometimes called the
-\emph{Baillon-Haddad theorem}. Its proof is outlined in Exercise
-\ref{ex:conjugate_smoothness}. We note that this theorem explains the symmetry 
+The result in Theorem \ref{thm:conjugate_smoothness} is sometimes called the
+\emph{Baillon-Haddad theorem}; its proof is outlined in Exercise
+\ref{ex:conjugate_smoothness}. We note that this result explains the symmetry 
 behind Theorems \ref{thm:lipschitz_smoothness} and \ref{thm:strong_convexity}.
+
+\medskip
+
+\begin{Example}
+The duality between Lipschitz smoothness and strong convexity is illustrated
+nicely by the quadratic function $f(x) = \frac{1}{2} x^\T Q x$, where $Q \succ
+0$, and $f^*(u) = \frac{1}{2} u^\T Q^{-1}u$. Denote by
+\smash{$\lambda_{\max}(A)$} and \smash{$\lambda_{\min}(A)$} the largest and
+smallest eigenvalues, respectively, of a symmetric matrix $A$. Then:
+\begin{itemize}
+\item the Lipschitz constant of $\nabla f$ is \smash{$\lambda_{\max}(Q)$},
+  whereas the strong convexity constant of $f^*$ is
+  \smash{$\lambda_{\min}(Q^{-1}) = 1/\lambda_{\max}(Q)$};
+\item the strong convexity constant of $f$ is \smash{$\lambda_{\min}(Q)$},
+  whereas the Lipschitz constant of $\nabla f^*$ is
+  \smash{$\lambda_{\max}(Q^{-1}) = 1/\lambda_{\min}(Q)$}. 
+\end{itemize}
+\end{Example}
 
 \section{Proximal connections*}
 
@@ -580,7 +611,7 @@ of smoothing
   \]
   Use Cauchy-Schwarz to prove that $\|\nabla f^*(u) - \nabla f^*(v)\|_2 \leq
   (1/m) \|u-v\|_2$, and conclude that $\nabla f^*$ is Lipschitz with constant
-  $1/m$.   
+  $1/m$.    
 
 \item Now suppose that $\nabla f^*$ is Lipschitz with parameter $1/m$. For
   simplicity, let $g=f^*$ and $L=1/m$. Fix any $u,v$ and define a function
