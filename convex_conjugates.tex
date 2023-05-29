@@ -246,9 +246,9 @@ $F^*(u) = f_1^*(u_1) + f_2^*(u_2)$ for $u = (u_1,u_2)$.
 \parlab{par:conjugate_general_sum}
 
 In order to explain what happens for a general sum of functions, which is one of
-the most interesting calculus rule for convex conjugates, we need to 
-recall the notion of an \emph{infimal convolution} of functions $f,g$ (first
-introduced in Exercise \ref{ex:moreau_proximal_identification}): 
+the most notable calculus rule for convex conjugates, we recall the notion of an
+\emph{infimal convolution} of functions $f,g$ (first introduced in Exercise
+\ref{ex:moreau_proximal_identification}):  
 \index{infimal convolution!conjugate}
 \[
 (f \infconv g)(x) = \inf_z \Big\{ f(z) + g(x-z) \Big\}.
@@ -354,7 +354,7 @@ The duality between Lipschitz smoothness and strong convexity is illustrated
 nicely by the quadratic function $f(x) = \frac{1}{2} x^\T Q x$, where $Q \succ
 0$, and $f^*(u) = \frac{1}{2} u^\T Q^{-1}u$. Denote by
 \smash{$\lambda_{\max}(A)$} and \smash{$\lambda_{\min}(A)$} the largest and
-smallest eigenvalues, respectively, of a symmetric matrix $A$. Then:
+smallest eigenvalues, respectively, of a matrix $A \succeq 0$. Then:
 \begin{itemize}
 \item the Lipschitz constant of $\nabla f$ is \smash{$\lambda_{\max}(Q)$},
   whereas the strong convexity constant of $f^*$ is
@@ -366,6 +366,8 @@ smallest eigenvalues, respectively, of a symmetric matrix $A$. Then:
 \end{Example}
 
 \section{Proximal connections*}
+
+Conjugate functions bear
 
 \subsection{Moreau decomposition}
 \label{sec:moreau_decomposition}

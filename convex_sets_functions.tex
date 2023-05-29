@@ -68,8 +68,8 @@ The following are examples of convex sets.
 \end{Example}  
 
 It will be important to think about convexity for sets of matrices (and
-convexity for functions of matrices), since some interesting optimization
-problems are formulated over matrices. By viewing $\R^{k \times d}$---the space 
+convexity for functions of matrices), since several optimization problems of
+interest are formulated over matrices. By viewing $\R^{k \times d}$---the space   
 of real $k \times d$ matrices---as a vector space of dimension $kd$, everything   
 we cover for convex sets in $\R^d$ (and convex functions on $\R^d$) can be
 translated over to $\R^{k \times d}$. 
@@ -336,9 +336,9 @@ fluid when working with functions that can take infinite values.
 \section{Equivalent characterizations}
 \label{sec:equivalent_characterizations}
 
-There are a number of interesting alternative characterizations of convexity for
+There are a number of notable alternative characterizations of convexity for
 functions (conditions other than the definition that are either equivalent to
-convexity or imply convexity), outlined next. 
+convexity or imply convexity), outlined next.  
 
 \paragraph{Epigraph characterization.} 
 
@@ -756,15 +756,14 @@ zero.
 % Rockafellar (1970)?  
 
 While the almost everywhere differentiability and twice differentiability of
-convex functions is certainly interesting, we must be mindful not to
-overinterpret the implications of Theorem \ref{thm:smoothness_properties} as
-they pertain to convex optimization. Generally speaking, sets of Lebesgue
-measure zero cannot be ignored in mathematical optimization (unlike, say,
-functional analysis), particularly because many interesting optimization
-problems lack smoothness at their minima; when this happens, as we will see in
-the subsequent chapters, we must account for it, both analytically and 
-algorithmically, and subgradients will be one of our primary tools for doing
-so. 
+convex functions is quite remarkable, we should be mindful to not overinterpret
+the implications of Theorem \ref{thm:smoothness_properties}, as they pertain to
+convex optimization. Generally speaking, sets of Lebesgue measure zero cannot be
+ignored in mathematical optimization (unlike, say, functional analysis),
+particularly because many optimization problems of interest lack smoothness at
+their minima; when this happens, as we will see in the subsequent chapters, we
+must account for it, both analytically and algorithmically, and subgradients
+will be one of our primary tools for doing so.
 
 \section{Cones and polyhedra*}
 \label{sec:cones_polyhedra}
