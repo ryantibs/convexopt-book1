@@ -146,11 +146,11 @@ to exercises.
   = \frac{1}{2} u^\T Q^{-1} u$. 
 
 \item \parlab{xa:logistic_conjugate}
-  For $f(x) = \sum_{i=1}^d \log(1+e^{-x_i})$, its conjugate is 
+  For $f(x) = \sum_{i=1}^d \log(1+e^{x_i})$, its conjugate is 
   \[
-  f^*(u) = \sum_{i=1}^d \big( -u_i \log(-u_i) + (1+u_i) \log(1+u_i) \big), 
+  f^*(u) = \sum_{i=1}^d \big( u_i \log(u_i) + (1-u_i) \log(1-u_i) \big), 
   \] 
-  with $\dom(f^*) = [-1,0]^d$ (and where we interpret $0 \log(0) = 0$). 
+  with $\dom(f^*) = [0,1]^d$ (and where we interpret $0 \log(0) = 0$). 
 
 \item For $f(x) = \sum_{i=1}^d x_i \log(x_i)$, its conjugate is $f^*(u) =
   \sum_{i=1}^d \exp(u_i - 1)$. 
@@ -260,11 +260,7 @@ addition are dual to each other. This provides an interesting perspective on the
 Moreau envelope (a special case of an infimal convolution), which we return to
 in Chapter \ref{sec:moreau_revisited}.   
 
-\medskip
-
-\begin{Example}
-
-\end{Example}
+% Examples are better off demonstrated via duality, later
 
 \section{Conjugates and smoothness*}
 \label{sec:conjugate_smoothness}
