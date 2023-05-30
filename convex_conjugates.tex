@@ -143,10 +143,9 @@ to exercises.
 \begin{enumerate}[label=\alph*., ref=\alph*]
 \item \parlab{xa:quadratic_conjugate}
   For $f(x) = \frac{1}{2} x^\T Q x$, where $Q \succ 0$, its conjugate is $f^*(u)
-  = \frac{1}{2} u^\T Q^{-1} u$. 
+  = \frac{1}{2} u^\T Q^{-1} u$.  
 
-\item \parlab{xa:logistic_conjugate}
-  For $f(x) = \sum_{i=1}^d \log(1+e^{x_i})$, its conjugate is 
+\item For $f(x) = \sum_{i=1}^d \log(1+e^{x_i})$, its conjugate is 
   \[
   f^*(u) = \sum_{i=1}^d \big( u_i \log(u_i) + (1-u_i) \log(1-u_i) \big), 
   \] 
@@ -194,6 +193,7 @@ to exercises.
 We describe rules that will be helpful in calculating convex conjugates.  
 
 \paragraph{Scaling.}
+\parlab{par:conjugate_scaling}
 
 It helps to first introduce some notation. For a function $f$ and $a>0$, we
 write $af$ to denote the function defined by $(af)(x) = af(x)$, whereas we write
@@ -250,9 +250,10 @@ the most notable calculus rule for convex conjugates, we recall the notion of an
 \emph{infimal convolution} of functions $f,g$ (first introduced in Exercise
 \ref{ex:moreau_proximal_identification}):  
 \index{infimal convolution!conjugate}
-\[
+\begin{equation}
+\label{eq:infimal_convolution}
 (f \infconv g)(x) = \inf_z \Big\{ f(z) + g(x-z) \Big\}.
-\]
+\end{equation}
 For any $f,g$, a straightforward calculation shows that $(f \infconv g)^* = f^*
 + g^*$. Meanwhile, for closed and convex $f,g$, we have $(f + g)^* = f^*
 \infconv g^*$. That is, for closed and convex functions, infimal convolution and
@@ -310,7 +311,7 @@ In fact, combined with the relationship between subgradients of $f$ and $f^*$,
 Theorem \ref{thm:conjugate_essentials} leads to an interesting conclusion. To
 make this conclusion more salient, we introduce one more definition: a function
 said to be of \emph{Legendre type} if it is essentially smooth and essentially
-strictly convex. Using this nomenclature, and the fact that $f^{**}=f$ for
+strictly convex. Using this nomenclature, and the fact that $f^{**} = f$ for
 closed convex functions, Theorem \ref{thm:conjugate_essentials} says that a
 closed convex function $f$ is of Legendre type if and only if $f^*$ is. Theorem
 \ref{thm:conjugate_subgradients} then says that for any such $f$ and $x \in
@@ -367,13 +368,77 @@ smallest eigenvalues, respectively, of a matrix $A \succeq 0$. Then:
 
 \section{Proximal connections*}
 
-Conjugate functions bear
+Conjugate functions bear important connections to proximal maps, which we
+describe in this section.
 
 \subsection{Moreau decomposition}
 \label{sec:moreau_decomposition}
 
+A closed and convex function $f$ and its conjugate $f^*$ exhibit the following 
+relationship between their proximal operators:    
+\begin{align*}
+z = \prox_f(x) &\iff x-z \in \partial f(z) \\
+&\iff z \in \partial f^*(x-z) \\
+&\iff x-z = \prox_{f^*}(x),
+\end{align*}
+where in the first and last we line used the subgradient characterization for the
+proximal map \eqref{eq:proximal_subgradient_characterization}, and in the second
+we used the relationship between subgradients of $f,f^*$ from Theorem
+\ref{thm:conjugate_subgradients}. We can rewrite the above conclusion more
+simply as    
+\index{Moreau decomposition}
+\begin{equation}
+\label{eq:moreau_decomposition}
+\prox_f(x) + \prox_{f^*}(x) = x, \quad \text{for all $x$}.
+\end{equation}
+called the \emph{Moreau decomposition} of the proximal maps of the conjugate
+pair $f,f^*$. This generalizes the decomposition we saw earlier in
+\eqref{eq:projection_decomposition} for a projection operator onto a linear 
+subspace $L$ and its orthocomplement $L^\perp$.  
+
+An extended version of the Moreau decomposition \eqref{eq:moreau_decomposition}
+is obtained by applying this formula to $(\lambda f)$, then applying rules for
+conjugates and proximal operators under left scaling (Exercise
+\ref{ex:moreau_decomposition_extended}):   
+\begin{equation}
+\label{eq:moreau_decomposition_extended}
+\prox_{\lambda f}(x) + \lambda \prox_{\lambda^{-1} f}(x/\lambda) = x, \quad 
+\text{for all $x$}. 
+\end{equation}
+This is useful for deriving the proximal operator of a function given the
+knowledge of the proximal operator of its conjugate. This demonstrated in
+Exercise \ref{ex:linf_norm_proximal_mapping} for the $\ell_\infty$ norm and in 
+Exercise \ref{ex:operator_norm_proximal_mapping} for the operator norm. 
+
 \subsection{Moreau envelope, revisited}
 \label{sec:moreau_revisited}
+
+We saw from Property \parref{par:conjugate_general_sum} that infimal
+convolutions are connected to conjugacy through addition: $(f \infconv g)^* =
+f^* + g^*$ for any $f,g$. The Moreau envelope \eqref{eq:moreau_envelope_lambda}
+is a special case of an infimal convolution \eqref{eq:infimal_convolution} with
+\smash{$g = \frac{1}{2\lambda} \|\cdot\|_2^2$}. Applying the last fact thus
+gives
+\[
+f_\lambda^* = f^* + \frac{\lambda}{2} \|\cdot\|_2^2,
+\]
+where we used Example \parref{xa:quadratic_conjugate} for the conjugate of
+\smash{$\frac{1}{2\lambda} \|\cdot\|_2^2$}. Meanwhile, if $f$ is closed, then
+$f_\lambda$ is too (it is in fact differentiable, hence continuous), so we can
+take the conjugate of both sides above and apply
+\eqref{eq:double_conjugate_reduction} to conclude 
+\index{Moreau envelope}
+\begin{equation}
+\label{eq:moreau_envelope_conjugate}
+f_\lambda = \bigg( f^* + \frac{\lambda}{2} \|\cdot\|_2^2 \bigg)^*,
+\end{equation}
+which explains precisely how the Moreau envelope acts as a regularized version 
+of $f$, via conjugacy. We can see clearly that a smaller value of $\lambda>0$
+leads to a smaller amount of regularization. In fact, we might guess from 
+\eqref{eq:moreau_envelope_conjugate} that as $\lambda \to 0$, we will have  
+$f_\lambda\to f$ (recalling that $f$ is closed and convex, which means $f^{**} =
+f$). This fact can indeed by rigorously verified; see Exercise 
+\ref{ex:moreau_envelope_conjugate}.  
 
 \SkipTocEntry\section*{Chapter Notes}
 
@@ -640,12 +705,40 @@ of smoothing
   % We're implicitly using the fact that \nabla g is surjective ... leave as is?
 \end{enumerate}
 
+\index{Moreau decomposition}
+\item \label{ex:moreau_decomposition_extended}
+  Prove first the following about the proximal operator of a function under
+  right scaling: 
+  \[
+  \prox_{fa}(x) = a \prox_{a^{-1} f} (x/a), 
+  \] 
+  where recall $(fa)(x) = a f(x/a)$, for $a>0$. Then use this, along with
+  Property \parref{par:conjugate_scaling}, to verify the extended Moreau
+  decomposition \eqref{eq:moreau_decomposition_extended}.  
+
 \index{linf norm@$\ell_\infty$ norm!proximal mapping}
-\item linf proximal mapping from Moreau decomposition
+\item \label{ex:linf_norm_proximal_mapping}
+linf proximal mapping from Moreau decomposition
 
 \index{operator norm!proximal mapping}
-\item Operator norm proximal map from linf and Exercise
+\item \label{ex:operator_norm_proximal_mapping} 
+  Operator norm proximal map from linf and Exercise
   \ref{ex:matrix_norm_proximal_mapping2}   
 
+\index{Moreau envelope}
+\item \label{ex:moreau_envelope_conjugate}
+  Let $f$ be closed and convex, and consider its Moreau envelope $f_\lambda$, as
+  in \eqref{eq:moreau_envelope_lambda}. Fix any $x$.
+
+\begin{enumerate}[label=\alph*.]
+\item Use the representation in \eqref{eq:moreau_envelope_conjugate} for the
+  Moreau envelope to prove that $f_\lambda(x)$ decreases as $\lambda$ increases.  
+
+\item Prove that $f_\lambda(x) \to f(x)$ as $\lambda \to 0$. Hint: by part a, 
+  \smash{$\lim_{\lambda \to 0} f_\lambda(x) = \sup_{\lambda > 0}
+    f_\lambda(x)$}. Then plug in the representation in
+  \eqref{eq:moreau_envelope_conjugate} for the Moreau envelope, and exchange the 
+  order of the suprema.   
+\end{enumerate}
 \end{enumerate}
 \end{xcb}
