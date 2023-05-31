@@ -352,8 +352,8 @@ behind Theorems \ref{thm:lipschitz_smoothness} and \ref{thm:strong_convexity}.
 
 \begin{Example}
 The duality between Lipschitz smoothness and strong convexity is illustrated
-nicely by the quadratic function $f(x) = \frac{1}{2} x^\T Q x$, where $Q \succ
-0$, and $f^*(u) = \frac{1}{2} u^\T Q^{-1}u$. Denote by
+nicely by the quadratic function $f(x) = \frac{1}{2} x^\T Q x$, for $Q \succ
+0$, where $f^*(u) = \frac{1}{2} u^\T Q^{-1}u$. Denote by
 \smash{$\lambda_{\max}(A)$} and \smash{$\lambda_{\min}(A)$} the largest and
 smallest eigenvalues, respectively, of a matrix $A \succeq 0$. Then:
 \begin{itemize}
@@ -385,7 +385,7 @@ where in the first and last we line used the subgradient characterization for th
 proximal map \eqref{eq:proximal_subgradient_characterization}, and in the second
 we used the relationship between subgradients of $f,f^*$ from Theorem
 \ref{thm:conjugate_subgradients}. We can rewrite the above conclusion more
-simply as    
+succinctly as    
 \index{Moreau decomposition}
 \begin{equation}
 \label{eq:moreau_decomposition}
@@ -397,9 +397,9 @@ pair $f,f^*$. This generalizes the decomposition we saw earlier in
 subspace $L$ and its orthocomplement $L^\perp$.  
 
 An extended version of the Moreau decomposition \eqref{eq:moreau_decomposition}
-is obtained by applying this formula to $(\lambda f)$, then applying rules for
-conjugates and proximal operators under left scaling (Exercise
-\ref{ex:moreau_decomposition_extended}):   
+is obtained by applying this formula to $\lambda f$, then applying rules for
+conjugates and proximal operators under scaling (Exercise
+\ref{ex:moreau_decomposition_extended}):    
 \begin{equation}
 \label{eq:moreau_decomposition_extended}
 \prox_{\lambda f}(x) + \lambda \prox_{\lambda^{-1} f}(x/\lambda) = x, \quad 
@@ -417,14 +417,15 @@ We saw from Property \parref{par:conjugate_general_sum} that infimal
 convolutions are connected to conjugacy through addition: $(f \infconv g)^* =
 f^* + g^*$ for any $f,g$. The Moreau envelope \eqref{eq:moreau_envelope_lambda}
 is a special case of an infimal convolution \eqref{eq:infimal_convolution} with
-\smash{$g = \frac{1}{2\lambda} \|\cdot\|_2^2$}. Applying the last fact thus
-gives
+\smash{$g = \frac{1}{2\lambda} \|\cdot\|_2^2$}, that is, \smash{$f_\lambda = f
+  \infconv \frac{1}{2\lambda} \|\cdot\|_2^2$}. Applying the fact from Property
+\parref{par:conjugate_general_sum} thus gives
 \[
 f_\lambda^* = f^* + \frac{\lambda}{2} \|\cdot\|_2^2,
 \]
 where we used Example \parref{xa:quadratic_conjugate} for the conjugate of
 \smash{$\frac{1}{2\lambda} \|\cdot\|_2^2$}. Meanwhile, if $f$ is closed, then
-$f_\lambda$ is too (it is in fact differentiable, hence continuous), so we can
+$f_\lambda$ is too (recall, it is differentiable, hence continuous), so we can
 take the conjugate of both sides above and apply
 \eqref{eq:double_conjugate_reduction} to conclude 
 \index{Moreau envelope}
@@ -437,7 +438,7 @@ of $f$, via conjugacy. We can see clearly that a smaller value of $\lambda>0$
 leads to a smaller amount of regularization. In fact, we might guess from 
 \eqref{eq:moreau_envelope_conjugate} that as $\lambda \to 0$, we will have  
 $f_\lambda\to f$ (recalling that $f$ is closed and convex, which means $f^{**} =
-f$). This fact can indeed by rigorously verified; see Exercise 
+f$). This claim can indeed by rigorously verified; see Exercise 
 \ref{ex:moreau_envelope_conjugate}.  
 
 \SkipTocEntry\section*{Chapter Notes}
