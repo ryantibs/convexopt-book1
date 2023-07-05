@@ -418,16 +418,16 @@ convolutions are connected to conjugacy through addition: $(f \infconv g)^* =
 f^* + g^*$ for any $f,g$. The Moreau envelope \eqref{eq:moreau_envelope_lambda}
 is a special case of an infimal convolution \eqref{eq:infimal_convolution} with
 \smash{$g = \frac{1}{2\lambda} \|\cdot\|_2^2$}, that is, \smash{$f_\lambda = f
-  \infconv \frac{1}{2\lambda} \|\cdot\|_2^2$}. Applying the fact from Property
-\parref{par:conjugate_general_sum} thus gives
+  \infconv \frac{1}{2\lambda} \|\cdot\|_2^2$}. Thus we can apply the fact from
+Property \parref{par:conjugate_general_sum} to give 
 \[
 f_\lambda^* = f^* + \frac{\lambda}{2} \|\cdot\|_2^2,
 \]
 where we used Example \parref{xa:quadratic_conjugate} for the conjugate of
 \smash{$\frac{1}{2\lambda} \|\cdot\|_2^2$}. Meanwhile, if $f$ is closed, then
-$f_\lambda$ is too (recall, it is differentiable, hence continuous), so we can
-take the conjugate of both sides above and apply
-\eqref{eq:double_conjugate_reduction} to conclude 
+$f_\lambda$ is also (recall, it is differentiable, and hence continuous), so we
+can take the conjugate of both sides above and apply
+\eqref{eq:double_conjugate_reduction} to conclude   
 \index{Moreau envelope}
 \begin{equation}
 \label{eq:moreau_envelope_conjugate}
@@ -443,20 +443,25 @@ f$). This claim can indeed by rigorously verified; see Exercise
 
 \SkipTocEntry\section*{Chapter Notes}
 
-If Moreau is the master of the proximal operator, then Rockafellar is the master
-of conjugacy
+Many books on convex analysis and optimization pass over conjugacy without
+placing much emphasis on the topic, but \cite{hiriartUrruty2001fundamentals}
+(Chapter E), and especially \cite{rockafellar1970convex} (Chapters 11, 12, 16,
+26), are clear execptions. Rockafellar's own take on the central importance of
+conjugacy, as he explains in the preface to his book, was shaped by unpublished
+lecture notes of Werner Fenchel from the 1950s. In \cite{rockafellar1970convex},
+much of the derivations of conjugacy properties and relations are geometric in
+nature; Exercise \ref{ex:affine_minorant_revisited} gives a glimpse of what the
+geometric view can provide. This book also provides an extensive treatment of
+conjugate calculus (Chapter 15), and of functions of Legendre type (Chapter 
+26).  
 
-Chapters 11 and 12 or Rockafellar masterful geometric treatment of
-conjugacy. Exercise \ref{ex:affine_minorant_revisited} gives a glimpse of what
-the geometric view can provide
-
-Chapter 15 of Rockafellar extensive treatment of conjugate calculus
-Chapter 26 of Rockafellar treatment of functions of Legendre type
-
-% https://arxiv.org/pdf/0906.0807.pdf
-
-The connection between the moreau envelope and regularization is due to Hedy
-Attouch in 1977  
+The Baillon-Haddad theorem was established by \cite{baillon1997quelques},
+whose result in phrased in the language of monotone operator theory. A nice
+elementary and self-contained treatment of this result is given in
+\cite{bauschke2009baillon} (also phrased in the language of monotone
+operators). The Moreau decomposition is due to \cite{moreau1962fonctions,
+  moreau1965proximite}. The connection between the Moreau envelope and
+regularization (the fact that $f_\lambda$ approximates $f$ for small is due to Hedy Attouch in 1977    
 
 infimal convolution and conjugates and addition
 
