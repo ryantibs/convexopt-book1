@@ -7,9 +7,9 @@
 As we saw already in Chapters \ref{chap:convex_sets_functions} and
 \ref{chap:optimization_basics}, derivatives play a key role in understanding the
 properties of convex functions and convex optimization more broadly. But of
-course, not all convex functions are differentiable. In this chapter, we will
-develop a generalized notion of lower differentiability. % that will help us
-%study and understand the behavior of essentially all convex functions.
+course, not every convex function is differentiable. In this chapter, we will
+develop a generalized notion of differentiability. % that will help us study and
+% understand the behavior of essentially all convex functions.
 
 For a function $f$ on $\R^d$, we say that $s \in \R^d$ is a \emph{subgradient} 
 of $f$ at $x \in \dom(f)$ provided that
@@ -43,10 +43,10 @@ is always a closed convex set (regardless of whether $f$ itself is convex).  If
 $\partial f(x)$ is nonempty, then $f$ is said to be \emph{subdifferentiable} at
 $x$. Sometimes we will use a subscript on the subdifferential operator to
 emphasize the variable under consideration. For example, when $f$ is a function 
-of a block variable $(x,y)$, we use $\partial_x f(x,y)$ for the subdifferential
-of the function $f(\cdot, y)$ at $x$, with its second argument fixed at $y$.
+of a block variable $(x,y)$, we use $\partial_x f(x,y)$ to denote the
+subdifferential of $f(\cdot, y)$ at $x$.
 
-The notions defined above are apparently general, in that we have not assumed 
+The notions defined above are seemingly general in that we have not assumed 
 convexity of the function $f$ in question. However, as we will see in our 
 discussion of some of the basic properties of subgradients and subdifferentials
 below, these concepts are in fact intimately tied to convexity.   
