@@ -1,0 +1,4098 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Creator: dvips(k) 2020.1 Copyright 2020 Radical Eye Software
+%%Title: fm.dvi
+%%CreationDate: Fri Jul  7 18:59:39 2023
+%%BoundingBox: 11 576 378 792
+%%DocumentFonts: Helvetica Helvetica-Bold Helvetica-Oblique
+%%+ Helvetica-BoldOblique Symbol CMR12 CMMI12 CMSY8 CMSS8
+%%EndComments
+%DVIPSWebPage: (www.radicaleye.com)
+%DVIPSCommandLine: dvips -E -P pdf fm.dvi -o fm.ps
+%DVIPSParameters: dpi=8000
+%DVIPSSource:  TeX output 2023.07.07:2059
+%%BeginProcSet: tex.pro 0 0
+%!
+/TeXDict 300 dict def TeXDict begin/N{def}def/B{bind def}N/S{exch}N/X{S
+N}B/A{dup}B/TR{translate}N/isls false N/vsize 11 72 mul N/hsize 8.5 72
+mul N/landplus90{false}def/@rigin{isls{[0 landplus90{1 -1}{-1 1}ifelse 0
+0 0]concat}if 72 Resolution div 72 VResolution div neg scale isls{
+landplus90{VResolution 72 div vsize mul 0 exch}{Resolution -72 div hsize
+mul 0}ifelse TR}if Resolution VResolution vsize -72 div 1 add mul TR[
+matrix currentmatrix{A A round sub abs 0.00001 lt{round}if}forall round
+exch round exch]setmatrix}N/@landscape{/isls true N}B/@manualfeed{
+statusdict/manualfeed true put}B/@copies{/#copies X}B/FMat[1 0 0 -1 0 0]
+N/FBB[0 0 0 0]N/nn 0 N/IEn 0 N/ctr 0 N/df-tail{/nn 8 dict N nn begin
+/FontType 3 N/FontMatrix fntrx N/FontBBox FBB N string/base X array
+/BitMaps X/BuildChar{CharBuilder}N/Encoding IEn N end A{/foo setfont}2
+array copy cvx N load 0 nn put/ctr 0 N[}B/sf 0 N/df{/sf 1 N/fntrx FMat N
+df-tail}B/dfs{div/sf X/fntrx[sf 0 0 sf neg 0 0]N df-tail}B/E{pop nn A
+definefont setfont}B/Cw{Cd A length 5 sub get}B/Ch{Cd A length 4 sub get
+}B/Cx{128 Cd A length 3 sub get sub}B/Cy{Cd A length 2 sub get 127 sub}
+B/Cdx{Cd A length 1 sub get}B/Ci{Cd A type/stringtype ne{ctr get/ctr ctr
+1 add N}if}B/CharBuilder{save 3 1 roll S A/base get 2 index get S
+/BitMaps get S get/Cd X pop/ctr 0 N Cdx 0 Cx Cy Ch sub Cx Cw add Cy
+setcachedevice Cw Ch true[1 0 0 -1 -.1 Cx sub Cy .1 sub]{Ci}imagemask
+restore}B/D{/cc X A type/stringtype ne{]}if nn/base get cc ctr put nn
+/BitMaps get S ctr S sf 1 ne{A A length 1 sub A 2 index S get sf div put
+}if put/ctr ctr 1 add N}B/I{cc 1 add D}B/bop{userdict/bop-hook known{
+bop-hook}if/SI save N @rigin 0 0 moveto/V matrix currentmatrix A 1 get A
+mul exch 0 get A mul add .99 lt{/QV}{/RV}ifelse load def pop pop}N/eop{
+SI restore userdict/eop-hook known{eop-hook}if showpage}N/@start{
+userdict/start-hook known{start-hook}if pop/VResolution X/Resolution X
+1000 div/DVImag X/IEn 256 array N 2 string 0 1 255{IEn S A 360 add 36 4
+index cvrs cvn put}for pop 65781.76 div/vsize X 65781.76 div/hsize X}N
+/dir 0 def/dyy{/dir 0 def}B/dyt{/dir 1 def}B/dty{/dir 2 def}B/dtt{/dir 3
+def}B/p{dir 2 eq{-90 rotate show 90 rotate}{dir 3 eq{-90 rotate show 90
+rotate}{show}ifelse}ifelse}N/RMat[1 0 0 -1 0 0]N/BDot 260 string N/Rx 0
+N/Ry 0 N/V{}B/RV/v{/Ry X/Rx X V}B statusdict begin/product where{pop
+false[(Display)(NeXT)(LaserWriter 16/600)]{A length product length le{A
+length product exch 0 exch getinterval eq{pop true exit}if}{pop}ifelse}
+forall}{false}ifelse end{{gsave TR -.1 .1 TR 1 1 scale Rx Ry false RMat{
+BDot}imagemask grestore}}{{gsave TR -.1 .1 TR Rx Ry scale 1 1 false RMat
+{BDot}imagemask grestore}}ifelse B/QV{gsave newpath transform round exch
+round exch itransform moveto Rx 0 rlineto 0 Ry neg rlineto Rx neg 0
+rlineto fill grestore}B/a{moveto}B/delta 0 N/tail{A/delta X 0 rmoveto}B
+/M{S p delta add tail}B/b{S p tail}B/c{-4 M}B/d{-3 M}B/e{-2 M}B/f{-1 M}
+B/g{0 M}B/h{1 M}B/i{2 M}B/j{3 M}B/k{4 M}B/w{0 rmoveto}B/l{p -4 w}B/m{p
+-3 w}B/n{p -2 w}B/o{p -1 w}B/q{p 1 w}B/r{p 2 w}B/s{p 3 w}B/t{p 4 w}B/x{
+0 S rmoveto}B/y{3 2 roll p a}B/bos{/SS save N}B/eos{SS restore}B end
+
+%%EndProcSet
+%%BeginProcSet: alt-rule.pro 0 0
+%!
+% Patch by TVZ
+% Makes dvips files draw rules with stroke rather than fill.
+% Makes narrow rules more predictable at low resolutions
+% after distilling to PDF.
+% May have unknown consequences for very thick rules.
+% Tested only with dvips 5.85(k).
+TeXDict begin
+/QV {
+  gsave newpath /ruleY X /ruleX X
+  Rx Ry gt
+  { ruleX ruleY Ry 2 div sub moveto Rx 0 rlineto Ry }
+  { ruleX Rx 2 div add ruleY moveto 0 Ry neg rlineto Rx }
+  ifelse
+  setlinewidth 0 setlinecap stroke grestore
+} bind def
+end
+
+%%EndProcSet
+%%BeginProcSet: psfrag.pro 0 0
+%%
+%% This is file `psfrag.pro',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% psfrag.dtx  (with options: `filepro')
+%% 
+%% Copyright (c) 1996 Craig Barratt, Michael C. Grant, and David Carlisle.
+%% All rights reserved.
+%% 
+%% This file is part of the PSfrag package.
+%% 
+userdict begin
+/PSfragLib 90 dict def
+/PSfragDict 6 dict def
+/PSfrag { PSfragLib begin load exec end } bind def
+end
+PSfragLib begin
+/RO /readonly      load def
+/CP /currentpoint  load def
+/CM /currentmatrix load def
+/B { bind RO def } bind def
+/X { exch def } B
+/MD { { X } forall } B
+/OE { end exec PSfragLib begin } B
+/S false def
+/tstr 8 string def
+/islev2 { languagelevel } stopped { false } { 2 ge } ifelse def
+[ /sM /tM /srcM /dstM /dM /idM /srcFM /dstFM ] { matrix def } forall
+sM currentmatrix RO pop
+dM defaultmatrix RO idM invertmatrix RO pop
+srcFM identmatrix pop
+/Hide { gsave { CP } stopped not newpath clip { moveto } if } B
+/Unhide { { CP } stopped not grestore { moveto } if } B
+/setrepl islev2 {{ /glob currentglobal def true setglobal array astore
+                   globaldict exch /PSfrags exch put glob setglobal }}
+                {{ array astore /PSfrags X }} ifelse B
+/getrepl islev2 {{ globaldict /PSfrags get aload length }}
+                {{ PSfrags aload length }} ifelse B
+/convert {
+   /src X src length string
+   /c 0 def src length {
+      dup c src c get dup 32 lt { pop 32 } if put /c c 1 add def
+   } repeat
+} B
+/Begin {
+    /saver save def
+    srcFM exch 3 exch put
+    0 ne /debugMode X 0 setrepl
+    dup /S exch dict def { S 3 1 roll exch convert exch put } repeat
+    srcM CM dup invertmatrix pop
+    mark { currentdict { end } stopped { pop exit } if } loop
+    PSfragDict counttomark { begin } repeat pop
+} B
+/End {
+    mark { currentdict end dup PSfragDict eq { pop exit } if } loop
+    counttomark { begin } repeat pop
+    getrepl saver restore
+    7 idiv dup /S exch dict def {
+        6 array astore /mtrx X tstr cvs /K X
+        S K [ S K known { S K get aload pop } if mtrx ] put
+    } repeat
+} B
+/Place {
+    tstr cvs /K X
+    S K known {
+        bind /proc X tM CM pop
+        CP /cY X /cX X
+        0 0 transform idtransform neg /aY X neg /aX X
+        S K get dup length /maxiter X
+        /iter 1 def {
+            iter maxiter ne { /saver save def } if
+            tM setmatrix aX aY translate
+            [ exch aload pop idtransform ] concat
+            cX neg cY neg translate cX cY moveto
+            /proc load OE
+            iter maxiter ne { saver restore /iter iter 1 add def } if
+        } forall
+        /noXY { CP /cY X /cX X } stopped def
+        tM setmatrix noXY { newpath } { cX cY moveto } ifelse
+    } {
+        Hide OE Unhide
+    } ifelse
+} B
+/normalize {
+    2 index dup mul 2 index dup mul add sqrt div
+    dup 4 -1 roll exch mul 3 1 roll mul
+} B
+/replace {
+    aload pop MD
+    CP /bY X /lX X gsave sM setmatrix
+    str stringwidth abs exch abs add dup 0 eq
+        { pop } { 360 exch div dup scale } ifelse
+    lX neg bY neg translate newpath lX bY moveto
+    str { /ch X ( ) dup 0 ch put false charpath ch Kproc } forall
+    flattenpath pathbbox [ /uY /uX /lY /lX ] MD
+    CP grestore moveto
+    currentfont /FontMatrix get dstFM copy dup
+    0 get 0 lt { uX lX /uX X /lX X } if
+    3 get 0 lt { uY lY /uY X /lY X } if
+    /cX uX lX add 0.5 mul def
+    /cY uY lY add 0.5 mul def
+    debugMode { gsave 0 setgray 1 setlinewidth
+        lX lY moveto lX uY lineto uX uY lineto uX lY lineto closepath
+        lX bY moveto uX bY lineto lX cY moveto uX cY lineto
+        cX lY moveto cX uY lineto stroke
+    grestore } if
+    dstFM dup invertmatrix dstM CM srcM
+    2 { dstM concatmatrix } repeat pop
+    getrepl /temp X
+        S str convert get {
+            aload pop [ /rot /scl /loc /K ] MD
+            /aX cX def /aY cY def
+            loc {
+                dup 66  eq { /aY bY def } { % B
+                dup 98  eq { /aY lY def } { % b
+                dup 108 eq { /aX lX def } { % l
+                dup 114 eq { /aX uX def } { % r
+                dup 116 eq { /aY uY def }   % t
+                if } ifelse } ifelse } ifelse } ifelse pop
+            } forall
+            K srcFM rot tM rotate dstM
+            2 { tM concatmatrix } repeat aload pop pop pop
+            2 { scl normalize 4 2 roll } repeat
+            aX aY transform
+            /temp temp 7 add def
+        } forall
+    temp setrepl
+} B
+/Rif {
+    S 3 index convert known { pop replace } { exch pop OE } ifelse
+} B
+/XA { bind [ /Kproc /str } B /XC { ] 2 array astore def } B
+/xs   { pop } XA XC
+/xks  { /kern load OE } XA /kern XC
+/xas  { pop ax ay rmoveto } XA /ay /ax XC
+/xws  { c eq { cx cy rmoveto } if } XA /c /cy /cx XC
+/xaws { ax ay rmoveto c eq { cx cy rmoveto } if }
+    XA /ay /ax /c /cy /cx XC
+/raws { xaws { awidthshow } Rif } B
+/rws  { xws { widthshow } Rif } B
+/rks  { xks { kshow } Rif } B
+/ras  { xas { ashow } Rif } B
+/rs   { xs { show } Rif } B
+/rrs { getrepl dup 2 add -1 roll //restore exec setrepl } B
+PSfragDict begin
+islev2 not { /restore { /rrs PSfrag } B } if
+/show       { /rs   PSfrag } B
+/kshow      { /rks  PSfrag } B
+/ashow      { /ras  PSfrag } B
+/widthshow  { /rws  PSfrag } B
+/awidthshow { /raws PSfrag } B
+end PSfragDict RO pop
+end
+
+%%EndProcSet
+%%BeginProcSet: l3backend-dvips.pro 0 0
+%%
+%% This is file `l3backend-dvips.pro',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% l3backend-header.dtx  (with options: `header,dvips')
+%% 
+%% Copyright (C) 1990-2020 The LaTeX3 Project
+%% 
+%% It may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License (LPPL), either version 1.3c of
+%% this license or (at your option) any later version.  The latest
+%% version of this license is in the file:
+%% 
+%%    https://www.latex-project.org/lppl.txt
+%% 
+%% This file is part of the "l3backend bundle" (The Work in LPPL)
+%% and all files in that bundle must be distributed together.
+%% 
+%% File: l3backend-header.dtx
+true setglobal
+/pdf.globaldict 4 dict def
+false setglobal
+
+/pdf.cvs { 65534 string cvs } def
+/pdf.dvi.pt { 72.27 mul Resolution div } def
+/pdf.pt.dvi { 72.27 div Resolution mul } def
+/pdf.rect.ht { dup 1 get neg exch 3 get add } def
+/pdf.linkmargin { 1 pdf.pt.dvi } def
+/pdf.linkdp.pad { 0 } def
+/pdf.linkht.pad { 0 } def
+/pdf.rect
+  { /Rect [ pdf.llx pdf.lly pdf.urx pdf.ury ] } def
+/pdf.save.ll
+  {
+    currentpoint
+    /pdf.lly exch def
+    /pdf.llx exch def
+  }
+    def
+/pdf.save.ur
+  {
+    currentpoint
+    /pdf.ury exch def
+    /pdf.urx exch def
+  }
+    def
+/pdf.save.linkll
+  {
+    currentpoint
+    pdf.linkmargin add
+    pdf.linkdp.pad add
+    /pdf.lly exch def
+    pdf.linkmargin sub
+    /pdf.llx exch def
+  }
+    def
+/pdf.save.linkur
+  {
+    currentpoint
+    pdf.linkmargin sub
+    pdf.linkht.pad sub
+    /pdf.ury exch def
+    pdf.linkmargin add
+    /pdf.urx exch def
+  }
+    def
+/pdf.dest.anchor
+  {
+    currentpoint exch
+    pdf.dvi.pt 72 add
+    /pdf.dest.x exch def
+    pdf.dvi.pt
+    vsize 72 sub exch sub
+    /pdf.dest.y exch def
+  }
+    def
+/pdf.dest.point
+  { pdf.dest.x pdf.dest.y } def
+/pdf.dest2device
+  {
+    /pdf.dest.y exch def
+    /pdf.dest.x exch def
+    matrix currentmatrix
+    matrix defaultmatrix
+    matrix invertmatrix
+    matrix concatmatrix
+    cvx exec
+    /pdf.dev.y exch def
+    /pdf.dev.x exch def
+    /pdf.tmpd exch def
+    /pdf.tmpc exch def
+    /pdf.tmpb exch def
+    /pdf.tmpa exch def
+    pdf.dest.x pdf.tmpa mul
+      pdf.dest.y pdf.tmpc mul add
+      pdf.dev.x add
+    pdf.dest.x pdf.tmpb mul
+     pdf.dest.y pdf.tmpd mul add
+     pdf.dev.y add
+  }
+    def
+/pdf.bordertracking false def
+/pdf.bordertracking.begin
+  {
+    SDict /pdf.bordertracking true put
+    SDict /pdf.leftboundary undef
+    SDict /pdf.rightboundary undef
+    /a where
+      {
+        /a
+          {
+            currentpoint pop
+            SDict /pdf.rightboundary known dup
+              {
+                SDict /pdf.rightboundary get 2 index lt
+                  { not }
+                if
+              }
+            if
+              { pop }
+              { SDict exch /pdf.rightboundary exch put }
+            ifelse
+            moveto
+            currentpoint pop
+            SDict /pdf.leftboundary known dup
+              {
+                SDict /pdf.leftboundary get 2 index gt
+                  { not }
+                if
+              }
+            if
+              { pop }
+              { SDict exch /pdf.leftboundary exch put }
+            ifelse
+          }
+        put
+      }
+    if
+  }
+    def
+/pdf.bordertracking.end
+  {
+    /a where { /a { moveto } put } if
+    /x where { /x { 0 exch rmoveto } put } if
+    SDict /pdf.leftboundary known
+      { pdf.outerbox 0 pdf.leftboundary put }
+    if
+    SDict /pdf.rightboundary known
+      { pdf.outerbox 2 pdf.rightboundary put }
+    if
+    SDict /pdf.bordertracking false put
+  }
+    def
+  /pdf.bordertracking.endpage
+{
+  pdf.bordertracking
+    {
+      pdf.bordertracking.end
+      true setglobal
+      pdf.globaldict
+        /pdf.brokenlink.rect [ pdf.outerbox aload pop ] put
+      pdf.globaldict
+        /pdf.brokenlink.skip pdf.baselineskip put
+      pdf.globaldict
+        /pdf.brokenlink.dict
+          pdf.link.dict pdf.cvs put
+      false setglobal
+      mark pdf.link.dict cvx exec /Rect
+        [
+          pdf.llx
+          pdf.lly
+          pdf.outerbox 2 get pdf.linkmargin add
+          currentpoint exch pop
+          pdf.outerbox pdf.rect.ht sub pdf.linkmargin sub
+        ]
+      /ANN pdf.pdfmark
+    }
+  if
+}
+  def
+/pdf.bordertracking.continue
+  {
+    /pdf.link.dict pdf.globaldict
+      /pdf.brokenlink.dict get def
+    /pdf.outerbox pdf.globaldict
+      /pdf.brokenlink.rect get def
+    /pdf.baselineskip pdf.globaldict
+      /pdf.brokenlink.skip get def
+    pdf.globaldict dup dup
+    /pdf.brokenlink.dict undef
+    /pdf.brokenlink.skip undef
+    /pdf.brokenlink.rect undef
+    currentpoint
+    /pdf.originy exch def
+    /pdf.originx exch def
+    /a where
+      {
+        /a
+          {
+            moveto
+            SDict
+            begin
+            currentpoint pdf.originy ne exch
+              pdf.originx ne or
+              {
+                pdf.save.linkll
+                /pdf.lly
+                  pdf.lly pdf.outerbox 1 get sub def
+                pdf.bordertracking.begin
+              }
+            if
+            end
+          }
+        put
+      }
+    if
+    /x where
+      {
+        /x
+          {
+            0 exch rmoveto
+            SDict~
+            begin
+            currentpoint
+            pdf.originy ne exch pdf.originx ne or
+              {
+                pdf.save.linkll
+                /pdf.lly
+                  pdf.lly pdf.outerbox 1 get sub def
+                pdf.bordertracking.begin
+              }
+            if
+            end
+          }
+        put
+      }
+    if
+  }
+    def
+/pdf.breaklink
+  {
+    pop
+    counttomark 2 mod 0 eq
+      {
+        counttomark /pdf.count exch def
+          {
+           pdf.count 0 eq { exit } if
+           counttomark 2 roll
+           1 index /Rect eq
+             {
+               dup 4 array copy
+               dup dup
+                 1 get
+                 pdf.outerbox pdf.rect.ht
+                 pdf.linkmargin 2 mul add sub
+                 3 exch put
+               dup
+                 pdf.outerbox 2 get
+                 pdf.linkmargin add
+                 2 exch put
+               dup dup
+                 3 get
+                 pdf.outerbox pdf.rect.ht
+                 pdf.linkmargin 2 mul add add
+                 1 exch put
+               /pdf.currentrect exch  def
+               pdf.breaklink.write
+                 {
+                   pdf.currentrect
+                   dup
+                     pdf.outerbox 0 get
+                     pdf.linkmargin sub
+                     0 exch put
+                   dup
+                     pdf.outerbox 2 get
+                     pdf.linkmargin add
+                     2 exch put
+                   dup dup
+                     1 get
+                     pdf.baselineskip add
+                     1 exch put
+                   dup dup
+                     3 get
+                     pdf.baselineskip add
+                     3 exch put
+                   /pdf.currentrect exch def
+                   pdf.breaklink.write
+                  }
+                1 index 3 get
+                pdf.linkmargin 2 mul add
+                pdf.outerbox pdf.rect.ht add
+                2 index 1 get sub
+                pdf.baselineskip div round cvi 1 sub
+                exch
+              repeat
+              pdf.currentrect
+              dup
+                pdf.outerbox 0 get
+                pdf.linkmargin sub
+                0 exch put
+              dup dup
+                1 get
+                pdf.baselineskip add
+                1 exch put
+              dup dup
+                3 get
+                pdf.baselineskip add
+                3 exch put
+              dup 2 index 2 get  2 exch put
+              /pdf.currentrect exch def
+              pdf.breaklink.write
+              SDict /pdf.pdfmark.good false put
+              exit
+            }
+            { pdf.count 2 sub /pdf.count exch def }
+          ifelse
+        }
+      loop
+    }
+  if
+  /ANN
+}
+  def
+/pdf.breaklink.write
+  {
+    counttomark 1 sub
+    index /_objdef eq
+      {
+        counttomark -2 roll
+        dup wcheck
+          {
+            readonly
+            counttomark 2 roll
+          }
+          { pop pop }
+        ifelse
+      }
+    if
+    counttomark 1 add copy
+    pop pdf.currentrect
+    /ANN pdfmark
+  }
+    def
+/pdf.pdfmark
+  {
+    SDict /pdf.pdfmark.good true put
+    dup /ANN eq
+      {
+        pdf.pdfmark.store
+        pdf.pdfmark.dict
+          begin
+            Subtype /Link eq
+            currentdict /Rect known and
+            SDict /pdf.outerbox known and
+            SDict /pdf.baselineskip known and
+              {
+                Rect 3 get
+                pdf.linkmargin 2 mul add
+                pdf.outerbox pdf.rect.ht add
+                Rect 1 get sub
+                pdf.baselineskip div round cvi 0 gt
+                  { pdf.breaklink }
+                if
+              }
+            if
+          end
+        SDict /pdf.outerbox undef
+        SDict /pdf.baselineskip undef
+        currentdict /pdf.pdfmark.dict undef
+      }
+    if
+    pdf.pdfmark.good
+      { pdfmark }
+      { cleartomark }
+    ifelse
+  }
+    def
+/pdf.pdfmark.store
+  {
+    /pdf.pdfmark.dict 65534 dict def
+    counttomark 1 add copy
+    pop
+      {
+        dup mark eq
+          {
+            pop
+            exit
+          }
+          {
+            pdf.pdfmark.dict
+            begin def end
+          }
+        ifelse
+      }
+    loop
+}
+  def
+%% 
+%%
+%% End of file `l3backend-dvips.pro'.
+
+%%EndProcSet
+%%BeginProcSet: texps.pro 0 0
+%!
+TeXDict begin/rf{findfont dup length 1 add dict begin{1 index/FID ne 2
+index/UniqueID ne and{def}{pop pop}ifelse}forall[1 index 0 6 -1 roll
+exec 0 exch 5 -1 roll VResolution Resolution div mul neg 0 0]FontType 0
+ne{/Metrics exch def dict begin Encoding{exch dup type/integertype ne{
+pop pop 1 sub dup 0 le{pop}{[}ifelse}{FontMatrix 0 get div Metrics 0 get
+div def}ifelse}forall Metrics/Metrics currentdict end def}{{1 index type
+/nametype eq{exit}if exch pop}loop}ifelse[2 index currentdict end
+definefont 3 -1 roll makefont/setfont cvx]cvx def}def/ObliqueSlant{dup
+sin S cos div neg}B/SlantFont{4 index mul add}def/ExtendFont{3 -1 roll
+mul exch}def/ReEncodeFont{CharStrings rcheck{/Encoding false def dup[
+exch{dup CharStrings exch known not{pop/.notdef/Encoding true def}if}
+forall Encoding{]exch pop}{cleartomark}ifelse}if/Encoding exch def}def
+end
+
+%%EndProcSet
+%%BeginProcSet: special.pro 0 0
+%!
+TeXDict begin/SDict 200 dict N SDict begin/@SpecialDefaults{/hs 612 N
+/vs 792 N/ho 0 N/vo 0 N/hsc 1 N/vsc 1 N/ang 0 N/CLIP 0 N/rwiSeen false N
+/rhiSeen false N/letter{}N/note{}N/a4{}N/legal{}N}B/@scaleunit 100 N
+/@hscale{@scaleunit div/hsc X}B/@vscale{@scaleunit div/vsc X}B/@hsize{
+/hs X/CLIP 1 N}B/@vsize{/vs X/CLIP 1 N}B/@clip{/CLIP 2 N}B/@hoffset{/ho
+X}B/@voffset{/vo X}B/@angle{/ang X}B/@rwi{10 div/rwi X/rwiSeen true N}B
+/@rhi{10 div/rhi X/rhiSeen true N}B/@llx{/llx X}B/@lly{/lly X}B/@urx{
+/urx X}B/@ury{/ury X}B/magscale true def end/@MacSetUp{userdict/md known
+{userdict/md get type/dicttype eq{userdict begin md length 10 add md
+maxlength ge{/md md dup length 20 add dict copy def}if end md begin
+/letter{}N/note{}N/legal{}N/od{txpose 1 0 mtx defaultmatrix dtransform S
+atan/pa X newpath clippath mark{transform{itransform moveto}}{transform{
+itransform lineto}}{6 -2 roll transform 6 -2 roll transform 6 -2 roll
+transform{itransform 6 2 roll itransform 6 2 roll itransform 6 2 roll
+curveto}}{{closepath}}pathforall newpath counttomark array astore/gc xdf
+pop ct 39 0 put 10 fz 0 fs 2 F/|______Courier fnt invertflag{PaintBlack}
+if}N/txpose{pxs pys scale ppr aload pop por{noflips{pop S neg S TR pop 1
+-1 scale}if xflip yflip and{pop S neg S TR 180 rotate 1 -1 scale ppr 3
+get ppr 1 get neg sub neg ppr 2 get ppr 0 get neg sub neg TR}if xflip
+yflip not and{pop S neg S TR pop 180 rotate ppr 3 get ppr 1 get neg sub
+neg 0 TR}if yflip xflip not and{ppr 1 get neg ppr 0 get neg TR}if}{
+noflips{TR pop pop 270 rotate 1 -1 scale}if xflip yflip and{TR pop pop
+90 rotate 1 -1 scale ppr 3 get ppr 1 get neg sub neg ppr 2 get ppr 0 get
+neg sub neg TR}if xflip yflip not and{TR pop pop 90 rotate ppr 3 get ppr
+1 get neg sub neg 0 TR}if yflip xflip not and{TR pop pop 270 rotate ppr
+2 get ppr 0 get neg sub neg 0 S TR}if}ifelse scaleby96{ppr aload pop 4
+-1 roll add 2 div 3 1 roll add 2 div 2 copy TR .96 dup scale neg S neg S
+TR}if}N/cp{pop pop showpage pm restore}N end}if}if}N/normalscale{
+Resolution 72 div VResolution 72 div neg scale magscale{DVImag dup scale
+}if 0 setgray}N/@beginspecial{SDict begin/SpecialSave save N gsave
+normalscale currentpoint TR @SpecialDefaults count/ocount X/dcount
+countdictstack N}N/@setspecial{CLIP 1 eq{newpath 0 0 moveto hs 0 rlineto
+0 vs rlineto hs neg 0 rlineto closepath clip}if ho vo TR hsc vsc scale
+ang rotate rwiSeen{rwi urx llx sub div rhiSeen{rhi ury lly sub div}{dup}
+ifelse scale llx neg lly neg TR}{rhiSeen{rhi ury lly sub div dup scale
+llx neg lly neg TR}if}ifelse CLIP 2 eq{newpath llx lly moveto urx lly
+lineto urx ury lineto llx ury lineto closepath clip}if/showpage{}N
+/erasepage{}N/setpagedevice{pop}N/copypage{}N newpath}N/@endspecial{
+count ocount sub{pop}repeat countdictstack dcount sub{end}repeat
+grestore SpecialSave restore end}N/@defspecial{SDict begin}N
+/@fedspecial{end}B/li{lineto}B/rl{rlineto}B/rc{rcurveto}B/np{/SaveX
+currentpoint/SaveY X N 1 setlinecap newpath}N/st{stroke SaveX SaveY
+moveto}N/fil{fill SaveX SaveY moveto}N/ellipse{/endangle X/startangle X
+/yrad X/xrad X/savematrix matrix currentmatrix N TR xrad yrad scale 0 0
+1 startangle endangle arc savematrix setmatrix}N end
+
+%%EndProcSet
+%%BeginProcSet: color.pro 0 0
+%!
+TeXDict begin/setcmykcolor where{pop}{/setcmykcolor{dup 10 eq{pop
+setrgbcolor}{1 sub 4 1 roll 3{3 index add neg dup 0 lt{pop 0}if 3 1 roll
+}repeat setrgbcolor pop}ifelse}B}ifelse/TeXcolorcmyk{setcmykcolor}def
+/TeXcolorrgb{setrgbcolor}def/TeXcolorgrey{setgray}def/TeXcolorgray{
+setgray}def/TeXcolorhsb{sethsbcolor}def/currentcmykcolor where{pop}{
+/currentcmykcolor{currentrgbcolor 10}B}ifelse/DC{exch dup userdict exch
+known{pop pop}{X}ifelse}B/GreenYellow{0.15 0 0.69 0 setcmykcolor}DC
+/Yellow{0 0 1 0 setcmykcolor}DC/Goldenrod{0 0.10 0.84 0 setcmykcolor}DC
+/Dandelion{0 0.29 0.84 0 setcmykcolor}DC/Apricot{0 0.32 0.52 0
+setcmykcolor}DC/Peach{0 0.50 0.70 0 setcmykcolor}DC/Melon{0 0.46 0.50 0
+setcmykcolor}DC/YellowOrange{0 0.42 1 0 setcmykcolor}DC/Orange{0 0.61
+0.87 0 setcmykcolor}DC/BurntOrange{0 0.51 1 0 setcmykcolor}DC
+/Bittersweet{0 0.75 1 0.24 setcmykcolor}DC/RedOrange{0 0.77 0.87 0
+setcmykcolor}DC/Mahogany{0 0.85 0.87 0.35 setcmykcolor}DC/Maroon{0 0.87
+0.68 0.32 setcmykcolor}DC/BrickRed{0 0.89 0.94 0.28 setcmykcolor}DC/Red{
+0 1 1 0 setcmykcolor}DC/OrangeRed{0 1 0.50 0 setcmykcolor}DC/RubineRed{
+0 1 0.13 0 setcmykcolor}DC/WildStrawberry{0 0.96 0.39 0 setcmykcolor}DC
+/Salmon{0 0.53 0.38 0 setcmykcolor}DC/CarnationPink{0 0.63 0 0
+setcmykcolor}DC/Magenta{0 1 0 0 setcmykcolor}DC/VioletRed{0 0.81 0 0
+setcmykcolor}DC/Rhodamine{0 0.82 0 0 setcmykcolor}DC/Mulberry{0.34 0.90
+0 0.02 setcmykcolor}DC/RedViolet{0.07 0.90 0 0.34 setcmykcolor}DC
+/Fuchsia{0.47 0.91 0 0.08 setcmykcolor}DC/Lavender{0 0.48 0 0
+setcmykcolor}DC/Thistle{0.12 0.59 0 0 setcmykcolor}DC/Orchid{0.32 0.64 0
+0 setcmykcolor}DC/DarkOrchid{0.40 0.80 0.20 0 setcmykcolor}DC/Purple{
+0.45 0.86 0 0 setcmykcolor}DC/Plum{0.50 1 0 0 setcmykcolor}DC/Violet{
+0.79 0.88 0 0 setcmykcolor}DC/RoyalPurple{0.75 0.90 0 0 setcmykcolor}DC
+/BlueViolet{0.86 0.91 0 0.04 setcmykcolor}DC/Periwinkle{0.57 0.55 0 0
+setcmykcolor}DC/CadetBlue{0.62 0.57 0.23 0 setcmykcolor}DC
+/CornflowerBlue{0.65 0.13 0 0 setcmykcolor}DC/MidnightBlue{0.98 0.13 0
+0.43 setcmykcolor}DC/NavyBlue{0.94 0.54 0 0 setcmykcolor}DC/RoyalBlue{1
+0.50 0 0 setcmykcolor}DC/Blue{1 1 0 0 setcmykcolor}DC/Cerulean{0.94 0.11
+0 0 setcmykcolor}DC/Cyan{1 0 0 0 setcmykcolor}DC/ProcessBlue{0.96 0 0 0
+setcmykcolor}DC/SkyBlue{0.62 0 0.12 0 setcmykcolor}DC/Turquoise{0.85 0
+0.20 0 setcmykcolor}DC/TealBlue{0.86 0 0.34 0.02 setcmykcolor}DC
+/Aquamarine{0.82 0 0.30 0 setcmykcolor}DC/BlueGreen{0.85 0 0.33 0
+setcmykcolor}DC/Emerald{1 0 0.50 0 setcmykcolor}DC/JungleGreen{0.99 0
+0.52 0 setcmykcolor}DC/SeaGreen{0.69 0 0.50 0 setcmykcolor}DC/Green{1 0
+1 0 setcmykcolor}DC/ForestGreen{0.91 0 0.88 0.12 setcmykcolor}DC
+/PineGreen{0.92 0 0.59 0.25 setcmykcolor}DC/LimeGreen{0.50 0 1 0
+setcmykcolor}DC/YellowGreen{0.44 0 0.74 0 setcmykcolor}DC/SpringGreen{
+0.26 0 0.76 0 setcmykcolor}DC/OliveGreen{0.64 0 0.95 0.40 setcmykcolor}
+DC/RawSienna{0 0.72 1 0.45 setcmykcolor}DC/Sepia{0 0.83 1 0.70
+setcmykcolor}DC/Brown{0 0.81 1 0.60 setcmykcolor}DC/Tan{0.14 0.42 0.56 0
+setcmykcolor}DC/Gray{0 0 0 0.50 setcmykcolor}DC/Black{0 0 0 1
+setcmykcolor}DC/White{0 0 0 0 setcmykcolor}DC end
+
+%%EndProcSet
+TeXDict begin @defspecial
+
+ TeXDict begin /landplus90{true}store end
+ 
+@fedspecial end
+%%BeginFont: CMSS8
+%!PS-AdobeFont-1.0: CMSS8 003.002
+%%Title: CMSS8
+%Version: 003.002
+%%CreationDate: Mon Jul 13 16:17:00 2009
+%%Creator: David M. Jones
+%Copyright: Copyright (c) 1997, 2009 American Mathematical Society
+%Copyright: (<http://www.ams.org>), with Reserved Font Name CMSS8.
+% This Font Software is licensed under the SIL Open Font License, Version 1.1.
+% This license is in the accompanying file OFL.txt, and is also
+% available with a FAQ at: http://scripts.sil.org/OFL.
+%%EndComments
+FontDirectory/CMSS8 known{/CMSS8 findfont dup/UniqueID known{dup
+/UniqueID get 5000801 eq exch/FontType get 1 eq and}{pop false}ifelse
+{save true}{false}ifelse}{false}ifelse
+11 dict begin
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
+/FontName /CMSS8 def
+/FontBBox {-65 -250 1062 761 }readonly def
+/PaintType 0 def
+/FontInfo 9 dict dup begin
+/version (003.002) readonly def
+/Notice (Copyright \050c\051 1997, 2009 American Mathematical Society \050<http://www.ams.org>\051, with Reserved Font Name CMSS8.) readonly def
+/FullName (CMSS8) readonly def
+/FamilyName (Computer Modern) readonly def
+/Weight (Medium) readonly def
+/ItalicAngle 0 def
+/isFixedPitch false def
+/UnderlinePosition -100 def
+/UnderlineThickness 50 def
+end readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 84 /T put
+readonly def
+currentdict end
+currentfile eexec
+D9D66F633B846AB284BCF8B0411B772DE5CD06DFE1BE899059C588357426D7A0
+7B684C079A47D271426064AD18CB9750D8A986D1D67C1B2AEEF8CE785CC19C81
+DE96489F740045C5E342F02DA1C9F9F3C167651E646F1A67CF379789E311EF91
+511D0F605B045B279357D6FC8537C233E7AEE6A4FDBE73E75A39EB206D20A6F6
+1021961B748D419EBEEB028B592124E174CA595C108E12725B9875544955CFFD
+028B698EF742BC8C19F979E35B8E99CADDDDC89CC6C59733F2A24BC3AF36AD86
+1319147A4A219ECB92D0D9F6228B51A97C295470093CA270C6258F0D99DCD775
+734480114DD0CD2931DC18782C4CCB90B6906CE08BF4CAEC2D4283CD44730A2C
+28919598227F98FC5524B0CC92540E349C5B190DF5F2317AE46FFB97221BDFA5
+114C21D5E8FB0D1C298EDFF8836AD72A9B2AA132F52DD5D3F30427563C97CC46
+D241B7024B4CD9F1E0037FFABCC88D8CCFDF3BC6EED778074F9590733CD147B2
+5B68387E0F19E6A81961077BB7640A3C0E27ADD72556CF84ECD981ECCB64184C
+EAB8BD9B96A873D80E3E0D5B4F5925983C80EBC3A8A12FBC452582A0B37D3C42
+4DFD22E9BADDCD2E69644AA271EECF366D63FCC29522FD72D6C1EFDB3597E866
+61443179872395E99024F152F6D6A4FD71BF1C7383BC1CC27AFD2DE3DAEFC06B
+6BA837BBEBD0BE09F6AEA31A83B1B45255DFD6FF33362AF8BCABEBB0D944B3FA
+B85FFBA0B370B9035460905432EE87395E518B4B670246FAFD535774467C059F
+DC30EA01C95EFBA4ABB41711818E23D7E69D32BD63243A6D98666BD46E234155
+BD6ABC76F551C31B6CE2E52323A9DAD5C003FB116AC8A82B46ACFC45EECCCAA9
+E12C2C8E3CEEFD98D49ECFB824E8677BC9CE9B682BB5A7117174E4B2A0B925EE
+553713780CDF3A3A4AF1560343A8A448C0B5DCC4E11EDF5ACBBA0BA8E5B899A3
+7321AA7D4B283AC9234978C2DD81813653A96F2BD129FA5F355D56C4E50310D2
+0FAA8F304D8BF333F97A6CD20CA4BA7BE6DC1446759683933BB1F1617AEAD131
+1C9EF2212EE7EA9B64E5ABFF45E1727EE82C00FD371BE1387987236F9BDBA4ED
+A966658ADF028B5DAD1F0878064221D0469BF17CB4E738258FB5D92E9D380C64
+16E95BBA6A2BD9EEB1A187A7231C53BD8ABC9BAC46CA4AFA94A4920FA805F67A
+A0C61940F6826CC4539A6CD1F9900EDC3F720AE4FA097F1D7510746BCE2E67B6
+EA2F2046613785AAB89915655408AC9D03201838BBA44F421D5F25CFD88E56E8
+1CA23CBEE9C2E323DF1866D31F309C92281E514A87A9631F33B238AC6520A20A
+346DD6A206C3CAF2830FE244F2AC5D894686CAD5F4BD1CC51EC0B547603BFFC4
+F008FDAEBC93542A43B7C907CC85046313348CC8A017C585CC370604E40AC820
+8B9D8F57A01868FDC93551DE10FA83DDA3E49E44C32118ED90FA67AB1C66B3F9
+F80CF71131977ACCF4DB44CF1EC26AB363C5F95FC2523B5DFBF4D60647EB23AC
+89CB971DCDAB3BA26846BA9317C051011C37468B21B159412E69DCB84A9F5876
+F418908678F38880B95A4BFD3566A6EDE93AE05BBDCB3C4E240A5C0A06301896
+69FCCC0B65BB269F2E10609B6446A68E2DECA905FC26D4F502CAF0EE9AB15E60
+CF42CEB376D92D80A6AEE55BCAB006999BF4415815D0F5BA3B1FF9D2E60201B5
+833FABE8B883847ADACF9B032721DEEE7FEBB583B89066ED9608F1EFBCDD09D4
+3F3C2B7B03154676151753DFF53815F2EC1517C094B0D2CC5EC483AA93772D24
+AD3B0084537B91BE1913A31C70750C6DD707761DD733F9ECA552D3F26825B2B8
+3EA263488892C929DEC07E2F988B7F7657D53CFA5542CE336D35B462E5E8649E
+05973AA54C0A4E63552004E3C77E5FA77F821D820B1620CC8CB3EC5B1D7BA751
+16CC155DEDD4DB0FFD3009729F365670DF9472435557201D8E82341B4056D2FC
+5D2F7C57599249DA2A99A522868716B076320350FA7415C3B10D77A6E1DC77EE
+2D929A038DE3EB4735A4D4F5C8C340D6D293D57E83C2F379ED0EEB16AA3A2A2C
+ECD664E526D918A3D0A934170B6E1493843E6AAE87E850D70DE65D34AA2A36DE
+8687D57A6B6B1447F9A4380CC3D4D11D54CBE762258426C46B8DE6059E6A2F31
+E748549310FF4362129080CD98E70817A06422743780B86E11101BED14BB6569
+D36903BA8BEBC24A478CD430801082CCF49382D6F04DE270D51CA5BAFEBD0F8D
+901CDBCF10DB97E2B059C8CF7CDB45BF931203D5F8CA4622DF19682DE2BA7924
+47F78908BDA23C4E21C0ACD2DA259B23648B6F233EEE830E7B82DF4371F55C30
+71993EC2BCC7BD6411690B9B1621903F358450976D6B6EC6B505A593A9FB7D92
+7223E2424DD5AABEFF254FBCEF934A4D51949BA0E8CD614AAA3AE6C3ED7B37BF
+5324BD4998D8D5DA95E4741B753AEE580FB3913770C00277C9F609B4DF3D618F
+148E0EC7A75218AD788F98D35989F3DB94413E70955EF586C0995A450BC75820
+F5490EB55E5D0D21343565E1FA94FA64A74377F87E55EE0EDDC8F4286951A4EC
+ED6FB3B444206D89BA71A9723E41E93A9F6C80240437019F3C23DFC2491A19D5
+29762876AC60A14404493D04B5537C1E6FCA67B69DC1CD859F9C956FECF4461E
+EC8B6CD5B5A89A8A838660A6C3F47B79ACE3B05C0AA2F17CF2DA947B893B42FF
+749E2CD5E7B56823A119629931B1ECF65C51000A10412668877178F589B4DBCD
+24D39F9219C46BDDD6F101C6AECFD3876056CBB858FE0C4BA2BD0B5FC26AD5BC
+7FA9E295E72BEEEC721300567B6894FC48FFE5E3067C538CBB3B77E386F50D22
+F8DCFDD0E335060CDFA49231D157981925F1CB36110809C12BA28D2D116116DE
+01898E311FAACEE0E5402CA30B64D3D5A0CA33E417FC322F2F0BB7AD3FEE2039
+56A15DD6D1E86971AD3A5A9A27F33AB62A5A3BF5660B59235398926D6BDA33BA
+BC43B062EEF199E4ED991518A62AC374EE21E8F1E1C954BA6D1493388F708D0C
+961612444BAE019E1DC18BDE900BD7A781835580A74DC696BC512F7BBDBA2D0C
+ECE5D83A049F7A3286B94FC446DB5C3F33CA2CD3DDE2D0E774A579831CFDAC37
+9612858EA613AE6939CED001EE662DB17642D0357B80BA0F82ED306218DA8505
+A613CD622FA998EBCDFB7BC70F4E4C8F1F43241FC22FC5BB208F4B20311A98B2
+73F30E4DFCEC93875CBD1ABD29ACF80585F59947F23A96D218C0CB8BDC1C49F5
+70DF3D49704CBA9A23294A88A2AD61811450921B1E5C3C86435C55AF87AAF6A3
+A13709082DA9C47D372A4226116342DECB14E4A4ADB7598321516DD637B64148
+12AB17AC5B2EB25718856D50BFC8D64C78DA6E5C145187DB0325C30A42013A81
+590E58E74094610207FC70BBF1A497395939B42A6EFCFABFD9D43221DE484753
+DFE5311F1845592B4484B1CDFCC32B4E068B11A82BA189D2268D88FE63B9C6E9
+20C9E40B543B5C401265D92A932476DAEADD4D3E2BD6E4DBEC0B30FA90A1924B
+41D2EE9D8AF2D8CA79D15518141665B542C696C2507DD2F4D987EE5E22397FA8
+FD80743186872DD67BE58103321467CF3F4B8898E66584DBB9688B9C78873CA2
+9B72AD7406CDFE8B58FACA2904869FB0EF126DE299CAC08CB89F60561939D75C
+2722CA57853372C14F5BCCA5C4FEBCEB0728BF9E30140E6B0D6C034195FCCC89
+291CD818CF66757EAEB0AB5A9D5710988EBB052850DDE97BA0DC0B054BDF5172
+2002AD6FFA44AA5D9D4EBDB6B2C04E8EF38660D9BC4C995BF37DE078C279328F
+4C360B8EB337D798962CACBBDEA517A5EDFAADF0D445FBD1099837F9D689CD2C
+E330CF587246387EDDED64A2F4C397C1B2BFC325B39114609EF57DDCD7B93C53
+811ADEFA323C59441ABC447F683B5EC43870C057463DD502E9B9DA7084C3BBFB
+2FB864D26DF1BA41ACC815F2A71E96D2C6F572E1F7E4A224FE57CD605682F98B
+AC7BDE4B85A4C11D58981E981E9FC43B87A368BAEF78AD87B7DA0FE403AABFD1
+CF414CBE75C0E9E257DADCBA035E1BF05C4E17FE92309F18633D93DF885956A9
+6C27E77540F888B8336B61598CAB04F3B5A1767C1ACFE15D32A25E5B1BF51FFB
+CF3CFB25CEE7DC95203CC44805A935D5A9154A89FBD4E465F0E599EED4033365
+0A31612F37BDAE8CC85BBC67F7E375EA68C2982FFD89284B027501184C4D2232
+CE0FE4E905C4B504EAD009F047FE627C79AF9EEDD65D00A3858F88E699E5EB45
+4957086CB22776AD06C317DEA41880D88F0EDCF71B4ED76BEE665B7937D5D0F0
+E568C7615025172086BDBD69670EA154CC52C85CBFFE88C1A4D1AFB6624EE667
+1B5BE2A31FCE8B2A4B03BC5DC57280199CC0970EBB636DDF8DF54C4A8CC8805C
+AD63CE866FB20C64725AE4BC9F0EB275BD83EC89F2F9CE23A084B45694D8C3E9
+3F3D3C1A678690877E8B1B77ED85D4F6E03DBF1F3B1D177E330475F172E0E729
+63EAD8034E6100B2A5773E2605180629972DE6BAC0A8C2F9580E9F1D2E77791F
+E1D33C2DBED3FAC47DDF1B74FD02583C3CFDBB2D1CC2B735C02B14B7AD3733CA
+1682944ECFAD673A9AD5E80B6248FBB6E5036EA7FE5CA8C34FBCA6DBD0E76EB6
+C2CB89D9815DB3C45742170DA926E03493AD86BB19A1D3FC623BDF1C920684FB
+7414EF69CF39713A9495D8CB678BD4592B53C36BC6CF93505B8E32311D42532B
+5661051B855F01A9B3D77AE38879853AF0FFE2448368DDFA3EF1DEB88AA055B7
+91459586DD2DFEDA192306DF7143F998CC5D67C1CED313430E5CC3F9CE265747
+8582102111E7AF9FB94D95B82D8E1DF01F04F2A2C22A20207B59C8976D56833F
+E3B79DCB727EE7537476A052E92F7C3D6A625AAED8F026F22AB59EC0F86E541F
+BC082D8E35234A18192862EFD232C9950B1FE0BCB91209FB540DC5729B9E36B9
+94D0913A8F01FB6CB16DE85E6B89F144111B1D911DC527C24917D909F1CF501C
+1AF2923EF71530F21F9BF049A56C7AB3249A420C28954E981EC464F61FA167A5
+C6084661808089EE7DBD80A2D92FF4040B37B2D81A2F5A568D461BE1C62B0FD1
+BF6D1063D2B5DB9CD48BB2B2AC9CEFA543E0AC5C86C462399C1E82F25A157282
+D32D538029ED22CC5935E63FA076BE22D3F53B7D7CCDD344D68B4E73F87A5F2C
+691FE68C981FF7CCFB124506FEF93F36F7181075D7BC6FEEC0E35AF57855BAB2
+44AF021C7AD8912D884424E8BAEC68A5562B881793A1B47FD338B1EE4C0B8583
+2867C78DBC2EFC8BA1431DB1C8622C99BB2C2D4D5475BFCE87B11762427867B5
+7253463C6F2E1CF5F1DC1F7851F2EF6A957CAB0C0A55076C59A6FF9237917C08
+5F97C2CB4B5CC903B76BE8C057018CD962EF90E1C0CCEECD52F2AE35A94C6EF2
+D99DF4DA88247C920623978A1DBB81D8F171B588D617AFA8285F6147E889523F
+CF11EF4BE498842D3BF8E811B4B33131416658E03293AD911516D8AED556F7E8
+0181391AF36D862F5F8B4588BC99585BFF0F1ADE4BF73320158DBACB2784768D
+D9794E2B0F2C0696E5ECE5C7A7DE78EB5CAE85EEA244D43D0280D4C87B6B93F4
+803718596FBCDB61A0BFC2DC666128E56F3133B9D4F16305940B50ECF66D80BA
+06C0A73C02F689314F1B4FAC22D16BB1E414C6F0A1A548AAB1364D2CD9DDFE5E
+C8887964D26BE84986A6B1246BC306E6343CA376F990B77BE8D68A4E54304C3F
+250B2311586A1D1EAD2C0221FE1828CE8396DEDEF13E70E0AA75FFB6089DBA9E
+9FC3FAB43B3633C8EE7598619A0C6FAE2F25274787348E3660D0EB7212F5CB38
+032A41A54FDF14B32E721819AEEC54E8FDE3AB8F0ACEA267B01081F284B008C0
+5861CEB5C236729AA17DC78E92FE1EF9F047B53A59F2D1D6A6734D0413D1A51F
+75B03234F4775523A55978C73D5BF9031EE8BC6BF9E2637DAC07F5AAF2A6C41F
+77620B272300A78E86F71F16EBCE2DBFEF4920BD3F16C282E0BA4C872E5F7E52
+7ED2B663FE45D4A36A588D228D32E2861F26AA6FA8DDBC8110F4417D0DF29285
+F06B57B1720D0D13828A4DD68D57BD530FEB9C3CF305594B70E4394BD60C82DE
+A64EC17661977B18199BA661C48860919CBEB56AB6C32848D51733F1E959EA35
+DFFD823D92F11065C643AA69776F71163A60D4941B753BBB4A4C0C47BB1D965D
+06C9BA1FDAE47926F37C0C5B591058F68FC1DF3933B2BE014F99A53A617A19CD
+8BE011234D48CB7E14D31B02B1FC47C8BFBF04C4409D32CB454E8FA0EF9AF16B
+8AFE9FDDC41F6A23D700D4AA922A0316A895D240C5595F21FEBA98FE0E74B762
+77FCC80F4950A8C55B4A008FD381E9C0EDF4427CB324BE4ABFC790CEB53E8BBE
+AA90163A7BB19E2840FDA404E830F5478DD69B85C5E69573D8CDBBDFF41A8126
+24A6AB66333C749C35BE314777CC222D54FF2C4C75717FB938724EEDDFC2EC1A
+8DA77B5482E760B68F0A2D240332BD48803004BC157C6E8E192D512CE83D5572
+D388BAE80AAF5E7240A73CDA7CFF7F8CDAA4ABE1D3BF6ECC3641B6BD1C2CC703
+275D48D62A15E5A85F003E76D1EA7DB65E3476CCCF6B504514AEB1FF1263FDB9
+81FBF1A1873FC287FC6B6DB11F0FB463637D4F3280EBD19976588F900B956FB4
+36AAA8C1F040300CAB9C4F624B22C1D3D6414B7CAD36B5AEEC90105B5A5C2129
+4CD540B9D0129813BE7E20870365F8C46FEC92DDB64D0A6C7C5B9867A4592B7C
+124B1B47899CE2D1C03811AD1B8BA253B0D29DAF2B53E312827478DBA274010F
+C919D122DF24C1E372F7F3CA77A2C0EDCDB2635F4136EA0C202D4011346902E5
+1524609DC031656660302CA36D376245A64135890C13A11C0085861792384787
+D0831FA01C11F1E7B4429DDAA0B3A7EC1DC3CFEA24C34DA4BC993300F12A953E
+80C8BDA360789FCB0F1AEEA7AAC310D0C3C56F43F7914C3B037DA02C31EB740F
+2B1A696E0E5553656942BA567DC9C4D3CA06E45EA615B7B5674016DCFA07C0B4
+285BFD9D551117A357F4BEFD58BCE60661187A5FF20D27D685B24BEEF563F0C2
+B2CFA2565112F7F49023CDD405AF3E54FF994630BE678B0D6E1CED514FC93F7F
+63710D289026CEE4B074253E7E0AB1DCCAB57DA7A1E2050D2B8D3D75F2AD7423
+0B0A7081DB1FA44055620B0A2CAA54666C5EEE3C01540D96ACAAE98644E1D210
+E0E020214550D723431813C031DC7DF0D177E82AE49798F8E0E5AE0BB8FF664E
+4793F857BA380297AFB977065B7500E4C0AA1735AF4E15703C860A016F19E593
+319D14C497F24ED8E42F3FFEBE976DF33D697656DC11A8A7C6A60219BF63F186
+E0FFE55594B31E5C312DBCCA08E84E94E8BF57CD5F5B70EBE59F0D41DD3F6B05
+F7635EA92FA9E082C80075A5A5F684160AADAD501BBFA7746327E3E606D1FAC8
+EF7AE7C612371BB52FFF41A97A349D111E861A83C9C48B0145ABC3582FCE43C5
+D121F0EB6F5D219E52E2BB660AA1DA5551D6B66A732628D640BF9D8BDE2BB3BA
+046FBFE2E28DB31AEA2ED8F9405A39C16C3800E9B5611B460BE0F6716F2BF79C
+902AD4FA3B6656E13E9DD7A785C17F28BD4D646D66058721610CD756E0D18D32
+F09C740B6023DFAD45A718BBFB2E65544D4754A5DB23CC7988A3EF45CD3786F9
+E100D9684549A16BC2DB736D43C293097E082A968C27F0C120C41A53E3464381
+F7DCFA8B36344EDA85F53FF65BCDACCDE7EAA41A6D38C1F420F8F2E287AB0F98
+A0DF7D8A6CF2E4C78D606569BFB7C51495493FACED57CF2D507DDD366247D807
+28D73CBBDE2F4F666099411B1FD2CF7B93D0E9AA161024C58892285BCAA65E55
+9FB37468777706D2C57A0DF6D520844B56D62CD10F2D7B02D17F97E4F87C16F3
+9BA09013FBD7ED8C2DBBB432288E598241369B9DA6E3EE324290D73BDBFB5448
+E9D7142036C0FE538F18E866A50DD23152E2C096E1045E7777888AF5CEFB83B1
+C6FCA18A26E83D75AB66291A5A5A285DBB1B9525919564600D71A767BB03A8BC
+7BF24CC3B318BBC0F40C79835DE626E99BB76C15719BFD5C15D967B84A6DC1B2
+450D42BD399C5316396CB294D008771E563E5640AAA9635A1EF11001D0E20298
+066B78B7F918E41FC48A6A6BAC8CD12D58CC2447D1BAC318E2717E7B5A94A4E6
+462FE9017FBACA70F73952C2FB4B57406E692684CD10FADF049EA8173068CFA5
+95F8BEBD313E01B345EA52562AE3847FFCBF9C5D99353819340952C7A4A509A4
+906D09AF07C9DFC130B9A77DC8B15143C0A3A3C29782F102DDA751CB65174EAC
+BD8CCE5365E1CE48CD62AFBCE6786D7D5B594FE2E3BEEE1B302EF787AC1FDFFC
+A9D63B038F42B9A252700DB07BCC33E69BD7EB8B5547825CE05D013F3EE7420B
+6A574D3EA46A92B82C12D221A11B0E31382FD3581EA27E17B07D616624F52DD0
+51FC750AA1FE004437F685E71272B71A91332C94445F54B9C1AD0F902CF20ECE
+EF0346206027C8B3809DB19F5D7AC93A8B4C347FF84D23A67AD56FFFFE3E0A1F
+45
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+{restore}if
+%%EndFont 
+%%BeginFont: CMSY8
+%!PS-AdobeFont-1.0: CMSY8 003.002
+%%Title: CMSY8
+%Version: 003.002
+%%CreationDate: Mon Jul 13 16:17:00 2009
+%%Creator: David M. Jones
+%Copyright: Copyright (c) 1997, 2009 American Mathematical Society
+%Copyright: (<http://www.ams.org>), with Reserved Font Name CMSY8.
+% This Font Software is licensed under the SIL Open Font License, Version 1.1.
+% This license is in the accompanying file OFL.txt, and is also
+% available with a FAQ at: http://scripts.sil.org/OFL.
+%%EndComments
+FontDirectory/CMSY8 known{/CMSY8 findfont dup/UniqueID known{dup
+/UniqueID get 5096649 eq exch/FontType get 1 eq and}{pop false}ifelse
+{save true}{false}ifelse}{false}ifelse
+11 dict begin
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
+/FontName /CMSY8 def
+/FontBBox {-30 -955 1185 779 }readonly def
+/PaintType 0 def
+/FontInfo 9 dict dup begin
+/version (003.002) readonly def
+/Notice (Copyright \050c\051 1997, 2009 American Mathematical Society \050<http://www.ams.org>\051, with Reserved Font Name CMSY8.) readonly def
+/FullName (CMSY8) readonly def
+/FamilyName (Computer Modern) readonly def
+/Weight (Medium) readonly def
+/ItalicAngle -14.04 def
+/isFixedPitch false def
+/UnderlinePosition -100 def
+/UnderlineThickness 50 def
+end readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 3 /asteriskmath put
+readonly def
+currentdict end
+currentfile eexec
+D9D66F633B846AB284BCF8B0411B772DE5CD06DFE1BE899059C588357426D7A0
+7B684C079A47D271426064AD18CB9750D8A986D1D67C1B2AEEF8CE785CC19C81
+DE96489F740045C5E342F02DA1C9F9F3C167651E646F1A67CF379789E311EF91
+511D0F605B045B279357D6FC8537C233E7AEE6A4FDBE73E75A39EB206D20A6F6
+1021961B748D419EBEEB028B592124E174CA595C108E12725B9875544955CFFD
+028B698EF742BC8C19F979E35B8E99CADDDDC89CC6C59733F2A24BC3AF36AD86
+1319147A4A219ECB92D0D9F6228B51A97C29547000FCC8A4D80B73E7B6CB7548
+0E1D77FFC695988391DC44AEED8CC947B3D7E198B9620E2238DB3A2819182F03
+14498B8CDFBA48926DA721920B221FB33BC21A8456AF10891403501D0F6415F0
+7E041AFFE109F640E54FC1A365674711EFF94E752652A4C8DA62CDB1149DB899
+2C4A4BD77A06E81E93C5698C05DD02F74A0756082738BDB53003B483752AE498
+DD718AEA8F3FB5A6B7E2D2AE8F309065F3D556F9A34AB90C88833A54295E0982
+209C466A301BA3372AABEE20D862C6DC6B6FAC1463C8CBA8AD766ED1B4C9D712
+2BECB4E6ABF558D8AB5281C35726BB8D046982C0DDAE17BFFC9394125E4E84C0
+B283977D31460B8EED4346CCB09F64DA0ACB640C6DBF32F2DC30D54668C1CC12
+24C7280593088E9958C047125C323E9C842801346A9CE5F50413D69F6DE99471
+65D2E387765E92EA4C43F17B467DF6E266D92551009C0E52E7219AE9F5E2E8D2
+88852086FF3600BFB50AF3EAF8C009D8D5F084B510F792385F328F7EFA8C38AD
+CDAB2EEDFBC6AA45F6DD7364C2F02DD2BE6C79C8361E83D4267CEC2407689864
+B57B5D967FC80AB3BE8CA43955FB0FD3081D438437559AD24A7ADD484C1E4A77
+B00BDCB0D1B121FEE983412E1EA5489BDCE5DCB4A7310135956B230C0DE7BBED
+516369A92BC41FAC8D73490984942D930DC193BF0C774C1AEF627B969EE4B001
+11381AC57815D7581E2372A1DB740B09F4A7FB4318B765DA4E7B44E8805CEF85
+44EC3B10613FE7B397BF91B69A5CB2E9086D1E7A1FAE0A9ABF2A237A2D29ABFF
+E392A18AEACBF28274E775D3FBAED4F46B982B9DA4602E24094EDCCBC9D6FC0F
+67C60376879245606C0B9C9A678E8917516BE1CF097B1C75C9F0DDAD6899F08F
+81FB7A198D45FE060CD2A550D9B8D58B882B969D7BC3EC018A1FE92BDB262835
+26516FF97AC387EA525FF987E5EB1EAAE4EA5866C9CC043D183763C530F7D7A1
+2070E4044507C4E5611FCC117FBE4396E0B24F672CD53D5FDFA56D561FB86D40
+90A52A7C7F29A119DFFB694A8C445367746A49CA5FA83163BE448EB19625DF26
+609A8C8672631A10411036CAA3D6C2F822A4B2505DCBE8E1CE6916AE515E78CE
+E8C894B134BF811671D17C19248853131DFFAEDB24B15FF17EAC194662460642
+48D23515AD434C68DF56753806FE96DB3A29F9D4980E0B6EAED7383F9FAD2584
+8F85679D6D1933677ADF5D31FE6E43DABF137E834A1DEA632D36EA5728625159
+8F33348893C9D1C510501628E4A9A80587DF6E179FAF68B158406A3EBCD726E2
+AC17F2DF8B3607072824D2E5A6479F7BADE32E603E54E7A83BB2DFDEDB0D80CD
+1F1BDD4F6C9025CC3A8A3685DF10A8183FA80CE0F0FE2BFF2500F76B1037AE41
+56D2D7FB468C3CA7549E3599A2AACF66302572F1B35BC8EF7C23F6FC4B720228
+1D673D903111CE378AAE83480B4DEB7EA84BB35F4F7BE997DD4FFF5A9B5E7650
+3C7365BA0965B242DC369D03215651184024A08EC284F1798B0726152884B4D8
+46411B3BC8F5CB53A70AD53BD7B1AF23528849B56CF2F75609FE715878CF6448
+38579380688B47AE3D374B0DB6ECA5B8284414090123D47F3F9DF389E023F431
+6B4C0DDEE4190DEEF4CA772742012754DA9A44A8F550FADA6D8FB0C512D5BA2C
+BB7DF71B1DA41FB6936BA71B710CC6A80751E43436F0F5888F51AB370DD4A088
+40F402661E08732C960705C7E0D29B8DA1A8A3E119409E51EE575E9655F47568
+023977917C8EC610BEBDB9C1F4EBC192084D63EAA00EC87B53E86620BB5AE51A
+579B0F8E1972CE1DA02832FC75184F45409DD9D413402C2FA27BCB0AE6DB4CE1
+5AFB114E23232DE07C4674969A1FC94D152C6D3A611F029ACF4D949A2C0755D0
+31C7DACDBB4DFCFAF7E87295CCF5D4AE28D87ABC3533D87EEF1507B9FF9063F7
+F007DF03734A20BC3A198B049000C92D2849C62DDAA719FC28EB372793E20128
+D786670E08948808BA45C4F6AA0DD8A8357CCC47228A760C5C7864853BD9C9A4
+285E446CB72C5C9D3F03FAB000810DC5674061FA116153040743E846506CFA67
+FA8770E785D7DBC7293F37389A0859CC22275B23C44B57B92A033A7BD194340A
+D6BAC6E103402F8396A5394C617CB2A27D9500921D5DA06115EC81715EA8E360
+4A95DCE8689CBE268B8E6C8B806CFB0ECBF634250243C9E1AFFACAD65311FA4C
+1DB0988203537E5EF12B86FB454D06CF05E4F4FC4143D62920E99304245B6ABC
+82E21192BE94F5E980DB21E07FEDF0EB0CAF4ABDFC20EF08A2A44A7940E2862E
+08FABA516152DBA899D6CA561EB08C7C8298DD511084E5230CEBF28AB1D84C85
+B5BAF4616C28FE05AFA4BABB3BA03F8CEEF3F3EB0D3034BD3D8D06629B8E9EBD
+72484057E71C9EB4DFC7C2CE7749271AC926C2419D618FB0B60FD6F81F0F2C04
+E529CC74DCC9E4AF32D935D7CA65FBD0842A7BAF162D08F782E65DF3AD9EFE69
+198AFA9208B22BC21BC4ECABB9BFFBA84C8421B74748E1EAAACEB59E566838F2
+C439579D6C75074F94493F7D5C8942D881AAE6302C37A61003AF77684EE99AD7
+EB5EEEF050C52E75E4E842F8174470FA60CB213BB6F257EEB26CC55D1202931B
+B981DE2535A87CF37BFF912220C117EE166CCAE58BBF624170FFBC0716726B36
+304D698F2CA131675F7B1199E6581B8C812C4FAF75814282477BE2B7EBCBA7C2
+FA6356B2876F89698C6C2493989E9EB252DE03BB374622A7C88B8EE9FEB4851E
+02F85CF70CDCA7BED5EC94E81170FB557C3BFC6F32CD70B506E56A2CC5451592
+130C6F570C679577C44D60A811DCEFB3535D855259B1021AC168DB76DD38B459
+F1813E3DB20AD9275D58880CE94058490ABBBB0D8DD16D4A65F680B30057F15D
+07FF54D779CC978E90A850A2D8D79961EE276BB26B594C16F56557435671A3D8
+ADD3DD0BC4BC73B0652B9DA8462FE614A14A11ADB2214EC4910823FB4CEC8938
+24354C5C62547EE5710FB5ECD93AA45DEA7411F6CA8D5B5FA222685E622AD73C
+1BD5DFD1C8F253352D6C7D14FF2FACF07CA5EB11392C6A33E9CABFD99F743BED
+55E8DEF49E07B9444171D1780C698E5B65B540F41F845AC188DC7C0C8B5BA5F3
+546BEAAA4F29F0DF30D5AC12A60862742623100074457BF2D820DCAAB340C1DF
+22FF26992DC02F276B40A7C528C84B72CD189A4088C90070486C49A1014FDDA3
+5093FC12DAF309FBC063653E6A33E14EB51B081126AB5BCB8016E975060B796D
+6CBFDFE6CB9E191F12E309254BDD6660E3227012F5DADE246B02B6D8127F1EE2
+248F48DC5ABBD229748444420C868450602120664984FE3A8B2373232CE5CA15
+E67172CAF7EA99F73A66AE33B1EDE5E8351DB02497CE3338930147873D4E46B5
+E918F5592A21789FA9F46232BE693DFC33240E2649D6AC1940B101D806089436
+F0CE230BF6D0363510378822891DBD3EEF3365430E74FB6C994BB40C8EEDA593
+CEDAFEBC3B87C7C04F52FBD7D557A77B44855CDBEC8A8D26F44D66446B5662AD
+15B6B79D13BD262D79BF51C09F8F690A61C7F11EC2E05F6BEDA273648E9E1EBC
+3D5F1D6ED486797F753064ADDA8494405556D43D395B1487EDE877CCC1EAE954
+1AEE2513DDA94897B733609E8179DFE1975590568202EF20D58A89B34874CC3A
+A5579473AC65E0EE61545AEF578ADE10BE3FB3E2CDC96678F613E4DEF7BC1B38
+8A551C93438A0540E292F65F1FA73D9AB30A5F545284085E4930A570C1807995
+7108AA8194607304488616DD4AB189F8EDC5F4507AEFD7847817A8ECFFDD2DD5
+DE95E04EAF2774F8AF661827229F01E769A32734097C457EB6FF056D90C46C5E
+9F936AA6BF2EE8244BBEDB8862E56423F5845BB10C8809730B011D650EA18945
+83C320A3F4ED095A5EF91929FC877ECC28A1C2CE74A53245E629BF46C6534983
+307B1C94EB35CECDEE86551F0C308F66690E591C5D9D8FE14F534CF3F5DB6D32
+39D7C799F392C4E65759B7BF61F4D8312E3B26C31466206A367A0DD7A90D25E2
+805D36ED5CE0A4BEBCAC0A348FADD2D2AAD670E28BE6E33F627B4A9F35078B1D
+6688084C4C18840673EF9B3526172EE14EF64E97C8B006C27DF6EF73BA6E6459
+3608F10EB1EC4B824DD5360B42AFF2084788B165747AABFB2C9C0EBBA9C6246C
+08F28143809315D6268E386F09BBAC54C34213438B56C386B34AA457D149CC39
+A3C163F56E3C2E637C63A79CF7F2DE969EF3AAFF75F3F20499A9ACA61279D545
+866FFE57D25998244F448AAB042B141952BD653007A889B1A716A4042CBBB827
+C1ED5E3C616C22D5FCB39D3B3539F9B71D50D25ECD2E5D953C7A5194C867DDB1
+75CE10B2C3A20E8CDE15AAE9F549D034838DC066CA649C31EE365D46450AF18B
+893748D055DD88C72391FD92DDF0AA1A1316051BC756F87BC9A425019B2FA7BD
+CA9F35E89E2229B3021DD24C9DF0DC3217F44DCF510116DDC9E92EFDA3E0A892
+491C8961CA484BA29B8CACD2FED2E246FA7414F892AF7B9F08698FDEC82D2E4D
+8C6ED1FD9E0BA2645663E7E97B0F780033D025F2EF3B364574C03F04FFC4E09A
+3D4182BBFCCCD8CA54A92434E2208803ED36F931D31C7498B7FCEE4B78AECF11
+B27123A10F031F9CBA36066680E4748E346D18FD0EFA395D1A9227530618ADD9
+64D96C50A0172F712CB427E8F7170F8A1691FB95B247A271499F0E63676BD64B
+167438333A3BD9CD9641AC637E0ADB17F1E394DF34AF5A2BD02030DD087BBA02
+E1209338B74075744A9A9966039AB6D223F385E06FF359257913E6C01BF32F5B
+A3640C7CA41A6C51F296E50DC1CD1D68491CE5D75E0ABDD4C5C4A97C8BE2BA35
+D91AF9F8F38E7AB8C1778B06A212D0416E6137087329AAA2679C51D014CC4DEF
+0F1543E2FD97621E552E19B29AA1368CB5046C188BA59B1E1875B25FB269DD2D
+C0678A42CD310702465694F2BF302AEBC43F714F7C657505132DDA71CD23D17D
+628BF3400EB5DDFCE2850F31B40C5913394649AA4241CF646F3939916C2077AD
+C11F8C3E478586AA7931E327333FCD8A2EB31DF4B47AA2F31B999556602DD998
+5848143C0CBD0B5187DF08E675550F2384D48C2954EA7D16AD2B94DF97C194D2
+302CC47BF968CB1F6C9641A87525D5C6972ACCA1D4A4B4DA8EC54BEA6E7312B3
+2737754A9FCBED3BA5F8220B751506BB0A5BB5CF706AFCC04BFD713A3BE3C842
+9FFDBAA0CA5691D0FCE76134841A169970903843163DE68FF09649E99945DB64
+491FD6D8B2DF237DBAF550D1B74263B3BF1EF6211F40D4DF2DEC46E4DE557088
+5D458A7CDC6F34B8C3F5C76582C8B7D24A333AAE0B43CA67436F8ECAD7C50B12
+35BAAD521033D8024E4DFCF01580AEC63BD5F8ADB778F822AC4FF0DA608EB7CC
+1A52A51B9F38FFADC0D2F4D8394C5D598123B483AE5AC1215F24F2492EBAA134
+3C58AD4E3B493AABDF753EBF1F04058C6981C353D6788C2D3294165B667D3765
+7883A8493F5D772F789F73979B254BB9397FDE4F8B76CA6FFF312F4B012949F4
+3EDCF1AC60FFF2681549DFF430B498405E79CB407DADFCEDCAB1E2FAD3B0F4C7
+B575A33EAFF9F67D37F50BB06D06834EA683862991C5BE340D4A7F8D131E733D
+289F72977870F9958102F5D835739F0F5A642E7194E8AF7FDA2937E5C0712CE4
+EE15CB475725030CE0F238C32775D3EC95CE3D0886046E3EEAE322F59D423E83
+DE88DDAB5CE0F70537487EBA5A16A9306BA7DDCA14A85A9F83B3BC3600DC9421
+BDADA2704A5A24F7174A3A486ACE68739EC5960038CB44D969A594E97AE1F42C
+42C1B7E3A456B3CDFC7683537B337AA8777F18CA45B22C8BEB18877DC624496B
+9E8EF9F386B7FE4D94ABD5CE3B5786E76FE04A35909C472C04654A4405932EE6
+A4A3E0F6DB088603FDD82F0EFCB85A962002A662D1AD0647A2F484B59075A1FA
+9F4327D542ED7962620B998ECC3A95CE736089593461CED9B5AAAB05C2DA3820
+5AF29B32904E1EEC357C8E282189C6D8F562DB11291091E6897E24CD8F8E2A34
+67F35D261E01336152E69831B0CC6B03FF1AC7EA22B745F513A25FE10F70E74A
+3FD71FE1EC9999BEDE7CFA6A97EA2DF621711BE950FF8960965685BAAEA71FA6
+36F165573A0A6A92DAEE41A9B0C97BF03419FF6BA1F44524D00FD671EACC4233
+9A857680DFD27B9F1E7A760058C8277B3761DB9969241D1824A7DADF70BBFC38
+89C6DB9091E3BFCB36851CB9662B365A4B7384BDBA1D385902D1E5DABA72A159
+63790096B927EA49299AE03E41C7F593F3B995D1155E91C62D5F68845ED3C797
+7798B56858F96C2FE2E37D812873B7801767082A6D6B60602CEB94B7F6D7A142
+72814734DC584A18D1FFEA7333D4C7E2DFE5B91E9AD92EB52533CA52FA888980
+C79FEEDF0FAFB3B20B497F9AB668BDAFA364B405916526D5C48E57DC30BC35B9
+BF684FDFAD199D9A28541327F3899AD505FBBBBB22F419E22E0149EE5FDD2B43
+AF442E2724EC16934C307FA731F90AD1C76B74569B78CDEA7C19808233C6364B
+D049F3F50A68D3EC5F29F2B96BC58C44AF90FE13F244B7129F14B5DAC3F3F310
+B330E67CA4EB76F895DAC8025F11EC7630EEB4826B5721348FA38F28B2AEEB1C
+5F7CA413C486C94B1DD96988F07F7A08D3635E28624878E55D4FFBEB5E183CB5
+93014D8A272EBCF3A09133603CFFEF43A6FF059BCE525706D3795884FB495748
+C8AFB50DB464459A5C36D7CD087631BC09C693A11BDF1C6011D9864FE66EE8C0
+4824A42E97D16E017C0BB73732D4537E2A5BB283B3568950E5681364DBC1D6DA
+058A122862A44ED85029A7B39F2FA7C362D859D0B429E056891339626AE6091D
+74F6110CA32F8F3E9507216997E6AD1A2F1FFBE8B407C9880DE230E234F6FD41
+A291851178BEAE5DB9DEB22E3443807E2BCEF12A4AE8C490AA9E3D2918329F47
+42314CD258A0760DE5FDAC4AF7209CEB530B8508B278952A3638CA8491C3B493
+516F461610DBAF32E923ACB834B15E2D169A10F2609EC0ACDF7BDBC777DD2C19
+2DB330FD557D3B06B78824D6AB237D8F2D57A7ED35F02CFA9290ED6893B41657
+A2485524A3F1642FF5808FDB77015D9467EDAC4A6BBE8A175833B1225A5554F7
+2C60207F7A2632A4023255E8EF1F38C1B8216C9B03319B60BEC9799E5378683F
+46E698FA75F2DFD40F17C603F3335F1EC70DBA1449C7A33EDDD46CC3DE4A6557
+EE67BF349AA8680FDBF415DC527129288B5879500180F75DF80394EC7CF11BC8
+9EE9A4ABD64DE3076A2963F83FA333F19FF74F79ECF36A87A31D6F125FD2415B
+3F6A6FC33C179F54CA164835F3C3DB62AF444BDF27AFF23098C7212477F688B8
+6F48D9AD080D544D57FEDD33D3D9AED9346CBB644C97C951D4AEEB2BF6F0CB18
+E2517BA7ADCFD00FE44E290E731D53E5C0D762FCBA08004562DCE6A5EF2FBB74
+B3053CBED3B6E896B1C3356DD9E8FCB69691AAF6BEBA0424D62B9F266D560B40
+89E20A9F35AD4A7F65A7183761ABBEE0F7EF26ED3565A25516A3A5A57143979A
+1EEED8CD52A69E4E1AE4795F3EE0CA21B9F4D166783A9AF54B08B6C56703932A
+310197E328C6E6A6BADAA11D66A952964F31FD690082FA02D1E2A4512A9F2742
+33B203FB770A3A1C7490ED630D0FAEB3066429D0237E18818EC368D0DA72EB08
+1951C70139EB0DD59EB53AF5039A7618C77F6CED9F0A066FED6FEE0C0E328351
+BA39746C1224A29D191D8B86491E0A306ABA070CAA2756C3A33990EB6DDF34E8
+06EAAFF94AE6686EEB06A17D6D020D1F4E59428D533DB0EDA6434E6E1A478D5C
+2A0D08CB39DA7D5F5200199FFFE3F41729478D4F63AE01FC0BF3B378FF6402D1
+CCF1BE5F191BAEAEC7FE400C9980E103D8776EC196E741AFE11D249E0C277263
+80FBD329524C55943E25631F113FB14E12837C3F11F69999849371BA715B5366
+B9DBADB6AA3F0CC8F1584F0ED734539F8C88DED9130BC317BF40D8DB4DA9C71A
+FA23BBE9231FC7753B9305EDF5003AC733BD61B8B22B42791DDA958FAD80A55C
+EA4462B98D0513DC33C12EB4893E3540D12A77C09EB1B90D28ED3D781DDDD450
+76A7767BB4EBECB9A652F2E746B8E29CB915A585B57AF8D2A795576E2F2E2739
+09ADDE65F8D65BB1ED4C75FA0AFD8F645B727F5308520D5889017FC0781C8B70
+DE60DD4346C6536B98E798AC2EACAF2C67E9992402DACC5108713DF47EBC8F45
+51ADC533422B6548E07C51B61F7CD97B7481281FAD76DDBA0F442CD6E05BDEE0
+89628764437BC98F6C992CF2A2CABCCB16CB20302B4B933178FACACB41D36312
+886BD7C7F69905C03F845CD84BA193D7B6C57B7E9CB720DE1B313EFE60C9B24E
+B5DB
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+{restore}if
+%%EndFont 
+%%BeginFont: CMMI12
+%!PS-AdobeFont-1.0: CMMI12 003.002
+%%Title: CMMI12
+%Version: 003.002
+%%CreationDate: Mon Jul 13 16:17:00 2009
+%%Creator: David M. Jones
+%Copyright: Copyright (c) 1997, 2009 American Mathematical Society
+%Copyright: (<http://www.ams.org>), with Reserved Font Name CMMI12.
+% This Font Software is licensed under the SIL Open Font License, Version 1.1.
+% This license is in the accompanying file OFL.txt, and is also
+% available with a FAQ at: http://scripts.sil.org/OFL.
+%%EndComments
+FontDirectory/CMMI12 known{/CMMI12 findfont dup/UniqueID known{dup
+/UniqueID get 5087386 eq exch/FontType get 1 eq and}{pop false}ifelse
+{save true}{false}ifelse}{false}ifelse
+11 dict begin
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
+/FontName /CMMI12 def
+/FontBBox {-31 -250 1026 750 }readonly def
+/PaintType 0 def
+/FontInfo 10 dict dup begin
+/version (003.002) readonly def
+/Notice (Copyright \050c\051 1997, 2009 American Mathematical Society \050<http://www.ams.org>\051, with Reserved Font Name CMMI12.) readonly def
+/FullName (CMMI12) readonly def
+/FamilyName (Computer Modern) readonly def
+/Weight (Medium) readonly def
+/ItalicAngle -14.04 def
+/isFixedPitch false def
+/UnderlinePosition -100 def
+/UnderlineThickness 50 def
+/ascent 750 def
+end readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 102 /f put
+dup 117 /u put
+dup 120 /x put
+readonly def
+currentdict end
+currentfile eexec
+D9D66F633B846AB284BCF8B0411B772DE5CE3C05EF98F858322DCEA45E0874C5
+45D25FE192539D9CDA4BAA46D9C431465E6ABF4E4271F89EDED7F37BE4B31FB4
+7934F62D1F46E8671F6290D6FFF601D4937BF71C22D60FB800A15796421E3AA7
+72C500501D8B10C0093F6467C553250F7C27B2C3D893772614A846374A85BC4E
+BEC0B0A89C4C161C3956ECE25274B962C854E535F418279FE26D8F83E38C5C89
+974E9A224B3CBEF90A9277AF10E0C7CAC8DC11C41DC18B814A7682E5F0248674
+11453BC81C443407AF41AF8A831A85A700CFC65E2181BCBFBFE3573BF464E2BE
+882A715BE109B49A15C32F62CF5C10257E5EA12C24F72137EB63297C28625AC3
+2274038691582D6D75FE8F895A0813982793297E49CC9B54053BA2ABD429156A
+7FFCD7B19DAA44E2107720921B74185AE507AC33141819511A6AC20BC20FB541
+0B5AAEC5743673E9E39C1976D5E6EB4E4D8E2B31BEA302E5AF1B2FBCEC6D9E69
+987970648B9276232093695D55A806D87648B1749CB537E78BB08AA83A5001F7
+609CD1D17FFA1043EB3807AF0B596AF38C91A9675E2A53196FEF45849C95F7DC
+182A5EC0EC4435A8A4B6E1CDBF9A5AF457564EA72BF85228EB6FD244F2511F5A
+CA9B71A65D53CC06EF5F7EC3A85106139A4D312378BC22183C09A229577B793A
+1B7422611C03E84BF809F46C62CE52D3AE29CE01C32B202ACDAA5B72733EB0AE
+C31D7EF7BA88D2D14F85313F7A8B9B7A5B124B03AB923744D336C969E5CE304D
+3AD977A46664479EDEFB69F113024E761C05FA48A54072DF9E12C2F352ACB3E6
+D04F6EEFFDE209E7FA3DA22E5B1D1409461F4286B7F4F8251B44E5CB7805762E
+E129FF4A06A7458F3191926B1CAF70E32C6571AD2DC07C34FF62840896F4D200
+761B1A7FA356526D1E3AB4C542AF13623BAEB9F61B1BEEF79A9205B1FEFDAE24
+8799D516A9ACC30BC0139C63C9A0523E9D5439213B67D490C96F902958779B8F
+68BD8E9FDDCE8A3A2E35877DB6C94B7612382ED8F218EB1157D2ADD090A2448D
+10B99FBC9211C5629ED1C61C74FE93041E5AA03EA4AC3FFDA00C2B6E719CFAA4
+262FE17F66804A6B54D3669836EE4367D2A2991580C5564463C973CA0DA38AC6
+922716E13B4A807B50304B8826CEFEAA47C305FC07EB2AF25FA7945797237B16
+56CDE17AB0834F5C97E0CC5741B061C6FF3A8DD1A79B9A173B66A6A750538E26
+32FBC92E75BA15CFFE22A7302F47908547007402569158F62C29BA2956534FEA
+7DACF1E507AC309DAE8C325F2A6023D2FBD81EF42146BFCE6A16A6310A650460
+7B07BB7647C8760FADDF0DBBCD3DA6CC4645D1732DB3A22D8B76E1D2D48E4D4A
+46F4BEB80CE65F3517283A1AE08391FD1C10ED452133706BC6725AABC80107FD
+754A8BA47B0281D479F052CE26A723EFFACB79B213041A536542AB334769A2BF
+88505D82C498ABDD5A73EB539530F47CAC52825D16A969C8BB56D4A7F2830B8F
+CB63B92B576E7BD922A4B25E634751F8A3B7C4EBAFCB373EDC8B8281B1D1371A
+7844E9AD990CFF09F0D7ED73A5CF873D2D5C9E8A9923CFA31E1A4B4CCCC40760
+8B3AC8FC3C88BC08BD7407725281BB879A1A822D94997826418F1B89D303F2C0
+BE7A0102E6F529630CBF1BC5BF3E4578C164A3DDE45E62A957EF3FB7F0FBBA6B
+CA1E79A1ED195B6A11CFB345B663C5E72FA55D80476F604F6C4257B51686AE25
+8F7D159FE605DDA0AC74BAA5034F29FFFD403070013C6E2D8EF6A0990D91173B
+D5A3AEB98B64E412991505C3CB7C2CDE13C091FEB3DFBCAF30C4C19511102300
+135BD5D444BB55692013F52056908DFAB2ABFACE81A58423ACEC59344CEF7D4A
+C5A3EFFFFF70759BC3E593D878281225060B97D1BEE6B26EED90571FEAFA1812
+1115C0EEC892F5DE6FDD68321A0B3F10A2D771B79BD85476AF6018472A499A86
+07D64CFF4550866AFE590C471C80EB12CB3A989A60BC7BED39097C12D9286E39
+14C7952C4C64820B4DE44A1827B7B0B535244E93FDB80036D6332F90F95B472D
+7031E7E3819E881BD0313CFA112EB3AAE943C99C47635CCA7E34DC0306C04E5D
+2E9F60FF037EB11602BE74E8E6B711392E866E3E55D988F7C856417A2B9C186D
+639819B4786D039B77F8578EF63C088FF28BD08D8353031445C8498A8F445BC3
+D08923D32AC04BF3CAFEFCCC1E77EA894F4E846F47EF62D6841B8D8576FEAE8F
+90044626869D04D61D64D56E8C51AF8C18D6CC3FEF3B6C4F7D56FE3260354948
+10104F69B117FB8269292579A7D52FED688C663B643D8D99F13956612271073E
+1A337AED059B7A93819A28CDF01569CBEB51069D22ADAE25C47355560F402B2E
+8C9900DA82B79C64497C8494F42FABE5AC41791C2010D98FB7E593C744F250DC
+D837DB0EAA4F75D0016970F3AE8359878A08CF9A697A06C5EA945819151265B9
+1A12122B98F79185DF852257BB4798E7DC03712EA6ED34F6E6AE1476788DBC33
+9229FADB8D581BE1A63F596698DBD6DB98A092F67197A4FD4A50B648F2691875
+EE2495D6BB310078F516785A0CEC7EB6E8305FDBAEB1D15690409FE32DD9CFAE
+DBD3866FB63EBCAAB73E3E4BE5D7F3AA44793938AAF3F8341683F0790F1D46A3
+60CE083F9BEDDA22E0639A92393960F86602216FA51E2754BC2F4CD0BDECE3D8
+FFAB7E0E49613DD4956C9A10AEA798BDA1F756C755BEC12147ADECAB0FB73B7D
+203A11D84DD2AB5AA98FD38C1C2573570FD49A4924A94A106D2A7D850E793608
+FB135853E8C4204441CDBE697FD0CB330B1C3596F32D2BCBF263237EAB362D09
+DA6F531B40384DC91F30674760CA7B64BA1968F6A7FC9EBEF431A1AFC5E76D7F
+2D44DCB7F61C7F6B16196B3E8B47343F572DBA8B8B21B43E35BB6B2DD5C7982D
+244FD4304D254D6CCB5E8CF70E77F50812F41A988EEB3B26BF0F6F69BBA18077
+31134B5A5823D10FEF6201D045AEE7A24E0F25376E9FC66340C56C05F6CD810B
+724D85CC4BB8D789834A447CBBA159565D08BA5793D8599035BB5063271518E8
+F6C50E7DCE71B1D186270DDC860C6DC0CD506010EB5B1FDF6BE47A9A18CC15D7
+D657E58BED9EECAD5CE5D49F63139A39BC52C6584BB2C3264D51BD584B40F8EA
+AFCD8B83F548594386EB2B05CE803105E84931DC6E7A1398073D48E130E0D907
+CD0F1ECC3254EDF5D4DDBF44415DC9BA66C673820CDB0FDF033D59BE2B5EFCEF
+01FF9D33EDC88F8D522E07F1689D024DBCD09A16A63519E1764C8630FF36058D
+CFC07027E0ECDA01E0E85B166C613B22F587B4D355EB018BA93E92A36007B4DA
+287FF5A91F7D8A0EDF5554ACCF45AC8066E88865C5692E63EB99CAC81367B605
+8E6C19EB98EBFE0D2D161B447B9A70CDD1122C7B78A413369016E6D8481E2AE9
+9AA97B5DD0ACC9B0820F7742CEB2F46F89F3E2092621969A88DC0156B4F941A1
+6BF1546D4B136657C47B082A8A35FE96016BAF3D9679B8C32EDDD6AE6DF3BFB5
+7854074FA019707FC22BFA82299E72ADF9A980AE29A8E2434277E58B01F6B03C
+192E1E25DADD49F6E3F69799AE62B56E00B60A031BF8721DB8B2CB6D4A4C15CA
+AB1FDE010AB7DC0DDED977389B101B8E53A949222FAA126656E02817DD32B0D4
+A49516CEC2B97EA7C78FD66229B044EB92F502384BCC6CCDFFF995EABE3BB7A9
+50D5D1AED861E7D3BA8D333026C673C5762712E763E59261426044583D789C67
+A606B96F97663F92BF104CE02FBFDFC521EC0D6670B7D4F85A229F51426DE912
+3B729C4A535FB7C88D0A5E78074751B58885DD6BDD2DD9E9C83F105E8CF63DDF
+CA7DB39D0319CA7CC2E73F42747F007574DE25AE1538B4D493D22D0D5F0F80C6
+5F6FA3937C8391DE2F0116F81DB2DB0EF751EC838A7F85F163A6F48804E84B96
+8D715EF25B7E2A5CAECC558D80F421052A1D698F3B8452AC27E30A4E6226E3CE
+084C8A83ADA0818A110923CF7AC7AD4CB92AE4ABBE0A9EC1FF935FD02774C1F7
+92A278E513012AD17722A23C55EF82E18F8847B5CCE47F4FE3EC508BA563F7B2
+AE56C94285A18DED4D432FB0CEFC05A20BC17DDF9FF919C724810A8ED7358A27
+97EC93C1A13C443A91947FE1F6F528EA7B628917FA7E554A1D7B31ED46C5ABCF
+92BA57961C8876DB4041305EBB029B03D8351D5E2819FF87E97ED214D8F1CEF5
+7F7668DDE223721C0B810F4A4AC81CA4EAC86EAE546E1B15D91E626FB9A31824
+5BFF17C4E79FD56ADBF6DBF01BAF6453A81EBDCB38A5FC0FD0FF0646B3B0D199
+13E2E59A1B5CAB6DE5329BE389BA0E2A2AB55CA40B711ED746C24F1E48892E76
+6DACF7DA163CDC90CF076763008E7A899870CDED5A80758E6177BE6B93B07EB1
+5800A3BF7B9AAC3FA825CE594EF5B7546B181375FA8F37608DF17856D2F8EBD5
+6030A9E6F6BEAF224AD2AEF76D03B023E2FCB922CB8E3C6816AABB61FE6E4F83
+F21B4935102C860ECA03DBEFCA461F0E5B93E5A8D18440BCF7D1D6252A24CB6E
+A64FDAC8B67C4888519AA368D9C4A8C08C7155DF5BACD75C5196C571C3C456C4
+7CE8D90215FA6EE8CDD72C48740F7F5930EC3632DB63A9C8D2DA125088C0F05A
+9FC83D16B7F53163F4EB6FF372C6C3115F1E68EB35967D11126EDEDF0BF80817
+E68A698183B3EB0A207DB43786E1B9D289359D75AD5E465328CAA90E712C2962
+AE2A466173F2FF30EB535A6054BB0B875DC8552C16B49DF17CF84D98D35497BD
+F55E273FCBB0C735899529A69990E09149FBD2DDE64B7FA8D50AE83925DF03C8
+0B63EA158FBABB12A028803DA4B9DD6C48C0FEC469C4E730729F4BB420D5B003
+1918B4AE9CF35CFD31E8E62A44C0484E3D00143BF1D330235E821E5CFEAB4D31
+7CB4604DB1F310457FCF9075A3527279644D908DE847CCD00B6F50DBDEF91D3E
+38238CAF550FDCABA2C3A46237218DCC5A09AFAF69997E1EBDA7EFE6FC99ECC8
+5D4AFD5EE35FE2346BE79B499EC8EC436868154A947D13BC02C780EBA4B9E64F
+3026F1BF5DC1F8D64FEA1281EA40B4BC355638A3A59BD9055BCBB232FA45EA0B
+B405131B64F105814019BC55466EE78E9E9ABB62DB30EA452F7EFD7196C76A85
+15B2CFCD89922CADC0F392B0C54A231F3999AEFB53C24EB0C63B0C8A1A1ABB6B
+AAB2F93E5ECC7AB90EADA320E918106BAAFC1F8C425C617639984629018BA674
+6FF4F338AC43E23BC3740542911C058D43A49A11CB3A0CC8E3088BB5BA6048D6
+CC2AD250DE956BFBE83BB24C945C20D9C22E7105983F284EF478F9B68BFB0322
+EEB7D62802CBAAEFF1C2332159DCC7243EA40CE15C734EA905E04C476B178B82
+A08ABCB0B86A7330C75E62EE7844C9E22DDB013ADDF20AFE08122EE1B930A81D
+806A0F8CC584CB7FF5F56F9B35E5FF78FD93E7E4A40C64537464EAA275FE88F4
+461FC6A467C8A69B9A9FBC10D44AC1B753D313A8E7D97F5FAEB60F82855658D1
+4DCEE043C8FCDFD8A29DD091F3BA55874A458B2B8989F35055C72FC411382361
+9AADC717E602B48D7C9521D3971A6F7EB19D539445DDE9EFBC5B58FA9E5E426C
+172C45CDA24985FC4632287FC3B15849DEB56F5A061993AB10A6BC59868534E6
+69888175053108B77E4978D971B4EC57224C0F93EEA4C15AE92254140A94704E
+ED5666FC06C5341F643F779CC88A9E81891565C63B6F7F6286E664F4E0A48690
+356DC96F1B98026C563700772485B83BFA06435D4E0793EF822F423C93FBACA0
+E5D889D2B76771C6F0EE997A5DB43C2F6921132890406E3C33F6F159B14C5D78
+7C151BDFFDD02B697315F191B5490073EB418A4FF2A398C68D44F0CD1B87CF9C
+B52F12728B72F94D752D23151196A256908135C87991E508B8906CE2539DCA8A
+31F86809C8C6C18A09F6129BD7CDC6B37E76B648788056851F22BD3E3B5772FF
+EC01D822B57FFDB3BAE624F05531292641FD6A7E3666152D18F6C653048DD7D7
+98A942C840C4A0FA662F260B21C64214152BB86F03662A330109C5AC0A5EBA30
+C6201F558858130703DF76AF4FBBEE069BDE45C0D9467077D85FFED4F9BA9C61
+AED87D67CDCA453A6528AC5BA153E1039D9CCC556CEA5CBB542265FF54A1B208
+E0E13740E7E7C26AA00AEE909F8F3ADC2726081A744D8EF6BB711BF5F611A900
+76F91C26A338DA13A7160A9F42410CCEB3190000D963D036FDA05A29F598EF40
+8FAE6F8E7E6F50C99C3304A573501C13A00023085F057DF331E3354CBE65D573
+CAE73BF15B3B96B502E0AAF2B4A86237E98A997AAEFFF4227D5A26E8972C48E7
+761F430733E6EF8AB2D903C17FAFBFA21C25F8A0AC157D397BF3CC1AE7598F0A
+2BE4FB46B29443CE57F41FD5F91122E9D86F903E94D5B55E2BB95949C156D138
+89883BEFD634311F9280C7F028DCA6408D3A682DF5B55B9F7ABF08F019190F60
+D39E4F0E80F0594235B09A5320109638B938633A2C196E4ED2B43DCD8643C3CF
+C6123B076B7F73352F906D96FDE0FBF50CCCA432712C574D5857838BAC30B485
+D25024EB254A7EFE57D1DF0892C275CDB3DF77602F0FED0FAEBC644BCACA04B8
+B424DB125E487794CAB36E01B5E1A26F5E1E97A739AA36D77A12F5B45338EB39
+AF36CEBDED55DCBFCF497FD475FC6BAB5530AD6153C6BD982564EE8712185F1F
+D5EA7ADF4104661168A01994C1FD773A50C8AD6A3E4D332E4D59521BB8BBC6C3
+866EB4AC3EA4532477E6CBF6BBF0860031C3B916AA25E3492670EA67F55CF4FD
+207C684A0DDB6F4AD21B2909CBA71BCE2E762012B0927BA72367A6AE0AF87F73
+756C9BC85E4EDE35317E2CCCD138C02C7A8013AFDC1A48C3A4BB8EF257BDEEA7
+60E012F54D12D31D18DC59D5E526F12567B8688B4B67E16B56713870300016BD
+A3B9DA87FDC865246AF8E94316799110D86B1DDADB8A673402D4226C519C058A
+1D1E5A5778584FC28AF12819B1924060BC4F54B1054EA6AB0149E04B8C4302D4
+A56D8A347EB5D3D2A0E12CF7E35059BDB53D9FF6BD25F6D9619BC4669CFC1048
+C6C9978B8751B840F27D82A69075832BE59F55C1737CBB1220FB8FF691FDBDF3
+03BD7D225A9372AC221C38245E48320E1CCF898D9EEDD678E5B8C65B7F588321
+1A3953EEB9B39EA9A8CB72DB08C3E9234DFFF5FDF9DF804C021D57E97DA7622B
+97F4CB6E0EB640E0DC9EA15C5193F92A3A7565F4C7A4C9CC327F7CD2C44900AE
+D9E76FFE62FC37FA376E77131B566AE67C3E09DA80F198BBB995EE8FA47EEDB8
+4B467C6C7DB8AEA745CF8C56B8BE56534E9C56FCB2B7006426DFE93D728FA4CF
+94F131C549814E54ECE7C914C5FE8E4961D3437CE7475D03534B62650F551D97
+201C794AA877445DBEB11C85ADF6119B05360700F8CEDE4766E3A1D7A35CDDC7
+9ABF7C619E3868A39D1852DBE1EEAF5D7898C78323873AC005542B68C43C5000
+CC58F675EB595F87C879694751494676465891E8A897158B481F11A171CCBBD7
+29603F00210CFD7FF31FE3D273933ECC34AFBCC4108D9B76D9ECE63EA06CF939
+4799092A54A749DACB82C1424E9879672C8BC084C360014C9C1B6D5D65C68AED
+66CE329C3AD712C0A36BE7EF03FDF339CAA2E0336D387A693B1DFAB5D5164E31
+14755A158168962C9B399F8F1DF3FF5060D7464D5071058C30C572A2BC7DEE53
+84BD7614A4BEC4C84E18CF7EC81C811724463BD46CECA5FB57B0F55EAE20CC74
+6AD815D1897B037C197D2456797B992C20C70B663BF99FE28C513B4E221C8E12
+49779F8C0AE8517048ADDF7CDF0D698E3EFE60071C4997B7F5EF12B6CB65390C
+224F13FBB99FFC034C0710F05019899689B6D3350BBA65C7CE7C2AB03D81B9A5
+5F3D65E4D462DAB189006669F7390A78A1B8908A4C913B15DB8827DFF15BB9A4
+A6037DDB643103B937257A7DAB025F09D53FBBC2BCB6B0BCD8D56B2B2784E498
+1F6CF8470DCC892AD0CFE11578718948BABF9C1427085012281B7A493CA3E3ED
+380265E56AF14A36F7C6CD3036C821C6B9EAFCDCED359FB406BEF35888E87E3A
+F5DDA8841069F00BA6008BDD30BA84CD0AF1D8DB442575753A6EE28EC1565370
+384853C2E9D05358C622303653495CE8EFF16BB938FEF83F09F98531353C9A8E
+BFE7DB9C9A121B121F1E239065E32B17AE3428360E0E08B2317984A141A4B19E
+695DD27361E68D79B52B6C9A96C1A40596F048A31C4E18A3CDD0D72D52948373
+E38251C508E4505E8455A966E93490C7ED6E46D8FE97C313D83D481291F871F8
+2148EC95F4E53FD20E5A2A4479D59A73A9DB16D5DF926C4455FE7FCBE124CB47
+C28D01A91B690B6B30AF73CA72C9EB2C7F36E27D00D4347DFBB8BBD5D94B5EF5
+39C729DB9E22F46D677CE0ABC6418B8DEBADBDA8CE8FA7FCCEDE1BD4B8566A26
+8801A72428BFFEDE49FFA847654F564E1AEA4D2EC2DF16622A26827FB951E69F
+5F24D03D05ED34391BF881DDFE353B48001949483D3BE38D9FB4F96C2C54591C
+85D37B4786BF794EA774CAD2ECA4581BD58ADB6AB154DAE79571AE47CF016E3B
+3AD1A5C090108D4964C7FD5E57B2BB50DECAF46B650947B490DD96671AB5498F
+F7A017BC94212203C21A39B686F88742CA702042CE6FEE1C98251686696A7A3D
+C4DBE0138393426D1B91093F9D59AA5E3469EACB167C30F7D7763F20D741FD76
+2A5EBA4760F8B9A15A195A0ECD0A33E8B690321E1A1C9A7FD275E2E346171058
+EC303E62B84EA810FCEBB29667BE88E0F05541F9D31B4518C67024DC179AE59E
+2C1E050899D71BF8873C2203C7003FE088725F37CD5EE64C72CB67D551A1BC9A
+055CF7D9F36CF368FE63616F3A14590FA2407BAB1E8BB563A9C89C0F79AAA61E
+7B1EFDC10CA164F462CA22DDA16EDFD6DB7692A30B2AED5D5C4A91CCC4E24C50
+984C346A441E0D4C268DD7ACFC5615DE7F95BFFC577CEBE32A424A9F151E03D7
+9C9B7D0B357E17E473AD1FC59C83E6AF1F16A08D23372FAA078DC8AAB0014655
+0EE703A14B531D522A9B469678766556ACA88EDAA1C1AE97E95FF9D6AC6EED27
+5E1D42AB092C9C4216D774A36899CC66DD9E1417FCA2D9350B12E3843B5F41C5
+F13E36F9D84B8B5B41A35E4666DB96431B5A9258C8472C4AF837EA7C01D0904F
+3C5C0D1D4B4F510F70351551583A0E4944DF900553670CFCE11E6829DCABA73D
+9CE75D74A63FE79FBBD6F4E0797A9901190897C68CB4165D6103ABD13CF423CF
+B21934CE02113E105FDFCB7879A80950B929B3DC3A070FB0498DFCF4351939AE
+DECA3E47EE03E2520CA7EBF85DE9F84D3AAA119AB947B5F5B9E5E31E77BB688F
+21AE393E78713CBD51C8A9DEE1596B69521710C1662779BF9273B7F4C23131BA
+E7EA89A913DBDFF7C720108587768C2816E4F17DE448BB199222779410AF291A
+0692EB68976791C38B85F8C8A02B9E7F505F0AE37F930B3DD7F2F7F1D3CB7AE5
+8E3833FAC5649BB7CADDCC162373770B50F991FA82098FD3FEC309B4E6E79B2B
+3DD693A1DDBB20CBE08D7F586D9404510FF8892BCB811D78343B70532A0E265C
+8A8833130553CD5F0C471211CB51D21EF663141BD4037EA7C673C233EE5299E4
+1393D66F7707BFB06A8839775588E392817CE387D26ECCB11E8C2B88844F49E8
+D3673E89042A97C49344305F95DD9EBF7A593755F15DD9C6FEB51B844F10BC3E
+8A853225D805235E8BFA458B9110B0E154EB8620E0C9833E251BEEE1C3253C26
+B800D269C8B2258C1503A3301CC417A848AD1E002684A51E12CE0D6801C5F182
+C1CB93C8A35A5EFEC2D96AD2A8D80A4708015011F8C381FC8B5F43EA05BE2F92
+2C105A022544681E7CD633056B6AFD89516A1E516C3C3CE84274F1BDB8EE8D13
+B2D004B3CA0399C161D0B1C5CE855C62E85F23A0C8A8238CECF499A28B6674FC
+8580DD2D3C11185E226746D50C21D33044FC7789DC835FCCDC93AB010DEB98D7
+240A27B4933C20BE1D1B3FBAC074800A0D0469AF86798C0375406B65D98411CD
+2B839B115318DE4EC108980887A0AE2A11413F970D3A93B1954EE9AEF18F1486
+504CC943186A984BFA564135B0B91F8BD322CEE5D47DC980DDF10FED38CD6A64
+F3DFC0CED242E52617FBF29280518E4E647C78F7137A47E26E4940CB21D2AB87
+8551E2304FD90B3613E315B1B216D9C5AD3C073D54C45F31D5450942E247BBC7
+62FF47FF2EB34228B7643F31845C47394224E0E7F4687E0342E4458C977A0711
+93E6E4EC1B0F375BEFDFA582428BBB8FCE580941DA5B574E11898463FDCCEC36
+1D25941FBDAC9DDCE3AA995235DB11DDDE8CF6AB5B0DC8FAD760D27FBC0F1DCE
+5FC7ECCCD5F303E67F7C4F9CDF8EA2BA493159EC08EA63027B4CA8D2609A96D6
+D2696D08F8AB7844F1B0A29FEA15A0CACEEA530E7809EC4142914D8A1AEE5495
+B3CE82DAC918B2870BC8DF8159E2CC0314301BE9D638CA5F463BEDEB8390B2F5
+A7F835028605DC694A455F29DEE863657F46B5B72B892ADA07278DAA3976F47C
+6C00B46BD73B5E423D69527CA16883C654993579E117C7EBEAE9A840968C2059
+4BB3F48BEC62BA54176F8E7931FF99EC57B09A037B88D3E6
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+{restore}if
+%%EndFont 
+%%BeginFont: CMR12
+%!PS-AdobeFont-1.0: CMR12 003.002
+%%Title: CMR12
+%Version: 003.002
+%%CreationDate: Mon Jul 13 16:17:00 2009
+%%Creator: David M. Jones
+%Copyright: Copyright (c) 1997, 2009 American Mathematical Society
+%Copyright: (<http://www.ams.org>), with Reserved Font Name CMR12.
+% This Font Software is licensed under the SIL Open Font License, Version 1.1.
+% This license is in the accompanying file OFL.txt, and is also
+% available with a FAQ at: http://scripts.sil.org/OFL.
+%%EndComments
+FontDirectory/CMR12 known{/CMR12 findfont dup/UniqueID known{dup
+/UniqueID get 5000794 eq exch/FontType get 1 eq and}{pop false}ifelse
+{save true}{false}ifelse}{false}ifelse
+11 dict begin
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
+/FontName /CMR12 def
+/FontBBox {-34 -251 988 750 }readonly def
+/PaintType 0 def
+/FontInfo 9 dict dup begin
+/version (003.002) readonly def
+/Notice (Copyright \050c\051 1997, 2009 American Mathematical Society \050<http://www.ams.org>\051, with Reserved Font Name CMR12.) readonly def
+/FullName (CMR12) readonly def
+/FamilyName (Computer Modern) readonly def
+/Weight (Medium) readonly def
+/ItalicAngle 0 def
+/isFixedPitch false def
+/UnderlinePosition -100 def
+/UnderlineThickness 50 def
+end readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 40 /parenleft put
+dup 41 /parenright put
+dup 48 /zero put
+dup 80 /P put
+dup 83 /S put
+dup 97 /a put
+dup 99 /c put
+dup 101 /e put
+dup 102 /f put
+dup 103 /g put
+dup 108 /l put
+dup 109 /m put
+dup 110 /n put
+dup 112 /p put
+dup 114 /r put
+dup 115 /s put
+dup 116 /t put
+readonly def
+currentdict end
+currentfile eexec
+D9D66F633B846AB284BCF8B0411B772DE5CE3DD325E55798292D7BD972BD75FA
+0E079529AF9C82DF72F64195C9C210DCE34528F540DA1FFD7BEBB9B40787BA93
+51BBFB7CFC5F9152D1E5BB0AD8D016C6CFA4EB41B3C51D091C2D5440E67CFD71
+7C56816B03B901BF4A25A07175380E50A213F877C44778B3C5AADBCC86D6E551
+E6AF364B0BFCAAD22D8D558C5C81A7D425A1629DD5182206742D1D082A12F078
+0FD4F5F6D3129FCFFF1F4A912B0A7DEC8D33A57B5AE0328EF9D57ADDAC543273
+C01924195A181D03F5054A93B71E5065F8D92FE23794D2DB9C535A5E57376651
+F6823308463DC4E0339C78699AC82C769542FD3B410E236AF8AF68CF124D9224
+FD6EE92A38075CAAF82447C7AF41EF96F3ADF62F76FB425BEDE4C4124E7B1E0B
+8BF254D91912D3A99557F5427907A56514C5A3EB961B94112077FE9417B70DA0
+B2E1C1FA3E1D6F01D11F640CF848E45BE3E205258E64FE36AFBD4DF4E93F6B1A
+966C8E7FBE2CC8FF43C1F67BF6C361678B5E90F4BA524FE8A4CAD6AB28183E6E
+CA6C9636E884845105595A2E40CDBE8D4807A81AF4DB77B31873FEB221BCADD4
+2C4669459704CB58A7BC230FC59F867EEADE660E49AEEDEEB042BA9A7DD8193E
+56C3A36A1F639F7EA512EE4BC6992F52C2FC82A890EFDA730105B0AF7B819295
+EE00B48F64C2B5BCB275B1DD62F289CDAD4AD9B7EF057684642FA6FA6322C277
+E779CAC36D78F7779CB6DE12638B3C65B70C6B5F8A8C6421A379719B8DD44973
+5F52856A4A29B2ED37F2B1FBE6EF4B79B7C0CD6395C756A00FACD763C235914F
+847D1D99831023CE1FD89EFEC83AA7E313131C0C197248605EF5BA773D0A4000
+72F607551A8EA6F0FF19441ACA179177D1FF7B423FEBDF58B0C19CAE3C10EEF6
+3538D8FC4762B77C5AA023A8186C40D0365A4487DC3564265B3DF908572DEAA2
+57E29EC669DD72974F806EFF5ECAFA9ADF1F9D2A63087FB7BBD100F0F81C6FFB
+B1EA1C9DD46548AEDD147EE64B1B4894972DAE1DC3E8569D6A3CEF9F9E46DEB7
+547E10BB2959D374A33E47C58F1B20419920AB485F166062FCCC08EB5CC9AC88
+F388F0C0155027B727729488E44CCABB7064A1432E179189C4627453C5231535
+47D1F2B8BA43069696830CBB6E5F9A135CF22D3D1FE490A3A63C088EA32FF444
+24A2427BBA63033DFE2E06DF8CE67949B6AB02F26335A376B57376814D2A7DE7
+64A4347577EBE9A6E33DD2FC214A09C6D889C8FFBF1D567032548851B8F97204
+49E215CC7D222F593E1EF1439ED60AD922D41E0E9EFB5CA48F2FEFF75AC5FEE7
+FB6676D8B8D4DB6885FBE8B61B586313E4DAFB09D94CEDC0507E93000104F3DD
+F83865A2C6F6A7DA8562BF86F5DB233CC9B53391273A1462E40876A8AC2B098A
+DBADD5A160DEAC061F86A5FCCAB495EF8A9D121AF07928EAFD56F618E4EAEA97
+CF89A3AFD406FC9DE1E9769C1E1EB83BB883786BC075EB5DA2692CD59C4DD7C1
+7FD2FF9B18AC740A390C1DB38670DEB18C67721A1DCD502FE7368F47DB4281D5
+459B3F020595FA3B10544AAE9EF786A0645FB7C9BB29D091E1432CD878A05918
+1665643005BFD9A4B0FFD347ADC84CE22D6F9AD4EDC05E8C7179DCB360AB57D1
+6ABCD200A4B4AD56825DC345984D9A3DE11CDA5E9EC1E5006EE4181E4EFE0846
+67D8C27BEE8F84A1E01947E945BBE988702DEB2240C4BED952E433E5305484E5
+71965D3DE95C4115FF78CE9EC18E323C599727C8B93CDFBCD1CCA780DB8C81ED
+C4B5E596E1603624308972FFAE9A57B0EDB51FDDB6E23EDE2946F61BEB241345
+2A192D8CAD53E823D687F9C64A70A4B4B703291FA6317C051DC6A44BCCE0288E
+3839D726A8F2E39BFF429865E95C726E808E02CD06F36C1CC9AC77999F8E28BF
+CE9D74B699CA982479E9D0DD98EAB24D29C981EF0349721D6819549A39413801
+F80182D567EE316E2F0AB208068E15693E4C399A381BF9BBA625E597E6E109B8
+16F3A84C8EC92F2ADE288821092A421A8D3B907048FE947230810F0777EE2542
+29A3485223FEA079B359034F70464DAD2F0E420271A4E0CCF57A0ABBC20AB327
+0CA71B292126D395E0D083B19BEC6B48A9DE2BF470C3D01A8C3F52075BD4BE02
+A0C518355814478202FD4762EC542F8E7B9B1F7824F0554660CEB83E35635E1E
+DF0D03C94C903ECB36B4948ED98B6324E0094EB1DF70863142D4ED3A932D7346
+39D69F8F044B6084482D7748C27328AFD24A3A70B99D1F7D32CB984488672254
+28B6A9E9DCA2C9FF6A1B311D72413404B3CE5428BDB7FF3C36357D7975184F56
+FA6B32AD54C37D0AF7576663AB1397B80D4E998F0B4C4F6D90B483029EF2EDA9
+D4C4204C1546EFF3100629453EAE01918D09FE104E626ABA38646F17B6A94CE8
+116BC7A8D9C319434CA5B830859B4164DFADF1D7C3ECA5C78D8DEA930EA4AC3F
+59DBBF3148C91A2E807FB934E3439D4F67C6DBBA9972854E6E3688E1E0A34B74
+482217CFE031CD7B5DFEF727C3EF8DAEEEDA08F4C90289E62FB2AF2357EB2E45
+4BC547980FD479101FFEEE477AAC6268DD659E8DD9E244676FD3C6909713B71A
+323B211E571BE711D103FA23B5B9AF077D84E2D20FEE805E81D20C03501F0F17
+C3B081946CD0FD577F00E50B76CC37CFA97A61B89C25DD43911B28857284BEBB
+5BEC61FFE3A14C64BC5425A7A82326617F6F1FA4FEAE56071C9F559F91568179
+46369B394A5CE96FB7420FF8AB7C61CB83492FA5AE4A4B0799578594C9EA67E1
+E54498AA5CD6ABA34AD3417F04F5D8D664A7EB39D41E2D17643CAEBBCCD9C38C
+C5C9541641A09335EFBCE0D276A54253EFD68141807A66F1DFEB4BEA5889FFA3
+4D20BD52012206A9F8D3E0F6AFC03FDBBDF3E51506EC6336E249CEFB571AB84C
+BDF8E471E3795C04E38A5306BA6D450D72E50910D1AC385BB06CCD4B8E433A32
+5A4B7FACC976BB31FCAA1E62DB2C4FE06DDDE7367930E336B49F47DAD91C8735
+9A35D80CA2E117E86B52E41E9278046ED923454989E48610ACB3B1663F197117
+52659A9D7BFA561C7ACE0771794FC778675F83C5EDCB132AF124C7E6540A140B
+E0A268836C73A3C746DC964E482E63C56C0D396515283970FBFF182F9F684FE2
+655FD8F5D057D22246DDC3FD11B77552DB4D90ADBAB77BBB1FB1592129DE0AEC
+F822D7D36E52BCDABBD560B403A5C56C5E1BE789C3AC049318C7FAC5E5861E42
+FD66C3C0F46361078D7E036281682BCE9BBF77983C93ECBBEBA9B359769CA442
+87FCA1B98F4EEC4935CC93B08AAADDF355C99816453587310F08C50B9BA3D107
+5388A1F3AED2AE32BEFADF0285DA90436D1D7EA85D7B9B6DF2AC4B778CFADFF6
+6EEE54D1A1C5DEE3CCA7EFF57A7C2931933CEED90CA26DAAB45E4388EC4DC366
+B9E88518D6CF094861D2A59282044CC06E63EFB390A6DF4BA5EAC7CE39E1EE03
+3D84099F5BE96612789AF3EDED07266EF10A0FC23EA1EA97040B6BAA63138B1A
+A9CB8F5DED781260962D7618EDB200C3ED976033E8967A8CC676E9C11F74BE34
+343A7ECE7EE97E8F76F7E95517A6D6163527406EF5A669535CB2BF4031F29046
+BB2D0FFFB47A576F5EAB1D00A582965C56F28C00B3BB7BE2CC8D8391F789070D
+775EB775437F0CD53DA840BB3575104B63E4B0BF14E3F14B320EDEF65FD4CAF5
+8596DA491BBCF3153DED3B718F833D106432DF8DB8B8E6B34D5308C9010A5DD0
+7E0E53260BB84BAB3EA748E8D72F75901604F80F4416920D69B4B983DCDB72C5
+E9928F01A4A85954FD74578AE336C782CDF81D1EB7EBCEBFBAE7ED8AB4862584
+397928F502D65139CCD582CF0723C5262EE54B9D2B8C39614652A8A90E1C3B65
+7D26B99DA298FE4B9A7E98848F619C9BB4FF9FD215B72F99506F06355B332689
+37D80AFD9F9ACD8172CDC51FCD3A759ACA0F7D4EBB07840840EE42C2D5B8B257
+2C6DB3A7657B75F2F0B9730A20112745703E2D0FE709436CA6A5F36F59E64D9E
+37C0A23D6D289E1AC1DA273872F5FC5C3DA2B127F078A4D7AB3FD7E124455817
+DDC796D54EF26A1FBFD539D3A21B86DD4477DA49213259ABB3FF241424F2BE5F
+89151E02FF87E0BEE26E85C0E518D8BE7CC9214B8E9A9EA1DBB49C6C212CCF08
+90C0F23E9858947EE344062EBD9C574979087439975EAD4E85CD7BFAD3C91CF1
+EFF577843AF1427D06CB2F3BB519ED1591974218C43F0D2038665F9E2E3960B7
+FE68CD3CB2DB6B36C7997C6B21EC11CF1DE049541001FFF26D14C255E3AE862C
+5A5701292FD2FB3D04523D6E2F3547923BB117718DFB6E6520F0D0B5450C695B
+8C9242CC8671B7284CB2E1E9EB097A3DB1B4D5E8EEB93B4DC7E38C0A10474665
+54DDCBAF079B92EA494F6FA75A84C5AAFE280284D0823D7C22249A21044BB0E6
+4062074ECD17B62E03EDF4945A294BFEFB51F5FD870D9D7230FC91B83C1D85A8
+86CDDF326FC90E04362145D6E8630C50594484FB829DA18F5C078F2EE67D2F2B
+08DFF39AE2E8C9741FA989AE494C7166F122D2C5F71B97C973B7CE8500E9F87E
+D59C30F2E99CC4D34713DAB680598F41955FBDC26A14CF1E73D6BD6B9AAC8D3B
+B998F2D0D647356CD236DEAD6561389ED3A6746221B0CF15D6648412B35A6B54
+6A0EF5BBB34AA376D9BAF025BFC650C1B74333CE85413D0EBB2F4D082A26A5BC
+3C0A25D2B12CB159F140E00E262F1CFECCB2C802FF94CD34DA0CE9B4B3830FB1
+DA85B9B670D5169928990A2E9CC869891CA2FFAD9774E6B92549644DAA5FE00C
+A5BE4F5FF91A0B6D2FD8F96121D766391EC4ED3E73DADD476B7DAE1A50AFCD98
+DB7E27E44D30416088D9BC07D4661D9ECEC0806830ABF14CE55AA3CA2DF66E8E
+748B8ED46466F1EEB072AC0674FE6FED231E0DDA59ED7C42BC05EF00E176050A
+C4834D893DE42474EA20DB1E25059E84BD137EF65A02CC295B0FFDE4CDE95879
+0FE88BDF2519ABAE7F8CC3E6386ED35E04A14F1E3861922645E3A3F43B48A5AA
+1999A5EFE192515FCC625C829FF5A7B337AA422F5E920545F9BB269C869A821D
+6C4C26DD2AE746EF0F0B4C1E7E9871ADB5270E1CA9BE28225F7A0370D4C52422
+E25263EE101C4EC1C7811B05AD42F364844A56BB91EE72FC8ED53CC6954D2BD6
+F945D739BE4C61E36143CE890FC0CBF2F610018D678ECF7CEAB18FF5A0E48F76
+FDE2463D40A99380D679B3B76D39C664F4992D23E5988B0D1AF33DFB04894016
+E852EFD1EFFE586153C0F31ADBDBDE3F73FB49C5EE64D0D02E1504248FAFAC3D
+903FD44679BB09C30288139B41B1E90A10139CA3172677250B16535A1F3E5E4B
+6F4264DE58896E66051FC677030A121C5A285C47B6129CB5A3998830CE070D21
+2F093FC1B44089F603A21F45F60960F134A47226874C737EF6C085634B0A4A66
+139420501351F737A73F39D960EC38420BE46E5B09D298E7C16B8E32F01507D4
+0141FC52DA1DE718D634AD9C8B00E46EEEF84356759324D2B9A3473C5DA38DE9
+E30182B87F91B6A7F7BACF29A93B44C879CCDEDB063F9D2E51E0F1FC9F018FE1
+2433D85AF24B55DE3A61C4D0A2DA4FDE933F5F6FDF17E9FA9932BFC46E2D71F6
+585EEF5B2E4E89E797A24B799D7F064DD1A817A53677FC9EB8CC3E7F93FE50E8
+D50E3191052943FD6C98B573BDD1F6D70349E1F8011599E3F8FDF1D6E80A710E
+51E434E85801617C6FD8ACCF1B77B4BFCCDD35CB4C0367F4EB4D8D9DE8284D5E
+B4F43E2F8320C2C5A9AE90ECBA7E65D377E91DB69FEF27069235366AD3E126C3
+A73CE97F4C90BA00D206FA012C327FD69EE59AF4470A315B1799CDC0539BF90E
+512C8FC3BEFE4D1B01D969EA9E3FEF976CD6E0FA4C9ECEC955B265CFD58AB8E5
+F7371E479279EE14B689269205C5B506940606CF3E24A1E7EFF3CA96ED30AD6D
+E243DE57690C3D69A401AB3315FA49E4BF4ACD4DD1CA39272533E82EFDD508E5
+1C2CD286CCC5DE1202C7C7F654521750632EB637F918667E2233A43DF75239EB
+F28F3129EB5DEE2FC5BFC331FF709B0FE9B327CBBCE98BCA2C861C6547E50407
+1218CEBE6EB5F9BABA4F2E11BCC6FB553A544A567B459E06375102C69F8018DF
+BA6A227CFB13E2D74E6A521E01B74F2963E9A0A1C9FD87A88EE6356E3BFABF55
+BABC751D2BF85E6712E8EF57914920775906662E4BA68FFA21AD422D34E15578
+43CA0568B431101A1194F8AB1EF25E886BFCDFC10F4A5EBD9530816548BC298E
+AE4A0B6B52B8B59C644C409B4191B6F4203F52314F2675F02AEB65A72C66E92A
+2AC703E15D8D381522C0AC30C165B822A9B8D18CAECC094EDE020756018DCF51
+D0701B507519C4270B70D8CE94B436F640C15872F9B5B77892AA3D110E4D6A65
+8F0815C61A5127BA25815378683F46E69E54A391A8675977E7DF9C2D4E6FA991
+9F029E50CC2F266B31EE9F9F24452D5838905F330CB7E416B8AF836C5AC26AB8
+BE2ECC6EA4BDAA08C30995709E225C21D35DB6369167602CBFA8DB2697635925
+969002CD1BEE745DA2E56C17EF3F0C05E3847147F86963C37A221C8827195A8A
+3D38993E4939AC915BFD9A212F5FF3F826F742B952018986F9FBDDB69C3AC65A
+845F7F33C55D4BE60A1817EBBCA7E1538E8087E1BD5C083A320D52953BE65F31
+E8339C612A510B59CE48D2EF7061560C4AD258E7DC59694493E3AC878246F37D
+6DE89253EBC8830C6B209E818213C4AC4CF1F391AD91D57BE76FB0E2924A1407
+E4A949C905E44F54EAED6419F13D59942C8079336A172D4758BEB5D3E786FB93
+3CBE4FD2EB53E4E1DAC34E821EB30FD44BC6CB4298242C38F848FC23AEDC9733
+52BE6F32E31E25F18301370F8936810B0566B664B042C7AE0D78ACF0A87E5BF6
+F9B66E358168B2CEA30DCD940074F3ADB793CDB136161FE2522905E87B8E463F
+95D4DAB7E14A3DF7BCCE8141C5A08FCFA2BCE9F2D1B05A7642E75877EB840149
+AAB007CD239AE47AD115929427717F219B0A8907F0EC79ADE1B901DAEE87A2F8
+39361DAB43DFFF69650F601B24061A9353CFD619FF9626F63275FD09A5B13BB4
+8B3379EC4D147C41197E8387FC04DA7BE409524CEF74EA91DC066808A7FD0EF3
+957A44E2503EDA67B1C61827479486134E922E560A673BF314D601C66003CD07
+55569085AFC8428389A140EB976CCFB8F29E27587E46C413ABE2EFB51AF5913F
+53EEB74063162E0BA1E24CEDCA320377D3E11BD374F0B44E132A5C35835B6E2C
+D32948EF9DC7931D104C1385709DA882DED6458319F21C2329938396BC074106
+CB9CFB9E0A915F8DBC8435F386917AC87A2BA45D857EC30ECA66FB4044F5439E
+CDD556B82A0E43418D179AD883C85AC276E1190CEC242E3E1D86E725ADC39E46
+BB6C47FE9E17E29F8EA81E870302A00D91434F3B7A05F243176E6EF1082541A1
+B9052191EE5C2B8E94A2E02DB65FC769653CA8D1C07A13CB853544AEC7FC35C5
+218DE3128AA31952DCE19C55C23FD69BCEA2C661F57B11B8F9E86BFA718D1521
+3346E78C701A5E51923D6D937E62FDE3669B214D240538F069A100A542720A86
+31DE88116DE775F7ACC2A49EA6C02A24408271A846990669F2AF60AFAB4C16F9
+7F4E88E917F0FFDCE68F22998AC0AF2A60A73258C3A4BBC42A2F918123128195
+196D0E150D79AC3CF4628503D1F3FC528265ED8324E56849A47B3B07C29940B9
+1BC270071E221D355EA51E9942D3BD7F99816304FFFC8F5B036C953B38759341
+ED5D7B9C8E6B70C409DD8362FD291201CC385E4A98D73E8518A4C0E544152563
+82032FBD2FCB6E403D34B85ED4053A8CB619BDD4DE001F4C3007B1F317579651
+E6D6662189CC2D95AB85D7473F65C5D7B4AC63B0FE928F3400035D5A9D443D0D
+F3532B99F3AC26CB25EA3CD64C341159061E02EFBC7C033C05CD919BBD827A6A
+BFCF3BD739E32E7FE909AEE068D50FAC33605FFF98C7D0115FB860178FD03DB9
+7985B78E0AC21F2EA065FA841F5928FB85163B2E2D8F850DC7EE313912C45C28
+2783F6762C67882EFEDDC7E7567F91C16B16FD8D5A1ABF35B5586307701B91AD
+54984598F2AD46FEE3D68A2731BEAA754C8E730FE0E84952EF77930E4118F8D7
+2F3AD756D45AD303A49031774730AB41BF189CC3C8A823BA3F4E3CC0A7D00FC5
+B59737BBD6C22ED359C0F7D63E902FFE2325B3AC826B230F31FFC8CF0A8A8398
+6EB56A641FCEAB39538B3470629CF5370EA0C7762230B7086EAEBCA256B5D29E
+CEEF4818EDB47EE04C975F1F681F6EE9494AB75ABC8D18DC42DEFF224A45A96F
+ABEA4522C2C33D0F1054EE9AFFE714E092A966F6D4F0595BA03701CA57F3DF0E
+B50C12D4DED66CC24157BE07E51C58A5B2BBBD362D802D837C0790C002203AD8
+FEB9EA1D52AAAF0E78FF118B1506F2F7083ED63F82B0BD824EE4EF91B8A7CD8E
+7705E98280BEC581156BEDA4B15E0873689CD0FA07387B57F58D9360B0553E45
+CC2743D57285D31D43D0843467D2EDC86341703E18337DAA35C5BEDAA418F7A9
+9A07D9A404D6FEA537C272F8C4FC124CB09598EF82AF071808C1B0E965065024
+4A79FB4D4CBAEEC217BD3455B83B850193B250CC435F066D6E1C497E4B06156E
+3CF3CEA3BE16E6958D26BC4C2F276C0C7F53AD881CE043315AC24BA9566B7CFC
+AA1050A1EF0C7D7378986BA760C1C69F9FD5FE60782E6E001CB17CD894D9EB4D
+CFCFD906B9A71403946C057D8103D4DAD59393F289F76CF2FF9F9B64BED0E30D
+C8D9C6CD17481EA1BB3A95AA7DF903E4479827751201F12617952596187203DA
+4BF3F0E438134EEAF634700DFBF6E08EEE748FC4762055ADA7E4E5A009DEE8B1
+1EF3A007A001E62F98AAD17167D6977A867D7A2BD5B5CC2A6E40CDCF86B4043E
+71B14A6CE4E582879F59420425274D19BBFEA4D6A44BDF1EC0EF921CBFC68406
+340B741206B6FB1EB500F7DCE5A87C04839DA7D6AC2CBEF2F950C4DE8C0C7138
+583DD21F1982DE2004E0EBB48B82076B68F73CECB07F8CC1A74E061A53FC0E2A
+B97B20AA7D44F7764BF93C1A284EFDD5018E6C46A15832C9616713BB7A8DFD04
+BA38FCF723F4A22EBF448ED32A5567077C6150C81B6015A3C3985D8E83BAFE06
+CBC9760C7CCC63C7C568FE4FD09F59C6C71C87796210918CD52AB5914D40FC64
+F9D66B0D2D807656CB40C0231574135348B1E11D96DA292DA61200D02536033A
+B533B87772D7F125BBC54C70A6DDFC8F733852234A1DC1DF83AEFCA20B49C3C0
+F1E035E190E57A13C53F458C603FE2EBEADE680ED72F78785432830C77E5CBBC
+659A55EBB94E11848E7F7DF80F93A86DE03958600443D1DBD842C2A0642F862E
+A857AC3CA2CA72688E8B8B6BB129EF20D3224B35B49FE9F010C1F138E86EED76
+0F6C8B4DD1D711584C2EE65A4247CA4D1DD287FB37F8FF3DE528BF04BEB403C5
+850016969F8CD92D057DB6C643000B6A09A5BA8D0CEE76BEFD4E10B678F0DC7C
+3CDF80608DA285631B13371387C1E8F393A555E8385CCFD19A76B8C4C375CFFC
+23035CD2D77DA1FDCAA06E0097DB3D753A68F3418A5D9FBF79DD4A04ACFA463F
+7636BE5EDE5FBD0E3ACAC93C4FFB4E7B0ABE0F03201328BAAB715D7D3F06EDF5
+5083CC30A7E33F40E41FB4654E35DF94CC29D1275D31D6CCD0BD0D4A499E68C2
+6013A798D22CB28893B4570E646DB42D3CE4EF2C5688A5BE23F2F5494B234394
+4277274631B8811C4CD9FA90DF1A8BF2961AF7E64E5CE73EEA7460A6383DE05F
+142EA11ECFB897E834D81079D72C463E297A3290A084DBB6C02520E21F3DB615
+B24430D77917D3A1425AC72534B703358EED17529E4D6B82610511B633C31F5B
+0C7641741A48AA251F30357ED935377ABA064FE0E6942C4A07924CD88E76A6E5
+21E36D3D97116B7D1E29A9EA90114CB1E591456E63AAA1C4FF804AF657D967E3
+0306F8645D788E07DDA078D68ABF8C99DB6E433C08145E500AB823411E424127
+68803B182C95E7C4E703D80374EF229EF400F631C47489C85B2D3968ADEE9162
+E5D20C153DB433F7840B2DA5A7F1B015DF1EC27C9533CC704BF95AB744DEA836
+E8CEC1846BE4C44DFDF6E9B1DA8BDD3C2F13A213E3573F462470E6364001F4F2
+A2AB9AEB56E97DAF58EC517E74E18620F45922951CEABFCB9715AEF112AEFFEB
+983F0B3D77AAC11DB2A744A2F21CD6B7480D63959B51819B2E541123168B644A
+78EC305945EA4D257E423F823DFC6255D17B9BB2B82703894F08B1C77BA42D09
+99E98E20D6C387418937F5237CC41C658DD759B1FB76A884B9B12BBFD39AA805
+8F0E9ECD0644C4738A308F9DB2475E50D397F9BABCCDF66558F28E4669C3B752
+1B2356844399D7E449D40EC3975D8BDFFF19638AC97FEDDDE8D9B2FD70FDA798
+DC09D7187170559DC7122DD1816A04E73BA0B5F943DFD0A388EC7D9692A5D505
+FDE519CAC827AF34EFE2B98A602ADC448B71DCD960ECACF7026A0275FFAEEBA1
+E12D3F57BE388522A70F6E76F585028A28DD69112939A5693065DC0B34488FA5
+71C9044E26962BA5348D483B7D94DFA697AABE30783C2B2BCCEBD8987A110CD2
+A07BD744C9ABFCD095A18B6613B89DECC94EC083AD795E59354BAC7E69E5AE62
+866279AA284A410DB31E750A2A821370ECD677D7EADAD0CDE7E28113B746043A
+B38C7021757F7FDEDA0B56457CF1F9AED576A3B467582687E67D928E22C96C77
+CCE6F9F5984703E7ECE0D6AC9D56C04F3D7A642A63F8C2865CDE44620C0CD8DE
+B5F6ECBC4AE96BF3EB5A9D6FF69D0CE4FC750B71AD4D9D57BFCC19B967141E10
+60F9C1021994834F9F9FFF6889BCA2E0114CAA6097746966BBA668038FAB9C8C
+7A31C23D7CCFEE1A85390CAB7EB945F83EEE5F07985841BD098E5CF07489ED54
+5E3EDC61E4910D7E9492DD1E7A234AB04A0DC992960DEC938E08BAFBD9DBBAAA
+347A448327DBFCFEC0965D652F758AFDD616BF87D5744647F50EDD4B177600BC
+F1E2FE76E554851B0D6FF0B51D2D077D239CD93B46DC1B45720B0BF038FEA59C
+BA572B23E47CBDD19D24585156E115976EA52AB84B22343D67E6476C33EF1813
+FE6B9208B0080637082C035277C35C8C0F8AFCE7E6117DCCBF1480FC8A033CC4
+2A7EC6679DFE3C88746CA0CE71D8AA6419F67B08C2A34A0661E6A615083963D2
+E11197D2E644DD50F59FBC21B960255B20F027108A3040ADC07C8E558F381CEB
+1A04D89226EC15A843663CFECA48BDEDBE4A6A4F71A29E73BE67535829C6A886
+B1EADE6312E9770F9CFE4CA9F8D8E4E107A895B8066335549F5AF71F61ADD901
+10BBA2E0DF8F30EAFC0E8C15CFE0772E4F917D5234472BB68F6FFA959920CE3F
+A094CB0983E77B460A4F94F6070E2EC9D4B85430C453EF2272CBD1FA93167C9C
+753C1161211254723FDD3EE041FA43EF8DD454EA16220E47DB18D1868C1A4EEE
+999C81B3FCC2AC92CC3F2CAB45C7DA5B6E466858D66BACEA364D149C49E30576
+3F08DA8521F77C51D98C1FA9C952A1C41B7C1F55A513BAE4F9F62C0B251F4F8F
+DE186CFA59FE608EF1C7EF09D8A33FF318BE8F8ECF10E85897BA63F6AB6902CB
+8B51C1345B82A3605278313C55438960BF08E0C2EF0D83A9B48BE985F5A5A98A
+27A0C16915AA4844DB56BB51BC4F38423AE72E98F99E8D712163827AF77C63FD
+0F795BB2027AF68EA0EA27EF5F2BA38C4883A843671A451AD7934D83099532EE
+E47B86AA86070599CAE149C1188C07A7BEB1D60EBC9689725C0751CD3490C0C8
+99EBA81175526D8164542BAD6C30F8A0F90BF830B379A97F8E7BF8F6D66E23E5
+C2D195DCF71B30CC629C9703A3262FF14A175E167DC413C6F78A8BA3A882FC3E
+ACD4D3CFA1D9A711B64CB4CD73AB620F623BC19F51EB9A05320D3A6B22586768
+6B7B85E726546617C0306B8AD772F488647DC84F452000451458A3969AFA65A7
+BCC80FE7195331D942EC66CFF41392D6D34D4CDBCC935563A1B490131218F921
+0A6C42485387E9168CD6B509BDD65EB197E069EC9BDDBDE191C6D004C4B39361
+8F759192FF1D594553C258080DB6093804228E1C903A7C2E03FAE48446EADBAA
+A9CF53A49A2272057AC137B149A814E053F0E62E05C7A57BE232BB0036D24363
+73DEF3556A9BA214FD9DBA395D6FDDED7C93EF7B6282BB219055DF5F35D82349
+A33D7F239940BD0E0961B347FF8708CC59811D9D46CD5B71B6F3D45E847FFDDC
+DA0FDD674F996699BD48A9137516C63CDB9CBEDC53869AEBFAE4B9E1DB556811
+391FA2A3E6DEBA016B943893F018CBEA6EB7E2DC73C34715AD70630B31784435
+70ECF30FBB4BBC68B517626F4CBA4001A2817ACEF372A3D5D4B97941B4603D62
+FFC97EFA1D578D985F9A32F61F5B586AFE8BD92634C5916A79D0166EB349CC43
+21896CDE70A4791E115C09D21746C829CFC825B6A129933465AC96D8F0432FC4
+450D54E1FE471D912E288DCCA0F7A45F879D274DCA050A0313A544CE61964776
+D862A8C8D1B2076D2142B1623EF414C22454FACC65C9DE59A440C387E448A194
+B77C9F0F2C8DFFD1
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+{restore}if
+%%EndFont 
+TeXDict begin 40258437 52099154 1000 8000 8000 (fm.dvi)
+@start /Fa 171[643 84[{}1 885.568 /CMSS8 rf /Fb 252[470
+3[{}1 885.568 /CMSY8 rf /Fc 135[739 2[740 14[641 102[{}3
+1328.35 /CMMI12 rf /Fd 139[506 513 506 1[723 1[723 1084
+361 4[650 397 578 1[578 1[650 13[723 2[885 31[650 6[506
+506 40[{}17 1328.35 /CMR12 rf end
+%%EndProlog
+%%BeginSetup
+%%Feature: *Resolution 8000dpi
+TeXDict begin
+ end
+%%EndSetup
+TeXDict begin 1 0 bop Black Black Black -8000 18000 a
+ /PSfrag where{pop(0)[[0(Bl)1 0]](f*u)[[1(Bl)1 0]](ux)[[2(Bl)1 0]](fx)[[3(Bl)1
+0]](gx)[[4(Bl)1 0]]5 0 -1/Begin PSfrag}{userdict /PSfrag{pop}put}ifelse
+
+-8000 18000 a @beginspecial 109 @llx 304 @lly 487 @urx
+538 @ury 3780 @rwi @setspecial
+%%BeginDocument: ../../conjugate_fm.eps
+%!PS-Adobe-3.0
+%%DocumentNeededResources: font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Helvetica-Oblique
+%%+ font Helvetica-BoldOblique
+%%+ font Symbol
+%%DocumentMedia: a4 595 841 0 () ()
+%%Title: R Graphics Output
+%%Creator: R Software
+%%Pages: (atend)
+%%Orientation: Portrait
+%%BoundingBox: 109 304 487 538
+%%EndComments
+%%BeginProlog
+/bp  { gs sRGB gs } def
+% begin .ps.prolog
+/gs  { gsave } bind def
+/gr  { grestore } bind def
+/ep  { showpage gr gr } bind def
+/m   { moveto } bind def
+/l  { rlineto } bind def
+/np  { newpath } bind def
+/cp  { closepath } bind def
+/f   { fill } bind def
+/o   { stroke } bind def
+/c   { newpath 0 360 arc } bind def
+/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } bind def
+/p1  { stroke } bind def
+/p2  { gsave bg fill grestore newpath } bind def
+/p3  { gsave bg fill grestore stroke } bind def
+/p6  { gsave bg eofill grestore newpath } bind def
+/p7  { gsave bg eofill grestore stroke } bind def
+/t   { 5 -2 roll moveto gsave rotate
+       1 index stringwidth pop
+       mul neg 0 rmoveto show grestore } bind def
+/ta  { 4 -2 roll moveto gsave rotate show } bind def
+/tb  { 2 -1 roll 0 rmoveto show } bind def
+/cl  { grestore gsave newpath 3 index 3 index moveto 1 index
+       4 -1 roll lineto  exch 1 index lineto lineto
+       closepath clip newpath } bind def
+/rgb { setrgbcolor } bind def
+/s   { scalefont setfont } bind def
+% end   .ps.prolog
+/sRGB { [ /CIEBasedABC
+          << /DecodeLMN
+               [ { dup 0.03928 le
+                        {12.92321 div}
+                        {0.055 add 1.055 div 2.4 exp }
+                     ifelse
+                 } bind dup dup
+               ]
+             /MatrixLMN [0.412457 0.212673 0.019334
+                         0.357576 0.715152 0.119192
+                         0.180437 0.072175 0.950301]
+             /WhitePoint [0.9505 1.0 1.0890]
+           >>
+         ] setcolorspace } bind def
+/srgb { setcolor } bind def
+%%IncludeResource: font Helvetica
+/Helvetica findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font1 exch definefont pop
+%%IncludeResource: font Helvetica-Bold
+/Helvetica-Bold findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font2 exch definefont pop
+%%IncludeResource: font Helvetica-Oblique
+/Helvetica-Oblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font3 exch definefont pop
+%%IncludeResource: font Helvetica-BoldOblique
+/Helvetica-BoldOblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font4 exch definefont pop
+%%IncludeResource: font Symbol
+/Symbol findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  currentdict
+  end
+/Font5 exch definefont pop
+%%EndProlog
+%%Page: 1 1
+bp
+127.36 322.66 486.64 537.94 cl
+0 0 0 srgb
+1.12 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+140.66 446.59 m
+0.34 -3.44 l
+0.33 -3.33 l
+0.33 -3.20 l
+0.34 -3.10 l
+0.33 -2.97 l
+0.33 -2.87 l
+0.34 -2.76 l
+0.33 -2.66 l
+0.33 -2.55 l
+0.33 -2.45 l
+0.34 -2.35 l
+0.33 -2.26 l
+0.33 -2.17 l
+0.34 -2.07 l
+0.33 -1.98 l
+0.33 -1.90 l
+0.34 -1.81 l
+0.33 -1.74 l
+0.33 -1.65 l
+0.33 -1.57 l
+0.34 -1.49 l
+0.33 -1.43 l
+0.33 -1.34 l
+0.34 -1.28 l
+0.33 -1.21 l
+0.33 -1.15 l
+0.34 -1.08 l
+0.33 -1.01 l
+0.33 -0.95 l
+0.33 -0.90 l
+0.34 -0.83 l
+0.33 -0.78 l
+0.33 -0.73 l
+0.34 -0.67 l
+0.33 -0.62 l
+0.33 -0.57 l
+0.34 -0.52 l
+0.33 -0.47 l
+0.33 -0.43 l
+0.33 -0.38 l
+0.34 -0.35 l
+0.33 -0.30 l
+0.33 -0.25 l
+0.34 -0.22 l
+0.33 -0.19 l
+0.33 -0.14 l
+0.34 -0.12 l
+0.33 -0.07 l
+0.33 -0.05 l
+0.33 -0.01 l
+0.34 0.01 l
+0.33 0.05 l
+0.33 0.07 l
+0.34 0.11 l
+0.33 0.12 l
+0.33 0.15 l
+0.34 0.18 l
+0.33 0.20 l
+0.33 0.22 l
+0.33 0.24 l
+0.34 0.26 l
+0.33 0.28 l
+0.33 0.30 l
+0.34 0.32 l
+0.33 0.33 l
+0.33 0.35 l
+0.34 0.37 l
+0.33 0.37 l
+0.33 0.39 l
+0.33 0.41 l
+0.34 0.41 l
+0.33 0.43 l
+0.33 0.44 l
+0.34 0.44 l
+0.33 0.46 l
+0.33 0.46 l
+0.34 0.48 l
+0.33 0.47 l
+0.33 0.49 l
+0.33 0.49 l
+0.34 0.50 l
+0.33 0.50 l
+0.33 0.50 l
+0.34 0.51 l
+0.33 0.51 l
+0.33 0.52 l
+0.34 0.51 l
+0.33 0.52 l
+0.33 0.52 l
+0.33 0.52 l
+0.34 0.52 l
+0.33 0.52 l
+0.33 0.52 l
+0.34 0.51 l
+0.33 0.52 l
+0.33 0.51 l
+0.34 0.52 l
+0.33 0.51 l
+0.33 0.50 l
+173.96 397.77 lineto
+0.34 0.49 l
+0.33 0.50 l
+0.33 0.49 l
+0.34 0.49 l
+0.33 0.48 l
+0.33 0.47 l
+0.34 0.47 l
+0.33 0.47 l
+0.33 0.46 l
+0.33 0.45 l
+0.34 0.45 l
+0.33 0.44 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.41 l
+0.33 0.41 l
+0.34 0.41 l
+0.33 0.39 l
+0.33 0.39 l
+0.33 0.38 l
+0.34 0.37 l
+0.33 0.36 l
+0.33 0.35 l
+0.34 0.35 l
+0.33 0.33 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.30 l
+0.33 0.30 l
+0.33 0.29 l
+0.34 0.28 l
+0.33 0.27 l
+0.33 0.26 l
+0.34 0.25 l
+0.33 0.24 l
+0.33 0.23 l
+0.34 0.22 l
+0.33 0.21 l
+0.33 0.21 l
+0.33 0.19 l
+0.34 0.18 l
+0.33 0.17 l
+0.33 0.16 l
+0.34 0.15 l
+0.33 0.14 l
+0.33 0.12 l
+0.34 0.12 l
+0.33 0.11 l
+0.33 0.10 l
+0.33 0.09 l
+0.34 0.08 l
+0.33 0.07 l
+0.33 0.05 l
+0.34 0.05 l
+0.33 0.04 l
+0.33 0.02 l
+0.34 0.02 l
+0.33 0.01 l
+0.33 0 l
+0.33 -0.02 l
+0.34 -0.02 l
+0.33 -0.03 l
+0.33 -0.05 l
+0.34 -0.05 l
+0.33 -0.06 l
+0.33 -0.07 l
+0.34 -0.08 l
+0.33 -0.10 l
+0.33 -0.10 l
+0.33 -0.11 l
+0.34 -0.12 l
+0.33 -0.12 l
+0.33 -0.14 l
+0.34 -0.15 l
+0.33 -0.16 l
+0.33 -0.16 l
+0.34 -0.18 l
+0.33 -0.18 l
+0.33 -0.19 l
+0.33 -0.20 l
+0.34 -0.21 l
+0.33 -0.22 l
+0.33 -0.22 l
+0.34 -0.24 l
+0.33 -0.24 l
+0.33 -0.25 l
+0.34 -0.26 l
+0.33 -0.26 l
+0.33 -0.28 l
+0.33 -0.28 l
+0.34 -0.29 l
+0.33 -0.29 l
+0.33 -0.31 l
+0.34 -0.31 l
+0.33 -0.32 l
+0.33 -0.32 l
+0.34 -0.34 l
+0.33 -0.34 l
+0.33 -0.34 l
+207.26 406.06 lineto
+0.34 -0.36 l
+0.33 -0.37 l
+0.33 -0.37 l
+0.34 -0.38 l
+0.33 -0.38 l
+0.33 -0.39 l
+0.34 -0.40 l
+0.33 -0.40 l
+0.33 -0.41 l
+0.33 -0.41 l
+0.34 -0.42 l
+0.33 -0.42 l
+0.33 -0.43 l
+0.34 -0.44 l
+0.33 -0.44 l
+0.33 -0.44 l
+0.34 -0.45 l
+0.33 -0.45 l
+0.33 -0.46 l
+0.33 -0.46 l
+0.34 -0.47 l
+0.33 -0.47 l
+0.33 -0.47 l
+0.34 -0.48 l
+0.33 -0.48 l
+0.33 -0.48 l
+0.34 -0.49 l
+0.33 -0.50 l
+0.33 -0.49 l
+0.33 -0.50 l
+0.34 -0.50 l
+0.33 -0.51 l
+0.33 -0.50 l
+0.34 -0.51 l
+0.33 -0.52 l
+0.33 -0.51 l
+0.34 -0.52 l
+0.33 -0.52 l
+0.33 -0.52 l
+0.33 -0.53 l
+0.34 -0.53 l
+0.33 -0.52 l
+0.33 -0.53 l
+0.34 -0.54 l
+0.33 -0.53 l
+0.33 -0.53 l
+0.34 -0.54 l
+0.33 -0.54 l
+0.33 -0.54 l
+0.33 -0.54 l
+0.34 -0.54 l
+0.33 -0.54 l
+0.33 -0.54 l
+0.34 -0.54 l
+0.33 -0.55 l
+0.33 -0.54 l
+0.34 -0.54 l
+0.33 -0.55 l
+0.33 -0.54 l
+0.33 -0.55 l
+0.34 -0.54 l
+0.33 -0.55 l
+0.33 -0.54 l
+0.34 -0.54 l
+0.33 -0.55 l
+0.33 -0.54 l
+0.34 -0.54 l
+0.33 -0.54 l
+0.33 -0.54 l
+0.33 -0.54 l
+0.34 -0.54 l
+0.33 -0.54 l
+0.33 -0.53 l
+0.34 -0.54 l
+0.33 -0.53 l
+0.33 -0.53 l
+0.34 -0.53 l
+0.33 -0.53 l
+0.33 -0.53 l
+0.33 -0.53 l
+0.34 -0.52 l
+0.33 -0.52 l
+0.33 -0.52 l
+0.34 -0.52 l
+0.33 -0.52 l
+0.33 -0.51 l
+0.34 -0.51 l
+0.33 -0.51 l
+0.33 -0.51 l
+0.33 -0.50 l
+0.34 -0.51 l
+0.33 -0.49 l
+0.33 -0.50 l
+0.34 -0.49 l
+0.33 -0.50 l
+0.33 -0.48 l
+0.34 -0.49 l
+0.33 -0.48 l
+0.33 -0.48 l
+240.56 356.25 lineto
+0.34 -0.47 l
+0.33 -0.47 l
+0.33 -0.47 l
+0.34 -0.46 l
+0.33 -0.46 l
+0.33 -0.46 l
+0.34 -0.45 l
+0.33 -0.45 l
+0.33 -0.44 l
+0.33 -0.44 l
+0.34 -0.44 l
+0.33 -0.44 l
+0.33 -0.43 l
+0.34 -0.42 l
+0.33 -0.43 l
+0.33 -0.42 l
+0.34 -0.41 l
+0.33 -0.41 l
+0.33 -0.41 l
+0.33 -0.40 l
+0.34 -0.40 l
+0.33 -0.40 l
+0.33 -0.39 l
+0.34 -0.38 l
+0.33 -0.38 l
+0.33 -0.38 l
+0.34 -0.37 l
+0.33 -0.37 l
+0.33 -0.37 l
+0.33 -0.36 l
+0.34 -0.35 l
+0.33 -0.35 l
+0.33 -0.35 l
+0.34 -0.34 l
+0.33 -0.34 l
+0.33 -0.33 l
+0.34 -0.33 l
+0.33 -0.32 l
+0.33 -0.32 l
+0.33 -0.31 l
+0.34 -0.31 l
+0.33 -0.30 l
+0.33 -0.30 l
+0.34 -0.29 l
+0.33 -0.29 l
+0.33 -0.29 l
+0.34 -0.28 l
+0.33 -0.27 l
+0.33 -0.27 l
+0.33 -0.27 l
+0.34 -0.26 l
+0.33 -0.25 l
+0.33 -0.25 l
+0.34 -0.25 l
+0.33 -0.24 l
+0.33 -0.23 l
+0.34 -0.23 l
+0.33 -0.22 l
+0.33 -0.22 l
+0.33 -0.22 l
+0.34 -0.21 l
+0.33 -0.20 l
+0.33 -0.20 l
+0.34 -0.20 l
+0.33 -0.19 l
+0.33 -0.18 l
+0.34 -0.18 l
+0.33 -0.17 l
+0.33 -0.17 l
+0.33 -0.17 l
+0.34 -0.16 l
+0.33 -0.15 l
+0.33 -0.15 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.13 l
+0.33 -0.12 l
+0.33 -0.12 l
+0.33 -0.12 l
+0.34 -0.10 l
+0.33 -0.11 l
+0.33 -0.09 l
+0.34 -0.10 l
+0.33 -0.09 l
+0.33 -0.08 l
+0.34 -0.08 l
+0.33 -0.07 l
+0.33 -0.07 l
+0.33 -0.06 l
+0.34 -0.06 l
+0.33 -0.05 l
+0.33 -0.05 l
+0.34 -0.04 l
+0.33 -0.04 l
+0.33 -0.03 l
+0.34 -0.03 l
+0.33 -0.03 l
+0.33 -0.01 l
+273.86 330.65 lineto
+0.34 -0.01 l
+0.33 0 l
+0.33 0 l
+0.34 0 l
+0.33 0.01 l
+0.33 0.02 l
+0.34 0.02 l
+0.33 0.02 l
+0.33 0.03 l
+0.33 0.03 l
+0.34 0.04 l
+0.33 0.05 l
+0.33 0.04 l
+0.34 0.05 l
+0.33 0.06 l
+0.33 0.06 l
+0.34 0.07 l
+0.33 0.07 l
+0.33 0.07 l
+0.33 0.08 l
+0.34 0.08 l
+0.33 0.09 l
+0.33 0.09 l
+0.34 0.10 l
+0.33 0.10 l
+0.33 0.10 l
+0.34 0.11 l
+0.33 0.12 l
+0.33 0.11 l
+0.33 0.13 l
+0.34 0.12 l
+0.33 0.13 l
+0.33 0.14 l
+0.34 0.13 l
+0.33 0.15 l
+0.33 0.14 l
+0.34 0.15 l
+0.33 0.16 l
+0.33 0.15 l
+0.33 0.17 l
+0.34 0.16 l
+0.33 0.17 l
+0.33 0.17 l
+0.34 0.18 l
+0.33 0.18 l
+0.33 0.19 l
+0.34 0.18 l
+0.33 0.20 l
+0.33 0.19 l
+0.33 0.20 l
+0.34 0.20 l
+0.33 0.21 l
+0.33 0.21 l
+0.34 0.21 l
+0.33 0.22 l
+0.33 0.22 l
+0.34 0.22 l
+0.33 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.34 0.23 l
+0.33 0.24 l
+0.33 0.25 l
+0.34 0.24 l
+0.33 0.25 l
+0.33 0.25 l
+0.34 0.26 l
+0.33 0.26 l
+0.33 0.26 l
+0.33 0.26 l
+0.34 0.27 l
+0.33 0.27 l
+0.33 0.27 l
+0.34 0.27 l
+0.33 0.28 l
+0.33 0.28 l
+0.34 0.28 l
+0.33 0.29 l
+0.33 0.29 l
+0.33 0.29 l
+0.34 0.29 l
+0.33 0.30 l
+0.33 0.30 l
+0.34 0.30 l
+0.33 0.30 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.33 l
+0.33 0.33 l
+0.33 0.34 l
+307.16 349.43 lineto
+0.34 0.34 l
+0.33 0.34 l
+0.33 0.34 l
+0.34 0.34 l
+0.33 0.35 l
+0.33 0.34 l
+0.34 0.35 l
+0.33 0.35 l
+0.33 0.35 l
+0.33 0.36 l
+0.34 0.35 l
+0.33 0.36 l
+0.33 0.35 l
+0.34 0.36 l
+0.33 0.36 l
+0.33 0.36 l
+0.34 0.37 l
+0.33 0.36 l
+0.33 0.37 l
+0.33 0.36 l
+0.34 0.37 l
+0.33 0.37 l
+0.33 0.37 l
+0.34 0.38 l
+0.33 0.37 l
+0.33 0.37 l
+0.34 0.38 l
+0.33 0.37 l
+0.33 0.38 l
+0.33 0.38 l
+0.34 0.38 l
+0.33 0.38 l
+0.33 0.38 l
+0.34 0.38 l
+0.33 0.38 l
+0.33 0.38 l
+0.34 0.39 l
+0.33 0.38 l
+0.33 0.39 l
+0.33 0.38 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.39 l
+0.34 0.38 l
+0.33 0.39 l
+0.33 0.39 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.39 l
+0.33 0.40 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.39 l
+0.34 0.39 l
+0.33 0.40 l
+0.33 0.39 l
+0.34 0.39 l
+0.33 0.40 l
+0.33 0.39 l
+0.33 0.39 l
+0.34 0.40 l
+0.33 0.39 l
+0.33 0.40 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.40 l
+0.34 0.39 l
+0.33 0.40 l
+0.33 0.39 l
+0.33 0.40 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.40 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.40 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.39 l
+0.33 0.40 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.39 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.39 l
+0.34 0.39 l
+0.33 0.39 l
+0.33 0.39 l
+0.33 0.39 l
+0.34 0.38 l
+0.33 0.39 l
+0.33 0.39 l
+0.34 0.38 l
+0.33 0.39 l
+0.33 0.38 l
+0.34 0.39 l
+0.33 0.38 l
+0.33 0.39 l
+340.46 387.50 lineto
+0.34 0.38 l
+0.33 0.38 l
+0.33 0.38 l
+0.34 0.38 l
+0.33 0.38 l
+0.33 0.38 l
+0.34 0.38 l
+0.33 0.37 l
+0.33 0.38 l
+0.33 0.37 l
+0.34 0.38 l
+0.33 0.37 l
+0.33 0.38 l
+0.34 0.37 l
+0.33 0.37 l
+0.33 0.37 l
+0.34 0.37 l
+0.33 0.37 l
+0.33 0.37 l
+0.33 0.36 l
+0.34 0.37 l
+0.33 0.36 l
+0.33 0.37 l
+0.34 0.36 l
+0.33 0.36 l
+0.33 0.37 l
+0.34 0.36 l
+0.33 0.36 l
+0.33 0.35 l
+0.33 0.36 l
+0.34 0.36 l
+0.33 0.36 l
+0.33 0.35 l
+0.34 0.35 l
+0.33 0.36 l
+0.33 0.35 l
+0.34 0.35 l
+0.33 0.35 l
+0.33 0.35 l
+0.33 0.34 l
+0.34 0.35 l
+0.33 0.35 l
+0.33 0.34 l
+0.34 0.34 l
+0.33 0.35 l
+0.33 0.34 l
+0.34 0.34 l
+0.33 0.34 l
+0.33 0.34 l
+0.33 0.33 l
+0.34 0.34 l
+0.33 0.33 l
+0.33 0.34 l
+0.34 0.33 l
+0.33 0.33 l
+0.33 0.33 l
+0.34 0.33 l
+0.33 0.33 l
+0.33 0.33 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.32 l
+0.33 0.31 l
+0.33 0.32 l
+0.33 0.31 l
+0.34 0.32 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.30 l
+0.33 0.31 l
+0.34 0.30 l
+0.33 0.30 l
+0.33 0.31 l
+0.34 0.30 l
+0.33 0.29 l
+0.33 0.30 l
+0.34 0.30 l
+0.33 0.30 l
+0.33 0.29 l
+0.33 0.30 l
+0.34 0.29 l
+0.33 0.29 l
+0.33 0.29 l
+0.34 0.29 l
+0.33 0.29 l
+0.33 0.29 l
+0.34 0.29 l
+0.33 0.28 l
+0.33 0.29 l
+373.76 421.03 lineto
+0.34 0.29 l
+0.33 0.28 l
+0.33 0.28 l
+0.34 0.28 l
+0.33 0.28 l
+0.33 0.28 l
+0.34 0.28 l
+0.33 0.27 l
+0.33 0.28 l
+0.33 0.27 l
+0.34 0.28 l
+0.33 0.27 l
+0.33 0.27 l
+0.34 0.28 l
+0.33 0.27 l
+0.33 0.27 l
+0.34 0.27 l
+0.33 0.27 l
+0.33 0.26 l
+0.33 0.27 l
+0.34 0.27 l
+0.33 0.26 l
+0.33 0.27 l
+0.34 0.26 l
+0.33 0.26 l
+0.33 0.27 l
+0.34 0.26 l
+0.33 0.26 l
+0.33 0.26 l
+0.33 0.26 l
+0.34 0.26 l
+0.33 0.26 l
+0.33 0.26 l
+0.34 0.25 l
+0.33 0.26 l
+0.33 0.26 l
+0.34 0.25 l
+0.33 0.26 l
+0.33 0.25 l
+0.33 0.26 l
+0.34 0.25 l
+0.33 0.25 l
+0.33 0.26 l
+0.34 0.25 l
+0.33 0.25 l
+0.33 0.25 l
+0.34 0.25 l
+0.33 0.25 l
+0.33 0.25 l
+0.33 0.25 l
+0.34 0.25 l
+0.33 0.25 l
+0.33 0.25 l
+0.34 0.25 l
+0.33 0.24 l
+0.33 0.25 l
+0.34 0.25 l
+0.33 0.24 l
+0.33 0.25 l
+0.33 0.25 l
+0.34 0.24 l
+0.33 0.25 l
+0.33 0.25 l
+0.34 0.24 l
+0.33 0.25 l
+0.33 0.24 l
+0.34 0.25 l
+0.33 0.24 l
+0.33 0.25 l
+0.33 0.24 l
+0.34 0.25 l
+0.33 0.24 l
+0.33 0.25 l
+0.34 0.24 l
+0.33 0.25 l
+0.33 0.24 l
+0.34 0.25 l
+0.33 0.24 l
+0.33 0.25 l
+0.33 0.24 l
+0.34 0.25 l
+0.33 0.24 l
+0.33 0.25 l
+0.34 0.24 l
+0.33 0.25 l
+0.33 0.24 l
+0.34 0.25 l
+0.33 0.25 l
+0.33 0.24 l
+0.33 0.25 l
+0.34 0.25 l
+0.33 0.24 l
+0.33 0.25 l
+0.34 0.25 l
+0.33 0.25 l
+0.33 0.25 l
+0.34 0.25 l
+0.33 0.25 l
+0.33 0.25 l
+407.06 446.57 lineto
+0.34 0.25 l
+0.33 0.25 l
+0.33 0.25 l
+0.34 0.25 l
+0.33 0.26 l
+0.33 0.25 l
+0.34 0.25 l
+0.33 0.26 l
+0.33 0.26 l
+0.33 0.25 l
+0.34 0.26 l
+0.33 0.26 l
+0.33 0.25 l
+0.34 0.26 l
+0.33 0.26 l
+0.33 0.26 l
+0.34 0.26 l
+0.33 0.26 l
+0.33 0.27 l
+0.33 0.26 l
+0.34 0.26 l
+0.33 0.27 l
+0.33 0.27 l
+0.34 0.26 l
+0.33 0.27 l
+0.33 0.27 l
+0.34 0.27 l
+0.33 0.27 l
+0.33 0.27 l
+0.33 0.27 l
+0.34 0.28 l
+0.33 0.27 l
+0.33 0.28 l
+0.34 0.28 l
+0.33 0.27 l
+0.33 0.28 l
+0.34 0.28 l
+0.33 0.28 l
+0.33 0.29 l
+0.33 0.28 l
+0.34 0.29 l
+0.33 0.28 l
+0.33 0.29 l
+0.34 0.29 l
+0.33 0.29 l
+0.33 0.29 l
+0.34 0.29 l
+0.33 0.30 l
+0.33 0.29 l
+0.33 0.30 l
+0.34 0.30 l
+0.33 0.30 l
+0.33 0.30 l
+0.34 0.30 l
+0.33 0.31 l
+0.33 0.30 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.32 l
+0.33 0.31 l
+0.33 0.32 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.32 l
+0.33 0.33 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.33 l
+0.33 0.34 l
+0.33 0.33 l
+0.34 0.34 l
+0.33 0.34 l
+0.33 0.34 l
+0.34 0.34 l
+0.33 0.34 l
+0.33 0.35 l
+0.33 0.35 l
+0.34 0.35 l
+0.33 0.35 l
+0.33 0.35 l
+0.34 0.36 l
+0.33 0.35 l
+0.33 0.36 l
+0.34 0.37 l
+0.33 0.36 l
+0.33 0.37 l
+0.33 0.37 l
+0.34 0.37 l
+0.33 0.37 l
+0.33 0.37 l
+0.34 0.38 l
+0.33 0.38 l
+0.33 0.38 l
+0.34 0.39 l
+0.33 0.38 l
+0.33 0.39 l
+440.36 477.13 lineto
+0.34 0.39 l
+0.33 0.40 l
+0.33 0.40 l
+0.34 0.40 l
+0.33 0.40 l
+0.33 0.41 l
+0.34 0.40 l
+0.33 0.41 l
+0.33 0.42 l
+0.33 0.41 l
+0.34 0.42 l
+0.33 0.42 l
+0.33 0.42 l
+0.34 0.43 l
+0.33 0.42 l
+0.33 0.43 l
+0.34 0.44 l
+0.33 0.43 l
+0.33 0.44 l
+0.33 0.44 l
+0.34 0.45 l
+0.33 0.44 l
+0.33 0.45 l
+0.34 0.45 l
+0.33 0.46 l
+0.33 0.45 l
+0.34 0.46 l
+0.33 0.47 l
+0.33 0.46 l
+0.33 0.47 l
+0.34 0.47 l
+0.33 0.48 l
+0.33 0.47 l
+0.34 0.48 l
+0.33 0.49 l
+0.33 0.48 l
+0.34 0.49 l
+0.33 0.49 l
+0.33 0.50 l
+0.33 0.49 l
+0.34 0.50 l
+0.33 0.51 l
+0.33 0.50 l
+0.34 0.51 l
+0.33 0.52 l
+0.33 0.51 l
+0.34 0.52 l
+0.33 0.52 l
+0.33 0.53 l
+0.33 0.52 l
+0.34 0.54 l
+0.33 0.53 l
+0.33 0.54 l
+0.34 0.54 l
+0.33 0.54 l
+0.33 0.55 l
+0.34 0.55 l
+0.33 0.55 l
+0.33 0.56 l
+0.33 0.56 l
+0.34 0.56 l
+0.33 0.57 l
+0.33 0.57 l
+0.34 0.57 l
+0.33 0.58 l
+0.33 0.58 l
+0.34 0.58 l
+0.33 0.59 l
+0.33 0.59 l
+0.33 0.59 l
+0.34 0.60 l
+0.33 0.60 l
+0.33 0.60 l
+0.34 0.61 l
+0.33 0.61 l
+0.33 0.61 l
+0.34 0.62 l
+0.33 0.62 l
+0.33 0.62 l
+0.33 0.63 l
+0.34 0.63 l
+0.33 0.64 l
+0.33 0.64 l
+0.34 0.64 l
+0.33 0.64 l
+0.33 0.65 l
+0.34 0.66 l
+0.33 0.65 l
+0.33 0.66 l
+0.33 0.66 l
+0.34 0.67 l
+0.33 0.67 l
+0.33 0.68 l
+0.34 0.68 l
+0.33 0.68 l
+0.33 0.68 l
+0.34 0.69 l
+0.33 0.69 l
+0.33 0.70 l
+o
+108.64 303.94 486.64 537.94 cl
+108.64 303.94 486.64 537.94 cl
+0 0 0 srgb
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+140.66 322.66 m
+345.98 0 l
+o
+np
+140.66 322.66 m
+0 215.28 l
+o
+np
+140.66 359.01 m
+0 0 l
+o
+np
+140.66 359.01 m
+-7.20 0 l
+o
+/Font1 findfont 12 s
+126.26 354.70 (0) 1 0 t
+127.36 322.66 486.64 537.94 cl
+0 0.6863 0.7333 srgb
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+127.36 353.75 m
+359.28 141.89 l
+o
+0.9882 0.3059 0.0275 srgb
+1.12 setlinewidth
+[ 0.00 4.50] 0 setdash
+np
+284.52 332.64 m
+0 83.18 l
+o
+/Font1 findfont 12 s
+0 0 0 srgb
+261.60 369.95 (f*u) .5 0 t
+0.6353 0.8039 0.3529 srgb
+1.50 setlinewidth
+[ 4.50 7.50] 0 setdash
+np
+140.66 442.42 m
+0.34 -2.52 l
+0.33 -2.53 l
+0.33 -2.52 l
+0.34 -2.53 l
+0.33 -2.52 l
+0.33 -2.53 l
+0.34 -2.52 l
+0.33 -2.53 l
+0.33 -2.52 l
+0.33 -2.53 l
+0.34 -2.40 l
+0.33 -2.25 l
+0.33 -2.25 l
+0.34 -2.03 l
+0.33 -1.99 l
+0.33 -1.82 l
+0.34 -1.83 l
+0.33 -1.67 l
+0.33 -1.65 l
+0.33 -1.66 l
+0.34 -1.41 l
+0.33 -1.37 l
+0.33 -1.36 l
+0.34 -1.37 l
+0.33 -1.28 l
+0.33 -1.13 l
+0.34 -1.13 l
+0.33 -1.07 l
+0.33 -0.92 l
+0.33 -0.91 l
+0.34 -0.92 l
+0.33 -0.84 l
+0.33 -0.64 l
+0.34 -0.64 l
+0.33 -0.64 l
+0.33 -0.64 l
+0.34 -0.64 l
+0.33 -0.32 l
+0.33 -0.32 l
+0.33 -0.32 l
+0.34 -0.33 l
+0.33 -0.32 l
+0.33 -0.32 l
+0.34 -0.33 l
+0.33 -0.24 l
+0.33 -0.19 l
+0.34 -0.19 l
+0.33 -0.19 l
+0.33 -0.20 l
+0.33 -0.19 l
+0.34 -0.19 l
+0.33 -0.19 l
+0.33 -0.19 l
+0.34 -0.19 l
+0.33 -0.19 l
+0.33 -0.17 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+173.96 370.04 lineto
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+207.26 356.20 lineto
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+240.56 342.36 lineto
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.13 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.34 -0.14 l
+0.33 -0.14 l
+0.33 -0.14 l
+0.33 -0.13 l
+0.34 -0.10 l
+0.33 -0.10 l
+0.33 -0.10 l
+0.34 -0.10 l
+0.33 -0.10 l
+0.33 -0.10 l
+0.34 -0.10 l
+0.33 -0.10 l
+0.33 -0.09 l
+0.33 -0.10 l
+0.34 -0.10 l
+0.33 -0.10 l
+0.33 -0.10 l
+0.34 -0.10 l
+0.33 -0.10 l
+0.33 -0.10 l
+0.34 -0.10 l
+0.33 -0.09 l
+0.33 -0.08 l
+0.33 -0.04 l
+0.34 -0.05 l
+0.33 -0.04 l
+0.33 -0.05 l
+0.34 -0.05 l
+0.33 -0.04 l
+0.33 -0.05 l
+0.34 -0.05 l
+0.33 -0.04 l
+0.33 -0.05 l
+273.86 330.33 lineto
+0.34 0.02 l
+0.33 0.02 l
+0.33 0.02 l
+0.34 0.02 l
+0.33 0.02 l
+0.33 0.02 l
+0.34 0.02 l
+0.33 0.02 l
+0.33 0.02 l
+0.33 0.02 l
+0.34 0.02 l
+0.33 0.02 l
+0.33 0.02 l
+0.34 0.02 l
+0.33 0.02 l
+0.33 0.02 l
+0.34 0.10 l
+0.33 0.12 l
+0.33 0.13 l
+0.33 0.12 l
+0.34 0.13 l
+0.33 0.12 l
+0.33 0.13 l
+0.34 0.12 l
+0.33 0.13 l
+0.33 0.12 l
+0.34 0.13 l
+0.33 0.13 l
+0.33 0.12 l
+0.33 0.13 l
+0.34 0.12 l
+0.33 0.13 l
+0.33 0.12 l
+0.34 0.13 l
+0.33 0.12 l
+0.33 0.13 l
+0.34 0.12 l
+0.33 0.13 l
+0.33 0.12 l
+0.33 0.13 l
+0.34 0.12 l
+0.33 0.13 l
+0.33 0.12 l
+0.34 0.13 l
+0.33 0.23 l
+0.33 0.23 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.24 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.24 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.34 0.23 l
+0.33 0.23 l
+0.33 0.23 l
+0.33 0.24 l
+0.34 0.23 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.30 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+307.16 348.55 lineto
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.30 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.30 l
+0.33 0.31 l
+340.46 379.53 lineto
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.30 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.31 l
+0.33 0.31 l
+0.33 0.31 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+373.76 410.96 lineto
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+407.06 443.27 lineto
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.33 0.33 l
+0.34 0.32 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.32 l
+0.34 0.33 l
+0.33 0.32 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.42 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.42 l
+0.33 0.43 l
+440.36 476.83 lineto
+0.34 0.43 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.42 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.43 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.42 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.42 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.42 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.43 l
+0.33 0.43 l
+0.33 0.43 l
+0.33 0.43 l
+0.34 0.42 l
+0.33 0.43 l
+0.33 0.47 l
+0.34 0.50 l
+0.33 0.49 l
+0.33 0.49 l
+0.34 0.50 l
+0.33 0.49 l
+0.33 0.50 l
+0.33 0.49 l
+0.34 0.50 l
+0.33 0.49 l
+0.33 0.49 l
+0.34 0.53 l
+0.33 0.54 l
+0.33 0.55 l
+0.34 0.55 l
+0.33 0.54 l
+0.33 0.55 l
+0.33 0.55 l
+0.34 0.55 l
+0.33 0.54 l
+0.33 0.55 l
+0.34 0.55 l
+0.33 0.54 l
+0.33 0.55 l
+0.34 0.55 l
+0.33 0.55 l
+0.33 0.54 l
+0.33 0.55 l
+0.34 0.55 l
+0.33 0.54 l
+0.33 0.59 l
+0.34 0.59 l
+0.33 0.58 l
+0.33 0.59 l
+0.34 0.59 l
+0.33 0.58 l
+0.33 0.59 l
+0.33 0.59 l
+0.34 0.58 l
+0.33 0.59 l
+0.33 0.59 l
+0.34 0.58 l
+0.33 0.59 l
+0.33 0.59 l
+0.34 0.60 l
+0.33 0.65 l
+0.33 0.65 l
+0.33 0.66 l
+0.34 0.65 l
+0.33 0.65 l
+0.33 0.65 l
+0.34 0.66 l
+0.33 0.65 l
+0.33 0.65 l
+0.34 0.65 l
+0.33 0.66 l
+0.33 0.65 l
+0.33 0.65 l
+0.34 0.65 l
+0.33 0.66 l
+0.33 0.65 l
+0.34 0.65 l
+0.33 0.65 l
+0.33 0.66 l
+0.34 0.65 l
+0.33 0.65 l
+0.33 0.65 l
+o
+0 0 0 srgb
+362.44 454.93 (ux) .5 0 t
+362.44 431.25 (fx) .5 0 t
+362.44 383.48 (gx) .5 0 t
+ep
+%%Trailer
+%%Pages: 1
+%%EOF
+
+%%EndDocument
+ @endspecial -8000 18000 a
+ /End PSfrag
+ -8000 18000 a -8000 8572 a
+ /Hide PSfrag
+
+-8000 8572 a -19587 9495 a Fd(PSfrag)434 b(replacemen)-36
+b(ts)p -19587 9930 11587 45 v -8000 9975 a
+ /Unhide PSfrag
+ -8000 9975
+a -8650 11580 a
+  {
+ -8650 11580 a Black Fd(0)p Black -8650
+11580 a
+  } 0/Place PSfrag
+ -8650 11580 a -11061 12853 a
+  {
+ -11061 12853 a Black
+Fc(f)-10278 12371 y Fb(\003)-9752 12853 y Fd(\()p Fc(u)p
+Fd(\))p Black -11061 12853 a
+  } 1/Place PSfrag
+ -11061 12853 a -10177 14790
+a
+  {
+ -10177 14790 a Black Fc(u)-9437 14308 y Fa(T)-8739
+14790 y Fc(x)p Black -10177 14790 a
+  } 2/Place PSfrag
+ -10177 14790 a -10534
+16063 a
+  {
+ -10534 16063 a Black Fc(f)142 b Fd(\()p Fc(x)p
+Fd(\))p Black -10534 16063 a
+  } 3/Place PSfrag
+ -10534 16063 a -11530 17668
+a
+  {
+ -11530 17668 a Black Fc(f)-10747 17186 y Fb(\003\003)-9751
+17668 y Fd(\()p Fc(x)p Fd(\))p Black -11530 17668 a
+  } 4/Place PSfrag
+ -11530
+17668 a Black Black Black eop end
+%%Trailer
+
+userdict /end-hook known{end-hook}if
+%%EOF
