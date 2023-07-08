@@ -4,6 +4,7 @@ Convex analysis and optimization for statistics and machine learning.
 
 I decided to separate out this effort into two books: 
 book 1 for analysis, and book 2 for algorithms. 
+This repo is for book 1.
 
 Currently I'm done with Parts 2 and 3.
 
