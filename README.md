@@ -1,12 +1,11 @@
 # convexopt-book1
 
-Convex analysis and optimization for statistics and machine learning. 
+Convex optimization for statistics and machine learning. 
 
 I decided to separate out this effort into two books: 
 book 1 for analysis, and book 2 for algorithms. 
-This repo is for book 1.
 
-Currently I'm done with Parts 2 and 3.
+This repo is for book 1. Currently I'm done with Parts 2 and 3.
 
 Plan: 
 - Write Part 4 (duality and optimality)
