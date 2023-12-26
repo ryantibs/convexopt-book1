@@ -8,8 +8,8 @@ As we saw already in Chapters \ref{chap:convex_sets_functions} and
 \ref{chap:optimization_basics}, derivatives play a key role in understanding the
 properties of convex functions and convex optimization more broadly. But of
 course, not every convex function is differentiable. In this chapter, we will
-develop a generalized notion of differentiability. % that will help us study and
-% understand the behavior of essentially all convex functions.
+develop a generalized notion of differentiability that will help us study and 
+understand the behavior of essentially all convex functions.
 
 For a function $f$ on $\R^d$, we say that $s \in \R^d$ is a \emph{subgradient} 
 of $f$ at $x \in \dom(f)$ provided that
@@ -19,9 +19,10 @@ of $f$ at $x \in \dom(f)$ provided that
 f(y) \geq f(x) + s^\T (y-x), \quad \text{for all $y \in \dom(f)$}.
 \end{equation}
 This is analogous to the first-order characterization for convexity
-\eqref{eq:first_order_characterization}, where $s$ playes the role of $\nabla
-f(x)$: here, $s$ defines a linear map that passes through $f$ at $x$, and lies  
-below $f$ everywhere. See Figure \ref{fig:subgradient} for an illustration. 
+\eqref{eq:first_order_characterization}, where $s$ playes the role of the
+gradient $\nabla f(x)$: here, $s$ defines a linear map which passes through $f$ 
+at $x$, and lies below $f$ everywhere. See Figure \ref{fig:subgradient} for an
+illustration.  
 
 \begin{figure}[tb]
 \centering
