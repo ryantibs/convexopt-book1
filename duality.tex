@@ -1,18 +1,131 @@
 \chapter{Duality}
-\label{chap:duality_general}
+\label{chap:duality}
 
-\section{Lagrange dual function}
-\label{sec:lagrange_dual_function}
+\section{LP duality*}
+\label{sec:lp_duality}
 
-\section{Lagrange dual problem}
-\label{sec:lagrange_dual_problem}
+Duality is fascinating topic in mathematical optimization: the basic arguments
+used in the theory of duality are elementary, and yet they can lead to powerful
+and far-reaching conclusions.    
+
+The story begins, for us, with linear programs (LPs). Consider a generic LP of
+the form 
+\begin{equation}
+\label{eq:lp_primal}
+\begin{alignedat}{2}
+&\minimize_x \quad && c^\T x \\
+&\st && Ax \leq b \\
+& && Gx = h, 
+\end{alignedat}
+\end{equation}
+where $c \in \R^d$, $A \in \R^{m \times d}$, $b \in \R^m$, $G \in \R^{k \times 
+  d}$, $h \in \R^k$. The reason we start the chapter by studying LPs is that,   
+in this problem class, we can build up dual problems ``constructively''; this 
+constructive approach is not possible for general optimization problems, and
+helps us appreciate the importance and elegance of Lagrange duality, which is
+covered next.     
+
+The fundamental question that underlies the study of duality is as follows: what
+is the tightest lower bound we can form on the optimal criterion value $f^\star
+= c^\T x^\star$ in \eqref{eq:lp_primal}? To address this, suppose that $u \in
+\R^m$ and $v \in \R^k$ are arbitrary vectors---which we call \emph{dual 
+  variables} in this context---with $u$ nonnegative in each component, $u \geq   
+0$. Provided that $x \in \R^d$ is feasible for problem \eqref{eq:lp_primal}, it
+holds that $u^\T (Ax - b) \leq 0$ and $v^\T (Gx - h) = 0$, and so, adding these
+together gives        
+\begin{equation}
+\label{eq:lp_dual_nonnegativity}
+u^\T (Ax - b) + v^\T (Gx - h) \leq 0.
+\end{equation}
+In order to obtain a lower bound on the criterion value $c^\T x$, we rearrange
+the above into
+\[
+(-A^\T u - G^\T v)^\T x \geq -b^\T u - h^\T v.
+\]
+The key observation is that this provides the lower bound we desire provided
+that the dual variables $u,v$ are chosen such that $-A^\T u - G^\T v= c$. This
+is true for any feasible $x$, thus taking an infimum over all such $x$ gives   
+\[
+f^\star \geq -b^\T u - h^\T v, \quad \text{for any $u,v$ such that $-A^\T u -
+  G^\T v = c$ and $u \geq 0$}.
+\]
+Finally, yo make this lower bound as tight as possible, we maximize the
+right-hand side above,  
+\begin{equation}
+\label{eq:lp_weak_duality}
+f^\star \geq \, \underbrace{\sup \big\{ -b^\T u - h^\T v :  A^\T u + G^\T v =
+  -c, \, u \geq 0 \big\}}_{g^\star}. 
+\end{equation}
+Now, the right-hand side in \eqref{eq:lp_weak_duality}, which we may denote as 
+$g^\star = -b^\T u^\star - h^\T v^\star$, is itself the optimal criterion value
+associated with an optimization problem, indeed an LP,     
+\index{dual problem!linear program}
+\begin{equation}
+\label{eq:lp_dual}
+\begin{alignedat}{2}
+&\maximize_{u,v} \quad && b^\T u - h^\T v \\
+&\st && A^\T u + G^\T v = -c \\
+& && u \geq 0.
+\end{alignedat}
+\end{equation}
+In this context, we call \eqref{eq:lp_dual} the \emph{dual LP} and the original 
+problem \eqref{eq:lp_primal} the \emph{primal LP}. Note that, by construction 
+\eqref{eq:lp_weak_duality}, we have $f^\star \geq g^\star$: the optimal
+criterion in the dual problem is a lower bound on the optimal criterion in the  
+primal problem.  
+
+There are several natural follow-up questions that we can ask: for example, when
+does equality hold in \eqref{eq:lp_weak_duality}, $f^\star = g^\star$? And how
+can we relate solutions $x^\star$ and $u^\star, v^\star$ in \eqref{eq:lp_primal}
+and \eqref{eq:lp_dual}, respectively (beyond the optimal criterion values)? We
+will address these questions, and more, over this chapter and the next
+one. First, however, we must develop a theory of duality beyond LPs.
+
+The attempt to move beyond linear programs exposes a shortcoming of the above 
+approach: if the criterion $f$ is not linear, but the constraint functions are
+all linear, then we will have no general way of manipulating the constraints---a
+set of linear equalities and inequalities in $x$---to form a lower bound on
+$f(x)$. But there is another way: Lagrange duality, as we will see next, applies
+not only to LPs but to optimization problems broadly (even nonconvex ones).  
+
+\section{Lagrangian duality}
+\label{sec:lagrangian_duality}
+
+Lagrangian duality (or Lagrange duality) starts with the same motivating
+question as above, in the last section, but cast in a more general setting,
+where we seek a lower bound on the optimal criterion value $f^\star$ in      
+\begin{equation}
+\label{eq:primal}
+\begin{alignedat}{2}
+&\minimize_x \quad && f(x) \\
+&\st \quad && h_i(x) \leq 0, \; i=1,\ldots,m \\ 
+& && \ell_j(x) = 0, \; j=1,\ldots,k.
+\end{alignedat}
+\end{equation}
+At the moment, we do not assume that criterion $f$ or the constraint functions
+$h_i$, $i=1,\dots,m$, and $\ell_j$, $j=1,\dots,k$ are convex. Thus, to be clear,
+we do not assume that \eqref{eq:primal} is a convex problem. 
+
+As before, let $u \in \R^m$ and $v \in \R^k$ be arbitrary vectors, with $u \geq
+0$, which we call \emph{dual variables} in the current context. Using the same
+basic idea as in \eqref{eq:lp_dual_nonnegativity}, we now \emph{add} this nonpositive
+quantity to the criterion to get a lower bound,   
+\[
+f(x) \geq \,\underbrace{f(x) + u^\T (Ax - b) + v^\T (Gx - h)}_{L(x,u,v)}.
+\]   
+The quantity on the right hand side above is called the \emph{Lagrangian} 
+associated with \eqref{eq:primal}, evaluated at the primal $x$ and dual $u,v$
+variables. 
+
+\begin{Example}
+LPs.
+\end{Example}
 
 \section{Interpretations}
 \label{sec:duality_interpretations}
 
-\section{Dual norms}
-\label{sec:dual_norms}
-
+\section{SDP duality*}
+\label{sec:sdp_duality}
 
 % for SDP duality: take a look at 
 % https://www.mit.edu/~parrilo/cdc03_workshop/ejc03_comp.pdf
