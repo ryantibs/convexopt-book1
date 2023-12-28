@@ -49,12 +49,12 @@ is true for any feasible $x$, thus taking an infimum over all such $x$ gives
 f^\star \geq -b^\T u - h^\T v, \quad \text{for any $u,v$ such that $-A^\T u -
   G^\T v = c$ and $u \geq 0$}.
 \]
-Finally, yo make this lower bound as tight as possible, we maximize the
+Finally, to make this lower bound as tight as possible, we maximize the
 right-hand side above,  
 \begin{equation}
 \label{eq:lp_weak_duality}
-f^\star \geq \, \underbrace{\sup \big\{ -b^\T u - h^\T v :  A^\T u + G^\T v =
-  -c, \, u \geq 0 \big\}}_{g^\star}. 
+f^\star \geq \sup \big\{ -b^\T u - h^\T v :  A^\T u + G^\T v = -c, \, u \geq 0
+\big\}.
 \end{equation}
 Now, the right-hand side in \eqref{eq:lp_weak_duality}, which we may denote as 
 $g^\star = -b^\T u^\star - h^\T v^\star$, is itself the optimal criterion value
@@ -78,24 +78,24 @@ There are several natural follow-up questions that we can ask: for example, when
 does equality hold in \eqref{eq:lp_weak_duality}, $f^\star = g^\star$? And how
 can we relate solutions $x^\star$ and $u^\star, v^\star$ in \eqref{eq:lp_primal}
 and \eqref{eq:lp_dual}, respectively (beyond the optimal criterion values)? We
-will address these questions, and more, over this chapter and the next
+will address these questions and more, over this chapter and the next
 one. First, however, we must develop a theory of duality beyond LPs.
 
 The attempt to move beyond linear programs exposes a shortcoming of the above 
-approach: if the criterion $f$ is not linear, but the constraint functions are
-all linear, then we will have no general way of manipulating the constraints---a
-set of linear equalities and inequalities in $x$---to form a lower bound on
+approach: if the criterion $f$ is nonlinear, but the constraint functions are
+linear, then we have no way in general to manipulate the constraints---a set of  
+linear equalities and inequalities in $x$---to construct a lower bound on
 $f(x)$. But there is another way: Lagrange duality, as we will see next, applies
-not only to LPs but to optimization problems broadly (even nonconvex ones).  
+not only to LPs but to optimization problems broadly (even some nonconvex ones).    
 
 \section{Lagrangian duality}
 \label{sec:lagrangian_duality}
 
-Lagrangian duality (or Lagrange duality) starts with the same motivating
-question as above, in the last section, but cast in a more general setting,
-where we seek a lower bound on the optimal criterion value $f^\star$ in      
+Lagrangian duality (or Lagrange duality) starts with the same motivation as in
+the last section, but now cast in a more general setting: we seek a lower bound
+on the optimal criterion value $f^\star$ in          
 \begin{equation}
-\label{eq:primal}
+\label{eq:primal_problem}
 \begin{alignedat}{2}
 &\minimize_x \quad && f(x) \\
 &\st \quad && h_i(x) \leq 0, \; i=1,\ldots,m \\ 
@@ -104,18 +104,58 @@ where we seek a lower bound on the optimal criterion value $f^\star$ in
 \end{equation}
 At the moment, we do not assume that criterion $f$ or the constraint functions
 $h_i$, $i=1,\dots,m$, and $\ell_j$, $j=1,\dots,k$ are convex. Thus, to be clear,
-we do not assume that \eqref{eq:primal} is a convex problem. 
+we do not assume that \eqref{eq:primal_problem} is a convex problem. 
 
 As before, let $u \in \R^m$ and $v \in \R^k$ be arbitrary vectors, with $u \geq
 0$, which we call \emph{dual variables} in the current context. Using the same
-basic idea as in \eqref{eq:lp_dual_nonnegativity}, we now \emph{add} this nonpositive
-quantity to the criterion to get a lower bound,   
+basic idea as in \eqref{eq:lp_dual_nonnegativity}, observe that for any $x$ that
+is feasible for problem \eqref{eq:primal_problem},
 \[
-f(x) \geq \,\underbrace{f(x) + u^\T (Ax - b) + v^\T (Gx - h)}_{L(x,u,v)}.
-\]   
-The quantity on the right hand side above is called the \emph{Lagrangian} 
-associated with \eqref{eq:primal}, evaluated at the primal $x$ and dual $u,v$
-variables. 
+\sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^r v_j \ell_j(x) \leq 0.
+\]
+We now add this quantity to the criterion $f(x)$ to define what we call the
+\emph{Lagrangian function},   
+\index{Lagrangian function}
+\[
+L(x,u,v) = f(x) + \sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^r v_j \ell_j(x).
+\] 
+By construction, this provides a lower bound on the criterion,
+\[
+f(x) \geq L(x,u,v), \quad \text{for any feasible $x$ and $u,v$ such that $u
+  \geq 0$}.
+\]
+Minimizing over all $x$ in the feasible set, which we denote as $C \subseteq
+\R^d$, yields 
+\[
+f^\star \geq \inf_{x \in C} \, L(x,u,v) \geq \inf_{x \in \R^d} \, L(x,u,v),
+\quad \text{for any $u,v$ such that $u \geq 0$}. 
+\]
+The second inequality above is really the key idea behind Lagrange duality; had
+we stopped at the first inequality, we would have not have (yet) gotten anywhere 
+practically interesting. Minimizing the Lagrangian over $x \in C$ can be
+hard---in general, it is no easier than minimizing $f$ over $x \in C$, which 
+is our original primal problem \eqref{eq:primal_problem}. Meanwhile, minimizing
+the Lagrangian over $x \in \R^d$ is often more tractable (as we will see in
+examples that follow),  
+
+
+While this gives us a lower bound on $f^\star$, we have not (yet) gotten
+anywhere practically interesting. Minimizing the Lagrangian over $x \in C$ is
+hard, in general---it is no easier than minimizing $f$ over $x \in C$, which 
+is our original primal problem \eqref{eq:primal_problem}. Next comes the simple
+but critical insight in Lagrange duality: \emph{we can instead minimize the
+  Lagrangian over all $x \in \R^d$}. This still gives a lower bound on the
+optimal criterion value (since it can only make the right-hand side above
+smaller). We hence define the \emph{Lagrange dual function} by      
+\begin{equation}
+\label{eq:dual_function}
+g(u,v) = \inf_{x \in \R^d} \, L(x,u,v), \quad \text{for any $u,v$ such that $u
+  \geq 0$},
+\end{equation}
+which by construction satisfies
+\[
+f^\star \geq g(u,v), \quad \text{for any $u,v$ such that $u \geq 0$}. 
+\]
 
 \begin{Example}
 LPs.
