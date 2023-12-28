@@ -4,18 +4,18 @@
 \section{Convex sets}  
 \label{sec:convex_sets}
 
-Convex sets are the main building blocks for the study of convex functions and
-their properties. Essentially everything that can be said about convex
-functions can be traced back to a statement about convex sets. A set $C
-\subseteq \R^d$ is called \emph{convex} if it satisfies 
+Convex sets serve as key building blocks for the study of convex functions and
+convex optimization, and essentially everything that can be said about the
+latter can be traced back to a statement about convex sets. A set $C \subseteq
+\R^d$ is called \emph{convex} if it satisfies   
 \index{convex set} 
 \begin{equation}
 \label{eq:convex_set}
 x, y \in C \implies t x + (1-t) y \in C, \quad \text{for all $t \in [0,1]$}. 
 \end{equation}
-This says that the line segment $\{ tx + (1-t) y : t \in [0,1] \}$ joining $x$
-and $y$ lies entirely in $C$. See Figure \ref{fig:convex_set}. A \emph{convex 
-  combination} of points $x_1,\ldots,x_n \in \R^d$ is one of the form   
+This condition says that the line segment $\{ tx + (1-t) y : t \in [0,1] \}$
+joining $x$ and $y$ lies entirely in $C$. See Figure \ref{fig:convex_set}. A
+\emph{convex combination} of points $x_1,\ldots,x_n \in \R^d$ is one of the form    
 \index{convex combination} 
 \[
 \sum_{i=1}^n t_i x_i, \quad \text{where $t_i \geq 0$, for $i=1,\ldots,n$ and 
