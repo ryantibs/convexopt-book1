@@ -292,12 +292,13 @@ roots of a cubic equation, which can be done in closed-form. Some calculations
 \begin{equation}
 \label{eq:nonconvex_quartic_dual}
 g(u) = \min_{j=1,2,3} \, \bigg\{ \frac{1}{10} R_j^4(u) - 5 R_j^2(u) + 10 R_j(u)
-+ 125 \bigg\},
++ 125 - u R_j(u) - 4u \bigg\},
 \end{equation}
 where 
 \[
-R_j(u) = a_j \sqrt[3]{\sqrt{\frac{(u-25)^2}{4} - \frac{25^3}{27}} - 5} +
-b_j \sqrt[3]{-\sqrt{\frac{(u-25)^2}{4} - \frac{25^3}{27}} - 5}, \quad j = 1,2,3,  
+R_j(u) = a_j \sqrt[3]{\sqrt{\frac{(u-25)^2}{4} - \frac{25^3}{27}} +
+  \frac{u-25}{2}} + b_j \sqrt[3]{-\sqrt{\frac{(u-25)^2}{4} - \frac{25^3}{27}} +
+  \frac{u-25}{2}}, \quad j = 1,2,3,   
 \]
 where here \smash{$\sqrt{\cdot}$} and \smash{$\sqrt[3]{\cdot}$} denote principal
 values of the root function (the root with the largest real part), and the
@@ -318,12 +319,12 @@ obvious from its analytic form!
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.7\textwidth]{fig/conjugate.pdf}
-\caption{The conjugate $f^*$ evaluated at $u$ is the maximum gap between a
-  linear function with slope $u$ and $f$, illustrated by the dotted line. The
-  double conjugate $f^{**}$ is the pointwise supremum of all affine minorants to
-  $f$ (equivalently, the greatest closed convex minorant to $f$), illustrated by
-  the dashed line.}     
+\includegraphics[width=0.9\textwidth]{fig/nonconvex_quartic.pdf}
+\caption{Left: the nonconvex quartic criterion in problem
+  \eqref{eq:nonconvex_quartic}, drawn as a solid curve. The dotted lines show  
+  ...
+  Right: the dual function corresponding to this quartic, as in
+  \eqref{eq:nonconvex_quartic_dual}. We can see ...}     
 \label{fig:nonconvex_quartic}
 \end{figure}
 
