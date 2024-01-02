@@ -75,7 +75,7 @@ criterion in the dual problem is a lower bound on the optimal criterion in the
 primal problem.  
 
 There are several natural follow-up questions that we can ask: for example, when
-does equality hold in \eqref{eq:lp_weak_duality}, $f^\star = g^\star$? And how
+does equality hold in \eqref{eq:lp_weak_duality}, $f^\star = g^\star$? And, how 
 do solutions $x^\star$ and $u^\star, v^\star$ in \eqref{eq:lp_primal} and
 \eqref{eq:lp_dual}, respectively, relate? We will address these questions and
 more, over this chapter and the next one. First, however, we must develop a
@@ -139,10 +139,10 @@ f^\star \geq \inf_{x \in C} \, L(x,u,v) \geq \inf_x \, L(x,u,v), \quad \text{for
 The second inequality in \eqref{eq:lagrangian_lb2} is really the key idea behind
 Lagrangian duality; had we stopped at the first inequality in
 \eqref{eq:lagrangian_lb2}, we would have not have (yet) gotten anywhere
-practically interesting, because minimizing the Lagrangian over $x \in C$ is 
-hard, in general---no easier than minimizing $f$ over $x \in C$, which is our
-original primal problem \eqref{eq:primal_problem}. Meanwhile, minimizing the
-Lagrangian over $x \in \R^d$ is usually more tractable (as we will see in
+practically interesting, since minimizing the Lagrangian over $x \in C$ is  
+hard in general---it is no easier than minimizing $f$ over $x \in C$, which is
+our original primal problem \eqref{eq:primal_problem}. Meanwhile, minimizing the
+Lagrangian over $x \in \R^d$ is usually more tractable (as we will see in 
 examples that follow), and still produces an effective lower bound.
 \end{Remark}
 
@@ -154,8 +154,8 @@ by
 g(u,v) = \inf_x \, L(x,u,v), 
 \end{equation}
 which we call the \emph{Lagrange dual function}. Then \eqref{eq:lagrangian_lb2}
-reads $f^\star \geq g(u,v)$ for any $u,v$ such that $u \geq 0$, and so to
-obtain the tightest lower bound, we maximize $g$, which yields
+reads $f^\star \geq g(u,v)$ for any $u,v$ with $u \geq 0$, and we can maximize
+$g$ to obtain the tightest lower bound, yielding 
 \index{dual problem}
 \begin{equation}
 \label{eq:dual_problem}
@@ -165,33 +165,135 @@ which we call the \emph{Lagrange dual problem} associated with
 \eqref{eq:primal_problem}. Our convention will be to drop the term ``Lagrange''
 when referring to the dual function and dual problem defined above.
 
-\section{Properties and examples}
+\begin{Example}
+In what follows, we work through the duals of canonical problems: LPs and
+QPs. For the duals standard form LPs and QPs, see Exercises \ref{ex:lp_std_dual}
+and \ref{ex:qp_std_dual}.   
 
-Two key properties of Lagrange duality, which follow more or less immediately
-from the construction in the last section, are described next.
+\begin{enumerate}[label=\alph*., ref=\alph*]
+\item \parlab{xa:lp_dual} 
+For the linear program \eqref{eq:lp_primal}, the Lagrangian is
+\begin{align*}
+L(x,u,v) &= c^\T x + u^\T (Ax - b) + v^\T (Gx - h) \\
+&= (c + A^\T u + G^\T v)^\T x - b^\T u - h^\T v.
+\end{align*}
+The dual function is obtained by taking an infimum over all $x$,
+\[
+g(u,v) = 
+\begin{cases}
+- b^\T u - h^\T v & A^\T u + G^\T v = -c \\
+- \infty & \text{otherwise}.
+\end{cases}
+\]
+The dual problem, which maximizes $g(u,v)$ subject to the constraint $u \geq
+0$, is therefore precisely as derived earlier in \eqref{eq:lp_dual}. 
+
+\item \parlab{xa:qp_dual}
+For the quadratic program (QP): 
+\begin{equation}
+\label{eq:qp_primal}
+\begin{alignedat}{2}
+&\minimize_x \quad && \frac{1}{2} x^\T Q x + c^\T x\\ 
+&\st && Ax \leq b \\
+& && Gx = h,
+\end{alignedat}
+\end{equation}
+the Lagrangian is
+\begin{align*}
+L(x,u,v) &= \frac{1}{2} x^\T Q x + c^\T x + u^\T (Ax - b) + v^\T (Gx - h) \\ 
+&= \frac{1}{2} x^\T Q x + (c + A^\T u + G^\T v)^\T x - b^\T u - h^\T v. 
+\end{align*}
+Assume that $Q \succ 0$. We can minimize the Lagrangian over $x$ by setting its
+gradient to zero and solving, which yields $x = - Q^{-1} (c + A^\T u + G^\T v)$,
+and   
+\[
+g(u,v) = - \frac{1}{2} (c + A^\T u + G^\T v)^\T Q^{-1} (c + A^\T u + G^\T v) -
+b^\T u - h^\T v.
+\] 
+The dual problem is thus
+\index{dual problem!quadratic program}
+\begin{equation}
+\label{eq:qp_pd_dual}
+\begin{alignedat}{2}
+&\maximize_{u,v} \quad && - \frac{1}{2} (c + A^\T u + G^\T v)^\T Q^{-1} (c +
+A^\T u + G^\T v) - b^\T u - h^\T v \\
+&\st && u \geq 0.
+\end{alignedat}
+\end{equation}
+This is itself a QP. If instead $Q \succeq 0$, then similar arguments (Exercise
+\ref{ex:qp_psd_dual}) lead to  
+\begin{equation}
+\label{eq:qp_psd_dual}
+\begin{alignedat}{2}
+&\maximize_{u,v} \quad && - \frac{1}{2} (c + A^\T u + G^\T v)^\T Q^\pinv (c + 
+A^\T u + G^\T v) - b^\T u - h^\T v \\
+&\st && c + A^\T u + G^\T v \in \col(Q) \\ 
+& && u \geq 0.
+\end{alignedat}
+\end{equation}
+This is still a QP, because $c + A^\T u + G^\T v \in \col(Q)$ (where $\col(Q)$
+denotes the column space of $Q$) is a linear constraint.    
+\end{enumerate}
+\end{Example}
+
+\section{Properties}
+
+Next we cover two important properties of Lagrange duality, which follow
+more or less immediately from the development in the last section.
 
 \paragraph{Weak duality.}
 \parlab{par:weak_duality}
 
-
+Let $g^\star$ denote the optimal value in the dual problem
+\eqref{eq:dual_problem}. It follows from \eqref{eq:lagrangian_lb2} and the  
+definition of the dual function in \eqref{eq:dual_function} that  
+\index{weak duality}
+\begin{equation}
+\label{eq:weak_duality}
+f^\star \geq g^\star.
+\end{equation}
+This property is called \emph{weak duality}, and it holds for \emph{any}
+original (primal) problem \eqref{eq:primal_problem}, regardless of
+convexity. Note that this generalizes what we found in
+\eqref{eq:lp_weak_duality} for LPs. 
 
 \paragraph{Convexity of dual problem.}
 \parlab{par:convex_dual}
 
-hi
+The dual optimization problem \eqref{eq:dual_problem} is \emph{always convex},
+that is, it is a concave maximization problem. This is true for any original
+(primal) problem \eqref{eq:primal_problem}, regardless of whether the primal
+problem is itself convex. To see this, we can rewrite the dual function
+\eqref{eq:dual_function} as   
+\[
+g(u,v) = - \, \underbrace{\sup_x \, \bigg\{ -f(x) - \sum_{i=1}^m u_i h_i(x) - 
+  \sum_{j=1}^r v_j \ell_j(x) \bigg\}}_{\bar{g}(u,v)}.
+\]
+Observe that the function defined as \smash{$\bar{g}$} above is the pointwise 
+supremum of affine---hence convex---functions in $u,v$. By the pointwise
+supremum rule in Property \parref{par:function_supremum}, we see that
+\smash{$\bar{g}$} is convex, and therefore the dual function \smash{$g =
+  -\bar{g}$} is concave. This makes problem \eqref{eq:dual_problem} convex.     
 
 \medskip
 
 \begin{Example}
-LPs.
-\end{Example}
-
-\begin{Example}
-QPs.
+The following example emphasizes how Property \parref{par:convex_dual} can be
+surprising and nonobvious in practice. Consider the nonconvex optimization
+problem 
+\[
+\minimize_x \quad \frac{1}{10} x^4 - 5x^2 + 10x \quad \st \quad x \geq -5.
+\]
+The left panel of Figure \ref{fig:} plots its criterion, a nonconvex quartic
+function. The dual function $g$ associated with this problem can be calculated  
+explicitly, because it requires .... and ... a cubic polynomial has closed-form solutions for its roots. 
 \end{Example}
 
 \section{Interpretations}
 \label{sec:duality_interpretations}
+
+\section{Slater's condition}
+\label{sec:slater_condition}
 
 \section{SDP duality*}
 \label{sec:sdp_duality}
@@ -199,3 +301,26 @@ QPs.
 % for SDP duality: take a look at 
 % https://www.mit.edu/~parrilo/cdc03_workshop/ejc03_comp.pdf
 % https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-251j-introduction-to-mathematical-programming-fall-2009/readings/MIT6_251JF09_SDP.pdf
+
+\SkipTocEntry\section*{Chapter notes}
+
+\clearpage
+
+\begin{xcb}{Exercises}
+\begin{enumerate}[label=\thechapter.\arabic*]
+\settowidth{\leftmargini}{0.00.\hskip\labelsep}
+
+\item \label{ex:lp_std_dual}
+
+Standard form LP dual
+
+\item \label{ex:qp_std_dual} 
+
+Standard form QP dual
+
+\item \label{ex:qp_psd_dual} 
+
+Standard form QP dual
+
+\end{enumerate}
+\end{xcb}
