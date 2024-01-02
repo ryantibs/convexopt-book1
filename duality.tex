@@ -282,12 +282,38 @@ The following example emphasizes how Property \parref{par:convex_dual} can be
 surprising and nonobvious in practice. Consider the nonconvex optimization
 problem 
 \[
-\minimize_x \quad \frac{1}{10} x^4 - 5x^2 + 10x \quad \st \quad x \geq -5.
+\minimize_x \quad \frac{1}{10} x^4 - 5x^2 + 10x + 15 \quad \st \quad x \geq -4. 
 \]
-The left panel of Figure \ref{fig:} plots its criterion, a nonconvex quartic
-function. The dual function $g$ associated with this problem can be calculated  
-explicitly, because it requires .... and ... a cubic polynomial has closed-form solutions for its roots. 
+The left panel of Figure \ref{fig:nonconvex_quartic} plots its criterion, which
+is a nonconvex quartic function. Despite such nonconvexity, we can calculate the
+dual function for this problem explicitly because it reduces to solving for the
+roots of a cubic equation, which can be done in closed-form. Some calculations
+(Exercise \ref{ex:nonconvex_quartic}) lead to:
+\[
+g(u) = \min_{j=1,2,3} \, \bigg\{ \frac{1}{10} F_j^4(u) - 5 F_j^2(u) + 10 F_j(u)
++ 15 \bigg\},
+\]
+where 
+\[
+F_j(u) = ..., \quad j = 1,2,3,
+\]
+and $a_1 = 1$, \smash{$a_2 = (-1 + i \sqrt{3})/2$}, and \smash{$a_3 = (-1 - i 
+  \sqrt{3})/2$} (with $i$ here denoting the imaginary unit). The right panel of
+Figure \ref{fig:nonconvex_quartic} plots the dual criterion; that this function
+is concave, as guaranteed by Property \parref{par:convex_dual}, is not at all 
+obvious from its analytic form!  
 \end{Example}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.7\textwidth]{fig/conjugate.pdf}
+\caption{The conjugate $f^*$ evaluated at $u$ is the maximum gap between a
+  linear function with slope $u$ and $f$, illustrated by the dotted line. The
+  double conjugate $f^{**}$ is the pointwise supremum of all affine minorants to
+  $f$ (equivalently, the greatest closed convex minorant to $f$), illustrated by
+  the dashed line.}     
+\label{fig:nonconvex_quartic}
+\end{figure}
 
 \section{Interpretations}
 \label{sec:duality_interpretations}
@@ -311,16 +337,18 @@ explicitly, because it requires .... and ... a cubic polynomial has closed-form 
 \settowidth{\leftmargini}{0.00.\hskip\labelsep}
 
 \item \label{ex:lp_std_dual}
-
 Standard form LP dual
 
 \item \label{ex:qp_std_dual} 
-
 Standard form QP dual
 
 \item \label{ex:qp_psd_dual} 
+PSD QP dual
 
-Standard form QP dual
+\item \label{ex:nonconvex_quartic}
+Nonconvex quartic
+
+\item 
 
 \end{enumerate}
 \end{xcb}
