@@ -179,8 +179,7 @@ L(x,u,v) &= c^\T x + u^\T (Ax - b) + v^\T (Gx - h) \\
 \end{align*}
 The dual function is obtained by taking an infimum over all $x$,
 \[
-g(u,v) = 
-\begin{cases}
+g(u,v) = \begin{cases}
 - b^\T u - h^\T v & A^\T u + G^\T v = -c \\
 - \infty & \text{otherwise}.
 \end{cases}
@@ -281,27 +280,40 @@ supremum rule in Property \parref{par:function_supremum}, we see that
 The following example emphasizes how Property \parref{par:convex_dual} can be
 surprising and nonobvious in practice. Consider the nonconvex optimization
 problem 
-\[
-\minimize_x \quad \frac{1}{10} x^4 - 5x^2 + 10x + 15 \quad \st \quad x \geq -4. 
-\]
+\begin{equation}
+\label{eq:nonconvex_quartic}
+\minimize_x \quad \frac{1}{10} x^4 - 5x^2 + 10x + 125 \quad \st \quad x \geq -4.
+\end{equation}
 The left panel of Figure \ref{fig:nonconvex_quartic} plots its criterion, which
 is a nonconvex quartic function. Despite such nonconvexity, we can calculate the
 dual function for this problem explicitly because it reduces to solving for the
 roots of a cubic equation, which can be done in closed-form. Some calculations
 (Exercise \ref{ex:nonconvex_quartic}) lead to:
-\[
-g(u) = \min_{j=1,2,3} \, \bigg\{ \frac{1}{10} F_j^4(u) - 5 F_j^2(u) + 10 F_j(u)
-+ 15 \bigg\},
-\]
+\begin{equation}
+\label{eq:nonconvex_quartic_dual}
+g(u) = \min_{j=1,2,3} \, \bigg\{ \frac{1}{10} R_j^4(u) - 5 R_j^2(u) + 10 R_j(u)
++ 125 \bigg\},
+\end{equation}
 where 
 \[
-F_j(u) = ..., \quad j = 1,2,3,
+R_j(u) = a_j \sqrt[3]{\sqrt{\frac{(u-25)^2}{4} - \frac{25^3}{27}} - 5} +
+b_j \sqrt[3]{-\sqrt{\frac{(u-25)^2}{4} - \frac{25^3}{27}} - 5}, \quad j = 1,2,3,  
 \]
-and $a_1 = 1$, \smash{$a_2 = (-1 + i \sqrt{3})/2$}, and \smash{$a_3 = (-1 - i 
-  \sqrt{3})/2$} (with $i$ here denoting the imaginary unit). The right panel of
+where here \smash{$\sqrt{\cdot}$} and \smash{$\sqrt[3]{\cdot}$} denote principal
+values of the root function (the root with the largest real part), and the
+coefficients are    
+\[
+(a_j, b_j) = \begin{cases}
+(1, 1) & \text{if $j=1$} \\
+(\epsilon_1, \epsilon_2) & \text{if $j=2$}  \\
+(\epsilon_2, \epsilon_1) & \text{if $j=3$} ,
+\end{cases}
+\]
+where \smash{$\epsilon_1 = (-1 + i \sqrt{3})/2$}, and \smash{$\epsilon_2 = (-1 -
+  i \sqrt{3})/2$} (and $i$ denotes the imaginary unit). The right panel of
 Figure \ref{fig:nonconvex_quartic} plots the dual criterion; that this function
-is concave, as guaranteed by Property \parref{par:convex_dual}, is not at all 
-obvious from its analytic form!  
+is concave, as guaranteed by Property \parref{par:convex_dual}, is not at all
+obvious from its analytic form!   
 \end{Example}
 
 \begin{figure}[tb]

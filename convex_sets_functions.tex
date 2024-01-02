@@ -278,9 +278,9 @@ expressions should be interpreted as functions of $x$.
   \begin{equation}
   \label{eq:characteristic_function} 
   I_C(x) = \begin{cases}
-  0 & x \in C \\
-  \infty & x \notin C
-  \end{cases},
+  0 & \text{if $x \in C$} \\
+  \infty & \text{if $x \notin C$},
+  \end{cases}
   \end{equation}
   is convex provided that $C$ is a convex set. 
 
@@ -945,10 +945,10 @@ there are some nontrivial improper convex functions that are not just
 identically $\pm \infty$, for example
 \[
 f(x) = \begin{cases}
--\infty & \|x\| < 1 \\
-0 & \|x\| = 1 \\
-\infty & \|x\| > 1
-\end{cases},
+-\infty & \text{if $\|x\| < 1$} \\
+0 & \text{if $\|x\| = 1$} \\
+\infty & \text{if $\|x\| > 1$},
+\end{cases}
 \]
 for a norm $\|\cdot\|$. Thus, from a general mathematical perspective, it is
 important to be able to deal with them. Altogether, for our purposes, we find it

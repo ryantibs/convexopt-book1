@@ -192,10 +192,10 @@ for the proximal operator.
   \label{eq:soft_thresholding}
   [S_\lambda(x)]_i = 
   \begin{cases}
-  x_i - \lambda & x_i > \lambda \\
-  0 & |x_i| \leq \lambda \\
-  x_i + \lambda & x_i < -\lambda
-  \end{cases}, 
+  x_i - \lambda & \text{if $x_i > \lambda$} \\
+  0 & \text{if $|x_i| \leq \lambda$} \\
+  x_i + \lambda & \text{if $x_i < -\lambda$}
+  \end{cases},
   \quad i = 1,\ldots,d.
   \end{equation}
 
@@ -556,9 +556,9 @@ convex sets.
   \[
   P_C(x) = 
   \begin{cases}
-  x + (b - a^\T x) a / \|a\|_2 & a^\T x > b \\
-  x & a^\T x \leq b
-  \end{cases}.
+  x + (b - a^\T x) a / \|a\|_2 & \text{if $a^\T x > b$} \\
+  x & \text{if $a^\T x \leq b$}.
+  \end{cases}
   \]
 
 \index{projection!onto hyperrectangle}
@@ -567,9 +567,9 @@ convex sets.
   \[
   [P_C(x)]_i = 
   \begin{cases}
-  a_i & x_i < a_i \\
-  x_i & a \leq x_i \leq b \\
-  b_i & x_i > b_i
+  a_i & \text{if $x_i < a_i$} \\
+  x_i & \text{if $a \leq x_i \leq b$} \\
+  b_i & \text{if $x_i > b_i$}
   \end{cases},
   \quad i = 1,\ldots,d.
   \]
@@ -583,9 +583,9 @@ convex sets.
   \[
   P_C(x)  = 
   \begin{cases}
-  x / \|x\|_2 & \|x\|_2 > 1 \\
-  x & \|x\|_2 \leq 1
-  \end{cases}.
+  x / \|x\|_2 & \text{if $\|x\|_2 > 1$} \\
+  x & \|x\|_2 \text{if $\leq 1$}.
+  \end{cases}
   \]
 
 \index{positive semidefinite cone!projection}
@@ -1067,9 +1067,9 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   \begin{cases}
   \displaystyle
   x - \lambda \frac{x - P_C(x)}{\|x - P_C(x)\|_2} & 
-  \|x - P_C(x)\|_2 > \lambda \\ 
-  P_C(x) & \|x - P_C(x)\|_2 \leq \lambda \\ 
-  \end{cases}.
+  \text{if $\|x - P_C(x)\|_2 > \lambda$} \\ 
+  P_C(x) & \text{if $\|x - P_C(x)\|_2 \leq \lambda$}.
+  \end{cases}
   \]
   Hint: recall that $f$ is differentiable at each $x \notin C$, with gradient
   given in \eqref{eq:set_distance_subgradients}.    
@@ -1330,9 +1330,9 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   \[
   f_\lambda(x) = 
   \begin{cases}
-  x^2/ (2\lambda) & |x| \leq \lambda \\
-  |x| - \lambda/2 & |x| > \lambda
-  \end{cases}.
+  x^2/ (2\lambda) & \text{if $|x| \leq \lambda$} \\
+  |x| - \lambda/2 & \text{if $|x| > \lambda$}.
+  \end{cases}
   \]
   This is in fact the Moreau envelope that is visualized in Figure
   \ref{fig:moreau_envelope}.  

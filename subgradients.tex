@@ -130,10 +130,10 @@ representation of the norm in question. % and for these we refer to exercises
 \item For $f(x) = |x|$, we have 
   \[
   \partial f(x) = \begin{cases}
-  \{+1\} & x > 0 \\
-  \{-1\} & x < 0 \\
-  [-1,1] & x = 0
-  \end{cases}.
+  \{+1\} & \text{if $x > 0$} \\
+  \{-1\} & \text{if $x < 0$} \\
+  [-1,1] & \text{if $x = 0$}.
+  \end{cases}
   \]
 
 \item \parlab{xa:l1_norm_subgradients}
@@ -142,9 +142,9 @@ representation of the norm in question. % and for these we refer to exercises
   \index{l1 norm@$\ell_1$ norm!subgradients}
   \[
   s_i \in \begin{cases}
-  \{+1\} & x_i > 0 \\
-  \{-1\} & x_i < 0 \\
-  [-1,1] & x_i = 0
+  \{+1\} & \text{if $x_i > 0$} \\
+  \{-1\} & \text{if $x_i < 0$} \\
+  [-1,1] & \text{if $x_i = 0$}
   \end{cases}, \quad i=1,\ldots,d.
   \]
   We see that the $\ell_1$ norm is differentiable at each point $x$ that does
@@ -165,9 +165,9 @@ representation of the norm in question. % and for these we refer to exercises
   particular, we have:
   \[
   \partial f(x) = \begin{cases}
-  \{x / \|x\|_2\} & x \not= 0 \\
-  \{s : \|s\|_2 \leq 1\} & x = 0
-  \end{cases}.
+  \{x / \|x\|_2\} & \text{if $x \not= 0$} \\
+  \{s : \|s\|_2 \leq 1\} & \text{if $x = 0$}.
+  \end{cases}
   \]
 
 \item \parlab{xa:linf_norm_subgradients} 
@@ -176,9 +176,9 @@ representation of the norm in question. % and for these we refer to exercises
   \index{linf norm@$\ell_\infty$ norm!subgradients}
   \[
   s_i \in \begin{cases}
-  [0,1] & \hphantom{-} x_i = \|x\|_\infty \\   
-  [-1,0] & -x_i = \|x\|_\infty \\
-  \{0\} & \, |x_i| < \|x\|_\infty 
+  [0,1] & \text{if $x_i = \|x\|_\infty$} \\   
+  [-1,0] & \text{if $x_i = -\|x\|_\infty$} \\
+  \{0\} & \text{if $|x_i| < \|x\|_\infty$}
   \end{cases}, \quad i=1,\ldots,d,
   \]
   where $\|s\|_1 \leq 1$. We see that the $\ell_\infty$ norm is differentiable

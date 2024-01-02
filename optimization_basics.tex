@@ -698,8 +698,8 @@ general. For example, the function
 \begin{equation}
 \label{eq:discontinuous_quadratic}
 f(x) = \begin{cases}
-x^2 & x \not= 0 \\
-1 & x = 0
+x^2 & \text{if $x \not= 0$} \\
+1 & \text{if $x = 0$}
 \end{cases}
 \end{equation}
 has an infimum of 0, but no minimizer. In order to prevent such behavior, we
@@ -1255,10 +1255,10 @@ hold in general, without further assumptions.
   defined as  
   \[
   g(x,y) = \begin{cases}
-  x^2/y + y & y > 0 \\
-  0 & x=0, \, y=0 \\
-  \infty & x\not=0, \, y=0
-  \end{cases},
+  x^2/y + y & \text{if $y > 0$} \\
+  0 & \text{if $x=0, \, y=0$} \\
+  \infty & \text{if $x\not=0, \, y=0$},
+  \end{cases}
   \]
   is convex. Show that $\inf_{y \geq 0} \, g(x,y) = 2|x|$. 
 
@@ -1520,8 +1520,8 @@ hold in general, without further assumptions.
 \log \Big(\int \exp\big(T(z)^\T \eta \big) h(z) \, \d{z}\Big) &
 \text{(continuous case)} \\    
 \log \Big(\sum_z \exp\big(T(z)^\T \eta \big) h(z)\Big) & 
-\text{(discrete case)}     
-\end{cases}.
+\text{(discrete case)}.
+\end{cases}
 \]
 
 \item Show that $\dom(\psi)$ is a convex set. Hint: use part a.

@@ -464,9 +464,9 @@ computer science.
   the same dimensions as $Z$, with entries   
   \[
   [P_\Omega(Z)]_{ij} = \begin{cases}
-   Z_{ij} & (i,j) \in \Omega \\
-   0 & (i,j) \notin \Omega
-  \end{cases};
+   Z_{ij} & \text{if $(i,j) \in \Omega$} \\
+   0 & \text{if $(i,j) \notin \Omega$},
+  \end{cases}
   \]
   and $\lambda \geq 0$ is a tuning parameter. The solution in
   \eqref{eq:matrix_completion} is a known as a kind of \emph{matrix completion}
