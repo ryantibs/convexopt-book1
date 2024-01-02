@@ -321,15 +321,22 @@ obvious from its analytic form!
 \centering
 \includegraphics[width=0.9\textwidth]{fig/nonconvex_quartic.pdf}
 \caption{Left: the nonconvex quartic criterion in problem
-  \eqref{eq:nonconvex_quartic}, drawn as a solid curve. The dotted lines show  
-  ...
-  Right: the dual function corresponding to this quartic, as in
-  \eqref{eq:nonconvex_quartic_dual}. We can see ...}     
+  \eqref{eq:nonconvex_quartic}, drawn as a solid curve. The dashed lines show 
+  $uh(x)$ as a function of $x$ for different values of the dual variable $u$,
+  where $h(x) = -x-4$ is the inequality constraint function in
+  \eqref{eq:nonconvex_quartic}. The dotted lines show the Lagrangian $L(x,u)$ as  
+  a function of $x$, for the same values of $u$. Right: the associated dual 
+  function, as in \eqref{eq:nonconvex_quartic_dual}, which at each point $u$ is 
+  given by minimizing $L(x,u)$ over all $x$. The dotted vertical line marks the 
+  optimal primal criterion value $f^\star$. We see that weak duality $f^\star
+  \geq g^\star$ holds, and the inequality is strict.}
 \label{fig:nonconvex_quartic}
 \end{figure}
 
 \section{Interpretations}
 \label{sec:duality_interpretations}
+
+hi
 
 \section{Slater's condition}
 \label{sec:slater_condition}
