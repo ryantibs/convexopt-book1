@@ -153,21 +153,18 @@ by
 \label{eq:dual_function}
 g(u,v) = \inf_x \, L(x,u,v), 
 \end{equation}
-which we call the \emph{Lagrange dual function}. Then \eqref{eq:lagrangian_bd2}
-reads $f^\star \geq g(u,v)$ for any $u,v$ with $u \geq 0$, and we can maximize
+which we call the \emph{(Lagrange) dual function}. Then \eqref{eq:lagrangian_bd2}
+becomes $f^\star \geq g(u,v)$ for any $u,v$ with $u \geq 0$, and we can maximize 
 $g$ to obtain the tightest lower bound, yielding 
 \index{dual problem}
 \begin{equation}
 \label{eq:dual_problem}
 \maximize_{u,v} \quad g(u,v) \quad \st \quad u \geq 0,
 \end{equation}
-which we call the \emph{Lagrange dual problem} associated with
+which we call the \emph{(Lagrange) dual problem} associated with problem
 \eqref{eq:primal_problem}. Figure \ref{fig:nonconvex_quartic}, given later and
 discussed under Example \ref{xa:nonconvex_quartic}, illustrates the construction
-of the Lagrangian and the Lagrange dual function for a simple primal problem. 
-Henceforth, our convention will be to drop the term ``Lagrange'' when referring
-to the dual function \eqref{eq:dual_function} and dual problem
-\eqref{eq:dual_problem}. 
+of the Lagrangian and the dual problem.
 
 \begin{Example}
 In what follows, we work through the duals of canonical problems: LPs and
