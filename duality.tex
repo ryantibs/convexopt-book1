@@ -124,21 +124,21 @@ L(x,u,v) = f(x) + \sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^r v_j \ell_j(x).
 \] 
 By construction, this provides a lower bound on the criterion,
 \begin{equation}
-\label{eq:lagrangian_lb1}
+\label{eq:lagrangian_bd1}
 f(x) \geq L(x,u,v), \quad \text{for any feasible $x$ and $u,v$ such that $u
   \geq 0$},
 \end{equation}
 and minimizing over the feasible set, denoted $C \subseteq \R^d$, yields
 \begin{equation}
-\label{eq:lagrangian_lb2}
+\label{eq:lagrangian_bd2}
 f^\star \geq \inf_{x \in C} \, L(x,u,v) \geq \inf_x \, L(x,u,v), \quad \text{for
   any $u,v$ such that $u \geq 0$}.  
 \end{equation}
 
 \begin{Remark}
-The second inequality in \eqref{eq:lagrangian_lb2} is really the key idea behind
+The second inequality in \eqref{eq:lagrangian_bd2} is really the key idea behind
 Lagrangian duality; had we stopped at the first inequality in
-\eqref{eq:lagrangian_lb2}, we would have not have (yet) gotten anywhere
+\eqref{eq:lagrangian_bd2}, we would have not have (yet) gotten anywhere
 practically interesting, since minimizing the Lagrangian over $x \in C$ is  
 hard in general---it is no easier than minimizing $f$ over $x \in C$, which is
 our original primal problem \eqref{eq:primal_problem}. Meanwhile, minimizing the
@@ -146,14 +146,14 @@ Lagrangian over $x \in \R^d$ is usually more tractable (as we will see in
 examples that follow), and still produces an effective lower bound.
 \end{Remark}
 
-It is convenient to denote the right-most quantity in \eqref{eq:lagrangian_lb2}
+It is convenient to denote the right-most quantity in \eqref{eq:lagrangian_bd2}
 by 
 \index{dual function}
 \begin{equation}
 \label{eq:dual_function}
 g(u,v) = \inf_x \, L(x,u,v), 
 \end{equation}
-which we call the \emph{Lagrange dual function}. Then \eqref{eq:lagrangian_lb2}
+which we call the \emph{Lagrange dual function}. Then \eqref{eq:lagrangian_bd2}
 reads $f^\star \geq g(u,v)$ for any $u,v$ with $u \geq 0$, and we can maximize
 $g$ to obtain the tightest lower bound, yielding 
 \index{dual problem}
@@ -162,8 +162,12 @@ $g$ to obtain the tightest lower bound, yielding
 \maximize_{u,v} \quad g(u,v) \quad \st \quad u \geq 0,
 \end{equation}
 which we call the \emph{Lagrange dual problem} associated with
-\eqref{eq:primal_problem}. Our convention will be to drop the term ``Lagrange''
-when referring to the dual function and dual problem defined above.
+\eqref{eq:primal_problem}. Figure \ref{fig:nonconvex_quartic}, given later and
+discussed under Example \ref{xa:nonconvex_quartic}, illustrates the construction
+of the Lagrangian and the Lagrange dual function for a simple primal problem. 
+Henceforth, our convention will be to drop the term ``Lagrange'' when referring
+to the dual function \eqref{eq:dual_function} and dual problem
+\eqref{eq:dual_problem}. 
 
 \begin{Example}
 In what follows, we work through the duals of canonical problems: LPs and
@@ -244,7 +248,7 @@ more or less immediately from the development in the last section.
 \parlab{par:weak_duality}
 
 Let $g^\star$ denote the optimal value in the dual problem
-\eqref{eq:dual_problem}. It follows from \eqref{eq:lagrangian_lb2} and the  
+\eqref{eq:dual_problem}. It follows from \eqref{eq:lagrangian_bd2} and the  
 definition of the dual function in \eqref{eq:dual_function} that  
 \index{weak duality}
 \begin{equation}
@@ -277,6 +281,7 @@ supremum rule in Property \parref{par:function_supremum}, we see that
 \medskip
 
 \begin{Example}
+\label{xa:nonconvex_quartic}
 The following example emphasizes how Property \parref{par:convex_dual} can be
 surprising and nonobvious in practice. Consider the nonconvex optimization
 problem 
@@ -310,16 +315,16 @@ coefficients are
 (\epsilon_2, \epsilon_1) & \text{if $j=3$} ,
 \end{cases}
 \]
-where \smash{$\epsilon_1 = (-1 + i \sqrt{3})/2$}, and \smash{$\epsilon_2 = (-1 -
-  i \sqrt{3})/2$} (and $i$ denotes the imaginary unit). The right panel of
-Figure \ref{fig:nonconvex_quartic} plots the dual criterion; that this function
-is concave, as guaranteed by Property \parref{par:convex_dual}, is not at all
-obvious from its analytic form!   
+where \smash{$\epsilon_1 = (-1 + i \sqrt{3})/2$}, \smash{$\epsilon_2 = (-1 -  
+  i \sqrt{3})/2$}, and we use $i$ for the imaginary unit. The right panel of
+Figure \ref{fig:nonconvex_quartic} plots the dual criterion---that this function  
+is concave, as guaranteed by Property \parref{par:convex_dual}, is not at all 
+obvious from its analytic form!    
 \end{Example}
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.9\textwidth]{fig/nonconvex_quartic.pdf}
+\includegraphics[width=0.89\textwidth]{fig/nonconvex_quartic.pdf}
 \caption{Left: the nonconvex quartic criterion in problem
   \eqref{eq:nonconvex_quartic}, drawn as a solid curve. The dashed lines show 
   $uh(x)$ as a function of $x$ for different values of the dual variable $u$,
@@ -336,7 +341,51 @@ obvious from its analytic form!
 \section{Interpretations}
 \label{sec:duality_interpretations}
 
-hi
+We discuss some interpretations of Lagrangian duality. The chapter notes 
+provide further discussion and context. In this section, without loss of
+generality, we will simply denote the dual variable by $u$, that is, we drop 
+reference to the part $v$ corresponding to the equality constraints in the
+primal \eqref{eq:primal_problem}. This is possible because equality constraints
+can always be rewritten as inequality constraints (each $\ell_j(x) = 0$ can be 
+rewritten as $\ell_j(x) \leq 0$ and $-\ell_j(x) \leq 0$). 
+
+\paragraph{Max-min interpretation.}
+
+Recall that, by definition \eqref{eq:dual_function}, for each $u \geq 0$,    
+\[
+\inf_x \, L(x,u) = g(u).
+\]
+Meanwhile, we also have the following symmetrical fact: for any $x$, 
+\[
+\sup_{u \geq 0} \, L(x,u) = f(x) + I_C(x),
+\]
+where $C = \{x : h_i(x) \leq 0, \, i=1,\dots,m\}$ is the primal feasible
+set. To see this, note that we have the upper bound $L(x,u) \leq f(x) +
+I_C(x)$ for all $x$ and $u \geq 0$. For $x \in C$, the upper bound is attained   
+at $u = 0$, whereas for $x \notin C$, the upper bound is attained by sending 
+$u_i \to \infty$, where $i$ is such that $h_i(x) > 0$. Therefore by the general
+max-min inequality (see Exercise \ref{ex:inf_sup_rules} part d): 
+\[
+\underbrace{\inf_x \, \sup_{u \geq 0} \, L(x,u)}_{f^\star} \geq 
+\underbrace{\sup_{u \geq 0} \, \inf_x \, L(x,u)}_{g^\star}.
+\]
+This is in fact precisely weak duality \eqref{eq:weak_duality}, since the 
+left-hand side is \smash{$f^\star = \inf_x \{ f(x) + I_C(x) \}$} and the
+right-hand side is \smash{$g^\star = \sup_{u \geq 0} \, g(u)$}. 
+
+\paragraph{Saddle-point interpretation.}
+
+From \eqref{eq:lagrangian_bd1} and \eqref{eq:dual_function}, it follows that 
+\begin{equation}
+\label{eq:lagrangian_bd3}
+f(x) \geq L(x,u) \geq g(u), \quad \text{for any primal feasible $x$ and dual
+  feasible $u$}, 
+\end{equation}
+where by dual feasible we mean that $u \geq 0$.
+
+\paragraph{Zero-sum game interpretation.}
+
+\paragraph{Shadow price interpretation.}
 
 \section{Slater's condition}
 \label{sec:slater_condition}
