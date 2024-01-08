@@ -124,21 +124,21 @@ L(x,u,v) = f(x) + \sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^r v_j \ell_j(x).
 \] 
 By construction, this provides a lower bound on the criterion,
 \begin{equation}
-\label{eq:lagrangian_bd1}
+\label{eq:lagrangian_bound1}
 f(x) \geq L(x,u,v), \quad \text{for any feasible $x$ and $u,v$ such that $u
   \geq 0$},
 \end{equation}
 and minimizing over the feasible set, denoted $C \subseteq \R^d$, yields
 \begin{equation}
-\label{eq:lagrangian_bd2}
+\label{eq:lagrangian_bound2}
 f^\star \geq \inf_{x \in C} \, L(x,u,v) \geq \inf_x \, L(x,u,v), \quad \text{for
   any $u,v$ such that $u \geq 0$}.  
 \end{equation}
 
 \begin{Remark}
-The second inequality in \eqref{eq:lagrangian_bd2} is really the key idea behind
-Lagrangian duality; had we stopped at the first inequality in
-\eqref{eq:lagrangian_bd2}, we would have not have (yet) gotten anywhere
+The second inequality in \eqref{eq:lagrangian_bound2} is really the key idea
+behind Lagrangian duality; had we stopped at the first inequality in 
+\eqref{eq:lagrangian_bound2}, we would have not have (yet) gotten anywhere
 practically interesting, since minimizing the Lagrangian over $x \in C$ is  
 hard in general---it is no easier than minimizing $f$ over $x \in C$, which is
 our original primal problem \eqref{eq:primal_problem}. Meanwhile, minimizing the
@@ -146,16 +146,16 @@ Lagrangian over $x \in \R^d$ is usually more tractable (as we will see in
 examples that follow), and still produces an effective lower bound.
 \end{Remark}
 
-It is convenient to denote the right-most quantity in \eqref{eq:lagrangian_bd2}
-by 
+It is convenient to denote the right-most quantity in
+\eqref{eq:lagrangian_bound2} by 
 \index{dual function}
 \begin{equation}
 \label{eq:dual_function}
 g(u,v) = \inf_x \, L(x,u,v), 
 \end{equation}
-which we call the \emph{(Lagrange) dual function}. Then \eqref{eq:lagrangian_bd2}
-becomes $f^\star \geq g(u,v)$ for any $u,v$ with $u \geq 0$, and we can maximize 
-$g$ to obtain the tightest lower bound, yielding 
+which we call the \emph{(Lagrange) dual function}. Then
+\eqref{eq:lagrangian_bound2} becomes $f^\star \geq g(u,v)$ for any $u,v$ with $u
+\geq 0$, and we can maximize $g$ to obtain the tightest lower bound, yielding  
 \index{dual problem}
 \begin{equation}
 \label{eq:dual_problem}
@@ -245,7 +245,7 @@ more or less immediately from the development in the last section.
 \parlab{par:weak_duality}
 
 Let $g^\star$ denote the optimal value in the dual problem
-\eqref{eq:dual_problem}. It follows from \eqref{eq:lagrangian_bd2} and the  
+\eqref{eq:dual_problem}. It follows from \eqref{eq:lagrangian_bound2} and the   
 definition of the dual function in \eqref{eq:dual_function} that  
 \index{weak duality}
 \begin{equation}
@@ -370,19 +370,80 @@ This is in fact precisely weak duality \eqref{eq:weak_duality}, since the
 left-hand side is \smash{$f^\star = \inf_x \{ f(x) + I_C(x) \}$} and the
 right-hand side is \smash{$g^\star = \sup_{u \geq 0} \, g(u)$}. 
 
-\paragraph{Saddle-point interpretation.}
+\paragraph{Saddle point interpretation.}
 
-From \eqref{eq:lagrangian_bd1} and \eqref{eq:dual_function}, it follows that 
-\begin{equation}
-\label{eq:lagrangian_bd3}
+From \eqref{eq:lagrangian_bound1} and \eqref{eq:dual_function}, it follows that  
+\[
 f(x) \geq L(x,u) \geq g(u), \quad \text{for any primal feasible $x$ and dual
   feasible $u$}, 
+\]
+where by dual feasible we mean that $u \geq 0$. Suppose that $f^\star =
+g^\star$, and $x^\star$ is a solution in the primal problem
+\eqref{eq:primal_problem} and $u^\star$ is a solution in the dual
+\eqref{eq:dual_problem}. Then the inequalities in the last display, applied to
+$x^\star$ and $u^\star$, must be all equalities:  
+\begin{equation}
+\label{eq:lagrangian_equalities1}
+f(x^\star) = L(x^\star, u^\star) = g(u^\star),
 \end{equation}
-where by dual feasible we mean that $u \geq 0$.
-
-\paragraph{Zero-sum game interpretation.}
+or equivalently, 
+\begin{equation}
+\label{eq:lagrangian_equalities2}
+\sup_{u \geq 0} \, L(x^\star, u) = L(x^\star, u^\star) = \inf_x \, L(x,
+u^\star), 
+\end{equation}
+where used the definition of $g$ as an infimum, and the supremal representation
+of $f$ established in the max-min interpretation. Observe that we can rewrite
+\eqref{eq:lagrangian_equalities2} as
+\index{Lagrangian function!saddle point}
+\begin{equation}
+\label{eq:lagrangian_saddle_point}
+L(x^\star, u) \leq L(x^\star, u^\star) \leq L(x, u^\star), \quad \text{for any
+  $x$ and $u \geq 0$},
+\end{equation}
+which says that $x^\star,u^\star$ is what is known as a \emph{saddle point} of 
+the Lagrangian. 
 
 \paragraph{Shadow price interpretation.}
+
+Let us imagine that the primal variable $x$ in \eqref{eq:primal_problem}
+represents a planning variable for a given business, and $f(x)$ is the cost 
+incurred for operating according to $x$, that is, $-f(x)$ is the profit
+earned. Each $h_i(x) \leq 0$ represents an operating constraint, for example, a
+space constraint in the current warehouse used by the firm. (Recall, we are
+dropping all equality constraints from \eqref{eq:primal_problem}, as we are  
+considering the dual variable to be $u \geq 0$.)  Then in this language,
+$f^\star$ is the minimal cost (maximum profit) when the firm operates according
+to an optimal plan $x^\star$. 
+
+The Lagrangian $L(x,u)$ in this context has the following interpretation. The
+business is allowed to break the operating constraints, provided they pay
+appropriately for violations. Each component $u_i \geq 0$ of the dual variable
+corresponds to a price per unit violation of the constraint $h_i(x) \leq 0$,
+that is, $u_i h_i(x)$ represents the cost to the business for violating the
+$i\th$ constraint; likewise, $-u_i h_i(x)$ is the profit to the firm for slack
+in the $i\th$ constraint. For example, if the firm needs more space, then they
+can rent new warehouse space at a price per unit of $u_i$; and if they have
+leftover space in their current warehouse, then they can rent it out at the same 
+price. The value of the Lagrangian $L(x,u)$ thus represents the total cost
+incurred when operating according to $x$, with prices according to $u$. The dual  
+variable $u$ is often called the vector of \emph{shadow prices} in this
+context. 
+\index{Lagrangian function!shadow prices}
+
+Weak duality \eqref{eq:weak_duality} is now the statement that the optimal cost
+$g^\star$ when the firm is allowed to violate constraints and pay accordingly is
+at most the optimal cost $f^\star$ when they must respect the constraints, even
+at the worst-case prices. Furthermore, if indeed $f^\star = g^\star$, and
+$u^\star$ is a dual solution, then this represents a set of prices for which
+there is no advantage to violating the constraints versus respecting them.
+
+\section{Duality gap}
+
+emphasize that fstar = gstar implies solutions. state as a theorem?
+
+then state converse of what's shown above. that saddle point of lagrangian
+implies solutions.
 
 \section{Slater's condition}
 \label{sec:slater_condition}
@@ -395,6 +456,10 @@ where by dual feasible we mean that $u \geq 0$.
 % https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-251j-introduction-to-mathematical-programming-fall-2009/readings/MIT6_251JF09_SDP.pdf
 
 \SkipTocEntry\section*{Chapter notes}
+
+describe history of duality? saddle point closely connected to zero-sum games. 
+
+credit BV for interpretations
 
 \clearpage
 
