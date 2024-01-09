@@ -379,9 +379,9 @@ f(x) \geq L(x,u) \geq g(u), \quad \text{for any primal feasible $x$ and dual
 \]
 where by dual feasible we mean that $u \geq 0$. Suppose that $f^\star =
 g^\star$, and $x^\star$ is a solution in the primal problem
-\eqref{eq:primal_problem} and $u^\star$ is a solution in the dual
-\eqref{eq:dual_problem}. Then the inequalities in the last display, applied to
-$x^\star$ and $u^\star$, must be all equalities:  
+\eqref{eq:primal_problem} and $u^\star$ is a solution in the dual problem
+\eqref{eq:dual_problem}. Then the inequalities in the last display applied to
+$x^\star,u^\star$ must be all equalities:  
 \begin{equation}
 \label{eq:lagrangian_equalities1}
 f(x^\star) = L(x^\star, u^\star) = g(u^\star),
@@ -435,18 +435,83 @@ Weak duality \eqref{eq:weak_duality} is now the statement that the optimal cost
 $g^\star$ when the firm is allowed to violate constraints and pay accordingly is
 at most the optimal cost $f^\star$ when they must respect the constraints, even
 at the worst-case prices. Furthermore, if indeed $f^\star = g^\star$, and
-$u^\star$ is a dual solution, then this represents a set of prices for which
-there is no advantage to violating the constraints versus respecting them.
+$u^\star$ is a dual solution, then $u^\star$ represents a set of prices for
+which there is no advantage to violating the constraints versus respecting
+them. 
 
 \section{Duality gap}
 
-emphasize that fstar = gstar implies solutions. state as a theorem?
+The last section discussed some interpretations and consequences that follow in
+the case when the primal and dual optimal values match,    
+\index{strong duality}
+\begin{equation}
+\label{eq:strong_duality}
+f^\star = g^\star,
+\end{equation}
+which is a condition we call \emph{strong duality}. To be clear, unlike weak
+duality \eqref{eq:weak_duality}, strong duality is \emph{not} guaranteed to hold
+in general, for any primal problem \eqref{eq:primal_problem} and its dual 
+\eqref{eq:dual_problem}. (Recall, we saw a failure of strong duality in the
+example in Figure \ref{fig:nonconvex_quartic}.) However, it does hold for
+``most'' convex optimization problems, as the next section makes precise.
 
-then state converse of what's shown above. that saddle point of lagrangian
-implies solutions.
+A related concept, for primal feasible $x$ and dual feasible $u,v$, is the
+quantity  
+\index{duality gap}
+\begin{equation}
+\label{eq:duality_gap}
+f(x) - g(u,v) \geq 0,
+\end{equation}
+which is called the \emph{duality gap} at $x,u,v$. Note that strong duality the
+case in which the duality gap is zero at a primal solution $x^\star$ and dual
+solution $u^\star, v^\star$ (assuming solutions exist, that is, the optimal
+values are achieved).  
 
+Though it is a simple concept, the duality gap is a powerful tool, as the next
+result shows.
+
+\begin{Theorem}
+\label{thm:duality_gap}
+For any primal problem \eqref{eq:primal_problem} and its dual
+\eqref{eq:dual_problem}, the following holds. 
+
+\begin{enumerate}[label=(\roman*)]
+\item If the duality gap at $x,u,v$ equals $\epsilon \geq 0$, then $f(x) -
+  f^\star \leq \epsilon$, and $g^\star - g(u,v) \leq \epsilon$.  
+
+\item If the duality gap at $x,u,v$ is zero, then $x$ is primal optimal and
+  $u,v$ are dual optimal. 
+\end{enumerate}
+\end{Theorem}
+
+The proof of the theorem is straightforward. If $f(x) - g(u,v) \leq \epsilon$, 
+then by virtue of the fact that $f(x) \geq f^\star \geq g^\star \geq g(u,v)$, we
+conclude that $f(x) - f^\star \leq \epsilon$ and $g^\star - g(u,v) \leq
+\epsilon$, and this proves part (i). Meanwhile, part (ii) simply elucidates the  
+special case with $\epsilon = 0$.
+
+This theorem has numerous important implications, both in practice and in 
+theory. For example, iterative algorithms which operate on the primal and the
+dual simultaneously will be able to use the duality gap as a stopping criterion, 
+and in doing so, will stop with a suboptimality guarantee on the primal and the 
+dual criteria, by Theorem \ref{thm:duality_gap} part (i).  
+
+As another example, we can use Theorem \ref{thm:duality_gap} part (ii) to derive
+a converse to the saddle point property of the last section. There we proved
+that if strong duality holds, and $x^\star,u^\star$ are primal and solutions,
+respectively (assuming no equality constraints, without loss of generality), 
+then $x^\star, u^\star$ is a saddle point of the Lagrangian, as in
+\eqref{eq:lagrangian_saddle_point}. Conversely, if the saddle point property 
+\eqref{eq:lagrangian_saddle_point} holds at a pair \smash{$\bar{x}, \bar{u}$},
+then tracing back to \eqref{eq:lagrangian_equalities2} and
+\eqref{eq:lagrangian_equalities1} shows that \smash{$\bar{x}, \bar{u}$} achieve
+zero duality gap, which implies they must be optimal. We will revisit the saddle
+point perspective in Chapter \ref{chap:kkt}.   
+ 
 \section{Slater's condition}
 \label{sec:slater_condition}
+
+hi
 
 \section{SDP duality*}
 \label{sec:sdp_duality}
