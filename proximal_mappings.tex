@@ -825,11 +825,15 @@ $f$ is minorized by its Moreau envelope,
 f_\lambda(x) \leq f(x), \quad \text{for all $x$}.
 \]
 Fourth, it is not hard to see that $f_\lambda$ and $f$ have the same set of
-minimizers (Exercise \ref{ex:moreau_envelope} part a), which means that
-minimization of $f$ and of $f_\lambda$ are equivalent problems. Fifth, a
-property tied to the fourth one  (Exercise \ref{ex:moreau_envelope} part b), the
-point $z = \prox_{\lambda f}(x)$ achieves the infimum in
-\eqref{eq:moreau_envelope_lambda}, that is,   
+minimizers (Exercise \ref{ex:moreau_envelope} part a):
+\begin{equation}
+\label{eq:moreau_envelope_argmin}
+\argmin_x \, f_\lambda(x) = \argmin_x \, f(x),
+\end{equation}
+which means that minimization of $f$ and of $f_\lambda$ are equivalent
+problems. Fifth, a property tied to the fourth one  (Exercise
+\ref{ex:moreau_envelope} part b), the point $z = \prox_{\lambda f}(x)$ achieves
+the infimum in \eqref{eq:moreau_envelope_lambda}, that is,   
 \begin{equation}
 \label{eq:moreau_envelope_prox}
 f_\lambda(x) = \frac{1}{2\lambda} \|x - \prox_{\lambda f}(x)\|_2^2 + 
@@ -840,27 +844,28 @@ differentiable, and satisfies
 \index{Moreau envelope!gradient}
 \begin{equation}
 \label{eq:moreau_envelope_gradient}
-\nabla f_\lambda(x) = \frac{1}{\lambda} \big( x - \prox_{\lambda f}(x) \big). 
+\nabla f_\lambda(x) = \frac{1}{\lambda} \big( x - \prox_{\lambda f}(x) \big).  
 \end{equation}
 This fact is always true regardless of the smoothness of $f$; it is not as
 immediately apparent as the above facts, and its proof is outlined in Exercise
 \ref{ex:moreau_envelope} parts c and d.  
 
-This latter property, on smoothness of the Moreau envelope, is useful for many 
-reasons. First, it has important algorithmic implications, because (as already
-mentioned) minimization of $f$ and $f_\lambda$ are equivalent problems, and the
-latter function is always smooth and admits a clean formula for its gradient, as
-seen in \eqref{eq:moreau_envelope_gradient}. Second, it has gives a more
-rigorous perspective on the approximation presented in
+This latter property, on smoothness of the Moreau envelope, is useful for many
+reasons. First, it has important algorithmic implications, because minimization
+of $f$ and $f_\lambda$ are equivalent problems
+\eqref{eq:moreau_envelope_argmin}, and the latter function is always smooth and
+admits a clean formula for its gradient, as seen in
+\eqref{eq:moreau_envelope_gradient}. Second, it has gives a more rigorous
+perspective on the approximation presented in
 \eqref{eq:proximal_gradient_step_approx}: rearranged, it says that for all $x$
 and all $\lambda > 0$, we have the equality
 \[
 \prox_{\lambda f}(x) = x - \lambda \nabla f_\lambda(x).
 \]
 For small enough values of $\lambda$, the Moreau envelope $f_\lambda$ and the
-original function $f$ should be similar, as should their gradients. This
-supports the idea of substituting $\nabla f(x)$ for $\nabla f_\lambda(x)$ on the
-right-hand side above, which yields \eqref{eq:proximal_gradient_step_approx}.      
+original function $f$ will be similar, as will their gradients. This supports
+the idea of substituting $\nabla f(x)$ for $\nabla f_\lambda(x)$ on the
+right-hand side above, which yields \eqref{eq:proximal_gradient_step_approx}.       
 
 The third implication of the gradient relation
 \eqref{eq:moreau_envelope_gradient} requires a bit more background to
@@ -1295,9 +1300,9 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   function $f$, for $\lambda > 0$. 
 
 \begin{enumerate}[label=\alph*.]
-\item Prove that $f$ and $f_\lambda$ share the same set of minimizers. Hint: 
-  consider the subgradient optimality condition, applied to the definition of 
-  $f_\lambda$. 
+\item Prove that $f$ and $f_\lambda$ have the same minimizers, as in
+  \eqref{eq:moreau_envelope_argmin}. Hint: apply the subgradient optimality
+  condition to the definition of $f_\lambda$.   
 
 \item Show that the subgradient calculation from part a implies
   \eqref{eq:moreau_envelope_prox}. 

@@ -615,8 +615,8 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   the relation in \eqref{eq:norm_dual} and the fact from Example 
   \parref{xa:support_function_conjugate}.  
  
-\item Prove that for $p,q \geq 1$ with $1/p + 1/q = 1$, and $f(x) =
-  \|x\|_p^p/p$, we have $f^*(u) = \|u\|_q^q/q$.  
+\item Let $p,q \geq 1$ with $1/p + 1/q = 1$. Prove that for $f(x) =
+  \|x\|_p^p/p$, we have $f^*(u) = \|u\|_q^q/q$.   
 
 \item Prove the conjugate sum rules in Property
   \parref{par:conjugate_general_sum} (both the rule for general $f,g$, and the
@@ -722,10 +722,12 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
 
 \index{linf norm@$\ell_\infty$ norm!proximal mapping}
 \item \label{ex:linf_norm_proximal_mapping}
-linf proximal mapping from Moreau decomposition
+  TODO
+  linf proximal mapping from Moreau decomposition
 
 \index{operator norm!proximal mapping}
 \item \label{ex:operator_norm_proximal_mapping} 
+  TODO
   Operator norm proximal map from linf and Exercise
   \ref{ex:matrix_norm_proximal_mapping2}   
 
@@ -735,14 +737,31 @@ linf proximal mapping from Moreau decomposition
   in \eqref{eq:moreau_envelope_lambda}. Fix any $x$.
 
 \begin{enumerate}[label=\alph*.]
-\item Use the representation in \eqref{eq:moreau_envelope_conjugate} for the
-  Moreau envelope to prove that $f_\lambda(x)$ decreases as $\lambda$ increases.  
+\item Use the representation in \eqref{eq:moreau_envelope_conjugate} to prove
+  that $f_\lambda(x)$ decreases as $\lambda$ increases.   
 
 \item Prove that $f_\lambda(x) \to f(x)$ as $\lambda \to 0$. Hint: by part a, 
   \smash{$\lim_{\lambda \to 0} f_\lambda(x) = \sup_{\lambda > 0}
     f_\lambda(x)$}. Then plug in the representation in
   \eqref{eq:moreau_envelope_conjugate} for the Moreau envelope, and exchange the 
   order of the suprema.   
+\end{enumerate}
+
+\item Let $f$ be closed and convex, and consider again its Moreau envelope
+  $f_\lambda$ and associated proximal operator $\prox_{\lambda f}$ for
+  $\lambda>0$. Fix any $x$.     
+
+\index{proximal mapping}
+\begin{enumerate}[label=\alph*.]
+\item Prove that $\nabla f_\lambda(x) \in \partial f (\prox_{\lambda
+    f}(x))$. Hint: combine the subgradient characterization of the proximal map
+  \eqref{eq:proximal_subgradient_characterization} with the envelope gradient 
+  \eqref{eq:moreau_envelope_gradient}.  
+
+\item For essentially strictly convex $f$, show that $\prox_{\lambda  f}(x) =
+  \nabla f^*(\nabla f_\lambda(x)) = (\nabla f)^{-1} (\nabla f_\lambda(x))$. 
+  Hint: combine part a with Theorems \ref{thm:conjugate_essentials} and
+  \ref{thm:conjugate_legendre}. 
 \end{enumerate}
 \end{enumerate}
 \end{xcb}
