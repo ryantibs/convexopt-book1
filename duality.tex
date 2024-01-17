@@ -285,7 +285,7 @@ surprising and nonobvious in practice. Consider the nonconvex optimization
 problem 
 \begin{equation}
 \label{eq:nonconvex_quartic}
-\minimize_x \quad \frac{1}{10} x^4 - 5x^2 + 10x + 125 \quad \st \quad x \geq -4.
+\minimize_x \quad \frac{1}{50} x^4 - x^2 + 2x + 25 \quad \st \quad x \geq -4.
 \end{equation}
 The left panel of Figure \ref{fig:nonconvex_quartic} plots its criterion, which
 is a nonconvex quartic function. Despite such nonconvexity, we can calculate the
@@ -294,15 +294,15 @@ roots of a cubic equation, which can be done in closed-form. Some calculations
 (Exercise \ref{ex:nonconvex_quartic}) lead to:
 \begin{equation}
 \label{eq:nonconvex_quartic_dual}
-g(u) = \min_{j=1,2,3} \, \bigg\{ \frac{1}{10} R_j^4(u) - 5 R_j^2(u) + 10 R_j(u)
-+ 125 - u R_j(u) - 4u \bigg\},
+g(u) = \min_{j=1,2,3} \, \bigg\{ \frac{1}{50} R_j^4(u) - R_j^2(u) + 2 R_j(u) +
+25 - u R_j(u) - 4u \bigg\}, 
 \end{equation}
 where 
-\[
-R_j(u) = a_j \sqrt[3]{\sqrt{\frac{(u-25)^2}{4} - \frac{25^3}{27}} +
-  \frac{u-25}{2}} + b_j \sqrt[3]{-\sqrt{\frac{(u-25)^2}{4} - \frac{25^3}{27}} +
-  \frac{u-25}{2}}, \quad j = 1,2,3,   
-\]
+\begin{multline*}
+R_j(u) = a_j \sqrt[3]{\sqrt{\frac{25^2(u/2-1)^2}{4} - \frac{25^3}{27}} +
+  \frac{25(u/2-1)}{2}} + {}\\ + b_j \sqrt[3]{-\sqrt{\frac{25^2(u/2-1)^2}{4} - 
+    \frac{25^3}{27}} + \frac{25(u/2-1)}{2}}, \quad j = 1,2,3,   
+\end{multline*}
 where here \smash{$\sqrt{\cdot}$} and \smash{$\sqrt[3]{\cdot}$} denote principal
 values of the root function (the root with the largest real part), and the
 coefficients are    
@@ -313,11 +313,11 @@ coefficients are
 (\epsilon_2, \epsilon_1) & \text{if $j=3$} ,
 \end{cases}
 \]
-where \smash{$\epsilon_1 = (-1 + i \sqrt{3})/2$}, \smash{$\epsilon_2 = (-1 -  
-  i \sqrt{3})/2$}, and we use $i$ for the imaginary unit. The right panel of
-Figure \ref{fig:nonconvex_quartic} plots the dual criterion---that this function  
-is concave, as guaranteed by Property \parref{par:convex_dual}, is not at all 
-obvious from its analytic form!    
+where \smash{$\epsilon_1 = (-1 + i \sqrt{3})/2$}, \smash{$\epsilon_2 = (-1 -    
+  i \sqrt{3})/2$}, and $i$ is the imaginary unit. The right panel of Figure
+\ref{fig:nonconvex_quartic} plots the dual criterion---that this function is
+concave, as we know is guaranteed by Property \parref{par:convex_dual}, is 
+not at all obvious from its analytic form!      
 \end{Example}
 
 \begin{figure}[tb]
@@ -534,22 +534,62 @@ credit BV for interpretations
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{0.00.\hskip\labelsep}
-
 \index{dual problem!linear program}
 \item \label{ex:lp_std_dual}
-Standard form LP dual
+  Consider the standard form LP,
+  \begin{alignat*}{2}
+  &\minimize_x \quad && c^\T x \\
+  &\st && Ax = b \\
+  & && x \geq 0.
+  \end{alignat*}
+  Prove that its dual problem is 
+%  \label{eq:lp_std_dual}
+  \begin{alignat*}{2}
+  &\maximize_{u,v} \quad && b^\T v \\
+  &\st && A^\T v + u = c \\
+  & && u \geq 0.
+  \end{alignat*}
 
+\index{dual problem!quadratic program}
 \item \label{ex:qp_std_dual} 
-Standard form QP dual
+  Consider the standard form QP,
+  \begin{alignat*}{2}
+  &\minimize_x \quad && \frac{1}{2} x^\T Q x + c^\T x \\
+  &\st && Ax = b \\
+  & && x \geq 0,
+  \end{alignat*}
+  with $Q \succ 0$. Prove that its dual problem is
+%  \label{eq:lp_std_dual}
+  \begin{alignat*}{2}
+  &\maximize_{u,v} \quad && -\frac{1}{2} (c - A^\T v - u)^\T Q^{-1} (c - A^\T v
+  - u) + b^\T v \\
+  &\st && A^\T v + u = c \\
+  & && u \geq 0.
+  \end{alignat*}
 
+\index{dual problem!quadratic program}
 \item \label{ex:qp_psd_dual} 
-PSD QP dual
+  Consider the QP in \eqref{eq:qp_primal} but now assume that $Q \succeq
+  0$. Prove that its dual is as claimed in \eqref{eq:qp_psd_dual}. Hint: taking
+  the gradient of the Lagrangian with respect to $x$, and setting it equal to
+  zero, yields $Qx = -(c + A^\T u + G^\T v)$. When does this have a solution?
+  When this does not have a solution, what does that mean about the infimum of 
+  the Lagrangian over $x$?   
 
 \item \label{ex:nonconvex_quartic}
-Nonconvex quartic
-%https://en.wikipedia.org/wiki/Cubic_equation
-
-\item 
+We derive the dual for the nonconvex quartic minimization
+\eqref{eq:nonconvex_quartic}, as given in Example
+\ref{xa:nonconvex_quartic}. First show that taking the derivative of the 
+Lagrangian with respect to $x$ and setting it equal to zero yields 
+\[
+x^3 - 25x + 25 - \frac{25}{2} u = 0.
+\]
+This is called a \emph{depressed} cubic equation, since it does not have any
+term involving $x^2$. Show that Cardano's formula, for the roots of a depressed
+cubic, yields the three roots $x = R_j(u)$, $j = 1,2,3,\dots$ as defined in the  
+example. Then argue that the dual function $g$ in
+\eqref{eq:nonconvex_quartic_dual} can be obtained by taking the minimum value of
+the Lagrangian over these roots. 
 
 \end{enumerate}
 \end{xcb}
