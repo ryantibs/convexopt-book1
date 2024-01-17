@@ -284,7 +284,7 @@ is equivalent to $\partial f(x) = \emptyset$ for $x \notin \interior(\dom(f))$.
 
 A function $f$ is said to be \emph{essentially strictly convex} if it is
 strictly convex on all convex subsets $S$ of $ \{x : \partial f(x) \not=
-\emptyset\}$. (Here we say $f$ is strictly convex on $S$ to mean
+\emptyset\}$. (Here we say $f$ is strictly convex on $S$ to mean that
 \eqref{eq:strictly_convex_function} holds for $x,y \in S$.) An important special 
 case is a function that is finite and strictly convex on all of $\R^d$. 
 \index{strict convexity}
@@ -399,10 +399,10 @@ subspace $L$ and its orthocomplement $L^\perp$.
 An extended version of the Moreau decomposition \eqref{eq:moreau_decomposition}
 is obtained by applying this formula to $\lambda f$, then applying rules for
 conjugates and proximal operators under scaling (Exercise
-\ref{ex:moreau_decomposition_extended}):    
+\ref{ex:moreau_decomposition_lambda}):    
 \begin{equation}
-\label{eq:moreau_decomposition_extended}
-\prox_{\lambda f}(x) + \lambda \prox_{\lambda^{-1} f}(x/\lambda) = x, \quad 
+\label{eq:moreau_decomposition_lambda}
+\prox_{\lambda f}(x) + \lambda \prox_{\lambda^{-1} f*}(x/\lambda) = x, \quad  
 \text{for all $x$}. 
 \end{equation}
 This is useful for deriving the proximal operator of a function given the
@@ -471,9 +471,9 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{0.00.\hskip\labelsep}
+\index{conjugate!epigraph}
 \item \label{ex:conjugate_closed}
   Prove that the epigraph of $f^*$ in \eqref{eq:conjugate} can be expressed as  
-  \index{conjugate!epigraph}
   \[
   \epi(f^*) = \{ (u,s) : u^\T x \leq f(x) + s, \, \text{for all $x$} \},
   \]
@@ -572,7 +572,6 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   c_1 + c_2 \}$. Then show that for any $\lambda>0$, the upper halfspace
   $H_0^\lambda$ contains $\epi(f)$, while for sufficiently large
   $\lambda>0$, it excludes $(x_0,t_0)$.
-
 % Note: why does H exist here? Because f is not identically equal to -\infty.
 
 \item Show that the result from part d is equivalent to
@@ -636,10 +635,8 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   f^*(u)$ has at least two elements, and thus $f^*$ cannot be differentiable at
   $u$. Note that this proves the ``only if'' direction in Theorem
   \ref{thm:conjugate_essentials}.  
-
-% This last part is true because of the equivalence of (iii) in the definition
-% of essential strong convexity and the fact the subgradient is empty outside of 
-% $\interior(dom(f))$ 
+% True because of the equivalence of (iii) in the definition of essential strong
+% convexity and the fact the subgradient is empty outside of $\interior(dom(f))$  
 
 \item Instead suppose that $f^*$ is not essentially smooth. Then there exists
   $u$ such that $\partial f^*(u)$ contains at least two elements $x_1 \not= 
@@ -710,7 +707,7 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
 \end{enumerate}
 
 \index{Moreau decomposition}
-\item \label{ex:moreau_decomposition_extended}
+\item \label{ex:moreau_decomposition_lambda}
   Prove first the following about the proximal operator of a function under
   right scaling: 
   \[
@@ -718,18 +715,21 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   \] 
   where recall $(fa)(x) = a f(x/a)$, for $a>0$. Then use this, along with
   Property \parref{par:conjugate_scaling}, to verify the extended Moreau
-  decomposition \eqref{eq:moreau_decomposition_extended}.  
+  decomposition \eqref{eq:moreau_decomposition_lambda}.  
 
 \index{linf norm@$\ell_\infty$ norm!proximal mapping}
 \item \label{ex:linf_norm_proximal_mapping}
-  TODO
-  linf proximal mapping from Moreau decomposition
+  Use the Moreau decomposition \eqref{eq:moreau_decomposition_lambda}, the 
+  property in Example \parref{xa:norm_conjugate}, and the fact that the
+  $\ell_\infty$ norm has a dual representation in terms the $\ell_1$ norm
+  \eqref{eq:lp_norm_dual} to write the proximal operator of the $\ell_\infty$
+  norm in terms of the projection operator onto the $\ell_1$ norm ball. 
 
 \index{operator norm!proximal mapping}
 \item \label{ex:operator_norm_proximal_mapping} 
-  TODO
-  Operator norm proximal map from linf and Exercise
-  \ref{ex:matrix_norm_proximal_mapping2}   
+  Use the last exercise and Exercise \ref{ex:matrix_norm_proximal_mapping2} to
+  write the proximal operator of the operator norm in terms of the projection
+  operator onto the $\ell_1$ norm ball.   
 
 \index{Moreau envelope}
 \item \label{ex:moreau_envelope_conjugate}

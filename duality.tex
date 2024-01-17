@@ -171,7 +171,7 @@ In what follows, we work through the duals of canonical problems: LPs and
 QPs. For the duals standard form LPs and QPs, see Exercises \ref{ex:lp_std_dual}
 and \ref{ex:qp_std_dual}.   
 
-\begin{enumerate}[label=\alph*., ref=\alph*]
+\begin{enumerate}[label=\alph*., ref=\alph*]  
 \item \parlab{xa:lp_dual} 
 For the linear program \eqref{eq:lp_primal}, the Lagrangian is
 \begin{align*}
@@ -187,6 +187,7 @@ g(u,v) = \begin{cases}
 \]
 The dual problem, which maximizes $g(u,v)$ subject to the constraint $u \geq
 0$, is therefore precisely as derived earlier in \eqref{eq:lp_dual}. 
+\index{dual problem!linear program}
 
 \item \parlab{xa:qp_dual}
 For the quadratic program (QP): 
@@ -431,13 +432,13 @@ variable $u$ is often called the vector of \emph{shadow prices} in this
 context. 
 \index{Lagrangian function!shadow prices}
 
-Weak duality \eqref{eq:weak_duality} is now the statement that the optimal cost
-$g^\star$ when the firm is allowed to violate constraints and pay accordingly is
-at most the optimal cost $f^\star$ when they must respect the constraints, even
-at the worst-case prices. Furthermore, if indeed $f^\star = g^\star$, and
-$u^\star$ is a dual solution, then $u^\star$ represents a set of prices for
-which there is no advantage to violating the constraints versus respecting
-them. 
+Weak duality \eqref{eq:weak_duality} now translates into the the following
+statement: the optimal cost $g^\star$ when the firm is allowed to violate
+constraints and pay accordingly is at most the optimal cost $f^\star$ when they
+must respect the constraints, even at the worst-case prices. Moreover, if indeed
+$f^\star = g^\star$, and $u^\star$ is a dual solution, then $u^\star$ represents
+a set of prices for which there is no advantage to violating the constraints
+versus respecting them.  
 
 \section{Duality gap}
 
@@ -508,6 +509,7 @@ then tracing back to \eqref{eq:lagrangian_equalities2} and
 \eqref{eq:lagrangian_equalities1} shows that \smash{$\bar{x}, \bar{u}$} achieve
 zero duality gap, which implies they must be optimal. We will revisit the saddle
 point perspective in Chapter \ref{chap:kkt}.   
+\index{Lagrangian function!saddle point}
  
 \section{Slater's condition}
 \label{sec:slater_condition}
@@ -533,6 +535,7 @@ credit BV for interpretations
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{0.00.\hskip\labelsep}
 
+\index{dual problem!linear program}
 \item \label{ex:lp_std_dual}
 Standard form LP dual
 

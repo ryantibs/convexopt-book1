@@ -419,6 +419,7 @@ of the convex set $C$. A straightforward calculation reveals
 the normal cone to $C$ at $x$, and the second-to-last display, the (necessary 
 and sufficient) subgradient optimality condition for a constrained convex
 problem, becomes      
+\index{subgradient!optimality condition}
 \begin{equation}
 \label{eq:subgradient_optimality_constrained}
 s^\T (y - x) \geq 0, \quad \text{for some $s \in \partial f(x)$ and all $y \in 
@@ -921,19 +922,21 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
 \end{enumerate}
  
 \item \label{ex:lp_norm_subgradients}
-  We establish results on the subgradients of the $\ell_p$ norm, $1 < p <
-  \infty$, and the $\ell_\infty$ norm. 
+  We prove the results in Examples \parref{xa:lp_norm_subgradients} and
+  \parref{xa:linf_norm_subgradients}, on subgradients of the $\ell_p$ norm, 
+  $1 < p < \infty$, and the $\ell_\infty$ norm. We make use of the following
+  dual representation, which is detailed later in Chapter \ref{sec:dual_norms}:
+  for any $1 \leq p,q \leq \infty$ with $1/p + 1/q  = 1$,    
+  \begin{equation}
+  \label{eq:lp_norm_dual}
+  \|x\|_p = \sup_{\|z\|_q \leq 1} \, z^\T x.
+  \end{equation}
 
 \begin{enumerate}[label=\alph*.]
 \index{lp norm@$\ell_p$ norm!subgradients}
-\item Prove the statement in Example \parref{xa:lp_norm_subgradients} by using 
-  the dual representation    
-  \[
-  \|x\|_p = \sup_{\|z\|_q \leq 1} \, z^\T x,
-  \]
-  where $1 < q < \infty$ is such that $1/p + 1/q = 1$, and applying
-  \eqref{eq:norm_subgradients} (which follows from an application of the   
-  Danskin-Bertsekas theorem). Hint: in H{\"o}lder's inequality,
+\item Use the dual representation of the $\ell_p$ norm, $1 < p < \infty$,
+  followed by \eqref{eq:norm_subgradients}, to derive the statement in Example
+  \parref{xa:lp_norm_subgradients}. Hint: in H{\"o}lder's inequality,   
   \[
   a^\T b \leq \|a\|_p \|b\|_q,
   \] 
@@ -941,25 +944,22 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   b_i^q/\|b\|_q^q$, $i=1,\ldots,d$.  
   
 \index{linf norm@$\ell_\infty$ norm!subgradients}
-\item Prove the statement in Example \parref{xa:linf_norm_subgradients}
-  similarly, via the dual representation,   
-  \[
-  \|x\|_\infty = \sup_{\|z\|_1 \leq 1} \, z^\T x,
-  \]
-  then applying \eqref{eq:norm_subgradients}. An alternative is to observe that
+\item Use the dual representation of the $\ell_\infty$ norm, and then
+  \eqref{eq:norm_subgradients}, to derive the statement in Example
+  \parref{xa:linf_norm_subgradients}. An alternate strategy is to recognize that
   the Danskin-Bertsekas theorem (in the case where $Z$ is finite) can be applied
-  directly to \smash{$\|x\|_\infty = \max_{i=1,\ldots,d} \, |x_i|$}.     
+  directly to \smash{$\|x\|_\infty = \max_{i=1,\ldots,d} \, |x_i|$}.        
 \end{enumerate}
 
 \index{operator norm!subgradients}
 \item \label{ex:operator_norm_subgradients}
   We establish the result in Example \parref{xa:operator_norm_subgradients}, on
-  the subgradients of the operator norm. We use the dual representation
-  \[
-  \|X\|_{\op} = \sup_{\|Z\|_{\tr} \leq 1} \, \langle Z, X \rangle, 
-  \]
-  covered later in Chapter \ref{sec:dual_norms} (where recall we write $\langle
-  Z, X \rangle = \tr(Z^\T X)$), along with \eqref{eq:norm_subgradients}.
+  subgradients of the operator norm. We make use of the dual representation
+  (where recall $\langle Z, X \rangle = \tr(Z^\T X)$):
+  \begin{equation}
+  \label{eq:operator_norm_dual}
+  \|X\|_{\op} = \sup_{\|Z\|_{\tr} \leq 1} \, \langle Z, X \rangle. 
+  \end{equation}
 
 \begin{enumerate}[label=\alph*.]
 \item Prove that if \smash{$Z = \sum_{i=1}^k u_i v_i^\T$}, where $\|u_i\|_2 
@@ -967,22 +967,25 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   then $\|Z\|_{\tr} \leq 1$ and $\langle Z, X \rangle =  \|X\|_{\op}$.   
 
 \item Prove the opposite direction: if $\|Z\|_{\tr} \leq 1$ and $\langle Z, X
-  \rangle = \|X\|_{\op}$ then $Z$ must be of the above form (\smash{$Z =
+  \rangle = \|X\|_{\op}$, then $Z$ must be of the above form (\smash{$Z = 
     \sum_{i=1}^k u_i v_i^\T$}, where $\|u_i\|_2 \leq 1$, $\|v_i\|_2 \leq 1$,
   $u_i^\T X v_i = \|X\|_{\op}$, $i=1,\ldots,k$). Hint: use an SVD of $Z$, and
   consider what the conditions on $Z$ say about the factors.      
+
+\item Use the above parts and \eqref{eq:norm_subgradients} to prove the
+  statement in Example \parref{xa:operator_norm_subgradients}.
 \end{enumerate}
 
 \index{trace norm!subgradients}
 \item \label{ex:trace_norm_subgradients} 
-  We establish the result in Example \parref{xa:trace_norm_subgradients}, on the
-  subgradients of the trace norm. We use the dual representation 
-  \[
-  \|X\|_{\tr} = \sup_{\|Z\|_{\op} \leq 1} \, \langle Z, X \rangle,
-  \]
-  covered later in Chapter \ref{sec:dual_norms} (where recall we write $\langle 
-  Z, X \rangle = \tr(Z^\T X)$), along with \eqref{eq:norm_subgradients}. As in
-  the example, we write $X = U \Sigma V^\T$ for an SVD of $X$. 
+  We establish the result in Example \parref{xa:trace_norm_subgradients}, on
+  subgradients of the trace norm. We make use of the dual representation (where
+  recall $\langle Z, X \rangle = \tr(Z^\T X)$):
+  \begin{equation}
+  \label{eq:trace_norm_dual}
+  \|X\|_{\tr} = \sup_{\|Z\|_{\op} \leq 1} \, \langle Z, X \rangle.
+  \end{equation}
+  As in the example, we write $X = U \Sigma V^\T$ for an SVD of $X$.   
 
 \begin{enumerate}[label=\alph*.]
 \item Prove that if $Z = U V^\T + W$, for $\|W\|_{\op} \leq 1$, $U^\T W = 0$,
@@ -991,9 +994,12 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   say about the factors.   
 
 \item Prove the opposite direction: if $\|Z\|_{\op} \leq 1$ and $\langle Z, X
-  \rangle = \|X\|_{\tr}$ then $Z$ must be of the above form ($Z = U V^\T + W$,  
+  \rangle = \|X\|_{\tr}$, then $Z$ must be of the above form ($Z = U V^\T + W$,   
   where $\|W\|_{\op} \leq 1$, $U^\T W = 0$, and $W V = 0$). Hint: define $W = Z
   - U V^\T$, and consider what the conditions on $Z$ say about $W$. 
+
+\item Use the above parts and \eqref{eq:norm_subgradients} to prove the
+  statement in Example \parref{xa:trace_norm_subgradients}.
 \end{enumerate}
 
 \index{composition!subgradients}
@@ -1014,17 +1020,17 @@ an alternative, short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   f(y) \geq f(x) + s^\T (y-x), \quad \text{for all $y \in \dom(f)$ such that
     $\|x - y\| \leq \delta$},
   \]
-  for some $\delta>0$. Prove that $s \in \partial f(x)$. Note: this, combined
-  with subgradient optimality \eqref{eq:subgradient_optimality}, gives another 
-  way of seeing the fundamental theorem of convex optimization, Property
-  \parref{par:convex_local}: a zero subgradient locally implies a zero
-  subgradient globally.   
+  for some $\delta>0$. Prove that $s \in \partial f(x)$. % Note: this, combined
+  % with subgradient optimality \eqref{eq:subgradient_optimality}, gives another  
+  % way of seeing the fundamental theorem of convex optimization, Property
+  % \parref{par:convex_local}: a zero subgradient locally implies a zero
+  % subgradient globally.   
 
-\index{subgradient!optimality condition}
 \item Prove or disprove, for the subgradient optimality condition for a
   constrained convex problem: if \eqref{eq:subgradient_optimality_constrained} 
   holds, then there can still exist another $v \in \partial f(x)$, $v \not= s$,
   such that 
+  \index{subgradient!optimality condition}
   \[
   v^\T (y - x) < 0, \quad \text{for some $y \in C$}.
   \]
