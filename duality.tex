@@ -315,7 +315,7 @@ coefficients are
 \]
 where \smash{$\epsilon_1 = (-1 + i \sqrt{3})/2$}, \smash{$\epsilon_2 = (-1 -    
   i \sqrt{3})/2$}, and $i$ is the imaginary unit. The right panel of Figure
-\ref{fig:nonconvex_quartic} plots the dual criterion---that this function is
+\ref{fig:nonconvex_quartic} plots the dual criterion; that this function is
 concave, as we know is guaranteed by Property \parref{par:convex_dual}, is 
 not at all obvious from its analytic form!      
 \end{Example}
@@ -514,7 +514,72 @@ point perspective in Chapter \ref{chap:kkt}.
 \section{Slater's condition}
 \label{sec:slater_condition}
 
-hi
+As we have already seen (Example \ref{ex:nonconvex_quartic}), for a nonconvex 
+optimization problem, strong duality \eqref{eq:strong_duality} can fail to
+hold. Fortunately, strong duality holds for a broad class of convex optimization
+problems, as the next theorem makes precise.  
+
+\index{Slater's condition}
+\index{strong duality}
+\begin{Theorem}
+\label{thm:slater_condition}
+Consider the optimization problem \eqref{eq:primal_problem}, where after 
+relabeling, if needed, we take $h_1, \dots, h_r$ to be inequality constraint
+functions which are affine ($r = 0$ if none are affine). Assume the following.         
+
+\begin{enumerate}[label=(\roman*)]
+\item The functions $f$ and $h_i$, $i=1,\dots,m$ are convex, and $\ell_j$,
+  $j=1,\dots,k$ are affine; in other words, problem \eqref{eq:primal_problem} is
+  convex, and we can write its equality constraints as $Ax = b$.      
+
+\item There exists $x \in \relint(D)$, where \smash{$D = \dom(f) \cap
+    \bigcap_{i=r+1}^m \dom(h_i)$} denotes the common effective domain, such that      
+  \begin{equation}
+  \label{eq:slater_condition}
+  h_i(x) \leq 0 \;\, \text{for all $i \leq r$}, \quad
+  h_i(x) < 0 \;\, \text{for all $i \geq r+1$}, \quad 
+  Ax = b.
+  \end{equation}
+\end{enumerate}
+
+Then strong duality \eqref{eq:strong_duality} holds. That is, to be more
+explicit: the optimal criterion values $f^\star$ in \eqref{eq:primal_problem}
+and $g^\star$ in the corresponding dual problem \eqref{eq:dual_problem} satisfy 
+$f^\star = g^\star$. 
+\end{Theorem}
+
+Conditions (i) and (ii) in Theorem \ref{thm:slater_condition} are together known
+as \emph{Slater's condition}. In short, this assumes convexity along with a
+type of strict feasibility condition \eqref{eq:slater_condition}; precisely,
+that there exists a point $x$ (in the relative interior of the domain $D$) which 
+satisfies the affine equality and inequality constraints and strictly satisfies  
+the non-affine inequality constraints. This strict feasibility condition is very
+mild, which is why we say that strong duality holds for ``most'' convex
+problems. The proof of Theorem \ref{thm:slater_condition} reduces to an
+application of the separating hyperplane theorem, and is outlined in Exercise
+\ref{ex:slater_condition}.  
+
+We can demonstrate the utility of Slater's condition by revisiting LPs. An LP
+\eqref{eq:lp_primal} is always a convex problem, and all of its constraints are
+affine, so Slater's condition applied to \eqref{eq:lp_primal} says that strong
+duality holds if \eqref{eq:lp_primal} is feasible. However, this is not all: one
+can check (Exercise \ref{ex:lp_dual_dual}) that the dual of the dual problem
+\eqref{eq:lp_dual} is in fact the primal problem \eqref{eq:lp_primal}.
+Therefore, strong duality in problems \eqref{eq:lp_dual} and
+\eqref{eq:lp_primal} mean the same thing, and applying Slater's condition to
+\eqref{eq:lp_dual} says that strong duality again holds if \eqref{eq:lp_dual} is
+feasible. Next, we summarize these conclusions.
+
+\index{strong duality!linear program}
+\begin{Corollary}
+For an LP, strong duality holds if the primal or the dual problem is 
+feasible. 
+\end{Corollary}
+
+Still, more can be said, by characterizing what happens when the primal or the
+dual is infeasible; see Exercise \ref{ex:lp_infeasible}. Exercises
+\ref{ex:lasso_dual} and \ref{ex:svm_dual} explore the lasso and SVM problems
+(both QPs), their duals, and the implications of Slater's condition.  
 
 \section{SDP duality*}
 \label{sec:sdp_duality}
@@ -527,7 +592,16 @@ hi
 
 describe history of duality? saddle point closely connected to zero-sum games. 
 
+Rockafellar
+Bertsekas Chapter 4? 
+BV chapter 5
+
+credit BV for inspiration of nonconvex quartic example
+
 credit BV for interpretations
+
+Bertsekas: nonlinear farkas lemma? is it the same as:
+Nemirovksi: convex theorem of alternatives. inspiration for exercises below
 
 \clearpage
 
@@ -591,5 +665,74 @@ example. Then argue that the dual function $g$ in
 \eqref{eq:nonconvex_quartic_dual} can be obtained by taking the minimum value of
 the Lagrangian over these roots. 
 
+\index{Slater's condition}
+\item \label{ex:slater_condition}
+
+\item \label{ex:lp_dual_dual}
+
+\item \label{ex:lp_infeasible}
+
+\item \label{ex:lasso_dual}
+We explore duality for the lasso problem,      
+\index{lasso!dual problem} 
+\begin{equation}
+\label{eq:lasso_primal}
+\minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
+\end{equation}
+for a response vector $y \in \R^n$ and feature matrix $X \in \R^{n \times
+  d}$. Prove that the dual of \eqref{eq:lasso_primal} is (equivalent to)
+\begin{equation}
+\label{eq:lasso_dual}
+\maximize_u \quad -\frac{1}{2} \|y - u\|_2^2 + \frac{1}{2} \|y\|_2^2 \quad \st
+\quad \|X^\T u\|_\infty \leq \lambda 
+\end{equation}
+Note that since \eqref{eq:lasso_primal} is convex and unconstrained, Slater's
+condition automatically holds, and thus strong duality always holds in between 
+\eqref{eq:lasso_primal} and \eqref{eq:lasso_dual}. Hint: to apply Lagrangian
+duality, we must introduce (auxiliary) constraints; rewrite
+\eqref{eq:lasso_primal} as  
+\[
+\minimize_{\beta,z} \quad \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1  
+\quad \st \quad z = X \beta,
+\]
+then form the Lagrangian and minimize it over $\beta,z$. 
+
+\item \label{ex:svm_dual}
+We explore duality for the SVM problem,      
+\index{support vector machine!dual problem} 
+\begin{equation}
+\label{eq:svm_primal}
+\begin{alignedat}{2}
+&\minimize_{\beta_0,\beta,\xi} \quad
+&& \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
+&\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\ldots,n \\  
+& && \xi \geq 0,
+\end{alignedat}
+\end{equation}
+for labels $y_i \in \{ -1, 1\}$ and features $x_i \in \R^d$, for $i=1,\ldots,n$.
+
+\begin{enumerate}[label=\alph*.]
+\item Let $y \in \R^n$ denote the label vector and $X \in \R^{n \times d}$ the
+  feature matrix (whose $i\th$ row is $x_i^\T$), and define \smash{$\tilde{X} =
+    \diag(y) X$}. Show that the dual of \eqref{eq:svm_primal} is (equivalent to)   
+  \begin{equation}
+  \label{eq:svm_dual}
+  \begin{alignedat}{2}
+  &\maximize_w \quad &&- \frac{1}{2} w^\T \tilde{X} \tilde{X}^\T w + \one^\T w \\ 
+  &\st \quad && 0 \leq w \leq C \one \\
+  & && y^\T w = 0,
+  \end{alignedat}
+  \end{equation}
+  Hint: while the SVM problem is a QP, it will be simpler to compute the dual of
+  \eqref{eq:svm_primal} directly (by forming the Lagrangian and minimizing 
+  over $\beta,\beta_0,\xi$) rather than invoking general results on QP duality,
+  from Example \parref{xa:qp_dual}.  
+
+\item Show that Slater's condition is always satisfied for the SVM problem
+  \eqref{eq:svm_primal}, so strong duality always holds in between
+  \eqref{eq:svm_primal} and \eqref{eq:svm_dual}.  
+\end{enumerate}
+
+\item convex theorems of alternatives?
 \end{enumerate}
 \end{xcb}
