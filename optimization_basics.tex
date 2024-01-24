@@ -112,17 +112,17 @@ and machine learning. Both problems are convex.
   optimization problem: 
   \index{lasso}
   \begin{equation}
-   \label{eq:lasso_sum}
-   \minimize_\beta \quad \frac{1}{2} \sum_{i=1}^n (y_i - x_i^\T \beta)^2 +  
-   \lambda \sum_{j=1}^d |\beta_j|.
+  \label{eq:lasso_sum}
+  \minimize_\beta \quad \frac{1}{2} \sum_{i=1}^n (y_i - x_i^\T \beta)^2 +  
+  \lambda \sum_{j=1}^d |\beta_j|.
   \end{equation}
   Here $\lambda \geq 0$ is a tuning parameter governing the tradeoff between 
   goodness-of-fit (first term) and sparsity (second term). The above also has a
   more compact form, denoting by $y \in \R^n$ the response vector and $X \in
   \R^{n \times d}$ the feature matrix (whose $i\th$ row is $x_i^\T$):  
   \begin{equation}
-   \label{eq:lasso}
-   \minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
+  \label{eq:lasso}
+  \minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
   \end{equation}
   For insight into the sparsity-inducing property of $\ell_1$ penalties, from
   the perspective of proximal mappings, see Chapter
@@ -1038,9 +1038,9 @@ We finish this section by reviewing a few classical results on the existence of
 solutions in linear, logistic, and Poisson regression. These results are, in
 effect, consequences of Weierstrass' theorem for convex functions, Theorem
 \ref{thm:weierstrass_convex}. Later, in Chapter
-\ref{sec:conjugates_dual_problems}, we will derive a generalization via duality
-arguments (this will also provide simple proofs for the logistic and Poisson 
-results).        
+\ref{sec:existence_minima_revisited}, we will derive a generalization via
+duality arguments (this will also provide simple proofs for the logistic and
+Poisson results).        
 
 \index{maximum likelihood estimation!existence of solution}
 \begin{Theorem}
