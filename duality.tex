@@ -565,8 +565,8 @@ affine, so Slater's condition applied to \eqref{eq:lp_primal} says that strong
 duality holds if \eqref{eq:lp_primal} is feasible. However, this is not all: one
 can check (Exercise \ref{ex:lp_dual_dual}) that the dual of the dual problem
 \eqref{eq:lp_dual} is in fact the primal problem \eqref{eq:lp_primal}.
-Therefore, strong duality in problems \eqref{eq:lp_dual} and
-\eqref{eq:lp_primal} mean the same thing, and applying Slater's condition to
+Therefore, strong duality in problems \eqref{eq:lp_primal} and
+\eqref{eq:lp_dual} refer to the same thing, and applying Slater's condition to  
 \eqref{eq:lp_dual} says that strong duality again holds if \eqref{eq:lp_dual} is
 feasible. Next, we summarize these conclusions.
 
@@ -578,8 +578,9 @@ feasible.
 
 Still, more can be said, by characterizing what happens when the primal or the
 dual is infeasible; see Exercise \ref{ex:lp_infeasible}. Exercises
-\ref{ex:lasso_dual} and \ref{ex:svm_dual} explore the lasso and SVM problems
-(both QPs), their duals, and the implications of Slater's condition.  
+\ref{ex:lasso_dual} and \ref{ex:svm_dual} examine duality in the lasso and
+SVM problems (both QPs), and use Slater's condition to conclude that strong  
+duality always holds. 
 
 \section{SDP duality*}
 \label{sec:sdp_duality}
@@ -599,6 +600,8 @@ BV chapter 5
 credit BV for inspiration of nonconvex quartic example
 
 credit BV for interpretations
+
+our slater often called relaxed slater
 
 Bertsekas: nonlinear farkas lemma? is it the same as:
 Nemirovksi: convex theorem of alternatives. inspiration for exercises below
@@ -673,24 +676,24 @@ the Lagrangian over these roots.
 \item \label{ex:lp_infeasible}
 
 \item \label{ex:lasso_dual}
-We explore duality for the lasso problem,      
+We explore duality in the lasso problem,      
 \index{lasso!dual problem} 
 \begin{equation}
 \label{eq:lasso_primal}
 \minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
 \end{equation}
 for a response vector $y \in \R^n$ and feature matrix $X \in \R^{n \times
-  d}$. Prove that the dual of \eqref{eq:lasso_primal} is (equivalent to)
+  d}$. Show that the dual of \eqref{eq:lasso_primal} is 
 \begin{equation}
 \label{eq:lasso_dual}
 \maximize_u \quad -\frac{1}{2} \|y - u\|_2^2 + \frac{1}{2} \|y\|_2^2 \quad \st
 \quad \|X^\T u\|_\infty \leq \lambda 
 \end{equation}
 Note that since \eqref{eq:lasso_primal} is convex and unconstrained, Slater's
-condition automatically holds, and thus strong duality always holds in between 
+condition trivially holds, and thus strong duality always holds in between
 \eqref{eq:lasso_primal} and \eqref{eq:lasso_dual}. Hint: to apply Lagrangian
 duality, we must introduce (auxiliary) constraints; rewrite
-\eqref{eq:lasso_primal} as  
+\eqref{eq:lasso_primal} as   
 \[
 \minimize_{\beta,z} \quad \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1  
 \quad \st \quad z = X \beta,
@@ -698,7 +701,7 @@ duality, we must introduce (auxiliary) constraints; rewrite
 then form the Lagrangian and minimize it over $\beta,z$. 
 
 \item \label{ex:svm_dual}
-We explore duality for the SVM problem,      
+We explore duality in the SVM problem,      
 \index{support vector machine!dual problem} 
 \begin{equation}
 \label{eq:svm_primal}
