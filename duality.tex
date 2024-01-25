@@ -294,10 +294,10 @@ roots of a cubic equation, which can be done in closed-form. Some calculations
 (Exercise \ref{ex:nonconvex_quartic}) lead to:
 \begin{equation}
 \label{eq:nonconvex_quartic_dual}
-g(u) = \min_{j=1,2,3} \, \bigg\{ \frac{1}{50} R_j^4(u) - R_j^2(u) + 2 R_j(u) +
-25 - u R_j(u) - 4u \bigg\}, 
+g(u) = \min_{j=1,2,3} \, \bigg\{ \Re\bigg( \frac{1}{50} R_j^4(u) - R_j^2(u) + 2
+R_j(u) + 25 - u R_j(u) - 4u \bigg) \bigg\}, 
 \end{equation}
-where 
+where $\Re(z)$ denotes the real part of a complex number $z$, and
 \begin{multline*}
 R_j(u) = a_j \sqrt[3]{\sqrt{\frac{25^2(u/2-1)^2}{4} - \frac{25^3}{27}} +
   \frac{25(u/2-1)}{2}} + {}\\ + b_j \sqrt[3]{-\sqrt{\frac{25^2(u/2-1)^2}{4} - 
@@ -666,7 +666,7 @@ term involving $x^2$. Show that Cardano's formula, for the roots of a depressed
 cubic, yields the three roots $x = R_j(u)$, $j = 1,2,3,\dots$ as defined in the  
 example. Then argue that the dual function $g$ in
 \eqref{eq:nonconvex_quartic_dual} can be obtained by taking the minimum value of
-the Lagrangian over these roots. 
+the (real part of the) Lagrangian over these roots. 
 
 \index{Slater's condition}
 \item \label{ex:slater_condition}
