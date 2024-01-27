@@ -115,14 +115,15 @@ The subgradient characterization
 for \smash{$\prox_{\lambda f}(x)$} when $f$ convex and differentiable. In this
 case, note that \eqref{eq:proximal_subgradient_characterization} becomes a
 fixed-point equation for \smash{$z = \prox_{\lambda f}(x)$},  
-\[
+\begin{equation}
+\label{eq:proximal_fixed_point}
 z = x - \lambda \nabla f(z).
-\]
+\end{equation}
 For small $\lambda$, it is reasonable to assume that \smash{$z = \prox_{\lambda
     f}(x)$} will be close to $x$ (as the term $\|x - z\|_2^2$ in the criterion
 in \eqref{eq:proximal_mapping_lambda} will be multiplied by a large weight), so 
-replacing $\nabla f(z)$ with $\nabla f(x)$ in the above fixed-point equation
-gives the approximation  
+replacing $\nabla f(z)$ with $\nabla f(x)$ in the fixed-point equation
+\eqref{eq:proximal_fixed_point} gives the approximation  
 \begin{equation}
 \label{eq:proximal_gradient_step_approx}
 \prox_{\lambda f}(x) \approx x - \lambda \nabla f(x).
@@ -851,31 +852,33 @@ immediately apparent as the above facts, and its proof is outlined in Exercise
 \ref{ex:moreau_envelope} parts c and d.  
 
 This latter property, on smoothness of the Moreau envelope, is useful for many
-reasons. First, it has important algorithmic implications, because minimization
-of $f$ and $f_\lambda$ are equivalent problems
-\eqref{eq:moreau_envelope_argmin}, and the latter function is always smooth and
-admits a clean formula for its gradient, as seen in
-\eqref{eq:moreau_envelope_gradient}. Second, it has gives a more rigorous
-perspective on the approximation presented in
-\eqref{eq:proximal_gradient_step_approx}: rearranged, it says that for all $x$
-and all $\lambda > 0$, we have the equality
-\[
+reasons. First, it has important algorithmic implications, as minimization of
+$f$ and $f_\lambda$ are equivalent problems \eqref{eq:moreau_envelope_argmin},
+and the latter function is always smooth and admits a clean formula
+\eqref{eq:moreau_envelope_gradient} for its gradient. Second, it yields a more
+rigorous perspective on interpreting the proximal mapping via gradient descent,
+as discussed earlier: rearranging \eqref{eq:moreau_envelope_gradient}, we see
+that for all $x$ and all $\lambda > 0$,   
+\begin{equation}
+\label{eq:proximal_gradient_step}
 \prox_{\lambda f}(x) = x - \lambda \nabla f_\lambda(x).
-\]
-For small enough values of $\lambda$, the Moreau envelope $f_\lambda$ and the
-original function $f$ will be similar, as will their gradients. This supports
-the idea of substituting $\nabla f(x)$ for $\nabla f_\lambda(x)$ on the
-right-hand side above, which yields \eqref{eq:proximal_gradient_step_approx}.       
+\end{equation}
+In other words, the proximal map of $\lambda f$ at $x$ is precisely a gradient
+step with respect to the Moreau envelope $f_\lambda$ at $x$. Note that
+\eqref{eq:proximal_gradient_step} is a more precise version of the earlier 
+interpretation \eqref{eq:proximal_gradient_step_approx}: the latter replaces
+$\nabla f_\lambda(x)$ by $\nabla f(x)$, which is a reasonable approximation 
+for small $\lambda$.    
 
 The third implication of the gradient relation
 \eqref{eq:moreau_envelope_gradient} requires a bit more background to
 explain. It turns out that the Moreau envelope is a uniquely identifying
 transform, in the following sense: if two closed convex functions have matching
-Moreau envelopes, then they must be the same function. Furthermore, the
-relationship between the proximal operator and the gradient of the Moreau
-envelope \eqref{eq:moreau_envelope_gradient} then transfers this identifiability
-property to the former (up to an additive constant). These results are stated
-next, to conclude the chapter.      
+Moreau envelopes, then they must be the same function. Further, the relationship
+between the proximal map and the gradient of the Moreau envelope
+\eqref{eq:moreau_envelope_gradient} transfers the same identifiability property
+over to the former (up to an additive constant). We state these results next, to
+conclude the chapter.        
 
 \index{Moreau envelope!identification theorem}
 \index{proximal mapping!identification theorem}
