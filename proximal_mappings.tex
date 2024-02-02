@@ -749,22 +749,22 @@ onto convex sets, it turns out that $\prox_f$ is \emph{firmly nonexpansive},
 \| \prox_{\lambda f}(x) - \prox_{\lambda f}(y) \|_2^2, \quad \text{for all  
   $x,y$},   
 \end{equation}
-This is a powerful property, but verifying it is actually straightforward
-(easier shorter than proving from first principles the corresponding result for
-projections; recall Exercise \ref{ex:projection_firm_nonexpansiveness}), once we
-invoke the appropriate tools: the proximal subgradient characterization, and 
-subgradient monotonicity. To see this, without loss of generality, we take
-$\lambda = 1$, and abbreviate $z_x = \prox_f(x)$ and $z_y = \prox_f(y)$. Observe
-that 
+This is a powerful property, but verifying it is straightforward (in a way, it
+is simpler to verify than the corresponding result for projections; recall 
+Exercise  \ref{ex:projection_firm_nonexpansiveness}), once we invoke the
+appropriate tools: the proximal subgradient characterization, and subgradient 
+monotonicity. To see this, without loss of generality, we take $\lambda = 1$,
+and abbreviate $z_x = \prox_f(x)$ and $z_y = \prox_f(y)$. Observe that 
 \[
 (z_x - z_y)^\T (x - y) = (z_x - z_y)^\T \big((x - z_x) - (y - z_y)\big) + 
 \|z_x - z_y\|_2^2.   
 \]
 By the proximal subgradient characterization
-\eqref{eq:proximal_subgradient_characterization}, we have $x - z_x \in \partial
-f(z_x)$ and $y - z_y \in \partial f(z_y)$, and by subgradient monotonicity
-\eqref{eq:subgradient_monotonicity}, the first term on the right-hand side above
-is nonnegative. This proves the firm nonexpansiveness of $\prox_f$, as desired.  
+\eqref{eq:proximal_subgradient_characterization}, note that $x - z_x \in
+\partial f(z_x)$ and $y - z_y \in \partial f(z_y)$; thus by subgradient
+monotonicity \eqref{eq:subgradient_monotonicity}, the first term on the
+right-hand side above is nonnegative. This proves the firm nonexpansiveness of
+$\prox_f$, as desired.   
 
 Again, as in the case of projections (proved in part d of Exercise
 \ref{ex:projection_firm_nonexpansiveness}), firm nonexpansiveness
