@@ -825,23 +825,23 @@ $f$ is minorized by its Moreau envelope,
 \[
 f_\lambda(x) \leq f(x), \quad \text{for all $x$}.
 \]
-Fourth, it is not hard to see that $f_\lambda$ and $f$ have the same set of
-minimizers (Exercise \ref{ex:moreau_envelope} part a):
+Fourth, the point $z = \prox_{\lambda f}(x)$ achieves the infimum in
+\eqref{eq:moreau_envelope_lambda} (see Exercise \ref{ex:moreau_envelope} part
+a):  
+\begin{equation}
+\label{eq:moreau_envelope_prox}
+f_\lambda(x) = \frac{1}{2\lambda} \|x - \prox_{\lambda f}(x)\|_2^2 + 
+f \big( \prox_{\lambda f}(x) \big).
+\end{equation} 
+Fifth, the functions $f_\lambda$ and $f$ have the same set of minimizers (see
+Exercise \ref{ex:moreau_envelope} part b): 
 \begin{equation}
 \label{eq:moreau_envelope_argmin}
 \argmin_x \, f_\lambda(x) = \argmin_x \, f(x),
 \end{equation}
 which means that minimization of $f$ and of $f_\lambda$ are equivalent
-problems. Fifth, a property tied to the fourth one  (Exercise
-\ref{ex:moreau_envelope} part b), the point $z = \prox_{\lambda f}(x)$ achieves
-the infimum in \eqref{eq:moreau_envelope_lambda}, that is,   
-\begin{equation}
-\label{eq:moreau_envelope_prox}
-f_\lambda(x) = \frac{1}{2\lambda} \|x - \prox_{\lambda f}(x)\|_2^2 + 
-f \big( \prox_{\lambda f}(x) \big).
-\end{equation}
-Sixth, and perhaps most importantly, the Moreau envelope $f_\lambda$ is 
-differentiable, and satisfies  
+problems. Sixth, and perhaps most importantly, the Moreau envelope $f_\lambda$
+is differentiable, and satisfies  
 \index{Moreau envelope!gradient}
 \begin{equation}
 \label{eq:moreau_envelope_gradient}
@@ -1303,17 +1303,17 @@ penalties. Exercise \ref{ex:proximal_general_sum} below is based on
   function $f$, for $\lambda > 0$. 
 
 \begin{enumerate}[label=\alph*.]
-\item Prove that $f$ and $f_\lambda$ have the same minimizers, as in
-  \eqref{eq:moreau_envelope_argmin}. Hint: apply the subgradient optimality
-  condition to the definition of $f_\lambda$.   
+\item Prove the property given in \eqref{eq:moreau_envelope_prox}. Hint: apply
+  the subgradient optimality condition to the optimization problem that defines 
+  $f_\lambda(x)$.     
+ 
+\item Show that $f$ and $f_\lambda$ have the same minimizers
+  \eqref{eq:moreau_envelope_argmin}. Hint: use \eqref{eq:moreau_envelope_prox}
+  and the proximal optimality condition \eqref{eq:proximal_optimality}. 
 
-\item Show that the subgradient calculation from part a implies
-  \eqref{eq:moreau_envelope_prox}. 
-
-\item Prove that if we already knew that $f_\lambda$ was differentiable, then
-  its gradient must be as in \eqref{eq:moreau_envelope_gradient}, by using the
-  subgradient rule for a partial infimum in Property
-  \parref{par:subgradient_infimum}.   
+\item Show that if $f_\lambda$ were differentiable, then its gradient must be as
+  in \eqref{eq:moreau_envelope_gradient}, by using the subgradient rule for a
+  partial infimum in Property \parref{par:subgradient_infimum}.   
 
 \index{Moreau envelope!gradient}
 \item Now prove that $f_\lambda$ is differentiable with gradient as given in
