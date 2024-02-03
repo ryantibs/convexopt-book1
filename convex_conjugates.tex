@@ -747,12 +747,17 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   order of the suprema.   
 \end{enumerate}
 
-\item Let $f$ be closed and convex, and consider again its Moreau envelope
-  $f_\lambda$ and associated proximal operator $\prox_{\lambda f}$ for
-  $\lambda>0$. Fix any $x$.     
+\item Let $f$ be closed and convex. Here we establish various relations between
+  the Moreau envelope or proximal operator of $f$ and those of its conjugate
+  $f^*$. 
 
 \index{proximal mapping}
 \begin{enumerate}[label=\alph*.]
+\item Prove that \smash{$\nabla f_\lambda(x) = \prox_{\lambda^{-1}
+    f^*}(x)$}. Hint: use the Moreau envelope gradient
+\eqref{eq:moreau_envelope_gradient} and the extended Moreau decomposition
+\eqref{eq:moreau_decomposition_lambda}.   
+
 \item Prove that $\nabla f_\lambda(x) \in \partial f (\prox_{\lambda
     f}(x))$. Hint: combine the subgradient characterization of the proximal map
   \eqref{eq:proximal_subgradient_characterization} with the envelope gradient 
@@ -763,7 +768,7 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   \prox_{\lambda  f}(x) = \nabla f^*(\nabla f_\lambda(x)) = (\nabla f)^{-1}
   (\nabla f_\lambda(x)).
   \]
-  Hint: combine part a with Theorems \ref{thm:conjugate_essentials} and
+  Hint: combine part b with Theorems \ref{thm:conjugate_essentials} and
   \ref{thm:conjugate_legendre}. 
 \end{enumerate}
 \end{enumerate}
