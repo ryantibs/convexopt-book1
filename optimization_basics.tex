@@ -302,7 +302,7 @@ convex optimization.
   \ref{ex:lagrange_multiplier}). The condition \eqref{eq:lagrange_multiplier}
   is known as a \emph{Lagrange multiplier condition}, and it will be generalized
   by the Karush-Kuhn-Tucker conditions, which we will study later in Chapter 
-  \ref{chap:kkt}. 
+  \ref{chap:kkt_conditions}. 
 
 \item The Euclidean projection operator $P_C$ onto a convex set $C \subseteq 
   \R^d$ can be formulated in terms of differentiable convex optimization. In 
@@ -877,12 +877,13 @@ is a direction in which it is constant, then for a closed convex function this
 constant value must be equal to its infimum, which is therefore attained
 (Exercise \ref{ex:direction_constancy}).  
 
-For constrained convex minimization, the following corollary is obtained by
+For constrained convex minimization, we can derive the following result by
 applying the previous theorem to $f + I_C$. We introduce one more concept: if
-$v$ and $-v$ are both directions of recession of a closed convex set $C$, then
+$v$ and $-v$ are both directions of recession of a closed convex set $C$, then 
 we say $v$ is direction in which $C$ is \emph{linear}.
 
 \begin{Corollary}
+\label{cor:weierstrass_convex_constrained}
 For a closed convex function $f$ and nonempty closed convex set $C \subseteq 
 \dom(f)$, the convex optimization problem    
 \[

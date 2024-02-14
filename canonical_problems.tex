@@ -232,7 +232,7 @@ first-order optimality condition), together with the linear constraints:
 \]
 The matrix on the left-hand side above is often called the \emph{KKT matrix}, as
 the above condition can be derived using the Karush-Kuhn-Tucker (KKT)
-conditions, which we cover later in Chapter \ref{chap:kkt}. 
+conditions, which we cover later in Chapter \ref{chap:kkt_conditions}. 
 
 \medskip
 
@@ -569,13 +569,13 @@ the linear matrix inequality $x_1 A_1 + \cdots + x_d A_d \preceq B$ into the
 form $Ax + b \in K$ for some convex cone $K$. This can be achieved by taking $A$
 to be the linear map such that $Ax = -\vek(x_1 A_1 + \cdots + x_d A_d)$, $b =
 \vek(B)$, and $K = \vek(\SS^n_+)$, the vectorization of the positive
-semidefinite cone in dimension $n$, where $n$ denotes the number of rows
-(or columns) of the symmetric matrices $A_1,\ldots,A_d,B$.   
+semidefinite cone in $n$ dimensions, where $n$ denotes the number of
+rows/columns of the symmetric matrices $A_1,\ldots,A_d,B$.    
 \index{positive semidefinite cone}
 
-Combined with the containments established thus far, this establishes the
-following hierarchy of problem classes in convex optimization (written
-informally, but intuitively): 
+Summarizing the containments established thus far, we have the following
+hierarchy of problem classes in convex optimization (written informally, but 
+unambiguously):   
 \[
 \text{LPs} \subseteq \text{QPs} \subseteq \text{SDPs} \subseteq \text{cone 
   programs}. 
@@ -847,6 +847,13 @@ programming).
   are equivalent problems.
 \end{enumerate}
 
+\item \label{ex:sdp_no_solution}
+  Give an example to show that an SDP can have a finite optimal value and yet
+  lack a solution (not attain its optimal value). Show that your example does 
+  not violate Corollary \ref{cor:weierstrass_convex_constrained}, which gives
+  conditions for existence of minima. 
+  % Example: minimize $x_1$ subject to $x_1 x_2 \geq 1$.
+
 \item A \emph{second-order cone program} (SOCP) is of the form
   \index{second order cone program}
   \begin{equation}
@@ -898,12 +905,8 @@ programming).
   \smallskip
   (Note that this establishes, combined with the last exercise and all of the
   containments in this chapter, the following hierarchy for classes of convex
-  problems:
-  \[
-  \text{LPs} \subseteq \text{QPs} \subseteq \text{QCQPs} \subseteq \text{SOCPs}
-  \subseteq \text{SDPs} \subseteq \text{cone programs},
-  \]
-  written informally, but intuitively.)
+  problems: $\text{LPs} \subseteq \text{QPs} \subseteq \text{QCQPs} \subseteq
+  \text{SOCPs} \subseteq \text{SDPs} \subseteq \text{cone programs}$.)
 
 \item \label{ex:geometric_program}
   A \emph{geometric program} (GP) is of the form

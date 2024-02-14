@@ -1,5 +1,5 @@
-\chapter{Dual connections}
-\label{chap:dual_connections}
+\chapter{Duality revisited}
+\label{chap:duality_revisited}
 
 \section{Dual norms}
 \label{sec:dual_norms}
@@ -20,10 +20,51 @@ conjugates
 
 when is dual of dual the primal? Answer with f** = f. Pull back to QPs? 
 
+\section{Conic duality*}
+\label{sec:conic_duality}
+
+How to write in a unified way?
+
+Write cone program as follows in a way that allows Fenchel duality to be applied
+elegantly. For example, min $c^\T x$ subject $Ax + b \in K$
+
+See Theorem 3.2.2 in Ben Tal and Nemirovski. This is more general but it will be
+helpful to write this as: min $c^\T x$ subject to $Gx \leq h$, $Ax + b \in K$,
+where $K$ is pointed etc.
+
+\index{Slater's condition}
+\index{strong duality}
+\begin{Theorem}
+\label{thm:slater_conic}
+TODO
+% Consider the optimization problem \eqref{eq:primal_problem}, where after 
+% relabeling, if needed, we take $h_1, \dots, h_r$ to be inequality constraint
+% functions which are affine ($r = 0$ if none are affine). Assume the following.         
+
+% \begin{enumerate}[label=(\roman*)]
+% \item The functions $f$ and $h_i$, $i=1,\dots,m$ are convex, and $\ell_j$,
+%   $j=1,\dots,k$ are affine; in other words, problem \eqref{eq:primal_problem} is
+%   convex, and we can write its equality constraints as $Ax = b$.      
+
+% \item There exists $x \in \relint(D)$, where \smash{$D = \dom(f) \cap
+%     \bigcap_{i=r+1}^m \dom(h_i)$} denotes the common effective domain, such that      
+%   \begin{equation}
+%   \label{eq:slater_condition}
+%   h_i(x) \leq 0 \;\, \text{for all $i \leq r$}, \quad
+%   h_i(x) < 0 \;\, \text{for all $i \geq r+1$}, \quad 
+%   Ax = b.
+%   \end{equation}
+% \end{enumerate}
+
+% Then strong duality holds: the optimal values $f^\star$ in problem
+% \eqref{eq:primal_problem} and $g^\star$ in the corresponding dual problem  
+% \eqref{eq:dual_problem} satisfy $f^\star = g^\star$.
+\end{Theorem}
+
 \section{Saddle point theorems*}
 ?? consider Bert chap 5.5 or BTN chap 3.4.2 
 
-\section{Existence of minima, revisited*}
+\section{Existence of minima revisited*}
 \label{sec:existence_minima_revisited}
 
 discuss 0 being in int(dom(f)) being equivalent to f* having no directions
@@ -39,7 +80,9 @@ solutions.
 MAKE Sure to talk about interpretation of logistic interpretation
 
 
-??
+?? 
+
+\section{Primal solutions from dual solutions}
 
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
