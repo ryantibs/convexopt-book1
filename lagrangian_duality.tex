@@ -1,5 +1,5 @@
-\chapter{Duality}
-\label{chap:duality}
+\chapter{Lagrangian duality}
+\label{chap:lagrangian_duality}
 
 \section{LP duality*}
 \label{sec:lp_duality}
@@ -59,11 +59,11 @@ f^\star \geq \, \underbrace{\sup \big\{ -b^\T u - h^\T v :  A^\T u + G^\T v =
 Now the right-hand side in \eqref{eq:lp_weak_duality}, which we may denote as 
 $g^\star = -b^\T u^\star - h^\T v^\star$, is itself the optimal criterion value
 associated with an optimization problem, indeed an LP,     
-\index{dual problem!linear program}
+\index{linear program!dual problem}
 \begin{equation}
 \label{eq:lp_dual}
 \begin{alignedat}{2}
-&\maximize_{u,v} \quad && b^\T u - h^\T v \\
+&\maximize_{u,v} \quad && -b^\T u - h^\T v \\
 &\st && A^\T u + G^\T v = -c \\
 & && u \geq 0.
 \end{alignedat}
@@ -167,9 +167,9 @@ discussed under Example \ref{xa:nonconvex_quartic}, illustrates the construction
 of the Lagrangian and the dual problem.
 
 \begin{Example}
-In what follows, we work through the duals of canonical problems: LPs and
-QPs. For the duals standard form LPs and QPs, see Exercises \ref{ex:lp_std_dual}
-and \ref{ex:qp_std_dual}.   
+In what follows, we construct the Lagrange duals of two canonical problems: an
+LP and QP. For the duals of an LP and QP in standard form, see Exercises
+\ref{ex:lp_std_dual} and \ref{ex:qp_std_dual}.           
 
 \begin{enumerate}[label=\alph*., ref=\alph*]  
 \item \parlab{xa:lp_dual} 
@@ -187,7 +187,7 @@ g(u,v) = \begin{cases}
 \]
 The dual problem, which maximizes $g(u,v)$ subject to the constraint $u \geq
 0$, is therefore precisely as derived earlier in \eqref{eq:lp_dual}. 
-\index{dual problem!linear program}
+\index{linear program!dual problem}
 
 \item \parlab{xa:qp_dual}
 For the quadratic program (QP): 
@@ -212,7 +212,7 @@ g(u,v) = - \frac{1}{2} (c + A^\T u + G^\T v)^\T Q^{-1} (c + A^\T u + G^\T v) -
 b^\T u - h^\T v.
 \] 
 The dual problem is thus
-\index{dual problem!quadratic program}
+\index{quadratic program!dual problem}
 \begin{equation}
 \label{eq:qp_pd_dual}
 \begin{alignedat}{2}
@@ -508,7 +508,7 @@ generality), then $x^\star, u^\star$ is a saddle point of the Lagrangian, as in
 then tracing back to \eqref{eq:lagrangian_equalities2} and
 \eqref{eq:lagrangian_equalities1} shows that \smash{$\bar{x}, \bar{u}$} achieve
 zero duality gap, which implies they must be optimal. We will revisit the saddle
-point perspective in Chapter \ref{chap:kkt}.   
+point perspective in Chapter \ref{chap:kkt_conditions}.   
 \index{Lagrangian function!saddle point}
  
 \section{Slater's condition}
@@ -537,15 +537,13 @@ functions which are affine ($r = 0$ if none are affine). Assume the following.
   \begin{equation}
   \label{eq:slater_condition}
   h_i(x) \leq 0 \;\, \text{for all $i \leq r$}, \quad
-  h_i(x) < 0 \;\, \text{for all $i \geq r+1$}, \quad 
-  Ax = b.
+  h_i(x) < 0 \;\, \text{for all $i > r$}, \quad Ax = b. 
   \end{equation}
 \end{enumerate}
 
-Then strong duality \eqref{eq:strong_duality} holds. That is, to be more
-explicit: the optimal criterion values $f^\star$ in \eqref{eq:primal_problem}
-and $g^\star$ in the corresponding dual problem \eqref{eq:dual_problem} satisfy 
-$f^\star = g^\star$. 
+Then strong duality holds: the optimal values $f^\star$ in problem
+\eqref{eq:primal_problem} and $g^\star$ in the corresponding dual problem  
+\eqref{eq:dual_problem} satisfy $f^\star = g^\star$. 
 \end{Theorem}
 
 Conditions (i) and (ii) in Theorem \ref{thm:slater_condition} are together known
@@ -556,62 +554,147 @@ satisfies the affine equality and inequality constraints and strictly satisfies
 the non-affine inequality constraints. This strict feasibility condition is very
 mild, which is why we say that strong duality holds for ``most'' convex
 problems. The proof of Theorem \ref{thm:slater_condition} reduces to an
-application of the separating hyperplane theorem, and is outlined in Exercise
-\ref{ex:slater_condition}.  
+application of the separating hyperplane theorem, and is outlined in Exercises 
+\ref{ex:convex_theorem_alternatives} and \ref{ex:slater_condition}.  
 
 We can demonstrate the utility of Slater's condition by revisiting LPs. An LP
 \eqref{eq:lp_primal} is always a convex problem, and all of its constraints are
 affine, so Slater's condition applied to \eqref{eq:lp_primal} says that strong
-duality holds if \eqref{eq:lp_primal} is feasible. However, this is not all: one
-can check (Exercise \ref{ex:lp_dual_dual}) that the dual of the dual problem
-\eqref{eq:lp_dual} is in fact the primal problem \eqref{eq:lp_primal}.
-Therefore, strong duality in problems \eqref{eq:lp_primal} and
-\eqref{eq:lp_dual} refer to the same thing, and applying Slater's condition to  
-\eqref{eq:lp_dual} says that strong duality again holds if \eqref{eq:lp_dual} is
-feasible. Next, we summarize these conclusions.
+duality holds if \eqref{eq:lp_primal} is feasible. Furthermore, one can verify
+(Exercise \ref{ex:lp_dual_dual}) that the dual of the dual problem
+\eqref{eq:lp_dual} is in fact the primal problem \eqref{eq:lp_primal}. Hence,
+strong duality in problems \eqref{eq:lp_primal} and \eqref{eq:lp_dual} refer to
+the same thing, and applying Slater's condition to \eqref{eq:lp_dual} says that 
+strong duality also holds if \eqref{eq:lp_dual} is feasible. Next, we summarize
+these conclusions. 
 
-\index{strong duality!linear program}
+\index{linear program!strong duality}
 \begin{Corollary}
+\label{cor:slater_lp}
 For an LP, strong duality holds if the primal or the dual problem is 
 feasible. 
 \end{Corollary}
 
-Still, more can be said, by characterizing what happens when the primal or the
-dual is infeasible; see Exercise \ref{ex:lp_infeasible}. Exercises
-\ref{ex:lasso_dual} and \ref{ex:svm_dual} examine duality in the lasso and
-SVM problems (both QPs), and use Slater's condition to conclude that strong  
-duality always holds. 
+More can be said, by more precisely characterizing what happens when only one of
+the primal or the dual is infeasible; see Exercise \ref{ex:lp_slater}. Exercises
+\ref{ex:lasso_dual} and \ref{ex:svm_dual} examine duality in the lasso and SVM
+problems (both are QPs), and use Slater's condition to conclude that strong
+duality always holds.       
 
 \section{SDP duality*}
 \label{sec:sdp_duality}
 
-% for SDP duality: take a look at 
-% https://www.mit.edu/~parrilo/cdc03_workshop/ejc03_comp.pdf
-% https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-251j-introduction-to-mathematical-programming-fall-2009/readings/MIT6_251JF09_SDP.pdf
+Consider a generic semidefinite program (SDP) of the form
+\begin{equation}
+\label{eq:sdp_primal}
+\begin{alignedat}{2}
+&\minimize_x \quad && c^\T x \\
+&\st \quad && x_1 A_1 + \cdots + x_d A_d \preceq B \\  
+& && Gx = h.
+\end{alignedat}
+\end{equation}
+To construct the Lagrangian dual of \eqref{eq:sdp_primal}, we adopt our standard 
+approach of treating the space of symmetric matrices as a vector space with the   
+inner product $\langle X, Y \rangle = \tr(XY)$ and partial ordering $X \preceq Y
+\iff Y-X \succeq 0$. Next, we associate a dual variable with every element of the
+inequality constraint $\sum_{i=1}^d x_i A_i - B \preceq 0$, thus in total, a
+dual matrix $U$ with the entire inequality constraint. Associating another dual
+variable with the equality constraint $Gx - h = 0$, the Lagrangian is hence   
+\[
+L(x,U,v) = c^\T x + \bigg\langle U, \sum_{i=1}^d x_i A_i - B \bigg\rangle + v^\T
+(Gx - h). 
+\]
+Now we make use of the following key fact (Exercise
+\ref{ex:psd_cone_self_dual}):   
+\begin{equation}
+\label{eq:psd_cone_self_dual}
+\text{given $X \succeq 0$, it holds that $Y \succeq 0 \iff \tr(XY) \geq 0$}.  
+\end{equation}
+We will revisit \eqref{eq:psd_cone_self_dual} in Chapter \ref{sec:dual_cones},
+where in the language of that chapter, we will learn that it says the positive
+semidefinite cone is self dual. Note that \eqref{eq:psd_cone_self_dual} implies 
+for feasible $x$ and $U \succeq 0$,
+\[
+\bigg\langle U, \sum_{i=1}^d x_i A_i - B \bigg\rangle = \tr \bigg[ U \bigg(
+\sum_{i=1}^d x_i A_i - B \bigg) \bigg] \leq 0.
+\]
+In other words, we see that indeed the Lagrangian satisfies $L(x,U,v) \leq c^\T
+x$, for any feasible $x$ and $U,v$ such that $U \succeq 0$, which verifies 
+\eqref{eq:lagrangian_bound1} for the current setting. Proceeding as in
+\eqref{eq:lagrangian_bound2}, \eqref{eq:dual_function} \eqref{eq:dual_problem},
+we minimize the Lagrangian $L(x,U,v)$ over unconstrained $U,v$ to yield the dual
+problem:
+\index{semidefinite program!dual problem}
+\begin{equation}
+\label{eq:sdp_dual}
+\begin{alignedat}{2}
+&\maximize_{U,v} \quad && -\tr(BU) - h^\T v \\
+&\st \quad && \tr(A_iU) + g_i^\T v = -c_i, \; i = 1,\dots,d \\
+& && U \succeq 0.
+\end{alignedat}
+\end{equation}
+where $g_i$, $i=1,\dots,d$ denote the columns of $G$. Note the close analogy
+between \eqref{eq:sdp_dual} and the LP dual \eqref{eq:lp_dual}. For the dual of
+an SDP in standard form, see Exercise \ref{ex:sdp_std_dual}. 
+
+By construction, we have that weak duality holds, $f^\star \geq g^\star$,
+between \eqref{eq:sdp_primal} and \eqref{eq:sdp_dual}, with $f^\star$ denoting 
+the optimal value in \eqref{eq:sdp_primal} and $g^\star$ the optimal value in 
+\eqref{eq:sdp_dual}. When does strong duality hold? For this, we need an
+extension of Slater's theorem. This will be given later in Chapter
+\ref{sec:conic_duality}, when we cover conic duality, and the following is a    
+consequence for SDPs. 
+
+\index{semidefinite program!strong duality}
+\begin{Corollary}
+\label{cor:slater_sdp}
+Strong duality holds between the SDP \eqref{eq:sdp_primal} and its dual
+\eqref{eq:sdp_dual} in either of the following cases. 
+
+\begin{enumerate}[label=(\roman*)]
+\item There exists $x$ such that $Gx = h$ and $x_1 A_1 + \cdots + x_d A_d \prec
+  B$.  
+\item There exists $U,v$ such that $\tr(A_iU) + g_i^\T v = -c_i$, $i =
+  1,\dots,d$, and $U \succ 0$. 
+\end{enumerate}
+\end{Corollary}
+
+Like the result for LPs in Corollary \ref{cor:slater_lp}, the result in
+Corollary \ref{cor:slater_sdp} is based on the observation that the dual of the 
+dual SDP is the primal SDP (Exercise \ref{ex:sdp_dual_dual}), so to obtain
+a sufficient condition for strong duality, we can apply Slater's condition to
+either the primal SDP and the dual SDP. 
+
+While the theory of duality for SDPs has many similarities to that for LPs, it is
+also important to note their differences. For example, the duality gap in an SDP
+can be finite and positive, which is impossible in an LP. Exercise
+\ref{ex:lp_sdp_differences} explores this and related facts.     
 
 \SkipTocEntry\section*{Chapter notes}
 
 describe history of duality? saddle point closely connected to zero-sum games. 
 
-Rockafellar
-Bertsekas Chapter 4? 
-BV chapter 5
+Rockafellar. Chapter ?? goes in more depth in WHAT WAYS
 
-credit BV for inspiration of nonconvex quartic example
+Bertsekas Chapter 4-5. goes in more depth in WHAT WAYS
 
-credit BV for interpretations
+BV Chapter 5. credit BV for interpretations
 
 our slater often called relaxed slater
 
-Bertsekas: nonlinear farkas lemma? is it the same as:
-Nemirovksi: convex theorem of alternatives. inspiration for exercises below
+BTN. chapter 3. goes in more depth in WHAT WAYS
+convex theorem of alternatives. Exercise
+\ref{ex:convex_theorem_alternatives} is based on BTN. 
+
+Credit VB 1994, Ramana for SDP duality. 
 
 \clearpage
 
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{0.00.\hskip\labelsep}
-\index{dual problem!linear program}
+\index{linear program!dual problem}
+\index{linear program!standard form}
 \item \label{ex:lp_std_dual}
   Consider the standard form LP,
   \begin{alignat*}{2}
@@ -627,7 +710,8 @@ Nemirovksi: convex theorem of alternatives. inspiration for exercises below
   & && u \geq 0.
   \end{alignat*}
 
-\index{dual problem!quadratic program}
+\index{quadratic program!dual problem}
+\index{quadratic program!standard form}
 \item \label{ex:qp_std_dual} 
   Consider the standard form QP,
   \begin{alignat*}{2}
@@ -644,7 +728,7 @@ Nemirovksi: convex theorem of alternatives. inspiration for exercises below
   & && u \geq 0.
   \end{alignat*}
 
-\index{dual problem!quadratic program}
+\index{quadratic program!dual problem}
 \item \label{ex:qp_psd_dual} 
   Consider the QP in \eqref{eq:qp_primal} but now assume that $Q \succeq
   0$. Prove that its dual is as claimed in \eqref{eq:qp_psd_dual}. Hint: taking
@@ -654,26 +738,53 @@ Nemirovksi: convex theorem of alternatives. inspiration for exercises below
   the Lagrangian over $x$?   
 
 \item \label{ex:nonconvex_quartic}
-We derive the dual for the nonconvex quartic minimization
-\eqref{eq:nonconvex_quartic}, as given in Example
-\ref{xa:nonconvex_quartic}. First show that taking the derivative of the 
-Lagrangian with respect to $x$ and setting it equal to zero yields 
-\[
-x^3 - 25x + 25 - \frac{25}{2} u = 0.
-\]
-This is called a \emph{depressed} cubic equation, since it does not have any
-term involving $x^2$. Show that Cardano's formula, for the roots of a depressed
-cubic, yields the three roots $x = R_j(u)$, $j = 1,2,3,\dots$ as defined in the  
-example. Then argue that the dual function $g$ in
-\eqref{eq:nonconvex_quartic_dual} can be obtained by taking the minimum value of
-the (real part of the) Lagrangian over these roots. 
-
-\index{Slater's condition}
-\item \label{ex:slater_condition}
+  We derive the dual for the nonconvex quartic minimization
+  \eqref{eq:nonconvex_quartic}, as given in Example
+  \ref{xa:nonconvex_quartic}. First show that taking the derivative of the  
+  Lagrangian with respect to $x$ and setting it equal to zero yields 
+  \[
+  x^3 - 25x + 25 - \frac{25}{2} u = 0.
+  \]
+  This is called a \emph{depressed} cubic equation, since it does not have any 
+  term involving $x^2$. Show that Cardano's formula, for the roots of a
+  depressed cubic, yields the three roots $x = R_j(u)$, $j = 1,2,3,\dots$ as
+  defined in the example. Then argue that the dual function $g$ in 
+  \eqref{eq:nonconvex_quartic_dual} can be obtained by taking the minimum value
+  of the (real part of the) Lagrangian over these roots. 
 
 \item \label{ex:lp_dual_dual}
+  To form the dual of \eqref{eq:lp_dual}, first convert it to a minimization
+  problem by negating its criterion, rewrite the equality constraint as $-A^\T u
+  - G^\T v = c$, and then pursue the usual construction in Lagrangian
+  duality. Show that this gives    
+  \begin{alignat*}{2}
+  &\maximize_{x,y} \quad && -c^\T x \\ 
+  &\st && Ax + y = b \\
+  & && Gx = h \\
+  & && y \geq 0.
+  \end{alignat*}
+  After eliminating $y$, and negating the criterion to convert this to a
+  minimization problem, show that we arrive back at \eqref{eq:lp_primal}.  
 
-\item \label{ex:lp_infeasible}
+\index{linear program!strong duality}
+\item \label{ex:lp_slater}
+  Prove the following statements which together form a refinement of Corollary
+  \ref{cor:slater_lp} for LPs.  
+
+\begin{enumerate}[label=\alph*.]
+\item If both the primal \eqref{eq:lp_primal} and dual \eqref{eq:lp_dual} are
+  infeasible, then strong duality does not hold.
+
+\item If either the primal \eqref{eq:lp_primal} or dual \eqref{eq:lp_dual} are
+  feasible, then strong duality holds.
+
+\item If the primal \eqref{eq:lp_primal} is feasible, then its optimal value
+  $f^\star$ is finite if and only if the dual \eqref{eq:lp_dual} is feasible.  
+
+\item If the dual \eqref{eq:lp_dual} is feasible, then its optimal value
+  $g^\star$ is finite if and only if the primal \eqref{eq:lp_primal} is
+  feasible.   
+\end{enumerate}
 
 \item \label{ex:lasso_dual}
 We explore duality in the lasso problem,      
@@ -736,6 +847,52 @@ for labels $y_i \in \{ -1, 1\}$ and features $x_i \in \R^d$, for $i=1,\ldots,n$.
   \eqref{eq:svm_primal} and \eqref{eq:svm_dual}.  
 \end{enumerate}
 
-\item convex theorems of alternatives?
+\item \label{ex:convex_theorem_alternatives}
+Convex theorem of alternatives. Credit Theorem 3.2.1 in BTN
+
+\index{Slater's condition}
+\item \label{ex:slater_condition}
+Proof of slater's condition via the last one.
+
+\item \label{ex:psd_cone_self_dual}
+and we will revisit it 
+in Chapter \ref{sec:dual_cones} (where in the language of that chapter, we
+will learn that \eqref{eq:psd_cone_self_dual} says the positive semidefinite
+cone is self-dual).
+
+\item \label{ex:sdp_std_dual}
+
+\item \label{ex:sdp_dual_dual}
+  To form the dual of \eqref{eq:lp_dual}, first convert it to a minimization
+  problem by negating its criterion, rewrite the equality constraint as $-A^\T u
+  - G^\T v = c$, and then pursue the usual construction in Lagrangian
+  duality. Show that this gives    
+  \begin{alignat*}{2}
+  &\maximize_{x,y} \quad && -c^\T x \\ 
+  &\st && Ax + y = b \\
+  & && Gx = h \\
+  & && y \geq 0.
+  \end{alignat*}
+  After eliminating $y$, and negating the criterion to convert this to a
+  minimization problem, show that we arrive back at \eqref{eq:lp_primal}.  
+
+\item \label{ex:lp_sdp_differences}
+  First note difference in existence of solutions. Exercise \ref{ex:lp_slater}
+  vs \ref{ex:sdp_no_solution}. 
+
+  Infer from the general Slater condition given later (from BTN) that in an SDP,
+  both primal is attained if (ii) holds and dual optimal value is finite. Dual
+  is attained if (i) holds and primal optimal value is finite. 
+
+  Note: Theorem 5.1 Freund of says that both are attained if both (i) and (ii)
+  hold but does not require boundedness (finite optimal values). Does something
+  special happen for SDPs?  
+% https://ocw.mit.edu/courses/6-251j-introduction-to-mathematical-programming-fall-2009/08bbc2660764c4f61bde5363ae134339_MIT6_251JF09_SDP.pdf
+
+  Then note duality gap difference. Give example of SDP with positive duality
+  gap. Example 1 from Ramana, credit VB 1994.  
+
+\item Ramana's duality theory for SDPs?
+% https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=25d07b28d8ec4c290f7510cbc90f4b3087e0c510
 \end{enumerate}
 \end{xcb}
