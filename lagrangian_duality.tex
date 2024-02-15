@@ -578,8 +578,8 @@ feasible.
 More can be said, by more precisely characterizing what happens when only one of
 the primal or the dual is infeasible; see Exercise \ref{ex:lp_slater}. Exercises
 \ref{ex:lasso_dual} and \ref{ex:svm_dual} examine duality in the lasso and SVM
-problems (both are QPs), and use Slater's condition to conclude that strong
-duality always holds.       
+problems, and use Slater's condition to conclude that strong duality always
+holds.        
 
 \section{SDP duality*}
 \label{sec:sdp_duality}
@@ -754,9 +754,9 @@ Credit VB 1994, Ramana for SDP duality.
 
 \item \label{ex:lp_dual_dual}
   To form the dual of \eqref{eq:lp_dual}, first convert it to a minimization
-  problem by negating its criterion, rewrite the equality constraint as $-A^\T u
-  - G^\T v = c$, then pursue the usual steps in Lagrangian duality as in Chapter
-  \ref{sec:lagrangian_duality}. Show that this gives      
+  problem by negating its criterion and rewrite the equality constraint as
+  $-A^\T u - G^\T v = c$. Then simply pursue the usual steps in Lagrangian
+  duality, as in Chapter \ref{sec:lagrangian_duality}. Show that this gives       
   \begin{alignat*}{2}
   &\maximize_{x,y} \quad && -c^\T x \\ 
   &\st &&  Ax + y = b \\
@@ -773,7 +773,7 @@ Credit VB 1994, Ramana for SDP duality.
 
 \begin{enumerate}[label=\alph*.]
 \item If both the primal \eqref{eq:lp_primal} and dual \eqref{eq:lp_dual} are
-  infeasible, then strong duality does not hold.
+  infeasible, then strong duality fails.
 
 \item If either the primal \eqref{eq:lp_primal} or dual \eqref{eq:lp_dual} are
   feasible, then strong duality holds.
@@ -787,32 +787,36 @@ Credit VB 1994, Ramana for SDP duality.
 \end{enumerate}
 
 \item \label{ex:lasso_dual}
-We explore duality in the lasso problem,      
+Consider the lasso problem, for a response vector $y \in \R^n$ and feature
+matrix $X \in \R^{n \times d}$, 
 \index{lasso!dual problem} 
+\[
+\minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
+\]
+To apply Lagrangian duality, we introduce (auxiliary) constraints, rewriting
+this as    
 \begin{equation}
 \label{eq:lasso_primal}
-\minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
-\end{equation}
-for a response vector $y \in \R^n$ and feature matrix $X \in \R^{n \times
-  d}$. Show that the dual of \eqref{eq:lasso_primal} is 
-\begin{equation}
-\label{eq:lasso_dual}
-\maximize_u \quad -\frac{1}{2} \|y - u\|_2^2 + \frac{1}{2} \|y\|_2^2 \quad \st
-\quad \|X^\T u\|_\infty \leq \lambda 
-\end{equation}
-Note that since \eqref{eq:lasso_primal} is convex and unconstrained, Slater's
-condition trivially holds, and thus strong duality always holds in between
-\eqref{eq:lasso_primal} and \eqref{eq:lasso_dual}. Hint: to apply Lagrangian
-duality, we must introduce (auxiliary) constraints; rewrite
-\eqref{eq:lasso_primal} as   
-\[
 \minimize_{\beta,z} \quad \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1  
-\quad \st \quad z = X \beta,
-\]
-then form the Lagrangian and minimize it over $\beta,z$. 
+\quad \st \quad z = X \beta.
+\end{equation}
+
+\begin{enumerate}[label=\alph*.]
+\item Show that the dual of \eqref{eq:lasso_primal} is (equivalent to)
+  \begin{equation}
+  \label{eq:lasso_dual}
+  \maximize_u \quad -\frac{1}{2} \|y - u\|_2^2 + \frac{1}{2} \|y\|_2^2 \quad \st
+  \quad \|X^\T u\|_\infty \leq \lambda.
+  \end{equation}
+
+\item Show that Slater's condition is always satisfied for the lasso problem 
+  \eqref{eq:lasso_primal}, and hence strong duality always holds in between  
+  \eqref{eq:lasso_primal} and \eqref{eq:lasso_dual}.  
+\end{enumerate}
 
 \item \label{ex:svm_dual}
-We explore duality in the SVM problem,      
+Consder the SVM problem, for labels $y_i \in \{ -1, 1\}$ and features $x_i \in
+\R^d$, $i=1,\ldots,n$,       
 \index{support vector machine!dual problem} 
 \begin{equation}
 \label{eq:svm_primal}
@@ -820,30 +824,25 @@ We explore duality in the SVM problem,
 &\minimize_{\beta_0,\beta,\xi} \quad
 && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
 &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\ldots,n \\  
-& && \xi \geq 0,
+& && \xi \geq 0.
 \end{alignedat}
 \end{equation}
-for labels $y_i \in \{ -1, 1\}$ and features $x_i \in \R^d$, for $i=1,\ldots,n$.
 
 \begin{enumerate}[label=\alph*.]
 \item Let $y \in \R^n$ denote the label vector and $X \in \R^{n \times d}$ the
   feature matrix (whose $i\th$ row is $x_i^\T$), and define \smash{$\tilde{X} =
-    \diag(y) X$}. Show that the dual of \eqref{eq:svm_primal} is (equivalent to)   
+    \diag(y) X$}. Show that the dual of \eqref{eq:svm_primal} is (equivalent to)      
   \begin{equation}
   \label{eq:svm_dual}
   \begin{alignedat}{2}
   &\maximize_w \quad &&- \frac{1}{2} w^\T \tilde{X} \tilde{X}^\T w + \one^\T w \\ 
   &\st \quad && 0 \leq w \leq C \one \\
-  & && y^\T w = 0,
+  & && y^\T w = 0.
   \end{alignedat}
   \end{equation}
-  Hint: while the SVM problem is a QP, it will be simpler to compute the dual of
-  \eqref{eq:svm_primal} directly (by forming the Lagrangian and minimizing 
-  over $\beta,\beta_0,\xi$) rather than invoking general results on QP duality,
-  from Example \parref{xa:qp_dual}.  
 
 \item Show that Slater's condition is always satisfied for the SVM problem
-  \eqref{eq:svm_primal}, so strong duality always holds in between
+  \eqref{eq:svm_primal}, and hence strong duality always holds in between 
   \eqref{eq:svm_primal} and \eqref{eq:svm_dual}.  
 \end{enumerate}
 
@@ -864,10 +863,10 @@ cone is self-dual).
 
 \item \label{ex:sdp_dual_dual}
   To form the dual of \eqref{eq:sdp_dual}, first convert it to a minimization
-  problem by negating its criterion, rewrite the equality constraints as
-  $-\tr(A_iU) - g_i^\T v = c_i$, $i = 1,\dots,d$, then pursue the usual steps in
-  Lagrangian duality for SDPs as in Chapter \ref{sec:sdp_duality}. Show that
-  this gives       
+  problem by negating its criterion and rewrite the equality constraints as
+  $-\tr(A_iU) - g_i^\T v = c_i$, $i = 1,\dots,d$. Then simply follow the usual
+  steps in SDP (Lagrangian) duality, as in Chapter \ref{sec:sdp_duality}. Show
+  that this gives    
   \begin{alignat*}{2}
   &\maximize_{x,Y} \quad && -c^\T x \\ 
   &\st && x_1 A_1 + \cdots + x_d A_d + Y = B \\
