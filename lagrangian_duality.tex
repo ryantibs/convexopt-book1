@@ -652,8 +652,8 @@ Strong duality holds between the SDP \eqref{eq:sdp_primal} and its dual
 \eqref{eq:sdp_dual} in either of the following cases. 
 
 \begin{enumerate}[label=(\roman*)]
-\item There exists $x$ such that $Gx = h$ and $x_1 A_1 + \cdots + x_d A_d \prec
-  B$.  
+\item There exists $x$ such that $Gx = h$ and $x_1 A_1 + \cdots + x_d A_d 
+  \prec B$.  
 \item There exists $U,v$ such that $\tr(A_iU) + g_i^\T v = -c_i$, $i =
   1,\dots,d$, and $U \succ 0$. 
 \end{enumerate}
@@ -755,15 +755,15 @@ Credit VB 1994, Ramana for SDP duality.
 \item \label{ex:lp_dual_dual}
   To form the dual of \eqref{eq:lp_dual}, first convert it to a minimization
   problem by negating its criterion, rewrite the equality constraint as $-A^\T u
-  - G^\T v = c$, and then pursue the usual construction in Lagrangian
-  duality. Show that this gives    
+  - G^\T v = c$, then pursue the usual steps in Lagrangian duality as in Chapter
+  \ref{sec:lagrangian_duality}. Show that this gives      
   \begin{alignat*}{2}
   &\maximize_{x,y} \quad && -c^\T x \\ 
-  &\st && Ax + y = b \\
+  &\st &&  Ax + y = b \\
   & && Gx = h \\
   & && y \geq 0.
   \end{alignat*}
-  After eliminating $y$, and negating the criterion to convert this to a
+  After eliminating $y$ and negating the criterion to convert this to a
   minimization problem, show that we arrive back at \eqref{eq:lp_primal}.  
 
 \index{linear program!strong duality}
@@ -863,18 +863,19 @@ cone is self-dual).
 \item \label{ex:sdp_std_dual}
 
 \item \label{ex:sdp_dual_dual}
-  To form the dual of \eqref{eq:lp_dual}, first convert it to a minimization
-  problem by negating its criterion, rewrite the equality constraint as $-A^\T u
-  - G^\T v = c$, and then pursue the usual construction in Lagrangian
-  duality. Show that this gives    
+  To form the dual of \eqref{eq:sdp_dual}, first convert it to a minimization
+  problem by negating its criterion, rewrite the equality constraints as
+  $-\tr(A_iU) - g_i^\T v = c_i$, $i = 1,\dots,d$, then pursue the usual steps in
+  Lagrangian duality for SDPs as in Chapter \ref{sec:sdp_duality}. Show that
+  this gives       
   \begin{alignat*}{2}
-  &\maximize_{x,y} \quad && -c^\T x \\ 
-  &\st && Ax + y = b \\
+  &\maximize_{x,Y} \quad && -c^\T x \\ 
+  &\st && x_1 A_1 + \cdots + x_d A_d + Y = B \\
   & && Gx = h \\
-  & && y \geq 0.
+  & && Y \succeq 0.
   \end{alignat*}
-  After eliminating $y$, and negating the criterion to convert this to a
-  minimization problem, show that we arrive back at \eqref{eq:lp_primal}.  
+  After eliminating $Y$ and negating the criterion to convert this to a
+  minimization problem, show that we arrive back at \eqref{eq:sdp_primal}.  
 
 \item \label{ex:lp_sdp_differences}
   First note difference in existence of solutions. Exercise \ref{ex:lp_slater}
