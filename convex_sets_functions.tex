@@ -896,12 +896,12 @@ an \emph{exposed point} of $C$ (for polyhedra, vertices and exposed points
 are equivalent, but not in general). Even in the general convex setting, these
 concepts lead to interesting developments; for example, for any compact (closed
 and bounded) convex set $C$, 
-\index{Straszewicz' theorem}   
+\index{Straszewicz's theorem}   
 \[
 C = \closure\big(\conv\{x : \text{$x$ is an exposed point of $C$}\}\big),  
 \]
 % For example, Theorem 8 page 19 in Grunbaum (2003) 
-a result called \emph{Straszewicz' theorem}. (For polytopes, the above is true
+a result called \emph{Straszewicz's theorem}. (For polytopes, the above is true 
 without the surrounding $\closure(\cdot)$ because the set of exposed
 points---that is, the vertex set---is finite.) For more, see Exercise
 \ref{ex:extreme_points}. 
@@ -1346,11 +1346,13 @@ infimum.
 \item Prove that if $F$ is a face of $C$ and $C$ is closed, then
   $\mathrm{ext}(F) = F \cap \mathrm{ext}(C)$. 
 
-\item Prove that if $C$ is compact, then $C = \conv(\mathrm{ext}(C))$. Hint:
-  note that $C \supseteq \conv(\mathrm{ext}(C))$ by the definition of extreme  
-  points; for the other direction (the opposite containment), use induction on
-  the dimension $d$ of $\aff(C)$ (for $d=1$, the only compact sets are closed
-  bounded intervals) and use part a. 
+\index{Krein-Milman theorem}
+\item Prove that if $C$ is compact, then $C = \conv(\mathrm{ext}(C))$ (called
+  the \emph{Krein-Milman theorem}). Hint: first observe $C \supseteq
+  \conv(\mathrm{ext}(C))$ by the definition of extreme points. For the other
+  direction (the opposite containment), use induction on the dimension $d$ of
+  $\aff(C)$ (note that for $d=1$, the only compact sets are closed bounded
+  intervals) and use part a.   
 
 \item Prove that $\mathrm{exp}(C) \subseteq \mathrm{ext}(C)$. 
 
@@ -1362,7 +1364,7 @@ infimum.
 \end{enumerate}
 
 \smallskip
-A note on Straszewicz' theorem, from Chapter \ref{sec:polyhedra}: we can
+A note on Straszewicz's theorem, from Chapter \ref{sec:polyhedra}: we can
 interpret this, in light of parts b, c, d, as saying that for any compact convex
 set $C$, the set of exposed points $\mathrm{exp}(C)$ is dense in the set of
 extreme points $\mathrm{ext}(C)$. For polytopes, these two sets are finite, and
