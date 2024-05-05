@@ -789,7 +789,7 @@ from which we can see that proximal \emph{nonexpansiveness} and \emph{residual
 \end{align}
 respectively.
 
-\section{Moreau-Yosida regularization*}
+\section{Moreau regularization*}
 \label{sec:moreau_envelope} 
 
 In this last section, we return to discussing the Moreau envelope $f_\lambda$ of
@@ -801,19 +801,18 @@ f_\lambda(x) = \inf_z \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
 \bigg\}.
 \]
 The Moreau envelope $f_\lambda$ can be seen as a smoothed or regularized version
-of $f$, and accordingly it is also known as \emph{Moreau-Yosida regularization}.
-Figure \ref{fig:moreau_envelope} gives an illustration. We note that more can be
-said about the precise connection between $f_\lambda$ and regularization, and
-this will be revisited in the next chapter, from the perspective of conjugate
-functions.    
+of $f$, and accordingly it is also called \emph{Moreau regularization}. Figure
+\ref{fig:moreau_envelope} provides an illustration. More can be said about the 
+precise connection between $f_\lambda$ and regularization, and this will be
+revisited in the next chapter from the perspective of conjugate functions.      
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.625\textwidth]{fig/moreau_envelope.pdf}
 \caption{Convex function (solid line) along with its Moreau envelope plotted at
-  four values of $\lambda > 0$ (dashed or dotted lines of various patterns). The 
-  Moreau envelope is a differentiable convex minorant to the original function,
-  for any $\lambda > 0$.}    
+  some values of $\lambda > 0$ (dashed or dotted lines). The Moreau envelope is
+  always a differentiable convex minorant to the original function, for any
+  $\lambda > 0$.}      
 \label{fig:moreau_envelope}
 \end{figure}
 
@@ -904,7 +903,7 @@ mappings; its proof is outlined in Exercise
 The notion of a proximal mapping is due to Jean Jacques Moreau, who published
 seminal work on the topic in the early and mid 1960s. Moreau studied the ways in
 which proximal maps generalize projections, and developed (what is now called)
-the Moreau envelope. The Moreau envelope is also sometimes called Moreau-Yosida
+the Moreau envelope. The Moreau envelope is also sometimes called Moreau-Yosida  
 regularization, to pay homage to earlier related work in functional analysis by
 Kosaku Yosida (cf.\ the Yosida approximation of operators). For readers seeking
 to learn more about proximal operators, including extensive and important
