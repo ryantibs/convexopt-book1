@@ -932,17 +932,14 @@ about polyhedra and their structure, a classic reference is
 
 As briefly discussed in Remark \ref{rem:extended_value}, our definition of a
 convex function does not allow it to take the value $-\infty$ (and likewise, we
-do not allow a concave function to take the value $\infty$). This is in
-contradiction with the standard approach in convex analysis, for example
-\cite{rockafellar1970convex, bertsekas2009convex} (but it is consistent with 
-the approach of others, for example \cite{boyd2004convex}). The standard
-approach in convex analysis allows a convex function to take values in
-$[-\infty,\infty]$, and defines a \emph{proper} convex function $f$ as one
-such that $f \not= \infty$ and $f > -\infty$ ($f$ is not identically $\infty$,
-and never $-\infty$). While proper convex functions are the real topic of
-interest, \emph{improper} convex functions do arise in various situations, and
-there are some nontrivial improper convex functions that are not just
-identically $\pm \infty$, for example
+do not allow a concave function to take the value $\infty$). This is not in line
+with the standard approach in convex analysis, which allows a convex
+function to take values in $[-\infty,\infty]$, and defines a \emph{proper} 
+convex function $f$ as one such that $f \not= \infty$ and $f > -\infty$ ($f$ is
+not identically $\infty$, and never $-\infty$). Of course, proper convex
+functions are the real topic of interest, but \emph{improper} convex functions
+arise in various settings, and there are improper convex functions which are 
+not trivially identical to $\pm \infty$, for example  
 \[
 f(x) = \begin{cases}
 -\infty & \text{if $\|x\| < 1$} \\
@@ -951,12 +948,11 @@ f(x) = \begin{cases}
 \end{cases}
 \]
 for a norm $\|\cdot\|$. Thus, from a general mathematical perspective, it is
-important to be able to deal with them. Altogether, for our purposes, we find it
-simpler to rule them out completely, though we admit this does come with its own
-set of drawbacks, for example we must occasionally add explicit qualifiers to
-statements about certain functions lying above $-\infty$, as we did in Property 
-\parref{par:function_infimum}, the convexity-preserving rule for a partial
-infimum.
+important to be able to deal with them. However, for our purposes, we find it
+simpler to rule them out completely. Accordingly, we must occasionally add
+explicit qualifiers to statements about certain functions lying above $-\infty$,  
+as we did in Property \parref{par:function_infimum}, the convexity-preserving
+rule for a partial infimum.
 
 \clearpage
 
