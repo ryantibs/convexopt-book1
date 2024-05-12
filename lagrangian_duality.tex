@@ -339,12 +339,11 @@ not at all obvious from its analytic form!
 \section{Interpretations}
 \label{sec:duality_interpretations}
 
-We discuss some interpretations of Lagrangian duality. The chapter notes 
-provide further discussion and context. In this section, without loss of
-generality, we will simply denote the dual variable by $u$, that is, we drop 
-reference to the part $v$ corresponding to the equality constraints in the
-primal \eqref{eq:primal_problem}. This is possible because equality constraints
-can always be rewritten as inequality constraints (each $\ell_j(x) = 0$ can be 
+In this section, we discuss some interpretations of Lagrange duality. Without
+loss of generality, we will simply denote the dual variable by $u$, that is, we
+drop reference to the block $v$ corresponding to the equality constraints in the
+primal \eqref{eq:primal_problem}. This is possible since equality constraints
+can always be rewritten as inequality constraints (each $\ell_j(x) = 0$ can be
 rewritten as $\ell_j(x) \leq 0$ and $-\ell_j(x) \leq 0$). 
 
 \paragraph{Max-min interpretation.}
@@ -672,22 +671,38 @@ can be finite and positive, which is impossible in an LP. Exercise
 
 \SkipTocEntry\section*{Chapter notes}
 
-describe history of duality? saddle point closely connected to zero-sum games. 
+% The name Lagrangian duality derives from Lagrange's classical method of 
+% multipliers for optimization problems with constraints. 
+Linear programming was initially the focus in developing the theory of 
+duality, as laid out by David Gale, Harold Kuhn, and Albert Tucker in
+\cite{gale1951linear}. This grew out of John von Neumman's famous minimax 
+theorem in zero-sum, two-player games, published over two decades
+earlier in \cite{vonneumann1928theorie} (we return to this and related
+saddle point theorems in Chapter \ref{sec:saddle_point_theorems}). Historical
+notes, tracing through the contributions of these authors and others, are found
+in the commentary section in Chapter 11 of \cite{rockafellar2009variational}.       
 
-Rockafellar. Chapter ?? goes in more depth in WHAT WAYS
+Duality is given an in depth treatment in many standard references, such as
+\cite{rockafellar1970convex} (Chapters 27--32), \cite{boyd2004convex} (Chapter  
+5), and \cite{bertsekas2009convex} (Chapters 4, 5). These books take on
+somewhat different perspectives: Rockafellar builds up duality via conjugacy
+operations, Bertsekas pursues a geometric theory based on min common/max
+crossing duality, whereas Boyd and Vandenberghe take a more Lagrangian-centric
+view, and present numerous interpretations and examples of dual problems. Our
+presentation is inspired in large part by \cite{boyd2004convex}. What we call
+Slater's condition, in Theorem \ref{thm:slater_condition}, is called
+\emph{relaxed} Slater's condition by Boyd and Vandenberghe, and other
+authors. Slater's condition is named after \cite{slater1950lagrange}.  
 
-Bertsekas Chapter 4-5. goes in more depth in WHAT WAYS
-
-BV Chapter 5. credit BV for interpretations
-
-our slater often called relaxed slater
-
-BTN. chapter 3. goes in more depth in WHAT WAYS
-convex theorem of alternatives. Exercise
-\ref{ex:convex_theorem_alternatives} is based on BTN. 
-
-Credit VB 1994, Ramana for SDP duality. 
-
+The lecture notes of \cite{bental2023convex} (Chapter 3) are a rich, advanced
+resource on duality. Working in a vector space endowed with conic ordering,
+these authors develop a convex theorem of alternatives, dual problems, and
+optimality conditions. Our treatment of conic duality, given in Chapter
+\ref{sec:conic_duality}, is based on theirs. An implication of this in the
+current chapter is the strong duality result for SDPs, given in Corollary
+\ref{cor:slater_sdp}. Exercise \ref{ex:convex_theorem_alternatives} is based on
+the theorem of alternatives from \cite{bental2023convex}.
+ 
 \clearpage
 
 \begin{xcb}{Exercises}
