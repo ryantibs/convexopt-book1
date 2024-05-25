@@ -69,14 +69,13 @@ The following are examples of convex sets.
 
 It will be important to think about convexity for sets of matrices (and
 convexity for functions of matrices), since several optimization problems of
-interest are formulated over matrices. By viewing $\R^{k \times d}$---the space   
-of real $k \times d$ matrices---as a vector space of dimension $kd$, everything   
-we cover for convex sets in $\R^d$ (and convex functions on $\R^d$) can be
-translated over to $\R^{k \times d}$. 
-
-The same can be said about $\SS^d$---the space of symmetric real $d \times d$
-matrices---which we can view as a vector space of dimension $d(d+1)/2$. A subset
-of $\SS^d$ of particular interest is 
+interest are formulated over matrices. In general, this is accomplished by
+viewing the space $\R^{k \times d}$ of real $k \times d$ matrices as a vector
+space of dimension $kd$. As such, most everything we cover for convex sets    
+in $\R^d$ (and convex functions on $\R^d$) can be translated over to $\R^{k
+  \times d}$. The same can be said about the space $\SS^d$ of symmetric real $d
+\times d$ matrices, which we can view as a vector space of dimension
+$d(d+1)/2$. A subset of $\SS^d$ of interest is 
 \index{positive semidefinite cone} 
 \index{positive semidefinite matrix} 
 \begin{equation}
@@ -86,16 +85,15 @@ of $\SS^d$ of particular interest is
 Here we write $X \succeq 0$ to denote that $X$ is \emph{positive semidefinite}:
 it satisfies $a^\T X a \geq 0$, for all $a \in \R^d$. We call $\SS_+^d$ the
 \emph{positive semidefinite cone} (of dimension $d$). This is a convex set,
-indeed a \emph{convex cone} which means it satisfies $X,Y \in \SS^d \implies s
-X + t Y \in \SS^d$ for all $s,t \geq 0$. To see this, note that for any $s, t
-\geq 0$ and $a \in \R^d$, we have  
+indeed, a \emph{convex cone}, meaning $X,Y \in \SS^d \implies s X + t Y \in 
+\SS^d$ for all $s,t \geq 0$. To see this, note that for any $a \in \R^d$,   
 \[
 a^\T (s X + t Y) a = s a^\T X a + t a^\T Y a \geq 0,
 \] 
-provided that $X,Y$ are positive semidefinite to begin with. 
+provided that $s, t \geq 0$ and $X,Y$ are positive semidefinite to begin with.  
 
-Given a set $C$ and a point $x \in C$, another interesting convex cone is the
-\emph{normal cone} to $C$ at $x$,   
+Another interesting convex cone is the \emph{normal cone} to a set $C$ at a
+point $x \in C$,   
 \begin{equation}
 \label{eq:normal_cone}
 \cN_C(x) = \{ g : g^\T x \geq g^\T y, \, \text{for all $y \in C$}\}.
