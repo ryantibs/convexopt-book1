@@ -607,7 +607,7 @@ Now we make use of the following key fact (Exercise
 \ref{ex:psd_cone_self_dual}):   
 \begin{equation}
 \label{eq:psd_cone_self_dual}
-\text{given $X \succeq 0$, it holds that $Y \succeq 0 \iff \tr(XY) \geq 0$}.  
+Y \succeq 0 \iff \text{$\tr(XY) \geq 0 for all X \succeq 0$}.  
 \end{equation}
 We will revisit \eqref{eq:psd_cone_self_dual} in Chapter \ref{sec:dual_cones},
 where in the language of that chapter, we will learn that it says the positive
@@ -671,37 +671,37 @@ can be finite and positive, which is impossible in an LP. Exercise
 
 \SkipTocEntry\section*{Chapter notes}
 
-% The name Lagrangian duality derives from Lagrange's classical method of 
-% multipliers for optimization problems with constraints. 
 Linear programming was initially the focus in developing the theory of 
 duality, as laid out by David Gale, Harold Kuhn, and Albert Tucker in
 \cite{gale1951linear}. This grew out of John von Neumman's famous minimax 
 theorem in zero-sum, two-player games, published over two decades
 earlier in \cite{vonneumann1928theorie} (we return to this and related
 saddle point theorems in Chapter \ref{sec:saddle_point_theorems}). Historical
-notes, tracing through the contributions of these authors and others, are found
-in the commentary section in Chapter 11 of \cite{rockafellar2009variational}.       
+notes, tracing through the contributions of these and other authors, can be
+found in the commentary section in Chapter 11 of
+\cite{rockafellar2009variational}, among other places.
 
 Duality is given an in depth treatment in many standard references, such as
 \cite{rockafellar1970convex} (Chapters 27--32), \cite{boyd2004convex} (Chapter  
 5), and \cite{bertsekas2009convex} (Chapters 4, 5). These books take on
 somewhat different perspectives: Rockafellar builds up duality via conjugacy
 operations, Bertsekas pursues a geometric theory based on min common/max
-crossing duality, whereas Boyd and Vandenberghe take a more Lagrangian-centric
+crossing duality, whereas Boyd and Vandenberghe take a more Lagrangian-centric 
 view, and present numerous interpretations and examples of dual problems. Our
 presentation is inspired in large part by \cite{boyd2004convex}. What we call
 Slater's condition, in Theorem \ref{thm:slater_condition}, is called
-\emph{relaxed} Slater's condition by Boyd and Vandenberghe, and other
+\emph{relaxed} Slater's condition by Boyd and Vandenberghe and other
 authors. Slater's condition is named after \cite{slater1950lagrange}.  
 
 The lecture notes of \cite{bental2023convex} (Chapter 3) are a rich, advanced
 resource on duality. Working in a vector space endowed with conic ordering,
 these authors develop a convex theorem of alternatives, dual problems, and
-optimality conditions. Our treatment of conic duality, given in Chapter
-\ref{sec:conic_duality}, is based on theirs. An implication of this in the
-current chapter is the strong duality result for SDPs, given in Corollary
-\ref{cor:slater_sdp}. Exercise \ref{ex:convex_theorem_alternatives} is based on
-the theorem of alternatives from \cite{bental2023convex}.
+optimality conditions, all from first principles. Our treatment of conic
+duality, in Chapter \ref{sec:conic_duality}, is based on theirs. A consequence
+of this more general conic duality theory is the strong duality result for SDPs
+which is given in Corollary \ref{cor:slater_sdp}. Exercise 
+\ref{ex:convex_theorem_alternatives} is based on the theorem of alternatives
+from \cite{bental2023convex}.         
  
 \clearpage
 
@@ -802,19 +802,19 @@ the theorem of alternatives from \cite{bental2023convex}.
 \end{enumerate}
 
 \item \label{ex:lasso_dual}
-Consider the lasso problem, for a response vector $y \in \R^n$ and feature
-matrix $X \in \R^{n \times d}$, 
-\index{lasso!dual problem} 
-\[
-\minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
-\]
-To apply Lagrangian duality, we introduce (auxiliary) constraints, rewriting
-this as    
-\begin{equation}
-\label{eq:lasso_primal}
-\minimize_{\beta,z} \quad \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1  
-\quad \st \quad z = X \beta.
-\end{equation}
+  Consider the lasso problem, for a response vector $y \in \R^n$ and feature  
+  matrix $X \in \R^{n \times d}$, 
+  \index{lasso!dual problem} 
+  \[
+  \minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
+  \]
+  To apply Lagrangian duality, we introduce (auxiliary) constraints, rewriting
+  this as    
+  \begin{equation}
+  \label{eq:lasso_primal}
+  \minimize_{\beta,z} \quad \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1  
+  \quad \st \quad z = X \beta.
+  \end{equation}
 
 \begin{enumerate}[label=\alph*.]
 \item Show that the dual of \eqref{eq:lasso_primal} is (equivalent to)
@@ -830,18 +830,18 @@ this as
 \end{enumerate}
 
 \item \label{ex:svm_dual}
-Consder the SVM problem, for labels $y_i \in \{ -1, 1\}$ and features $x_i \in
-\R^d$, $i=1,\ldots,n$,       
-\index{support vector machine!dual problem} 
-\begin{equation}
-\label{eq:svm_primal}
-\begin{alignedat}{2}
-&\minimize_{\beta_0,\beta,\xi} \quad
-&& \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
-&\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\ldots,n \\  
-& && \xi \geq 0.
-\end{alignedat}
-\end{equation}
+  Consder the SVM problem, for labels $y_i \in \{ -1, 1\}$ and features $x_i \in 
+  \R^d$, $i=1,\ldots,n$,       
+  \index{support vector machine!dual problem} 
+  \begin{equation}
+  \label{eq:svm_primal}
+  \begin{alignedat}{2}
+    &\minimize_{\beta_0,\beta,\xi} \quad
+    && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
+    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\ldots,n \\  
+    & && \xi \geq 0.
+  \end{alignedat}
+  \end{equation}
 
 \begin{enumerate}[label=\alph*.]
 \item Let $y \in \R^n$ denote the label vector and $X \in \R^{n \times d}$ the
@@ -862,6 +862,18 @@ Consder the SVM problem, for labels $y_i \in \{ -1, 1\}$ and features $x_i \in
 \end{enumerate}
 
 \item \label{ex:convex_theorem_alternatives}
+  Let $f$ and $h_i$, $i=1,\dots,m$ be convex, and $\ell_j$, $j=1,\dots,k$ be
+  affine. Following Theorem 3.2.1 in \cite{bental2023convex}, consider the
+  feasibility problems:
+  \begin{equation}
+  \label{eq:feas1}
+  \begin{alignedat}{2}
+  f(x) &< c
+  h_i(x) &\leq 0, \quad &i = 1,\dots,m \\
+  \ell_j(x) &= 0, \quad &j = 1,\dots,r.
+  \end{alignedat}
+  \end{equation}
+  
 Convex theorem of alternatives. Credit Theorem 3.2.1 in BTN
 
 \index{Slater's condition}
@@ -869,10 +881,16 @@ Convex theorem of alternatives. Credit Theorem 3.2.1 in BTN
 Proof of slater's condition via the last one.
 
 \item \label{ex:psd_cone_self_dual}
-and we will revisit it 
-in Chapter \ref{sec:dual_cones} (where in the language of that chapter, we
-will learn that \eqref{eq:psd_cone_self_dual} says the positive semidefinite
-cone is self-dual).
+  We will prove \eqref{eq:psd_cone_self_dual}. 
+
+\begin{enumerate}[label=\alph*.]
+\item If $\tr(XY) \geq 0$ for all $X \in \SS_+^d$, then show that $Y \in
+  \SS_+^d$. Hint: consider $X = a a^\T$, for arbitrary $a \in \R^d$.
+
+\item If $Y \in \SS_+^d$, then show $\tr(XY) \geq 0$ for all $X \in
+  \SS_+^d$. Hint: for $X \in \SS_+^d$, prove that we can always write \smash{$X
+    = \sum_{i=1}^d x_i x_i^\T$} for vectors $x_i \in \R^d$, $i = 1,\dots,d$. 
+\end{enumerate}
 
 \item \label{ex:sdp_std_dual}
 
