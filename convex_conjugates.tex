@@ -255,13 +255,12 @@ the most notable calculus rule for convex conjugates, we recall the notion of an
 (f \infconv g)(x) = \inf_z \Big\{ f(z) + g(x-z) \Big\}.
 \end{equation}
 For any $f,g$, a straightforward calculation shows that $(f \infconv g)^* = f^*
-+ g^*$. Meanwhile, for closed and convex $f,g$, we have $(f + g)^* = f^*
-\infconv g^*$. That is, for closed and convex functions, infimal convolution and
-addition are dual to each other. This provides an interesting perspective on the
-Moreau envelope (a special case of an infimal convolution), which we return to
-in Chapter \ref{sec:moreau_revisited}.   
-
-% Examples are better off demonstrated via duality, later
++ g^*$. Meanwhile, for closed and convex $f,g$ whose effective domains have
+relative interiors have a point in common, it holds that $(f + g)^* = f^*
+\infconv g^*$. That is, for such closed and convex functions, infimal
+convolution and addition are dual operations to each other. This provides an
+interesting perspective on the Moreau envelope (a special case of an infimal
+convolution), which we return to in Chapter \ref{sec:moreau_revisited}.    
 
 \section{Conjugates and smoothness*}
 \label{sec:conjugate_smoothness}
@@ -425,7 +424,7 @@ f_\lambda^* = f^* + \frac{\lambda}{2} \|\cdot\|_2^2,
 \]
 where we used Example \parref{xa:quadratic_conjugate} for the conjugate of
 \smash{$\frac{1}{2\lambda} \|\cdot\|_2^2$}. Meanwhile, if $f$ is closed, then
-$f_\lambda$ is also (recall, it is differentiable, and hence continuous), so we
+$f_\lambda$ is too (recall, it is differentiable, and hence continuous), so we
 can take the conjugate of both sides above and apply
 \eqref{eq:double_conjugate_reduction} to conclude   
 \index{Moreau envelope}
