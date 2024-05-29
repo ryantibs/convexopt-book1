@@ -183,7 +183,7 @@ for the proximal operator.
   \index{l1 norm@$\ell_1$ norm!proximal mapping}
   \[
   [\prox_{\lambda f}(x)]_i = [S_\lambda(x)]_i = [x_i - \sign(x_i) \lambda]_+,
-  \quad i = 1,\ldots,d.
+  \quad i = 1,\dots,d.
   \]
   where recall $a_+ = \max\{a, 0\}$ gives the positive part of $a$, and we
   interpret $\sign(0) = 1$. The operator $S_\lambda$ is called (coordinatewise)
@@ -197,7 +197,7 @@ for the proximal operator.
   0 & \text{if $|x_i| \leq \lambda$} \\
   x_i + \lambda & \text{if $x_i < -\lambda$}
   \end{cases},
-  \quad i = 1,\ldots,d.
+  \quad i = 1,\dots,d.
   \end{equation}
 
 \item \parlab{xa:l2_norm_proximal_mapping}  
@@ -238,7 +238,7 @@ for the proximal operator.
   \index{hard-thresholding}
   \[
   [\prox_{\lambda f}(x)]_i = [H_\lambda(x)]_i 
-  = x_i 1\{|x_i| > \lambda\}, \quad i = 1,\ldots,d.
+  = x_i 1\{|x_i| > \lambda\}, \quad i = 1,\dots,d.
   \]  
   The operator $H_\lambda$ is known as (coordinatewise) \emph{hard-thresholding}
   at the level $\lambda$. 
@@ -265,9 +265,9 @@ computed in closed-form, but can still be efficiently evaluated using
 specialized  algorithms.     
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
-\item Let $y_i \in \R$, $i = 1,\ldots,n$ be independent draws from an
+\item Let $y_i \in \R$, $i = 1,\dots,n$ be independent draws from an
   exponential family distribution with distinct natural parameters $\eta_i \in
-  \R$, $i=1,\ldots,n$, but a common sufficient statistic $T : \R \to \R$ and
+  \R$, $i=1,\dots,n$, but a common sufficient statistic $T : \R \to \R$ and
   log-partition function $\psi : \R \to \R$. The negative log likelihood 
   is       
   \[
@@ -283,7 +283,7 @@ specialized  algorithms.
   is not generally available in closed-form, but is efficiently computable for
   differentiable convex $\psi$ (recall that $\psi$ is always convex in any
   exponential family distribution). First note that the proximal map decomposes
-  across coordinates: for each $i=1,\ldots,n$,    
+  across coordinates: for each $i=1,\dots,n$,    
   \[
   [\prox_{\lambda f}(\eta)]_i = \argmin_{u_i} \bigg\{ \frac{1}{2} (\eta_i -
   u_i)^2 + \lambda \Big( \psi(u_i) - T(y_i) u_i \Big) \bigg\}. 
@@ -323,7 +323,7 @@ specialized  algorithms.
   f(x) = \sum_{i=1}^d \lambda_i |x|_{(i)},
   \end{equation}
   where \smash{$|x|_{(i)}$} denotes the $i\th$ largest element of $|x_1|,
-  \ldots, |x_d|$. This is a convex function (it is indeed a norm, reducing to
+  \dots, |x_d|$. This is a convex function (it is indeed a norm, reducing to
   the $\ell_1$ norm for $\lambda_1 = \cdots = \lambda_d$). Its proximal map   
   \[
   \prox_f(z) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 +
@@ -572,12 +572,12 @@ convex sets.
   x_i & \text{if $a \leq x_i \leq b$} \\
   b_i & \text{if $x_i > b_i$}
   \end{cases},
-  \quad i = 1,\ldots,d.
+  \quad i = 1,\dots,d.
   \]
 
 \index{projection!onto nonnegative orthant}
 \item As a special case, for the nonnegative orthant, we have
-  \smash{$P_{\R^d_+}(x) = (x_i)_+$}, $i=1,\ldots,d$.  
+  \smash{$P_{\R^d_+}(x) = (x_i)_+$}, $i=1,\dots,d$.  
 
 \index{projection!onto $\ell_2$ ball}
 \item For $C = \{x : \|x\|_2 \leq 1\}$, the unit $\ell_2$ ball, we have 
@@ -1028,7 +1028,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   \label{eq:singular_function}
   f(X) = g(\sigma(X)), 
   \end{equation}
-  for a function $g : \R^d \to \R$, where we write $\sigma(X) = (\sigma_1(X), \ldots,
+  for a function $g : \R^d \to \R$, where we write $\sigma(X) = (\sigma_1(X), \dots,
   \sigma_k(X)) \in \R^k$ for the vector of singular values of $X$. An important
   example here is the \emph{Schatten $p$-norm}, defined for $p \geq 1$ as
   \index{Schatten norm}
@@ -1130,7 +1130,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   \begin{equation}
   \label{eq:proximal_decomposition_condition2}
   \partial g_i(x) \subseteq \partial g_i(\prox_f(x)), \quad \text{for all $x$, 
-    and $i=1,\ldots,k$},  
+    and $i=1,\dots,k$},  
   \end{equation}
   and thus the latter is a sufficient condition for $\prox_{f+g} =  \prox_f \circ
   \prox_g$. 
@@ -1140,7 +1140,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   Now we follow the development of Corollary 4 in \cite{yu2013decomposing}. Let
   $g$ be a polyhedral function, 
   \[
-  g(x) = \max_{i=1,\ldots,k} \, a_i^\T x.
+  g(x) = \max_{i=1,\dots,k} \, a_i^\T x.
   \]
   
 \begin{enumerate}[label=\alph*.]
@@ -1148,7 +1148,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   \eqref{eq:proximal_decomposition_condition2}, from Exercise
   \ref{ex:proximal_general_sum} part c, is equivalent to  
   \[
-  \prox_g(K_i) \subseteq K_i, \quad i=1,\ldots,k,
+  \prox_g(K_i) \subseteq K_i, \quad i=1,\dots,k,
   \]
   where each $K_i = \{x : a_i^\T x = g(x)\}$ is a polyhedral cone. Hint: use the
   subgradient rule for a pointwise maximum from Property
@@ -1156,7 +1156,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
 
 \item Let $f$ be permutation invariant, which means that $f(x) = f(x_\pi)$, for
   all $x$ and permutations $\pi$ (where we denote \smash{$x_\pi = (x_{\pi_1},
-    \ldots, x_{\pi_d})$} for $\pi=(\pi_1,\ldots,\pi_d)$). Show that $\prox_f$ is
+    \dots, x_{\pi_d})$} for $\pi=(\pi_1,\dots,\pi_d)$). Show that $\prox_f$ is
   then order-preserving,  
  \[
  x_i \geq x_j \implies [\prox_f(x)]_i \geq [\prox_f(x)]_j, \quad \text{for all
@@ -1166,10 +1166,10 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
 \item Let \smash{$\|x\|_{\TV} = \sum_{(i,j) \in E} |x_i - x_j|$} be a
   generalized TV seminorm, defined with respect to an edge set $E$ (notice that  
   this generalizes \eqref{eq:tv}, which corresponds to $E = \{(i, i+1) : i =
-  1,\ldots,d-1\}$. Prove that \eqref{eq:generalized_tv_proximal_mapping} holds
+  1,\dots,d-1\}$. Prove that \eqref{eq:generalized_tv_proximal_mapping} holds
   for any permutation invariant $f$ and any edge set $E$. Hint: check that the
   condition in part a holds, for the appropriate instantiation of cones $K_i$,
-  $i=1,\ldots,k$; and for this, use the order-preserving property from part b.   
+  $i=1,\dots,k$; and for this, use the order-preserving property from part b.   
 \index{total variation (TV) penalty!proximal mapping}
 \end{enumerate}
 
@@ -1224,7 +1224,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
 
 \begin{enumerate}[label=\alph*.]
 \item Starting with \eqref{eq:l1_projection}, show that if $z$ is a solution,
-  then $\sign(z_i) = \sign(x_i)$, $i=1,\ldots,d$. 
+  then $\sign(z_i) = \sign(x_i)$, $i=1,\dots,d$. 
 
 \item Use part a to argue that we can reduce any $\ell_1$ projection to a
   simplex projection; that is, in order to solve \eqref{eq:l1_projection}, we

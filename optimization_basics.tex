@@ -12,11 +12,11 @@ principles of optimization are now within reach. In this book, we denote an
 \label{eq:optimization}
 \begin{alignedat}{2}
 &\minimize_x \quad && f(x) \\
-&\st \quad && g_i(x) \leq 0, \; i=1,\ldots,m \\ 
-& && h_j(x) = 0, \; j=1,\ldots,k.
+&\st \quad && g_i(x) \leq 0, \; i=1,\dots,m \\ 
+& && h_j(x) = 0, \; j=1,\dots,k.
 \end{alignedat}
 \end{equation}
-Here $f$, $g_i$, $i=1,\ldots,m$, and $h_j$, $j=1,\ldots,k$ are functions, from 
+Here $f$, $g_i$, $i=1,\dots,m$, and $h_j$, $j=1,\dots,k$ are functions, from 
 $\R^d$ to $[-\infty,\infty]$. In problem \eqref{eq:optimization}, the
 minimization is implicitly restricted to the intersection of relevant effective
 domains: 
@@ -32,8 +32,8 @@ is denoted
 \index{optimization problem!criterion} 
 \index{optimization problem!feasible point}     
 \[
-f^\star = \inf \big\{ f(x) : x \in D, \, g_i(x) \leq 0, \, i=1,\ldots,m, \,
-h_j(x) = 0, \, j=1,\ldots,k \big\},
+f^\star = \inf \big\{ f(x) : x \in D, \, g_i(x) \leq 0, \, i=1,\dots,m, \,
+h_j(x) = 0, \, j=1,\dots,k \big\},
 \]
 and called the \emph{optimal value} in \eqref{eq:optimization}. A feasible point 
 that achieves the optimal value is denoted $x^\star$ (note that $f^\star =
@@ -54,19 +54,19 @@ optimization problems) is itself a rich topic, and is covered further in Chapter
 \ref{sec:existence_minima}.       
 
 A \emph{convex optimization problem} is one of the form
-\eqref{eq:optimization} such that $f$ and $g_i$, $i=1,\ldots,m$ are all
-convex functions, and $h_j$, $j=1,\ldots,k$ are all affine functions. In other
+\eqref{eq:optimization} such that $f$ and $g_i$, $i=1,\dots,m$ are all
+convex functions, and $h_j$, $j=1,\dots,k$ are all affine functions. In other
 words, the problem 
 \index{convex optimization problem}
 \begin{equation}
 \label{eq:convex_optimization}
 \begin{alignedat}{2}
 &\minimize_x \quad && f(x) \\
-&\st \quad && g_i(x) \leq 0, \; i=1,\ldots,m \\ 
+&\st \quad && g_i(x) \leq 0, \; i=1,\dots,m \\ 
 & && Ax = b,
 \end{alignedat}
 \end{equation}
-is convex whenever $f$ and $g_i$, $i=1,\ldots,m$ are convex (and $A$ and $b$ are 
+is convex whenever $f$ and $g_i$, $i=1,\dots,m$ are convex (and $A$ and $b$ are 
 arbitrary).
 
 In general, we will say that two optimization problems are \emph{equivalent} if 
@@ -75,8 +75,8 @@ Clearly, problem \eqref{eq:optimization} is equivalent to:
 \index{optimization problem!equivalence of problems}
 \begin{alignat*}{2}
 &\maximize_x \quad && -f(x) \\
-&\st \quad && g_i(x) \leq 0, \; i=1,\ldots,m \\ 
-& && h_j(x) = 0, \; j=1,\ldots,k,
+&\st \quad && g_i(x) \leq 0, \; i=1,\dots,m \\ 
+& && h_j(x) = 0, \; j=1,\dots,k,
 \end{alignat*}
 As $f$ is convex if and only if $-f$ is concave, the convex minimization 
 problem \eqref{eq:convex_optimization} is hence also equivalent to a concave 
@@ -106,7 +106,7 @@ and machine learning. Both problems are convex.
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
 \item Given responses $y_i \in \R$ and associated feature vectors $x_i \in
-  \R^d$, for $i=1,\ldots,n$, the \emph{least absolute selection and shrinkage
+  \R^d$, for $i=1,\dots,n$, the \emph{least absolute selection and shrinkage
     operator (lasso)} is a sparse estimator of the coefficients $\beta$ in a
   linear model (to $y_i$ predict from $x_i^\T \beta$), defined by the
   optimization problem: 
@@ -135,7 +135,7 @@ and machine learning. Both problems are convex.
   for a generalization.   
 
 \item Given class labels $y_i \in \{ -1, 1\}$ and feature vectors $x_i \in
-  \R^d$, for $i=1,\ldots,n$, the \emph{support vector machine (SVM)} is a
+  \R^d$, for $i=1,\dots,n$, the \emph{support vector machine (SVM)} is a
   large-margin linear classifier (to predict $y_i$ from the sign of $\beta_0
   + x_i^\T \beta$), defined by the optimization problem:   
   \index{support vector machine} 
@@ -144,7 +144,7 @@ and machine learning. Both problems are convex.
   \begin{alignedat}{2}
     &\minimize_{\beta_0,\beta,\xi} \quad
     && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
-    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\ldots,n \\ 
+    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\dots,n \\ 
     & && \xi \geq 0.
   \end{alignedat}
   \end{equation}
@@ -167,13 +167,13 @@ and if so, seeks any point $x^\star$ that is feasible. We write it as
 \label{eq:feasibility}
 \begin{alignedat}{2}
 &\find \quad && x \\
-&\st \quad && g_i(x) \leq 0, \; i=1,\ldots,m \\ 
-& && h_j(x) = 0, \; j=1,\ldots,k.
+&\st \quad && g_i(x) \leq 0, \; i=1,\dots,m \\ 
+& && h_j(x) = 0, \; j=1,\dots,k.
 \end{alignedat}
 \end{equation}
 A \emph{convex feasibility problem} is one in which the constraint functions
-satisfy the usual requirements: $g_i$, $i=1,\ldots,m$ are convex and $h_j$,
-$j=1,\ldots,k$ are affine.   
+satisfy the usual requirements: $g_i$, $i=1,\dots,m$ are convex and $h_j$,
+$j=1,\dots,k$ are affine.   
 
 \section{Properties of convex problems} 
 \label{sec:properties_convex_problems}
@@ -202,7 +202,7 @@ The proof of this fundamental result is elementary. It can be broken into two
 steps. The first step is to check that for the convex problem
 \eqref{eq:convex_optimization}, the set of feasible points is a convex set,
 which follows from convexity of the set $D$, convexity of the functions $f$ and
-$g_i$, $i=1,\ldots,m$, and the linear structure of the equality constraints 
+$g_i$, $i=1,\dots,m$, and the linear structure of the equality constraints 
 $Ax=b$ (Exercise \ref{ex:convex_solution} part a).  
 
 The second step proceeds by contradiction. If \smash{$\bar{x}$} is not a global
@@ -247,7 +247,7 @@ nonempty---must be a singleton (Exercise \ref{ex:convex_solution} part d).
 
 Denote by 
 \[
-C = \{ x \in D : g_i(x) \leq 0, \, i=1,\ldots,m, \, Ax = b \}
+C = \{ x \in D : g_i(x) \leq 0, \, i=1,\dots,m, \, Ax = b \}
 \]
 the feasible set of the convex optimization problem
 \eqref{eq:convex_optimization}. For a differentiable criterion $f$, a point $x
@@ -371,7 +371,7 @@ can be said about convex optimization.
 
 Denote the feasible set of the optimization problem \eqref{eq:optimization} by  
 \[
-C = \{ x \in D : g_i(x) \leq 0, \, i=1,\ldots,m, \, h_j(x) = 0, \, j=1,\ldots,k
+C = \{ x \in D : g_i(x) \leq 0, \, i=1,\dots,m, \, h_j(x) = 0, \, j=1,\dots,k
 \} 
 \]
 Then \eqref{eq:optimization} is equivalent to the unconstrained optimization
@@ -464,7 +464,7 @@ The following are two examples of partial optimization in convex problems.
 \item Consider the SVM problem \eqref{eq:svm}. Note that, after rearrangement,
   the linear constraints are equivalent to
   \[
-  \xi_i \geq \big[1 - y_i(\beta_0 + x_i^\T \beta_0)\big]_+, \quad i=1,\ldots,n, 
+  \xi_i \geq \big[1 - y_i(\beta_0 + x_i^\T \beta_0)\big]_+, \quad i=1,\dots,n, 
   \]
   where $a_+ = \max\{a,0\}$ denotes the positive part of $a$. Looking at the
   criterion in \eqref{eq:svm}, we can see that a minimizer over the $\xi$ block
@@ -472,7 +472,7 @@ The following are two examples of partial optimization in convex problems.
   above set of inequalities (and this is unique if $C>0$): 
   \[
   \hat\xi_i(\beta_0,\beta) = \big[1 - y_i(\beta_0 + x_i^\T \beta_0)\big]_+,
-  \quad i=1,\ldots,n.
+  \quad i=1,\dots,n.
   \]
   This holds as increasing $\xi_i$ from \smash{$\hat\xi_i(\beta_0,\beta)$} by 
   any amount $\delta \geq 0$ increases the criterion by $C \delta \geq 0$.
@@ -536,7 +536,7 @@ into a convex one.
 An optimization problem with linear equality constraints,
 \begin{alignat*}{2}
 &\minimize_x \quad && f(x) \\
-&\st \quad && g_i(x) \leq 0, \; i=1,\ldots,m \\ 
+&\st \quad && g_i(x) \leq 0, \; i=1,\dots,m \\ 
 & && Ax = b, 
 \end{alignat*}
 can always be recast, via variable transformation, into one that has only
@@ -546,7 +546,7 @@ Vy$, where the columns of $V \in \R^{d \times k}$ form a basis for $\nul(A)$ and
 $y \in \R^k$. Therefore the above problem is equivalent to 
 \begin{alignat*}{2}
 &\minimize_y \quad && f(x_0+Vy) \\
-&\st \quad && g_i(x_0+Vy) \leq 0, \; i=1,\ldots,m.
+&\st \quad && g_i(x_0+Vy) \leq 0, \; i=1,\dots,m.
 \end{alignat*}
 Though the above two problems are always equivalent, it is not always a good
 idea, practically speaking, to seek to solve the second instead of the
@@ -567,11 +567,11 @@ equality constraints), we can replace all inequality constraints in
 equivalent formulation: 
 \begin{alignat*}{2}
 &\minimize_{x,s} \quad && f(x) \\
-&\st \quad && g_i(x) + s_i = 0, \; i=1,\ldots,m \\ 
-& && h_j(x) = 0, \; j=1,\ldots,k, \\
+&\st \quad && g_i(x) + s_i = 0, \; i=1,\dots,m \\ 
+& && h_j(x) = 0, \; j=1,\dots,k, \\
 & && s \geq 0.
 \end{alignat*}
-The variables $s_i$, $i=1,\ldots,m$ here are called \emph{slack variables}. 
+The variables $s_i$, $i=1,\dots,m$ here are called \emph{slack variables}. 
 Comparing the above problem to \eqref{eq:optimization}, we have increased the
 problem dimension (from $d$ to $d+m$); however, in some settings, reducing the
 inequality constraints to simple nonnegativity constraints brings other
@@ -903,7 +903,7 @@ for a compact set $S$ and linear subspace $L$.
 \label{sec:maximum_likelihood}
 
 \emph{Maximum likelihood estimation} is a central problem in statistics: given 
-independent and identically distributed (i.i.d.) samples $Z_1,\ldots,Z_n$ from
+independent and identically distributed (i.i.d.) samples $Z_1,\dots,Z_n$ from
 a distribution $P_\theta$, we estimate the parameter $\theta$ of $P_\theta$ in
 such a way that the probability of the observed data is as large as possible,
 that is, by solving 
@@ -973,7 +973,7 @@ are the Gaussian, Bernoulli, Poisson, gamma, and beta distributions (Exercise
 
 Exponential families provide the foundation for the study of \emph{generalized 
 linear models} (GLMs). In this setting, we observe independent draws of a
-response variable $y_i$, $i=1,\ldots,n$, with each one sampled from an
+response variable $y_i$, $i=1,\dots,n$, with each one sampled from an
 exponential family distribution. The form of this exponential family
 distribution is common across samples (the functions $T, \psi, h$ are common),
 however, the natural parameter is now sample-specific: to each $y_i$ we assign a
@@ -1060,16 +1060,16 @@ $X \in \R^{n \times d}$ the feature matrix.
   \begin{equation}
   \label{eq:existence_logistic}
   \text{there does not exist $\beta \neq 0$ such that $(2y_i - 1) x_i^\T \beta  
-    \geq 0$, $i=1,\ldots,n$}. 
+    \geq 0$, $i=1,\dots,n$}. 
   \end{equation}
 
 \item In Poisson regression \eqref{eq:poisson_regression}, where $\cY = \N$
-  (recall that $\N = \{0, 1, 2, \ldots\}$ denotes the set of natural numbers), a
+  (recall that $\N = \{0, 1, 2, \dots\}$ denotes the set of natural numbers), a
   solution exists provided: 
   \begin{equation}
   \label{eq:existence_poisson}
   \text{there exists $\delta \in \nul(X^\T)$ such that $y_i + \delta_i > 0$,
-    $i=1,\ldots,n$}. 
+    $i=1,\dots,n$}. 
   \end{equation}
 \end{enumerate}
 \end{Theorem}
@@ -1280,7 +1280,7 @@ hold in general, without further assumptions.
   \minimize_{u,v} \quad f(u \odot v) + \frac{\lambda}{2} (\|u\|_2^2 +
   \|v\|_2^2), 
   \]
-  where $u \odot v = (u_1v_1, \ldots, u_nv_n)$ is the Hadamard
+  where $u \odot v = (u_1v_1, \dots, u_nv_n)$ is the Hadamard
   (elementwise) product between $u,b$. 
 
 \item Argue that if $f$ is convex, then $h : \R^n \times \R^n \to
@@ -1323,7 +1323,7 @@ hold in general, without further assumptions.
 \item Prove that the set $\cP_k$ of rank $k$ projection matrices (from $\R^d$ to 
   $\R^d$) can be written as
   \[
-  \cP_k = \{ P \in \SS^d : \lambda_i(P) \in \{0,1\}, \, i=1,\ldots,d, \, \tr(P)
+  \cP_k = \{ P \in \SS^d : \lambda_i(P) \in \{0,1\}, \, i=1,\dots,d, \, \tr(P)
   = k\},
   \]
   where $\lambda_i(P)$ is the $i\th$ largest eigenvalue of $P$. Prove from this 
@@ -1382,7 +1382,7 @@ hold in general, without further assumptions.
   have a nonempty intersection, \smash{$\cap_{k=1}^\infty C_k \not=
     \emptyset$}. This is called \emph{Cantor's intersection theorem}. Hint:
   proceed by contradiction, and in doing so, define $U_k =  C_1 \setminus C_k$,
-  $k=1,2,3,\ldots$, then use the topological definition of compactness
+  $k=1,2,3,\dots$, then use the topological definition of compactness
   (Heine-Borel theorem).        
 
 \index{Weierstrass' theorem}
@@ -1569,8 +1569,8 @@ hold in general, without further assumptions.
 \item \label{ex:profile_likelihood} 
   In maximum likelihood estimation, let $(\theta, \eta)$ denote a block
   decomposition of a parameter that determines the distribution of i.i.d.\ 
-  samples $Z_1,\ldots,Z_n$. Abbreviating $L_i(\theta, \eta) = L(\theta, \eta;
-  Z_i)$ for $i=1,\ldots,n$, we denote the full likelihood by       
+  samples $Z_1,\dots,Z_n$. Abbreviating $L_i(\theta, \eta) = L(\theta, \eta;
+  Z_i)$ for $i=1,\dots,n$, we denote the full likelihood by       
   \[
   L(\theta, \eta) = \prod_{i=1}^n L_i(\theta, \eta).
   \]
@@ -1599,7 +1599,7 @@ hold in general, without further assumptions.
   \end{equation}
   Here $\lambda_0$ is some unspecified base hazard function, and $\theta \in
   \R^d$ is a parameter to be estimated.  Given $n$ subjects with survival times 
-  $t_i$, $i=1,\ldots,n$, the Cox partial likelihood is
+  $t_i$, $i=1,\dots,n$, the Cox partial likelihood is
   \begin{equation}
   \label{eq:cox_partial_likelihood}
   L(\theta) = \prod_{i=1}^n \frac{\exp(x_i^\T \theta)}{\sum_{j : t_j \geq t_i}
@@ -1632,8 +1632,8 @@ hold in general, without further assumptions.
 
 \item Based on the full likelihood in part a, argue that in maximum likelihood 
   we can restrict our attention to functions $\Lambda_0$ that are piecewise
-  constant with jumps at $t_i$, $i=1,\ldots,n$. Hence if we write $\eta_i$ for  
-  the jump at $t_i$, and collect these into a vector $\eta = (\eta_1, \ldots,
+  constant with jumps at $t_i$, $i=1,\dots,n$. Hence if we write $\eta_i$ for  
+  the jump at $t_i$, and collect these into a vector $\eta = (\eta_1, \dots,
   \eta_n)$, then we can reparametrize the likelihood in a finite-dimensional
   form,     
   \[
@@ -1645,7 +1645,7 @@ hold in general, without further assumptions.
   \eta)$ from the last display is maximized over $\eta$ when
   \[
   \frac{1}{\hat\eta_i(\theta)} = \sum_{j : t_j \geq t_i} \exp(x_j^\T \theta),
-  \quad i=1,\ldots,n. 
+  \quad i=1,\dots,n. 
   \]
   Plugging this in, show that the profile likelihood for $\theta$ is thus
   precisely the Cox partial likelihood \eqref{eq:cox_partial_likelihood}. 
@@ -1659,7 +1659,7 @@ hold in general, without further assumptions.
   \smallskip
   An note on the difference between this and the previous case: you will have to
   restrict the cumulative baseline hazard function $\Lambda_0$ to be piecewise
-  constant with jumps at the failure times (the subset of $y_i$, $i=1,\ldots,n$
+  constant with jumps at the failure times (the subset of $y_i$, $i=1,\dots,n$
   such that $\delta_i = 1$), \emph{by assumption}. Under censoring, this no
   longer falls out of maximizing the full likelihood.              
 \end{enumerate} 

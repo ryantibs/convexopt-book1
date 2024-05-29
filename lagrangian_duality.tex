@@ -101,8 +101,8 @@ the optimal criterion value $f^\star$ in
 \label{eq:primal_problem}
 \begin{alignedat}{2}
 &\minimize_x \quad && f(x) \\
-&\st \quad && h_i(x) \leq 0, \; i=1,\ldots,m \\ 
-& && \ell_j(x) = 0, \; j=1,\ldots,k.
+&\st \quad && h_i(x) \leq 0, \; i=1,\dots,m \\ 
+& && \ell_j(x) = 0, \; j=1,\dots,k.
 \end{alignedat}
 \end{equation}
 At the moment, we do not assume that criterion $f$ or the constraint functions
@@ -831,14 +831,14 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 
 \item \label{ex:svm_dual}
   Consder the SVM problem, for labels $y_i \in \{ -1, 1\}$ and features $x_i \in 
-  \R^d$, $i=1,\ldots,n$,       
+  \R^d$, $i=1,\dots,n$,       
   \index{support vector machine!dual problem} 
   \begin{equation}
   \label{eq:svm_primal}
   \begin{alignedat}{2}
     &\minimize_{\beta_0,\beta,\xi} \quad
     && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
-    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\ldots,n \\  
+    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\dots,n \\  
     & && \xi \geq 0.
   \end{alignedat}
   \end{equation}
@@ -1003,7 +1003,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
  \text{for all $x$}, \quad Ax \leq b \implies F(x) \geq 0.
   \]
   Hint: for any $Ax \leq b$, we have $(f(x), h(x)) \in T$, so that $a^\T x \geq
-  0$, and thus $a^\T x \geq 0$.   
+  0$.
 
 \item In what remains, we seek to show that there exists $\beta \in \R^k$ such
   that $\beta \geq 0$ and  
@@ -1074,14 +1074,13 @@ in Corollary \ref{cor:slater_sdp}. Exercises
     = \sum_{i=1}^d x_i x_i^\T$} for vectors $x_i \in \R^d$, $i = 1,\dots,d$. 
 \end{enumerate}
 
-
 \index{semidefinite program!dual problem}
 \index{semidefinite program!standard form}
 \item \label{ex:sdp_std_dual} 
   Consider the standard form SDP,
   \begin{alignat*}{2}
   &\minimize_X \quad && \langle C, X \rangle \\
-  &\st && \langle A_i, X \rangle = b_i, \; i=1,\ldots,m \\
+  &\st && \langle A_i, X \rangle = b_i, \; i=1,\dots,m \\
   & && X \succeq 0.
   \end{alignat*}
   Prove that its dual problem is 

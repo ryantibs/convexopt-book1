@@ -32,7 +32,7 @@ The following are classic examples of linear programs.
   foods that satisfies some nutritional requirements:
   \begin{alignat*}{2}
     &\minimize_x \quad && \sum_{j=1}^n c_j x_j \\
-    &\st \quad && \sum_{j=1}^n a_{ij} x_j \geq b_i, \; i=1,\ldots,m \\  
+    &\st \quad && \sum_{j=1}^n a_{ij} x_j \geq b_i, \; i=1,\dots,m \\  
     & && x \geq 0,
   \end{alignat*}
   where $c_j$ is the cost per unit of food $j$, $b_i$ is the minimum required
@@ -139,7 +139,7 @@ SVM, and are LPs by inspection.
   in which we minimize $\|y-X\beta\|_2^2$ over $\beta$. 
 
 \item Given class labels $y_i \in \{ -1, 1\}$ and feature vectors $x_i \in
-  \R^d$, $i=1,\ldots,n$, the following problem seeks a linear classifier (to
+  \R^d$, $i=1,\dots,n$, the following problem seeks a linear classifier (to
   predict $y_i$ from the sign of $\beta_0 + x_i^\T \beta$) with minimal sum of
   violation costs to the margin condition:  
   \index{support vector machine}
@@ -147,7 +147,7 @@ SVM, and are LPs by inspection.
   \label{eq:svm_hinge_only}
   \begin{alignedat}{2}
   &\minimize_{\beta_0,\beta,\xi} \quad && \sum_{i=1}^n \xi_i \\  
-  &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\ldots,n \\
+  &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\dots,n \\
   & && \xi \geq 0.
   \end{alignedat}
   \end{equation}
@@ -161,7 +161,7 @@ SVM, and are LPs by inspection.
   \label{eq:svm_feasibility}
   \begin{alignedat}{2}
     &\find \quad && \beta_0,\beta \\
-    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1, \;  i=1,\ldots,n. 
+    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1, \;  i=1,\dots,n. 
   \end{alignedat}
   \end{equation}
   This is called a \emph{linear feasibility problem} (an LP that is also a
@@ -278,14 +278,14 @@ SDP is of the form
 & && Gx = h,
 \end{alignedat}
 \end{equation}
-for $c \in \R^d$, symmetric matrices $A_1,\ldots,A_d,B$ of equal dimensions, and
+for $c \in \R^d$, symmetric matrices $A_1,\dots,A_d,B$ of equal dimensions, and
 a matrix-vector pair $G,h$ of compatible dimensions. Though less obvious than 
 the case of LPs and QPs, an SDP \eqref{eq:semidefinite_program} is always a
 convex problem; this follows from the fact that the constraints in
 \eqref{eq:semidefinite_program}, which are known as \emph{linear matrix
 inequalities}, always form a convex set (Exercise
 \ref{ex:linear_matrix_ineq}). Notably, we do not require the matrices
-$A_1,\ldots,A_d,B$ to be positive semidefinite (they are only assumed to be  
+$A_1,\dots,A_d,B$ to be positive semidefinite (they are only assumed to be  
 symmetric). One might then ask: where does the name semidefinite program come  
 from? It is a reflection of the fact that in an SDP, the usual ordering $\leq$
 on vectors (recall that this is interpreted componentwise) is replaced by the
@@ -305,7 +305,7 @@ linear matrix inequality
 \[
 x_1 \diag(A_1) + x_2 \diag(A_2) + \cdots x_d \diag(A_d) \preceq \diag(b),
 \]
-where $A_1,\ldots,A_d$ denote the columns of $A$, proving that
+where $A_1,\dots,A_d$ denote the columns of $A$, proving that
 \eqref{eq:linear_program} is of the form \eqref{eq:semidefinite_program}.
 
 \paragraph{QPs are SDPs.}
@@ -340,12 +340,12 @@ standard form of an SDP:
 \label{eq:semidefinite_program_std}
 \begin{alignedat}{2}
 &\minimize_X \quad && \langle C, X \rangle \\
-&\st && \langle A_i, X \rangle = b_i, \; i=1,\ldots,m \\
+&\st && \langle A_i, X \rangle = b_i, \; i=1,\dots,m \\
 & && X \succeq 0.
 \end{alignedat}
 \end{equation}
-for symmetric matrices $C,A_1,\ldots,A_m$ and scalars
-$b_1,\ldots,b_m$. Establishing the equivalence between
+for symmetric matrices $C,A_1,\dots,A_m$ and scalars
+$b_1,\dots,b_m$. Establishing the equivalence between
 \eqref{eq:semidefinite_program} and \eqref{eq:semidefinite_program_std} is much
 more nontrivial than the corresponding standard form result for LPs and QPs, 
 and each direction requires its own proof (whereas for LPs and QPs, it was 
@@ -449,8 +449,8 @@ computer science.
   operator).  
 
 \item Suppose that we observe only some of the entries of a matrix $X \in \R^{n
-    \times d}$, namely, those indexed by a set $\Omega \subseteq \{1,\ldots,n\} 
-  \times \{1,\ldots,d\}$. The following problem seeks a low rank approximation
+    \times d}$, namely, those indexed by a set $\Omega \subseteq \{1,\dots,n\} 
+  \times \{1,\dots,d\}$. The following problem seeks a low rank approximation
   to the observed entries in $X$: 
   \index{matrix completion}
   \index{trace norm}
@@ -475,9 +475,9 @@ computer science.
   we can see that problem \eqref{eq:matrix_completion} is an SDP.
 
 \item Let $G$ be an undirected weighted graph, with nodes labeled
-  $1,\ldots,n$, and where $w_{ij} \geq 0$ denotes the weight on the edge between 
-  nodes $i,j$. For a subset $S \subseteq \{1,\ldots,n\}$, we say that $S$ 
-  and $S^c = \{1,\ldots,n\} \setminus S$ form a \emph{cut} in the graph $G$,
+  $1,\dots,n$, and where $w_{ij} \geq 0$ denotes the weight on the edge between 
+  nodes $i,j$. For a subset $S \subseteq \{1,\dots,n\}$, we say that $S$ 
+  and $S^c = \{1,\dots,n\} \setminus S$ form a \emph{cut} in the graph $G$,
   whose size is defined as the sum of edge weights among edges that ``cross the
   cut'':  
   \[
@@ -491,7 +491,7 @@ computer science.
   \label{eq:max_cut}
   \begin{alignedat}{2}
   &\maximize_u \quad && \frac{1}{2} \sum_{i<j} w_{ij} (1 - u_iu_j) \\ 
-  &\st && |u_i| = 1, \; i-1,\ldots,n.
+  &\st && |u_i| = 1, \; i-1,\dots,n.
   \end{alignedat}
   \end{equation}
   In \eqref{eq:max_cut}, any feasible point $u$ has entries that are either 1 
@@ -504,7 +504,7 @@ computer science.
   \label{eq:max_cut_relaxed}
   \begin{alignedat}{2}
   &\maximize_U \quad && \frac{1}{2} \sum_{i<j} w_{ij} (1 - u_i^\T u_j) \\   
-  &\st && \|u_i\|_2 = 1, \; i-1,\ldots,n.
+  &\st && \|u_i\|_2 = 1, \; i-1,\dots,n.
   \end{alignedat}
   \end{equation}
   In \eqref{eq:max_cut}, each $u_i$ is a scalar, but in
@@ -519,14 +519,14 @@ computer science.
   if we can factorize it as $X = U^\T U$ for some $U \in \R^{n \times d}$ and $d  
   \leq n$ (one direction of the equivalence here is obvious, the other can be
   verified using an eigendecomposition). Hence, interpreting $u_i$ as the $i\th$ 
-  column of $U$, for $i=1,\ldots,n$, we can reparametrize 
+  column of $U$, for $i=1,\dots,n$, we can reparametrize 
   \eqref{eq:max_cut_relaxed} as 
   \index{convex relaxation}
   \begin{equation}
   \label{eq:max_cut_relaxed_sdp}
   \begin{alignedat}{2}
   &\maximize_X \quad && \frac{1}{2} \sum_{i<j} w_{ij} (1 - X_{ij}) \\   
-   &\st && X_{ii} = 1, \; i-1,\ldots,n \\
+   &\st && X_{ii} = 1, \; i-1,\dots,n \\
    & && X \succeq 0,
   \end{alignedat}
   \end{equation}
@@ -570,7 +570,7 @@ form $Ax + b \in K$ for some convex cone $K$. This can be achieved by taking $A$
 to be the linear map such that $Ax = -\vek(x_1 A_1 + \cdots + x_d A_d)$, $b =
 \vek(B)$, and $K = \vek(\SS^n_+)$, the vectorization of the positive
 semidefinite cone in $n$ dimensions, where $n$ denotes the number of
-rows/columns of the symmetric matrices $A_1,\ldots,A_d,B$.    
+rows/columns of the symmetric matrices $A_1,\dots,A_d,B$.    
 \index{positive semidefinite cone}
 
 Summarizing the containments established thus far, we have the following
@@ -725,13 +725,13 @@ programming in general.
   \[
   \{x : x_1A_1 + \cdots + x_d A_d \preceq B\}
   \]
-  with $A_1,\ldots,A_d,B$ redefined appropriately. This allows us to check that
+  with $A_1,\dots,A_d,B$ redefined appropriately. This allows us to check that
   the constraint set in \eqref{eq:semidefinite_program} is convex by just
   checking the convexity of the linear matrix inequality set in the last
   display.  
 
 \item Prove that the set in the last display is convex for any symmetric
-  matrices $A_1,\ldots,A_d,B$, by simply checking the definition of convexity.  
+  matrices $A_1,\dots,A_d,B$, by simply checking the definition of convexity.  
 
 \item Reprove the result in the part last by using the fact that the positive 
   semidefinite cone is convex, and applying an appropriate a 
@@ -775,13 +775,13 @@ programming in general.
   vector by appending the columns of the matrix one after another. Argue that
   the criterion in problem \eqref{eq:semidefinite_program_std} can be written as 
   $\langle C, X \rangle = \vek(C)^\T \vek(X)$. Argue further that the equality
-  constraints $\langle A_i, X \rangle = b_i$, $i=1,\ldots,m$ can be written as
+  constraints $\langle A_i, X \rangle = b_i$, $i=1,\dots,m$ can be written as
   \[
   \begin{bmatrix}
-  \vek(A_1)^\T \vek(X) & 0 & \ldots & 0 \\
-  0 & \vek(A_2)^\T \vek(X) & \ldots & 0 \\
+  \vek(A_1)^\T \vek(X) & 0 & \dots & 0 \\
+  0 & \vek(A_2)^\T \vek(X) & \dots & 0 \\
   \vdots & & & \\
-  0 & 0 & \ldots & \vek(A_m)^\T \vek(X) \\
+  0 & 0 & \dots & \vek(A_m)^\T \vek(X) \\
   \end{bmatrix} = b.
   \]
 
@@ -860,13 +860,13 @@ programming in general.
   \label{eq:second_order_cone_program}
   \begin{alignedat}{2}
   &\minimize_x \quad && c^\T x \\
-  &\st \quad && \|A_i x + b_i\|_2 \leq c_i^\T x + d_i, \; i=1,\ldots,m \\
+  &\st \quad && \|A_i x + b_i\|_2 \leq c_i^\T x + d_i, \; i=1,\dots,m \\
   & && Gx = h,
   \end{alignedat}
   \end{equation}
-  for $c \in \R^d$, matrix-vector pairs $A_i,b_i$, $i=1,\ldots,m$ and $G,h$ of 
+  for $c \in \R^d$, matrix-vector pairs $A_i,b_i$, $i=1,\dots,m$ and $G,h$ of 
   compatible dimensions, as well as $c_i \in \R^d$, $d_i \in \R$,
-  $i=1,\ldots,m$. Prove that an SOCP \eqref{eq:second_order_cone_program} is 
+  $i=1,\dots,m$. Prove that an SOCP \eqref{eq:second_order_cone_program} is 
   actually a cone program \eqref{eq:cone_program}. Hint: observe that $\|A_i x +   
   b_i\|_2 \leq c_i^\T x + d_i$ is equivalent to $(A_i x + b_i, c_i^\T x + d_i)$
   lying in what is called a \emph{second-order cone}, which is simply a norm
@@ -879,13 +879,13 @@ programming in general.
   \label{eq:quadratically_constrained_quadratic_program}
   \begin{alignedat}{2}
   &\minimize_x \quad && \frac{1}{2} x^\T Q x + c^\T x \\ 
-  &\st && \frac{1}{2} x^\T Q_i x + c_i^\T x + b_i \leq 0, \; i=1,\ldots,m \\    
+  &\st && \frac{1}{2} x^\T Q_i x + c_i^\T x + b_i \leq 0, \; i=1,\dots,m \\    
   & && Gx = h,
   \end{alignedat}
   \end{equation}
   for $Q \in \SS^d_+$, $c \in \R^d$, a matrix-vector pair of compatible 
   dimensions $G,h$, and $Q_i \in \SS^d_+$, $c \in \R^d$, $b_i \in \R$,
-  $i=1,\ldots,m$. Note that when $Q_i=0$, $i=1,\ldots,m$, this reduces to a
+  $i=1,\dots,m$. Note that when $Q_i=0$, $i=1,\dots,m$, this reduces to a
   QP. Show that a QCQP \eqref{eq:quadratically_constrained_quadratic_program} is
   a second-order cone program \eqref{eq:second_order_cone_program}. Hint: show
   first that, without a loss of generality, we may consider a problem of the
@@ -915,13 +915,13 @@ programming in general.
   \label{eq:geometric_program}
   \begin{alignedat}{2}
   &\minimize_x \quad && \sum_{k=1}^{K_0} \exp(a_{0k}^\T x + b_{0k}) \\
-  &\st && \sum_{k=1}^{K_i} \exp(a_{ik}^\T x + b_{ik}) \leq 1, \; i=1,\ldots,m \\  
+  &\st && \sum_{k=1}^{K_i} \exp(a_{ik}^\T x + b_{ik}) \leq 1, \; i=1,\dots,m \\  
   & && Gx = h, 
   \end{alignedat}
   \end{equation}
-  where $a_{ik} \in \R^d$, $b_{ik} \in \R$, for $k=1,\ldots,K_i$ and
-  $i=0,\ldots,m$, as well as a matrix-vector $G,h$ of compatible
-  dimensions. Note that when $K_i=1$ for each $i=0,\ldots,m$, this reduces to
+  where $a_{ik} \in \R^d$, $b_{ik} \in \R$, for $k=1,\dots,K_i$ and
+  $i=0,\dots,m$, as well as a matrix-vector $G,h$ of compatible
+  dimensions. Note that when $K_i=1$ for each $i=0,\dots,m$, this reduces to
   an LP by taking a log transform of the criterion and both sides of all
   inequality constraints. But a GP is much more general than an LP. In this  
   exercise we explore connections to cone programs, logistic regression, and
@@ -931,11 +931,11 @@ programming in general.
 \item Prove that \eqref{eq:geometric_program} can be rewritten as 
   \begin{alignat*}{2}
   &\minimize_{x,y} \quad && c_0^\T y_0 \\
-  &\st && c_i^\T y_i \leq 1, i=1,\ldots,m \\
-  & && \exp(a_{ik}^\T x) \leq y_{ik}, \; k=1,\ldots,K_i, \; i=0,\ldots,m \\ 
+  &\st && c_i^\T y_i \leq 1, i=1,\dots,m \\
+  & && \exp(a_{ik}^\T x) \leq y_{ik}, \; k=1,\dots,K_i, \; i=0,\dots,m \\ 
   & && Gx = h,
   \end{alignat*}
-  for suitably defined $c_i \in \R_+^{K_i}$, $i=0,\ldots,m$. 
+  for suitably defined $c_i \in \R_+^{K_i}$, $i=0,\dots,m$. 
 
 \item Using the representation from the last part, prove that a GP is a cone
   program \eqref{eq:cone_program}. Hint: consider the convex cone in $\R^3$

@@ -144,11 +144,11 @@ representation of the norm in question. % and for these we refer to exercises
   \{+1\} & \text{if $x_i > 0$} \\
   \{-1\} & \text{if $x_i < 0$} \\
   [-1,1] & \text{if $x_i = 0$}
-  \end{cases}, \quad i=1,\ldots,d.
+  \end{cases}, \quad i=1,\dots,d.
   \]
   We see that the $\ell_1$ norm is differentiable at each point $x$ that does
   not lie on any of the coordinate axes ($x_i \not=0$ for all 
-  $i=1,\ldots,d$).  
+  $i=1,\dots,d$).  
 
 \item \parlab{xa:lp_norm_subgradients}
   For $f(x) = \|x\|_p$, and $1 < p < \infty$, let $1 < q < \infty$ be such that
@@ -156,7 +156,7 @@ representation of the norm in question. % and for these we refer to exercises
   \ref{ex:lp_norm_subgradients} part a):   
   \index{lp norm@$\ell_p$ norm!subgradients}
   \[
-  s_i = \sign(x_i) |x_i|^{p/q} \cdot \|x\|_p^{-p/q}, \quad i=1,\ldots,d 
+  s_i = \sign(x_i) |x_i|^{p/q} \cdot \|x\|_p^{-p/q}, \quad i=1,\dots,d 
   \]
   as the unique subgradient in $\partial f(x)$, and for $x=0$, we have $\partial
   f(0) = \{s : \|s\|_q \leq 1\}$. We see that the $\ell_p$ norm, $1 < p <
@@ -178,7 +178,7 @@ representation of the norm in question. % and for these we refer to exercises
   [0,1] & \text{if $x_i = \|x\|_\infty$} \\   
   [-1,0] & \text{if $x_i = -\|x\|_\infty$} \\
   \{0\} & \text{if $|x_i| < \|x\|_\infty$}
-  \end{cases}, \quad i=1,\ldots,d,
+  \end{cases}, \quad i=1,\dots,d,
   \]
   where $\|s\|_1 \leq 1$. We see that the $\ell_\infty$ norm is differentiable
   at any $x$ that has a unique maximum absolute coordinate.  
@@ -229,13 +229,13 @@ $\partial f(x) \not= \emptyset$.
 \paragraph{Sum.}
 \parlab{par:subgradient_sum}
 
-For any functions $f_1,\ldots,f_n$, their sum $F = f_1+\cdots+f_n$ satisfies,
+For any functions $f_1,\dots,f_n$, their sum $F = f_1+\cdots+f_n$ satisfies,
 for any $x \in \dom(F)$,  
 \[
 \partial F(x) \supseteq \partial f_1(x) + \cdots + \partial f_n(x),  
 \]
 where on the right we interpret $U + V = \{u + v : u \in U, \, v \in V\}$, the
-set sum (Minkowski sum) of $U,V$. Moreover, if $f_1,\ldots,f_n$ are convex,
+set sum (Minkowski sum) of $U,V$. Moreover, if $f_1,\dots,f_n$ are convex,
 and $\cap_{i=1}^n \relint(\dom(f_i)) \not= \emptyset$, then for any $x \in
 \dom(F)$,   
 \[
@@ -268,8 +268,8 @@ and convex for each $z \in Z$, then
 \Bigg), 
 \end{equation}
 a result known as the \emph{Danskin-Bertsekas theorem}.  An important special
-case corresponds to a finite set $Z$: if $f_i$, $i=1,\ldots,k$ are closed and
-convex, then their pointwise maximum \smash{$F = \max_{i=1,\ldots,k} \, f_i$}   
+case corresponds to a finite set $Z$: if $f_i$, $i=1,\dots,k$ are closed and
+convex, then their pointwise maximum \smash{$F = \max_{i=1,\dots,k} \, f_i$}   
 satisfies \smash{$\partial F(x) =  \conv(\cup_{i : f_i(x) = F(x)} \, \partial
   f_i(x))$}, for any $x \in \dom(F)$.
 
@@ -310,11 +310,11 @@ $x \in \dom(F)$,
 Let $f : \R^k \to (-\infty, \infty]$, $g : \R^d \to \R^k$, and denote their
 composition by $F = f \circ g$, that is, $F(x) = f(g(x))$. If $f$ is convex and
 nondecreasing in each argument, and each component function $g_i$,
-$i=1,\ldots,k$ is convex, then  
+$i=1,\dots,k$ is convex, then  
 \index{composition!subgradients}
 \[
-\partial F(x) \supseteq \{ r_1 s_1 + \cdots + r_k s_k : r = (r_1, \ldots, r_k)
-\in \partial f(g(x)), \, s_i \in \partial g_i(x), \, i=1,\ldots,k \big\}.
+\partial F(x) \supseteq \{ r_1 s_1 + \cdots + r_k s_k : r = (r_1, \dots, r_k)
+\in \partial f(g(x)), \, s_i \in \partial g_i(x), \, i=1,\dots,k \big\}.
 \]
 Note that the conditions here are no less general than those in Property
 \parref{par:function_composition}, on the convexity of a composition; see
@@ -478,11 +478,11 @@ f(y) \geq f(x_i) + s_i^\T (y-x_i), \quad i \in I.
 
 Interestingly, monotonicity of $T$, as in \eqref{eq:T_monotonicity}, is not
 enough, but a suitable generalization of this condition is. To motivate this,
-let $(x_i, s_i)$, $i=1,\ldots,n$ denote any $n$ points in the graph of $\partial
-f$; that is, satisfying $s_i \in \partial f(x_i)$, $i=1,\ldots,n$. Writing
+let $(x_i, s_i)$, $i=1,\dots,n$ denote any $n$ points in the graph of $\partial
+f$; that is, satisfying $s_i \in \partial f(x_i)$, $i=1,\dots,n$. Writing
 $x_{n+1}=x_1$ for convenience, adding together the $n$ subgradient inequalities  
 \[
-f(x_{i+1}) \geq f(x_i) \geq s_i^\T (x_{i+1} - x_i), \quad i=1,\ldots,n,
+f(x_{i+1}) \geq f(x_i) \geq s_i^\T (x_{i+1} - x_i), \quad i=1,\dots,n,
 \]
 and rearranging, gives 
 \begin{equation}
@@ -491,7 +491,7 @@ s_1^\T (x_2 - x_1) + s_2^\T (x_3 - x_2) + \cdots + s_{n-1}^\T (x_n -
 x_{n-1}) + s_n^\T (x_1 - x_n) \leq 0.
 \end{equation}
 An operator $T$ that satisfies \eqref{eq:T_monotonicity_n} for all $n \geq 1$
-and all $(x_i, s_i)$, $i=1,\ldots,n$ in its graph is said to be \emph{cyclically
+and all $(x_i, s_i)$, $i=1,\dots,n$ in its graph is said to be \emph{cyclically
 monotone}. The argument just given shows that $\partial f$ is itself cyclically
 monotone.
 \index{monotone operator!cyclical}
@@ -945,14 +945,14 @@ an alternative short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   a^\T b \leq \|a\|_p \|b\|_q,
   \] 
   equality holds for nonzero $a,b \in \R^d$ if and only if $a_i^p/\|a\|_p^p =
-  b_i^q/\|b\|_q^q$, $i=1,\ldots,d$.  
+  b_i^q/\|b\|_q^q$, $i=1,\dots,d$.  
   
 \index{linf norm@$\ell_\infty$ norm!subgradients}
 \item Use the dual representation of the $\ell_\infty$ norm, and then
   \eqref{eq:norm_subgradients}, to derive the statement in Example
   \parref{xa:linf_norm_subgradients}. An alternate strategy is to recognize that
   the Danskin-Bertsekas theorem (in the case where $Z$ is finite) can be applied
-  directly to \smash{$\|x\|_\infty = \max_{i=1,\ldots,d} \, |x_i|$}.        
+  directly to \smash{$\|x\|_\infty = \max_{i=1,\dots,d} \, |x_i|$}.        
 \end{enumerate}
 
 \index{operator norm!subgradients}
@@ -967,13 +967,13 @@ an alternative short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
 
 \begin{enumerate}[label=\alph*.]
 \item Prove that if \smash{$Z = \sum_{i=1}^k u_i v_i^\T$}, where $\|u_i\|_2 
-  \leq 1$, $\|v_i\|_2 \leq 1$, $u_i^\T X v_i = \|X\|_{\op}$, $i=1,\ldots,k$,
+  \leq 1$, $\|v_i\|_2 \leq 1$, $u_i^\T X v_i = \|X\|_{\op}$, $i=1,\dots,k$,
   then $\|Z\|_{\tr} \leq 1$ and $\langle Z, X \rangle =  \|X\|_{\op}$.   
 
 \item Prove the opposite direction: if $\|Z\|_{\tr} \leq 1$ and $\langle Z, X
   \rangle = \|X\|_{\op}$, then $Z$ must be of the above form (\smash{$Z = 
     \sum_{i=1}^k u_i v_i^\T$}, where $\|u_i\|_2 \leq 1$, $\|v_i\|_2 \leq 1$,
-  $u_i^\T X v_i = \|X\|_{\op}$, $i=1,\ldots,k$). Hint: use an SVD of $Z$, and
+  $u_i^\T X v_i = \|X\|_{\op}$, $i=1,\dots,k$). Hint: use an SVD of $Z$, and
   consider what the conditions on $Z$ say about the factors.      
 
 \item Use the above parts and \eqref{eq:norm_subgradients} to prove the
@@ -1056,12 +1056,12 @@ an alternative short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   such that $s_1 \in T(x_1)$, and define   
   \[
   f(x) = \sup\bigg\{ \sum_{i=1}^{n-1} s_i^\T (x_{i+1} - x_i) + s_n^\T (x - x_n)
-  : \text{$n \geq 1$, $s_i \in \partial f(x_i)$, $i=2,\ldots,n$} \bigg\}.
+  : \text{$n \geq 1$, $s_i \in \partial f(x_i)$, $i=2,\dots,n$} \bigg\}.
   \]
   Prove that $f$ is convex and $T \subseteq \partial f$.
 
 \item To show the ``if'' direction in the second part, note that if $T$ is
-  maximal and $T \subseteq \partial f$, then we must have $T = \partial
+  maximal, and $T \subseteq \partial f$, then we must have $T = \partial 
   f$. Now, prove additionally that $T$ is the subdifferential of a \emph{closed} 
   convex function. Hint: define the function \smash{$g(x) = \liminf_{y \to x} 
     f(x)$}, and show that $g$ is closed with $\partial f \subseteq \partial
@@ -1070,7 +1070,7 @@ an alternative short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
 
 \smallskip
 Note: it remains to prove the ``only if'' direction in $T = \partial f$, along
-with uniqueness of the solution $f$ to $T = \partial f$ up to an additive
+with uniqueness of the solution $f$ to $T = \partial f$, up to an additive
 constant. The arguments required for this are more subtle. What we can show 
 easily is that, for any closed convex $f$, we have $\partial f \subseteq
 \partial g$ for some convex closed $g$, with $\partial g$ maximal cyclically 
@@ -1095,15 +1095,15 @@ approximate subgradients and duality; see also Theorems 12.17 and 12.25 in
   We examine some properties of cyclical monotonicity, which, recall, for a 
   set-valued operator $T$ on $\R^d$, means that it satisfies
   \eqref{eq:T_monotonicity_n} for all $n \geq 1$ and all $(x_i, s_i)$,
-  $i=1,\ldots,n$ in its graph.   
+  $i=1,\dots,n$ in its graph.   
 
 \begin{enumerate}[label=\alph*.]
 \item Show that an equivalent condition for $T$ to be cyclically monotone is
   \[
   \sum_{i=1}^n s_i^\T x_i \geq \sum_{i=1}^n s_{\sigma(i)}^\T x_i,
   \]
-  for all $n \geq 1$, permutations $\sigma$ on $1,\ldots,n$, and $(x_i, s_i)$,
-  $i=1,\ldots,n$ in the graph of $T$.  
+  for all $n \geq 1$, permutations $\sigma$ on $1,\dots,n$, and $(x_i, s_i)$,
+  $i=1,\dots,n$ in the graph of $T$.  
 
 \item Show that when $d=1$ (so that $T$ is set-valued on $\R$), 
   monotonicity \eqref{eq:T_monotonicity} is equivalent to cyclical
