@@ -70,9 +70,8 @@ associated with an optimization problem, indeed an LP,
 \end{equation}
 In this context, we call \eqref{eq:lp_dual} the \emph{dual LP} and the original 
 problem \eqref{eq:lp_primal} the \emph{primal LP}. Note that, by construction 
-\eqref{eq:lp_weak_duality}, we have $f^\star \geq g^\star$: the optimal
-criterion in the dual problem is a lower bound on the optimal criterion in the  
-primal problem.  
+\eqref{eq:lp_weak_duality}, we have $f^\star \geq g^\star$: the optimal value in
+the dual problem is a lower bound on the optimal value in the primal problem.   
 
 There are several natural follow-up questions that we can ask: for example, when
 does equality hold in \eqref{eq:lp_weak_duality}, $f^\star = g^\star$? And, how 
@@ -545,16 +544,17 @@ Then strong duality holds: the optimal values $f^\star$ in problem
 \eqref{eq:dual_problem} satisfy $f^\star = g^\star$. 
 \end{Theorem}
 
-Conditions (i) and (ii) in Theorem \ref{thm:slater_condition} are together known
-as \emph{Slater's condition}. In short, this assumes convexity along with a
-type of strict feasibility condition \eqref{eq:slater_condition}; precisely,
-that there exists a point $x$ (in the relative interior of the domain $D$) which 
+Taken together, conditions (i) and (ii) in Theorem \ref{thm:slater_condition}
+are called \emph{Slater's condition}. In short, this assumes convexity along  
+with a type of strict feasibility condition \eqref{eq:slater_condition};
+precisely, that there exists a point $x$ (in the relative interior of the domain
+$D$) which  
 satisfies the affine equality and inequality constraints and strictly satisfies  
 the non-affine inequality constraints. This strict feasibility condition is very
 mild, which is why we say that strong duality holds for ``most'' convex
-problems. The proof of Theorem \ref{thm:slater_condition} reduces to an
-application of the separating hyperplane theorem, and is outlined in Exercises 
-\ref{ex:convex_theorem_alternatives} and \ref{ex:slater_condition}.  
+problems. The proof of Theorem \ref{thm:slater_condition} is based on (an 
+intricate application of) the separating hyperplane theorem, and is outlined in 
+Exercises \ref{ex:convex_theorem_alternatives} and \ref{ex:slater_condition}.    
 
 We can demonstrate the utility of Slater's condition by revisiting LPs. An LP
 \eqref{eq:lp_primal} is always a convex problem, and all of its constraints are
@@ -795,11 +795,11 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 \item If either the primal \eqref{eq:lp_primal} or dual \eqref{eq:lp_dual} are
   feasible, then strong duality holds.
 
-\item If the primal \eqref{eq:lp_primal} is feasible, then $f^\star < \infty$ 
+\item If the primal \eqref{eq:lp_primal} is feasible, then $f^\star > -\infty$ 
   if and only if the dual \eqref{eq:lp_dual} is feasible.   
 
-\item If the dual \eqref{eq:lp_dual} is feasible, then $g^\star > -\infty$ if
-  and only if the primal \eqref{eq:lp_primal} is feasible.    
+\item If the dual \eqref{eq:lp_dual} is feasible, then $g^\star < \infty$ if and
+  only if the primal \eqref{eq:lp_primal} is feasible.     
 \end{enumerate}
 
 \item \label{ex:lasso_dual}
@@ -830,8 +830,8 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 \end{enumerate}
 
 \item \label{ex:svm_dual}
-  Consder the SVM problem, for labels $y_i \in \{ -1, 1\}$ and features $x_i \in 
-  \R^d$, $i=1,\dots,n$,       
+  Consider the SVM problem, for labels $y_i \in \{ -1, 1\}$ and features $x_i
+  \in \R^d$, $i=1,\dots,n$,       
   \index{support vector machine!dual problem} 
   \begin{equation}
   \label{eq:svm_primal}
@@ -1106,22 +1106,73 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   minimization problem, show that we arrive back at \eqref{eq:sdp_primal}.  
 
 \item \label{ex:lp_sdp_differences}
-  First note difference in existence of solutions. Exercise \ref{ex:lp_slater}
-  vs \ref{ex:sdp_no_solution}. 
+  LPs and SDPs have several notable differences. First, we can note a difference
+  in existence of solutions:
+  \begin{itemize}
+  \item for an LP, a solution exists whenever its optimal criterion value is
+    finite (Corollary \ref{cor:weierstrass_convex_constrained}, which applies
+    because for a finite optimal value, the criterion and constraint set cannot
+    share a ``proper'' direction of strict recession, in which the criterion is   
+    nonconstant and the constraint set nonlinear);   
+  \item for an SDP, a solution can fail to exist even if the optimal value is
+    finite (Exercise \ref{ex:sdp_no_solution}).   
+  \end{itemize}
+  Moreover, there are notable differences in duality-based perspectives for
+  existence of solutions and duality theory more broadly, as we explore in the
+  parts below. 
 
-  Infer from the general Slater condition given later (from BTN) that in an SDP,
-  both primal is attained if (ii) holds and dual optimal value is finite. Dual
-  is attained if (i) holds and primal optimal value is finite. 
+\begin{enumerate}[label=\alph*.]
+\item For an SDP that satisfies the general conic Slater condition in Theorem
+  \ref{thm:slater_conic}, show (as a consequence of this theorem) that $f^\star
+  > -\infty$ if and only if the dual is feasible, in which case a dual solution 
+  exists. Note: this can be compared to what is known for LPs, from Exercise     
+  \ref{ex:lp_slater} part c, where the conclusion is that \emph{both} primal and 
+  dual solutions exist.
 
-  Note: Theorem 5.1 Freund of says that both are attained if both (i) and (ii)
-  hold but does not require boundedness (finite optimal values). Does something
-  special happen for SDPs?  
-% https://ocw.mit.edu/courses/6-251j-introduction-to-mathematical-programming-fall-2009/08bbc2660764c4f61bde5363ae134339_MIT6_251JF09_SDP.pdf
+\item Similarly, for an SDP whose dual problem satisfies the Slater condition in
+  Theorem \ref{thm:slater_conic}, show that $g^\star < \infty$ if and only if
+  the primal is feasible, in which case a primal solution exists. Note: this can 
+  be compared to what is known for LPs, from Exercise \ref{ex:lp_slater} part d,  
+  where the conclusion is that \emph{both} primal and dual solutions exist.  
 
-  Then note duality gap difference. Give example of SDP with positive duality
-  gap. Example 1 from Ramana, credit VB 1994.  
+\item Show that the statements above cannot be sharpened for SDPs in general, by
+  studying the example  
+  \begin{alignat*}{2}
+   &\minimize_x \quad && x_1 \\
+   &\st \quad && 
+   \begin{bmatrix}
+   x_1 & 1 \\
+   1 & x_2 
+ \end{bmatrix} \succeq 0.  
+  \end{alignat*}
+  Show that the primal optimal value is unattained (primal solution does not
+  exist), but the dual optimal value is attained (dual solution exists), and
+  equals the primal optimal value.
 
-\item Ramana's duality theory for SDPs?
-% https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=25d07b28d8ec4c290f7510cbc90f4b3087e0c510
+\item Show that for an LP, the duality gap $f^\star - g^\star$ can only ever be
+  $0$ or $+\infty$. Hint: parts a and b of Exercise \ref{ex:lp_slater}. 
+
+\item Show that for an SDP, the duality gap $f^\star - g^\star$ can be positive
+  and finite, by studying the example 
+  \begin{alignat*}{2}
+   &\minimize_x \quad && x_2 \\
+   &\st \quad && 
+   \begin{bmatrix}
+   x_2 & 0 & 0 \\
+   0 & x_1 & x_2 \\
+   0 & x_2 & 0 
+ \end{bmatrix} \preceq  
+ \begin{bmatrix}
+  \alpha & 0 & 0 \\
+  0 & 0 & 0 \\
+  0 & 0 & 0 
+ \end{bmatrix}.
+  \end{alignat*}
+  for arbitrary $\alpha > 0$. Compute the primal optimal value, then compute the
+  dual optimal value, and show that the duality gap is $\alpha$. Explain why
+  this example does not violate Theorem \ref{thm:slater_conic}.  Note: this
+  example is taken from from \cite{ramana1997exact}, who credit
+  \cite{vandenberghe1996semidefinite} for a related example. 
+\end{enumerate}
 \end{enumerate}
 \end{xcb}
