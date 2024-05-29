@@ -114,13 +114,13 @@ As before, let $u \in \R^m$ and $v \in \R^k$ be arbitrary vectors, with $u \geq
 basic idea as in \eqref{eq:lp_dual_nonnegative}, note that for any feasible $x$
 for \eqref{eq:primal_problem}, 
 \[
-\sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^r v_j \ell_j(x) \leq 0.
+\sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^k v_j \ell_j(x) \leq 0.
 \]
 We now add this quantity to the criterion $f(x)$ to define what we call the
 \emph{Lagrangian function},   
 \index{Lagrangian function}
 \[
-L(x,u,v) = f(x) + \sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^r v_j \ell_j(x).
+L(x,u,v) = f(x) + \sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^k v_j \ell_j(x).
 \] 
 By construction, this provides a lower bound on the criterion,
 \begin{equation}
@@ -268,7 +268,7 @@ problem is itself convex. To see this, we can rewrite the dual function
 \eqref{eq:dual_function} as   
 \[
 g(u,v) = - \, \underbrace{\sup_x \, \bigg\{ -f(x) - \sum_{i=1}^m u_i h_i(x) - 
-  \sum_{j=1}^r v_j \ell_j(x) \bigg\}}_{\bar{g}(u,v)}.
+  \sum_{j=1}^k v_j \ell_j(x) \bigg\}}_{\bar{g}(u,v)}.
 \]
 Observe that the function defined as \smash{$\bar{g}$} above is the pointwise 
 supremum of affine---hence convex---functions in $u,v$. By the pointwise
@@ -559,13 +559,13 @@ application of the separating hyperplane theorem, and is outlined in Exercises
 We can demonstrate the utility of Slater's condition by revisiting LPs. An LP
 \eqref{eq:lp_primal} is always a convex problem, and all of its constraints are
 affine, so Slater's condition applied to \eqref{eq:lp_primal} says that strong
-duality holds if \eqref{eq:lp_primal} is feasible. Furthermore, one can verify
+duality holds if \eqref{eq:lp_primal} is feasible. Moreover, one can verify
 (Exercise \ref{ex:lp_dual_dual}) that the dual of the dual problem
-\eqref{eq:lp_dual} is in fact the primal problem \eqref{eq:lp_primal}. Hence,
-strong duality in problems \eqref{eq:lp_primal} and \eqref{eq:lp_dual} refer to
-the same thing, and applying Slater's condition to \eqref{eq:lp_dual} says that 
+\eqref{eq:lp_dual} is the primal problem \eqref{eq:lp_primal}. Therefore, strong
+duality in problems \eqref{eq:lp_primal} and \eqref{eq:lp_dual} refer to the
+same thing, and Slater's condition applied to \eqref{eq:lp_dual} shows that
 strong duality also holds if \eqref{eq:lp_dual} is feasible. Next, we summarize
-these conclusions. 
+these conclusions.  
 
 \index{linear program!strong duality}
 \begin{Corollary}
@@ -595,10 +595,11 @@ Consider a generic semidefinite program (SDP) of the form
 To construct the Lagrangian dual of \eqref{eq:sdp_primal}, we adopt our standard 
 approach of treating the space of symmetric matrices as a vector space with the   
 inner product $\langle X, Y \rangle = \tr(XY)$ and partial ordering $X \preceq Y
-\iff Y-X \succeq 0$. Next, we associate a dual variable with every element of the
-inequality constraint $\sum_{i=1}^d x_i A_i - B \preceq 0$, thus in total, a
-dual matrix $U$ with the entire inequality constraint. Associating another dual
-variable with the equality constraint $Gx - h = 0$, the Lagrangian is hence   
+\iff Y-X \succeq 0$. Just as before, we will associate a dual variable with
+each constraint that appears in our primal problem; what this means now is that
+we associate a dual matrix $U$ with the inequality constraint
+\smash{$\sum_{i=1}^d x_i A_i - B \preceq 0$}, and associate a dual vector $v$
+with the equality constraint $Gx - h = 0$. Hence the Lagrangian is   
 \[
 L(x,U,v) = c^\T x + \bigg\langle U, \sum_{i=1}^d x_i A_i - B \bigg\rangle + v^\T
 (Gx - h). 
@@ -607,7 +608,7 @@ Now we make use of the following key fact (Exercise
 \ref{ex:psd_cone_self_dual}):   
 \begin{equation}
 \label{eq:psd_cone_self_dual}
-Y \succeq 0 \iff \text{$\tr(XY) \geq 0 for all X \succeq 0$}.  
+Y \succeq 0 \iff \text{$\tr(XY) \geq 0$ for all $X \succeq 0$}.  
 \end{equation}
 We will revisit \eqref{eq:psd_cone_self_dual} in Chapter \ref{sec:dual_cones},
 where in the language of that chapter, we will learn that it says the positive
@@ -696,12 +697,12 @@ authors. Slater's condition is named after \cite{slater1950lagrange}.
 The lecture notes of \cite{bental2023convex} (Chapter 3) are a rich, advanced
 resource on duality. Working in a vector space endowed with conic ordering,
 these authors develop a convex theorem of alternatives, dual problems, and
-optimality conditions, all from first principles. Our treatment of conic
+optimality conditions---all from first principles. Our treatment of conic 
 duality, in Chapter \ref{sec:conic_duality}, is based on theirs. A consequence
 of this more general conic duality theory is the strong duality result for SDPs
-which is given in Corollary \ref{cor:slater_sdp}. Exercise 
-\ref{ex:convex_theorem_alternatives} is based on the theorem of alternatives
-from \cite{bental2023convex}.         
+in Corollary \ref{cor:slater_sdp}. Exercises
+\ref{ex:farkas_variations}--\ref{ex:slater_condition} are based on 
+\cite{bental2023convex}.          
  
 \clearpage
 
@@ -783,8 +784,9 @@ from \cite{bental2023convex}.
 
 \index{linear program!strong duality}
 \item \label{ex:lp_slater}
-  Prove the following statements which together form a refinement of Corollary
-  \ref{cor:slater_lp} for LPs.  
+  Prove the following refinement of Corollary \ref{cor:slater_lp} for LPs. We
+  use $f^\star, g^\star$ for the optimal values in \eqref{eq:lp_primal},
+  \eqref{eq:lp_dual} respectively. 
 
 \begin{enumerate}[label=\alph*.]
 \item If both the primal \eqref{eq:lp_primal} and dual \eqref{eq:lp_dual} are
@@ -793,12 +795,11 @@ from \cite{bental2023convex}.
 \item If either the primal \eqref{eq:lp_primal} or dual \eqref{eq:lp_dual} are
   feasible, then strong duality holds.
 
-\item If the primal \eqref{eq:lp_primal} is feasible, then its optimal value
-  $f^\star$ is finite if and only if the dual \eqref{eq:lp_dual} is feasible.  
+\item If the primal \eqref{eq:lp_primal} is feasible, then $f^\star < \infty$ 
+  if and only if the dual \eqref{eq:lp_dual} is feasible.   
 
-\item If the dual \eqref{eq:lp_dual} is feasible, then its optimal value
-  $g^\star$ is finite if and only if the primal \eqref{eq:lp_primal} is
-  feasible.   
+\item If the dual \eqref{eq:lp_dual} is feasible, then $g^\star > -\infty$ if
+  and only if the primal \eqref{eq:lp_primal} is feasible.    
 \end{enumerate}
 
 \item \label{ex:lasso_dual}
@@ -824,9 +825,8 @@ from \cite{bental2023convex}.
   \quad \|X^\T u\|_\infty \leq \lambda.
   \end{equation}
 
-\item Show that Slater's condition is always satisfied for the lasso problem 
-  \eqref{eq:lasso_primal}, and hence strong duality always holds in between  
-  \eqref{eq:lasso_primal} and \eqref{eq:lasso_dual}.  
+\item Use Slater's condition to show that strong duality always holds between 
+  \eqref{eq:lasso_primal}, \eqref{eq:lasso_dual}.  
 \end{enumerate}
 
 \item \label{ex:svm_dual}
@@ -856,29 +856,211 @@ from \cite{bental2023convex}.
   \end{alignedat}
   \end{equation}
 
-\item Show that Slater's condition is always satisfied for the SVM problem
-  \eqref{eq:svm_primal}, and hence strong duality always holds in between 
-  \eqref{eq:svm_primal} and \eqref{eq:svm_dual}.  
+\item Use Slater's condition to show that strong duality always holds between   
+  \eqref{eq:svm_primal}, \eqref{eq:svm_dual}.  
+\end{enumerate}
+
+\item \label{ex:farkas_variations}
+  We will examine a couple of variations on Farkas' lemma, the second of which 
+  will be critical for proving the convex theorem of alternatives in the next
+  exercise.      
+
+\begin{enumerate}[label=\alph*.]
+\item Given $A \in \R^{k \times d}$ and $b \in \R^k$, consider two statements: 
+  \begin{itemize}
+  \item for all $x \in \R^d$, it holds that $Ax \leq 0 \implies a^\T x \leq 0$;  
+  \item there exists $\mu \in \R^k$ such that $\mu \geq 0$ and $A^\T \mu = 
+    a$.
+  \end{itemize}
+  Prove that these are equivalent statements. Hint: showing that the second  
+  implies the first is straightforward. To prove the other direction, use
+  Farkas' lemma, Exercise \ref{ex:farkas}, with $A,b$ replaced by $-A^\T, -a$,
+  respectively.        
+
+\item Given $A \in \R^{k \times d}$, $b \in \R^k$, $g \in \R^d$, and $h \in \R$,
+  consider two statements: 
+  \begin{itemize}
+  \item for all $x \in \R^d$, it holds that $Ax \leq b \implies g^\T x \leq h$;  
+  \item there exists $\mu \in \R^k$ such that $\mu \geq 0$ and $\mu^\T (Ax - b) 
+    \geq g^\T x - h$ for all $x \in \R^d$.
+  \end{itemize}
+  Prove that these are equivalent statements. Hint: as before, showing that the
+  second implies the first is straightforward. To prove the other direction,
+  start by defining 
+  \[
+  K_1 = \R^d \times \R_{++} \quad \text{and} \quad K_2 = \{ (x,t) \in \R^d
+  \times \R: Ax \leq tb \}.
+  \]
+  Note that these are convex cones, whose relative interiors have nonempty 
+  intersection. Define $f = (g,h) \in \R^{d+1}$, and show that $f^\T (x,t) 
+  \leq 0$ for all $(x,t) \in K_1 \cap K_2$. Use the Dubovitski-Milutin lemma     
+  (this is basic fact about convex cones that can be proved via conjugacy
+  theory, presented later in Exercise \ref{ex:dubovitski_milutin}) to argue that
+  we can write $f = \psi + \phi$ where $\psi^\T(x,t) \leq 0$ for all $x \in
+  K_1$, and $\phi^\T (x,t) \leq 0$ for all $x \in K_2$. Finally, apply part a of  
+  this exercise to show that there exists $\mu \geq 0$ such that $[A \,
+  -b]^\T \mu = \phi$, in other words, $\phi^\T (x,t) = \mu^\T (Ax - tb)$ for all
+  $x,t$, and use this to prove the desired claim. 
+  % Alternative proof via separating hyperplanes: there exists a vector $s \geq
+  % 0$ and scalar $t \geq 0$ such that      
+  % \[
+  % s^\T (Ax - b) \geq t (g^\T x - h), \quad \text{for all $x \in \R^d$}.
+  % \]
+  % To show this, apply the separating hyperplane theorem, Theorem
+  % \ref{thm:separating_hyperplane}, to 
+  % \[
+  % C = \bigg\{ \begin{bmatrix} A \\ g^\T \end{bmatrix} x - \begin{bmatrix} u \\    
+  %   v \end{bmatrix} : x \in \R^d, \, u \in \R^k_+, \, v < 0 \bigg\} 
+  % \quad \text{and} \quad D = \bigg\{ \begin{bmatrix} b \\ h \end{bmatrix}
+  % \bigg\}. 
+  % \]
+  % Then finally argue that we must have $t > 0$ (otherwise this $s^\T (Ax - b) 
+  % \geq 0$ for all $x$ which implies $s = 0$, a contradiction to the nonzero
+  % normal vector given by the supporting hyperplane theorem).
 \end{enumerate}
 
 \item \label{ex:convex_theorem_alternatives}
-  Let $f$ and $h_i$, $i=1,\dots,m$ be convex, and $\ell_j$, $j=1,\dots,k$ be
-  affine. Following Theorem 3.2.1 in \cite{bental2023convex}, consider the
-  feasibility problems:
-  \begin{equation}
-  \label{eq:feas1}
-  \begin{alignedat}{2}
-  f(x) &< c
-  h_i(x) &\leq 0, \quad &i = 1,\dots,m \\
-  \ell_j(x) &= 0, \quad &j = 1,\dots,r.
+  Given functions $f$, $h_i$, $i=1,\dots,m$, and $\ell_j$, $j=1,\dots,k$,
+  consider two feasibility problems:
+  \begin{align}
+  \label{eq:feasibility_problem1}
+  &\begin{alignedat}{2}  
+  &\find \quad && x \\ 
+  &\st \quad && f(x) < c \\
+  & && h_i(x) \leq 0, \; i = 1,\dots,m \\
+  & && \ell_j(x) = 0, \; j = 1,\dots,k,
+  \end{alignedat} \\[10pt]
+  \label{eq:feasibility_problem2}
+  &\begin{alignedat}{2}  
+  &\find \quad && u,v \\ 
+  &\st \quad && \inf_x \, \bigg\{ f(x) + \sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^k 
+  v_j \ell_j(x) \bigg\} \geq c \\
+  & && u \geq 0.
   \end{alignedat}
-  \end{equation}
+  \end{align}
+  The value of $c$ here is fixed and arbitrary. Following Theorem
+  3.2.1 in \cite{bental2023convex}, we will prove what these authors call the 
+  \emph{convex theorem of alternatives}, which says that under conditions (i)
+  and (ii) in Theorem \ref{thm:slater_condition}, problem
+  \eqref{eq:feasibility_problem1} is feasible if and only if
+  \eqref{eq:feasibility_problem2} is infeasible.           
   
-Convex theorem of alternatives. Credit Theorem 3.2.1 in BTN
+\begin{enumerate}[label=\alph*.]
+\item Assume that problem \eqref{eq:feasibility_problem1} is feasible. Prove
+  that \eqref{eq:feasibility_problem2} is infeasible. Hint: argue that there
+  exists $x$ such that \smash{$f(x) +\sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^k  v_j
+    \ell_j(x) < c$}, for any $u \geq 0$ and any $v$. Note that nothing about
+  this direction of the argument requires Slater's condition.   
+  
+\item The other direction---that infeasibility of problem
+  \eqref{eq:feasibility_problem1} implies feasibility of
+  \eqref{eq:feasibility_problem2}---is considerably more involved, and we will
+  prove this in several steps. To simplify notation, we will assume without a
+  loss of generality that $c = 0$, and that $x = 0$ satisfies condition (ii) in
+  Theorem \ref{thm:slater_condition}. Moreover, for the remainder of this proof,
+  we will:    
+  \begin{itemize}  
+  \item redefine $A,b$ such that $Ax \leq b$ represents the affine inequality
+    constraints in \eqref{eq:feasibility_problem1} (originally written as
+    $h_1(x) \leq 0, \dots, h_r(x) \leq 0, \pm\ell_1(x) \leq 0, \dots,
+    \pm\ell_k(x) \leq 0$), then relabel the corresponding dual variable as $v
+    \geq 0$; 
+  \item redefine $h$ such that $h(x) \leq 0$ denotes the nonaffine inequality
+    constraints in \eqref{eq:feasibility_problem1} (originally written as
+    $h_{r+1}(x) \leq 0, \dots, h_m(x) \leq 0$), then relabel the corresponding
+    dual variable as $u \geq 0$.
+  \end{itemize}
+  We will maintain $m,k$ for the dimensions of $u,v$, respectively. 
+
+  \smallskip
+  \noindent
+  Now with this notation in place, define the sets   
+  \begin{align*}
+  S &= \Big\{ (t_0, t_1) \in \R \times \R^m : t_0 < 0, \, t_1 \leq 0 \Big\}, \\  
+  T &= \Big\{ (t_0, t_1) \in \R \times \R^m : \text{there exists $x$ such that
+      $f(x) \leq t_0$, $h(x) \leq t_1$, and $Ax \leq b$} \Big\}. 
+  \end{align*}
+  Assume that \eqref{eq:feasibility_problem1} is infeasible. Prove that there
+  exists a nonzero vector $a = (a_0, a_1) \in \R \times \R^m$ such that 
+  \[
+  \inf_{t \in T} \, a^\T t \geq 0.  
+  \]
+  Hint: apply the separating hyperplane theorem, Theorem
+  \ref{thm:separating_hyperplane}, to $S,T$. Then argue that we must have $a
+  \geq 0$ and $b = 0$ in the definition of the supporting hyperplane. 
+
+\item Prove that $a_0 > 0$. Hint: assume in order to achieve a contradiction 
+  that $a_0 = 0$. Then use $(f(0), h(0)) \in T$, and the fact that $x = 0$
+  satisfies condition (ii) in Theorem \ref{thm:slater_condition}, by assumption,
+  to conclude $a_1 = 0$.
+\item Define $\alpha = a_1 / a_0 \in \R^m$, and  
+  \[
+  F(x) = f(x) + \alpha^\T h(x),
+  \]
+  where $h(x) = (h_1(x), \dots, h_m(x))$. Noting that $\alpha \geq 0$ (since
+  $a_0 > 0$ and $a_1 \geq 0$), prove
+  \[
+ \text{for all $x$}, \quad Ax \leq b \implies F(x) \geq 0.
+  \]
+  Hint: for any $Ax \leq b$, we have $(f(x), h(x)) \in T$, so that $a^\T x \geq
+  0$, and thus $a^\T x \geq 0$.   
+
+\item In what remains, we seek to show that there exists $\beta \in \R^k$ such
+  that $\beta \geq 0$ and  
+  \begin{equation}
+  \label{eq:feasibility_problem3}
+  F(x) + \beta^\T (Ax - b) \geq 0, \quad \text{for all $x$}. 
+  \end{equation}
+  Notice that this would complete the proof as it would verify that 
+  \eqref{eq:feasibility_problem2} is feasible, with $u = \alpha$ and $v = \beta$
+  (recall that we have relabeled the constraint system and taken $c =
+  0$). Towards verifying the existence of such a vector $\beta$, define the sets   
+  \begin{align*}
+  C &= \Big\{ (x, z) \in \R^d \times \R : Ax \leq b, \, z < 0 \Big\}, \\   
+  D &= \Big\{ (x, z) \in \R^d \times \R : F(x) \leq z \Big\}. 
+  \end{align*}
+  Prove that there exists a nonzero vector $(w, \eta) \in \R^d \times \R$ such
+  that  
+  \[
+  \sup \Big\{ w^\T x + \eta z : Ax \leq b, \, z < 0 \Big\} \leq \inf \Big\{ w^\T
+  x + \eta z : F(x) \leq z \Big\}. 
+  \]
+  Hint: apply the separating hyperplane theorem again, this time to $C,D$.
+
+\item Argue that $\eta \geq 0$, so that 
+  \[
+  \sup \Big\{ w^\T x : Ax \leq b \Big\} \leq \inf \Big\{ w^\T x + \eta F(x) : x
+  \in \R^d \Big\}.
+  \]
+
+\item Argue further that $\eta > 0$, so that by defining $\beta = w / z$, we
+  have  
+  \[
+  \sup \Big\{ \beta^\T x : Ax \leq b \Big\} \leq \inf \Big\{ \beta^\T x + F(x) :
+  x \in \R^d \Big\}.
+  \]
+  Hint: assume for the sake of contradiction that $\eta = 0$. Then, as $b \geq
+  0$ (implied by our assumption that the origin $x = 0$ satisfies $Ax \leq b$),
+  the left-hand side in the display from part f is at least zero, thus $w^\T x
+  \geq 0$ for all $x$, which can only happen if $w = 0$.   
+
+\item Let $\theta = \sup \, \{\beta^\T x : Ax \leq b\}$. Then $Ax \leq b
+  \implies \beta^\T x \leq \theta$, hence by Exercise \ref{ex:farkas_variations} 
+  part b, there exists a vector $\mu \geq 0$ such that $\mu^\T (Ax - b) \geq
+  \beta^\T x - \theta$ for all $x$. Use this and part g to establish
+  \eqref{eq:feasibility_problem3} and complete the proof. 
+\end{enumerate}
 
 \index{Slater's condition}
 \item \label{ex:slater_condition}
-Proof of slater's condition via the last one.
+  In this exercise, we prove Slater's condition for strong duality, in Theorem 
+  \ref{thm:slater_condition}. Let $f^\star, g^\star$ be the optimal values in 
+  \eqref{eq:primal_problem} and \eqref{eq:dual_problem}, respectively. Notice
+  that if $f^\star = -\infty$, then the desired conclusion $f^\star = g^\star$
+  is already implied by weak duality \eqref{eq:weak_duality}. Hence, assume that 
+  $f^\star > -\infty$. Use the result in Exercise
+  \ref{ex:convex_theorem_alternatives} to prove $f^\star = g^\star$. Hint: set
+  $c = f^\star$.  
 
 \item \label{ex:psd_cone_self_dual}
   We will prove \eqref{eq:psd_cone_self_dual}. 
@@ -892,7 +1074,22 @@ Proof of slater's condition via the last one.
     = \sum_{i=1}^d x_i x_i^\T$} for vectors $x_i \in \R^d$, $i = 1,\dots,d$. 
 \end{enumerate}
 
-\item \label{ex:sdp_std_dual}
+
+\index{semidefinite program!dual problem}
+\index{semidefinite program!standard form}
+\item \label{ex:sdp_std_dual} 
+  Consider the standard form SDP,
+  \begin{alignat*}{2}
+  &\minimize_X \quad && \langle C, X \rangle \\
+  &\st && \langle A_i, X \rangle = b_i, \; i=1,\ldots,m \\
+  & && X \succeq 0.
+  \end{alignat*}
+  Prove that its dual problem is 
+  \begin{alignat*}{2}
+  &\maximize_{U,v} \quad && b^\T v \\
+  &\st && v_1 A_1 + \cdots v_m A_m + U = C \\
+  & && U \succeq 0.
+  \end{alignat*}
 
 \item \label{ex:sdp_dual_dual}
   To form the dual of \eqref{eq:sdp_dual}, first convert it to a minimization
