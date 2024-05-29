@@ -1052,32 +1052,32 @@ an alternative short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   \ref{thm:rockafellar_embedding}. 
 
 \begin{enumerate}[label=\alph*.]
-\item To show the ``if'' direction in the containment $T \subseteq \partial f$,
-  fix any $x_1$ such that $s_1 \in T(x_1)$, and define 
+\item To show the ``if'' direction in the first part of the theorem, fix $x_1$
+  such that $s_1 \in T(x_1)$, and define   
   \[
   f(x) = \sup\bigg\{ \sum_{i=1}^{n-1} s_i^\T (x_{i+1} - x_i) + s_n^\T (x - x_n)
   : \text{$n \geq 1$, $s_i \in \partial f(x_i)$, $i=2,\ldots,n$} \bigg\}.
   \]
   Prove that $f$ is convex and $T \subseteq \partial f$.
 
-\item To show the ``if'' direction in the equality $T = \partial f$, observe
-  that if $T$ is maximal, and $T \subseteq \partial f$, then we must have $T =
-  \partial f$. Prove that, additionally, $T$ is the subdifferential of a
-  \emph{closed} convex function. Hint: define \smash{$g(x) = \liminf_{y \to x} 
+\item To show the ``if'' direction in the second part, note that if $T$ is
+  maximal and $T \subseteq \partial f$, then we must have $T = \partial
+  f$. Now, prove additionally that $T$ is the subdifferential of a \emph{closed} 
+  convex function. Hint: define the function \smash{$g(x) = \liminf_{y \to x} 
     f(x)$}, and show that $g$ is closed with $\partial f \subseteq \partial
-  g$. Then then invoke maximality.   
+  g$. Then then invoke maximality.      
 \end{enumerate}
 
 \smallskip
-A note on the remaining part, the ``if'' direction in the equality $T = \partial
-f$ and uniqueness of the solution $f$ to $T = \partial f$, up to an additive 
-constant: the arguments required for this part are more subtle. What we can say  
-immediately is that, for any closed convex $f$, we have $\partial f \subseteq
-\partial g$ for some convex closed $g$, where $\partial g$ is maximal cyclically
-monotone; this follows from the fact that each cyclically monotone operator must
-be embedded in some maximal one (using Zorn's lemma), and that this maximal one
-can always be written as $\partial g$ for closed convex $g$ (by part b of this
-exercise). However, to prove the next step: 
+Note: it remains to prove the ``only if'' direction in $T = \partial f$, along
+with uniqueness of the solution $f$ to $T = \partial f$ up to an additive
+constant. The arguments required for this are more subtle. What we can show 
+easily is that, for any closed convex $f$, we have $\partial f \subseteq
+\partial g$ for some convex closed $g$, with $\partial g$ maximal cyclically 
+monotone. This follows from the fact that every cyclically monotone operator
+must be embedded in some maximal one (using Zorn's lemma) and that this maximal 
+one can always be written as $\partial g$ for closed convex $g$ (by part b of
+this exercise). However, to prove the next step:     
 \begin{equation} 
 \label{eq:embedding_equality}
 \text{$f,g$ closed convex with $\partial f \subseteq \partial g$} \implies 
