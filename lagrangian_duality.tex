@@ -701,8 +701,8 @@ optimality conditions---all from first principles. Our treatment of conic
 duality, in Chapter \ref{sec:conic_duality}, is based on theirs. A consequence
 of this more general conic duality theory is the strong duality result for SDPs
 in Corollary \ref{cor:slater_sdp}. Exercises
-\ref{ex:farkas_variations}--\ref{ex:slater_condition} are based on 
-\cite{bental2023convex}.          
+\ref{ex:convex_theorem_alternatives} and \ref{ex:slater_condition} are based on
+\cite{bental2023convex}.           
  
 \clearpage
 
@@ -877,46 +877,34 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   Farkas' lemma, Exercise \ref{ex:farkas}, with $A,b$ replaced by $-A^\T, -a$,
   respectively.        
 
-\item Given $A \in \R^{k \times d}$, $b \in \R^k$, $g \in \R^d$, and $h \in \R$,
-  consider two statements: 
+\item Given $A \in \R^{k \times d}$, $b \in \R^k$, $g \in \R^d$, and 
+  $h \in \R$, where $b \geq 0$, consider two statements: 
   \begin{itemize}
   \item for all $x \in \R^d$, it holds that $Ax \leq b \implies g^\T x \leq h$;  
   \item there exists $\mu \in \R^k$ such that $\mu \geq 0$ and $\mu^\T (Ax - b) 
     \geq g^\T x - h$ for all $x \in \R^d$.
   \end{itemize}
-  Prove that these are equivalent statements. Hint: as before, showing that the
-  second implies the first is straightforward. To prove the other direction,
-  start by defining 
+  Prove that these are equivalent statements. Hint: as before, it is
+  straightforward to show that the second implies the first. For the other
+  direction, start by defining
   \[
-  K_1 = \R^d \times \R_{++} \quad \text{and} \quad K_2 = \{ (x,t) \in \R^d
-  \times \R: Ax \leq tb \}.
+  C = \bigg\{ \begin{bmatrix} A \\ -g^\T \end{bmatrix} x + \begin{bmatrix} u \\     
+    v \end{bmatrix} : x \in \R^d, \, u \in \R^k_+, \, v > 0 \bigg\} 
+  \quad \text{and} \quad D = \bigg\{ \begin{bmatrix} b \\ -h \end{bmatrix} 
+  \bigg\},
+  \] 
+  and apply the separating hyperplane theorem, Theorem
+  \ref{thm:separating_hyperplane}, to show that there exists a nonzero vector
+  $(s,t) \in \R^d \times \R$ such that 
+  \[
+  s^\T (Ax - b) \geq t (g^\T x - h), \quad \text{for all $x \in \R^d$}.
   \]
-  Note that these are convex cones, whose relative interiors have nonempty 
-  intersection. Define $f = (g,h) \in \R^{d+1}$, and show that $f^\T (x,t) 
-  \leq 0$ for all $(x,t) \in K_1 \cap K_2$. Use the Dubovitski-Milutin lemma     
-  (this is basic fact about convex cones that can be proved via conjugacy
-  theory, presented later in Exercise \ref{ex:dubovitski_milutin}) to argue that
-  we can write $f = \psi + \phi$ where $\psi^\T(x,t) \leq 0$ for all $x \in
-  K_1$, and $\phi^\T (x,t) \leq 0$ for all $x \in K_2$. Finally, apply part a of  
-  this exercise to show that there exists $\mu \geq 0$ such that $[A \,
-  -b]^\T \mu = \phi$, in other words, $\phi^\T (x,t) = \mu^\T (Ax - tb)$ for all
-  $x,t$, and use this to prove the desired claim. 
-  % Alternative proof via separating hyperplanes: there exists a vector $s \geq
-  % 0$ and scalar $t \geq 0$ such that      
-  % \[
-  % s^\T (Ax - b) \geq t (g^\T x - h), \quad \text{for all $x \in \R^d$}.
-  % \]
-  % To show this, apply the separating hyperplane theorem, Theorem
-  % \ref{thm:separating_hyperplane}, to 
-  % \[
-  % C = \bigg\{ \begin{bmatrix} A \\ g^\T \end{bmatrix} x - \begin{bmatrix} u \\    
-  %   v \end{bmatrix} : x \in \R^d, \, u \in \R^k_+, \, v < 0 \bigg\} 
-  % \quad \text{and} \quad D = \bigg\{ \begin{bmatrix} b \\ h \end{bmatrix}
-  % \bigg\}. 
-  % \]
-  % Then finally argue that we must have $t > 0$ (otherwise this $s^\T (Ax - b) 
-  % \geq 0$ for all $x$ which implies $s = 0$, a contradiction to the nonzero
-  % normal vector given by the supporting hyperplane theorem).
+  Argue that $A^\T s = ts$, $s \geq 0$, and $t \geq 0$; otherwise the claimed
+  separation is not possible. Further, argue that $\tau > 0$; otherwise it
+  follows that $A^\T s = 0$ and $b^\T s = 0$, which---after reparametrizing the  
+  original space from $\R^k$ to $\col([A \; b])$, if needed---implies that $s = 
+  0$. Thus, with $t > 0$, define $\mu = s/t$ in order to prove the desired
+  conclusion.           
 \end{enumerate}
 
 \item \label{ex:convex_theorem_alternatives}
@@ -970,11 +958,8 @@ in Corollary \ref{cor:slater_sdp}. Exercises
     $h_{r+1}(x) \leq 0, \dots, h_m(x) \leq 0$), then relabel the corresponding
     dual variable as $u \geq 0$.
   \end{itemize}
-  We will maintain $m,k$ for the dimensions of $u,v$, respectively. 
-
-  \smallskip
-  \noindent
-  Now with this notation in place, define the sets   
+  We will maintain $m,k$ for the dimensions of $u,v$, respectively. Now with
+  this notation in place, define the sets    
   \begin{align*}
   S &= \Big\{ (t_0, t_1) \in \R \times \R^m : t_0 < 0, \, t_1 \leq 0 \Big\}, \\  
   T &= \Big\{ (t_0, t_1) \in \R \times \R^m : \text{there exists $x$ such that
@@ -1067,7 +1052,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 
 \begin{enumerate}[label=\alph*.]
 \item If $\tr(XY) \geq 0$ for all $X \in \SS_+^d$, then show that $Y \in
-  \SS_+^d$. Hint: consider $X = a a^\T$, for arbitrary $a \in \R^d$.
+  \SS_+^d$. Hint: consider $X = a a^\T$ for an arbitrary vector $a \in \R^d$.  
 
 \item If $Y \in \SS_+^d$, then show $\tr(XY) \geq 0$ for all $X \in
   \SS_+^d$. Hint: for $X \in \SS_+^d$, prove that we can always write \smash{$X
@@ -1122,18 +1107,21 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   parts below. 
 
 \begin{enumerate}[label=\alph*.]
-\item For an SDP that satisfies the general conic Slater condition in Theorem
-  \ref{thm:slater_conic}, show (as a consequence of this theorem) that $f^\star
-  > -\infty$ if and only if the dual is feasible, in which case a dual solution 
-  exists. Note: this can be compared to what is known for LPs, from Exercise     
-  \ref{ex:lp_slater} part c, where the conclusion is that \emph{both} primal and 
-  dual solutions exist.
+\item For an SDP \eqref{eq:sdp_primal} that satisfies condition (i) in Corollary 
+  \ref{thm:slater_conic}, prove that $f^\star > -\infty$ if and only if the dual 
+  \eqref{eq:sdp_primal} is feasible, in which case a dual solution
+  exists. Hint: apply the general Slater condition from Theorem
+  \ref{thm:slater_conic}.  Note: this result can be compared to what is known 
+  for LPs, from Exercise \ref{ex:lp_slater} part c, the conclusion there being 
+  that \emph{both} primal and dual solutions exist.
 
-\item Similarly, for an SDP whose dual problem satisfies the Slater condition in
-  Theorem \ref{thm:slater_conic}, show that $g^\star < \infty$ if and only if
-  the primal is feasible, in which case a primal solution exists. Note: this can 
-  be compared to what is known for LPs, from Exercise \ref{ex:lp_slater} part d,  
-  where the conclusion is that \emph{both} primal and dual solutions exist.  
+\item Similarly, for an SDP whose dual \eqref{eq:sdp_dual} satisfies condition
+  (ii) in Corollary \ref{thm:slater_conic}, prove that $g^\star < \infty$ if and
+  only if the primal \eqref{eq:sdp_primal} is feasible, in which case a primal
+  solution exists. Hint: again use the general Slater condition from Theorem 
+  \ref{thm:slater_conic}, now on the dual. Note: this result can be compared
+  to what is known for LPs, from Exercise \ref{ex:lp_slater} part d, the
+  conclusion there being that \emph{both} primal and dual solutions exist.  
 
 \item Show that the statements above cannot be sharpened for SDPs in general, by
   studying the example  
@@ -1147,7 +1135,8 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   \end{alignat*}
   Show that the primal optimal value is unattained (primal solution does not
   exist), but the dual optimal value is attained (dual solution exists), and
-  equals the primal optimal value.
+  equals the primal optimal value. Explain why this example does not violate
+  parts a and b above. 
 
 \item Show that for an LP, the duality gap $f^\star - g^\star$ can only ever be
   $0$ or $+\infty$. Hint: parts a and b of Exercise \ref{ex:lp_slater}. 
