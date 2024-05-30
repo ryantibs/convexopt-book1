@@ -37,8 +37,18 @@ Write cone program as follows in a way that allows Fenchel duality to be applied
 elegantly. For example, min $c^\T x$ subject $Ax + b \in K$
 
 See Theorems 3.2.2 and 3.2.5 in Ben Tal and Nemirovski. This is more general and 
-it will be helpful to write this as: min $f(x)$ subject to $Ax = b$, $Gx \leq
-h$, $h$ is $K$-convex where $K$ is pointed. 
+it will be helpful to write this as: min $f(x)$ subject to $h(x) \leq 0$, $Ax =
+b$, where $h$ is $K$-convex and $K$ is a regular cone (regular means: closed,
+convex, nonempty interior, pointed)
+
+\begin{equation}
+\label{eq:primal_conic}
+\begin{alignedat}{2}
+&\minimize_x \quad && f(x) \\
+&\st \quad && h(x) \leq_K 0 \\
+& && Ax = b.
+\end{alignedat}
+\end{equation}
 
 \index{Slater's condition}
 \index{strong duality}
@@ -100,12 +110,62 @@ MAKE Sure to talk about interpretation of logistic interpretation
 
 ?? 
 
+\SkipTocEntry\section*{Chapter notes}
+
+Exercises \ref{ex:farkas_variations_conic} and
+\ref{ex:convex_theorem_alternatives_conic} are based on \cite{bental2023convex}.           
+
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
 
 \item \label{ex:dubovitski_milutin}
 Dubovitski-Milutin lemma
+
+\item \label{ex:farkas_variations_conic} 
+  In this exercise, we will show that the Dubovitski-Milutin lemma, studied in
+  the last exercise, leads to an important variation on Farkas' lemma. This will 
+  slightly generalize the result from Exercise \ref{ex:farkas_variations} part
+  b, which was a key tool used in proving the convex theorem of alternatives
+  from Exercise \ref{ex:convex_theorem_alternatives}. Given $A \in \R^{k \times
+    d}$, $b \in \R^k$, $g \in \R^d$, $h \in \R$, and a convex set $D \subseteq
+  \R^d$, with $b \geq 0$ and $0 \in \interior(D)$, consider two statements:       
+  \begin{itemize}
+  \item for all $x \in D$, it holds that $Ax \leq b \implies g^\T x \leq h$;  
+  \item there exists $\mu \in \R^k$ such that $\mu \geq 0$ and $\mu^\T (Ax - b) 
+    \geq g^\T x - h$ for all $x \in D$.
+  \end{itemize}
+  We will prove that these two statements are equivalent in what follows.
+
+\begin{enumerate}[label=\alph*.]
+\item Prove that the second statement implies the first.
+
+\item To prove that the first statement implies the second, start by defining 
+  \[
+  K_1 = \closure \Big\{ (x,t) \in \R^d \times \R: t > 0, \, x/t \in D \Big\}
+  \quad \text{and} \quad K_2 = \Big\{ (x,t) \in \R^d \times \R: Ax \leq tb
+  \Big\}.  
+  \]
+  Show that these are convex cones, whose relative interiors have nonempty  
+  intersection.
+
+\item Define $f = (g,-h) \in \R^{d+1}$, and show that $f^\T (x,t) \leq 0$ for
+  all $(x,t) \in K_1 \cap K_2$.  
+
+\item Use Exercise \ref{ex:dubovitski_milutin} to argue that we can decompose
+  $f = \psi + \phi$, where $\psi^\T(x,t) \leq 0$ for all $x \in K_1$, and
+  $\phi^\T (x,t) \leq 0$ for all $x \in K_2$.
+
+\item Use Exercise \ref{ex:farkas_variations} part a to show that there exists
+  $\mu \geq 0$ such that $[A \, -b]^\T \mu = \phi$, in other words, $\phi^\T
+  (x,t) = \mu^\T (Ax - tb)$ for all $x,t$, and use this to prove the desired
+  conclusion.      
+\end{enumerate}
+
+\item \label{ex:convex_theorem_alternatives_conic}
+  just guide them through the conic theorem of alternatives from 3.2.2 in BTN
+  and the conic slater condition in the main text, by generalizing earlier
+  proofs, and using the above Farkas lemma variation
 
 \item \label{ex:trace_norm_semidefinite} 
  
