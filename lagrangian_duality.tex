@@ -1097,8 +1097,8 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   \item for an LP, a solution exists whenever its optimal criterion value is
     finite (Corollary \ref{cor:weierstrass_convex_constrained}, which applies
     because for a finite optimal value, the criterion and constraint set cannot
-    share a ``proper'' direction of recession, along which the criterion is
-    nonconstant and the constraint set nonlinear);    
+    share a ``proper'' direction of recession along which the criterion is
+    nonconstant and the constraint set nonlinear);     
   \item for an SDP, a solution can fail to exist even if the optimal value is
     finite (Exercise \ref{ex:sdp_no_solution}).   
   \end{itemize}
@@ -1109,22 +1109,20 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 \begin{enumerate}[label=\alph*.]
 \item For an SDP \eqref{eq:sdp_primal} that satisfies condition (i) in Corollary 
   \ref{thm:slater_conic}, prove that $f^\star > -\infty$ if and only if the dual 
-  \eqref{eq:sdp_primal} is feasible, in which case a dual solution
-  exists. Hint: apply the general Slater condition from Theorem
-  \ref{thm:slater_conic}.  Note: this result can be compared to what is known 
-  for LPs, from Exercise \ref{ex:lp_slater} part c, the conclusion there being 
-  that \emph{both} primal and dual solutions exist.
+  \eqref{eq:sdp_primal} is feasible, in which case a dual solution exists. Hint:
+  apply the general Slater condition from Theorem \ref{thm:slater_conic}.   
 
 \item Similarly, for an SDP whose dual \eqref{eq:sdp_dual} satisfies condition
   (ii) in Corollary \ref{thm:slater_conic}, prove that $g^\star < \infty$ if and
   only if the primal \eqref{eq:sdp_primal} is feasible, in which case a primal
-  solution exists. Hint: again use the general Slater condition from Theorem 
-  \ref{thm:slater_conic}, now on the dual. Note: this result can be compared
-  to what is known for LPs, from Exercise \ref{ex:lp_slater} part d, the
-  conclusion there being that \emph{both} primal and dual solutions exist.  
+  solution exists. Hint: again use the general Slater condition from Theorem  
+  \ref{thm:slater_conic}, now on the dual. 
 
-\item Show that the statements above cannot be sharpened for SDPs in general, by
-  studying the example  
+\item The above results for SDPs can be compared to what is known for LPs, in
+  Exercise \ref{ex:lp_slater} parts c and d, where the conclusion is that a
+  finite optimal criterion value implies \emph{both} primal and dual LP 
+  solutions exist. Show that the statements above, in parts a and b of this
+  exercise, cannot be sharpened in general for SDPs by studying the example        
   \begin{alignat*}{2}
    &\minimize_x \quad && x_1 \\
    &\st \quad && 
@@ -1158,7 +1156,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
  \end{bmatrix}.
   \end{alignat*}
   for arbitrary $\alpha > 0$. Compute the primal optimal value, then compute the
-  dual optimal value, and show that the duality gap is $\alpha$. Explain why
+  dual optimal value, to conclude that the duality gap is $\alpha$. Explain why 
   this example does not violate Theorem \ref{thm:slater_conic}.  Note: this
   example is taken from \cite{ramana1997exact}, who in turn credits
   \cite{vandenberghe1996semidefinite} for a related example.  
