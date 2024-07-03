@@ -747,17 +747,17 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 \index{quadratic program!dual problem}
 \item \label{ex:qp_psd_dual} 
   Consider the QP in \eqref{eq:qp_primal} but now assume that $Q \succeq
-  0$. Prove that its dual is as claimed in \eqref{eq:qp_psd_dual}. Hint: taking
-  the gradient of the Lagrangian with respect to $x$, and setting it equal to
-  zero, yields $Qx = -(c + A^\T u + G^\T v)$. When does this have a solution?
-  When this does not have a solution, what does that mean about the infimum of 
-  the Lagrangian over $x$?   
+  0$. Prove that its dual is as claimed in \eqref{eq:qp_psd_dual}. Hint: take
+  the gradient of the Lagrangian with respect to $x$, then set it equal to zero
+  and rearrange to yield $Qx = -(c + A^\T u + G^\T v)$. When does this have a  
+  solution? When this does not have a solution, what does that mean about the 
+  infimum of the Lagrangian over $x$?   
 
 \item \label{ex:nonconvex_quartic}
   We derive the dual for the nonconvex quartic minimization
-  \eqref{eq:nonconvex_quartic}, as given in Example
-  \ref{xa:nonconvex_quartic}. First show that taking the derivative of the  
-  Lagrangian with respect to $x$ and setting it equal to zero yields 
+  \eqref{eq:nonconvex_quartic}, as claimed in Example
+  \ref{xa:nonconvex_quartic}. First show that taking the derivative of the
+  Lagrangian with respect to $x$ and setting it equal to zero leads to
   \[
   x^3 - 25x + 25 - \frac{25}{2} u = 0.
   \]
@@ -768,6 +768,30 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   \eqref{eq:nonconvex_quartic_dual} can be obtained by taking the minimum value
   of the (real part of the) Lagrangian over these roots. 
 
+\item The transportation problem from Example \parref{xa:transportation}   
+  offers an intuitive example of LP duality. In this setting, recall, we have a
+  per unit transportation cost $c_{ij}$ from location $i$ to $j$, a supply $s_i$
+  at $i$, and a demand $d_j$ at $j$. The problem is to minimize the total
+  transportation cost:  
+  \begin{alignat*}{2}
+  &\minimize_x \quad && \sum_{i=1}^m \sum_{j=1}^n c_{ij} x_{ij} \\ 
+  &\st \quad && \sum_{j=1}^n x_{ij} = s_i, \; i=1,\dots,m \\
+  & && \sum_{i=1}^m x_{ij} = d_j, \; j=1,\dots,n \\
+  & && x \geq 0.
+  \end{alignat*}
+  Prove that its dual is (equivalent to, after reparametrization):    
+  \begin{alignat*}{2}
+  &\maximize_{u,v} \quad && \sum_{i=1}^m u_i s_i + \sum_{j=1}^n v_j d_j \\  
+  &\st \quad && u_i + v_i \leq c_{ij}, \; i=1,\dots,m, \; j=1,\dots,n,
+  \end{alignat*}
+  which is sometimes referred to as the \emph{shipper's problem}. The
+  interpretation is as follows. A shipper puts forth a proposal to charge $u_i$
+  to load each unit from location $i$ and $v_j$ to unload each unit from
+  location $j$. The shipper will try to maximize their profit, but must not
+  charge more to ship from $i$ to $j$ than the given cost $c_{ij}$. By strong
+  duality, a clever shipper (with dual optimal prices) will make exactly as much
+  as the cheapest possible transportation cost.    
+ 
 \item \label{ex:lp_dual_dual}
   To form the dual of \eqref{eq:lp_dual}, first convert it to a minimization
   problem by negating its criterion and rewrite the equality constraint as
@@ -805,7 +829,6 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 \item \label{ex:lasso_dual}
   Consider the lasso problem, for a response vector $y \in \R^n$ and feature  
   matrix $X \in \R^{n \times d}$, 
-  \index{lasso!dual problem} 
   \[
   \minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
   \]
@@ -819,6 +842,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 
 \begin{enumerate}[label=\alph*.]
 \item Show that the dual of \eqref{eq:lasso_primal} is (equivalent to)
+  \index{lasso!dual problem} 
   \begin{equation}
   \label{eq:lasso_dual}
   \maximize_u \quad -\frac{1}{2} \|y - u\|_2^2 + \frac{1}{2} \|y\|_2^2 \quad \st
@@ -832,7 +856,6 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 \item \label{ex:svm_dual}
   Consider the SVM problem, for labels $y_i \in \{ -1, 1\}$ and features $x_i
   \in \R^d$, $i=1,\dots,n$,       
-  \index{support vector machine!dual problem} 
   \begin{equation}
   \label{eq:svm_primal}
   \begin{alignedat}{2}
@@ -847,6 +870,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 \item Let $y \in \R^n$ denote the label vector and $X \in \R^{n \times d}$ the
   feature matrix (whose $i\th$ row is $x_i^\T$), and define \smash{$\tilde{X} =
     \diag(y) X$}. Show that the dual of \eqref{eq:svm_primal} is (equivalent to)      
+  \index{support vector machine!dual problem} 
   \begin{equation}
   \label{eq:svm_dual}
   \begin{alignedat}{2}
@@ -958,8 +982,8 @@ in Corollary \ref{cor:slater_sdp}. Exercises
     $h_{r+1}(x) \leq 0, \dots, h_m(x) \leq 0$), then relabel the corresponding
     dual variable as $u \geq 0$.
   \end{itemize}
-  We will maintain $m,k$ for the dimensions of $u,v$, respectively. Now with
-  this notation in place, define the sets    
+  We will maintain $m,k$ for the dimensions of $u,v$, respectively. Now define
+  the sets     
   \begin{align*}
   S &= \Big\{ (t_0, t_1) \in \R \times \R^m : t_0 < 0, \, t_1 \leq 0 \Big\}, \\  
   T &= \Big\{ (t_0, t_1) \in \R \times \R^m : \text{there exists $x$ such that

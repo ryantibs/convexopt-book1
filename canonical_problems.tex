@@ -26,38 +26,38 @@ Importantly, observe that an LP is always a convex optimization problem.
 
 \begin{Example}
 The following are classic examples of linear programs. 
-
-\begin{enumerate}[label=\alph*.]
+\begin{enumerate}[label=\alph*., ref=\alph*]
 \item The \emph{diet problem} is an LP to find the cheapest combination of 
-  foods that satisfies some nutritional requirements:
+  foods that satisfies some set of nutritional requirements:
   \begin{alignat*}{2}
-    &\minimize_x \quad && \sum_{j=1}^n c_j x_j \\
-    &\st \quad && \sum_{j=1}^n a_{ij} x_j \geq b_i, \; i=1,\dots,m \\  
-    & && x \geq 0,
+  &\minimize_x \quad && \sum_{j=1}^n c_j x_j \\
+  &\st \quad && \sum_{j=1}^n a_{ij} x_j \geq b_i, \; i=1,\dots,m \\  
+  & && x \geq 0.
   \end{alignat*}
-  where $c_j$ is the cost per unit of food $j$, $b_i$ is the minimum required
-  intake of nutrient $i$, and $a_{ij}$ is the content of nutrient $i$ per unit
-  of food $j$. At the solution, $x^\star_j$ is the number of units of food $j$ 
-  in the optimal diet. 
+  Here $c_j$ is the cost per unit of food $j$, $b_i$ is the minimum required
+  intake of nutrient $i$, and $a_{ij}$ is the amount of nutrient $i$ per unit of
+  food $j$. At the solution, $x^\star_j$ denotes the number of units of food $j$
+  in the optimal diet.  
 
-\item The \emph{transportation problem} is an LP to find the cheapest way to
-  ship items from given sources to destinations:
+\item \parlab{xa:transportation}
+  The \emph{transportation problem} is an LP to find the cheapest way to
+  transport items from some set of sources to destinations: 
   \begin{alignat*}{2}
-   &\minimize_x \quad && \sum_{i=1}^m \sum_{j=1}^n c_{ij} x_{ij} \\ 
-   &\st \quad && \sum_{j=1}^n x_{ij} \leq s_i, \; i=1,\dots,m \\
-   & && \sum_{i=1}^m x_{ij} \geq d_j, \; j=1,\dots,n \\
-   & && x \geq 0,
- \end{alignat*}
- where $c_{ij}$ is the per unit shipping cost from $i$ to $j$, $s_i$ is the
- supply at source $i$, and $d_j$ is the demand at destination $j$. At the
- solution, $x^\star_{ij}$ is the number of units shipped from $i$ to $j$ in the
- optimal shipping scheme. 
+  &\minimize_x \quad && \sum_{i=1}^m \sum_{j=1}^n c_{ij} x_{ij} \\  
+  &\st \quad && \sum_{j=1}^n x_{ij} = s_i, \; i=1,\dots,m \\
+  & && \sum_{i=1}^m x_{ij} = d_j, \; j=1,\dots,n \\
+  & && x \geq 0.
+  \end{alignat*}
+ Here $c_{ij}$ is the per unit transportation cost from $i$ to $j$, $s_i$ is the
+ supply at source $i$, and $d_j$ is the demand at destination $j$. At the 
+ solution, $x^\star_{ij}$ represents the number of units moved from $i$ to $j$
+ in the optimal transportation scheme.    
 \end{enumerate}
 \end{Example} 
 
 In general, not only for LPs but for all problem classes (QPs, SDPs, and so on),
-we will call a problem an LP provided that it is equivalent to one. For example,
-we still call \eqref{eq:linear_program} an LP when the minimization is replaced
+we will call a problem an LP provided that it is equivalent to one; for example,
+we will call \eqref{eq:linear_program} an LP when the minimization is replaced
 by maximization.  
 
 Next we list some basic properties of linear programs. 
