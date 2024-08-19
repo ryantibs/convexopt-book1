@@ -335,17 +335,16 @@ between convexity properties of $f$ and smoothness properties of $f^*$.
 
 \index{Lipschitz smoothness}
 \index{strong convexity}
-\index{Baillon-Haddad theorem}
 \begin{Theorem}
 \label{thm:conjugate_smoothness}
 Let $f$ be a closed convex function. Then $f$ is strongly convex with parameter
 $m>0$ if and only if $\nabla f^*$ is Lipschitz with parameter $1/m>0$. 
 \end{Theorem}
 
-The result in Theorem \ref{thm:conjugate_smoothness} is sometimes called the
-\emph{Baillon-Haddad theorem}; its proof is outlined in Exercise
-\ref{ex:conjugate_smoothness}. We note that this result explains the symmetry 
-behind Theorems \ref{thm:lipschitz_smoothness} and \ref{thm:strong_convexity}.
+The proof of Theorem \ref{thm:conjugate_smoothness} is outlined in Exercise
+\ref{ex:conjugate_smoothness}. We note that the result in Theorem
+\ref{thm:conjugate_smoothness} explains the symmetry behind Theorems
+\ref{thm:lipschitz_smoothness} and \ref{thm:strong_convexity}.   
 
 \medskip
 
@@ -455,15 +454,11 @@ and relations are geometric in nature; Exercise
 perspective. The latter book also provides an extensive treatment of conjugate
 calculus (Chapter 15), and functions of Legendre type (Chapter 26).
 
-The Baillon-Haddad theorem was established by \cite{baillon1977quelques},
-who phrased the result in the language of monotone operator theory. A nice 
-elementary and self-contained treatment of this result is given in
-\cite{bauschke2009baillon} (also phrased in the language of monotone
-operators). The Moreau decomposition is due to \cite{moreau1962fonctions,
-  moreau1965proximite}, and the connection between the Moreau envelope and 
+The Moreau decomposition is due to \cite{moreau1962fonctions,
+  moreau1965proximite}, and the connection between the Moreau envelope and
 regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
-\to 0$) is due to \cite{attouch1977convergence}, later generalized by
-\cite{attouch1981convergence}.  
+\to 0$) is due to \cite{attouch1977convergence}, which was later generalized by 
+\cite{attouch1981convergence}.   
 
 \clearpage
 
@@ -653,7 +648,6 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
 
 \index{Lipschitz smoothness}
 \index{strong convexity}
-\index{Baillon-Haddad theorem}
 \item \label{ex:conjugate_smoothness}
   In this exercise, we will prove Theorem \ref{thm:conjugate_smoothness}.
 
@@ -672,9 +666,9 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   \[
   (u-v)^\T (x-y) \geq m \|x-y\|_2^2.
   \]
-  Use Cauchy-Schwarz to prove that $\|\nabla f^*(u) - \nabla f^*(v)\|_2 \leq
-  (1/m) \|u-v\|_2$, and conclude that $\nabla f^*$ is Lipschitz with constant
-  $1/m$.    
+  Use the Cauchy-Schwarz inequality to prove that $\|\nabla f^*(u) - \nabla
+  f^*(v)\|_2 \leq (1/m) \|u-v\|_2$, and conclude that $\nabla f^*$ is Lipschitz
+  with constant $1/m$.    
 
 \item Now suppose that $\nabla f^*$ is Lipschitz with parameter $1/m$. For
   simplicity, let $g=f^*$ and $L=1/m$. Fix any $u,v$ and define a function
@@ -704,6 +698,27 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   strongly convex with parameter $m$. 
   % We're implicitly using the fact that \nabla g is surjective ... leave as is?
 \end{enumerate}
+
+\item \label{ex:baillon_haddad}
+  The last exercise, parts c--e in particular, establish that for convex and
+  differentiable $f$, if $\nabla f$ is Lipschitz with parameter $L>0$, then  
+  \index{co-coercive operator}
+  \begin{equation}
+  \label{eq:gradient_co_coercivity}
+  \big(\nabla f(x) - \nabla f(y)\big)^\T (x - y) \geq \frac{1}{L}  \|\nabla f(x)
+  - \nabla f(y)\|_2^2, \quad \text{for all $x,y \in \dom(f)$}. 
+  \end{equation}
+  The property \eqref{eq:gradient_co_coercivity} is called \emph{co-coercivity}
+  of the gradient $\nabla f$. Prove that the opposite is also true: if 
+  \eqref{eq:gradient_co_coercivity} holds then $\nabla f$ is Lipschitz with 
+  parameter $L>0$. 
+
+\smallskip 
+\index{Baillon-Haddad theorem}
+Note: this fact---that for convex and differentiable $f$, co-coercivity of the 
+gradient \eqref{eq:gradient_co_coercivity} is equivalent to Lipschitzness of
+$\nabla f$---is called the \emph{Baillon-Haddad theorem}, due to
+\cite{baillon1977quelques}. 
 
 \index{Moreau decomposition}
 \item \label{ex:moreau_decomposition_lambda}
