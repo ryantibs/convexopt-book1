@@ -248,12 +248,12 @@ inspection.
   \begin{alignat*}{2}
   &\maximize_x \quad && \mu^\T x - \frac{\gamma}{2} x^\T \Sigma x \\ 
   &\st \quad && \one^\T x = 1 \\
-  & && x \geq 0,
+  & && x \geq 0.
   \end{alignat*}
-  where $\mu$ is the vector of expected returns on the assets, $\Sigma$ is the 
-  covariance matrix of returns on the assets, and $\gamma \geq 0$ is tuning
-  parameter called the risk tolerance factor in this context. The solution
-  $w^\star$ is the vector of optimal portfolio holdings. 
+  Here $\mu$ is a vector of expected returns on the assets in consideration,
+  $\Sigma$ is a covariance matrix of returns on the assets, and $\gamma \geq 0$
+  is tuning parameter called the risk tolerance level in this context. The
+  solution $x^\star$ is the vector of optimal portfolio holdings.  
 
 \index{lasso}
 \item The lasso problem \eqref{eq:lasso} is a QP. 

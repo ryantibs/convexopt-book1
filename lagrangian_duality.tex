@@ -314,9 +314,9 @@ coefficients are
 \]
 where \smash{$\epsilon_1 = (-1 + i \sqrt{3})/2$}, \smash{$\epsilon_2 = (-1 -    
   i \sqrt{3})/2$}, and $i$ is the imaginary unit. The right panel of Figure
-\ref{fig:nonconvex_quartic} plots the dual criterion; that this function is
-concave, as we know is guaranteed by Property \parref{par:convex_dual}, is 
-not at all obvious from its analytic form!      
+\ref{fig:nonconvex_quartic} plots the dual criterion; observe that this function
+is concave, which is a fact that we know is guaranteed by Property
+\parref{par:convex_dual}, but is not at all obvious from its analytic form!       
 \end{Example}
 
 \begin{figure}[tb]
@@ -346,6 +346,7 @@ can always be rewritten as inequality constraints (each $\ell_j(x) = 0$ can be
 rewritten as $\ell_j(x) \leq 0$ and $-\ell_j(x) \leq 0$). 
 
 \paragraph{Max-min interpretation.}
+\parlab{par:max_min}
 
 Recall that, by definition \eqref{eq:dual_function}, for each $u \geq 0$,    
 \[
@@ -473,7 +474,8 @@ result shows.
 \begin{Theorem}
 \label{thm:duality_gap}
 For any primal problem \eqref{eq:primal_problem} and its dual
-\eqref{eq:dual_problem}, the following holds. 
+\eqref{eq:dual_problem}, and any primal feasible $x$ and dual feasible $u,v$,  
+the following holds.  
 
 \begin{enumerate}[label=(\roman*)]
 \item If the duality gap at $x,u,v$ equals $\epsilon \geq 0$, then $f(x) -
@@ -897,7 +899,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
     a$.
   \end{itemize}
   Prove that these are equivalent statements. Hint: showing that the second  
-  implies the first is straightforward. To prove the other direction, use
+  implies the first is straightforward. To prove the other direction, apply
   Farkas' lemma, Exercise \ref{ex:farkas}, with $A,b$ replaced by $-A^\T, -a$,
   respectively.        
 
@@ -908,9 +910,9 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   \item there exists $\mu \in \R^k$ such that $\mu \geq 0$ and $\mu^\T (Ax - b) 
     \geq g^\T x - h$ for all $x \in \R^d$.
   \end{itemize}
-  Prove that these are equivalent statements. Hint: as before, it is
-  straightforward to show that the second implies the first. For the other
-  direction, start by defining
+  Prove that these are equivalent statements. Hint: as before, showing the
+  second implies the first is straightforward. For the other direction, start by
+  defining 
   \[
   C = \bigg\{ \begin{bmatrix} A \\ -g^\T \end{bmatrix} x + \begin{bmatrix} u \\     
     v \end{bmatrix} : x \in \R^d, \, u \in \R^k_+, \, v > 0 \bigg\} 
