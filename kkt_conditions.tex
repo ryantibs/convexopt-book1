@@ -4,21 +4,86 @@
 \section{Saddle point condition}
 \label{sec:saddle_point_conditions}
 
-\index{Lagrangian function!saddle point}
+In this chapter, we will explore conditions which characterize solutions in
+constrained optimization problems, the most well-known being a set of conditions
+known as the Karush-Kuhn-Tucker (KKT) conditions. This flows naturally from our 
+study of Lagrange duality in the last chapter. In fact, the last chapter already
+established a key relationship between primal and dual solutions and what are
+called saddle points of the Lagrangian, which we revisit here. This will then
+lay the foundation for the KKT conditions, which we cover next.   
 
-start by (re)stating the saddle point theorem?
+As in the last chapter, consider a primal problem
+\begin{equation}
+\label{eq:primal_problem2}
+\begin{alignedat}{2}
+&\minimize_x \quad && f(x) \\
+&\st \quad && h_i(x) \leq 0, \; i=1,\dots,m \\ 
+& && \ell_j(x) = 0, \; j=1,\dots,k,
+\end{alignedat}
+\end{equation}
+whose associated Lagrangian and dual function are
+\begin{align*}
+L(x,u,v) &= f(x) + \sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^k v_j \ell_j(x), \\ 
+g(u,v) &= \inf_x \, L(x,u,v), 
+\end{align*}
+and whose associated dual problem is 
+\begin{equation}
+\label{eq:dual_problem2}
+\maximize_{u,v} \quad g(u,v) \quad \st \quad u \geq 0.
+\end{equation}
+We do not assume that \eqref{eq:primal_problem2} is convex, though recall, the 
+dual problem \eqref{eq:dual_problem2} is always convex. In general, we say that
+a triplet \smash{$\bar{x}, \bar{u}, \bar{v}$} is a \emph{saddle point} of the
+Lagrangian if  
+\index{Lagrangian function!saddle point} 
+\begin{equation}
+\label{eq:lagrangian_saddle_point2}
+L(\bar{x}, u, v) \leq L(\bar{x}, \bar{u}, \bar{v}) \leq L(x, \bar{u}, \bar{v}),
+\quad \text{for any $x$ and any $u \geq 0, \, v$}.
+\end{equation}
+In other words, starting at \smash{$\bar{x}, \bar{u}, \bar{v}$}, this condition
+says: if we move the primal variable away from \smash{$\bar{x}$} then $L$ can
+only increase, and furthermore, if we move the dual variables away from
+\smash{$\bar{u}, \bar{v}$}, then $L$ can only  decrease.  The following is a
+simple but useful characterization of primal and dual solutions via saddle
+points. 
 
-if x,u,v is a saddle point of the Lagrangian then x is primal optimal and u,v
-are dual optimal
+\begin{Theorem}
+\label{thm:saddle_point_condition}
+For any primal problem \eqref{eq:primal_problem2} and its dual
+\eqref{eq:dual_problem2}, and any primal feasible \smash{$\bar{x}$} and dual  
+feasible \smash{$\bar{u}, \bar{v}$}, the following holds: \smash{$\bar{x},
+  \bar{u}, \bar{v}$} is a saddle point of the Lagrangian if and only if
+\smash{$\bar{x}$} is primal optimal, \smash{$\bar{u}, \bar{v}$} are dual
+optimal, and strong duality holds. 
+\end{Theorem}
 
-under strong duality, if x is primal optimal and u,v are dual optimal, then
-x,u,v is a saddle point of the Lagrangian.
-
-should we cover constraint qualification? 
-somehow try to cover lagrange multipliers as a consquence?
+Though the arguments behind this result were already given in Chapter 
+\ref{chap:lagrangian_duality}, it will be helpful to consolidate them here.
+First, note that the saddle point condition
+\eqref{eq:lagrangian_saddle_point2} has a couple of equivalent forms:
+\begin{equation}
+\label{eq:lagrangian_saddle_point3}
+\sup_{u \geq 0, \, v} \, L(\bar{x}, u, v) = L(\bar{x}, \bar{u}, \bar{v}) =
+\inf_x \, L(x, \bar{u}, \bar{v}), 
+\end{equation}
+as well as
+\begin{equation}
+\label{eq:lagrangian_saddle_point4}
+f(\bar{x}) = L(\bar{x}, \bar{u}, \bar{v}) = g(\bar{u}, \bar{v}).
+\end{equation}
+The right-hand side in the above display is due to the definition of the dual
+function $g$, whereas the left-hand side uses the representation of $f$ as a
+supremum of the Lagrangian, from Property \parref{par:max_min}. To prove    
+Theorem \ref{thm:saddle_point_condition} we simply observe that
+\eqref{eq:lagrangian_saddle_point4} is equivalent to \smash{$\bar{x}, \bar{u}, 
+  \bar{v}$} being primal and dual solutions with zero duality gap. 
 
 \section{Karush-Kuhn-Tucker conditions}
 \label{sec:kkt_conditions}
+
+ This will lay the
+foundation for the the KKT conditions, which will be covered next. 
 
 examples
 
@@ -32,9 +97,16 @@ SVM
 
 \index{svm!optimality conditions}
 
+\subsection{The role of convexity*}
+
+what goes here? is this where we talk about splitting up subdifferentials?
+
 \section{Primal solutions from dual solutions}
 
-\section{The role of convexity*}
+\section{Constraint qualification*}
+
+should we cover constraint qualification? 
+somehow try to cover lagrange multipliers as a consquence?
 
 \section{Equivalence of constrained and penalized forms*}
 
