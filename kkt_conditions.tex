@@ -105,8 +105,8 @@ satisfies the following conditions:
 && \text{(dual feasibility)}
 \end{alignat}
 To be clear, in \eqref{eq:kkt_stationarity}, called the stationarity condition,
-the subdifferential is being computed with respect to the $x$ component of the
-Lagrangian. 
+the subdifferential is taken with respect to the $x$ component of the
+Lagrangian.  
 
 The next result shows that the KKT conditions offer yet another equivalent
 characterization of saddle point condition (together with feasibility).  
@@ -155,23 +155,38 @@ In other words, the KKT conditions are always sufficient for optimality, and
 necessary under strong duality.  
 \end{Theorem}
 
-examples
+It is worth noting that the KKT conditions generalize the subgradient optimality
+condition \eqref{eq:subgradient_optimality}. That is, if problem
+\eqref{eq:primal_problem2} has no constraints ($m = k = 0$), then the Lagrangian
+is simply the primal criterion, $L = f$, and the only non-vacuous KKT condition
+is stationarity \eqref{eq:kkt_stationarity}, which reduces to
+\eqref{eq:subgradient_optimality}. Exercise \ref{ex:kkt_subgradient_constrained}
+explores how subgradient optimality for a constrained problem
+\eqref{eq:subgradient_optimality_constrained} relates to the KKT conditions.  
 
-quad with eq constraint
+\begin{Example}
 
-lasso??
+\begin{enumerate}[label=\alph*., ref=\alph*]
 
+\item quad with eq constraint, i.e., KKT matrix
+
+\item lasso ??
 \index{lasso!optimality conditions}
 
-SVM
-
+\item SVM
 \index{svm!optimality conditions}
+\end{enumerate}
+\end{Example}
 
-\subsection{The role of convexity*}
-
-what goes here? is this where we talk about splitting up subdifferentials?
 
 \section{Primal solutions from dual solutions}
+
+\begin{Remark}
+Talk about the role of convexity in interpreting the stationarity codition.
+Can't split it up for nonconvex functions. Relevant here since stationarity is
+how we tie primal and dual solutions together? Or put it somewhere
+else? 
+\end{Remark} 
 
 \section{Constraint qualification*}
 
@@ -188,6 +203,10 @@ somehow try to cover lagrange multipliers as a consquence?
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
+\item \label{ex:kkt_subgradient_constrained}
+recall here that subgradient optimality generalized the first order condition
+(and Lagrange multiplier condition). so this makes KKT the parent of all. 
+
 \item \label{ex:lasso_dantzig}
 Compare these two? And how about basis pursuit?
 
