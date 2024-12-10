@@ -2,15 +2,16 @@
 \label{chap:kkt_conditions}
 
 \section{Saddle point condition}
-\label{sec:saddle_point_conditions}
+\label{sec:saddle_point_condition}
 
 In this chapter, we will explore conditions which characterize solutions in
 constrained optimization problems, the most well-known being a set of conditions
 known as the Karush-Kuhn-Tucker (KKT) conditions. This flows naturally from our 
 study of Lagrange duality in the last chapter. In fact, the last chapter already
-established a key relationship between primal and dual solutions and what are
-called saddle points of the Lagrangian, which we revisit here. This will then
-lay the foundation for the KKT conditions, which we cover next.   
+established a critical relationship between primal and dual solutions and what
+are known as saddle points of the Lagrangian. These arguments were given in 
+passing, and here we revisit them, as they will lay the foundation for the KKT 
+conditions, which we cover next.           
 
 As in the last chapter, consider a primal problem
 \begin{equation}
@@ -41,21 +42,22 @@ Lagrangian if
 L(\bar{x}, u, v) \leq L(\bar{x}, \bar{u}, \bar{v}) \leq L(x, \bar{u}, \bar{v}),
 \quad \text{for any $x$ and any $u \geq 0, \, v$}.
 \end{equation}
-In other words, starting at \smash{$\bar{x}, \bar{u}, \bar{v}$}, this condition
+In other words, starting at \smash{$\bar{x}, \bar{u}, \bar{v}$}, the condition
 says: if we move the primal variable away from \smash{$\bar{x}$} then $L$ can
-only increase, and furthermore, if we move the dual variables away from
-\smash{$\bar{u}, \bar{v}$}, then $L$ can only  decrease.  The following is a
-simple but useful characterization of primal and dual solutions via saddle
-points. 
+only increase; if we move the dual variables away from \smash{$\bar{u},
+  \bar{v}$}, then $L$ can only decrease.    
+
+The following is a useful characterization of primal and dual solutions via
+saddle points.  
 
 \begin{Theorem}
 \label{thm:saddle_point_condition}
 For any primal problem \eqref{eq:primal_problem2} and its dual
-\eqref{eq:dual_problem2}, and any primal feasible \smash{$\bar{x}$} and dual  
-feasible \smash{$\bar{u}, \bar{v}$}, the following holds: \smash{$\bar{x},
-  \bar{u}, \bar{v}$} is a saddle point of the Lagrangian if and only if
-\smash{$\bar{x}$} is primal optimal, \smash{$\bar{u}, \bar{v}$} are dual
-optimal, and strong duality holds. 
+\eqref{eq:dual_problem2}, and any primal feasible \smash{$\bar{x}$} and dual
+feasible \smash{$\bar{u}, \bar{v}$}, the triplet \smash{$\bar{x}, \bar{u},
+  \bar{v}$} is a saddle point of the Lagrangian
+\eqref{eq:lagrangian_saddle_point2} if and only if \smash{$\bar{x}$} is primal
+optimal, \smash{$\bar{u}, \bar{v}$} are dual optimal, and strong duality holds.
 \end{Theorem}
 
 Though the arguments behind this result were already given in Chapter 
@@ -82,8 +84,76 @@ Theorem \ref{thm:saddle_point_condition} we simply observe that
 \section{Karush-Kuhn-Tucker conditions}
 \label{sec:kkt_conditions}
 
- This will lay the
-foundation for the the KKT conditions, which will be covered next. 
+We say that a triplet \smash{$\bar{x}, \bar{u}, \bar{v}$} is a
+\emph{Karush-Kuhn-Tucker (KKT) point} associated with the primal and 
+dual pair \eqref{eq:primal_problem2} and \eqref{eq:dual_problem2} if it
+satisfies the following conditions: 
+\index{KKT conditions}
+\begin{alignat}{2}
+\label{eq:kkt_stationarity}
+&0 \in \partial_x L(\bar{x}, \bar{u}, \bar{v}) \quad
+&& \text{(stationarity)} \\
+\label{eq:kkt_complementary_slackness} 
+&\bar{u}_i h_i(\bar{x}) = 0, \; i = 1,\dots,m \quad 
+&& \text{(complementary slackness)} \\
+\label{eq:kkt_primal_feasibility}
+&h_i(\bar{x}) \leq 0, \; i = 1,\dots,m, \; \text{and} \; 
+\ell_j(\bar{x}) = 0, \; j = 1,\dots,k \quad 
+&& \text{(primal feasibility)} \\ 
+\label{eq:kkt_dual_feasibility}
+&\bar{u}_i \geq 0, \; i = 1,\dots,m. \quad
+&& \text{(dual feasibility)}
+\end{alignat}
+To be clear, in \eqref{eq:kkt_stationarity}, called the stationarity condition,
+the subdifferential is being computed with respect to the $x$ component of the
+Lagrangian. 
+
+The next result shows that the KKT conditions offer yet another equivalent
+characterization of saddle point condition (together with feasibility).  
+
+\begin{Lemma}
+\label{lem:saddle_point_kkt}
+For any primal feasible \smash{$\bar{x}$} and dual feasible \smash{$\bar{u}, 
+  \bar{v}$}, the saddle point condition \eqref{eq:lagrangian_saddle_point2} is
+equivalent to stationarity and complementary slackness,
+\eqref{eq:kkt_stationarity} and \eqref{eq:kkt_complementary_slackness}.
+\end{Lemma}
+
+The proof is straightforward, if we use the equivalent form of the saddle point
+condition \eqref{eq:lagrangian_saddle_point4}. The second equality in
+\eqref{eq:lagrangian_saddle_point4} is equivalent to the fact that
+\smash{$\bar{x}$} minimizes \smash{$L(\cdot, \bar{u}, \bar{v})$}, which is
+equivalent to stationarity \eqref{eq:kkt_stationarity}. The first equality in
+\eqref{eq:lagrangian_saddle_point4} is implied by complementary slackness
+\eqref{eq:kkt_complementary_slackness}:
+\[
+L(\bar{x}, \bar{u}, \bar{v}) = f(\bar{x}) + 
+\sum_{i=1}^m \underbrace{\bar{u}_i h_i(\bar{x})}_{=\,0} + 
+\sum_{j=1}^k \underbrace{\bar{v}_j \ell_j(\bar{x})}_{=\,0} 
+= f(\bar{x}),
+\]
+where we have used primal feasibility. Furthermore, the first equality in
+\eqref{eq:lagrangian_saddle_point4} also implies complementary slackness: if
+\smash{$f(\bar{x}) = L(\bar{x}, \bar{u}, \bar{v})$}, then (again using primal
+and dual feasibility) we conclude that all summands must be zero in the middle
+expression of the last display, which leads to
+\eqref{eq:kkt_complementary_slackness}. This completes the proof the theorem.
+
+Combining Theorem \ref{thm:saddle_point_condition} and Lemma
+\ref{lem:saddle_point_kkt} yields the following important result. 
+
+\index{KKT conditions}
+\begin{Theorem}
+\label{thm:kkt_conditions}
+For any primal problem \eqref{eq:primal_problem2} and its dual
+\eqref{eq:dual_problem2}, a triplet \smash{$\bar{x}, \bar{u}, \bar{v}$}
+satisfies the KKT conditions
+\eqref{eq:kkt_stationarity}--\eqref{eq:kkt_dual_feasibility} if and only if 
+\smash{$\bar{x}$} is primal optimal, \smash{$\bar{u}, \bar{v}$} are dual
+optimal, and strong duality holds. 
+In other words, the KKT conditions are always sufficient for optimality, and
+necessary under strong duality.  
+\end{Theorem}
 
 examples
 
