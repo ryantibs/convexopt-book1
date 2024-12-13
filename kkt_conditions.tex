@@ -150,34 +150,105 @@ For any primal problem \eqref{eq:primal_problem2} and its dual
 satisfies the KKT conditions
 \eqref{eq:kkt_stationarity}--\eqref{eq:kkt_dual_feasibility} if and only if 
 \smash{$\bar{x}$} is primal optimal, \smash{$\bar{u}, \bar{v}$} are dual
-optimal, and strong duality holds. 
-In other words, the KKT conditions are always sufficient for optimality, and
-necessary under strong duality.  
+optimal, and strong duality holds. In other words, the KKT conditions are always
+sufficient for optimality, and necessary under strong duality.   
 \end{Theorem}
 
+\index{subgradient!optimality condition}
+\index{Lagrange multiplier condition} 
 It is worth noting that the KKT conditions generalize the subgradient optimality
 condition \eqref{eq:subgradient_optimality}. That is, if problem
 \eqref{eq:primal_problem2} has no constraints ($m = k = 0$), then the Lagrangian
 is simply the primal criterion, $L = f$, and the only non-vacuous KKT condition
 is stationarity \eqref{eq:kkt_stationarity}, which reduces to
-\eqref{eq:subgradient_optimality}. Exercise \ref{ex:kkt_subgradient_constrained}
-explores how subgradient optimality for a constrained problem
-\eqref{eq:subgradient_optimality_constrained} relates to the KKT conditions.  
+\eqref{eq:subgradient_optimality}. Similarly, the KKT conditions generalize the
+Lagrange multiplier condition \eqref{eq:lagrange_multiplier}, which can seen
+either because the subgradient optimality condition does, or directly from
+stationarity \eqref{eq:kkt_stationarity} with linear equality constraints of the
+form $Ax = b$. 
 
 \begin{Example}
+The following examples discuss the KKT conditions for problems of interest. In
+each case, the KKT conditions are necessary and sufficient for optimality, as
+the problem in question is convex and strong duality holds by Slater's condition
+(Theorem \ref{thm:slater_condition}). 
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
 
-\item quad with eq constraint, i.e., KKT matrix
+\item Consider a QP with equality constraints only, 
+  \begin{alignat*}{2}
+  &\minimize_x \quad && c^\T x + \frac{1}{2} x^\T Q x \\
+  &\st && Ax = b,
+  \end{alignat*}
+  where $Q \succeq 0$. Its Lagrangian is 
+  \[
+  L(x,v) = c^\T x + \frac{1}{2} x^\T Q x + v^\T (Ax - b).
+  \]
+  Complementary slackness \eqref{eq:kkt_complementary_slackness} and dual
+  feasibility \eqref{eq:kkt_dual_feasibility} are vacuous due to the lack of 
+  inequality constraints. Stationarity \eqref{eq:kkt_stationarity} and primal
+  feasibility \eqref{eq:kkt_primal_feasibility} are each linear equations, which
+  can be assembled into one combined linear system:
+  \index{Karush-Kuhn-Tucker matrix}
+  \[
+  \begin{bmatrix} Q & A^\T \\ A & 0 \end{bmatrix}  
+  \begin{bmatrix} x \\ v \end{bmatrix} =
+  \begin{bmatrix} -c \\ b \end{bmatrix}.
+  \]
+  The above matrix is often called the \emph{KKT matrix} associated with our
+  original QP. 
 
-\item lasso ??
-\index{lasso!optimality conditions}
-
-\item SVM
-\index{svm!optimality conditions}
+\item \parlab{xa:lasso_kkt}
+  Consider the lasso problem
+  \[
+  \minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1, 
+  \]
+  for a response vector $y \in \R^n$ and feature matrix $X \in \R^{n \times
+    d}$. Since this problem has no constraints, the KKT conditions reduce to  
+  stationarity (which, as discussed above, is just the subgradient optimality 
+  condition):   
+  \index{lasso!optimality conditions}
+  \[
+  X^\T (y - X\beta) = \lambda s, \quad \text{where $s \in \partial
+    \|\beta\|_1$}. 
+  \]
+  This condition characterizes lasso solutions. We will see later, in Chapter
+  \ref{sec:lasso_structure}, that it provides a basis for better understanding
+  the structure of lasso solutions.   
+  
+\item \parlab{xa:svm_kkt}
+  Consider the SVM problem
+  \begin{alignat*}{2}
+  &\minimize_{\beta_0,\beta,\xi} \quad
+  && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
+  &\st \quad && y_i (\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\dots,n \\ 
+  & && \xi \geq 0,
+  \end{alignat*}
+  for labels $y_i \in \{ -1, 1\}$ and features $x_i \in \R^d$, $i=1,\dots,n$. 
+  Its Lagrangian is
+  \[
+   L(\beta,\beta_0,\xi,u,v) = 
+   \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i +  \sum_{i=1}^n u_i 
+   \big(1-\xi_i - y_i (\beta_0 + x_i^\T \beta) \big) - v^\T \xi. 
+   \]
+  The stationarity condition \eqref{eq:kkt_stationarity} reads
+  \index{svm!optimality conditions}
+  \[
+  \sum_{i=1}^n u_i y_i = 0, \quad 
+  \sum_{i=1}^n u_i y_i x_i = \beta, \quad
+  u_i + v_i = C, \quad i = 1,\dots,n.
+  \]
+  Complementary slackness \eqref{eq:kkt_complementary_slackness} yields  
+  \[
+    u_i \big(1-\xi_i - y_i (\beta_0 + x_i^\T \beta) \big) = 0, \quad v_i \xi_i = 
+    0, \quad i=1,\dots,n.
+  \]
+  Together with primal and dual feasibility, the above two conditions
+  characterize SVM solutions. We will see later, in Chapter
+  \ref{sec:svm_structure}, that these conditions provide a basis for better 
+  understanding the structure of SVM solutions.  
 \end{enumerate}
 \end{Example}
-
 
 \section{Primal solutions from dual solutions}
 
@@ -193,7 +264,7 @@ else?
 should we cover constraint qualification? 
 somehow try to cover lagrange multipliers as a consquence?
 
-\section{Equivalence of constrained and penalized forms*}
+\section{Constrained and penalized forms*}
 
 \section{Plurality of dual problems*}
 \label{sec:plurality_dual_problems}
@@ -203,9 +274,8 @@ somehow try to cover lagrange multipliers as a consquence?
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
-\item \label{ex:kkt_subgradient_constrained}
-recall here that subgradient optimality generalized the first order condition
-(and Lagrange multiplier condition). so this makes KKT the parent of all. 
+\item 
+
 
 \item \label{ex:lasso_dantzig}
 Compare these two? And how about basis pursuit?
