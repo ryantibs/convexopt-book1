@@ -142,10 +142,10 @@ and machine learning. Both problems are convex.
   \begin{equation}
   \label{eq:svm}
   \begin{alignedat}{2}
-    &\minimize_{\beta_0,\beta,\xi} \quad
-    && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
-    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\dots,n \\ 
-    & && \xi \geq 0.
+  &\minimize_{\beta_0,\beta,\xi} \quad
+  && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
+  &\st \quad && y_i (\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\dots,n \\
+  & && \xi \geq 0.
   \end{alignedat}
   \end{equation}
   Here $C \geq 0$ is a tuning parameter governing the tradeoff between the size
@@ -435,7 +435,7 @@ The following are two examples of partial optimization in convex problems.
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
 \item \parlab{xa:lasso_partial}
-  For responses $y \in \R^n$, and features $X_1 \in \R^{n \times  d_1}$ and
+  For a response $y \in \R^n$, and features $X_1 \in \R^{n \times  d_1}$ and 
   $X_2 \in \R^{n \times   d_2}$, consider 
   \[
   \minimize_{\beta_1, \beta_2} \quad \frac{1}{2} \|y - X_1\beta_1 -
@@ -457,9 +457,9 @@ The following are two examples of partial optimization in convex problems.
   X_1\beta_1\|_2^2+ \lambda \|\beta_1\|_1,  
   \]
   where \smash{$P_{X_2}^\perp = I - P_{X_2}$} is the projection onto the
-  orthocomplement $\col(X_2)$. Note that this is now a (usual form) lasso
-  problem with response \smash{$P_{X_2}^\perp y$} and features
-  \smash{$P_{X_2}^\perp  X_1$}.  
+  orthocomplement $\col(X_2)$. Note that this is a (usual form) lasso problem
+  with response \smash{$P_{X_2}^\perp y$} and feature matrix
+  \smash{$P_{X_2}^\perp  X_1$}.   
 
 \item Consider the SVM problem \eqref{eq:svm}. Note that, after rearrangement,
   the linear constraints are equivalent to

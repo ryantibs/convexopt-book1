@@ -829,7 +829,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 \end{enumerate}
 
 \item \label{ex:lasso_dual}
-  Consider the lasso problem, for a response vector $y \in \R^n$ and feature  
+  Consider the lasso problem, for a response vector $y \in \R^n$ and feature   
   matrix $X \in \R^{n \times d}$, 
   \[
   \minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
@@ -861,10 +861,10 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   \begin{equation}
   \label{eq:svm_primal}
   \begin{alignedat}{2}
-    &\minimize_{\beta_0,\beta,\xi} \quad
-    && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
-    &\st \quad && y_i(\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\dots,n \\  
-    & && \xi \geq 0.
+  &\minimize_{\beta_0,\beta,\xi} \quad
+  && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
+  &\st \quad && y_i (\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\dots,n \\ 
+  & && \xi \geq 0.
   \end{alignedat}
   \end{equation}
 
