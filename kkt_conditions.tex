@@ -51,13 +51,13 @@ The following is a useful characterization of primal and dual solutions via
 saddle points.  
 
 \begin{Theorem}
-\label{thm:saddle_point_condition}
+\label{thm:saddle_point_optimality}
 For any primal problem \eqref{eq:primal_problem2} and its dual
 \eqref{eq:dual_problem2}, and any primal feasible \smash{$\bar{x}$} and dual
 feasible \smash{$\bar{u}, \bar{v}$}, the triplet \smash{$\bar{x}, \bar{u},
   \bar{v}$} is a saddle point of the Lagrangian
 \eqref{eq:lagrangian_saddle_point2} if and only if \smash{$\bar{x}$} is primal
-optimal, \smash{$\bar{u}, \bar{v}$} are dual optimal, and strong duality holds.
+optimal, \smash{$\bar{u}, \bar{v}$} are dual optimal, and strong duality holds. 
 \end{Theorem}
 
 Though the arguments behind this result were already given in Chapter 
@@ -77,7 +77,7 @@ f(\bar{x}) = L(\bar{x}, \bar{u}, \bar{v}) = g(\bar{u}, \bar{v}).
 The right-hand side in the above display is due to the definition of the dual
 function $g$, whereas the left-hand side uses the representation of $f$ as a
 supremum of the Lagrangian, from Property \parref{par:max_min}. To prove    
-Theorem \ref{thm:saddle_point_condition} we simply observe that
+Theorem \ref{thm:saddle_point_optimality} we simply observe that 
 \eqref{eq:lagrangian_saddle_point4} is equivalent to \smash{$\bar{x}, \bar{u}, 
   \bar{v}$} being primal and dual solutions with zero duality gap. 
 
@@ -139,12 +139,12 @@ and dual feasibility) we conclude that all summands must be zero in the middle
 expression of the last display, which leads to
 \eqref{eq:kkt_complementary_slackness}. This completes the proof the theorem.
 
-Combining Theorem \ref{thm:saddle_point_condition} and Lemma
+Combining Theorem \ref{thm:saddle_point_optimality} and Lemma
 \ref{lem:saddle_point_kkt} yields the following important result. 
 
-\index{KKT conditions}
+\index{KKT conditions!optimality}
 \begin{Theorem}
-\label{thm:kkt_conditions}
+\label{thm:kkt_optimality}
 For any primal problem \eqref{eq:primal_problem2} and its dual
 \eqref{eq:dual_problem2}, a triplet \smash{$\bar{x}, \bar{u}, \bar{v}$}
 satisfies the KKT conditions
@@ -174,7 +174,6 @@ the problem in question is convex and strong duality holds by Slater's condition
 (Theorem \ref{thm:slater_condition}). 
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
-
 \item Consider a QP with equality constraints only, 
   \begin{alignat*}{2}
   &\minimize_x \quad && c^\T x + \frac{1}{2} x^\T Q x \\
@@ -200,30 +199,35 @@ the problem in question is convex and strong duality holds by Slater's condition
 
 \item \parlab{xa:lasso_kkt}
   Consider the lasso problem
-  \[
+  \begin{equation}
+  \label{eq:lasso_primal2}
   \minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1, 
-  \]
+  \end{equation}
   for a response vector $y \in \R^n$ and feature matrix $X \in \R^{n \times
     d}$. Since this problem has no constraints, the KKT conditions reduce to  
   stationarity (which, as discussed above, is just the subgradient optimality 
   condition):   
   \index{lasso!optimality conditions}
-  \[
+  \begin{equation}
+  \label{eq:lasso_optimality}
   X^\T (y - X\beta) = \lambda s, \quad \text{where $s \in \partial
     \|\beta\|_1$}. 
-  \]
+  \end{equation}
   This condition characterizes lasso solutions. We will see later, in Chapter
   \ref{sec:lasso_structure}, that it provides a basis for better understanding
   the structure of lasso solutions.   
   
 \item \parlab{xa:svm_kkt}
   Consider the SVM problem
-  \begin{alignat*}{2}
+  \begin{equation}
+  \label{eq:svm_primal2}
+  \begin{alignedat}{2}
   &\minimize_{\beta_0,\beta,\xi} \quad
   && \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i \\ 
   &\st \quad && y_i (\beta_0 + x_i^\T \beta) \geq 1-\xi_i, \;  i=1,\dots,n \\ 
   & && \xi \geq 0,
-  \end{alignat*}
+  \end{alignedat}
+  \end{equation}
   for labels $y_i \in \{ -1, 1\}$ and features $x_i \in \R^d$, $i=1,\dots,n$. 
   Its Lagrangian is
   \[
@@ -231,18 +235,20 @@ the problem in question is convex and strong duality holds by Slater's condition
    \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i +  \sum_{i=1}^n u_i 
    \big(1-\xi_i - y_i (\beta_0 + x_i^\T \beta) \big) - v^\T \xi. 
    \]
-  The stationarity condition \eqref{eq:kkt_stationarity} reads
+  The stationarity condition \eqref{eq:kkt_stationarity} becomes
   \index{svm!optimality conditions}
-  \[
+  \begin{equation}
+  \label{eq:svm_stationarity}
   \sum_{i=1}^n u_i y_i = 0, \quad 
   \sum_{i=1}^n u_i y_i x_i = \beta, \quad
   u_i + v_i = C, \quad i = 1,\dots,n.
-  \]
-  Complementary slackness \eqref{eq:kkt_complementary_slackness} yields  
-  \[
+  \end{equation}
+  Complementary slackness \eqref{eq:kkt_complementary_slackness} becomes   
+  \begin{equation}
+  \label{eq:svm_complementary_slackness}
     u_i \big(1-\xi_i - y_i (\beta_0 + x_i^\T \beta) \big) = 0, \quad v_i \xi_i = 
-    0, \quad i=1,\dots,n.
-  \]
+    0, \quad i=1,\dots,n. 
+  \end{equation}
   Together with primal and dual feasibility, the above two conditions
   characterize SVM solutions. We will see later, in Chapter
   \ref{sec:svm_structure}, that these conditions provide a basis for better 
@@ -250,14 +256,108 @@ the problem in question is convex and strong duality holds by Slater's condition
 \end{enumerate}
 \end{Example}
 
-\section{Primal solutions from dual solutions}
+\section{Primal-dual relationships}
 
-\begin{Remark}
+For a primal-dual pair \eqref{eq:primal_problem2}, \eqref{eq:dual_problem2}
+which exhibit strong duality, we know (Theorem \ref{thm:kkt_optimality}) that
+the KKT conditions are necessary and sufficient for optimality. The stationarity
+condition \eqref{eq:kkt_stationarity} allows us to relate primal $x^\star$ and
+dual $u^\star, v^\star$ solutions. Rephrased, this condition says that 
+\index{KKT conditions!primal-dual relationship}
+\begin{equation}
+\label{eq:kkt_stationarity2}
+\text{$x^\star$ minimizes $L(\cdot, u^\star, v^\star)$}.
+\end{equation}
+As demonstrated in the examples that follow, we can often rearrange
+\eqref{eq:kkt_stationarity2} to form a \emph{primal-dual relationship}, which is
+an equation that relates primal and dual solutions.  Further, if $L(\cdot,
+u^\star, v^\star)$ has a unique minimizer, then this relationship uniquely
+specifies $x^\star$ as a function of $u^\star, v^\star$.
+
+Primal-dual relationships can be useful for two main reasons. First, in the case
+that it uniquely specifies the primal solution $x^\star$, a primal-dual
+relationship enables us to solve the primal \eqref{eq:primal_problem2} via the
+dual \eqref{eq:dual_problem2}, which is useful in practice when the latter is
+easier solve than the former. Second, a primal-dual relationship can provide an
+avenue for inferring properties of solutions, such as those described next.   
+
+\begin{Example}
+We revisit the lasso and SVM problems from Examples \parref{xa:lasso_kkt} and
+\parref{xa:svm_kkt}. 
+
+\begin{enumerate}[label=\alph*., ref=\alph*]
+\item \parlab{xa:lasso_primal_dual}
+  The lasso problem \eqref{eq:lasso_primal2} has no constraints and thus no 
+  associated dual variables. In its original form, the stationarity condition 
+  \eqref{eq:lasso_optimality} relates the primal solution to itself, and not to
+  dual variables. To make progress toward a primal-dual relationship, we can 
+  introduce auxiliary equality constraints in the lasso problem
+  \eqref{eq:lasso_primal2}, as in Exercise \ref{ex:lasso_dual}. This allows us
+  to write its Lagrangian    
+  as     
+  \[
+  L(\beta,z,u) = \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1 + u^\T (z - X
+  \beta), 
+  \]
+  where $z$ is an additional primal variable, subject to the constraint $z =
+  X \beta$, as in \eqref{eq:lasso_primal}. Denote by \smash{$\hbeta, \hat{z}$} 
+  and \smash{$\hat{u}$} primal and dual solutions, respectively. The
+  stationarity condition with respect to $z$ implies    
+  \[
+  y - \hat{z} = \hat{u}.
+  \]
+  Since \smash{$\hat{z} = X \hbeta$} at the solution, this gives the primal-dual
+  relationship   
+  \index{lasso!primal-dual relationship}
+  \begin{equation}
+  \label{eq:lasso_primal_dual}
+  X \hbeta = y - \hat{u}.
+  \end{equation}
+  Any lasso solution \smash{$\hbeta$} in \eqref{eq:lasso_primal2} (which is not
+  necessarily unique) and the dual solution \smash{$\hat{u}$} in
+  \eqref{eq:lasso_dual} (which is unique, since the dual criterion is strictly
+  concave) must together satisfy \eqref{eq:lasso_primal_dual}. Furthermore, the
+  dual \eqref{eq:lasso_dual} is equivalent to \index{lasso!dual problem}  
+  \begin{equation}
+  \label{eq:lasso_dual2}
+  \minimize_u \quad \|y - u\|_2^2 \quad \st \quad \|X^\T u\|_\infty \leq
+  \lambda.  
+  \end{equation}
+  We can hence write the dual solution as \smash{$\hat{u} = P_C(y)$}, the
+  projection of $y$ onto the convex set (in fact, polyhedron)
+  \[
+  C = \{ u : \|X^\T u\|_\infty \leq \lambda \}. 
+  \]
+  From \eqref{eq:lasso_primal_dual}, we infer that \smash{$X \hbeta =
+    (I-P_C)(y)$}, the residual from projection onto $C$. As the residual 
+  from projection onto a convex set is always nonexpansive
+  \eqref{eq:projection_residual_nonexpansiveness}, writing \smash{$X
+    \hbeta$}---which is called the lasso fitted vector (or simply lasso
+  fit)---in this form allows us to deduce the following smoothness property. For
+  any two response vectors $y, y' \in \R^n$ and their corresponding lasso fitted 
+  vectors \smash{$X \hbeta(y), X \hbeta(y') \in \R^n$}, we have       
+  \begin{equation}
+  \label{eq:lasso_nonexpansive}
+  \|X \hbeta(y) - X \hbeta(y')\|_2 \leq \|y - y'\|_2.
+  \end{equation}
+  That is, the lasso fit \smash{$X \hbeta(y)$} is Lipschitz continuous as a
+  function of $y$ (with Lipschitz constant $L = 1$), thus differentiable almost
+  everywhere (by Rademacher's theorem).   
+
+\item \parlab{xa:svm_primal_dual}
+\end{enumerate}
+\end{Example}
+
+examples revisiting lasso and SVM
+
+we recall the form of the dual, credit past exercises, but print again here (in
+the example). then we write down PD relationship. then we say what we learn. for
+lasso, it's nonexpansiveness. for svm, it's ???
+
+\section{Stationarity and convexity}
+
 Talk about the role of convexity in interpreting the stationarity codition.
-Can't split it up for nonconvex functions. Relevant here since stationarity is
-how we tie primal and dual solutions together? Or put it somewhere
-else? 
-\end{Remark} 
+Can't split it up for nonconvex functions.
 
 \section{Constraint qualification*}
 
@@ -266,16 +366,10 @@ somehow try to cover lagrange multipliers as a consquence?
 
 \section{Constrained and penalized forms*}
 
-\section{Plurality of dual problems*}
-\label{sec:plurality_dual_problems}
-
-?? maybe move this to being an exercise or several exercises
-
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
 \item 
-
 
 \item \label{ex:lasso_dantzig}
 Compare these two? And how about basis pursuit?
