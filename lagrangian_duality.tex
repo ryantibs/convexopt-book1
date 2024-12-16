@@ -876,9 +876,10 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   \begin{equation}
   \label{eq:svm_dual}
   \begin{alignedat}{2}
-  &\maximize_w \quad &&- \frac{1}{2} w^\T \tilde{X} \tilde{X}^\T w + \one^\T w \\ 
-  &\st \quad && 0 \leq w \leq C \one \\
-  & && y^\T w = 0.
+  &\maximize_\alpha \quad &&-\frac{1}{2} \alpha^\T \tilde{X} \tilde{X}^\T \alpha
+  + \one^\T \alpha \\    
+  &\st \quad && 0 \leq \alpha \leq C \one \\
+  & && y^\T \alpha = 0.
   \end{alignedat}
   \end{equation}
 
