@@ -214,8 +214,8 @@ the problem in question is convex and strong duality holds by Slater's condition
     \|\beta\|_1$}. 
   \end{equation}
   This condition characterizes lasso solutions. We will see later, in Chapter
-  \ref{sec:lasso_structure}, that it provides a basis for better understanding
-  the structure of lasso solutions.   
+  \ref{sec:lasso_structure}, that it provides a way to understand the structure
+  of lasso solutions.    
   
 \item \parlab{xa:svm_kkt}
   Consider the SVM problem
@@ -231,28 +231,28 @@ the problem in question is convex and strong duality holds by Slater's condition
   for labels $y_i \in \{ -1, 1\}$ and features $x_i \in \R^d$, $i=1,\dots,n$. 
   Its Lagrangian is
   \[
-   L(\beta,\beta_0,\xi,u,v) = 
-   \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i +  \sum_{i=1}^n u_i 
-   \big(1-\xi_i - y_i (\beta_0 + x_i^\T \beta) \big) - v^\T \xi. 
+   L(\beta,\beta_0,\xi,\alpha,u) = 
+   \frac{1}{2} \|\beta\|_2^2 + C \sum_{i=1}^n \xi_i +  \sum_{i=1}^n \alpha_i 
+   \big(1-\xi_i - y_i (\beta_0 + x_i^\T \beta) \big) - u^\T \xi. 
    \]
-  The stationarity condition \eqref{eq:kkt_stationarity} becomes
-  \index{svm!optimality conditions}
+  The stationarity condition \eqref{eq:kkt_stationarity} reads
+  \index{support vector machine!optimality conditions}
   \begin{equation}
   \label{eq:svm_stationarity}
-  \sum_{i=1}^n u_i y_i = 0, \quad 
-  \sum_{i=1}^n u_i y_i x_i = \beta, \quad
-  u_i + v_i = C, \quad i = 1,\dots,n.
+  \sum_{i=1}^n \alpha_i y_i = 0, \quad 
+  \sum_{i=1}^n \alpha_i y_i x_i = \beta, \quad
+  \alpha_i + u_i = C, \quad i = 1,\dots,n.
   \end{equation}
-  Complementary slackness \eqref{eq:kkt_complementary_slackness} becomes   
+  Complementary slackness \eqref{eq:kkt_complementary_slackness} reads   
   \begin{equation}
   \label{eq:svm_complementary_slackness}
-    u_i \big(1-\xi_i - y_i (\beta_0 + x_i^\T \beta) \big) = 0, \quad v_i \xi_i = 
-    0, \quad i=1,\dots,n. 
+    \alpha_i \big(1-\xi_i - y_i (\beta_0 + x_i^\T \beta) \big) = 0, \quad
+    u_i \xi_i = 0, \quad i=1,\dots,n. 
   \end{equation}
   Together with primal and dual feasibility, the above two conditions
   characterize SVM solutions. We will see later, in Chapter
-  \ref{sec:svm_structure}, that these conditions provide a basis for better 
-  understanding the structure of SVM solutions.  
+  \ref{sec:svm_structure}, that these conditions provide a basis for
+  understanding the structure of SVM solutions.   
 \end{enumerate}
 \end{Example}
 
@@ -279,80 +279,82 @@ that it uniquely specifies the primal solution $x^\star$, a primal-dual
 relationship enables us to solve the primal \eqref{eq:primal_problem2} via the
 dual \eqref{eq:dual_problem2}, which is useful in practice when the latter is
 easier solve than the former. Second, a primal-dual relationship can provide an
-avenue for inferring properties of solutions, such as those described next.   
+avenue for inferring properties of solutions.
+
+\index{lasso!primal-dual relationship}
+A clear example of this is given by SVM duality, as studied in Example
+\parref{xa:svm_kkt}. The stationarity condition \eqref{eq:svm_stationarity}
+immediately reveals that the primal solution \smash{$\hbeta$} can be written in
+terms of the dual solution via \smash{$\hbeta = \sum_{i=1}^n \halpha_i y_i
+  x_i$}. Generally, some coordinates of the dual solution will be equal to
+zero, \smash{$\halpha_i = 0$}, by the nonnegativity constraint in
+\eqref{eq:svm_dual}; the corresponding feature vectors $x_i$ and labels $y_i$
+play no role in shaping \smash{$\hbeta$}, which determines the orientation of
+the linear SVM classifier. Meanwhile, the coordinates for which
+\smash{$\halpha_i \not= 0$} index what are called \emph{support points} $x_i$
+and $y_i$ of the classifier; we revisit this in more detail in Chapter
+\ref{sec:svm_structure}.      
+
+For the lasso, as studied in Example \parref{xa:lasso_kkt}, the problem
+\eqref{eq:lasso_primal2} has no constraints and thus no associated dual  
+variables. As written, the stationarity condition \eqref{eq:lasso_optimality}
+relates the primal solution to itself, and not to dual variables. In order to
+make progress toward a primal-dual relationship, we can introduce auxiliary
+equality constraints in the lasso problem.
 
 \begin{Example}
-We revisit the lasso and SVM problems from Examples \parref{xa:lasso_kkt} and
-\parref{xa:svm_kkt}. 
-
-\begin{enumerate}[label=\alph*., ref=\alph*]
-\item \parlab{xa:lasso_primal_dual}
-  The lasso problem \eqref{eq:lasso_primal2} has no constraints and thus no 
-  associated dual variables. In its original form, the stationarity condition 
-  \eqref{eq:lasso_optimality} relates the primal solution to itself, and not to
-  dual variables. To make progress toward a primal-dual relationship, we can 
-  introduce auxiliary equality constraints in the lasso problem
-  \eqref{eq:lasso_primal2}, as in Exercise \ref{ex:lasso_dual}. This allows us
-  to write its Lagrangian    
-  as     
-  \[
-  L(\beta,z,u) = \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1 + u^\T (z - X
-  \beta), 
-  \]
-  where $z$ is an additional primal variable, subject to the constraint $z =
-  X \beta$, as in \eqref{eq:lasso_primal}. Denote by \smash{$\hbeta, \hat{z}$} 
-  and \smash{$\hat{u}$} primal and dual solutions, respectively. The
-  stationarity condition with respect to $z$ implies    
-  \[
-  y - \hat{z} = \hat{u}.
-  \]
-  Since \smash{$\hat{z} = X \hbeta$} at the solution, this gives the primal-dual
-  relationship   
-  \index{lasso!primal-dual relationship}
-  \begin{equation}
-  \label{eq:lasso_primal_dual}
-  X \hbeta = y - \hat{u}.
-  \end{equation}
-  Any lasso solution \smash{$\hbeta$} in \eqref{eq:lasso_primal2} (which is not
-  necessarily unique) and the dual solution \smash{$\hat{u}$} in
-  \eqref{eq:lasso_dual} (which is unique, since the dual criterion is strictly
-  concave) must together satisfy \eqref{eq:lasso_primal_dual}. Furthermore, the
-  dual \eqref{eq:lasso_dual} is equivalent to \index{lasso!dual problem}  
-  \begin{equation}
-  \label{eq:lasso_dual2}
-  \minimize_u \quad \|y - u\|_2^2 \quad \st \quad \|X^\T u\|_\infty \leq
-  \lambda.  
-  \end{equation}
-  We can hence write the dual solution as \smash{$\hat{u} = P_C(y)$}, the
-  projection of $y$ onto the convex set (in fact, polyhedron)
-  \[
-  C = \{ u : \|X^\T u\|_\infty \leq \lambda \}. 
-  \]
-  From \eqref{eq:lasso_primal_dual}, we infer that \smash{$X \hbeta =
-    (I-P_C)(y)$}, the residual from projection onto $C$. As the residual 
-  from projection onto a convex set is always nonexpansive
-  \eqref{eq:projection_residual_nonexpansiveness}, writing \smash{$X
-    \hbeta$}---which is called the lasso fitted vector (or simply lasso
-  fit)---in this form allows us to deduce the following smoothness property. For
-  any two response vectors $y, y' \in \R^n$ and their corresponding lasso fitted 
-  vectors \smash{$X \hbeta(y), X \hbeta(y') \in \R^n$}, we have       
-  \begin{equation}
-  \label{eq:lasso_nonexpansive}
-  \|X \hbeta(y) - X \hbeta(y')\|_2 \leq \|y - y'\|_2.
-  \end{equation}
-  That is, the lasso fit \smash{$X \hbeta(y)$} is Lipschitz continuous as a
-  function of $y$ (with Lipschitz constant $L = 1$), thus differentiable almost
-  everywhere (by Rademacher's theorem).   
-
-\item \parlab{xa:svm_primal_dual}
-\end{enumerate}
+As in Exercise \ref{ex:lasso_dual}, consider writing the lasso problem
+\eqref{eq:lasso_primal2} as 
+\[
+\minimize_{\beta,z} \quad \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1  
+\quad \st \quad z = X \beta.
+\]
+This allows us to write its Lagrangian as     
+\[
+L(\beta,z,u) = \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1 + u^\T (z - X
+\beta).
+\]
+The stationarity condition \eqref{eq:kkt_stationarity} now reads
+\[
+z = y-u, \quad X^\T u \in \lambda \partial \|\beta\|_1.
+\]
+By the first equation above, as \smash{$\hat{z} = X \hbeta$} at the solution, 
+we have the primal-dual relationship    
+\index{lasso!primal-dual relationship}
+\begin{equation}
+\label{eq:lasso_primal_dual}
+X \hbeta = y - \hat{u}.
+\end{equation}
+Any lasso solution \smash{$\hbeta$} in \eqref{eq:lasso_primal2} (which is not
+necessarily unique), and the dual solution \smash{$\hat{u}$} in
+\eqref{eq:lasso_dual} (which is unique because the dual criterion is strictly 
+concave), must together satisfy \eqref{eq:lasso_primal_dual}. Furthermore, the
+dual \eqref{eq:lasso_dual} is equivalent to \index{lasso!dual problem}
+\[
+\minimize_u \quad \|y - u\|_2^2 \quad \st \quad \|X^\T u\|_\infty \leq \lambda.
+\]
+We can hence write the dual solution as \smash{$\hat{u} = P_C(y)$}, the
+projection of $y$ onto the convex set
+\[
+C = \{ u : \|X^\T u\|_\infty \leq \lambda \}. 
+\]
+From \eqref{eq:lasso_primal_dual}, we infer that \smash{$X \hbeta =
+  (I-P_C)(y)$}, the residual from projection onto $C$. As the residual  
+from projection onto a convex set is always nonexpansive
+\eqref{eq:projection_residual_nonexpansiveness}, writing \smash{$X 
+  \hbeta$}---called the lasso \emph{fitted vector} (or simply the lasso
+\emph{fit})---in this form leads to the following conclusion about
+smoothness. For any two response vectors $y, y' \in \R^n$ and the
+corresponding lasso fitted vectors \smash{$X \hbeta(y), X \hbeta(y') \in \R^n$},
+we have           
+\begin{equation}
+\label{eq:lasso_nonexpansive}
+\|X \hbeta(y) - X \hbeta(y')\|_2 \leq \|y - y'\|_2.
+\end{equation}
+That is, the lasso fit \smash{$X \hbeta(y)$} is Lipschitz continuous as a
+function of $y$ (with Lipschitz constant $L = 1$), and therefore differentiable
+almost everywhere (by Rademacher's theorem).    
 \end{Example}
-
-examples revisiting lasso and SVM
-
-we recall the form of the dual, credit past exercises, but print again here (in
-the example). then we write down PD relationship. then we say what we learn. for
-lasso, it's nonexpansiveness. for svm, it's ???
 
 \section{Stationarity and convexity}
 
