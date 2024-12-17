@@ -539,18 +539,19 @@ An optimization problem with linear equality constraints,
 &\st \quad && g_i(x) \leq 0, \; i=1,\dots,m \\ 
 & && Ax = b, 
 \end{alignat*}
-can always be recast, via variable transformation, into one that has only
-inequality constraints. Assuming $Ax = b$ has a solution $x_0$ (otherwise the
-above problem is infeasible), we can write any and all solutions as $x = x_0 +
-Vy$, where the columns of $V \in \R^{d \times k}$ form a basis for $\nul(A)$ and  
-$y \in \R^k$. Therefore the above problem is equivalent to 
+can always be recast, via variable transformation, into a problem with
+inequality constraints only. Assuming $Ax = b$ has a solution $x_0$ (otherwise
+the above problem is infeasible), we can parametrize the linear space of all 
+solutions as $x = x_0 + Vy$, where the columns of $V \in \R^{d \times k}$ form
+a basis for $\nul(A)$, and where $y \in \R^k$. Therefore the above problem is
+equivalent to 
 \begin{alignat*}{2}
 &\minimize_y \quad && f(x_0+Vy) \\
 &\st \quad && g_i(x_0+Vy) \leq 0, \; i=1,\dots,m.
 \end{alignat*}
 Though the above two problems are always equivalent, it is not always a good
-idea, practically speaking, to seek to solve the second instead of the
-first---and this is not a simple matter of comparing $k$ to $d$. Eliminating
+idea (speaking practically) to seek to solve the second instead of the
+first, and this is not a simple matter of comparing $k$ to $d$. Eliminating 
 equality constraints can alter problem structure in nontrivial ways. For
 example, if $A$ sparse, then it might not be easy (or even possible) to find a
 sparse basis $V$ for $\nul(A)$, and such sparsity could be lost in moving
@@ -561,10 +562,10 @@ one has in mind for computing a solution, etc.).
 
 \paragraph{Slack variables.} 
 
-Proceeding in somewhat of an opposite direction to the last example (eliminating
-equality constraints), we can replace all inequality constraints in
+Proceeding in the opposite direction to the last example (eliminating equality
+constraints), we can replace all of the inequality constraints in
 \eqref{eq:optimization} with equality constraints, using the following
-equivalent formulation: 
+equivalent formulation:  
 \begin{alignat*}{2}
 &\minimize_{x,s} \quad && f(x) \\
 &\st \quad && g_i(x) + s_i = 0, \; i=1,\dots,m \\ 
