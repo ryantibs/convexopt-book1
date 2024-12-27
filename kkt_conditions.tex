@@ -381,7 +381,7 @@ well-known equivalent form under convexity. This condition expresses the fact
 that \smash{$\bar{x}$} minimizes the $x$ argument of the Lagrangian with the
 other arguments fixed at \smash{$\bar{u}, \bar{v}$}, and it does so using the
 language of subgradients. When the primal criterion function $f$ and constraint
-functions $g_i$, $i=1,\dots,m$ and $h_j$, $j=1,\dots,k$ are each convex, and
+functions $h_i$, $i=1,\dots,m$ and $\ell_j$, $j=1,\dots,k$ are each convex, and 
 their domains have relative interiors with nonempty intersection, we can split
 up the subgradient of the Lagrangian with respect to $x$ into a sum of
 subgradients (Property \parref{par:subgradient_sum}), rewriting the stationarity
@@ -406,7 +406,7 @@ treatments of the KKT optimality conditions.
 
 One must be careful when interpreting \eqref{eq:kkt_stationarity3} or
 \eqref{eq:kkt_stationarity4} on their own, absent their connection to   
-\eqref{eq:kkt_stationarity}. For general $f$, $g_i$, $i=1,\dots,m$, $h_j$,
+\eqref{eq:kkt_stationarity}. For general $f$, $h_i$, $i=1,\dots,m$, $\ell_j$, 
 $j=1,\dots,k$, we only know (Property \parref{par:subgradient_sum}) that   
 \[
 \partial_x \bigg( f(x) + \sum_{i=1}^m \bar{u}_i h_i(x) + \sum_{j=1}^k \bar{v}_j
@@ -442,6 +442,9 @@ What does
 Bertsekas have to say?
 Rockafellar have to say?
 Rockafellar and Wets have to say?
+
+Big admission that we are using KKT to mean what others will not call KKT. They
+mean 10.19 and the rest.
 
 Describe what we mentioned in 10.4. Boyd and Van is an example of this.
 
