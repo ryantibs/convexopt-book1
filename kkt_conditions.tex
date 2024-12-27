@@ -402,22 +402,22 @@ differentiable, then subgradients reduce to gradients (Theorem
 \end{equation}
 The forms \eqref{eq:kkt_stationarity3} and especially
 \eqref{eq:kkt_stationarity4} are widely-used to express stationarity in
-treatments of the KKT optimality conditions.  
+references on the KKT optimality conditions.  
 
 One must be careful when interpreting \eqref{eq:kkt_stationarity3} or
 \eqref{eq:kkt_stationarity4} on their own, absent their connection to   
 \eqref{eq:kkt_stationarity}. For general $f$, $h_i$, $i=1,\dots,m$, $\ell_j$, 
 $j=1,\dots,k$, we only know (Property \parref{par:subgradient_sum}) that   
 \[
-\partial_x \bigg( f(x) + \sum_{i=1}^m \bar{u}_i h_i(x) + \sum_{j=1}^k \bar{v}_j
-\partial \ell_j(x) \bigg) \bigg|_{x = \bar{x}} \supseteq \partial f(\bar{x}) + 
-  \sum_{i=1}^m \bar{u}_i \partial h_i(\bar{x}) + \sum_{j=1}^k \bar{v}_j \partial
-  \ell_j(\bar{x}),
+\partial f(\bar{x}) + \sum_{i=1}^m \bar{u}_i \partial h_i(\bar{x}) +
+\sum_{j=1}^k \bar{v}_j \partial \ell_j(\bar{x}) \subseteq \partial_x \bigg( f(x) 
++ \sum_{i=1}^m \bar{u}_i h_i(x) + \sum_{j=1}^k \bar{v}_j \partial \ell_j(x)
+\bigg) \bigg|_{x = \bar{x}}, 
 \]
 and therefore \eqref{eq:kkt_stationarity3} implies \eqref{eq:kkt_stationarity}
 but not the other way around. Meanwhile, nonconvex functions can have gradients
-that are not subgradients, which means that \eqref{eq:kkt_stationarity4} is not 
-actually sufficient for \eqref{eq:kkt_stationarity} in general.  
+that are not subgradients, so \eqref{eq:kkt_stationarity4} is not even
+sufficient for \eqref{eq:kkt_stationarity} in general.   
 
 For differentiable nonconvex problems, the alternative stationarity condition
 \eqref{eq:kkt_stationarity4}, combined with rest of the KKT conditions 
