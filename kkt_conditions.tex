@@ -270,9 +270,9 @@ dual $u^\star, v^\star$ solutions. Rephrased, this condition says that
 \end{equation}
 As demonstrated in the examples that follow, we can often rearrange
 \eqref{eq:kkt_stationarity2} to form a \emph{primal-dual relationship}, which is
-an equation that relates primal and dual solutions.  Further, if $L(\cdot,
+an equation that relates primal and dual solutions. Further, if $L(\cdot,
 u^\star, v^\star)$ has a unique minimizer, then this relationship uniquely
-specifies $x^\star$ as a function of $u^\star, v^\star$.
+specifies $x^\star$ as a function of $u^\star, v^\star$. 
 
 Primal-dual relationships can be useful for two main reasons. First, in the case
 that it uniquely specifies the primal solution $x^\star$, a primal-dual
@@ -281,7 +281,7 @@ dual \eqref{eq:dual_problem2}, which is useful in practice when the latter is
 easier solve than the former. Second, a primal-dual relationship can provide an
 avenue for inferring properties of solutions.
 
-\index{lasso!primal-dual relationship}
+\index{support vector machine!primal-dual relationship}
 A clear example of this is given by SVM duality, as studied in Example
 \parref{xa:svm_kkt}. The stationarity condition \eqref{eq:svm_stationarity}
 immediately reveals that the primal solution \smash{$\hbeta$} can be written in
@@ -296,7 +296,7 @@ and $y_i$ of the classifier; we revisit this in more detail in Chapter
 \ref{sec:svm_structure}.      
 
 For the lasso, as studied in Example \parref{xa:lasso_kkt}, the problem
-\eqref{eq:lasso_primal2} has no constraints and thus no associated dual  
+\eqref{eq:lasso_primal2} has no constraints and thus no associated dual   
 variables. As written, the stationarity condition \eqref{eq:lasso_optimality}
 relates the primal solution to itself, and not to dual variables. In order to
 make progress toward a primal-dual relationship, we can introduce auxiliary
@@ -326,10 +326,12 @@ we have the primal-dual relationship
 X \hbeta = y - \hat{u}.
 \end{equation}
 Any lasso solution \smash{$\hbeta$} in \eqref{eq:lasso_primal2} (which is not
-necessarily unique), and the dual solution \smash{$\hat{u}$} in
-\eqref{eq:lasso_dual} (which is unique because the dual criterion is strictly 
-concave), must together satisfy \eqref{eq:lasso_primal_dual}. Furthermore, the
-dual \eqref{eq:lasso_dual} is equivalent to \index{lasso!dual problem}
+necessarily unique, if $X$ has linearly dependent columns) and the dual solution 
+\smash{$\hat{u}$} in \eqref{eq:lasso_dual} (which is unique since the dual
+criterion is strictly concave) must together satisfy
+\eqref{eq:lasso_primal_dual}. Furthermore, by straightforward rearrangement, the
+dual problem \eqref{eq:lasso_dual} is equivalent to  
+\index{lasso!dual problem} 
 \[
 \minimize_u \quad \|y - u\|_2^2 \quad \st \quad \|X^\T u\|_\infty \leq \lambda.
 \]
@@ -339,14 +341,13 @@ projection of $y$ onto the convex set
 C = \{ u : \|X^\T u\|_\infty \leq \lambda \}. 
 \]
 From \eqref{eq:lasso_primal_dual}, we infer that \smash{$X \hbeta =
-  (I-P_C)(y)$}, the residual from projection onto $C$. As the residual  
-from projection onto a convex set is always nonexpansive
+  (I-P_C)(y)$}, which is the residual from projection onto $C$. As the residual 
+from projection onto a convex set is nonexpansive
 \eqref{eq:projection_residual_nonexpansiveness}, writing \smash{$X 
-  \hbeta$}---called the lasso \emph{fitted vector} (or simply the lasso
+\hbeta$}---called the lasso \emph{fitted vector} (or simply the lasso
 \emph{fit})---in this form leads to the following conclusion about
-smoothness. For any two response vectors $y, y' \in \R^n$ and the
-corresponding lasso fitted vectors \smash{$X \hbeta(y), X \hbeta(y') \in \R^n$},
-we have           
+smoothness. For any two response vectors $y, y' \in \R^n$ and the corresponding
+lasso fitted vectors \smash{$X \hbeta(y), X \hbeta(y') \in \R^n$}, we have
 \begin{equation}
 \label{eq:lasso_nonexpansive}
 \|X \hbeta(y) - X \hbeta(y')\|_2 \leq \|y - y'\|_2.
@@ -356,17 +357,117 @@ function of $y$ (with Lipschitz constant $L = 1$), and therefore differentiable
 almost everywhere (by Rademacher's theorem).    
 \end{Example}
 
-\section{Stationarity and convexity}
+\section{Stationarity and convexity*}
 
-Talk about the role of convexity in interpreting the stationarity codition.
-Can't split it up for nonconvex functions.
+The KKT conditions \eqref{eq:kkt_stationarity}--\eqref{eq:kkt_dual_feasibility}
+do not assume anything about convexity of the primal problem
+\eqref{eq:primal_problem2}. As conveyed in the theory developed above (Theorem  
+\ref{thm:saddle_point_optimality}, Lemma \ref{lem:saddle_point_kkt}, Theorem
+and \ref{thm:kkt_optimality}), these conditions characterize primal-dual solutions
+in general optimization problems. The arguments that underlie this theory are
+elementary; however, they do rely heavily on the theory of Lagrangian duality
+developed in the last chapter.   
 
-\section{Constraint qualification*}
+Convexity is nonetheless a centrally important consideration in most uses of the
+KKT optimality conditions. For one, they are only necessary under strong
+duality, which is understood to hold most generally for convex problems
+(Slater's condition, Theorem \ref{thm:slater_condition}). That is, optimization
+problems in which strong duality does not hold can have solutions which violate  
+the KKT conditions, and if we rely on the KKT conditions to characterize
+optimality in such problems, then we may miss some or all solutions entirely.        
 
-should we cover constraint qualification? 
-somehow try to cover lagrange multipliers as a consquence?
+Furthermore, the stationarity condition \eqref{eq:kkt_stationarity} has a
+well-known equivalent form under convexity. This condition expresses the fact
+that \smash{$\bar{x}$} minimizes the $x$ argument of the Lagrangian with the
+other arguments fixed at \smash{$\bar{u}, \bar{v}$}, and it does so using the
+language of subgradients. When the primal criterion function $f$ and constraint
+functions $g_i$, $i=1,\dots,m$ and $h_j$, $j=1,\dots,k$ are each convex, and
+their domains have relative interiors with nonempty intersection, we can split
+up the subgradient of the Lagrangian with respect to $x$ into a sum of
+subgradients (Property \parref{par:subgradient_sum}), rewriting the stationarity
+condition \eqref{eq:kkt_stationarity} as   
+\begin{equation}
+\label{eq:kkt_stationarity3}
+0 \in \partial f(\bar{x}) + \sum_{i=1}^m \bar{u}_i \partial h_i(\bar{x}) +
+\sum_{j=1}^k \bar{v}_j \partial \ell_j(\bar{x}).
+\end{equation}
+If in addition the primal criterion and constraint functions are each
+differentiable, then subgradients reduce to gradients (Theorem
+\ref{thm:subgradient_uniqueness}), and we can rewrite  
+\eqref{eq:kkt_stationarity3} once more as  
+\begin{equation}
+\label{eq:kkt_stationarity4}
+0 = \nabla f(\bar{x}) + \sum_{i=1}^m \bar{u}_i \nabla h_i(\bar{x}) +
+\sum_{j=1}^k \bar{v}_j \nabla \ell_j(\bar{x}).
+\end{equation}
+The forms \eqref{eq:kkt_stationarity3} and especially
+\eqref{eq:kkt_stationarity4} are widely-used to express stationarity in
+treatments of the KKT optimality conditions.  
+
+One must be careful when interpreting \eqref{eq:kkt_stationarity3} or
+\eqref{eq:kkt_stationarity4} on their own, absent their connection to   
+\eqref{eq:kkt_stationarity}. For general $f$, $g_i$, $i=1,\dots,m$, $h_j$,
+$j=1,\dots,k$, we only know (Property \parref{par:subgradient_sum}) that   
+\[
+\partial_x \bigg( f(x) + \sum_{i=1}^m \bar{u}_i h_i(x) + \sum_{j=1}^k \bar{v}_j
+\partial \ell_j(x) \bigg) \bigg|_{x = \bar{x}} \supseteq \partial f(\bar{x}) + 
+  \sum_{i=1}^m \bar{u}_i \partial h_i(\bar{x}) + \sum_{j=1}^k \bar{v}_j \partial
+  \ell_j(\bar{x}),
+\]
+and therefore \eqref{eq:kkt_stationarity3} implies \eqref{eq:kkt_stationarity}
+but not the other way around. Meanwhile, nonconvex functions can have gradients
+that are not subgradients, which means that \eqref{eq:kkt_stationarity4} is not 
+actually sufficient for \eqref{eq:kkt_stationarity} in general.  
+
+For differentiable nonconvex problems, the alternative stationarity condition
+\eqref{eq:kkt_stationarity4}, combined with rest of the KKT conditions 
+\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility}, are 
+often examined under what are called \emph{constraint qualification (CQ)} 
+conditions. (Slater's condition is an example of CQ, but there are many others.)
+CQ is used to ensure that \eqref{eq:kkt_stationarity4} and
+\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} are   
+necessary for optimality. Hence \eqref{eq:kkt_stationarity4} and
+\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} are 
+sometimes called the KKT \emph{necessary} conditions in the literature on
+differentiable nonconvex programming. Sufficient conditions in this setting
+often involve additional second-order statements. The chapter notes provide some
+further discussion. 
 
 \section{Constrained and penalized forms*}
+
+\SkipTocEntry\section*{Chapter notes}
+
+What does 
+
+Bertsekas have to say?
+Rockafellar have to say?
+Rockafellar and Wets have to say?
+
+Describe what we mentioned in 10.4. Boyd and Van is an example of this.
+
+What setting did Kuhn and Tucker study in their original paper? What about
+Karush? 
+ 
+Refs....
+
+W. KARUSH (1939), Minima of Functions of Several Variables with Inequalities as
+Side Constraints, M. Sc. Dissertation, Dept. of Mathematics, University of
+Chicago 
+
+H. W. KUHN and A. W. TUCKER (1951), Nonlinear programming; in
+J. Neyman (Ed.), Proceedings of the Second Berkeley Symposium on Mathematical
+Statistics and Probability, Univ. of California Press, Berkeley, 481-492. 
+
+Kjeldsen, Tinne Hoff. A contextualized historical analysis of the Kuhn–Tucker
+theorem in nonlinear programming: the impact of world war II. Historia
+mathematica, 27(4): 331–361, 2000. 
+
+ John (1948) 
+
+% Ideas for advanced topics or exercises: 
+% Fritz John conditions
+% Invex functions
+% Second-order conditions
 
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
@@ -375,6 +476,8 @@ somehow try to cover lagrange multipliers as a consquence?
 
 \item \label{ex:lasso_dantzig}
 Compare these two? And how about basis pursuit?
+
+\item graphical lasso and covariance thresholding
 
 \item \label{ex:simplex_projection}
 
