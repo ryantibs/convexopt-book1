@@ -465,15 +465,14 @@ L(\theta, \lambda) = \ell(\theta) + \lambda (r(\theta) - t)
 over $\theta$; complementary slackness holds because \smash{$r(\htheta) = t$};
 and primal and dual feasibility clearly hold as well. The KKT conditions being
 sufficient for optimality, this implies that \smash{$\htheta$} solves
-\eqref{eq:constrained_problem}.       
+\eqref{eq:constrained_problem}.        
 
 For the other direction: fixing any $t \in \R$, we will show that under strong
-duality (or any other CQ condition that implies necessity of the KKT
-conditions), any solution \smash{$\htheta$} in \eqref{eq:constrained_problem} is
-a solution in \eqref{eq:penalized_problem}, for an appropriate choice of
-$\lambda$. In particular, take $\lambda \geq 0$ to be any solution---assumed to
-be attained and finite---in the dual of \eqref{eq:constrained_problem}. The KKT 
-conditions being necessary for optimality under strong duality, we know by
+duality any solution \smash{$\htheta$} in \eqref{eq:constrained_problem} is a
+solution in \eqref{eq:penalized_problem}, for an appropriate choice of
+$\lambda$. In particular, we let $\lambda \geq 0$ be any solution---assumed to   
+be attained and finite---in the dual of \eqref{eq:constrained_problem}. Since
+the KKT conditions are necessary for optimality under strong duality, we know by  
 stationarity that \smash{$\htheta$} must minimize $L(\theta, \lambda)$ in
 \eqref{eq:constrained_lagrangian} over $\theta$, which implies it must solve    
 \eqref{eq:penalized_problem}.   
@@ -490,14 +489,20 @@ penalized \eqref{eq:penalized_problem} and constrained
     r(\htheta) < \infty$}, then \smash{$\htheta$} solves
   \eqref{eq:constrained_problem}. 
 
-\item If a constraint qualification condition holds for
-  \eqref{eq:constrained_problem}, such as Slater's condition (which requires
-  $\ell,r$ to be convex, and for $\{ \theta : r(\theta) < t\}$ to be nonempty),
-  and if \smash{$\htheta$} solves \eqref{eq:constrained_problem} and $\lambda
-  \in [0,\infty)$ solves its dual, then \smash{$\htheta$} solves
-  \eqref{eq:penalized_problem}.   
+\item If strong duality holds, which, for example, is implied by Slater's 
+  condition (convexity of $\ell,r$ and $\{ \theta : r(\theta) < t\} \not=
+  \emptyset$), and if \smash{$\htheta$} solves \eqref{eq:constrained_problem}
+  and $\lambda \in [0,\infty)$ solves its dual, then \smash{$\htheta$} solves
+  \eqref{eq:penalized_problem}.     
 \end{enumerate} 
 \end{Theorem}
+
+It is worth noting the asymmetry in the above results---essentially no
+conditions are needed to show penalized solutions are constrained solutions
+(only finiteness of \smash{$t = r(\htheta)$}, the implied constrained tuning 
+parameter), whereas strong duality is used to show that constrained solutions
+are penalized solutions. Exercise ?? further explores the relationship between
+penalized and constrained forms. 
 
 \SkipTocEntry\section*{Chapter notes}
 
