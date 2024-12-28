@@ -420,9 +420,9 @@ that are not subgradients, so \eqref{eq:kkt_stationarity4} is not even
 sufficient for \eqref{eq:kkt_stationarity} in general.   
 
 For differentiable nonconvex problems, the alternative stationarity condition
-\eqref{eq:kkt_stationarity4}, combined with rest of the KKT conditions 
+\eqref{eq:kkt_stationarity4}, combined with the other KKT conditions  
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility}, are 
-often examined under what are called \emph{constraint qualification (CQ)} 
+often studied under what are known as \emph{constraint qualification (CQ)}  
 conditions. (Slater's condition is an example of CQ, but there are many others.)
 CQ is used to ensure that \eqref{eq:kkt_stationarity4} and
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} are   
@@ -433,7 +433,71 @@ differentiable nonconvex programming. Sufficient conditions in this setting
 often involve additional second-order statements. The chapter notes provide some
 further discussion. 
 
-\section{Constrained and penalized forms*}
+\section{Constrained and penalized equivalences*}
+
+In statistics and machine learning, we often encounter penalized problems of the
+form  
+\begin{equation}
+\label{eq:penalized_problem}
+\minimize_\theta \quad \ell(\theta) + \lambda r(\theta),
+\end{equation}
+for a loss function $\ell$ (such as the negative log likelihood in a parametric
+model), regularizer $r$ (such as a norm or seminorm), and tuning parameter
+$\lambda \geq 0$. A common claim is that \eqref{eq:penalized_problem} is
+equivalent to the constrained problem
+\begin{equation}
+\label{eq:constrained_problem}
+\minimize_\theta \quad \ell(\theta) \quad \st \quad r(\theta) \leq t, 
+\end{equation}
+where $t \in \R$ is another tuning parameter. In what follows, we formalize this
+claim using the KKT conditions. Fixing any $\lambda \geq 0$, we first show that   
+any solution \smash{$\htheta$} in the penalized problem
+\eqref{eq:penalized_problem} is a solution in the constrained problem 
+\eqref{eq:constrained_problem}, for an appropriate choice of $t$. In
+particular, we define \smash{$t = r(\htheta)$}, which we assume to be finite. We 
+now simply check that \smash{$\htheta, \lambda$} satisfy the KKT conditions for  
+\eqref{eq:constrained_problem}: stationarity holds because \smash{$\htheta$} 
+minimizes the Lagrangian
+\begin{equation}
+\label{eq:constrained_lagrangian}
+L(\theta, \lambda) = \ell(\theta) + \lambda (r(\theta) - t)
+\end{equation}
+over $\theta$; complementary slackness holds because \smash{$r(\htheta) = t$};
+and primal and dual feasibility clearly hold as well. The KKT conditions being
+sufficient for optimality, this implies that \smash{$\htheta$} solves
+\eqref{eq:constrained_problem}.       
+
+For the other direction: fixing any $t \in \R$, we will show that under strong
+duality (or any other CQ condition that implies necessity of the KKT
+conditions), any solution \smash{$\htheta$} in \eqref{eq:constrained_problem} is
+a solution in \eqref{eq:penalized_problem}, for an appropriate choice of
+$\lambda$. In particular, take $\lambda \geq 0$ to be any solution---assumed to
+be attained and finite---in the dual of \eqref{eq:constrained_problem}. The KKT 
+conditions being necessary for optimality under strong duality, we know by
+stationarity that \smash{$\htheta$} must minimize $L(\theta, \lambda)$ in
+\eqref{eq:constrained_lagrangian} over $\theta$, which implies it must solve    
+\eqref{eq:penalized_problem}.   
+
+We summarize the above conclusions into the following theorem.
+
+\begin{Theorem}
+For functions $\ell,r : \R^d \to [-\infty, \infty]$, and $\lambda,t \in \R$, the
+penalized \eqref{eq:penalized_problem} and constrained
+\eqref{eq:constrained_problem} problems admit the following equivalences.     
+
+\begin{enumerate}[label=(\roman*)]
+\item If \smash{$\htheta$} solves \eqref{eq:penalized_problem} and \smash{$t =
+    r(\htheta) < \infty$}, then \smash{$\htheta$} solves
+  \eqref{eq:constrained_problem}. 
+
+\item If a constraint qualification condition holds for
+  \eqref{eq:constrained_problem}, such as Slater's condition (which requires
+  $\ell,r$ to be convex, and for $\{ \theta : r(\theta) < t\}$ to be nonempty),
+  and if \smash{$\htheta$} solves \eqref{eq:constrained_problem} and $\lambda
+  \in [0,\infty)$ solves its dual, then \smash{$\htheta$} solves
+  \eqref{eq:penalized_problem}.   
+\end{enumerate} 
+\end{Theorem}
 
 \SkipTocEntry\section*{Chapter notes}
 
