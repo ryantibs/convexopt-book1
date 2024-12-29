@@ -8,9 +8,9 @@ In this chapter, we will explore conditions which characterize solutions in
 constrained optimization problems, the most well-known being a set of conditions
 known as the Karush-Kuhn-Tucker (KKT) conditions. This flows naturally from our 
 study of Lagrange duality in the last chapter. In fact, the last chapter already
-established a critical relationship between primal and dual solutions and what
-are known as saddle points of the Lagrangian. These arguments were given in 
-passing, and here we revisit them, as they will lay the foundation for the KKT 
+established a key relationship between primal and dual solutions and what 
+are called saddle points of the Lagrangian. These arguments were given in 
+passing and here we revisit them as they will lay the foundation for the KKT 
 conditions, which we cover next.           
 
 As in the last chapter, consider a primal problem
@@ -508,17 +508,31 @@ penalized and constrained forms.
 
 What does 
 
-Bertsekas have to say?
-Rockafellar have to say?
-Rockafellar and Wets have to say?
+Bertsekas have to say? Don't really see anything KKT like. Does cover saddle
+point theory. 
 
-Big admission that we are using KKT to mean what others will not call KKT. They
-mean 10.19 and the rest.
+Rockafellar have to say?
+Theorem 28.1 gives necessity of KKT conditions for convex programs
+Theorem 28.2 gives sufficiency.
+Theorem 28.3 gives the connection to saddle points.
+Our treatment is in line with his. 
+
+Rockafellar and Wets have to say? Don't really see anything KKT like. Theorem
+8.15 does give general necessary conditions for constraied local minima of a 
+proper lower semicontinuous functions in terms of subgradients and normal
+cones. Theorem 10.1 is a generalized Fermat's rule. 
+
+(Big admission that we are using KKT to mean what others will not call KKT. They 
+mean 10.19 and the rest? Not sure... Our treatment is in line with Rock 1970.) 
 
 Describe what we mentioned in 10.4. Boyd and Van is an example of this.
 
-What setting did Kuhn and Tucker study in their original paper? What about
-Karush? 
+What setting did Kuhn and Tucker study in their original paper? Saddle points. 
+Differentiable functions. Necessary and sufficient conditions for convex
+functions. Hint at subgradients and convexity but do not use this language (had
+not really been developed yet.)
+
+What about Karush? Calculus of variations focus. But proves the same result.  
  
 Refs....
 
@@ -529,6 +543,10 @@ Chicago
 H. W. KUHN and A. W. TUCKER (1951), Nonlinear programming; in
 J. Neyman (Ed.), Proceedings of the Second Berkeley Symposium on Mathematical
 Statistics and Probability, Univ. of California Press, Berkeley, 481-492. 
+
+Kuhn, H. W. [1976], Nonlinear programming: a historical view, in Nonlinear
+Programming, edited by R. W. Cottle and C. E. Lemke. Found out in 1974 from
+Takayama. 
 
 Kjeldsen, Tinne Hoff. A contextualized historical analysis of the Kuhn–Tucker
 theorem in nonlinear programming: the impact of world war II. Historia
