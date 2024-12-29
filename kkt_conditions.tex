@@ -165,7 +165,7 @@ is stationarity \eqref{eq:kkt_stationarity}, which reduces to
 Lagrange multiplier condition \eqref{eq:lagrange_multiplier}, which can seen
 either because the subgradient optimality condition does, or directly from
 stationarity \eqref{eq:kkt_stationarity} with linear equality constraints of the
-form $Ax = b$. 
+form $Ax = b$. Exercise ?? explores further connections. 
 
 \begin{Example}
 The following examples discuss the KKT conditions for problems of interest. In
@@ -357,7 +357,7 @@ function of $y$ (with Lipschitz constant $L = 1$), and therefore differentiable
 almost everywhere (by Rademacher's theorem).    
 \end{Example}
 
-\section{Stationarity and convexity*}
+\section{Convexity, stationarity, constraint qualification*} 
 
 The KKT conditions \eqref{eq:kkt_stationarity}--\eqref{eq:kkt_dual_feasibility}
 do not assume anything about convexity of the primal problem
@@ -369,12 +369,15 @@ elementary; however, they do rely heavily on the theory of Lagrangian duality
 developed in the last chapter.   
 
 Convexity is nonetheless a centrally important consideration in most uses of the
-KKT optimality conditions. For one, they are only necessary under strong
-duality, which is understood to hold most generally for convex problems
-(Slater's condition, Theorem \ref{thm:slater_condition}). That is, optimization
-problems in which strong duality does not hold can have solutions which violate  
-the KKT conditions, and if we rely on the KKT conditions to characterize
-optimality in such problems, then we may miss some or all solutions entirely.        
+KKT optimality conditions. For one, we only know (based on the above theory)
+that these conditions are necessary under strong duality, which is itself
+understood to hold most generally for convex problems (Slater's condition,
+Theorem \ref{thm:slater_condition}). That is, optimization problems in which
+strong duality does not hold can have solutions which violate the KKT
+conditions; if we rely on the KKT conditions to characterize optimality in such
+problems, then we may miss some or all solutions entirely. (See the end of this
+section for a brief discussion of constraint qualification, the name given to
+the study of assumptions which guarantee necessity of the KKT conditions.)   
 
 Furthermore, the stationarity condition \eqref{eq:kkt_stationarity} has a
 well-known equivalent form under convexity. This condition expresses the fact
@@ -402,36 +405,57 @@ differentiable, then subgradients reduce to gradients (Theorem
 \end{equation}
 The forms \eqref{eq:kkt_stationarity3} and especially
 \eqref{eq:kkt_stationarity4} are widely-used to express stationarity in
-references on the KKT optimality conditions.  
+references on the KKT optimality conditions. However, one must be careful when
+interpreting \eqref{eq:kkt_stationarity3} or \eqref{eq:kkt_stationarity4} on
+their own, absent their connection to \eqref{eq:kkt_stationarity}. In general,
+the conditions \eqref{eq:kkt_stationarity}, \eqref{eq:kkt_stationarity3},
+\eqref{eq:kkt_stationarity4} are not equivalent, and \eqref{eq:kkt_stationarity}
+is the only one which is equivalent to \smash{$\bar{x}$} minimizing
+\smash{$L(\cdot, \bar{u}, \bar{v})$}.    
 
-One must be careful when interpreting \eqref{eq:kkt_stationarity3} or
-\eqref{eq:kkt_stationarity4} on their own, absent their connection to   
-\eqref{eq:kkt_stationarity}. For general $f$, $h_i$, $i=1,\dots,m$, $\ell_j$, 
-$j=1,\dots,k$, we only know (Property \parref{par:subgradient_sum}) that   
-\[
-\partial f(\bar{x}) + \sum_{i=1}^m \bar{u}_i \partial h_i(\bar{x}) +
-\sum_{j=1}^k \bar{v}_j \partial \ell_j(\bar{x}) \subseteq \partial_x \bigg( f(x) 
-+ \sum_{i=1}^m \bar{u}_i h_i(x) + \sum_{j=1}^k \bar{v}_j \partial \ell_j(x)
-\bigg) \bigg|_{x = \bar{x}}, 
-\]
-and therefore \eqref{eq:kkt_stationarity3} implies \eqref{eq:kkt_stationarity}
-but not the other way around. Meanwhile, nonconvex functions can have gradients
-that are not subgradients, so \eqref{eq:kkt_stationarity4} is not even
-sufficient for \eqref{eq:kkt_stationarity} in general.   
+% we only know (Property
+% \parref{par:subgradient_sum}) that    
+% \[
+% \partial f(\bar{x}) + \sum_{i=1}^m \bar{u}_i \partial h_i(\bar{x}) +
+% \sum_{j=1}^k \bar{v}_j \partial \ell_j(\bar{x}) \subseteq \partial_x \bigg( f(x) 
+% + \sum_{i=1}^m \bar{u}_i h_i(x) + \sum_{j=1}^k \bar{v}_j \partial \ell_j(x)
+% \bigg) \bigg|_{x = \bar{x}}, 
+% \]
+% and therefore \eqref{eq:kkt_stationarity3} implies \eqref{eq:kkt_stationarity}
+% but not the other way around. Meanwhile, nonconvex functions can have gradients
+% that are not subgradients, so \eqref{eq:kkt_stationarity4} is not even
+% sufficient for \eqref{eq:kkt_stationarity} in general.   
 
-For differentiable nonconvex problems, the alternative stationarity condition
-\eqref{eq:kkt_stationarity4}, combined with the other KKT conditions  
-\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility}, are 
-often studied under what are known as \emph{constraint qualification (CQ)}  
-conditions. (Slater's condition is an example of CQ, but there are many others.)
-CQ is used to ensure that \eqref{eq:kkt_stationarity4} and
-\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} are   
-necessary for optimality. Hence \eqref{eq:kkt_stationarity4} and
-\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} are 
+For differentiable nonconvex problems, the gradient-based stationarity condition
+\eqref{eq:kkt_stationarity4} is often studied in combination with the rest of
+the KKT conditions
+\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility}. As
+\smash{$\nabla_x L(\bar{x}, \bar{u}, \bar{v}) = 0$} does not imply that
+\smash{$\bar{x}$} minimizes \smash{$L(\cdot, \bar{u}, \bar{v})$} in this
+setting, extra (second-order) conditions are required to certify optimality. On 
+the other hand, under strong duality, optimality implies
+\eqref{eq:kkt_stationarity4}: if \smash{$L(\cdot, \bar{u}, \bar{v})$} attains
+its unconstrained infimum at \smash{$\bar{x}$}, then it has zero gradient at
+\smash{$\bar{x}$} (assuming it is continuously differentiable on an open
+neighborhood of this point). Complementary slackness and feasibility are still
+implied under strong duality, as argued earlier. Hence
+\eqref{eq:kkt_stationarity4} and
+\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} are
 sometimes called the KKT \emph{necessary} conditions in the literature on
-differentiable nonconvex programming. Sufficient conditions in this setting
-often involve additional second-order statements. The chapter notes provide some
-further discussion. 
+differentiable nonconvex programming, as they are necessary for optimality under
+strong duality. More broadly, this literature studies what is called
+\emph{constraint qualification (CQ)}: a CQ condition ensures that the KKT
+conditions are necessary for optimality. Slater's condition is an example of CQ,
+but there are several others, such as \emph{linear independence CQ (LICQ)},
+which states:   
+
+[show LICQ?]
+
+The chapter notes provide some further discussion, and Exercise ?? [REALLY?]
+demonstrates that CQ conditions do not necessarily imply strong duality. 
+
+% RJT: I don't think CQ implies strong duality in general. I can't find any
+% concrete references which suggest that, except Boyd's notes ...
 
 \section{Constrained and penalized equivalences*}
 
@@ -490,19 +514,19 @@ penalized \eqref{eq:penalized_problem} and constrained
   \eqref{eq:constrained_problem}. 
 
 \item If strong duality holds, which, for example, is implied by Slater's 
-  condition (convexity of $\ell,r$ and $\{ \theta : r(\theta) < t\} \not=
-  \emptyset$), and if \smash{$\htheta$} solves \eqref{eq:constrained_problem}
-  and $\lambda \in [0,\infty)$ solves its dual, then \smash{$\htheta$} solves
-  \eqref{eq:penalized_problem}.     
+  condition (convexity of $\ell,r$ and $\relint(\dom(\ell) \cap \dom(r)) \cap \{
+  \theta : r(\theta) < t\} \not= \emptyset$), and if \smash{$\htheta$} solves
+  \eqref{eq:constrained_problem} and $\lambda \in [0,\infty)$ solves its dual
+  problem, then \smash{$\htheta$} solves \eqref{eq:penalized_problem}.     
 \end{enumerate} 
 \end{Theorem}
 
 It is worth noting the asymmetry in the above results---essentially no
-conditions are needed to show penalized solutions are constrained solutions
-(only finiteness of \smash{$t = r(\htheta)$}, the implied constrained tuning 
-parameter), whereas strong duality is used to show that constrained solutions
-are penalized solutions. Exercise ?? further explores the relationship between
-penalized and constrained forms. 
+conditions are needed to show that penalized solutions are constrained solutions
+(only finiteness of the implied constrained tuning parameter, \smash{$t =
+  r(\htheta)$}), whereas strong duality is used to show that constrained
+solutions are penalized solutions. Exercise ?? [REALLY?] further explores the
+relationship between penalized and constrained forms.  
 
 \SkipTocEntry\section*{Chapter notes}
 
@@ -562,6 +586,9 @@ mathematica, 27(4): 331–361, 2000.
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
+\item Use subgradient sum property, under slater, to derive KKT conditions from
+  subgradient optimality?
+
 \item 
 
 \item \label{ex:lasso_dantzig}
@@ -570,6 +597,8 @@ Compare these two? And how about basis pursuit?
 \item graphical lasso and covariance thresholding
 
 \item \label{ex:simplex_projection}
+
+\item Show LICQ does not imply strong duality. 
 
 \end{enumerate}
 \end{xcb}
