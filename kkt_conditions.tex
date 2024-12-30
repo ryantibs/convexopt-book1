@@ -376,8 +376,8 @@ Theorem \ref{thm:slater_condition}). That is, optimization problems in which
 strong duality does not hold can have solutions which violate the KKT
 conditions; if we rely on the KKT conditions to characterize optimality in such
 problems, then we may miss some or all solutions entirely. (See the end of this
-section for a brief discussion of constraint qualification, the name given to
-the study of assumptions which guarantee necessity of the KKT conditions.)   
+section for a brief discussion of constraint qualification, which provides
+alternate assumptions under which the KKT conditions remain necessary.)
 
 Furthermore, the stationarity condition \eqref{eq:kkt_stationarity} has a
 well-known equivalent form under convexity. This condition expresses the fact
@@ -430,32 +430,38 @@ For differentiable nonconvex problems, the gradient-based stationarity condition
 \eqref{eq:kkt_stationarity4} is often studied in combination with the rest of
 the KKT conditions
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility}. As
-\smash{$\nabla_x L(\bar{x}, \bar{u}, \bar{v}) = 0$} does not imply that
+\smash{$\nabla_x L(\bar{x}, \bar{u}, \bar{v}) = 0$} does not imply
 \smash{$\bar{x}$} minimizes \smash{$L(\cdot, \bar{u}, \bar{v})$} in this
-setting, extra (second-order) conditions are required to certify optimality. On 
-the other hand, under strong duality, optimality implies
+setting, extra (second-order) conditions are used to certify optimality. On the
+other hand, under strong duality, optimality implies
 \eqref{eq:kkt_stationarity4}: if \smash{$L(\cdot, \bar{u}, \bar{v})$} attains
-its unconstrained infimum at \smash{$\bar{x}$}, then it has zero gradient at
-\smash{$\bar{x}$} (assuming it is continuously differentiable on an open
+its unconstrained infimum at \smash{$\bar{x}$}, then it must have zero gradient
+at \smash{$\bar{x}$} (assuming it is continuously differentiable on an open
 neighborhood of this point). Complementary slackness and feasibility are still
 implied under strong duality, as argued earlier. Hence
 \eqref{eq:kkt_stationarity4} and
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} are
 sometimes called the KKT \emph{necessary} conditions in the literature on
 differentiable nonconvex programming, as they are necessary for optimality under
-strong duality. More broadly, this literature studies what is called
-\emph{constraint qualification (CQ)}: a CQ condition ensures that the KKT
-conditions are necessary for optimality. Slater's condition is an example of CQ,
-but there are several others, such as \emph{linear independence CQ (LICQ)},
-which states:   
+strong duality. More broadly, they are necessary under what are called
+\emph{constraint qualification (CQ)} conditions in this literature. Slater's
+condition is an example of CQ, but there are several others, such as
+\emph{linear independence CQ (LICQ)}. This states:   
+\begin{multline}
+\label{eq:linear_independence_cq} 
+\text{the gradients of active inequality constraints and linear
+  inequality constraints at $\bar{x}$:} \\ \text{$\nabla h_i(\bar{x})$ for all 
+  $i$ such that $h_i(\bar{x}) = 0$ and $\nabla \ell_j(\bar{x})$ for $j =
+  1,\dots,k$, are linearly independent.}   
+\end{multline}
+If \smash{$\bar{x}, \bar{u}, \bar{v}$} are primal and dual optimal and LICQ
+\eqref{eq:linear_independence_cq} holds at \smash{$\bar{x}$}, then (assuming all
+functions are continuously differentiable in an open neighborhood of
+\smash{$\bar{x}$}) the conditions \eqref{eq:kkt_stationarity4},
+\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} must 
+hold. The chapter notes provide some further discussion.
 
-[show LICQ?]
-
-The chapter notes provide some further discussion, and Exercise ?? [REALLY?]
-demonstrates that CQ conditions do not necessarily imply strong duality. 
-
-% RJT: I don't think CQ implies strong duality in general. I can't find any
-% concrete references which suggest that, except Boyd's notes ...
+% For example, Theorem 2.3.8 and Exercise 3 in Borwein and Lewis (2006) 
 
 \section{Constrained and penalized equivalences*}
 
@@ -523,10 +529,10 @@ penalized \eqref{eq:penalized_problem} and constrained
 
 It is worth noting the asymmetry in the above results---essentially no
 conditions are needed to show that penalized solutions are constrained solutions
-(only finiteness of the implied constrained tuning parameter, \smash{$t =
-  r(\htheta)$}), whereas strong duality is used to show that constrained
-solutions are penalized solutions. Exercise ?? [REALLY?] further explores the
-relationship between penalized and constrained forms.  
+(only finiteness of the implied constrained tuning parameter value \smash{$t = 
+  r(\htheta)$}), whereas strong duality is used to show constrained solutions
+are penalized solutions. Exercise ?? [REALLY?] further explores the relationship
+between penalized and constrained forms.   
 
 \SkipTocEntry\section*{Chapter notes}
 
@@ -558,6 +564,12 @@ not really been developed yet.)
 
 What about Karush? Calculus of variations focus. But proves the same result.  
  
+% Exercise ?? REALLY?] demonstrates that CQ conditions do not necessarily
+% imply strong duality.  
+
+% RJT: I don't think CQ implies strong duality in general. I can't find any
+% concrete references which suggest that, except Boyd's notes ...
+
 Refs....
 
 W. KARUSH (1939), Minima of Functions of Several Variables with Inequalities as
