@@ -237,10 +237,10 @@ for the proximal operator.
   \index{l0 norm@$\ell_0$ norm!proximal mapping}
   \index{hard-thresholding}
   \[
-  [\prox_{\lambda f}(x)]_i = [H_\lambda(x)]_i 
+  [\prox_{\lambda f}(x)]_i = [h_\lambda(x)]_i 
   = x_i 1\{|x_i| > \lambda\}, \quad i = 1,\dots,d.
   \]  
-  The operator $H_\lambda$ is known as (coordinatewise) \emph{hard-thresholding}
+  The operator $h_\lambda$ is known as (coordinatewise) \emph{hard-thresholding}
   at the level $\lambda$. 
 
 \item \parlab{xa:rank_proximal_mapping}    
@@ -248,9 +248,9 @@ for the proximal operator.
   denoting the SVD of $X$, we have (Exercise
   \ref{ex:matrix_norm_proximal_mapping2} part c):  
   \[
-  \prox_{\lambda f}(X) = U \diag(H_\lambda(\sigma)) V^\T,
+  \prox_{\lambda f}(X) = U \diag(h_\lambda(\sigma)) V^\T,
   \]
-  where $H_\lambda$ is the hard-thresholding operator as defined above.
+  where $h_\lambda$ is the hard-thresholding operator as defined above.
 \end{enumerate}
 \end{Example}
 
