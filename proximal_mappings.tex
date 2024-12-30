@@ -182,8 +182,8 @@ for the proximal operator.
   a): 
   \index{l1 norm@$\ell_1$ norm!proximal mapping}
   \[
-  [\prox_{\lambda f}(x)]_i = [s_\lambda(x)]_i = [x_i - \sign(x_i) \lambda]_+,
-  \quad i = 1,\dots,d.
+  [\prox_{\lambda f}(x)]_i = [s_\lambda(x)]_i 
+  = \sign(x_i) \cdot (|x_i| - \lambda)_+, \quad i = 1,\dots,d.  
   \]
   where recall $a_+ = \max\{a, 0\}$ gives the positive part of $a$, and we
   interpret $\sign(0) = 1$. The operator $s_\lambda$ is called (coordinatewise)
@@ -238,7 +238,7 @@ for the proximal operator.
   \index{hard-thresholding}
   \[
   [\prox_{\lambda f}(x)]_i = [h_\lambda(x)]_i 
-  = x_i 1\{|x_i| > \lambda\}, \quad i = 1,\dots,d.
+  = x_i \cdot 1\{|x_i| > \lambda\}, \quad i = 1,\dots,d.
   \]  
   The operator $h_\lambda$ is known as (coordinatewise) \emph{hard-thresholding}
   at the level $\lambda$. 
