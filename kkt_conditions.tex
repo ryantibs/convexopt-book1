@@ -448,18 +448,18 @@ strong duality. More broadly, they are necessary under what are called
 condition is an example of CQ, but there are several others, such as
 \emph{linear independence CQ (LICQ)}. This states:   
 \begin{multline}
-\label{eq:linear_independence_cq} 
+\label{eq:licq} 
 \text{the gradients of active inequality constraints and linear
   inequality constraints at $\bar{x}$:} \\ \text{$\nabla h_i(\bar{x})$ for all 
   $i$ such that $h_i(\bar{x}) = 0$ and $\nabla \ell_j(\bar{x})$ for $j =
   1,\dots,k$, are linearly independent.}   
 \end{multline}
 If \smash{$\bar{x}, \bar{u}, \bar{v}$} are primal and dual optimal and LICQ
-\eqref{eq:linear_independence_cq} holds at \smash{$\bar{x}$}, then (assuming all
-functions are continuously differentiable in an open neighborhood of
-\smash{$\bar{x}$}) the conditions \eqref{eq:kkt_stationarity4},
-\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} must 
-hold. The chapter notes provide some further discussion.
+\eqref{eq:licq} holds at \smash{$\bar{x}$}, then (assuming all functions are
+continuously differentiable in an open neighborhood of \smash{$\bar{x}$}) the
+conditions \eqref{eq:kkt_stationarity4},
+\eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} must
+hold. The chapter notes provide some further discussion. 
 
 % For example, Theorem 2.3.8 and Exercise 3 in Borwein and Lewis (2006) 
 
@@ -595,22 +595,122 @@ mathematica, 27(4): 331–361, 2000.
 % Invex functions
 % Second-order conditions
 
+\clearpage
+
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
+\index{lasso}
+\index{Dantzig selector}
+\item Let \smash{$\hbeta^{\textnormal{lasso}}$} be a lasso solution in 
+  \eqref{eq:lasso_primal2} and \smash{$\hbeta^{\textnormal{Dantzig}}$} be a
+  Dantzig selector solution in \eqref{eq:dantzig_selector}, for the same
+  $X,y,\lambda$. Prove that \smash{$\|\hbeta^{\textnormal{Dantzig}}\|_1 \leq
+    \|\hbeta^{\textnormal{lasso}}\|_1$}. Hint: use the KKT conditions
+  \eqref{eq:lasso_optimality} to show that \smash{$\hbeta^{\textnormal{lasso}}$}
+  is feasible for \eqref{eq:dantzig_selector}.
+
+\item \label{ex:simplex_projection}
+simplex projection 
+
+\index{log-det}
+\item In this exercise, we study properties of the log-det function $f(X) =
+  \log(\det(X))$ for $X \in \SS_{++}^d$, which will be helpful for the next
+  exercise.   
+
+\begin{enumerate}[label=\alph*.]
+\item Prove (as was claimed in Example \parref{xa:log_determinant}) that $f$ is
+  concave on $\SS_{++}^d$, by showing that for any fixed $X,Z \in \SS^d$, the  
+  function $g(t) = f(X + tZ)$ is concave on $\R$. Hint: argue that without loss
+  of generality we may assume that $t = 0$ is in the effective domain of $g$, so
+  $X \succ 0$. Then express $g$ in terms of the eigenvalues of $X^{-1/2} Z
+  X^{1/2}$, and verify that $g$ is (strictly) concave using the second-order
+  characterization.  
+
+\item Prove that $f$ is differentiable on $\SS_{++}^d$, with derivative $X^{-1}$
+  at $X$. Hint: one way to show this is by computing the partial derivatives of 
+  $\log(\det(X))$, and checking they are equal to those of $X^{-1}$. (One
+  also needs to verify continuity of the partial derivatives to prove that $f$
+  is differentiable.) To compute the partial derivatives of $\log(\det(X))$,
+  consider 
+  \[
+  \det(X) = \prod_{i=1}^d \lambda_i,
+  \]
+  where $\lambda_i$, $i=1,\dots,d$ are the eigenvalues of $X$. Similarly,
+  consider 
+  \[
+  X^{-1} = \sum_{i=1}^d \frac{1}{\lambda_i} u_i u_i^\T,
+  \]
+  where $u_i \in \R^d$, $i=1,\dots,d$ are the eigenvectors of $X$. 
+\end{enumerate}
+
+\item Let \smash{$S = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x}) (x_i -
+    \bar{x})^\T$} be a sample covariance matrix, interpreted to be an estimate
+  of the (common) population covariance matrix $\Sigma$ of the samples  
+  $x_i \in \R^d$, $i=1,\dots,n$. (Here \smash{$\bar{x} = \frac{1}{n}
+    \sum_{i=1}^n x_i$} denotes the sample mean.) The \emph{graphical lasso}
+  produces a sparse estimate of the inverse covariance matrix $\Sigma^{-1}$,
+  defined by solving    
+  \index{graphical lasso}
+  \begin{equation}
+  \label{eq:graphical_lasso}
+  \minimize_\Theta \quad -\log(\det(\Theta)) + \tr(S\Theta) + \lambda
+  \|\Theta\|_1, 
+  \end{equation}
+  where $\lambda \geq 0$ is a tuning parameter, and \smash{$\|\Theta\|_1 =
+    \sum_{i,j=1}^d |\Theta_{ij}|$} is the elementwise $\ell_1$ norm of
+  $\Theta$. The above criterion is an $\ell_1$-penalized negative log
+  likelihood, where $-\log(\det(\Theta)) + \tr(S\Theta)$ is the negative log
+  likelihood for $\Theta = \Sigma^{-1}$ in the model where each $x_i \sim N(0, 
+  \Sigma)$, independently, for $i=1,\dots,n$. The graphical lasso problem 
+  \eqref{eq:graphical_lasso} is strictly convex (note that log-det is a strictly
+  concave function, recalling part a of the last exercise).      
+  
+\begin{enumerate}[label=\alph*.]
+\item Since \eqref{eq:graphical_lasso} has no constraints, the KKT conditions
+  reduce to subgradient optimality; prove that this has the form (recalling part
+  b of the last exercise):  
+  \index{graphical lasso!optimality conditions}
+  \begin{equation}
+  \label{eq:graphical_lasso_optimality}
+  -\Theta^{-1} + S + \lambda \Gamma = 0, \quad \text{where $\Gamma \in 
+    \partial \|\Theta\|_1$}.  
+  \end{equation}
+
+\index{soft-thresholding}
+\item Define $S_\lambda$ by elementwise soft-thresholding
+  \eqref{eq:soft_thresholding} the sample covariance matrix $S$: 
+  \[
+  (S_\lambda)_{ij} = \sign(S_{ij}) \cdot (|S_{ij}| - \lambda)_+, \quad i,j =
+  1,\dots,d. 
+  \]
+  Suppose that $S_\lambda$ is block-diagonal with blocks $B_1,\dots,B_m$; that  
+  is, the sets $B_1,\dots,B_m$ form a partition of $\{1,\dots,d\}$, and
+  $(S_\lambda)_{ij} = 0$ whenever $i \in B_k$ and $j \in B_\ell$, with $k \not= 
+  \ell$. Prove, following \cite{witten2011new, mazumer2012exact}, that the
+  graphical lasso  solution \smash{$\hat\Theta$} in \eqref{eq:graphical_lasso}
+  must have the same block-diagonal structure as $S_\lambda$. Hint: use
+  \eqref{eq:graphical_lasso_optimality}.    
+\end{enumerate}
+
 \item Use subgradient sum property, under slater, to derive KKT conditions from
   subgradient optimality?
 
-\item 
+\item Something on perbutation/sensitivity analysis?
 
-\item \label{ex:lasso_dantzig}
-Compare these two? And how about basis pursuit?
+\item Gordan's theorem. Prove from separation, or from Farkas? 
 
-\item graphical lasso and covariance thresholding
+\item State Fritz John condition and cite it. Prove it. By Gordan's. 
+% Theorem 2.3.6 of BL 
 
-\item \label{ex:simplex_projection}
+\item State MFCQ and cite it. Prove it. By FJ and Gordan's implying $u_0 \not=
+  0$. 
+% Theorem 2.3.8 of BL 
+
+\item Show that LICQ implies MCFQ. By Gordan's (once more). 
 
 \item Show LICQ does not imply strong duality. 
 
+\item Something on constrained vs penalized???
 \end{enumerate}
 \end{xcb}
