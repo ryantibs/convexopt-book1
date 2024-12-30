@@ -182,16 +182,16 @@ for the proximal operator.
   a): 
   \index{l1 norm@$\ell_1$ norm!proximal mapping}
   \[
-  [\prox_{\lambda f}(x)]_i = [S_\lambda(x)]_i = [x_i - \sign(x_i) \lambda]_+,
+  [\prox_{\lambda f}(x)]_i = [s_\lambda(x)]_i = [x_i - \sign(x_i) \lambda]_+,
   \quad i = 1,\dots,d.
   \]
   where recall $a_+ = \max\{a, 0\}$ gives the positive part of $a$, and we
-  interpret $\sign(0) = 1$. The operator $S_\lambda$ is called (coordinatewise)
+  interpret $\sign(0) = 1$. The operator $s_\lambda$ is called (coordinatewise)
   \emph{soft-thresholding} at the level $\lambda$, equivalently   
   \index{soft-thresholding}
   \begin{equation}
   \label{eq:soft_thresholding}
-  [S_\lambda(x)]_i = 
+  [s_\lambda(x)]_i = 
   \begin{cases}
   x_i - \lambda & \text{if $x_i > \lambda$} \\
   0 & \text{if $|x_i| \leq \lambda$} \\
@@ -212,12 +212,12 @@ for the proximal operator.
   SVD of $X$, we have (Exercise \ref{ex:matrix_norm_proximal_mapping1} part a):      
   \index{trace norm!proximal mapping}
   \[
-  \prox_{\lambda f}(X) = U \diag(S_\lambda(\sigma)) V^\T.
+  \prox_{\lambda f}(X) = U \diag(s_\lambda(\sigma)) V^\T.
   \]
   where $\sigma$ is the vector of singular values (the diagonal of $\Sigma$),
-  $S_\lambda$ is the soft-thresholding operator defined above, and we use $A =
+  $s_\lambda$ is the soft-thresholding operator defined above, and we use $A =
   \diag(a)$ to construct a diagonal matrix $A$ from a vector of diagonal
-  elements $a$. The proximal operator here is typically denoted $M_\lambda$, and
+  elements $a$. The proximal operator here is typically denoted $m_\lambda$, and
   called \emph{matrix soft-thresholding}.
   \index{matrix soft-thresholding}
 
@@ -477,11 +477,11 @@ same conclusion holds for an arbitrary loss $f$.
   \index{l1 norm@$\ell_1$ norm}
   \index{soft-thresholding}
   \[
-  \beta = S_{\lambda t} \big( \beta + t X^\T (y - X\beta) \big),
+  \beta = s_{\lambda t} \big( \beta + t X^\T (y - X\beta) \big),
   \]
-  where $S_{\lambda t}$ denotes soft-thresholding operator at the level
+  where $s_{\lambda t}$ denotes soft-thresholding operator at the level
   $\lambda t$, as in \eqref{eq:soft_thresholding}. This certifies that the lasso
-  problem admits a sparse solution (as the output of $S_{\lambda t}$ is sparse),
+  problem admits a sparse solution (as the output of $s_{\lambda t}$ is sparse),
   with generally a greater degree of sparsity for a larger $\lambda$.     
 
 \item How do we know that the trace norm penalty in the matrix completion
@@ -493,12 +493,12 @@ same conclusion holds for an arbitrary loss $f$.
   \index{trace norm}
   \index{matrix soft-thresholding}               
   \[
-  \Theta = M_{\lambda t} \big( \Theta + t P_\Omega (X - \Theta) \big),
+  \Theta = m_{\lambda t} \big( \Theta + t P_\Omega (X - \Theta) \big),
   \]
-  with $M_{\lambda t}$ denoting matrix soft-thresholding at the level $\lambda
+  with $m_{\lambda t}$ denoting matrix soft-thresholding at the level $\lambda
   t$, as in Example \parref{xa:trace_norm_proximal_mapping}. This certifies that
   the matrix completion problem admits a low-rank solution (as the output of
-  $M_{\lambda  t}$ is low-rank), with generally a smaller rank for a larger
+  $m_{\lambda t}$ is low-rank), with generally a smaller rank for a larger
   $\lambda$.      
 \end{enumerate}
 \end{Example}
