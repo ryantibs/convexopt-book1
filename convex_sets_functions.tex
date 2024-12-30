@@ -404,7 +404,7 @@ The convexity or concavity of the following two functions can be confirmed
 using the second-order characterization
 \eqref{eq:second_order_characterization}. 
 
-\begin{enumerate}[label=\alph*.]
+\begin{enumerate}[label=\alph*., ref=\alph*]
 \item The \emph{log-sum-exp function}, defined by 
   \index{log-sum-exp function} 
   \[
@@ -412,9 +412,10 @@ using the second-order characterization
   \]
   is convex on $\R^d$.
 
-\item The \emph{log-det function}, defined by $f(X) = \log(\det(X))$, is concave
-  on $\SS_{++}^d = \{X \in \SS^d : X \succ 0\}$ (the space of positive definite
-  $d \times d$ matrices). 
+\item \parlab{xa:log_determinant}
+  The \emph{log-det function}, defined by $f(X) = \log(\det(X))$, is concave on
+  $\SS_{++}^d = \{X \in \SS^d : X \succ 0\}$ (the space of positive definite $d
+  \times d$ matrices).  
   \index{log-det function} 
 \end{enumerate}
 \end{Example}
@@ -622,9 +623,9 @@ condition.
 Lipschitz continuity can be seen as a type of growth condition on the function
 in question. To develop intuition for this, consider the case of a real-valued
 function $F$: Lipschitz continuity means that, along any line segment, $F$
-cannot grow faster than a linear function with slope $L$. Thus for real-valued $f$,
-when $\nabla f$ is Lipschitz continuous ($f$ is Lipschitz smooth), one might
-imagine that $f$ cannot grow faster than a quadratic function. The next
+cannot grow faster than a linear function with slope $L$. Hence for real-valued
+$f$, when $\nabla f$ is Lipschitz continuous ($f$ is Lipschitz smooth), one
+might imagine that $f$ cannot grow faster than a quadratic function. The next 
 result makes this precise, and provides several other conditions related to
 Lipschitz smoothness.
 
