@@ -529,7 +529,8 @@ If \smash{$\bar{x}, \bar{u}, \bar{v}$} are primal and dual optimal and LICQ
 continuously differentiable in an open neighborhood of \smash{$\bar{x}$}) the
 conditions \eqref{eq:kkt_stationarity4},
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} must
-hold. Exercises ??-?? provide further exploration.
+hold. Exercises \ref{ex:fritz_john_condition}--\ref{ex:licq_implies_mfcq}
+provide further details.  
 
 % For example, Theorem 2.3.8 and Exercise 3 in Borwein and Lewis (2006) 
 
@@ -547,9 +548,9 @@ Master's thesis \cite{karush1939minima}, over a decade before Kuhn and
 Tucker. The fact it went unpublished may have been due, at least in part, to the  
 general curtailment of publications because of the war; for a fascinating
 historical review, we  recommend \cite{kuhn1976nonlinear,
-  kjeldsen2000contextualized, cottle2012william}. Of course, the optimality   
+  kjeldsen2000contextualized, cottle2012william}. Of course, the optimality
 conditions are now called the Karush-Kuhn-Tucker conditions, in honor of all
-three.    
+three.     
 
 As noted at the end of Chapter \ref{sec:convexity_stationarity_cq}, different
 authors write the KKT stationarity condition in different and generally
@@ -562,14 +563,14 @@ conditions as a general result, and isolate the role of strong duality in
 ensuring necessity of the KKT conditions (and isolate the role of convexity in
 ensuring strong duality via Slater's condition). 
 
-Constraint qualification itself carries a large literature. Cite reviews. It
-seems rare that it is treated in tandem with typical convex analysis. An
-exception in BL 2006. Who give a nice holistic treatment. Exercises are based on
-theirs.
-
-KKT conditions are used extensively in the analysis of statistical
-estimators. Exercise blah part b based on \cite{witten2011new,
-  mazumder2012exact}.
+There is an extensive literature on constraint qualification. For sweeping
+overviews of the many CQ conditions and their relationships to each other, 
+see \cite{peterson1973review, giorgi2018guided}. Traditional references on
+convex analysis and optimization tend not to cover CQ in depth, but
+\cite{borwein2006convex} is an exception. This book provides an elegant
+treatment of CQ alongside topics like subgradients, conjugacy, and
+duality. Exercises \ref{ex:fritz_john_condition}--\ref{ex:licq_implies_mfcq} are
+based on results in Chapter 2 of \cite{borwein2006convex}.
 
 \clearpage
 
@@ -628,22 +629,22 @@ simplex projection
   of the (common) population covariance matrix $\Sigma$ of the samples  
   $x_i \in \R^d$, $i=1,\dots,n$. (Here \smash{$\bar{x} = \frac{1}{n}
     \sum_{i=1}^n x_i$} denotes the sample mean.) The \emph{graphical lasso}
-  produces a sparse estimate of the inverse covariance matrix $\Sigma^{-1}$,
-  defined by solving    
+  \cite{yuan2007model} gives a sparse estimate of the inverse covariance matrix
+  $\Sigma^{-1}$, defined by solving     
   \index{graphical lasso}
   \begin{equation}
   \label{eq:graphical_lasso}
   \minimize_\Theta \quad -\log(\det(\Theta)) + \tr(S\Theta) + \lambda
-  \|\Theta\|_1, 
+  \|\Theta\|_1.
   \end{equation}
-  where $\lambda \geq 0$ is a tuning parameter, and \smash{$\|\Theta\|_1 =
-    \sum_{i,j=1}^d |\Theta_{ij}|$} is the elementwise $\ell_1$ norm of
-  $\Theta$. The above criterion is an $\ell_1$-penalized negative log
-  likelihood, where $-\log(\det(\Theta)) + \tr(S\Theta)$ is the negative log
-  likelihood for $\Theta = \Sigma^{-1}$ in the model where each $x_i \sim N(0, 
-  \Sigma)$, independently, for $i=1,\dots,n$. The graphical lasso problem 
-  \eqref{eq:graphical_lasso} is strictly convex (note that log-det is a strictly
-  concave function, recalling part a of the last exercise).      
+  Here \smash{$\|\Theta\|_1 =  \sum_{i,j=1}^d |\Theta_{ij}|$} denotes the
+  elementwise $\ell_1$ norm of $\Theta \in \SS_+^d$, and $\lambda \geq 0$ is a
+  tuning parameter. This criterion is an $\ell_1$-penalized negative log
+  likelihood, as $-\log(\det(\Theta)) + \tr(S\Theta)$ is the negative log
+  likelihood for $\Theta = \Sigma^{-1}$ in the model where each $x_i \sim N(0,
+  \Sigma)$, independently, for $i=1,\dots,n$. The graphical lasso problem
+  \eqref{eq:graphical_lasso} is strictly convex (recall that log-det is a
+  strictly concave function, from part a of the last exercise).       
   
 \begin{enumerate}[label=\alph*.]
 \item Since \eqref{eq:graphical_lasso} has no constraints, the KKT conditions
@@ -669,6 +670,10 @@ simplex projection
   \ell$. Prove that the graphical lasso  solution \smash{$\hat\Theta$} in
   \eqref{eq:graphical_lasso} must have the same block-diagonal structure as
   $S_\lambda$. Hint: use \eqref{eq:graphical_lasso_optimality}.    
+
+  \smallskip 
+  Note: this was discovered independently in \cite{witten2011new,
+    mazumder2012exact}.   
 \end{enumerate}
 
 \item Use subgradient sum property, under slater, to derive KKT conditions from
@@ -678,14 +683,17 @@ simplex projection
 
 \item Gordan's theorem. Prove from separation, or from Farkas? 
 
-\item State Fritz John condition and cite it. Prove it. By Gordan's. 
-% Theorem 2.3.6 of BL 
+\item \label{ex:fritz_john_condition} 
+  State Fritz John condition and cite it. Prove it. By Gordan's. 
+  % Theorem 2.3.6 of BL 
 
-\item State MFCQ and cite it. Prove it. By FJ and Gordan's implying $u_0 \not=
+\item \label{ex:mfcq} 
+  State MFCQ and cite it. Prove it. By FJ and Gordan's implying $u_0 \not=
   0$. 
 % Theorem 2.3.8 of BL 
 
-\item Show that LICQ implies MCFQ. By Gordan's (once more). 
+\item \label{ex:licq_implies_mfcq}
+  Show that LICQ implies MCFQ. By Gordan's (once more). 
 
 \item Show LICQ does not imply strong duality. 
 \end{enumerate}
