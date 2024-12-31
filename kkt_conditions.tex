@@ -262,17 +262,18 @@ For a primal-dual pair \eqref{eq:primal_problem2}, \eqref{eq:dual_problem2}
 which exhibit strong duality, we know (Theorem \ref{thm:kkt_optimality}) that
 the KKT conditions are necessary and sufficient for optimality. The stationarity
 condition \eqref{eq:kkt_stationarity} allows us to relate primal $x^\star$ and
-dual $u^\star, v^\star$ solutions. Rephrased, this condition says that 
+dual $u^\star, v^\star$ solutions. Rephrased, this condition (evaluated at
+$x^\star,  u^\star, v^\star$) simply says 
 \index{KKT conditions!primal-dual relationship}
 \begin{equation}
 \label{eq:kkt_stationarity2}
 \text{$x^\star$ minimizes $L(\cdot, u^\star, v^\star)$}.
 \end{equation}
 As demonstrated in the examples that follow, we can often rearrange
-\eqref{eq:kkt_stationarity2} to form a \emph{primal-dual relationship}, which is
-an equation that relates primal and dual solutions. Further, if $L(\cdot,
-u^\star, v^\star)$ has a unique minimizer, then this relationship uniquely
-specifies $x^\star$ as a function of $u^\star, v^\star$. 
+\eqref{eq:kkt_stationarity2} to form what we call a \emph{primal-dual
+  relationship}, which is an equation that relates primal and dual solutions.
+Moreover, if $L(\cdot, u^\star, v^\star)$ has a unique minimizer, then this
+relationship uniquely specifies $x^\star$ in terms of $u^\star, v^\star$.     
 
 Primal-dual relationships can be useful for two main reasons. First, in the case
 that it uniquely specifies the primal solution $x^\star$, a primal-dual
@@ -316,10 +317,10 @@ L(\beta,z,u) = \frac{1}{2} \|y - z\|_2^2 + \lambda \|\beta\|_1 + u^\T (z - X
 \]
 The stationarity condition \eqref{eq:kkt_stationarity} now reads
 \[
-z = y-u, \quad X^\T u \in \lambda \partial \|\beta\|_1.
+X^\T u \in \lambda \partial \|\beta\|_1, \quad z = y-u.
 \]
-By the first equation above, as \smash{$\hat{z} = X \hbeta$} at the solution, 
-we have the primal-dual relationship    
+By the second equation, as \smash{$\hat{z} = X \hbeta$} at the solution, we have
+the primal-dual relationship     
 \index{lasso!primal-dual relationship}
 \begin{equation}
 \label{eq:lasso_primal_dual}
@@ -329,8 +330,8 @@ Any lasso solution \smash{$\hbeta$} in \eqref{eq:lasso_primal2} (which is not
 necessarily unique, if $X$ has linearly dependent columns) and the dual solution 
 \smash{$\hat{u}$} in \eqref{eq:lasso_dual} (which is unique since the dual
 criterion is strictly concave) must together satisfy
-\eqref{eq:lasso_primal_dual}. Furthermore, by straightforward rearrangement, the
-dual problem \eqref{eq:lasso_dual} is equivalent to  
+\eqref{eq:lasso_primal_dual}. Moreover, the dual \eqref{eq:lasso_dual} is
+equivalent to   
 \index{lasso!dual problem} 
 \[
 \minimize_u \quad \|y - u\|_2^2 \quad \st \quad \|X^\T u\|_\infty \leq \lambda.
@@ -356,6 +357,74 @@ That is, the lasso fit \smash{$X \hbeta(y)$} is Lipschitz continuous as a
 function of $y$ (with Lipschitz constant $L = 1$), and therefore differentiable
 almost everywhere (by Rademacher's theorem).    
 \end{Example}
+
+\section{Constrained and penalized equivalences*}
+
+In statistics and machine learning, we often encounter problems of the form   
+\begin{equation}
+\label{eq:penalized_problem}
+\minimize_\theta \quad \ell(\theta) + \lambda r(\theta),
+\end{equation}
+for a loss function $\ell$ (such as the negative log likelihood in a parametric
+model), regularizer $r$ (such as a norm), and tuning parameter $\lambda \geq
+0$. A common claim is that \eqref{eq:penalized_problem} is equivalent to 
+\begin{equation}
+\label{eq:constrained_problem}
+\minimize_\theta \quad \ell(\theta) \quad \st \quad r(\theta) \leq t, 
+\end{equation}
+where $t \in \R$ is another tuning parameter. In what follows, we formalize this
+claim using the KKT conditions. Fixing any $\lambda \geq 0$, we first show that   
+any solution \smash{$\htheta$} in the penalized problem
+\eqref{eq:penalized_problem} is a solution in the constrained problem 
+\eqref{eq:constrained_problem}, for an appropriate choice of $t$. In
+particular, we define \smash{$t = r(\htheta)$}, which we assume to be finite. We 
+now simply check that \smash{$\htheta, \lambda$} satisfy the KKT conditions for  
+\eqref{eq:constrained_problem}: stationarity holds because \smash{$\htheta$} 
+minimizes the Lagrangian
+\begin{equation}
+\label{eq:constrained_lagrangian}
+L(\theta, \lambda) = \ell(\theta) + \lambda (r(\theta) - t)
+\end{equation}
+over $\theta$; complementary slackness holds because \smash{$r(\htheta) = t$};
+and primal and dual feasibility clearly hold as well. The KKT conditions being
+sufficient for optimality, this implies that \smash{$\htheta$} solves
+\eqref{eq:constrained_problem}.        
+
+For the other direction: fixing any $t \in \R$, we will show that under strong
+duality any solution \smash{$\htheta$} in \eqref{eq:constrained_problem} is a
+solution in \eqref{eq:penalized_problem}, for an appropriate choice of
+$\lambda$. In particular, we let $\lambda \geq 0$ be any solution---assumed to   
+be attained and finite---in the dual of \eqref{eq:constrained_problem}. Since
+the KKT conditions are necessary for optimality under strong duality, we know by  
+stationarity that \smash{$\htheta$} must minimize $L(\theta, \lambda)$ in
+\eqref{eq:constrained_lagrangian} over $\theta$, which implies it must solve    
+\eqref{eq:penalized_problem}.   
+
+We summarize the above conclusions into the following theorem.
+
+\begin{Theorem}
+For functions $\ell,r : \R^d \to [-\infty, \infty]$, and $\lambda,t \in \R$, the
+penalized \eqref{eq:penalized_problem} and constrained
+\eqref{eq:constrained_problem} problems admit the following equivalences.     
+
+\begin{enumerate}[label=(\roman*)]
+\item If \smash{$\htheta$} solves \eqref{eq:penalized_problem} and \smash{$t =
+    r(\htheta) < \infty$}, then \smash{$\htheta$} solves
+  \eqref{eq:constrained_problem}. 
+
+\item If strong duality holds, which, for example, is implied by Slater's 
+  condition (convexity of $\ell,r$ and $\relint(\dom(\ell) \cap \dom(r)) \cap \{
+  \theta : r(\theta) < t\} \not= \emptyset$), and if \smash{$\htheta$} solves
+  \eqref{eq:constrained_problem} and $\lambda \in [0,\infty)$ solves its dual
+  problem, then \smash{$\htheta$} solves \eqref{eq:penalized_problem}.     
+\end{enumerate} 
+\end{Theorem}
+
+It is worth noting the asymmetry in the above results---essentially no
+conditions are needed to show that penalized solutions are constrained solutions
+(only finiteness of the implied constrained tuning parameter value \smash{$t = 
+  r(\htheta)$}), whereas strong duality is used to show constrained solutions
+are penalized solutions. Exercise ?? further explores this relationship.
 
 \section{Convexity, stationarity, and constraint qualification*} 
 \label{sec:convexity_stationarity_cq}
@@ -388,8 +457,8 @@ language of subgradients. When the primal criterion function $f$ and constraint
 functions $h_i$, $i=1,\dots,m$ and $\ell_j$, $j=1,\dots,k$ are each convex, and 
 their domains have relative interiors with nonempty intersection, we can split
 up the subgradient of the Lagrangian with respect to $x$ into a sum of
-subgradients (Property \parref{par:subgradient_sum}), rewriting the stationarity
-condition \eqref{eq:kkt_stationarity} as   
+subgradients (Property \parref{par:subgradient_sum}), rewriting
+\eqref{eq:kkt_stationarity} as    
 \begin{equation}
 \label{eq:kkt_stationarity3}
 0 \in \partial f(\bar{x}) + \sum_{i=1}^m \bar{u}_i \partial h_i(\bar{x}) +
@@ -464,77 +533,6 @@ hold. Exercises ??-?? provide further exploration.
 
 % For example, Theorem 2.3.8 and Exercise 3 in Borwein and Lewis (2006) 
 
-\section{Constrained and penalized equivalences*}
-
-In statistics and machine learning, we often encounter penalized problems of the
-form  
-\begin{equation}
-\label{eq:penalized_problem}
-\minimize_\theta \quad \ell(\theta) + \lambda r(\theta),
-\end{equation}
-for a loss function $\ell$ (such as the negative log likelihood in a parametric
-model), regularizer $r$ (such as a norm or seminorm), and tuning parameter
-$\lambda \geq 0$. A common claim is that \eqref{eq:penalized_problem} is
-equivalent to the constrained problem
-\begin{equation}
-\label{eq:constrained_problem}
-\minimize_\theta \quad \ell(\theta) \quad \st \quad r(\theta) \leq t, 
-\end{equation}
-where $t \in \R$ is another tuning parameter. In what follows, we formalize this
-claim using the KKT conditions. Fixing any $\lambda \geq 0$, we first show that   
-any solution \smash{$\htheta$} in the penalized problem
-\eqref{eq:penalized_problem} is a solution in the constrained problem 
-\eqref{eq:constrained_problem}, for an appropriate choice of $t$. In
-particular, we define \smash{$t = r(\htheta)$}, which we assume to be finite. We 
-now simply check that \smash{$\htheta, \lambda$} satisfy the KKT conditions for  
-\eqref{eq:constrained_problem}: stationarity holds because \smash{$\htheta$} 
-minimizes the Lagrangian
-\begin{equation}
-\label{eq:constrained_lagrangian}
-L(\theta, \lambda) = \ell(\theta) + \lambda (r(\theta) - t)
-\end{equation}
-over $\theta$; complementary slackness holds because \smash{$r(\htheta) = t$};
-and primal and dual feasibility clearly hold as well. The KKT conditions being
-sufficient for optimality, this implies that \smash{$\htheta$} solves
-\eqref{eq:constrained_problem}.        
-
-For the other direction: fixing any $t \in \R$, we will show that under strong
-duality any solution \smash{$\htheta$} in \eqref{eq:constrained_problem} is a
-solution in \eqref{eq:penalized_problem}, for an appropriate choice of
-$\lambda$. In particular, we let $\lambda \geq 0$ be any solution---assumed to   
-be attained and finite---in the dual of \eqref{eq:constrained_problem}. Since
-the KKT conditions are necessary for optimality under strong duality, we know by  
-stationarity that \smash{$\htheta$} must minimize $L(\theta, \lambda)$ in
-\eqref{eq:constrained_lagrangian} over $\theta$, which implies it must solve    
-\eqref{eq:penalized_problem}.   
-
-We summarize the above conclusions into the following theorem.
-
-\begin{Theorem}
-For functions $\ell,r : \R^d \to [-\infty, \infty]$, and $\lambda,t \in \R$, the
-penalized \eqref{eq:penalized_problem} and constrained
-\eqref{eq:constrained_problem} problems admit the following equivalences.     
-
-\begin{enumerate}[label=(\roman*)]
-\item If \smash{$\htheta$} solves \eqref{eq:penalized_problem} and \smash{$t =
-    r(\htheta) < \infty$}, then \smash{$\htheta$} solves
-  \eqref{eq:constrained_problem}. 
-
-\item If strong duality holds, which, for example, is implied by Slater's 
-  condition (convexity of $\ell,r$ and $\relint(\dom(\ell) \cap \dom(r)) \cap \{
-  \theta : r(\theta) < t\} \not= \emptyset$), and if \smash{$\htheta$} solves
-  \eqref{eq:constrained_problem} and $\lambda \in [0,\infty)$ solves its dual
-  problem, then \smash{$\htheta$} solves \eqref{eq:penalized_problem}.     
-\end{enumerate} 
-\end{Theorem}
-
-It is worth noting the asymmetry in the above results---essentially no
-conditions are needed to show that penalized solutions are constrained solutions
-(only finiteness of the implied constrained tuning parameter value \smash{$t = 
-  r(\htheta)$}), whereas strong duality is used to show constrained solutions
-are penalized solutions. Exercise ?? [REALLY?] further explores the relationship
-between penalized and constrained forms.   
-
 \SkipTocEntry\section*{Chapter notes}
 
 In a landmark paper \cite{kuhn1951nonlinear}, Harold Kuhn and Albert Tucker
@@ -591,6 +589,8 @@ estimators. Exercise blah part b based on \cite{witten2011new,
 \index{probability simplex!projection}
 \item \label{ex:simplex_projection}
 simplex projection 
+
+\item Something on constrained vs penalized???
 
 \index{log-det}
 \item In this exercise, we study properties of the log-det function $f(X) =
@@ -688,7 +688,5 @@ simplex projection
 \item Show that LICQ implies MCFQ. By Gordan's (once more). 
 
 \item Show LICQ does not imply strong duality. 
-
-\item Something on constrained vs penalized???
 \end{enumerate}
 \end{xcb}
