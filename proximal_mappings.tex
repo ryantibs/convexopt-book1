@@ -1196,11 +1196,11 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   $\lambda > 0$ be arbitrary.
 
 \begin{enumerate}[label=\alph*.]
-\item Show that $x$ minimizes $F$ if and only if
+\item Assuming $\relint(\dom(f)) \cap \relint(\dom(g)) \not= \emptyset$, show
+  that $x$ minimizes $F$ if and only if  
   \[
   x - \lambda \nabla f(x) \in x + \lambda \partial g(x).
   \]
-  % TODO: do we need \relint(\dom(f)) \cap \relint(\dom(g)) \not= \emptyset? 
   
 \item Show that the above display is equivalent to
   \eqref{eq:proximal_optimality_fg} using the resolvent characterization     
@@ -1223,12 +1223,12 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   respectively. 
 
 \begin{enumerate}[label=\alph*.]
-\item Starting with \eqref{eq:l1_projection}, show that if $z$ is a solution,
-  then $\sign(z_i) = \sign(x_i)$, $i=1,\dots,d$. 
+\item Show that if $z$ is a solution in \eqref{eq:l1_projection}, then
+  $\sign(z_i) = \sign(x_i)$, $i=1,\dots,d$.  
 
 \item Use part a to argue that we can reduce any $\ell_1$ projection to a
-  simplex projection; that is, in order to solve \eqref{eq:l1_projection}, we
-  can first solve a problem of the form \eqref{eq:simplex_projection} and then
+  simplex projection. That is, in order to solve \eqref{eq:l1_projection}, we
+  can first solve a problem of the form \eqref{eq:simplex_projection}, and then 
   we can postprocess the solution to obtain a solution to the original problem.     
 \end{enumerate}  
 
