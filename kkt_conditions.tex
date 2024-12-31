@@ -483,19 +483,6 @@ the conditions \eqref{eq:kkt_stationarity}, \eqref{eq:kkt_stationarity3},
 is the only one which is equivalent to \smash{$\bar{x}$} minimizing
 \smash{$L(\cdot, \bar{u}, \bar{v})$}.    
 
-% we only know (Property
-% \parref{par:subgradient_sum}) that    
-% \[
-% \partial f(\bar{x}) + \sum_{i=1}^m \bar{u}_i \partial h_i(\bar{x}) +
-% \sum_{j=1}^k \bar{v}_j \partial \ell_j(\bar{x}) \subseteq \partial_x \bigg( f(x) 
-% + \sum_{i=1}^m \bar{u}_i h_i(x) + \sum_{j=1}^k \bar{v}_j \partial \ell_j(x)
-% \bigg) \bigg|_{x = \bar{x}}, 
-% \]
-% and therefore \eqref{eq:kkt_stationarity3} implies \eqref{eq:kkt_stationarity}
-% but not the other way around. Meanwhile, nonconvex functions can have gradients
-% that are not subgradients, so \eqref{eq:kkt_stationarity4} is not even
-% sufficient for \eqref{eq:kkt_stationarity} in general.   
-
 For differentiable nonconvex problems, the gradient-based stationarity condition
 \eqref{eq:kkt_stationarity4} is often studied in combination with the rest of
 the KKT conditions
@@ -517,6 +504,7 @@ strong duality. More broadly, they are necessary under what are called
 \emph{constraint qualification (CQ)} conditions in this literature. Slater's
 condition is an example of CQ, but there are several others, such as
 \emph{linear independence CQ (LICQ)}. This states:   
+\index{KKT conditions!constraint qualification}
 \begin{multline}
 \label{eq:licq} 
 \text{the gradients of active inequality constraints and linear
@@ -530,9 +518,10 @@ continuously differentiable in an open neighborhood of \smash{$\bar{x}$}) the
 conditions \eqref{eq:kkt_stationarity4},
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} must
 hold. Exercises \ref{ex:fritz_john_condition}--\ref{ex:licq_implies_mfcq}
-provide further details.  
+provide further exploration.  
 
-% For example, Theorem 2.3.8 and Exercise 3 in Borwein and Lewis (2006) 
+% For example, Theorem 2.3.8 and Exercise 3 (inequality constraints only) or
+% Theorem 7.2.9 and Exercise 1 (general case) in Borwein and Lewis (2006)
 
 \SkipTocEntry\section*{Chapter notes}
 
@@ -552,11 +541,11 @@ historical review, we  recommend \cite{kuhn1976nonlinear,
 conditions are now called the Karush-Kuhn-Tucker conditions, in honor of all
 three.     
 
-As noted at the end of Chapter \ref{sec:convexity_stationarity_cq}, different
-authors write the KKT stationarity condition in different and generally
-nonequivalent forms; for example, \cite{rockafellar1970convex} focuses on convex  
+As noted at the end of Chapter \ref{sec:convexity_stationarity_cq}, it is not
+unusual to see the KKT stationarity condition in different and generally
+nonequivalent forms; for example, \cite{rockafellar1970convex} focuses on convex
 functions and uses the form in \eqref{eq:kkt_stationarity3}, while
-\cite{boyd2004convex} focus on differentiable functions and use the form in
+\cite{boyd2004convex} focus on differentiable functions and use the form in 
 \eqref{eq:kkt_stationarity4}. We have chosen to use the form 
 in \eqref{eq:kkt_stationarity}, which allows us to state sufficiency of the KKT 
 conditions as a general result, and isolate the role of strong duality in 
@@ -566,11 +555,13 @@ ensuring strong duality via Slater's condition).
 There is an extensive literature on constraint qualification. For sweeping
 overviews of the many CQ conditions and their relationships to each other, 
 see \cite{peterson1973review, giorgi2018guided}. Traditional references on
-convex analysis and optimization tend not to cover CQ in depth, but
+convex analysis and optimization tend not to cover CQ in great depth, but   
 \cite{borwein2006convex} is an exception. This book provides an elegant
-treatment of CQ alongside topics like subgradients, conjugacy, and
-duality. Exercises \ref{ex:fritz_john_condition}--\ref{ex:licq_implies_mfcq} are
-based on results in Chapter 2 of \cite{borwein2006convex}.
+treatment of CQ alongside topics like subgradients, conjugacy, duality, and so
+on. Exercises \ref{ex:fritz_john_condition}--\ref{ex:licq_implies_mfcq} are
+based on Chapter 2 of \cite{borwein2006convex}, which examines CQ in problems 
+with inequality constraints only; Chapter 7 of their book studies the more 
+general case of (possibly nonlinear) equality and inequality constraints.
 
 \clearpage
 
@@ -657,23 +648,24 @@ simplex projection
     \partial \|\Theta\|_1$}.  
   \end{equation}
 
-\index{soft-thresholding}
 \item Define $S_\lambda$ by elementwise soft-thresholding
   \eqref{eq:soft_thresholding} the sample covariance matrix $S$: 
   \[
   (S_\lambda)_{ij} = \sign(S_{ij}) \cdot (|S_{ij}| - \lambda)_+, \quad i,j =
   1,\dots,d. 
   \]
-  Suppose that $S_\lambda$ is block-diagonal with blocks $B_1,\dots,B_m$; that  
-  is, the sets $B_1,\dots,B_m$ form a partition of $\{1,\dots,d\}$, and
-  $(S_\lambda)_{ij} = 0$ whenever $i \in B_k$ and $j \in B_\ell$, with $k \not= 
-  \ell$. Prove that the graphical lasso  solution \smash{$\hat\Theta$} in
-  \eqref{eq:graphical_lasso} must have the same block-diagonal structure as
-  $S_\lambda$. Hint: use \eqref{eq:graphical_lasso_optimality}.    
+  Now suppose that $S_\lambda$ is (after appropriate permutation of its rows 
+  and columns) block-diagonal with blocks $B_1,\dots,B_m$; that is, 
+  $B_1,\dots,B_m$ form a partition of $\{1,\dots,d\}$, and $(S_\lambda)_{ij} =
+  0$ for $i \in B_k$ and $j \in B_\ell$, with $k \not= \ell$. Prove that the
+  graphical lasso  solution \smash{$\hat\Theta$} in \eqref{eq:graphical_lasso}
+  must have the same block-diagonal structure as $S_\lambda$. Hint: use
+  \eqref{eq:graphical_lasso_optimality}.     
 
   \smallskip 
-  Note: this was discovered independently in \cite{witten2011new,
-    mazumder2012exact}.   
+  Note: this fact was discovered by \cite{witten2011new, mazumder2012exact}, who
+  use it as a basis for deriving fast algorithms for computing graphical lasso
+  solutions.     
 \end{enumerate}
 
 \item Use subgradient sum property, under slater, to derive KKT conditions from
@@ -683,6 +675,7 @@ simplex projection
 
 \item Gordan's theorem. Prove from separation, or from Farkas? 
 
+\index{KKT conditions!constraint qualification}
 \item \label{ex:fritz_john_condition} 
   State Fritz John condition and cite it. Prove it. By Gordan's. 
   % Theorem 2.3.6 of BL 
