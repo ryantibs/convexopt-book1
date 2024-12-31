@@ -357,7 +357,8 @@ function of $y$ (with Lipschitz constant $L = 1$), and therefore differentiable
 almost everywhere (by Rademacher's theorem).    
 \end{Example}
 
-\section{Convexity, stationarity, constraint qualification*} 
+\section{Convexity, stationarity, and constraint qualification*} 
+\label{sec:convexity_stationarity_cq}
 
 The KKT conditions \eqref{eq:kkt_stationarity}--\eqref{eq:kkt_dual_feasibility}
 do not assume anything about convexity of the primal problem
@@ -459,7 +460,7 @@ If \smash{$\bar{x}, \bar{u}, \bar{v}$} are primal and dual optimal and LICQ
 continuously differentiable in an open neighborhood of \smash{$\bar{x}$}) the
 conditions \eqref{eq:kkt_stationarity4},
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} must
-hold. The chapter notes provide some further discussion. 
+hold. Exercises ??-?? provide further exploration.
 
 % For example, Theorem 2.3.8 and Exercise 3 in Borwein and Lewis (2006) 
 
@@ -536,64 +537,41 @@ between penalized and constrained forms.
 
 \SkipTocEntry\section*{Chapter notes}
 
-What does 
+In a landmark paper \cite{kuhn1951nonlinear}, Harold Kuhn and Albert Tucker
+developed the saddle point condition for constrained optimization problems,
+along with a more explicit set of optimality conditions which were thereafter
+called the Kuhn-Tucker conditions. Their focus was on differentiable functions,
+but they hinted at a relaxation based on directional derivatives and
+convex cones (recall that the theory of subgradients was not fully developed
+until the 1960s). It was not until much later, the mid 1970s, that it was
+revealed  William Karush had developed the same conditions in his unpublished
+Master's thesis \cite{karush1939minima}, over a decade before Kuhn and 
+Tucker. The fact it went unpublished may have been due, at least in part, to the  
+general curtailment of publications because of the war; for a fascinating
+historical review, we  recommend \cite{kuhn1976nonlinear,
+  kjeldsen2000contextualized, cottle2012william}. Of course, the optimality   
+conditions are now called the Karush-Kuhn-Tucker conditions, in honor of all
+three.    
 
-Bertsekas have to say? Don't really see anything KKT like. Does cover saddle
-point theory. 
+As noted at the end of Chapter \ref{sec:convexity_stationarity_cq}, different
+authors write the KKT stationarity condition in different and generally
+nonequivalent forms; for example, \cite{rockafellar1970convex} focuses on convex  
+functions and uses the form in \eqref{eq:kkt_stationarity3}, while
+\cite{boyd2004convex} focus on differentiable functions and use the form in
+\eqref{eq:kkt_stationarity4}. We have chosen to use the form 
+in \eqref{eq:kkt_stationarity}, which allows us to state sufficiency of the KKT 
+conditions as a general result, and isolate the role of strong duality in 
+ensuring necessity of the KKT conditions (and isolate the role of convexity in
+ensuring strong duality via Slater's condition). 
 
-Rockafellar have to say?
-Theorem 28.1 gives necessity of KKT conditions for convex programs
-Theorem 28.2 gives sufficiency.
-Theorem 28.3 gives the connection to saddle points.
-Our treatment is in line with his. 
+Constraint qualification itself carries a large literature. Cite reviews. It
+seems rare that it is treated in tandem with typical convex analysis. An
+exception in BL 2006. Who give a nice holistic treatment. Exercises are based on
+theirs.
 
-Rockafellar and Wets have to say? Don't really see anything KKT like. Theorem
-8.15 does give general necessary conditions for constraied local minima of a 
-proper lower semicontinuous functions in terms of subgradients and normal
-cones. Theorem 10.1 is a generalized Fermat's rule. 
-
-(Big admission that we are using KKT to mean what others will not call KKT. They 
-mean 10.19 and the rest? Not sure... Our treatment is in line with Rock 1970.) 
-
-Describe what we mentioned in 10.4. Boyd and Van is an example of this.
-
-What setting did Kuhn and Tucker study in their original paper? Saddle points. 
-Differentiable functions. Necessary and sufficient conditions for convex
-functions. Hint at subgradients and convexity but do not use this language (had
-not really been developed yet.)
-
-What about Karush? Calculus of variations focus. But proves the same result.  
- 
-% Exercise ?? REALLY?] demonstrates that CQ conditions do not necessarily
-% imply strong duality.  
-
-% RJT: I don't think CQ implies strong duality in general. I can't find any
-% concrete references which suggest that, except Boyd's notes ...
-
-Refs....
-
-W. KARUSH (1939), Minima of Functions of Several Variables with Inequalities as
-Side Constraints, M. Sc. Dissertation, Dept. of Mathematics, University of
-Chicago 
-
-H. W. KUHN and A. W. TUCKER (1951), Nonlinear programming; in
-J. Neyman (Ed.), Proceedings of the Second Berkeley Symposium on Mathematical
-Statistics and Probability, Univ. of California Press, Berkeley, 481-492. 
-
-Kuhn, H. W. [1976], Nonlinear programming: a historical view, in Nonlinear
-Programming, edited by R. W. Cottle and C. E. Lemke. Found out in 1974 from
-Takayama. 
-
-Kjeldsen, Tinne Hoff. A contextualized historical analysis of the Kuhn–Tucker
-theorem in nonlinear programming: the impact of world war II. Historia
-mathematica, 27(4): 331–361, 2000. 
-
- John (1948) 
-
-% Ideas for advanced topics or exercises: 
-% Fritz John conditions
-% Invex functions
-% Second-order conditions
+KKT conditions are used extensively in the analysis of statistical
+estimators. Exercise blah part b based on \cite{witten2011new,
+  mazumder2012exact}.
 
 \clearpage
 
@@ -610,6 +588,7 @@ mathematica, 27(4): 331–361, 2000.
   \eqref{eq:lasso_optimality} to show that \smash{$\hbeta^{\textnormal{lasso}}$}
   is feasible for \eqref{eq:dantzig_selector}.
 
+\index{probability simplex!projection}
 \item \label{ex:simplex_projection}
 simplex projection 
 
@@ -687,10 +666,9 @@ simplex projection
   Suppose that $S_\lambda$ is block-diagonal with blocks $B_1,\dots,B_m$; that  
   is, the sets $B_1,\dots,B_m$ form a partition of $\{1,\dots,d\}$, and
   $(S_\lambda)_{ij} = 0$ whenever $i \in B_k$ and $j \in B_\ell$, with $k \not= 
-  \ell$. Prove, following \cite{witten2011new, mazumer2012exact}, that the
-  graphical lasso  solution \smash{$\hat\Theta$} in \eqref{eq:graphical_lasso}
-  must have the same block-diagonal structure as $S_\lambda$. Hint: use
-  \eqref{eq:graphical_lasso_optimality}.    
+  \ell$. Prove that the graphical lasso  solution \smash{$\hat\Theta$} in
+  \eqref{eq:graphical_lasso} must have the same block-diagonal structure as
+  $S_\lambda$. Hint: use \eqref{eq:graphical_lasso_optimality}.    
 \end{enumerate}
 
 \item Use subgradient sum property, under slater, to derive KKT conditions from
