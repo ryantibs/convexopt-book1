@@ -165,7 +165,7 @@ is stationarity \eqref{eq:kkt_stationarity}, which reduces to
 Lagrange multiplier condition \eqref{eq:lagrange_multiplier}, which can seen
 either because the subgradient optimality condition does, or directly from
 stationarity \eqref{eq:kkt_stationarity} with linear equality constraints of the
-form $Ax = b$. Exercise ?? explores further connections. 
+form $Ax = b$. Exercise \ref{ex:subgradients_kkt} explores further connections.  
 
 \begin{Example}
 The following examples discuss the KKT conditions for problems of interest. In
@@ -263,7 +263,7 @@ which exhibit strong duality, we know (Theorem \ref{thm:kkt_optimality}) that
 the KKT conditions are necessary and sufficient for optimality. The stationarity
 condition \eqref{eq:kkt_stationarity} allows us to relate primal $x^\star$ and
 dual $u^\star, v^\star$ solutions. Rephrased, this condition (evaluated at
-$x^\star,  u^\star, v^\star$) simply says 
+$x^\star,  u^\star, v^\star$) simply says that
 \index{KKT conditions!primal-dual relationship}
 \begin{equation}
 \label{eq:kkt_stationarity2}
@@ -403,6 +403,7 @@ stationarity that \smash{$\htheta$} must minimize $L(\theta, \lambda)$ in
 We summarize the above conclusions into the following theorem.
 
 \begin{Theorem}
+\label{thm:constrained_penalized}
 For functions $\ell,r : \R^d \to [-\infty, \infty]$, and $\lambda,t \in \R$, the
 penalized \eqref{eq:penalized_problem} and constrained
 \eqref{eq:constrained_problem} problems admit the following equivalences.     
@@ -424,7 +425,8 @@ It is worth noting the asymmetry in the above results---essentially no
 conditions are needed to show that penalized solutions are constrained solutions
 (only finiteness of the implied constrained tuning parameter value \smash{$t = 
   r(\htheta)$}), whereas strong duality is used to show constrained solutions
-are penalized solutions. Exercise ?? further explores this relationship.
+are penalized solutions. Exercise \ref{ex:penalized_limit} investigates a
+limiting case of this relationship (as $\lambda \to \infty$).
 
 \section{Convexity, stationarity, and constraint qualification*} 
 \label{sec:convexity_stationarity_cq}
@@ -559,9 +561,9 @@ convex analysis and optimization tend not to cover CQ in great depth, but
 \cite{borwein2006convex} is an exception. This book provides an elegant
 treatment of CQ alongside topics like subgradients, conjugacy, duality, and so
 on. Exercises \ref{ex:fritz_john_condition}--\ref{ex:licq_implies_mfcq} are
-based on Chapter 2 of \cite{borwein2006convex}, which examines CQ in problems 
-with inequality constraints only; Chapter 7 of their book studies the more 
-general case of (possibly nonlinear) equality and inequality constraints.
+based on Chapter 2 of \cite{borwein2006convex}, which examines CQ in inequality-
+constrained problems; Chapter 7 of their book studies the more general case of
+(possibly nonlinear) equality and inequality constraints. 
 
 \clearpage
 
@@ -578,11 +580,13 @@ general case of (possibly nonlinear) equality and inequality constraints.
   \eqref{eq:lasso_optimality} to show that \smash{$\hbeta^{\textnormal{lasso}}$}
   is feasible for \eqref{eq:dantzig_selector}.
 
+\item Dantzig dual, and primal-dual
+
+\item $\ell_1$ SVM dual, and primal-dual
+
 \index{probability simplex!projection}
 \item \label{ex:simplex_projection}
-simplex projection 
-
-\item Something on constrained vs penalized???
+  Simplex projection 
 
 \index{log-det}
 \item In this exercise, we study properties of the log-det function $f(X) =
@@ -668,11 +672,27 @@ simplex projection
   solutions.     
 \end{enumerate}
 
-\item Use subgradient sum property, under slater, to derive KKT conditions from
-  subgradient optimality?
+\item \label{ex:penalized_limit}
+  Consider the penalized \eqref{eq:penalized_problem} and constrained
+  \eqref{eq:constrained_problem} problems, for $\ell$ convex and $r =
+  \|\cdot\|$ a norm. Note that when $t = 0$, the solution in
+  \eqref{eq:constrained_problem} is \smash{$\htheta = 0$}, however, Slater's
+  condition does not hold and Theorem \ref{thm:constrained_penalized} cannot be
+  applied to infer \smash{$\htheta =  0$} solves
+  \eqref{eq:penalized_problem}. Assuming that the subdifferential $\partial
+  \ell(0)$ is bounded, show directly that \smash{$\htheta = 0$} solves
+  \eqref{eq:penalized_problem} for large enough $\lambda$, in particular for 
+  \[
+  \lambda \geq \sup \{ \|s\|_* : s \in \partial \ell(0) \},
+  \]
+  where $\|\cdot\|_*$ is the dual norm of $\|\cdot\|$. Hint: recall the fact in 
+  \eqref{eq:norm_subgradients} about subgradients of $\|\cdot\|$.
 
-\item Something on perbutation/sensitivity analysis?
+\item \label{ex:subgradients_kkt}
+  Use subgradient sum property, under Slater, to derive KKT conditions from 
+  subgradient optimality.
 
+\index{Gordan's theorem}
 \item Gordan's theorem. Prove from separation, or from Farkas? 
 
 \index{KKT conditions!constraint qualification}
