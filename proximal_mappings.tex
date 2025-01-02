@@ -306,7 +306,7 @@ specialized  algorithms.
   This is a convex function (it is a seminorm). Its proximal operator    
   \index{total variation (TV) penalty!proximal mapping}
   \[
-  \prox_{\lambda f}(z) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 + 
+  \prox_{\lambda f}(x) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 + 
   \lambda \sum_{i=1}^{d-1} |z_{i+1} - z_i| \bigg\}
   \]
   is efficiently computable (in linear-time, by which we mean the number of
@@ -326,7 +326,7 @@ specialized  algorithms.
   \dots, |x_d|$. This is a convex function (it is indeed a norm, reducing to
   the $\ell_1$ norm for $\lambda_1 = \cdots = \lambda_d$). Its proximal map   
   \[
-  \prox_f(z) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 +
+  \prox_f(x) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 +
   \sum_{i=1}^d \lambda_i |z|_{(i)} \bigg\}
   \]
   can be reduced to isotonic projection, as in \eqref{eq:isotonic_projection},
@@ -585,7 +585,7 @@ convex sets.
   P_C(x)  = 
   \begin{cases}
   x / \|x\|_2 & \text{if $\|x\|_2 > 1$} \\
-  x & \|x\|_2 \text{if $\leq 1$}.
+  x & \text{if $\|x\|_2 \leq 1$}.
   \end{cases}
   \]
 
@@ -1215,16 +1215,16 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   $\ell_1$ ball, 
   \begin{align}
   \label{eq:simplex_projection}
-  &\minimize_z \quad \|x - z\|_2^2 \quad \st \quad \one^\T x = 1, 
-    \; x \geq 0, \\ 
+  &\minimize_z \quad \|x - z\|_2^2 \quad \st \quad \one^\T z = 1, 
+    \; z \geq 0, \\ 
   \label{eq:l1_projection}
-  &\minimize_z \quad \|x - z\|_2^2 \quad \st \quad \|x\|_1 \leq 1,
+  &\minimize_z \quad \|x - z\|_2^2 \quad \st \quad \|z\|_1 \leq 1,
   \end{align}
   respectively. 
 
 \begin{enumerate}[label=\alph*.]
 \item Show that if $z$ is a solution in \eqref{eq:l1_projection}, then
-  $\sign(z_i) = \sign(x_i)$, $i=1,\dots,d$.  
+  $\sign(z_i) = \sign(x_i)$, $i=1,\dots,d$.    
 
 \item Use part a to argue that we can reduce any $\ell_1$ projection to a
   simplex projection. That is, in order to solve \eqref{eq:l1_projection}, we
