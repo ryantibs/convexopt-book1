@@ -580,7 +580,46 @@ constrained problems; Chapter 7 of their book studies the more general case of
   \eqref{eq:lasso_optimality} to show that \smash{$\hbeta^{\textnormal{lasso}}$}
   is feasible for \eqref{eq:dantzig_selector}.
 
-\item Dantzig dual, and primal-dual
+\item In this exercise, we will examine the dual of the Dantzig selector
+  problem \eqref{eq:dantzig_selector}, and interpret the associated primal-dual
+  relationship.   
+
+\begin{enumerate}[label=\alph*.]
+\item Show that the dual of \eqref{eq:dantzig_selector} is (equivalent to) 
+\index{Dantzig selector!dual problem}
+  \begin{equation}
+  \label{eq:dantzig_selector_dual}
+  \maximize_w \quad y^\T X w - \lambda \|w\|_1 \quad \st \quad \|X^\T X
+  w\|_\infty \leq 1.
+  \end{equation}
+  Hint: reparametrize the constraint in \eqref{eq:dantzig_selector} as $-\lambda
+  1 \leq X^\T (y - X\beta) \leq \lambda 1$.
+
+\item Show that the primal-dual relationship is
+  \index{Dantzig selector!primal-dual relationship}
+  \begin{equation}
+  \label{eq:dantzig_primal_dual}
+  X^\T X \hat{w} \in \partial \|\hbeta\|_1,
+  \end{equation}
+  where \smash{$\hbeta, \hat{w}$} denote solutions in
+  \eqref{eq:dantzig_selector}, \eqref{eq:dantzig_selector_dual}, respectively. 
+
+\item Argue that we may assume without a loss of generality that $y \in
+  \col(X)$, and therefore write \smash{$y = X \hbeta^{\textnormal{ls}}$} for a 
+  (possibly nonunique) least squares solution
+  \smash{$\hbeta^{\textnormal{ls}}$}, and write the
+  dual problem \eqref{eq:dantzig_selector_dual} as
+  \begin{equation}
+  \label{eq:dantzig_selector_dual2}
+  \maximize_w \quad \hbeta^{\textnormal{ls}} X^\T X w - \lambda \|w\|_1 \quad
+  \st \quad \|X^\T X w\|_\infty \leq 1.
+  \end{equation}
+  Based on \eqref{eq:dantzig_primal_dual}, \eqref{eq:dantzig_selector_dual2},
+  note that we can interpret the Dantzig selector as follows: it seeks
+  coefficients whose signs agree with those of least squares coefficients (first
+  term in the above criterion) and are simultaneously sparse (second term
+  above).   
+\end{enumerate}
 
 \item $\ell_1$ SVM dual, and primal-dual
 
@@ -603,8 +642,8 @@ constrained problems; Chapter 7 of their book studies the more general case of
   characterization.  
 
 \item Prove that $f$ is differentiable on $\SS_{++}^d$, with derivative $X^{-1}$
-  at $X$. Hint: one way to show this is by computing the partial derivatives of 
-  $\log(\det(X))$, and checking they are equal to those of $X^{-1}$. (One
+  at $X$. Hint: one way to show this is by calculating the partial derivatives
+  of $\log(\det(X))$, and checking they are equal to those of $X^{-1}$. (One 
   also needs to verify continuity of the partial derivatives to prove that $f$
   is differentiable.) To compute the partial derivatives of $\log(\det(X))$,
   consider 
@@ -703,7 +742,7 @@ constrained problems; Chapter 7 of their book studies the more general case of
 \item \label{ex:mfcq} 
   State MFCQ and cite it. Prove it. By FJ and Gordan's implying $u_0 \not=
   0$. 
-% Theorem 2.3.8 of BL 
+  % Theorem 2.3.8 of BL 
 
 \item \label{ex:licq_implies_mfcq}
   Show that LICQ implies MCFQ. By Gordan's (once more). 
