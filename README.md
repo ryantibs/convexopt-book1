@@ -12,7 +12,7 @@ This repo is for book 1. Currently I'm done with Parts 2 and 3.
 Plan: 
 - [ ] Write Part 4 (duality and optimality)
     - [x] Lagrange duality
-    - [ ] KKT conditions
+    - [x] KKT conditions
     - [ ] Duality correspondences 
 - [ ] Write Part 5 (case studies on lasso and SVMs)
 - [ ] Work on/solicit ideas for Part 6 (advanced topics)
