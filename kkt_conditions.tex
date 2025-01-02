@@ -771,8 +771,17 @@ nonlinear equality and inequality constraints). Exercise
   where $\|\cdot\|_*$ is the dual norm of $\|\cdot\|$. Hint: recall the fact in 
   \eqref{eq:norm_subgradients} about subgradients of $\|\cdot\|$.
 
-\index{Gordan's theorem}
-\item Gordan's theorem. Prove from separation, or from Farkas? 
+\item \label{ex:gordan}
+  Use the strict version the separating hyperplane theorem, from Exercise  
+  \ref{ex:farkas}, to prove \emph{Gordan's lemma}: given $A \in \R^{k \times  
+    d}$, exactly one of the following statements is true:  
+  \index{Gordan's lemma}
+  \begin{itemize}
+  \item there exists $x \in \R^d$ such that $Ax=0$, $x \geq 0$, $x \not= 0$; 
+  \item there exists $y \in \R^k$ such that $A^\T y > 0$.
+  \end{itemize}
+  Hint: in the separating hyperplane application, take $C = \{Ax : x \geq 0, \,
+  \one^\T x = 1 \}$ and $D = \{0\}$.   
 
 \index{KKT conditions!constraint qualification}
 \item \label{ex:fritz_john_condition} 
@@ -787,7 +796,9 @@ nonlinear equality and inequality constraints). Exercise
 \item \label{ex:licq_implies_mfcq}
   Show that LICQ implies MCFQ. By Gordan's (once more). 
 
-\item Show LICQ does not imply strong duality. 
+\item Show that LICQ does not imply strong duality (by giving a 
+  counterexample). Hint: consider Example \ref{ex:nonconvex_quartic} and Figure
+  \ref{fig:nonconvex_quartic}. 
 
 \index{subgradient!optimality condition}
 \item \label{ex:subgradients_kkt}
