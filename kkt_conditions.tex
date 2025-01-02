@@ -142,7 +142,6 @@ expression of the last display, which leads to
 Combining Theorem \ref{thm:saddle_point_optimality} and Lemma
 \ref{lem:saddle_point_kkt} yields the following important result. 
 
-\index{KKT conditions!optimality}
 \begin{Theorem}
 \label{thm:kkt_optimality}
 For any primal problem \eqref{eq:primal_problem2} and its dual
@@ -154,6 +153,7 @@ optimal, and strong duality holds. In other words, the KKT conditions are always
 sufficient for optimality, and necessary under strong duality.   
 \end{Theorem}
 
+\index{KKT conditions!optimality}
 \index{subgradient!optimality condition}
 \index{Lagrange multiplier condition} 
 It is worth noting that the KKT conditions generalize the subgradient optimality
@@ -188,7 +188,7 @@ the problem in question is convex and strong duality holds by Slater's condition
   inequality constraints. Stationarity \eqref{eq:kkt_stationarity} and primal
   feasibility \eqref{eq:kkt_primal_feasibility} are each linear equations, which
   can be assembled into one combined linear system:
-  \index{Karush-Kuhn-Tucker matrix}
+  \index{KKT matrix}
   \[
   \begin{bmatrix} Q & A^\T \\ A & 0 \end{bmatrix}  
   \begin{bmatrix} x \\ v \end{bmatrix} =
@@ -572,28 +572,33 @@ constrained problems; Chapter 7 of their book studies the more general case of
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
 \index{lasso}
 \index{Dantzig selector}
-\item Let \smash{$\hbeta^{\textnormal{lasso}}$} be a lasso solution in 
-  \eqref{eq:lasso_primal2} and \smash{$\hbeta^{\textnormal{Dantzig}}$} be a
-  Dantzig selector solution in \eqref{eq:dantzig_selector}, for the same
-  $X,y,\lambda$. Prove that \smash{$\|\hbeta^{\textnormal{Dantzig}}\|_1 \leq
-    \|\hbeta^{\textnormal{lasso}}\|_1$}. Hint: use the KKT conditions
+\item Let \smash{$\hbeta^{\textnormal{lasso}}$} denote a lasso solution in  
+  \eqref{eq:lasso_primal2} and let \smash{$\hbeta^{\textnormal{Dantzig}}$}
+  denote a Dantzig selector solution, which solves (for the same $X,y,\lambda$
+  as in the lasso problem):     
+  \begin{equation}
+  \label{eq:dantzig_selector2}
+  \minimize_\beta \quad \|\beta\|_1 \quad \st \quad \|X^\T (y - X\beta)
+  \|_\infty \leq \lambda,  
+  \end{equation}
+  Prove that \smash{$\|\hbeta^{\textnormal{Dantzig}}\|_1 \leq
+    \|\hbeta^{\textnormal{lasso}}\|_1$}. Hint: use the KKT conditions 
   \eqref{eq:lasso_optimality} to show that \smash{$\hbeta^{\textnormal{lasso}}$}
-  is feasible for \eqref{eq:dantzig_selector}.
+  is feasible for \eqref{eq:dantzig_selector2}. 
 
-\item In this exercise, we will examine the dual of the Dantzig selector
-  problem \eqref{eq:dantzig_selector}, and interpret the associated primal-dual
-  relationship.   
+\item We derive and interpret the primal-dual relationship in the Dantzig
+  selector problem \eqref{eq:dantzig_selector2}. 
 
 \begin{enumerate}[label=\alph*.]
-\item Show that the dual of \eqref{eq:dantzig_selector} is (equivalent to) 
+\item Show that the dual of \eqref{eq:dantzig_selector2} is (equivalent to) 
 \index{Dantzig selector!dual problem}
   \begin{equation}
   \label{eq:dantzig_selector_dual}
   \maximize_w \quad y^\T X w - \lambda \|w\|_1 \quad \st \quad \|X^\T X
   w\|_\infty \leq 1.
   \end{equation}
-  Hint: reparametrize the constraint in \eqref{eq:dantzig_selector} as $-\lambda
-  1 \leq X^\T (y - X\beta) \leq \lambda 1$.
+  Hint: reparametrize the constraint in \eqref{eq:dantzig_selector2} as
+  $-\lambda \one \leq X^\T (y - X\beta) \leq \lambda \one$.
 
 \item Show that the primal-dual relationship is
   \index{Dantzig selector!primal-dual relationship}
@@ -602,13 +607,13 @@ constrained problems; Chapter 7 of their book studies the more general case of
   X^\T X \hat{w} \in \partial \|\hbeta\|_1,
   \end{equation}
   where \smash{$\hbeta, \hat{w}$} denote solutions in
-  \eqref{eq:dantzig_selector}, \eqref{eq:dantzig_selector_dual}, respectively. 
+  \eqref{eq:dantzig_selector2}, \eqref{eq:dantzig_selector_dual}, respectively.  
 
-\item Argue that we may assume without a loss of generality that $y \in
-  \col(X)$, and therefore write \smash{$y = X \hbeta^{\textnormal{ls}}$} for a 
-  (possibly nonunique) least squares solution
-  \smash{$\hbeta^{\textnormal{ls}}$}, and write the
-  dual problem \eqref{eq:dantzig_selector_dual} as
+\item Argue that we may assume without a loss of generality that $y$ is in the
+  column space of $X$, and hence, write \smash{$y = X \hbeta^{\textnormal{ls}}$}
+  for a (possibly nonunique) least squares solution
+  \smash{$\hbeta^{\textnormal{ls}}$} and write the dual problem
+  \eqref{eq:dantzig_selector_dual} as 
   \begin{equation}
   \label{eq:dantzig_selector_dual2}
   \maximize_w \quad \hbeta^{\textnormal{ls}} X^\T X w - \lambda \|w\|_1 \quad
@@ -616,7 +621,7 @@ constrained problems; Chapter 7 of their book studies the more general case of
   \end{equation}
   Based on \eqref{eq:dantzig_primal_dual}, \eqref{eq:dantzig_selector_dual2},
   note that we can interpret the Dantzig selector as follows: it seeks
-  coefficients whose signs agree with those of least squares coefficients (first
+  coefficients whose signs align with those of least squares coefficients (first
   term in the above criterion) and are simultaneously sparse (second term
   above).   
 \end{enumerate}
@@ -625,7 +630,48 @@ constrained problems; Chapter 7 of their book studies the more general case of
 
 \index{probability simplex!projection}
 \item \label{ex:simplex_projection}
-  Simplex projection 
+  Consider the problem of projecting a vector $y \in \R^d$ onto the probability
+  simplex:
+  \begin{equation}
+  \label{eq:simplex_projection2}
+  \minimize_x \quad \frac{1}{2} \|y - x\|_2^2 \quad \st \quad \one^\T x = 1,  \;
+  x \geq 0.  
+  \end{equation}
+  We will use the KKT conditions to derive a fast algorithm for computing the
+  solution.
+
+\begin{enumerate}[label=\alph*.]
+\item Prove that KKT stationarity and complementary slackness conditions for 
+  \eqref{eq:simplex_projection2} give, for dual variables $u \geq 0$ and $v$:     
+  \[
+  x_i = y_i - v + u_i, \quad u_i x_i = 0, \quad i = 1,\dots,d.
+  \]
+
+\item Prove based on part a that we can write, at the solutions \smash{$\hat{x},
+    \hat{v}$}: 
+  \[
+  \hat{x}_i = (y_i - \hat{v})_+, \quad i = 1,\dots,d.
+  \]
+
+\item Prove based on part b that the simplex projection \smash{$\hat{x}$}
+  reduces to finding \smash{$\hat{v}$} such that 
+  \[
+  \sum_{i=1}^d (y_i - \hat{v})_+= 1.
+  \]
+  Lastly, argue that we can find such a \smash{$\hat{v}$} in nearly-linear time
+  by sorting the elements of $y$ into \smash{$y_{(1)} \geq \cdots y_{(d)}$},
+  then scanning from largest to smallest until we find the last index $k$ such
+  that     
+  \[
+  \frac{1}{k} \sum_{i=1}^k (y_{(i)} - 1) < y_{(k)} .
+  \]
+
+  \smallskip
+  Note: this algorithm was given in \cite{held1974validation}. See
+  \cite{condat2016fast} for a number of alternative fast simplex projection
+  algorithms, including a randomized linear-time algorithm.  
+  
+\end{enumerate}
 
 \index{log-det}
 \item In this exercise, we study properties of the log-det function $f(X) =
