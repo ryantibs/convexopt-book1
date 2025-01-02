@@ -562,37 +562,16 @@ convex analysis and optimization tend not to cover CQ in great depth, but
 treatment of CQ alongside topics like subgradients, conjugacy, duality, and so
 on. Exercises \ref{ex:fritz_john_condition}--\ref{ex:licq_implies_mfcq} are
 based on Chapter 2 of \cite{borwein2006convex}, which examines CQ in inequality-
-constrained problems; Chapter 7 of their book studies the more general case of
-(possibly nonlinear) equality and inequality constraints. 
+constrained problems (Chapter 7 of their book examines the more general case of 
+nonlinear equality and inequality constraints). Exercise
+\ref{ex:subgradients_kkt} is based on Chapter VII.2.2 of 
+\cite{hiriartUrruty1993convex}. 
 
 \clearpage
 
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
-\index{subgradient!optimality condition}
-\item \label{ex:subgradients_kkt}
-  We will show that the KKT stationarity and complementary slackness conditions
-  for problem \eqref{eq:primal_problem2} can be derived via subgradient
-  optimality, under Slater's condition (Theorem \ref{thm:slater_condition}). For   
-  simplicity (as we did previously in studying Slater's condition in Exercise
-  \ref{ex:convex_theorem_alternatives}), we will: 
-  \begin{itemize}  
-  \item redefine $A,b$ so that $Ax \leq b$ represents the affine inequality 
-    constraints in \eqref{eq:primal_problem2} (originally represented as 
-    $h_1(x) \leq 0, \dots, h_r(x) \leq 0$, and $\ell_1(x) = 0, \dots, \ell_k(x)
-    = 0$), and then relabel the corresponding dual variable as $v \geq 0$;     
-  \item redefine $h$ such that $h_1(x) \leq 0, \dots, h_m(x) \leq 0$ represents 
-    the nonaffine inequality constraints in \eqref{eq:primal_problem2}
-    (originally represented as $h_{r+1}(x) \leq 0, \dots, h_m(x) \leq 0$), and
-    then relabel the corresponding dual variable as $u \geq 0$. 
-  \item redefine $h$ so that $h_1(x) \leq 0, \dots, h_m(x) \leq 0$ denotes
-    the nonaffine inequality constraints in \eqref{eq:primal_problem2}
-    (originally written as $h_{r+1}(x) \leq 0, \dots, h_m(x) \leq 0$), then
-    relabel the corresponding dual variable as $u \geq 0$. 
-  \end{itemize}
-
-
 \index{lasso}
 \index{Dantzig selector}
 \item Let \smash{$\hbeta^{\textnormal{lasso}}$} denote a lasso solution in  
@@ -681,8 +660,7 @@ constrained problems; Chapter 7 of their book studies the more general case of
   \]
   Lastly, argue that we can find such a \smash{$\hat{v}$} in nearly-linear time
   by sorting the elements of $y$ into \smash{$y_{(1)} \geq \cdots y_{(d)}$},
-  then scanning from largest to smallest until we find the last index $k$ such
-  that     
+  then scanning until we find the last index $k$ such that      
   \[
   \frac{1}{k} \sum_{i=1}^k (y_{(i)} - 1) < y_{(k)} .
   \]
@@ -691,7 +669,6 @@ constrained problems; Chapter 7 of their book studies the more general case of
   Note: this algorithm was given in \cite{held1974validation}. See
   \cite{condat2016fast} for a number of alternative fast simplex projection
   algorithms, including a randomized linear-time algorithm.  
-  
 \end{enumerate}
 
 \index{log-det}
@@ -811,5 +788,86 @@ constrained problems; Chapter 7 of their book studies the more general case of
   Show that LICQ implies MCFQ. By Gordan's (once more). 
 
 \item Show LICQ does not imply strong duality. 
+
+\index{subgradient!optimality condition}
+\item \label{ex:subgradients_kkt}
+  We will show that the KKT stationarity and complementary slackness conditions
+  for problem \eqref{eq:primal_problem2} can be derived via subgradient
+  optimality, under Slater's condition (Theorem \ref{thm:slater_condition}). For   
+  simplicity (as we did previously in studying Slater's condition in Exercise
+  \ref{ex:convex_theorem_alternatives}), we will: 
+  \begin{itemize}  
+  \item redefine $A,b$ so that $Ax \leq b$ represents the affine inequality 
+    constraints in \eqref{eq:primal_problem2} (originally represented as 
+    $h_1(x) \leq 0, \dots, h_r(x) \leq 0$, and $\ell_1(x) = 0, \dots, \ell_k(x)
+    = 0$), and then relabel the corresponding dual variable as $v \geq 0$;     
+  \item redefine $h$ so that $h_1(x) \leq 0, \dots, h_m(x) \leq 0$ denotes 
+    the nonaffine inequality constraints in \eqref{eq:primal_problem2}
+    (originally represented as $h_{r+1}(x) \leq 0, \dots, h_m(x) \leq 0$), and
+    then relabel the corresponding dual variable as $u \geq 0$.  
+  \end{itemize}
+  We will maintain $m,k$ for the dimensions of $u,v$, respectively. We will also
+  assume without a loss of generality that $x = 0$ satisfies $Ax \leq b$. Let 
+  \smash{$\bar{x}, \bar{u}, \bar{v}$} be primal and dual optimal.    
+
+\begin{enumerate}[label=\alph*.]
+\item Define \smash{$h_0(x) = \max_{i=1,\dots,m} \, h_i(x)$} and \smash{$F(x) =
+    \max\{f(x) - f(\bar{x}), h_0(x)\}$}. Consider 
+  \begin{equation}
+  \label{eq:surrogate_problem}
+  \minimize_x \quad F(x) \quad \st \quad Ax \leq b.
+  \end{equation}
+  Show that \eqref{eq:surrogate_problem} is convex, and minimized at
+  \smash{$\bar{x}$}, with optimal value \smash{$F(\bar{x}) = 0$}.
+
+\item Let $C = \{x : Ax \leq b\}$. Apply the subgradient optimality condition to
+  \eqref{eq:surrogate_problem} to prove
+  \[
+  0 \in \partial F(\bar{x}) + \cN_C(\bar{x}).
+  \]
+  Hint: argue that Slater's condition implies $\relint(\dom(F)) \cap \relint(C)
+  \not= \emptyset$, thus by the subgradient rule for a sum in Property
+  \parref{par:subgradient_sum}, we have \smash{$\partial (F + I_C)(\bar{x}) =
+    \partial F(\bar{x}) + \partial I_C(\bar{x})$}. 
+
+\item Let $a_j \in \R^d$, $j = 1,\dots,k$ be the rows of $A$. Show that there
+  exists $\mu_j \geq 0$, $j = 1,\dots,k$, with $\mu_j = 0$ for \smash{$a_j^\T
+    \bar{x} < b_j$}, such that   
+  \[
+  0 \in \partial F(\bar{x}) + \sum_{j=1}^k \mu_j a_j.
+  \]
+  Hint: using $b \geq 0$ (implied by our assumption that $x = 0$ satisfies $Ax
+  \leq b$), show that the normal cone to $C$ at \smash{$\bar{x}$} is
+  \smash{$\cN_C(\bar{x}) = \{ A^\T \mu : \mu \geq 0, \, \text{$\mu_j = 0$ for
+      $a_j^\T \bar{x} < b_j$} \}$}.     
+
+\item Show that there exists $\alpha \in [0,1]$ such that 
+  \[
+  0 \in \alpha \partial f(\bar{x}) + (1-\alpha) \partial h_0(\bar{x}) +
+  \sum_{j=1}^k \mu_j a_j. 
+  \]
+  Hint: apply the subgradient rule for a finite maximum in Property 
+  \parref{par:subgradient_supremum} to $F$. 
+
+\item Show that $\alpha \not= 0$. (Hint: assume for the sake of contradiction
+  that $\alpha = 0$. This means \smash{$\bar{x}$} minimizes $h_0$ over $C$,
+  which disagrees with Slater's condition.) Thus, after dividing through by
+  $\alpha$, and relabeling the multipliers, there exists $\beta \geq 0$ and $v
+  \geq 0$, with $v_j = 0$ for \smash{$a_j^\T \bar{x} < b_j$}, such that     
+  \[
+  0 \in \partial f(\bar{x}) + \beta \partial h_0(\bar{x}) + \sum_{j=1}^k v_j
+  a_j.  
+  \]
+
+\item To finish, apply the subgradient rule for a maximum to $h_0$, and relabel
+  the multipliers once more to show that there exists $u,v \geq 0$, where $u_i =
+  0$ for \smash{$h_i(\bar{x}) < 0$} and $v_j = 0$ for \smash{$a_j^\T \bar{x} < 
+    v_j$}, such that 
+  \[
+  0 \in \partial f(\bar{x}) + \sum_{i=1}^m u_i \partial h_i(x) + \sum_{j=1}^k
+  v_j a_j, 
+  \]
+  which precisely reproduces stationarity and complementary slackness.
+\end{enumerate}
 \end{enumerate}
 \end{xcb}
