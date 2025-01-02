@@ -866,8 +866,8 @@ nonlinear equality and inequality constraints). Exercise
   We will show that the KKT stationarity and complementary slackness conditions
   for problem \eqref{eq:primal_problem2} can be derived via subgradient
   optimality, under Slater's condition (Theorem \ref{thm:slater_condition}). For   
-  notational ease (as we did previously in studying Slater's condition in
-  Exercise \ref{ex:convex_theorem_alternatives}), we will:   
+  ease of notation (as we did in studying Slater's condition in Exercise
+  \ref{ex:convex_theorem_alternatives}), we will:     
   \begin{itemize}  
   \item redefine $A,b$ so that $Ax \leq b$ represents the affine inequality 
     constraints in \eqref{eq:primal_problem2} (originally represented as 
@@ -908,9 +908,9 @@ nonlinear equality and inequality constraints). Exercise
   \[
   0 \in \partial F(\bar{x}) + \sum_{j=1}^k \mu_j a_j.
   \]
-  Hint: using $b \geq 0$ (implied by our assumption that $x = 0$ satisfies $Ax
-  \leq b$), show that the normal cone to $C$ at \smash{$\bar{x}$} is
-  \smash{$\cN_C(\bar{x}) = \{ A^\T \mu : \mu \geq 0, \, \text{$\mu_j = 0$ for
+  Hint: using $b \geq 0$ (implied by our earlier assumption that $x = 0$
+  satisfies $Ax \leq b$), show that the normal cone to $C$ at \smash{$\bar{x}$} 
+  is \smash{$\cN_C(\bar{x}) = \{ A^\T \mu : \mu \geq 0, \, \text{$\mu_j = 0$ for 
       $a_j^\T \bar{x} < b_j$} \}$}.     
 
 \item Show that there exists $\alpha \in [0,1]$ such that 
@@ -931,10 +931,10 @@ nonlinear equality and inequality constraints). Exercise
   a_j.  
   \]
 
-\item To finish, apply the subgradient rule for a maximum to $h_0$, and relabel
-  the multipliers once more to show that there exists $u,v \geq 0$, where $u_i =
-  0$ for \smash{$h_i(\bar{x}) < 0$} and $v_j = 0$ for \smash{$a_j^\T \bar{x} < 
-    v_j$}, such that 
+\item Apply the subgradient rule for a maximum to $h_0$, and relabel
+  multipliers, to show that there exists $u,v \geq 0$, where $u_i = 0$ for
+  \smash{$h_i(\bar{x}) < 0$} and $v_j = 0$ for \smash{$a_j^\T \bar{x} < v_j$},
+  such that  
   \[
   0 \in \partial f(\bar{x}) + \sum_{i=1}^m u_i \partial h_i(x) + \sum_{j=1}^k
   v_j a_j, 
