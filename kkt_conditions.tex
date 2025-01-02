@@ -507,6 +507,7 @@ strong duality. More broadly, they are necessary under what are called
 condition is an example of CQ, but there are several others, such as
 \emph{linear independence CQ (LICQ)}. This states:   
 \index{KKT conditions!constraint qualification}
+\index{KKT conditions!constraint qualification!linear independence}
 \begin{multline}
 \label{eq:licq} 
 \text{the gradients of active inequality constraints and linear
@@ -647,14 +648,14 @@ nonlinear equality and inequality constraints). Exercise
   x_i = y_i - v + u_i, \quad u_i x_i = 0, \quad i = 1,\dots,d.
   \]
 
-\item Prove based on part a that we can write, at the solutions \smash{$\hat{x},
-    \hat{v}$}: 
+\item Prove that we can therefore write, at the solutions \smash{$\hat{x},
+    \hat{v}$}:  
   \[
   \hat{x}_i = (y_i - \hat{v})_+, \quad i = 1,\dots,d.
   \]
 
-\item Prove based on part b that the simplex projection \smash{$\hat{x}$}
-  reduces to finding \smash{$\hat{v}$} such that 
+\item Prove that the simplex projection \smash{$\hat{x}$} reduces to finding
+  \smash{$\hat{v}$} such that   
   \[
   \sum_{i=1}^d (y_i - \hat{v})_+= 1.
   \]
@@ -783,22 +784,64 @@ nonlinear equality and inequality constraints). Exercise
   Hint: in the separating hyperplane application, take $C = \{Ax : x \geq 0, \,
   \one^\T x = 1 \}$ and $D = \{0\}$.   
 
-\index{KKT conditions!constraint qualification}
 \item \label{ex:fritz_john_condition} 
-  State Fritz John condition and cite it. Prove it. By Gordan's. 
-  % Theorem 2.3.6 of BL 
+  We now use Gordan's lemma to prove necessity of what is known as the
+  \emph{Fritz John condition} \cite{john1948extremum} for optimality in the
+  problem 
+  \begin{equation}
+  \label{eq:primal_problem3}
+  \begin{alignedat}{2}
+  &\minimize_x \quad && f(x) \\
+  &\st \quad && h_i(x) \leq 0, \; i=1,\dots,m.
+  \end{alignedat}
+  \end{equation} 
+  We assume here (and in the following two exercises) that all functions $f$, 
+  $h_i$, $i=1,\dots,m$ are continuously differentiable. Let \smash{$\bar{x}$} be
+  primal optimal. 
+
+\begin{enumerate}[label=\alph*.]
+\item Define \smash{$I(\bar{x}) = \{ i : h_i(\bar{x}) = 0 \}$}, the index set of 
+    active inequality constraints, and 
+    \[
+    F(x) = \max\bigg\{ f(x) - f(\bar{x}), \, \max_{i \in I(\bar{x})} h_i(x)
+    \bigg\}. 
+    \]
+    Argue that $F$ is minimized at \smash{$\bar{x}$}, with optimal value
+    \smash{$F(\bar{x}) = 0$}.  
+
+\item Prove by contradiction that there cannot exist $z \in \R^d$ such that  
+  \[
+  \nabla f(\bar{x})^\T z < 0, \quad \nabla h_i(\bar{x})^\T z < 0, \quad i \in
+  I(\bar{x}).  
+  \]
+  Hint: consider a Taylor expansion at \smash{$\bar{x}$}.
+
+\item Prove that there exists \smash{$\lambda_0 \geq 0, \lambda_i \geq 0$, $i
+    \in I(\bar{x})$}, not all zero, such that    
+  \index{KKT conditions!constraint qualification!Fritz John}
+  \begin{equation}
+  \label{eq:fritz_john_condition}
+  0 = \lambda_0 \nabla f(\bar{x}) + \sum_{i \in I(\bar{x})} \lambda_i \nabla
+  h_i(\bar{x}).
+  \end{equation}
+  Hint: use Gordan's lemma, with $y = -z$.
+\end{enumerate}
 
 \item \label{ex:mfcq} 
   State MFCQ and cite it. Prove it. By FJ and Gordan's implying $u_0 \not=
   0$. 
+
+  \index{KKT conditions!constraint qualification!Fritz John}
   % Theorem 2.3.8 of BL 
 
 \item \label{ex:licq_implies_mfcq}
   Show that LICQ implies MCFQ. By Gordan's (once more). 
 
-\item Show that LICQ does not imply strong duality (by giving a 
-  counterexample). Hint: consider Example \ref{ex:nonconvex_quartic} and Figure
-  \ref{fig:nonconvex_quartic}. 
+
+\index{KKT conditions!constraint qualification!linear independence}
+\item Show that LICQ does not imply strong duality (by giving a
+  counterexample). Hint: consider Example \ref{ex:nonconvex_quartic}  
+  and Figure \ref{fig:nonconvex_quartic}. 
 
 \index{subgradient!optimality condition}
 \item \label{ex:subgradients_kkt}
