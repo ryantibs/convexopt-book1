@@ -975,15 +975,14 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   Theorem \ref{thm:slater_condition}. Moreover, for the remainder of this proof,
   we will:    
   \begin{itemize}  
-  \item redefine $A,b$ such that $Ax \leq b$ represents the affine inequality
-    constraints in \eqref{eq:feasibility_problem1} (originally written as
-    $h_1(x) \leq 0, \dots, h_r(x) \leq 0, \pm\ell_1(x) \leq 0, \dots,
-    \pm\ell_k(x) \leq 0$), then relabel the corresponding dual variable as $v
-    \geq 0$; 
-  \item redefine $h$ such that $h(x) \leq 0$ denotes the nonaffine inequality
-    constraints in \eqref{eq:feasibility_problem1} (originally written as
-    $h_{r+1}(x) \leq 0, \dots, h_m(x) \leq 0$), then relabel the corresponding
-    dual variable as $u \geq 0$.
+  \item redefine $A,b$ such that $Ax \leq b$ represents the affine inequality 
+    constraints in \eqref{eq:feasibility_problem1} (originally represented as 
+    $h_1(x) \leq 0, \dots, h_r(x) \leq 0$, and $\ell_1(x) = 0, \dots, \ell_k(x)
+    = 0$), and then relabel the corresponding dual variable as $v \geq 0$;     
+  \item redefine $h$ such that $h_1(x) \leq 0, \dots, h_m(x) \leq 0$ represents 
+    the nonaffine inequality constraints in \eqref{eq:feasibility_problem1}
+    (originally represented as $h_{r+1}(x) \leq 0, \dots, h_m(x) \leq 0$), and
+    then relabel the corresponding dual variable as $u \geq 0$. 
   \end{itemize}
   We will maintain $m,k$ for the dimensions of $u,v$, respectively. Now define
   the sets     
