@@ -513,7 +513,7 @@ condition is an example of CQ, but there are several others, such as
 \text{the gradients of active inequality constraints and linear
   inequality constraints at $\bar{x}$:} \\ \text{$\nabla h_i(\bar{x})$ for all 
   $i$ such that $h_i(\bar{x}) = 0$ and $\nabla \ell_j(\bar{x})$ for $j =
-  1,\dots,k$, are linearly independent.}   
+  1,\dots,k$, are linearly independent}.   
 \end{multline}
 If \smash{$\bar{x}, \bar{u}, \bar{v}$} are primal and dual optimal and LICQ
 \eqref{eq:licq} holds at \smash{$\bar{x}$}, then (assuming all functions are
@@ -772,10 +772,10 @@ nonlinear equality and inequality constraints). Exercise
   where $\|\cdot\|_*$ is the dual norm of $\|\cdot\|$. Hint: recall the fact in 
   \eqref{eq:norm_subgradients} about subgradients of $\|\cdot\|$.
 
-\item \label{ex:gordan}
+\item \label{ex:gordan_lemma}
   Use the strict version the separating hyperplane theorem, from Exercise  
-  \ref{ex:farkas}, to prove \emph{Gordan's lemma}: given $A \in \R^{k \times  
-    d}$, exactly one of the following statements is true:  
+  \ref{ex:farkas_lemma}, to prove \emph{Gordan's lemma}: given $A \in \R^{k
+    \times d}$, exactly one of the following statements is true:  
   \index{Gordan's lemma}
   \begin{itemize}
   \item there exists $x \in \R^d$ such that $Ax=0$, $x \geq 0$, $x \not= 0$; 
@@ -828,15 +828,30 @@ nonlinear equality and inequality constraints). Exercise
 \end{enumerate}
 
 \item \label{ex:mfcq} 
-  State MFCQ and cite it. Prove it. By FJ and Gordan's implying $u_0 \not=
-  0$. 
-
-  \index{KKT conditions!constraint qualification!Fritz John}
-  % Theorem 2.3.8 of BL 
+  Consider the \emph{Mangasarian-Fromovitz CQ (MFCQ)}, due to
+  \cite{mangasarian1967fritz}, which states:
+  \index{KKT conditions!constraint qualification!Mangasarian-Fromovitz}
+  \begin{equation}
+  \label{eq:mfcq} 
+  \text{there exists $z \in \R^d$ such that $\nabla h_i(\bar{x})^\T z < 0$, for
+    all $i \in I(\bar{x})$},    
+  \end{equation}
+  where \smash{$I(\bar{x}) = \{ i : h_i(\bar{x}) = 0 \}$} is the index set of
+  active inequality constraints, as above. Prove in the setting of Exercise
+  \ref{ex:fritz_john_condition} that if \smash{$\bar{x}$} is optimal for
+  \eqref{eq:primal_problem3} and MFCQ \eqref{eq:mfcq} holds, then there exists
+  \smash{$\bar{u}_i \geq 0$}, \smash{$i \in I(\bar{x})$} such that 
+  \[
+  0 = \nabla f(\bar{x}) + \sum_{i \in I(\bar{x})} \bar{u}_i \nabla
+  h_i(\bar{x}). 
+  \]
+  Note that by defining \smash{$\bar{u}_i = 0$}, \smash{$i \notin
+    I(\bar{x})$}, this verifies the KKT stationarity and complementary slackness
+  conditions, combined. Hint: use Gordan's lemma to show that $\lambda_0 \not=
+  0$ in \eqref{eq:fritz_john_condition}. 
 
 \item \label{ex:licq_implies_mfcq}
   Show that LICQ implies MCFQ. By Gordan's (once more). 
-
 
 \index{KKT conditions!constraint qualification!linear independence}
 \item Show that LICQ does not imply strong duality (by giving a
@@ -848,8 +863,8 @@ nonlinear equality and inequality constraints). Exercise
   We will show that the KKT stationarity and complementary slackness conditions
   for problem \eqref{eq:primal_problem2} can be derived via subgradient
   optimality, under Slater's condition (Theorem \ref{thm:slater_condition}). For   
-  simplicity (as we did previously in studying Slater's condition in Exercise
-  \ref{ex:convex_theorem_alternatives}), we will: 
+  notational ease (as we did previously in studying Slater's condition in
+  Exercise \ref{ex:convex_theorem_alternatives}), we will:   
   \begin{itemize}  
   \item redefine $A,b$ so that $Ax \leq b$ represents the affine inequality 
     constraints in \eqref{eq:primal_problem2} (originally represented as 
