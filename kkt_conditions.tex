@@ -785,9 +785,8 @@ nonlinear equality and inequality constraints). Exercise
   \one^\T x = 1 \}$ and $D = \{0\}$.   
 
 \item \label{ex:fritz_john_condition} 
-  We now use Gordan's lemma to prove necessity of what is known as the
-  \emph{Fritz John condition} \cite{john1948extremum} for optimality in the
-  problem 
+  We now use Gordan's lemma to derive a necessity condition for optimality in
+  the problem  
   \begin{equation}
   \label{eq:primal_problem3}
   \begin{alignedat}{2}
@@ -814,7 +813,7 @@ nonlinear equality and inequality constraints). Exercise
   \nabla f(\bar{x})^\T z < 0, \quad \nabla h_i(\bar{x})^\T z < 0, \quad i \in
   I(\bar{x}).  
   \]
-  Hint: consider a Taylor expansion at \smash{$\bar{x}$}.
+  Hint: consider a Taylor expansion at \smash{$\bar{x}$}. 
 
 \item Prove that there exists \smash{$\lambda_0 \geq 0, \lambda_i \geq 0$, $i
     \in I(\bar{x})$}, not all zero, such that    
@@ -824,7 +823,9 @@ nonlinear equality and inequality constraints). Exercise
   0 = \lambda_0 \nabla f(\bar{x}) + \sum_{i \in I(\bar{x})} \lambda_i \nabla
   h_i(\bar{x}).
   \end{equation}
-  Hint: use Gordan's lemma, with $y = -z$.
+  This is called the \emph{Fritz John condition}, due to
+  \cite{john1948extremum}; note the similarity to the KKT stationarity 
+  condition. Hint: use Gordan's lemma, with $y = -z$.   
 \end{enumerate}
 
 \item \label{ex:mfcq} 
