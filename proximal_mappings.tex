@@ -1,14 +1,16 @@
 \chapter{Proximal mappings}
 \label{chap:proximal_mappings}
 
+In this chapter we cover a useful concept that generalizes the notion of
+(Euclidean) projection onto a given set to an operator which ``proximity'' to
+its input, guided by a given function.
+
 \section{Definition and properties}
 
-In this chapter we cover a useful concept that generalizes the notion of
-(Euclidean) projection onto a given set: the \emph{proximal mapping} (also
-called proximal map, or proximal operator) associated with a function $f : \R^d
-\to [-\infty, \infty]$. This is a set-valued map, denoted by $\prox_f$, that
-maps each $x \in \R^d$ to a subset of $\R^d$ (possibly the empty set), defined
-by          
+The \emph{proximal mapping} (also called proximal map, or proximal operator)
+associated with a function $f : \R^d \to [-\infty, \infty]$ is a set-valued map,
+denoted by $\prox_f$, that maps each $x \in \R^d$ to a subset of $\R^d$
+(possibly the empty set), defined by           
 \index{proximal mapping}
 \begin{equation}
 \label{eq:proximal_mapping}
@@ -41,7 +43,8 @@ this chapter,
 f(z) \bigg\},  
 \end{equation}
 which is simply the proximal map associated with the scaled
-function $\lambda f$ for $\lambda > 0$. An intimately related object is 
+function $\lambda f$ for $\lambda > 0$. An intimately related object looks at
+the infimum (rather than the minimizer),
 \index{Moreau envelope}
 \begin{equation}
 \label{eq:moreau_envelope_lambda}
