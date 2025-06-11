@@ -4,7 +4,7 @@ Convex optimization for statistics and machine learning.
 
 To make this more manageable, I decided to separate out this effort
 into two books: book 1 for analysis, and book 2 for algorithms. 
-Book 2 has not GitHub repo at the moment.
+Book 2 has no GitHub repo at the moment.
 
 (Will I ever finish? One can be hopeful.)
 
@@ -23,5 +23,3 @@ Tentative plan:
   * Bregman divergences, projections, proximals?
   * Perturbation/sensitivity analysis?
   * Or variational analysis (for mere mortals)?
-              
-
