@@ -1,9 +1,8 @@
 \chapter{Duality correspondences}
 \label{chap:duality_correspondences}
 
-In this chapter we explore various topics which are adjacent to our treatment of
-Lagrangian duality and the KKT conditions in the last two chapters, and describe
-connections as well as implications brought about by new perspectives.    
+In this chapter we explore various topics which connect to our treatment of 
+Lagrangian duality and the KKT conditions in the last two chapters.
 
 \section{Dual norms}
 \label{sec:dual_norms}
@@ -19,40 +18,49 @@ It is not hard to check that the dual norm $\|\cdot\|_*$ is itself a norm on
 $\R^d$, that is, it satisfies the triangle inequality, absolute homogeneity, and
 positive definiteness (Exercise \ref{ex:dual_norm_check}). 
 
-As a first property to record, the dual of the dual norm is the original norm:
-$\|\cdot\|_{**} = \|\cdot\|$, which can be verified using the theory of
-Lagrangian duality (Exercise \ref{ex:dual_norm_dual}). This allows us to write  
+A key property to record: the dual of the dual norm is the original norm,
+$\|\cdot\|_{**} = \|\cdot\|$. This is traditionally verified using the
+Hahn-Banach theorem (Exercise \ref{ex:dual_norm_dual1}), but can also be
+derived using the theory of Lagrangian duality (Exercise
+\ref{ex:dual_norm_dual2}), or even convex conjugacy (Exercise
+\ref{ex:dual_norm_dual3}). In any case, however it is proved, this fact allows
+us to write    
 \begin{equation}
 \label{eq:norm_dual2}
 \|x\| = \sup_{\|z\|_* \leq 1} \, z^\T x.
 \end{equation}
-The representations \eqref{eq:dual_norm}, \eqref{eq:norm_dual2}, combined with
-the Danskin-Bertsekas theorem and its translation for subgradients of norms
-\eqref{eq:norm_subgradients}, leads to the following simple but elementary
-facts (Exercise \ref{ex:dual_norm_subgradients}).
+
+Directly from \eqref{eq:norm_dual}, we may infer that $x^\T z \leq \|x\|$ for
+all $x$ and $\|z\|_* \leq 1$, or     
+\index{H{\"o}lder's inequality}
+\begin{equation}
+\label{eq:holder}
+x^\T z \leq \|x\| \|z\|_*, \quad \text{for all $x,z$}.
+\end{equation}
+This may be seen as a generalization of \emph{H{\"o}lder's inequality} for
+$\ell_p$ norms. When does equality hold in \eqref{eq:holder}? The
+representations \eqref{eq:dual_norm}, \eqref{eq:norm_dual2}, combined with the
+fact about subgradients of norms in \eqref{eq:norm_subgradients}, lead to the 
+following equivalent conditions (Exercise \ref{ex:dual_norm_subgradients}).     
 
 \index{norm!subgradients}
 \index{dual norm!subgradients}
-\index{H{\"o}lder's inequality}
 \begin{Theorem}
 \label{thm:dual_norm_subgradients}
-For a norm $\|\cdot\|$ and dual its $\|\cdot\|_*$, it holds that $x^\T z \leq
-\|x\| \|z\|_*$ for any $x,y$. Furthermore, for any $x \not= 0$ and $z \not= 0$,
-the following statements are equivalent:
+For any norm $\|\cdot\|$ and its dual $\|\cdot\|_*$, and any $x \not= 0$ and $z 
+\not= 0$, the following statements are equivalent:
 \begin{enumerate}[label=(\roman*)]
 \item $x^\T z = \|x\| \|z\|_*$;
 \item $x/\|x\| \in \partial \|z\|_*$; 
 \item $z/\|z\|_* \in \partial \|x\|$;
-\item $x/\|x\| \in \argmax_{\|u\| \leq 1} \, u^\T z$; 
-\item $z/\|z\|_* \in \argmax_{\|u\|_* \leq 1} \, u^\T x$. 
+\item $x/\|x\| \in \argmax_{\|s\| \leq 1} \, s^\T z$; 
+\item $z/\|z\|_* \in \argmax_{\|s\|_* \leq 1} \, s^\T x$. 
 \end{enumerate}
 \end{Theorem}
 
-The conclusion given above, that $x^\T z \leq \|x\| \|z\|_*$ for any $x,y$, can
-be seen as a generalization of \emph{H{\"o}lder's inequality}, which is
-typically stated for  $\ell_p$ norms. The examples below confirm that this is
-indeed a strict generalization (as the dual of the $\ell_p$ norm is the $\ell_q$
-norm for conjugate pairs $p,q$).   
+The next example confirms that \eqref{eq:holder} is indeed a strict
+generalization of H{\"o}lder's inequality for $\ell_p$ norms, as it shows the
+dual of the $\ell_p$ norm is the $\ell_q$ norm for a conjugate pair $p,q$.      
 
 \begin{Example}
 The following are examples of dual norms for common norms, which can be verified
@@ -62,7 +70,7 @@ by direct calculation (Exercises \ref{ex:lp_norm_dual}--\ref{ex:trace_norm_dual}
 \index{lp norm@$\ell_p$ norm!dual}
 \item \parlab{xa:lp_norm_dual} 
   For the $\ell_p$ norm $\|\cdot\|_p$ with $p \geq 1$, its dual norm is
-  $\|\cdot\|_q$ for $q \geq 1$ such that $1/p + 1/q = 1$.  
+  $\|\cdot\|_q$ where $q$ satisfies $1/p + 1/q = 1$.  
 
 \item \parlab{xa:scaled_euclidean_norm_dual}  
   For the scaled Euclidean norm $\|\cdot\|_A$ in a given positive definite
@@ -86,7 +94,7 @@ a norm is the characteristic function the dual norm unit ball (Exercise
 \text{for $f(x) = \|x\|$, we have $f^*(u) = I_{\{z : \|z\|_* \leq 1\}}(u)$}.
 \end{equation}
 Meanwhile, an arguably even simpler relationship holds for the squared
-norm---the convex conjugate of one half times a norm squared is one half times
+norm. The convex conjugate of one half times a norm squared is one half times 
 its dual norm squared (Exercise \ref{ex:dual_norm2_conjugate}):    
 \begin{equation}
 \label{eq:dual_norm2_conjugate}
@@ -208,8 +216,12 @@ Exercises \ref{ex:farkas_variations_conic} and
 \item \label{ex:dual_norm_check}
 Dual norm is a norm. 
 
-\item \label{ex:dual_norm_dual}
-Dual of dual norm is original.
+\item \label{ex:dual_norm_dual1}
+Dual of dual norm is original. $\|x\|_{**} \leq \|x\|$ by Holder. Other way
+around: $L=\{ax : a \in \R\}$, and let $f(ax) = a\|x\|$ be a map on $L$. Check
+$f$ is bounded, linear, and has operator norm 1. By HB we can extend this to all
+of $\R^d$, as $F$, while preserving its norm. This means $\|x\|_{**}
+\sup_{\|z\|_* \leq 1} \, z^\T x \geq F(x) = \|x\|$. 
 
 \item \label{ex:dual_norm_subgradients}
 Prove Theorem \ref{thm:dual_norm_subgradients}. Can show each thing is
@@ -265,6 +277,12 @@ g^*(y) = \frac{1}{2} \|y\|^2.
 Therefore facts (iii) and (iv) follow from the conjugate relation $y \in
 \partial g(x) \iff x \in \partial g^*(x)$.   
 \end{proof} 
+
+\item \label{ex:dual_norm_dual2}
+Dual of dual norm is original, by Lagrangian duality.
+
+\item \label{ex:dual_norm_dual3}
+Dual of dual norm is original, by conjugate duality.
 
 \item \label{ex:dubovitski_milutin}
 Dubovitski-Milutin lemma
