@@ -23,14 +23,14 @@ $\|\cdot\|_{**} = \|\cdot\|$. This is traditionally verified using the
 Hahn-Banach theorem (Exercise \ref{ex:dual_norm_dual1}), but can also be
 derived using the theory of Lagrangian duality (Exercise
 \ref{ex:dual_norm_dual2}), or even convex conjugacy (Exercise
-\ref{ex:dual_norm_dual3}). In any case, however it is proved, this fact allows
+\ref{ex:dual_norm_dual3}). In any case (however it is proved), this fact allows 
 us to write    
 \begin{equation}
 \label{eq:norm_dual2}
 \|x\| = \sup_{\|z\|_* \leq 1} \, z^\T x.
 \end{equation}
 
-Directly from \eqref{eq:norm_dual}, we may infer that $x^\T z \leq \|x\|$ for
+Directly from \eqref{eq:dual_norm}, we may infer that $x^\T z \leq \|x\|$ for
 all $x$ and $\|z\|_* \leq 1$, or     
 \index{H{\"o}lder's inequality}
 \begin{equation}
@@ -214,18 +214,65 @@ Exercises \ref{ex:farkas_variations_conic} and
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
 \item \label{ex:dual_norm_check}
-Dual norm is a norm. 
+  Prove that the dual norm \eqref{eq:dual_norm} is indeed a norm on $\R^d$ by
+  verifying the following properties:  
+  \begin{itemize}
+  \item triangle inequality: $\|x+y\|_* \leq \|x\|_* + \|y\|_*$ for all $x,y \in 
+  \R^d$;
+  \item absolute homogeneity: $\|ax\|_* = |a|\|x\|_*$ for all $a \in \R$ and $x 
+  \in \R^d$; and 
+\item positive definiteness: $\|x\|_* \geq 0$ for all $x \in \R^d$, with
+  equality if and only if $x=0$. 
+  \end{itemize}
 
 \item \label{ex:dual_norm_dual1}
-Dual of dual norm is original. $\|x\|_{**} \leq \|x\|$ by Holder. Other way
-around: $L=\{ax : a \in \R\}$, and let $f(ax) = a\|x\|$ be a map on $L$. Check
-$f$ is bounded, linear, and has operator norm 1. By HB we can extend this to all
-of $\R^d$, as $F$, while preserving its norm. This means $\|x\|_{**}
-\sup_{\|z\|_* \leq 1} \, z^\T x \geq F(x) = \|x\|$. 
+  In this exercise, we investigate the dual of the dual of a norm $\|\cdot\|$: 
+  \begin{equation}
+  \label{eq:dual_norm_dual}
+  \|x\|_{**} = \sup_{\|z\|_* \leq 1} \, z^\T x.
+  \end{equation}
+  Fixing any $x \in \R^d$, we will argue that $\|x\|_{**} = \|x\|$ in two steps.   
 
+\begin{enumerate}[label=\alph*.]
+\item Prove $\|x\|_{**} \leq \|x\|$ using H{\"o}lder's inequality
+  \eqref{eq:holder}. 
+
+\item Prove $\|x\|_{**} \geq \|x\|$ using the Hahn-Banach theorem on normed
+  vector spaces. Hint: for $X = \R^d$, viewed as a vector space equipped with
+  the norm $\|\cdot\|$, observe that \eqref{eq:dual_norm_dual} can be rewritten
+  as            
+  \[
+  \|x\|_{**} = \sup \{ F(x) : F \in X^*, \, \|F\|_{\op} \leq 1 \},
+  \]
+  where $X^*$ denotes the dual space of bounded linear functionals
+  on $X$ (that is, real-valued functions on $X$), and \smash{$\|F\|_{\op} =
+    \sup_{x  \not =  0} \, |F(x)| / \|x\|$.} Now define $L = \{ ax : a \in
+  \R\}$, which is a 1-dimensional subspace of $X$, and define $f : L \to \R$ by
+  $f(ax) = a\|x\|$. Show that $f$ is bounded and linear, with unit operator
+  norm, so by the Hahn-Banach theorem there exists a bounded linear functional
+  $F$ on $X$ which agrees with $f$ on $L$, and also has unit operator norm. Use
+  this $F$ to show that $\|x\|_{**} \geq \|x\|$.  
+\end{enumerate}
+
+\index{norm!subgradients}
+\index{dual norm!subgradients}
 \item \label{ex:dual_norm_subgradients}
-Prove Theorem \ref{thm:dual_norm_subgradients}. Can show each thing is
-equivalent to (i) directly. 
+  In this exercise, we will prove Theorem \ref{thm:dual_norm_subgradients}. 
+
+\begin{enumerate}[label=\alph*.] 
+\item Prove that $\text{(i)} \iff \text{(iv)}$ using \eqref{eq:dual_norm}.
+\item Prove that $\text{(i)} \iff \text{(v)}$ using \eqref{eq:norm_dual2}.
+\item Prove that $\text{(ii)} \iff \text{(iv)}$ using
+  \eqref{eq:norm_subgradients}, which comes from applying the Danskin-Bertsekas
+  theorem \eqref{eq:danskin_bertsekas} to \eqref{eq:norm_dual2}.
+\item Prove that $\text{(iii)} \iff \text{(v)}$ using
+  \begin{equation}
+  \label{eq:dual_norm_subgradients}
+  \partial \|z\|_* = \{ x : \|x\| \leq 1, \, x^\T z = \|z\|_* \},
+  \end{equation}
+  which comes from applying the Danskin-Bertsekas theorem
+  \eqref{eq:danskin_bertsekas} to \eqref{eq:dual_norm}. 
+\end{enumerate}
 
 \item \label{ex:lp_norm_dual}
 \item \label{ex:scaled_euclidean_norm_dual}
@@ -411,7 +458,7 @@ Dubovitski-Milutin lemma
 % \end{equation*}
 % for some fixed $c, B, A_i, \; i=1,\ldots,p$.
 
-% Hint: you will probably need to use each of the above parts (in different ways) here.
+% Hint: you will probably need to ruse each of the above parts (in different ways) here.
 
 \item Exercise on plurality of dual problems?
 
