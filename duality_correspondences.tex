@@ -12,7 +12,7 @@ $\|\cdot\|_*$, and defined by
 \index{dual norm}  
 \begin{equation}
 \label{eq:dual_norm}
-\|z\|_* = \sup_{\|x\| \leq 1} \, x^\T z.
+\|z\|_* = \sup_{\|x\| \leq 1} \, z^\T x.
 \end{equation}
 It is not hard to check that the dual norm $\|\cdot\|_*$ is itself a norm on
 $\R^d$, that is, it satisfies the triangle inequality, absolute homogeneity, and
@@ -27,7 +27,7 @@ derived using the theory of Lagrangian duality (Exercise
 us to write    
 \begin{equation}
 \label{eq:norm_dual2}
-\|x\| = \sup_{\|z\|_* \leq 1} \, z^\T x.
+\|x\| = \sup_{\|z\|_* \leq 1} \, x^\T z.
 \end{equation}
 
 Directly from \eqref{eq:dual_norm}, we may infer that $x^\T z \leq \|x\|$ for
@@ -53,8 +53,8 @@ For any norm $\|\cdot\|$ and its dual $\|\cdot\|_*$, and any $x \not= 0$ and $z
 \item $x^\T z = \|x\| \|z\|_*$;
 \item $x/\|x\| \in \partial \|z\|_*$; 
 \item $z/\|z\|_* \in \partial \|x\|$;
-\item $x/\|x\| \in \argmax_{\|s\| \leq 1} \, s^\T z$; 
-\item $z/\|z\|_* \in \argmax_{\|s\|_* \leq 1} \, s^\T x$. 
+\item $x/\|x\| \in \argmax_{\|s\| \leq 1} \, z^\T s$; 
+\item $z/\|z\|_* \in \argmax_{\|s\|_* \leq 1} \, x^\T s$. 
 \end{enumerate}
 \end{Theorem}
 
@@ -229,7 +229,7 @@ Exercises \ref{ex:farkas_variations_conic} and
   In this exercise, we investigate the dual of the dual of a norm $\|\cdot\|$: 
   \begin{equation}
   \label{eq:dual_norm_dual}
-  \|x\|_{**} = \sup_{\|z\|_* \leq 1} \, z^\T x.
+  \|x\|_{**} = \sup_{\|z\|_* \leq 1} \, x^\T z.
   \end{equation}
   Fixing any $x \in \R^d$, we will argue that $\|x\|_{**} = \|x\|$ in two steps.   
 
@@ -282,18 +282,29 @@ For the Schatten $p$-norm $\|\cdot\|_p$, which recall is a norm on
   matrices defined by $\|X\|_p = \|\sigma(X)\|_p$
 
 \item \label{ex:dual_norm_conjugate}
-\item \label{ex:dual_norm2_conjugate}
+  Verify \eqref{eq:dual_norm_conjugate} using the \eqref{eq:norm_dual2} and
+  Property \parref{xa:support_function_conjugate}, on conjugates of support
+  functions.     
 
+\item \label{ex:dual_norm2_conjugate}
+  In this exercise, we will derive some properties associated with the pair of
+  set-valued operators  
+  \begin{align*}
+  D(x) &= \|x\|_* \cdot \partial \|x\|_* \\
+  D_*(y) &= \|y\| \cdot \partial \|y\|.
+  \end{align*}
+  Part c below will verify \eqref{eq:dual_norm2_conjugate}.
+
+\begin{enumerate}[label=\alph*.] 
+\item Prove that $\|x\|_* = \|y\|$, for $y \in d(x)$.
+\item Prove that $x^\T y = \|x\|_*^2$, for $y \in d(x)$. 
+\item For $f(x) = \frac{1}{2} \|x\|^2$, prove that $\partial f(x) = d(x)$. 
+\item For $f^*(y) = \sup_x \, y^\T x - f(x)$, prove that
+\end{enumerate}
 Can prove this via Theorem \ref{thm:dual_norm_subgradients}. Can rearrange the
 statement of the theorem similar to how we wrote it in the coordinate flow
 notes: define the set-valued operator  
-\[
-d(x) = \|x\|_* \cdot \partial \|x\|_*,
-\]
-and its dual operator 
-\[
-d_*(y) = \|y\| \cdot \partial \|y\|.
-\]
+
 
 \begin{lemma}
 The following holds for any norm $\|\cdot\|$ and its dual norm
@@ -301,8 +312,8 @@ $\|\cdot\|_*$.
 
 \begin{enumerate}[label=(\roman*)]
 % \item Positive homogeneity: $d(ax) = a \cdot d(x)$ for $a \geq 0$. 
-\item Norm equality: $\|x\|_* = \|y\|$, for $y \in d(x)$.
-\item Inner product equality: $x^\T y = \|x\|_*^2$, for $y \in d(x)$.
+\item Norm equality: 
+\item Inner product equality: 
 \item Dual representation: $y \in d(x) \iff x \in d_*(y)$.
 \item Conjugate representation: $d(x) = \argmax_y \, x^\T y - \frac{1}{2}
   \|y\|^2$. 

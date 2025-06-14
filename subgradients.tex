@@ -329,7 +329,7 @@ The following examples can be checked using subgradient calculus rules.
   compact set $C$, we have 
   \index{support function!subgradients}
   \[
-  \partial h_C(x) = \bigg\{ y : y^\T x = \sup_{z \in C} \, z^\T x \bigg\},
+  \partial h_C(x) = \bigg\{ y : y^\T x = \sup_{z \in C} \, x^\T z \bigg\},
   \]
   A norm $\|\cdot\|$ is in fact a support function, corresponding to the set
   $C = \{x : \|x\|_* \leq 1\}$. Here $\|\cdot\|_*$ is itself another norm that
@@ -341,13 +341,13 @@ The following examples can be checked using subgradient calculus rules.
   \index{norm!ball}
   \begin{equation}
   \label{eq:norm_dual}
-  \|x\| = \sup_{\|z\|_* \leq 1} \, z^\T x,
+  \|x\| = \sup_{\|z\|_* \leq 1} \, x^\T z,
   \end{equation}
   and therefore by the Danskin-Bertsekas theorem \eqref{eq:danskin_bertsekas}, 
   \index{norm!subgradients}
   \begin{equation}
   \label{eq:norm_subgradients}
-  \partial \|x\| = \{ z : \|z\|_* \leq 1, \, z^\T x = \|x\| \}.
+  \partial \|x\| = \{ z : \|z\|_* \leq 1, \, x^\T z = \|x\| \}.
   \end{equation}
   This can be used as a starting point to establish the results on subgradients
   of specific norms given in Example \ref{xa:norm_subgradients} (Exercises   
@@ -932,7 +932,7 @@ an alternative short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   for any $1 \leq p,q \leq \infty$ with $1/p + 1/q  = 1$,    
   \begin{equation}
   \label{eq:lp_norm_dual}
-  \|x\|_p = \sup_{\|z\|_q \leq 1} \, z^\T x.
+  \|x\|_p = \sup_{\|z\|_q \leq 1} \, x^\T z.
   \end{equation}
 
 \begin{enumerate}[label=\alph*.]
@@ -961,7 +961,7 @@ an alternative short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   (where recall $\langle Z, X \rangle = \tr(Z^\T X)$):
   \begin{equation}
   \label{eq:operator_norm_dual}
-  \|X\|_{\op} = \sup_{\|Z\|_{\tr} \leq 1} \, \langle Z, X \rangle. 
+  \|X\|_{\op} = \sup_{\|Z\|_{\tr} \leq 1} \, \langle X, Z \rangle. 
   \end{equation}
 
 \begin{enumerate}[label=\alph*.]
@@ -986,7 +986,7 @@ an alternative short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
   recall $\langle Z, X \rangle = \tr(Z^\T X)$):
   \begin{equation}
   \label{eq:trace_norm_dual}
-  \|X\|_{\tr} = \sup_{\|Z\|_{\op} \leq 1} \, \langle Z, X \rangle.
+  \|X\|_{\tr} = \sup_{\|Z\|_{\op} \leq 1} \, \langle X, Z \rangle.
   \end{equation}
   As in the example, we write $X = U \Sigma V^\T$ for an SVD of $X$.   
 
