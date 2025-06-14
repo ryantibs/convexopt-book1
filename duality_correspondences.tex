@@ -290,51 +290,23 @@ For the Schatten $p$-norm $\|\cdot\|_p$, which recall is a norm on
   In this exercise, we will derive some properties associated with the pair of
   set-valued operators  
   \begin{align*}
-  D(x) &= \|x\|_* \cdot \partial \|x\|_* \\
-  D_*(y) &= \|y\| \cdot \partial \|y\|.
+  d(x) &= \|x\| \cdot \partial \|x\|, \\
+  d^*(y) &= \|y\|_* \cdot \partial \|y\|_*.
   \end{align*}
-  Part c below will verify \eqref{eq:dual_norm2_conjugate}.
+  Part d below will verify \eqref{eq:dual_norm2_conjugate}.
 
 \begin{enumerate}[label=\alph*.] 
-\item Prove that $\|x\|_* = \|y\|$, for $y \in d(x)$.
-\item Prove that $x^\T y = \|x\|_*^2$, for $y \in d(x)$. 
+\item Prove that $\|x\| = \|y\|_*$, for $y \in d(x)$.
+\item Prove that $x^\T y = \|x\|^2$, for $y \in d(x)$. 
 \item For $f(x) = \frac{1}{2} \|x\|^2$, prove that $\partial f(x) = d(x)$. 
-\item For $f^*(y) = \sup_x \, y^\T x - f(x)$, prove that
+\item For $f^*(y) = \sup_x \, \{ y^\T x - f(x) \}$, prove that the supremum
+  defining $f^*(y)$ is achieved for $y \in d(x)$. Plug this in, and use parts a
+  and b, to verify \eqref{eq:dual_norm2_conjugate}. 
+\item Prove that $y \in d(x) \iff x \in d^*(y)$.
+\item Prove that $d(x) = \argmax_y \, \{ x^\T y - \frac{1}{2} \|y\|_*^2 \}$, and 
+  $d^*(y) = \argmax_x \, \{ y^\T x - \frac{1}{2} \|x\|^2 \}$. 
 \end{enumerate}
-Can prove this via Theorem \ref{thm:dual_norm_subgradients}. Can rearrange the
-statement of the theorem similar to how we wrote it in the coordinate flow
-notes: define the set-valued operator  
 
-
-\begin{lemma}
-The following holds for any norm $\|\cdot\|$ and its dual norm
-$\|\cdot\|_*$. 
-
-\begin{enumerate}[label=(\roman*)]
-% \item Positive homogeneity: $d(ax) = a \cdot d(x)$ for $a \geq 0$. 
-\item Norm equality: 
-\item Inner product equality: 
-\item Dual representation: $y \in d(x) \iff x \in d_*(y)$.
-\item Conjugate representation: $d(x) = \argmax_y \, x^\T y - \frac{1}{2}
-  \|y\|^2$. 
-\end{enumerate}
-\end{lemma}
-
-\begin{proof}
-Facts (i) and (ii) follow directly by definition of $d$ and $\|\cdot\|_*$. Next
-define \smash{$g(x) = \frac{1}{2} \|x\|_*^2$}. One can verify that $\partial
-g(x) = d(x)$. Moreover, the conjugate of $g$ is  
-\[
-g^*(y) = \sup_x \, y^\T x - \frac{1}{2} \|x\|_*^2.
-\]
-By taking a subgradient and setting this equal to zero, we see that the supremum
-is achieved for $y \in d(x)$. Plugging this in, and using facts (ii) and (i) gives 
-\[
-g^*(y) = \frac{1}{2} \|y\|^2.
-\]
-Therefore facts (iii) and (iv) follow from the conjugate relation $y \in
-\partial g(x) \iff x \in \partial g^*(x)$.   
-\end{proof} 
 
 \item \label{ex:dual_norm_dual2}
 Dual of dual norm is original, by Lagrangian duality.
