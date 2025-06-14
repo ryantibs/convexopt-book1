@@ -302,17 +302,28 @@ For the Schatten $p$-norm $\|\cdot\|_p$, which recall is a norm on
 \item For $f^*(y) = \sup_x \, \{ y^\T x - f(x) \}$, prove that the supremum
   defining $f^*(y)$ is achieved for $y \in d(x)$. Plug this in, and use parts a
   and b, to verify \eqref{eq:dual_norm2_conjugate}. 
-\item Prove that $y \in d(x) \iff x \in d^*(y)$.
 \item Prove that $d(x) = \argmax_y \, \{ x^\T y - \frac{1}{2} \|y\|_*^2 \}$, and 
   $d^*(y) = \argmax_x \, \{ y^\T x - \frac{1}{2} \|x\|^2 \}$. 
+\item Prove that $y \in d(x) \iff x \in d^*(y)$.
 \end{enumerate}
 
-
 \item \label{ex:dual_norm_dual2}
-Dual of dual norm is original, by Lagrangian duality.
+  Consider the optimization problem 
+  \[
+  \minimize_y \quad \|y\| \quad \st \quad y = x,
+  \]
+  whose optimal criterion value is $f^\star = \|x\|$. Show that its Lagrange 
+  dual problem is 
+  \[
+  \maximize_u \quad u^\T x \quad \st \quad \|u\|_* \leq 1,
+  \]
+  whose optimal criterion value is $g^\star = \|x\|_{**}$. Argue that strong 
+  duality holds, $f^\star = g^\star$, which translates to $\|x\|_{**} = \|x\|$. 
 
 \item \label{ex:dual_norm_dual3}
-Dual of dual norm is original, by conjugate duality.
+  Use \eqref{eq:dual_norm2_conjugate}, and the fact 
+  that $f^{**} = f$ in \eqref{eq:double_conjugate_reduction} for closed convex
+  $f$, to verify $\|x\|_{**} = \|x\|$. 
 
 \item \label{ex:dubovitski_milutin}
 Dubovitski-Milutin lemma
