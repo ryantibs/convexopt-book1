@@ -34,11 +34,11 @@ Directly from \eqref{eq:dual_norm}, we may infer that $x^\T y \leq \|x\|$ for
 all $x$ and $\|y\|_* \leq 1$, or     
 \index{H{\"o}lder's inequality}
 \begin{equation}
-\label{eq:holder}
+\label{eq:holder_inequality}
 x^\T y \leq \|x\| \|y\|_*, \quad \text{for all $x,y$}.
 \end{equation}
 This may be seen as a generalization of \emph{H{\"o}lder's inequality} for
-$\ell_p$ norms. When does equality hold in \eqref{eq:holder}? The
+$\ell_p$ norms. When does equality hold in \eqref{eq:holder_inequality}? The
 representations \eqref{eq:dual_norm}, \eqref{eq:norm_dual2}, combined with the
 fact about subgradients of norms in \eqref{eq:norm_subgradients}, lead to the 
 following equivalent conditions (Exercise \ref{ex:dual_norm_subgradients}).     
@@ -58,7 +58,7 @@ For any norm $\|\cdot\|$ and its dual $\|\cdot\|_*$, and any $x \not= 0$ and $y
 \end{enumerate}
 \end{Theorem}
 
-The next example confirms that \eqref{eq:holder} is indeed a strict
+The next example confirms that \eqref{eq:holder_inequality} is indeed a strict 
 generalization of H{\"o}lder's inequality for $\ell_p$ norms, as it shows the
 dual of the $\ell_p$ norm is the $\ell_q$ norm for a conjugate pair $p,q$.      
 
@@ -69,47 +69,116 @@ by direct calculation (Exercises \ref{ex:lp_norm_dual}--\ref{ex:trace_norm_dual}
 \begin{enumerate}[label=\alph*., ref=\alph*]
 \index{lp norm@$\ell_p$ norm!dual}
 \item \parlab{xa:lp_norm_dual} 
-  For the $\ell_p$ norm $\|\cdot\|_p$ with $p \geq 1$, its dual norm is
-  $\|\cdot\|_q$ where $q$ satisfies $1/p + 1/q = 1$.  
+For the $\ell_p$ norm $\|\cdot\|_p$ with $p \geq 1$, its dual norm is
+$\|\cdot\|_q$ where $q$ satisfies $1/p + 1/q = 1$.  
 
 \item \parlab{xa:scaled_euclidean_norm_dual}  
-  For the scaled Euclidean norm $\|\cdot\|_A$ in a given positive definite
-  matrix $A$, which recall is defined by \smash{$\|x\|_H = \sqrt{x^\T A x}$},
-  its dual norm is \smash{$\|\cdot\|_{A^{-1}}$}.  
+For the scaled Euclidean norm $\|\cdot\|_A$ in a given positive definite
+matrix $A$, which recall is defined by \smash{$\|x\|_H = \sqrt{x^\T A x}$},
+its dual norm is \smash{$\|\cdot\|_{A^{-1}}$}.  
 
 \index{trace norm!dual}
 \index{operator norm!dual}
 \item \parlab{xa:trace_norm_dual}  
-  For the trace norm $\|\cdot\|_{\tr}$, its dual norm is the operator norm
-  $\|\cdot\|_{\op}$.   
+For the trace norm $\|\cdot\|_{\tr}$, its dual norm is the operator norm
+$\|\cdot\|_{\op}$.   
 \end{enumerate}
 \end{Example}
 
-Dual norms bear an interesting connection to conjugacy. The convex conjugate of
-a norm is the characteristic function the dual norm unit ball (Exercise 
-\ref{ex:dual_norm_conjugate}): 
-\index{dual norm!conjugate}
+Dual norms bear interesting connections to conjugacy. As already shown in
+Example \parref{xa:norm_conjugate}, the conjugate of a norm is the
+characteristic function of the dual norm unit ball:  
+\index{norm!conjugate}
 \begin{equation}
-\label{eq:dual_norm_conjugate}
-\text{for $f(x) = \|x\|$, we have $f^*(u) = I_{\{y : \|y\|_* \leq 1\}}(u)$}.
+\label{eq:norm_conjugate}
+(\|\cdot\|)^* = I_{\{u : \|u\|_* \leq 1\}}.
 \end{equation}
-Meanwhile, an arguably even simpler relationship holds for the squared
-norm. The convex conjugate of one half times a norm squared is one half times 
-its dual norm squared (Exercise \ref{ex:dual_norm2_conjugate}):    
+ Meanwhile, an arguably even simpler relationship holds for 
+the squared norm; the convex conjugate of one half times a norm squared is one 
+half times its dual norm squared (Exercise \ref{ex:norm_squared_conjugate}):       
 \begin{equation}
-\label{eq:dual_norm2_conjugate}
-\text{for $f(x) = \frac{1}{2} \|x\|^2$, we have $f^*(u) = \frac{1}{2}
-  \|u\|_*^2$}. 
+\label{eq:norm_squared_conjugate}
+\Big( \frac{1}{2} \|\cdot\|^2 \Big)^{\hspace{-2pt}*} = \frac{1}{2}
+\|\cdot\|_*^2.   
 \end{equation}
 These facts are especially useful in the context of Fenchel duality, which we
 cover next.  
 
 \section{Fenchel duality}
 
-Fenchel duality: gives general relationship between primal and dual in terms of
-conjugates 
+For $f,g : \R^d \to \R$ and $A \in \R^{k \times d}$, consider the optimization
+problem  
+\begin{equation}
+\label{eq:fenchel_primal}
+\minimize_x \quad f(Ax) + g(x).
+\end{equation}
+Introducing an auxiliary variable (and equality constraint), this becomes
+\[
+\minimize_{x,z} \quad f(z) + g(x) \quad \st \quad z = Ax,
+\]
+whose Lagrangian is $L(x,z,u) = f(z) + g(x) + u^\T (z - Ax)$. Observe that  
+\begin{align*}
+\inf_{x,z} \, \Big\{ f(z) + g(x) + u^\T (z - Ax) \Big\} 
+&= -\sup_z \Big\{ -u^\T z - f(z) \Big\} - \sup_x \, \Big\{ u^\T Ax - g(x) 
+  \Big\} \\ 
+&= -f^*(-u) - g^*(A^\T u),
+\end{align*}
+where $f^*,g^*$ denote the convex conjugates of $f,g$, respectively. The
+associated dual problem is thus
+\index{Fenchel duality}
+\begin{equation}
+\label{eq:fenchel_dual}
+\maximize_u \quad -f^*(-u) - g^*(A^\T u),
+\end{equation}
+which is called the \emph{Fenchel dual} of \eqref{eq:fenchel_primal}. By
+Slater's condition (Theorem \ref{thm:slater_condition}), strong duality holds
+between \eqref{eq:fenchel_primal}, \eqref{eq:fenchel_dual} if $f,g$ are convex, 
+and $\dom(fA)$ (where $(fA)(x) = f(Ax)$) and $\dom(g)$ have an intersection
+with nonempty relative interior. Furthermore, the KKT stationarity condition
+here reads $A^\T u \in \partial g(x)$, and $u \in -\partial f(z)$; recalling
+that $z = Ax$ at primal feasibility, this leads to the Fenchel primal-dual 
+relationship  
+\[
+A^\T u \in \partial g(x), \quad u \in - \partial f(Ax). 
+\]
+As usual, this is sufficient for primal-dual optimality, and necessary under
+strong duality.  
 
-when is dual of dual the primal? Answer with f** = f. Pull back to QPs? 
+Fenchel duality provides a succinct relationship between primal and dual
+problems, in terms of conjugates. This can often be useful in deriving dual
+problems.
+
+\begin{Example}
+The following two examples can be derived directly from Fenchel duality
+\eqref{eq:fenchel_primal}, \eqref{eq:fenchel_dual}, and facts about conjugates
+of norms \eqref{eq:norm_conjugate}, \eqref{eq:norm_squared_conjugate}.
+
+\begin{enumerate}[label=\alph*., ref=\alph*]
+\item \parlab{xa:fenchel_norm}
+For a norm $\|\cdot\|$ and tuning parameter $\lambda \geq 0$, the problem    
+\[
+\minimize_x \quad f(Ax) + \lambda \|x\| 
+\]
+has Fenchel dual 
+\[
+\maximize_u \quad -f^*(-u) \quad \st \quad \|A^\T u\|_* \leq \lambda.        
+\]
+This reproduces, as a special case, the lasso dual \eqref{eq:lasso_dual} (Exercise
+\ref{ex:lasso_fenchel_dual}). 
+
+\item \parlab{xa:fenchel_norm_squared}
+Again for a norm $\|\cdot\|$ and parameter $\lambda \geq 0$, the problem   
+\[
+\minimize_x \quad f(Ax) + \frac{\lambda}{2} \|x\|^2
+\]
+now has Fenchel dual 
+\[
+\maximize_u \quad -f^*(-u) - \frac{1}{2\lambda} \|A^\T u\|_*^2. 
+\]
+This reproduces, as a special case, the SVM dual \eqref{eq:svm_dual} (Exercise
+\ref{ex:svm_fenchel_dual}). 
+\end{enumerate}
+\end{Example}
 
 \section{Dual cones*}
 \label{sec:dual_cones}
@@ -209,7 +278,6 @@ MAKE Sure to talk about interpretation of logistic interpretation
 
 Exercises \ref{ex:farkas_variations_conic} and
 \ref{ex:convex_theorem_alternatives_conic} are based on \cite{bental2023convex}.           
-
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
@@ -236,23 +304,22 @@ Exercises \ref{ex:farkas_variations_conic} and
 
 \begin{enumerate}[label=\alph*.]
 \item Prove $\|x\|_{**} \leq \|x\|$ using H{\"o}lder's inequality
-  \eqref{eq:holder}.  
+  \eqref{eq:holder_inequality}.  
 
-\item Prove $\|x\|_{**} \geq \|x\|$ using the Hahn-Banach theorem on normed
-  vector spaces. Hint: for $X = \R^d$, viewed as a vector space equipped with
-  the norm $\|\cdot\|$, observe that \eqref{eq:dual_norm_dual} can be rewritten
-  as            
+\item Prove $\|x\|_{**} \geq \|x\|$ using the Hahn-Banach theorem. Hint:
+  denoting $X = \R^d$, viewed as a vector space equipped with the norm
+  $\|\cdot\|$, note that \eqref{eq:dual_norm_dual} can be rewritten as            
   \[
-  \|x\|_{**} = \sup \{ F(x) : F \in X^*, \, \|F\|_{\op} \leq 1 \},
+  \|x\|_{**} = \sup \{ F(x) : F \in X^*, \, \|F\|_{\op} \leq 1 \}.
   \]
-  where $X^*$ denotes the dual space of bounded linear functionals
-  on $X$ (that is, real-valued functions on $X$), and \smash{$\|F\|_{\op} =
-    \sup_{x  \not =  0} \, |F(x)| / \|x\|$.} Now define $L = \{ ax : a \in
-  \R\}$, which is a 1-dimensional subspace of $X$, and define $f : L \to \R$ by
+  Here $X^*$ denotes the dual space of bounded linear functionals (real-valued 
+  functions) on $X$, equipped with the norm \smash{$\|F\|_{\op} = \sup_{x \not 
+    =  0} \, |F(x)| / \|x\|$.} Now define $L = \{ ax : a \in \R\}$, a
+  1-dimensional subspace of $X$, and define $f : L \to \R$ by 
   $f(ax) = a\|x\|$. Show that $f$ is bounded and linear, with unit operator
-  norm, so by the Hahn-Banach theorem there exists a bounded linear functional
-  $F$ on $X$ which agrees with $f$ on $L$, and also has unit operator norm. Use
-  this $F$ to show that $\|x\|_{**} \geq \|x\|$.  
+  norm, hence by the Hahn-Banach theorem there exists a bounded linear
+  functional $F$ on $X$ which agrees with $f$ on $L$, and itself has unit
+  operator norm. Use this $F$ to show that $\|x\|_{**} \geq \|x\|$.  
 \end{enumerate}
 
 \index{norm!subgradients}
@@ -305,7 +372,6 @@ Exercises \ref{ex:farkas_variations_conic} and
   in Exercise \parref{xa:scaled_euclidean_norm_dual}. 
 
 \index{trace norm!dual}
-\index{Schatten norm!dual}
 \item \label{ex:trace_norm_dual}
   To prove $(\|\cdot\|_{\tr})_* = \|\cdot\|_{\op}$, as stated in Exercise
   \parref{xa:trace_norm_dual}, we will verify that $(\|\cdot\|_{\op})_* = 
@@ -335,25 +401,20 @@ Exercises \ref{ex:farkas_variations_conic} and
   \]
 \end{enumerate}
 
-  % Recall that the Schatten $p$-norm on matrices is defined, for $p \geq 1$, by  
-  % \[
-  % \|X\|_p =  \|\sigma(X)\|_p,
-  % \]
-  % with the right-hand representing the usual $\ell_p$ norm of the vector
-  % $\sigma(X) = (\sigma_1(X), \dots, \sigma_n(X))$ of singular values of a matrix
-  % $X \in \R^{n \times d}$. Consider
-  % \[
-  % (\|X\|_p)_* = \sup_{\|Z\|_p \leq 1} \, \langle Z, X \rangle,
-  % \]
-  % where recall $\langle Z, X \rangle = \tr(Z^\T X)$. Prove that $(\|X\|_p)_* =
-  % \|X\|_q$, where $1/p + 1/q = 1$.
+% Recall that the Schatten $p$-norm on matrices is defined, for $p \geq 1$, by    
+% \[
+% \|X\|_p =  \|\sigma(X)\|_p,
+% \]
+% with the right-hand representing the usual $\ell_p$ norm of the vector
+% $\sigma(X) = (\sigma_1(X), \dots, \sigma_n(X))$ of singular values of a matrix 
+% $X \in \R^{n \times d}$. Consider
+% \[
+% (\|X\|_p)_* = \sup_{\|Z\|_p \leq 1} \, \langle Z, X \rangle,
+% \]
+% where $\langle Z, X \rangle = \tr(Z^\T X)$. Prove that $(\|X\|_p)_* =
+% \|X\|_q$, where $1/p + 1/q = 1$.   
 
-\item \label{ex:dual_norm_conjugate}
-  Verify \eqref{eq:dual_norm_conjugate} using the \eqref{eq:norm_dual2} and
-  Property \parref{xa:support_function_conjugate}, on conjugates of support
-  functions.     
-
-\item \label{ex:dual_norm2_conjugate}
+\item \label{ex:norm_squared_conjugate}
   We will derive some properties associated with the pair of set-valued
   operators   
   \begin{align*}
@@ -367,7 +428,7 @@ Exercises \ref{ex:farkas_variations_conic} and
 \item For $f(x) = \frac{1}{2} \|x\|^2$, prove that $\partial f(x) = d(x)$. 
 \item For $f^*(y) = \sup_x \, \{ y^\T x - f(x) \}$, prove that the supremum
   defining $f^*(y)$ is achieved for $y \in d(x)$. Plug this in, and use parts a
-  and b, to verify \eqref{eq:dual_norm2_conjugate}. 
+  and b, to verify \eqref{eq:norm_squared_conjugate}. 
 \item Prove that $d(x) = \argmax_y \, \{ x^\T y - \frac{1}{2} \|y\|_*^2 \}$, and 
   $d^*(y) = \argmax_x \, \{ y^\T x - \frac{1}{2} \|x\|^2 \}$. 
 \item Prove that $y \in d(x) \iff x \in d^*(y)$.
@@ -387,9 +448,59 @@ Exercises \ref{ex:farkas_variations_conic} and
   duality holds, $f^\star = g^\star$, which translates to $\|x\|_{**} = \|x\|$. 
 
 \item \label{ex:dual_norm_dual3}
-  Use \eqref{eq:dual_norm2_conjugate}, and the fact that $f^{**} = f$ for closed
-  convex $f$, as in \eqref{eq:double_conjugate_reduction}, to verify $\|x\|_{**}
-  = \|x\|$.  
+  Use \eqref{eq:norm_squared_conjugate}, and the fact that $f^{**} = f$ for
+  closed convex $f$, as in \eqref{eq:double_conjugate_reduction}, to verify
+  $\|x\|_{**} = \|x\|$.  
+
+\index{lasso!dual problem}
+\item \label{ex:lasso_fenchel_dual}
+  For \smash{$f(z) = \frac{1}{2} \|y-z\|_2^2$}, prove either by direct
+  calculation or calculus rules for conjugacy that \smash{$f^*(u) = \frac{1}{2}
+    \|y+u\|_2^2 - \frac{1}{2} \|y\|_2^2$}. Use this to show that Fenchel
+  duality, as given in Example \parref{xa:fenchel_norm}, reproduces the lasso 
+  dual in \eqref{eq:lasso_dual}.
+
+\index{support vector machine!hinge form}
+\index{support vector machine!dual problem}
+\item \label{ex:svm_fenchel_dual}
+  Consider the SVM in hinge form, for labels $y_i \in \{ -1, 1\}$ and features
+  $x_i \in \R^d$, $i=1,\dots,n$,     
+  \begin{equation}
+  \label{eq:svm_hinge2}
+  \minimize_{\beta_0,\beta} \quad C \sum_{i=1}^n \big[1 - y_i(\beta_0 + x_i^\T 
+  \beta)\big]_+ + \frac{1}{2} \|\beta\|_2^2.
+  \end{equation}
+  We simplify our study, in preparation for applying Fenchel duality, by
+  omitting the intercept term $\beta_0$. Denote by $y \in \R^n$ the label
+  vector, $X \in \R^{n \times d}$ the feature matrix (with $i\th$ row $x_i^\T$),
+  and \smash{$\tilde{X} = \diag(y) X$}. Then the above problem (without
+  intercept) can be recast as      
+  \begin{equation}
+  \label{eq:svm_hinge3}
+  \minimize_\beta \quad f(\tilde{X} \beta) + \frac{1}{2} \|\beta\|_2^2, 
+  \end{equation}
+  where $f(z) = C \sum_{i=1}^n (1-z_i)_+$. To reproduce the dual
+  \eqref{eq:svm_dual}, we proceed in steps. 
+
+\begin{enumerate}[label=\alph*.] 
+\item Prove by direct calculation that $f^*(u) = 1^\T u \cdot I_{[-C,0]^n}(u)$. 
+
+\item Use Fenchel duality, as given in Example \parref{xa:fenchel_norm_squared}, 
+  to prove that the dual of \eqref{eq:svm_hinge3} is
+  \begin{alignat*}{2}
+  &\maximize_u \quad && 1^\T u - \frac{1}{2} \|\tilde{X}^\T u\|_2^2 \\
+  &\st && u \in [0,C]^n.
+  \end{alignat*}
+
+\item Adapt the arguments in the previous parts to accommodate the intercept in
+  the original problem \eqref{eq:svm_hinge2}, and show that the resulting
+  Frenchel dual reproduces \eqref{eq:svm_dual}. Hint: the presence of intercept
+  will require you to compute the conjugate of \smash{$(\beta_0, \beta) \mapsto 
+    \frac{1}{2} \|\beta\|_2^2$}.    
+\end{enumerate}
+
+\item when is dual of dual the primal? Answer with Fenchel duality and f** =
+  f. (Pull back to QPs?)
 
 \item \label{ex:dubovitski_milutin}
 Dubovitski-Milutin lemma
