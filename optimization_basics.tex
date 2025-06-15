@@ -483,7 +483,7 @@ The following are two examples of partial optimization in convex problems.
   \begin{equation}
   \label{eq:svm_hinge}
   \minimize_{\beta_0,\beta} \quad C \sum_{i=1}^n \big[1 - y_i(\beta_0 + x_i^\T 
-  \beta_0)\big]_+ + \frac{1}{2} \|\beta\|_2^2.
+  \beta)\big]_+ + \frac{1}{2} \|\beta\|_2^2.
   \end{equation}
   This has a familiar ``loss + penalty'' form, much like ridge regression, but
   with the hinge loss replacing what would be the squared loss in the ridge 
