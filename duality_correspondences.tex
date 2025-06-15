@@ -12,7 +12,7 @@ $\|\cdot\|_*$, and defined by
 \index{dual norm}  
 \begin{equation}
 \label{eq:dual_norm}
-\|z\|_* = \sup_{\|x\| \leq 1} \, z^\T x.
+\|y\|_* = \sup_{\|x\| \leq 1} \, y^\T x.
 \end{equation}
 It is not hard to check that the dual norm $\|\cdot\|_*$ is itself a norm on
 $\R^d$, that is, it satisfies the triangle inequality, absolute homogeneity, and
@@ -27,15 +27,15 @@ derived using the theory of Lagrangian duality (Exercise
 us to write    
 \begin{equation}
 \label{eq:norm_dual2}
-\|x\| = \sup_{\|z\|_* \leq 1} \, x^\T z.
+\|x\| = \sup_{\|y\|_* \leq 1} \, x^\T y.
 \end{equation}
 
-Directly from \eqref{eq:dual_norm}, we may infer that $x^\T z \leq \|x\|$ for
-all $x$ and $\|z\|_* \leq 1$, or     
+Directly from \eqref{eq:dual_norm}, we may infer that $x^\T y \leq \|x\|$ for
+all $x$ and $\|y\|_* \leq 1$, or     
 \index{H{\"o}lder's inequality}
 \begin{equation}
 \label{eq:holder}
-x^\T z \leq \|x\| \|z\|_*, \quad \text{for all $x,z$}.
+x^\T y \leq \|x\| \|y\|_*, \quad \text{for all $x,y$}.
 \end{equation}
 This may be seen as a generalization of \emph{H{\"o}lder's inequality} for
 $\ell_p$ norms. When does equality hold in \eqref{eq:holder}? The
@@ -47,14 +47,14 @@ following equivalent conditions (Exercise \ref{ex:dual_norm_subgradients}).
 \index{dual norm!subgradients}
 \begin{Theorem}
 \label{thm:dual_norm_subgradients}
-For any norm $\|\cdot\|$ and its dual $\|\cdot\|_*$, and any $x \not= 0$ and $z 
+For any norm $\|\cdot\|$ and its dual $\|\cdot\|_*$, and any $x \not= 0$ and $y 
 \not= 0$, the following statements are equivalent:
 \begin{enumerate}[label=(\roman*)]
-\item $x^\T z = \|x\| \|z\|_*$;
-\item $x/\|x\| \in \partial \|z\|_*$; 
-\item $z/\|z\|_* \in \partial \|x\|$;
-\item $x/\|x\| \in \argmax_{\|s\| \leq 1} \, z^\T s$; 
-\item $z/\|z\|_* \in \argmax_{\|s\|_* \leq 1} \, x^\T s$. 
+\item $x^\T y = \|x\| \|y\|_*$;
+\item $x/\|x\| \in \partial \|y\|_*$; 
+\item $y/\|y\|_* \in \partial \|x\|$;
+\item $x/\|x\| \in \argmax_{\|s\| \leq 1} \, y^\T s$; 
+\item $y/\|y\|_* \in \argmax_{\|s\|_* \leq 1} \, x^\T s$. 
 \end{enumerate}
 \end{Theorem}
 
@@ -91,7 +91,7 @@ a norm is the characteristic function the dual norm unit ball (Exercise
 \index{dual norm!conjugate}
 \begin{equation}
 \label{eq:dual_norm_conjugate}
-\text{for $f(x) = \|x\|$, we have $f^*(u) = I_{\{z : \|z\|_* \leq 1\}}(u)$}.
+\text{for $f(x) = \|x\|$, we have $f^*(u) = I_{\{y : \|y\|_* \leq 1\}}(u)$}.
 \end{equation}
 Meanwhile, an arguably even simpler relationship holds for the squared
 norm. The convex conjugate of one half times a norm squared is one half times 
@@ -229,13 +229,14 @@ Exercises \ref{ex:farkas_variations_conic} and
   In this exercise, we investigate the dual of the dual of a norm $\|\cdot\|$: 
   \begin{equation}
   \label{eq:dual_norm_dual}
-  \|x\|_{**} = \sup_{\|z\|_* \leq 1} \, x^\T z.
+  \|x\|_{**} = \sup_{\|y\|_* \leq 1} \, x^\T y.
   \end{equation}
-  Fixing any $x \in \R^d$, we will argue that $\|x\|_{**} = \|x\|$ in two steps.   
+  Fixing any $x \in \R^d$, we will argue that $\|x\|_{**} = \|x\|$, in two
+  steps.  
 
 \begin{enumerate}[label=\alph*.]
 \item Prove $\|x\|_{**} \leq \|x\|$ using H{\"o}lder's inequality
-  \eqref{eq:holder}. 
+  \eqref{eq:holder}.  
 
 \item Prove $\|x\|_{**} \geq \|x\|$ using the Hahn-Banach theorem on normed
   vector spaces. Hint: for $X = \R^d$, viewed as a vector space equipped with
@@ -268,18 +269,84 @@ Exercises \ref{ex:farkas_variations_conic} and
 \item Prove that $\text{(iii)} \iff \text{(v)}$ using
   \begin{equation}
   \label{eq:dual_norm_subgradients}
-  \partial \|z\|_* = \{ x : \|x\| \leq 1, \, x^\T z = \|z\|_* \},
+  \partial \|y\|_* = \{ x : \|x\| \leq 1, \, x^\T y = \|y\|_* \},
   \end{equation}
   which comes from applying the Danskin-Bertsekas theorem
   \eqref{eq:danskin_bertsekas} to \eqref{eq:dual_norm}. 
 \end{enumerate}
 
+\index{lp norm@$\ell_p$ norm!dual}
 \item \label{ex:lp_norm_dual}
-\item \label{ex:scaled_euclidean_norm_dual}
-\item \label{ex:trace_norm_dual}
+  In this exercise, we prove $(\|\cdot\|_p)_* = \|\cdot\|_q$, as stated in
+  Example \parref{xa:lp_norm_dual}, for $p,q \geq 1$ such that $1/p + 1/q = 1$. 
+  It suffices to prove $x^\T y \leq \|x\|_p \|y\|_q$ for all $x,y$ (traditional
+  H{\"o}lder's inequality, for $\ell_p$ norms), where equality can always be
+  obtained for each $x$ (at some $y$). We consider the cases $p = 1$ and $p > 
+  1$ separately.            
 
-For the Schatten $p$-norm $\|\cdot\|_p$, which recall is a norm on
-  matrices defined by $\|X\|_p = \|\sigma(X)\|_p$
+\begin{enumerate}[label=\alph*.] 
+\item Argue directly that $x^\T y \leq \|x\|_1 \|y\|_\infty$, with equality if
+  $y_i = \sign(x_i)$, $i = 1,\dots,d$.
+
+\item When $p > 1$, argue first that we can take $\|x\|_p= \|y\|_q = 1$,  
+  without any loss of generality. Then argue that $x_i y_i \leq |x_i|^p / p +
+  |y_i|^q / q$, using Young's inequality, and sum this up over each $i =
+  1,\dots,d$ to arrive at $x^\T y \leq \|x\|_p \|y\|_q$, with equality if
+  $|x_i|^p = c |y_i|^q$ for $c > 0$. 
+\end{enumerate}
+
+\item \label{ex:scaled_euclidean_norm_dual}
+  Consider the optimization problem
+  \[
+  \maximize \quad y^\T x \quad \st \quad x^\T A x \leq 1. 
+  \]
+  Prove that the supremum is attained at \smash{$x = A^{-1} y / \sqrt{y^\T
+    A^{-1} y}$}, and so \smash{$(\|y\|_A)_* = \sqrt{y^\T A^{-1} y}$}, as stated
+  in Exercise \parref{xa:scaled_euclidean_norm_dual}. 
+
+\index{trace norm!dual}
+\index{Schatten norm!dual}
+\item \label{ex:trace_norm_dual}
+  To prove $(\|\cdot\|_{\tr})_* = \|\cdot\|_{\op}$, as stated in Exercise
+  \parref{xa:trace_norm_dual}, we will verify that $(\|\cdot\|_{\op})_* = 
+  \|\cdot\|_{\tr}$, where to be clear,
+  \[
+  (\|X\|_{\op})_* = \sup_{\|Z\|_{\tr} \leq 1} \, \langle Z, X \rangle, 
+  \]
+  and $\langle Z, X \rangle = \tr(Z^\T X)$. We proceed in two steps; in what
+  follows, let $X = U \Sigma V^\T$ be the SVD of $X \in \R^{k \times d}$.
+
+\begin{enumerate}[label=\alph*.] 
+\item Prove $(\|X\|_{\op})_* \leq \|X\|_{\tr}$ by direct calculation. Hint:
+  given any $Z$ such that $\|Z\|_{\op} \leq 1$, argue that 
+  \[
+  \langle Z, X \rangle = \langle U^\T Z V, \Sigma \rangle = \sum_{i=1}^d u_i^\T
+  Z v_i \sigma_{ii}, 
+  \]
+  where $u_i,v_i$ denote the $i\th$ columns of $U,V$, respectively, for $i =
+  1,\dots,d$. Then argue that each $u_i^\T Z v_i \leq 1$, as $u_i,v_i$ have 
+  unit $\ell_2$ norm and $\|Z\|_{\op} \leq 1$.
+
+\item Prove $(\|X\|_{\op})_* \geq \|X\|_{\tr}$ by studying $\langle Z, X
+  \rangle$ with $Z = U V^\T$. Hint: verify that now  
+  \[
+  \langle Z, X \rangle = \langle U^\T Z V, \Sigma \rangle = \sum_{i=1}^d
+  \sigma_{ii}.
+  \]
+\end{enumerate}
+
+  % Recall that the Schatten $p$-norm on matrices is defined, for $p \geq 1$, by  
+  % \[
+  % \|X\|_p =  \|\sigma(X)\|_p,
+  % \]
+  % with the right-hand representing the usual $\ell_p$ norm of the vector
+  % $\sigma(X) = (\sigma_1(X), \dots, \sigma_n(X))$ of singular values of a matrix
+  % $X \in \R^{n \times d}$. Consider
+  % \[
+  % (\|X\|_p)_* = \sup_{\|Z\|_p \leq 1} \, \langle Z, X \rangle,
+  % \]
+  % where recall $\langle Z, X \rangle = \tr(Z^\T X)$. Prove that $(\|X\|_p)_* =
+  % \|X\|_q$, where $1/p + 1/q = 1$.
 
 \item \label{ex:dual_norm_conjugate}
   Verify \eqref{eq:dual_norm_conjugate} using the \eqref{eq:norm_dual2} and
@@ -287,13 +354,12 @@ For the Schatten $p$-norm $\|\cdot\|_p$, which recall is a norm on
   functions.     
 
 \item \label{ex:dual_norm2_conjugate}
-  In this exercise, we will derive some properties associated with the pair of
-  set-valued operators  
+  We will derive some properties associated with the pair of set-valued
+  operators   
   \begin{align*}
   d(x) &= \|x\| \cdot \partial \|x\|, \\
   d^*(y) &= \|y\|_* \cdot \partial \|y\|_*.
   \end{align*}
-  Part d below will verify \eqref{eq:dual_norm2_conjugate}.
 
 \begin{enumerate}[label=\alph*.] 
 \item Prove that $\|x\| = \|y\|_*$, for $y \in d(x)$.
@@ -310,7 +376,7 @@ For the Schatten $p$-norm $\|\cdot\|_p$, which recall is a norm on
 \item \label{ex:dual_norm_dual2}
   Consider the optimization problem 
   \[
-  \minimize_y \quad \|y\| \quad \st \quad y = x,
+  \minimize_z \quad \|z\| \quad \st \quad z = x,
   \]
   whose optimal criterion value is $f^\star = \|x\|$. Show that its Lagrange 
   dual problem is 
@@ -321,9 +387,9 @@ For the Schatten $p$-norm $\|\cdot\|_p$, which recall is a norm on
   duality holds, $f^\star = g^\star$, which translates to $\|x\|_{**} = \|x\|$. 
 
 \item \label{ex:dual_norm_dual3}
-  Use \eqref{eq:dual_norm2_conjugate}, and the fact 
-  that $f^{**} = f$ in \eqref{eq:double_conjugate_reduction} for closed convex
-  $f$, to verify $\|x\|_{**} = \|x\|$. 
+  Use \eqref{eq:dual_norm2_conjugate}, and the fact that $f^{**} = f$ for closed
+  convex $f$, as in \eqref{eq:double_conjugate_reduction}, to verify $\|x\|_{**}
+  = \|x\|$.  
 
 \item \label{ex:dubovitski_milutin}
 Dubovitski-Milutin lemma
