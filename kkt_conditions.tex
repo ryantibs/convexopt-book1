@@ -896,7 +896,7 @@ nonlinear equality and inequality constraints). Exercise
 \item Let $C = \{x : Ax \leq b\}$. Apply the subgradient optimality condition to
   \eqref{eq:surrogate_problem} to prove
   \[
-  0 \in \partial F(\bar{x}) + \cN_C(\bar{x}).
+  0 \in \partial F(\bar{x}) + N_C(\bar{x}).
   \]
   Hint: argue that Slater's condition implies $\relint(\dom(F)) \cap \relint(C)
   \not= \emptyset$, thus by the subgradient rule for a sum in Property
@@ -911,7 +911,7 @@ nonlinear equality and inequality constraints). Exercise
   \]
   Hint: using $b \geq 0$ (implied by our earlier assumption that $x = 0$
   satisfies $Ax \leq b$), show that the normal cone to $C$ at \smash{$\bar{x}$} 
-  is \smash{$\cN_C(\bar{x}) = \{ A^\T \mu : \mu \geq 0, \, \text{$\mu_j = 0$ for 
+  is \smash{$N_C(\bar{x}) = \{ A^\T \mu : \mu \geq 0, \, \text{$\mu_j = 0$ for 
       $a_j^\T \bar{x} < b_j$} \}$}.     
 
 \item Show that there exists $\alpha \in [0,1]$ such that 

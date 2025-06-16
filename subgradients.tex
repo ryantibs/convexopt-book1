@@ -412,7 +412,7 @@ of the convex set $C$. A straightforward calculation reveals
 \index{characteristic function!subgradients} 
 \index{normal cone}
 \[
-\partial I_C(x) = \cN_C(x) = \{ s : s^\T x \geq s^\T y, \, \text{for all $y \in
+\partial I_C(x) = N_C(x) = \{ s : s^\T x \geq s^\T y, \, \text{for all $y \in
   C$}\}. 
 \]
 the normal cone to $C$ at $x$, and the second-to-last display, the (necessary 
@@ -618,7 +618,7 @@ set $\{y : f(y) \leq f(x)\}$ at $x$. As the normal cone to $\{y : f(y) \leq
 f(x)\}$ at $x$ is, by definition, the collection of all such normal vectors, we
 can also write this conclusion as   
 \[
-\partial f(x) \subseteq \cN_{\{y : f(y) \leq f(x)\}}(x).
+\partial f(x) \subseteq N_{\{y : f(y) \leq f(x)\}}(x).
 \]
 Interestingly, as the next result shows, the subgradients at $x$ not only lie in
 the normal cone to the sublevel set at $x$, they also generate it. 
@@ -629,7 +629,7 @@ the normal cone to the sublevel set at $x$, they also generate it.
 Let $f$ be a convex function, and $x \in \relint(\dom(f))$ be a point at which
 $f$ does not attain its infimum. Then 
 \[
-\cN_{\{y : f(y) \leq f(x)\}}(x) = \cone\big(\partial f(x)\big).
+N_{\{y : f(y) \leq f(x)\}}(x) = \cone\big(\partial f(x)\big).
 \]
 \end{Theorem}
 

@@ -139,11 +139,11 @@ condition \eqref{eq:kkt_stationarity} leads to the following result.
 For convex $f,g$ such that $\relint(A^{-1}(\dom(f)) \cap \dom(g)) \not=
 \emptyset$ (where $A^{-1}(S)$ denotes the preimage of a set $S$ under $A$), the
 problems \eqref{eq:fenchel_primal}, \eqref{eq:fenchel_dual} exhibit strongly 
-duality. Furthermore, the condition
+duality. Furthermore, the pair of conditions
 \[
 A^\T u \in \partial g(x), \quad u \in - \partial f(Ax)
 \]
-is sufficient for primal-dual optimality, and necessary under strong duality.   
+are sufficient for primal-dual optimality, and necessary under strong duality.   
 \end{Corollary}
 
 Fenchel duality provides a succinct relationship between primal and dual
@@ -184,6 +184,38 @@ This reproduces, as a special case, the SVM dual \eqref{eq:svm_dual} (Exercise
 
 \section{Dual cones*}
 \label{sec:dual_cones}
+
+In this section, we examine dual cones. Recall (as studied in Chapter
+\ref{sec:cones}), a cone is a set $C$ such that $x \in C \implies t x \in C$,
+for all $t \geq 0$. A convex cone $C$ is a cone that is also convex, which can
+be characterized by $x, y \in C \implies s x + t y \in C$, for all $s, t \geq
+0$. Now, given a cone $C$, its \emph{dual cone} is defined by    
+\label{dual cone}
+\begin{equation}
+\label{eq:dual_cone}
+C^* = \{ y : y^\T x \geq 0, \; x \in C \}.
+\end{equation}
+It is straightforward to check that $C^*$ is always a convex cone, regardless of
+the convexity of $C$. Furthermore, if $C$ is itself a closed convex cone, then
+(Exercise \ref{ex:dual_cone_dual}):
+\begin{equation}
+\label{eq:dual_cone_dual}
+C^{**} = C.
+\end{equation}
+
+In general, we can interpret $C^*$ as containing the normal vectors to all
+halfspaces containing $C$: we have $y \in C^* \iff \{ x : y^\T x \geq 0 \}
+\supseteq C$. See Figure \ref{fig:dual_cone} for an illustration.
+
+\begin{Example}
+The following are examples of duals of common convex cones. 
+\begin{enumerate}[label=\alph*., ref=\alph*]
+\item affine subspace
+\item normal cone
+\item norm cone
+\item psd cone
+\end{enumerate}
+\end{Example}
 
 \section{Dual polyhedra*}
 \label{sec:dual_polyhedra}
@@ -506,6 +538,9 @@ Exercises \ref{ex:farkas_variations_conic} and
 
 \item when is dual of dual the primal? Answer with Fenchel duality and f** =
   f. (Pull back to QPs?)
+
+\item \label{ex:dual_cone_dual}
+ For a closed convex cone $C$, prove \eqref{eq:dual_cone_dual}. Hint:
 
 \item \label{ex:dubovitski_milutin}
 Dubovitski-Milutin lemma
