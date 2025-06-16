@@ -130,19 +130,21 @@ associated dual problem is thus
 \label{eq:fenchel_dual}
 \maximize_u \quad -f^*(-u) - g^*(A^\T u),
 \end{equation}
-which is called the \emph{Fenchel dual} of \eqref{eq:fenchel_primal}. By
-Slater's condition (Theorem \ref{thm:slater_condition}), strong duality holds
-between \eqref{eq:fenchel_primal}, \eqref{eq:fenchel_dual} if $f,g$ are convex, 
-and $\dom(fA)$ (where $(fA)(x) = f(Ax)$) and $\dom(g)$ have an intersection
-with nonempty relative interior. Furthermore, the KKT stationarity condition
-here reads $A^\T u \in \partial g(x)$, and $u \in -\partial f(z)$; recalling
-that $z = Ax$ at primal feasibility, this leads to the Fenchel primal-dual 
-relationship  
+which is called the \emph{Fenchel dual} of \eqref{eq:fenchel_primal}. Applying 
+Slater's condition (Theorem \ref{thm:slater_condition}) and the KKT stationarity 
+condition \eqref{eq:kkt_stationarity} leads to the following result.
+
+\begin{Corollary}
+\label{cor:fenchel_dual}
+For convex $f,g$ such that $\relint(A^{-1}(\dom(f)) \cap \dom(g)) \not=
+\emptyset$ (where $A^{-1}(S)$ denotes the preimage of a set $S$ under $A$), the
+problems \eqref{eq:fenchel_primal}, \eqref{eq:fenchel_dual} exhibit strongly 
+duality. Furthermore, the condition
 \[
-A^\T u \in \partial g(x), \quad u \in - \partial f(Ax). 
+A^\T u \in \partial g(x), \quad u \in - \partial f(Ax)
 \]
-As usual, this is sufficient for primal-dual optimality, and necessary under
-strong duality.  
+is sufficient for primal-dual optimality, and necessary under strong duality.   
+\end{Corollary}
 
 Fenchel duality provides a succinct relationship between primal and dual
 problems, in terms of conjugates. This can often be useful in deriving dual
