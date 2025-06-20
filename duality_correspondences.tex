@@ -67,7 +67,7 @@ The following are examples of dual norms for common norms, which can be verified
 by direct calculation (Exercises \ref{ex:lp_norm_dual}--\ref{ex:trace_norm_dual}). 
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
-\index{lp norm@$\ell_p$ norm!dual}
+\index{lp norm@$\ell_p$ norm!dual norm}
 \item \parlab{xa:lp_norm_dual} 
 For the $\ell_p$ norm $\|\cdot\|_p$ with $p \geq 1$, its dual norm is
 $\|\cdot\|_q$ where $q$ satisfies $1/p + 1/q = 1$.  
@@ -77,8 +77,8 @@ For the scaled Euclidean norm $\|\cdot\|_A$ in a given positive definite
 matrix $A$, which recall is defined by \smash{$\|x\|_H = \sqrt{x^\T A x}$},
 its dual norm is \smash{$\|\cdot\|_{A^{-1}}$}.  
 
-\index{trace norm!dual}
-\index{operator norm!dual}
+\index{trace norm!dual norm}
+\index{operator norm!dual norm}
 \item \parlab{xa:trace_norm_dual}  
 For the trace norm $\|\cdot\|_{\tr}$, its dual norm is the operator norm
 $\|\cdot\|_{\op}$.   
@@ -139,7 +139,7 @@ condition \eqref{eq:kkt_stationarity} leads to the following result.
 For convex $f,g$ such that $\relint(A^{-1}(\dom(f)) \cap \dom(g)) \not=
 \emptyset$ (where $A^{-1}(S)$ denotes the preimage of a set $S$ under $A$), the
 problems \eqref{eq:fenchel_primal}, \eqref{eq:fenchel_dual} exhibit strongly 
-duality. Furthermore, the pair of conditions
+duality. Further, the pair of conditions
 \[
 A^\T u \in \partial g(x), \quad u \in - \partial f(Ax)
 \]
@@ -208,12 +208,28 @@ halfspaces containing $C$: we have $y \in C^* \iff \{ x : y^\T x \geq 0 \}
 \supseteq C$. See Figure \ref{fig:dual_cone} for an illustration.
 
 \begin{Example}
-The following are examples of duals of common convex cones. 
+The following are examples of duals of common convex cones. The first two are
+straightforward to verify, and the third is verified in Exercise
+\ref{ex:psd_cone_self_dual}. 
+
 \begin{enumerate}[label=\alph*., ref=\alph*]
-\item affine subspace
-\item normal cone
-\item norm cone
-\item psd cone
+
+\item For a linear subspace $L$, its dual cone is $L^* = L^\perp$, the
+  orthogonal complement of $L$; in other words, for a matrix $A$, it holds that 
+  $(\nul(A))^* = \row(A)$.  
+  
+\item For the norm cone $C = \{ (x,t) \in \R^d \times \R : \|x\| \leq t \}$ in a
+  norm $\|\cdot\|$, its dual cone is 
+  \index{norm!cone}  
+  \[
+  C^* = \{ (y,s) \in \R^d \times \R : \|y\|_* \leq s \},
+  \]
+  the norm cone in the dual norm $\|\cdot\|_*$.
+
+\index{positive semidefinite cone!dual cone}
+\item For the positive semidefinite cone $C = \SS_+^d = \{X \in \SS^d : X
+  \succeq 0 \}$, it is its own dual cone, $C^* = \SS_+^d$. Such cones are called
+  \emph{self-dual}.  
 \end{enumerate}
 \end{Example}
 
@@ -222,6 +238,22 @@ The following are examples of duals of common convex cones.
 
 \section{Polar sets*}
 \label{sec:polar_sets}
+
+
+
+
+  
+  The \emph{tangent cone} to $C$ at $x$,
+  \index{normal cone!dual cone}
+  \index{tangent cone}
+  \begin{equation}
+  \label{eq:tangent_cone}
+  T_C(x) = \{ y \in C : x + ty \in C, \; \text{for small enough $t>0$} \},
+  \end{equation}
+  Need not be convex. Need not be closed. 
+
+  Closed and convex if $C$ is. Indeed, in this case, $-T_C(x)$ is the dual cone
+  of the normal cone $N_C(x)$.
 
 Make sure to mention that conjugate of indicator of convex cone is indicator of
 its polar cone. 
@@ -369,17 +401,17 @@ Exercises \ref{ex:farkas_variations_conic} and
 \item Prove that $\text{(i)} \iff \text{(v)}$ using \eqref{eq:norm_dual2}.
 \item Prove that $\text{(ii)} \iff \text{(iv)}$ using
   \eqref{eq:norm_subgradients}, which comes from applying the Danskin-Bertsekas
-  theorem \eqref{eq:danskin_bertsekas} to \eqref{eq:norm_dual2}.
+  theorem \eqref{eq:danskin_bertsekas} to \eqref{eq:dual_norm}.
 \item Prove that $\text{(iii)} \iff \text{(v)}$ using
   \begin{equation}
   \label{eq:dual_norm_subgradients}
   \partial \|y\|_* = \{ x : \|x\| \leq 1, \, x^\T y = \|y\|_* \},
   \end{equation}
   which comes from applying the Danskin-Bertsekas theorem
-  \eqref{eq:danskin_bertsekas} to \eqref{eq:dual_norm}. 
+  \eqref{eq:danskin_bertsekas} to \eqref{eq:norm_dual2}. 
 \end{enumerate}
 
-\index{lp norm@$\ell_p$ norm!dual}
+\index{lp norm@$\ell_p$ norm!dual norm}
 \item \label{ex:lp_norm_dual}
   In this exercise, we prove $(\|\cdot\|_p)_* = \|\cdot\|_q$, as stated in
   Example \parref{xa:lp_norm_dual}, for $p,q \geq 1$ such that $1/p + 1/q = 1$. 
@@ -408,7 +440,7 @@ Exercises \ref{ex:farkas_variations_conic} and
     A^{-1} y}$}, and so \smash{$(\|y\|_A)_* = \sqrt{y^\T A^{-1} y}$}, as stated
   in Exercise \parref{xa:scaled_euclidean_norm_dual}. 
 
-\index{trace norm!dual}
+\index{trace norm!dual norm}
 \item \label{ex:trace_norm_dual}
   To prove $(\|\cdot\|_{\tr})_* = \|\cdot\|_{\op}$, as stated in Exercise
   \parref{xa:trace_norm_dual}, we will verify that $(\|\cdot\|_{\op})_* = 
@@ -507,7 +539,7 @@ Exercises \ref{ex:farkas_variations_conic} and
   \minimize_{\beta_0,\beta} \quad C \sum_{i=1}^n \big[1 - y_i(\beta_0 + x_i^\T 
   \beta)\big]_+ + \frac{1}{2} \|\beta\|_2^2.
   \end{equation}
-  We simplify our study, in preparation for applying Fenchel duality, by
+  We simplify our study, in preparation for examining Fenchel duality, by
   omitting the intercept term $\beta_0$. Denote by $y \in \R^n$ the label
   vector, $X \in \R^{n \times d}$ the feature matrix (with $i\th$ row $x_i^\T$),
   and \smash{$\tilde{X} = \diag(y) X$}. Then the above problem (without
@@ -536,14 +568,41 @@ Exercises \ref{ex:farkas_variations_conic} and
     \frac{1}{2} \|\beta\|_2^2$}.    
 \end{enumerate}
 
-\item when is dual of dual the primal? Answer with Fenchel duality and f** =
-  f. (Pull back to QPs?)
+\item When is dual of dual problem the primal problem? Describe a class of
+  problems for which this holds, using Fenchel duality.  
 
 \item \label{ex:dual_cone_dual}
- For a closed convex cone $C$, prove \eqref{eq:dual_cone_dual}. Hint:
+  Given an arbitrary set $C$, consider the dual of its dual cone: 
+  \[
+  C^{**} = \{x : x^\T y \geq 0, \; y \in C^*\}.
+  \]
+  Prove that $C^{**}$ is the intersection of all closed halfspaces containing
+  $C$, and therefore, if $C$ is closed and convex, then $C^{**} = C$, verifying 
+  \eqref{eq:dual_cone_dual}. Hint: recall \eqref{eq:halfspace_intersection} from
+  Exercise \ref{ex:affine_minorant_revisited}. 
 
-\item \label{ex:dubovitski_milutin}
-Dubovitski-Milutin lemma
+\item Let $C_1,\dots,C_k$ be cones, and $C = C_1 \cap \dots \cap C_k$. Prove
+  that 
+  \[
+  C^* \supseteq \closure(C_1^* + \cdots + C_k^*).
+  \]
+  Prove additionally that if each of the cones $C_1,\dots,C_k$ are closed, then
+  equality holds above. Hint: use the strict separating hyperplane theorem, from
+  Exercise \ref{ex:farkas_lemma}.
+
+\item \label{ex:dubovitski_milutin_lemma}
+  Let $C_1,\dots,C_k$ be closed convex cones, such that $C_1 \cap \interior(C_2) 
+  \cap \cdots \cap \interior(C_k) \not= \emptyset$. Prove that $C_1 ^* + \cdots
+  + C_k^*$ is closed, and thus by the last exercise, that $C^* = C_1^* + \cdots
+  + C_k^*$. This is known as the \emph{Dubovitski-Milutin lemma}. Hint: consider
+  a sequence $y_j = \sum_{i=1}^k y_{ij}$, with $y_{ij} \in C_i^*$ for $j =
+  1,2,3,\dots$ and each $i$. Assume that $y_j \to y$ as $j \to \infty$, and
+  observe that it remains to show that $y \in C_1^* + \cdots + C_k^*$. For this,
+  use the existence of $x \in C_1 \cap \interior(C_2) \cap \cdots \cap
+  \interior(C_k)$ to show that $y_{ij}$, $j = 1,2,3,\dots$ is a bounded sequence
+  for each $i$, and hence passing to a subsequence if needed, it has a
+  subsequence converging to a point in $C_i^*$. 
+  % Proposition 1.2.7 in Ben-Tal and Nemirovski (2023)
 
 \item \label{ex:farkas_variations_conic} 
   In this exercise, we will show that the Dubovitski-Milutin lemma, studied in
@@ -559,25 +618,26 @@ Dubovitski-Milutin lemma
     \geq g^\T x - h$ for all $x \in D$.
   \end{itemize}
   We will prove that these two statements are equivalent in what follows.
-
+  % Lemma 3.2.1 in Ben-Tal and Nemirovski (2023)
+  
 \begin{enumerate}[label=\alph*.]
 \item Prove that the second statement implies the first.
 
 \item To prove that the first statement implies the second, start by defining 
   \[
-  K_1 = \closure \Big\{ (x,t) \in \R^d \times \R: t > 0, \, x/t \in D \Big\}
-  \quad \text{and} \quad K_2 = \Big\{ (x,t) \in \R^d \times \R: Ax \leq tb
+  C_1 = \closure \Big\{ (x,t) \in \R^d \times \R: t > 0, \, x/t \in D \Big\}
+  \quad \text{and} \quad C_2 = \Big\{ (x,t) \in \R^d \times \R: Ax \leq tb
   \Big\}.  
   \]
-  Show that these are convex cones, whose relative interiors have nonempty  
-  intersection.
+  Show that these are closed convex cones, with $\interior(C_1) \cap C_2 \not= 
+  \emptyset$. 
 
 \item Define $f = (g,-h) \in \R^{d+1}$, and show that $f^\T (x,t) \leq 0$ for
-  all $(x,t) \in K_1 \cap K_2$.  
+  all $(x,t) \in C_1 \cap C_2$.  
 
-\item Use Exercise \ref{ex:dubovitski_milutin} to argue that we can decompose
-  $f = \psi + \phi$, where $\psi^\T(x,t) \leq 0$ for all $x \in K_1$, and
-  $\phi^\T (x,t) \leq 0$ for all $x \in K_2$.
+\item Use Exercise \ref{ex:dubovitski_milutin_lemma} to argue that we can
+  decompose $f = \psi + \phi$, where $\psi^\T(x,t) \leq 0$ for all $x \in C_1$,
+  and $\phi^\T (x,t) \leq 0$ for all $x \in C_2$.
 
 \item Use Exercise \ref{ex:farkas_variations} part a to show that there exists
   $\mu \geq 0$ such that $[A \, -b]^\T \mu = \phi$, in other words, $\phi^\T
