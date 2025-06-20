@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0 EPSF-2.0
-%%Creator: dvips(k) 2020.1 Copyright 2020 Radical Eye Software
+%%Creator: dvips(k) 2025.1 (TeX Live 2025)  Copyright 2025 Radical Eye Software
 %%Title: fm.dvi
-%%CreationDate: Wed Jan  3 00:07:49 2024
+%%CreationDate: Fri Jun 20 20:01:23 2025
 %%BoundingBox: 0 548 378 785
 %%DocumentFonts: Helvetica Helvetica-Bold Helvetica-Oblique
 %%+ Helvetica-BoldOblique Symbol CMR12 CMMI12 CMR8 CMSS8 CMSY10
@@ -9,7 +9,7 @@
 %DVIPSWebPage: (www.radicaleye.com)
 %DVIPSCommandLine: dvips -E -P pdf fm.dvi -o fm.ps
 %DVIPSParameters: dpi=8000
-%DVIPSSource:  TeX output 2024.01.02:1607
+%DVIPSSource:  TeX output 2025.06.20:1301
 %%BeginProcSet: tex.pro 0 0
 %!
 /TeXDict 300 dict def TeXDict begin/N{def}def/B{bind def}N/S{exch}N/X{S
@@ -245,7 +245,7 @@ end
 %%
 %% l3backend-header.dtx  (with options: `header,dvips')
 %% 
-%% Copyright (C) 1990-2020 The LaTeX3 Project
+%% Copyright (C) 2019-2024 The LaTeX Project
 %% 
 %% It may be distributed and/or modified under the conditions of
 %% the LaTeX Project Public License (LPPL), either version 1.3c of
@@ -258,10 +258,13 @@ end
 %% and all files in that bundle must be distributed together.
 %% 
 %% File: l3backend-header.dtx
+/color.sc { } def
+TeXDict begin
+/TeXcolorseparation { setcolor } def
+end
 true setglobal
 /pdf.globaldict 4 dict def
 false setglobal
-
 /pdf.cvs { 65534 string cvs } def
 /pdf.dvi.pt { 72.27 mul Resolution div } def
 /pdf.pt.dvi { 72.27 div Resolution mul } def
@@ -336,8 +339,8 @@ false setglobal
       pdf.dest.y pdf.tmpc mul add
       pdf.dev.x add
     pdf.dest.x pdf.tmpb mul
-     pdf.dest.y pdf.tmpd mul add
-     pdf.dev.y add
+      pdf.dest.y pdf.tmpd mul add
+      pdf.dev.y add
   }
     def
 /pdf.bordertracking false def
@@ -460,7 +463,7 @@ false setglobal
         /x
           {
             0 exch rmoveto
-            SDict~
+            SDict
             begin
             currentpoint
             pdf.originy ne exch pdf.originx ne or
@@ -485,83 +488,83 @@ false setglobal
       {
         counttomark /pdf.count exch def
           {
-           pdf.count 0 eq { exit } if
-           counttomark 2 roll
-           1 index /Rect eq
-             {
-               dup 4 array copy
-               dup dup
-                 1 get
-                 pdf.outerbox pdf.rect.ht
-                 pdf.linkmargin 2 mul add sub
-                 3 exch put
-               dup
-                 pdf.outerbox 2 get
-                 pdf.linkmargin add
-                 2 exch put
-               dup dup
-                 3 get
-                 pdf.outerbox pdf.rect.ht
-                 pdf.linkmargin 2 mul add add
-                 1 exch put
-               /pdf.currentrect exch  def
-               pdf.breaklink.write
-                 {
-                   pdf.currentrect
-                   dup
-                     pdf.outerbox 0 get
-                     pdf.linkmargin sub
-                     0 exch put
-                   dup
-                     pdf.outerbox 2 get
-                     pdf.linkmargin add
-                     2 exch put
-                   dup dup
-                     1 get
-                     pdf.baselineskip add
-                     1 exch put
-                   dup dup
-                     3 get
-                     pdf.baselineskip add
-                     3 exch put
-                   /pdf.currentrect exch def
-                   pdf.breaklink.write
+            pdf.count 0 eq { exit } if
+            counttomark 2 roll
+            1 index /Rect eq
+              {
+                dup 4 array copy
+                dup dup
+                  1 get
+                  pdf.outerbox pdf.rect.ht
+                  pdf.linkmargin 2 mul add sub
+                  3 exch put
+                dup
+                  pdf.outerbox 2 get
+                  pdf.linkmargin add
+                  2 exch put
+                dup dup
+                  3 get
+                  pdf.outerbox pdf.rect.ht
+                  pdf.linkmargin 2 mul add add
+                  1 exch put
+                /pdf.currentrect exch def
+                pdf.breaklink.write
+                  {
+                    pdf.currentrect
+                    dup
+                      pdf.outerbox 0 get
+                      pdf.linkmargin sub
+                      0 exch put
+                    dup
+                      pdf.outerbox 2 get
+                      pdf.linkmargin add
+                      2 exch put
+                    dup dup
+                      1 get
+                      pdf.baselineskip add
+                      1 exch put
+                    dup dup
+                      3 get
+                      pdf.baselineskip add
+                      3 exch put
+                    /pdf.currentrect exch def
+                    pdf.breaklink.write
                   }
                 1 index 3 get
                 pdf.linkmargin 2 mul add
                 pdf.outerbox pdf.rect.ht add
                 2 index 1 get sub
                 pdf.baselineskip div round cvi 1 sub
-                exch
-              repeat
-              pdf.currentrect
-              dup
-                pdf.outerbox 0 get
-                pdf.linkmargin sub
-                0 exch put
-              dup dup
-                1 get
-                pdf.baselineskip add
-                1 exch put
-              dup dup
-                3 get
-                pdf.baselineskip add
-                3 exch put
-              dup 2 index 2 get  2 exch put
-              /pdf.currentrect exch def
-              pdf.breaklink.write
-              SDict /pdf.pdfmark.good false put
-              exit
-            }
-            { pdf.count 2 sub /pdf.count exch def }
-          ifelse
-        }
-      loop
-    }
-  if
-  /ANN
-}
-  def
+                  exch
+                repeat
+                pdf.currentrect
+                dup
+                  pdf.outerbox 0 get
+                  pdf.linkmargin sub
+                  0 exch put
+                dup dup
+                  1 get
+                  pdf.baselineskip add
+                  1 exch put
+                dup dup
+                  3 get
+                  pdf.baselineskip add
+                  3 exch put
+                dup 2 index 2 get  2 exch put
+                /pdf.currentrect exch def
+                pdf.breaklink.write
+                SDict /pdf.pdfmark.good false put
+                exit
+              }
+              { pdf.count 2 sub /pdf.count exch def }
+            ifelse
+          }
+        loop
+      }
+    if
+    /ANN
+  }
+    def
 /pdf.breaklink.write
   {
     counttomark 1 sub
@@ -3227,18 +3230,12 @@ np
 o
 108.64 303.94 486.64 537.94 cl
 108.64 322.66 486.64 537.94 cl
-/bg { 0 0 0 srgb } def
-0 0 0 srgb
-0.75 setlinewidth
-[] 0 setdash
-1 setlinecap
-1 setlinejoin
-10.00 setmiterlimit
-433.75 458.83 2.70 c p3
-278.19 391.30 2.70 c p3
 0.1333 0.5922 0.9020 srgb
 1.12 setlinewidth
 [ 3.38 5.62] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
 np
 108.64 129.55 m
 378.00 382.84 l
@@ -3247,116 +3244,116 @@ o
 [] 0 setdash
 np
 433.75 458.83 m
-18.75 -33.29 l
+22.14 -21.86 l
 o
 /bg { 0.1333 0.5922 0.9020 srgb } def
 np
- 449.47 426.87 m
-4.33 -3.63 l
--0.87 5.58 l
+ 452.61 437.41 m
+5.16 -2.30 l
+-2.37 5.13 l
 cp p3
 /bg { 0.8000 0.8000 0.8000 srgb } def
 np
  278.19 391.30 m
--17.22 -34.73 l
+-20.70 -23.22 l
+0.12 -0.10 l
 0.12 -0.11 l
+0.12 -0.10 l
 0.12 -0.11 l
-0.13 -0.10 l
-0.12 -0.11 l
-0.13 -0.11 l
-0.12 -0.11 l
-0.13 -0.10 l
-0.13 -0.11 l
+0.12 -0.10 l
 0.13 -0.11 l
 0.13 -0.10 l
 0.13 -0.11 l
-0.14 -0.10 l
 0.13 -0.11 l
-0.14 -0.10 l
+0.13 -0.10 l
+0.13 -0.11 l
 0.14 -0.11 l
 0.14 -0.10 l
+0.13 -0.11 l
+0.15 -0.11 l
 0.14 -0.11 l
-0.14 -0.10 l
-0.14 -0.10 l
 0.14 -0.10 l
 0.15 -0.11 l
-0.14 -0.10 l
+0.15 -0.11 l
+0.15 -0.11 l
 0.15 -0.10 l
-0.15 -0.10 l
-0.15 -0.10 l
-0.15 -0.10 l
-0.15 -0.10 l
-0.15 -0.10 l
+0.16 -0.11 l
+0.15 -0.11 l
+0.16 -0.11 l
+0.16 -0.11 l
 0.16 -0.10 l
-0.15 -0.09 l
+0.17 -0.11 l
+0.17 -0.11 l
 0.16 -0.10 l
-0.16 -0.10 l
-0.16 -0.09 l
-0.16 -0.10 l
-0.16 -0.09 l
-0.16 -0.09 l
-0.16 -0.09 l
+0.17 -0.11 l
+0.18 -0.11 l
 0.17 -0.10 l
-0.17 -0.09 l
-0.16 -0.09 l
-0.17 -0.08 l
-0.17 -0.09 l
-0.17 -0.09 l
-0.17 -0.09 l
-0.18 -0.08 l
-0.17 -0.08 l
-0.18 -0.09 l
-0.17 -0.08 l
-0.18 -0.08 l
-0.18 -0.08 l
-0.18 -0.08 l
-0.18 -0.07 l
-0.18 -0.08 l
-0.18 -0.08 l
-0.19 -0.07 l
-0.18 -0.07 l
-0.19 -0.07 l
-0.18 -0.07 l
-0.19 -0.07 l
-0.19 -0.07 l
-0.19 -0.06 l
-0.19 -0.07 l
-0.19 -0.06 l
-0.19 -0.06 l
-0.20 -0.06 l
-0.19 -0.06 l
-0.20 -0.06 l
-0.19 -0.05 l
-0.20 -0.06 l
-0.20 -0.05 l
-0.19 -0.05 l
-0.20 -0.05 l
-0.20 -0.05 l
-0.20 -0.04 l
-0.20 -0.05 l
-0.20 -0.04 l
-0.21 -0.04 l
-0.20 -0.04 l
-0.20 -0.04 l
-0.21 -0.03 l
-0.20 -0.04 l
-0.20 -0.03 l
-0.21 -0.03 l
-0.21 -0.03 l
-0.20 -0.03 l
-0.21 -0.02 l
-0.20 -0.02 l
-0.21 -0.03 l
-0.21 -0.02 l
-0.21 -0.01 l
-0.20 -0.02 l
-0.21 -0.01 l
-0.21 -0.02 l
-0.21 -0.01 l
-0.21 0 l
-0.21 -0.01 l
-0.21 -0.01 l
-0.20 0 l
+0.18 -0.11 l
+0.18 -0.11 l
+0.18 -0.10 l
+0.18 -0.11 l
+0.19 -0.10 l
+0.19 -0.10 l
+0.19 -0.11 l
+0.19 -0.10 l
+0.19 -0.10 l
+0.20 -0.10 l
+0.20 -0.10 l
+0.20 -0.10 l
+0.20 -0.10 l
+0.20 -0.10 l
+0.21 -0.10 l
+0.21 -0.10 l
+0.21 -0.09 l
+0.21 -0.10 l
+0.22 -0.09 l
+0.22 -0.10 l
+0.22 -0.09 l
+0.22 -0.09 l
+0.22 -0.09 l
+0.23 -0.09 l
+0.23 -0.08 l
+0.23 -0.09 l
+0.23 -0.09 l
+0.24 -0.08 l
+0.23 -0.08 l
+0.24 -0.08 l
+0.24 -0.08 l
+0.24 -0.08 l
+0.25 -0.07 l
+0.24 -0.08 l
+0.25 -0.07 l
+0.25 -0.07 l
+0.25 -0.07 l
+0.25 -0.07 l
+0.26 -0.06 l
+0.25 -0.07 l
+0.26 -0.06 l
+0.26 -0.06 l
+0.26 -0.05 l
+0.26 -0.06 l
+0.27 -0.05 l
+0.26 -0.05 l
+0.27 -0.05 l
+0.27 -0.05 l
+0.27 -0.05 l
+0.27 -0.04 l
+0.27 -0.04 l
+0.27 -0.04 l
+0.27 -0.03 l
+0.28 -0.04 l
+0.27 -0.03 l
+0.28 -0.02 l
+0.27 -0.03 l
+0.28 -0.02 l
+0.28 -0.03 l
+0.28 -0.01 l
+0.27 -0.02 l
+0.28 -0.01 l
+0.28 -0.02 l
+0.28 0 l
+0.28 -0.01 l
+0.28 0 l
 cp p2
 0.8745 0.3255 0.4196 srgb
 1.12 setlinewidth
@@ -3366,28 +3363,33 @@ np
 378.00 -170.18 l
 o
 np
-108.64 643.49 m
+108.64 563.97 m
 378.00 0 l
 o
 1.12 setlinewidth
 [] 0 setdash
 np
 278.19 391.30 m
--9.90 -39.54 l
+-12.77 -28.36 l
 o
 /bg { 0.8745 0.3255 0.4196 srgb } def
 np
- 267.01 354.81 m
-0.64 -5.61 l
-3.21 4.64 l
+ 264.70 366.16 m
+-0.36 -5.64 l
+3.98 4.01 l
 cp p3
-/Font1 findfont 12 s
+/bg { 0 0 0 srgb } def
 0 0 0 srgb
+0.75 setlinewidth
+[] 0 setdash
+433.75 458.83 2.70 c p3
+278.19 391.30 2.70 c p3
+/Font1 findfont 12 s
 404.97 454.46 (fx2) .5 0 t
-278.19 413.01 (fx1) .5 0 t
-457.95 413.07 (s2) .5 0 t
-268.29 337.20 (s1) .5 0 t
-399.53 390.52 (tangent) .5 0 t
+278.19 406.38 (fx1) .5 0 t
+461.33 426.62 (s2) .5 0 t
+265.42 351.03 (s1) .5 0 t
+399.53 374.61 (tangent) .5 0 t
 108.64 303.94 486.64 537.94 cl
 0 0 0 srgb
 0.75 setlinewidth
