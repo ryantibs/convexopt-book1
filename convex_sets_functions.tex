@@ -857,7 +857,7 @@ polytopes is as follows.
 \index{polytope} 
 
 \begin{Theorem}
-\label{thm:v_representation}
+\label{thm:hv_representation}
 Every polytope can be represented as the convex hull of a finite set of points. 
 \end{Theorem}
 
@@ -866,7 +866,7 @@ Every polytope can be represented as the convex hull of a finite set of points.
 This result is both highly intuitive and highly nontrivial; later, in Chapter
 \ref{sec:dual_polyhedra}, we will return to it from the perspective of
 duality. We can introduce some more nomenclature to help remember Theorem    
-\ref{thm:v_representation}: we call $P = \{x : Ax \leq b\}$ a \emph{halfspace
+\ref{thm:hv_representation}: we call $P = \{x : Ax \leq b\}$ a \emph{halfspace
   representation} or \emph{H-representation} of $P$, and $Q =
 \conv\{x_1,\dots,x_n\}$ a \emph{vertex representation} or
 \emph{V-representation} of $Q$. Then in this language, the theorem   
@@ -914,7 +914,7 @@ can be expressed as an intersection of facets of $P$, and so on.
 We will not cover this in any real detail, but will later explore the
 relationship between faces of $P$ and faces of a certain dual object $P^*$ in
 Chapter \ref{sec:dual_polyhedra}, when we explain Theorem 
-\ref{thm:v_representation} using polyhedral duality. 
+\ref{thm:hv_representation} using polyhedral duality. 
 
 \SkipTocEntry\section*{Chapter notes}
 
@@ -1367,12 +1367,12 @@ interpret this, in light of parts b, c, d, as saying that for any compact convex
 set $C$, the set of exposed points $\mathrm{exp}(C)$ is dense in the set of
 extreme points $\mathrm{ext}(C)$. For polytopes, these two sets are finite, and
 hence must be equal, which gives us another way of understanding Theorem 
-\ref{thm:v_representation}.  
+\ref{thm:hv_representation}.  
 
 \item Let $f$ be a convex function and $P \subseteq \dom(f)$ a polytope
   (bounded polyhedron). Prove that the maximum of $f$ over $P$ is attained by
   one of the vertices of $P$. Hint: use the V-representation for $P$ that we
-  know exists from Theorem \ref{thm:v_representation} (that is, express $P$ as
+  know exists from Theorem \ref{thm:hv_representation} (that is, express $P$ as 
   the convex hull of a finite set of vertices). 
 
 \item \label{ex:convex_maximization}
