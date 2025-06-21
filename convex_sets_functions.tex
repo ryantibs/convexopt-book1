@@ -123,6 +123,9 @@ a^\T x \leq b\}$. The set $\{x : a^\T x = b\}$ is called a \emph{supporting
   hyperplane} to $C$ at $x_0$. 
 \end{Theorem}
 
+% Separating: for example, Chapter 2.5.1 of Boyd and Vandenberghe (2004)  
+% Supporting: for example, Chapter 2.5.2 of Boyd and Vandenberghe (2004) 
+
 These theorems are highly intuitive and the role of convexity can be illustrated
 graphically; see Figure \ref{fig:set_theorems}. Furthermore, they have many
 important consequences in optimization. For example, the separating hyperplane
@@ -823,8 +826,7 @@ Let $C \subseteq \R^d$.
 \end{enumerate}
 \end{Theorem}
 
-% Note: typical proof of convex hull result, using conic hull result, implies
-% affine independence (though this isn't typically stated)
+% For example, Theorem 17.1 of Rockafellar (1970)
 
 This has various important implications; see part f of Exercise
 \ref{ex:convex_closed} for a basic one. 
@@ -859,7 +861,7 @@ polytopes is as follows.
 Every polytope can be represented as the convex hull of a finite set of points. 
 \end{Theorem}
 
-% For example, Theorem 3 page 32 in Grunbaum (2003)
+% For example, Theorem 3 in Chapter 3.1 of Grunbaum (2003)
 
 This result is both highly intuitive and highly nontrivial. Later, in Chapter
 \ref{sec:dual_polyhedra}, we will return to it from the perspective of
@@ -898,7 +900,7 @@ and bounded) convex set $C$,
 \[
 C = \closure\big(\conv\{x : \text{$x$ is an exposed point of $C$}\}\big),  
 \]
-% For example, Theorem 8 page 19 in Grunbaum (2003) 
+% For example, Theorem 8 in Chapter 2.4 of Grunbaum (2003) 
 a result called \emph{Straszewicz's theorem}. (For polytopes, the above is true 
 without the surrounding $\closure(\cdot)$ because the set of exposed
 points---that is, the vertex set---is finite.) For more, see Exercise
@@ -908,7 +910,7 @@ What makes polyhedra so special, however, is the \emph{structure} exhibited by
 their faces. The faces of a polyhedron $P$ obey a beautiful recursive 
 structure: each face of a face of $P$ is also a face of $P$, each face of $P$
 can be expressed as an intersection of facets of $P$, and so on. 
-% For example, Theorem 1 page 26 and Theorem 5 page 27 in Grunbaum (2003) 
+% For example, Theorems 1 and 5 in Chapter 2.6 of Grunbaum (2003)  
 We will not go into this in any detail, but we will leverage the relationship
 between faces of $P$ and faces of its dual polytope $P^*$ when we prove
 Theorem \ref{thm:v_representation} in Chapter \ref{sec:dual_polyhedra}.  
@@ -1138,7 +1140,7 @@ rule for a partial infimum.
   \[
   \text{$a^\T x > b$ for all $x \in C$ and $a^\T x < b$ for all $x \in D$},
   \]  
-  % For example, see proof in Section 2.5.1 of Boyd & Vandenberghe (2004)
+  % For example, see proof in Chapter 2.5.1 of Boyd and Vandenberghe (2004) 
   that is, the hyperplane $\{x: a^\T x =  b\}$ strictly separates $C,D$. 
   Use this result to prove \emph{Farkas' lemma}: given $A \in \R^{k \times d}$,
   $b \in \R^k$, exactly one of the following statements is true: 
