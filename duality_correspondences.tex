@@ -130,9 +130,11 @@ associated dual problem is thus
 \label{eq:fenchel_dual}
 \maximize_u \quad -f^*(-u) - g^*(A^\T u),
 \end{equation}
-which is called the \emph{Fenchel dual} of \eqref{eq:fenchel_primal}. Applying 
-Slater's condition (Theorem \ref{thm:slater_condition}) and the KKT stationarity 
-condition \eqref{eq:kkt_stationarity} leads to the following result.
+which is called the \emph{Fenchel dual} of \eqref{eq:fenchel_primal}. 
+
+Applying Slater's condition (Theorem \ref{thm:slater_condition}) and the KKT
+stationarity condition \eqref{eq:kkt_stationarity} leads to the following
+result. 
 
 \begin{Corollary}
 \label{cor:fenchel_dual}
@@ -165,8 +167,8 @@ has Fenchel dual
 \[
 \maximize_u \quad -f^*(-u) \quad \st \quad \|A^\T u\|_* \leq \lambda.        
 \]
-This reproduces, as a special case, the lasso dual \eqref{eq:lasso_dual} (Exercise
-\ref{ex:lasso_fenchel_dual}). 
+This reproduces, as a special case, the lasso dual \eqref{eq:lasso_dual} (see
+Exercise \ref{ex:lasso_fenchel_dual}). 
 
 \item \parlab{xa:fenchel_norm_squared}
 Again for a norm $\|\cdot\|$ and parameter $\lambda \geq 0$, the problem   
@@ -177,8 +179,8 @@ now has Fenchel dual
 \[
 \maximize_u \quad -f^*(-u) - \frac{1}{2\lambda} \|A^\T u\|_*^2. 
 \]
-This reproduces, as a special case, the SVM dual \eqref{eq:svm_dual} (Exercise
-\ref{ex:svm_fenchel_dual}). 
+This reproduces, as a special case, the SVM dual \eqref{eq:svm_dual} (see
+Exercise \ref{ex:svm_fenchel_dual}). 
 \end{enumerate}
 \end{Example}
 
@@ -186,26 +188,26 @@ This reproduces, as a special case, the SVM dual \eqref{eq:svm_dual} (Exercise
 \label{sec:dual_cones}
 
 In this section, we examine dual cones. Recall (as studied in Chapter
-\ref{sec:cones}), a cone is a set $C$ such that $x \in C \implies t x \in C$,
-for all $t \geq 0$. A convex cone $C$ is a cone that is also convex, which can
-be characterized by $x, y \in C \implies s x + t y \in C$, for all $s, t \geq
-0$. Now, given a cone $C$, its \emph{dual cone} is defined by    
+\ref{sec:cones}), a cone is a set $K$ such that $x \in K \implies t x \in K$,
+for all $t \geq 0$. A convex cone $K$ is a cone that is also convex, which can
+be characterized by $x, y \in K \implies s x + t y \in K$, for all $s, t \geq
+0$. Now, given a cone $K$, its \emph{dual cone} is 
 \label{dual cone}
 \begin{equation}
 \label{eq:dual_cone}
-C^* = \{ y : y^\T x \geq 0, \; x \in C \}.
+K^* = \{ y : y^\T x \geq 0, \; x \in K \}.
 \end{equation}
-It is straightforward to check that $C^*$ is always a convex cone, regardless of
-the convexity of $C$. Furthermore, if $C$ is itself a closed convex cone, then
+It is straightforward to check that $K^*$ is always a convex cone, regardless of
+the convexity of $K$. Furthermore, if $K$ is itself a closed convex cone, then
 (Exercise \ref{ex:dual_cone_dual}):
 \begin{equation}
 \label{eq:dual_cone_dual}
-C^{**} = C.
+K^{**} = K.
 \end{equation}
 
-In general, we can interpret $C^*$ as containing the normal vectors to all
-halfspaces containing $C$: we have $y \in C^* \iff \{ x : y^\T x \geq 0 \}
-\supseteq C$. See Figure \ref{fig:dual_cone} for an illustration.
+In general, we can interpret $K^*$ as containing the normal vectors to all
+halfspaces containing $K$: we have $y \in K^* \iff \{ x : y^\T x \geq 0 \}
+\supseteq K$. See Figure \ref{fig:dual_cone} for an illustration.
 
 \begin{Example}
 The following are examples of duals of common convex cones. The first two are
@@ -218,17 +220,17 @@ straightforward to verify, and the third is verified in Exercise
   orthogonal complement of $L$; in other words, for a matrix $A$, it holds that 
   $(\nul(A))^* = \row(A)$.  
   
-\item For the norm cone $C = \{ (x,t) \in \R^d \times \R : \|x\| \leq t \}$ in a
+\item For the norm cone $K = \{ (x,t) \in \R^d \times \R : \|x\| \leq t \}$ in a
   norm $\|\cdot\|$, its dual cone is 
   \index{norm!cone}  
   \[
-  C^* = \{ (y,s) \in \R^d \times \R : \|y\|_* \leq s \},
+  K^* = \{ (y,s) \in \R^d \times \R : \|y\|_* \leq s \},
   \]
   the norm cone in the dual norm $\|\cdot\|_*$.
 
 \index{positive semidefinite cone!dual cone}
-\item For the positive semidefinite cone $C = \SS_+^d = \{X \in \SS^d : X
-  \succeq 0 \}$, it is its own dual cone, $C^* = \SS_+^d$. Such cones are called
+\item For the positive semidefinite cone $K = \SS_+^d = \{X \in \SS^d : X
+  \succeq 0 \}$, it is its own dual cone, $K^* = \SS_+^d$. Such cones are called
   \emph{self-dual}.  
 \end{enumerate}
 \end{Example}
@@ -236,15 +238,25 @@ straightforward to verify, and the third is verified in Exercise
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.7\textwidth]{fig/dual_cone.pdf}
-\caption{A cone $C$ and its dual cone $C^*$, defined by the normal vector to all
-  halfspaces containing $C$.}  
+\caption{A cone $K$ and its dual cone $K^*$, defined by the normal vector to all
+  halfspaces containing $K$.}  
 \label{fig:dual_cone}
 \end{figure}
 
 \section{Dual polyhedra*}
 \label{sec:dual_polyhedra}
 
-
+Recall (as briefly in Chapter \ref{sec:polyhedra}), a polyhedron is an
+intersection of halfspaces, which we can write as $P = \{x : Ax \leq b\}$ for 
+a matrix-vector pair $A,b$ of compatible dimensions. The \emph{dual polyhedron}
+to $P$ is defined as  
+\index{polyhedron!dual polyhedron}
+\begin{equation}
+\label{eq:dual_polyhedron}
+P^\circ = \{ y : y^\T x \leq 1, \; x \in P \}.
+\end{equation}
+It is straightforward to check $P^\circ$ is itself a polyhedron: 
+The faces $\cF(P)$ of $P$ and faces $\cF(P^\circ)$ of its dual share 
 
 \section{Polar sets*}
 \label{sec:polar_sets}
@@ -347,6 +359,8 @@ where $C$ is a convex set. prove in exercises. specialize to generalized linear
 model case, interpret sufficient conditions, and prove theorems in Chapter
 \ref{sec:maximum_likelihood} about existence of logistic and Poisson regression
 solutions. 
+
+% Lemma 14 here: https://www.stat.berkeley.edu/~ryantibs/papers/genlasuni.pdf 
 
 MAKE Sure to talk about interpretation of logistic interpretation
 
@@ -582,36 +596,36 @@ Exercises \ref{ex:farkas_variations_conic} and
   problems for which this holds, using Fenchel duality.  
 
 \item \label{ex:dual_cone_dual}
-  Given an arbitrary set $C$, consider the dual of its dual cone: 
+  Given an arbitrary cone $K$, consider the dual of its dual cone: 
   \[
-  C^{**} = \{x : x^\T y \geq 0, \; y \in C^*\}.
+  K^{**} = \{x : x^\T y \geq 0, \; y \in K^*\}.
   \]
-  Prove that $C^{**}$ is the intersection of all closed halfspaces containing
-  $C$, and therefore, if $C$ is closed and convex, then $C^{**} = C$, verifying 
+  Prove that $K^{**}$ is the intersection of all closed halfspaces containing
+  $K$, and therefore, if $K$ is closed and convex, then $K^{**} = K$, verifying 
   \eqref{eq:dual_cone_dual}. Hint: recall \eqref{eq:halfspace_intersection} from
   Exercise \ref{ex:affine_minorant_revisited}. 
 
-\item Let $C_1,\dots,C_k$ be cones, and $C = C_1 \cap \dots \cap C_k$. Prove
+\item Let $K_1,\dots,K_m$ be cones, and $K = K_1 \cap \dots \cap K_m$. Prove
   that 
   \[
-  C^* \supseteq \closure(C_1^* + \cdots + C_k^*).
+  K^* \supseteq \closure(K_1^* + \cdots + K_m^*).
   \]
-  Prove additionally that if each of the cones $C_1,\dots,C_k$ are closed, then
+  Prove additionally that if each of the cones $K_1,\dots,K_m$ are closed, then
   equality holds above. Hint: use the strict separating hyperplane theorem, from
   Exercise \ref{ex:farkas_lemma}.
 
 \item \label{ex:dubovitski_milutin_lemma}
-  Let $C_1,\dots,C_k$ be closed convex cones, such that $C_1 \cap \interior(C_2) 
-  \cap \cdots \cap \interior(C_k) \not= \emptyset$. Prove that $C_1 ^* + \cdots
-  + C_k^*$ is closed, and thus by the last exercise, that $C^* = C_1^* + \cdots
-  + C_k^*$. This is known as the \emph{Dubovitski-Milutin lemma}. Hint: consider
-  a sequence $y_j = \sum_{i=1}^k y_{ij}$, with $y_{ij} \in C_i^*$ for $j =
-  1,2,3,\dots$ and each $i$. Assume that $y_j \to y$ as $j \to \infty$, and
-  observe that it remains to show that $y \in C_1^* + \cdots + C_k^*$. For this,
-  use the existence of $x \in C_1 \cap \interior(C_2) \cap \cdots \cap
-  \interior(C_k)$ to show that $y_{ij}$, $j = 1,2,3,\dots$ is a bounded sequence
-  for each $i$, and hence passing to a subsequence if needed, it has a
-  subsequence converging to a point in $C_i^*$. 
+  Let $K_1,\dots,K_m$ be closed convex cones, where $K_1 \cap \interior(K_2) 
+  \cap \cdots \cap \interior(K_m) \not= \emptyset$. Prove that $K_1 ^* + \cdots
+  + K_m^*$ is closed, and hence by the last exercise, $K^* = K_1^* + \cdots
+  + K_m^*$. This is known as the \emph{Dubovitski-Milutin lemma}. Hint: consider
+  a sequence $y_j = \sum_{i=1}^k y_{ij}$, with $y_{ij} \in K_i^*$ for $j =
+  1,2,3,\dots$ and each $i$, with $y_j \to y$ as $j \to \infty$. It remains to
+  show that $y \in K_1^* + \cdots + K_m^*$. For this, use the existence of $x
+  \in K_1 \cap \interior(K_2) \cap \cdots \cap \interior(K_m)$ to show that
+  $y_{ij}$, $j = 1,2,3,\dots$ is a bounded sequence for each $i$, and therefore, 
+  passing to a subsequence if needed, it has a subsequence converging to a point
+  in $K_i^*$. 
   % Proposition 1.2.7 in Ben-Tal and Nemirovski (2023)
 
 \item \label{ex:farkas_variations_conic} 
@@ -635,19 +649,19 @@ Exercises \ref{ex:farkas_variations_conic} and
 
 \item To prove that the first statement implies the second, start by defining 
   \[
-  C_1 = \closure \Big\{ (x,t) \in \R^d \times \R: t > 0, \, x/t \in D \Big\}
-  \quad \text{and} \quad C_2 = \Big\{ (x,t) \in \R^d \times \R: Ax \leq tb
+  K_1 = \closure \Big\{ (x,t) \in \R^d \times \R: t > 0, \, x/t \in D \Big\}
+  \quad \text{and} \quad K_2 = \Big\{ (x,t) \in \R^d \times \R: Ax \leq tb
   \Big\}.  
   \]
-  Show that these are closed convex cones, with $\interior(C_1) \cap C_2 \not= 
+  Show that these are closed convex cones, with $\interior(K_1) \cap K_2 \not= 
   \emptyset$. 
 
 \item Define $f = (g,-h) \in \R^{d+1}$, and show that $f^\T (x,t) \leq 0$ for
-  all $(x,t) \in C_1 \cap C_2$.  
+  all $(x,t) \in K_1 \cap K_2$.  
 
 \item Use Exercise \ref{ex:dubovitski_milutin_lemma} to argue that we can
-  decompose $f = \psi + \phi$, where $\psi^\T(x,t) \leq 0$ for all $x \in C_1$,
-  and $\phi^\T (x,t) \leq 0$ for all $x \in C_2$.
+  decompose $f = \psi + \phi$, where $\psi^\T(x,t) \leq 0$ for all $x \in K_1$,
+  and $\phi^\T (x,t) \leq 0$ for all $x \in K_2$.
 
 \item Use Exercise \ref{ex:farkas_variations} part a to show that there exists
   $\mu \geq 0$ such that $[A \, -b]^\T \mu = \phi$, in other words, $\phi^\T
