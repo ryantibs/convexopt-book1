@@ -272,7 +272,7 @@ To this end, suppose that we have the H-representation $P = \{ x : Ax \leq
 b\}$. Then by definition, 
 \begin{align}
 \nonumber
-P^* &= \{ x : y^\T x \leq 1, \; \text{for all $x$ with $Ax \leq b$} \} \\
+P^* &= \{ y : y^\T x \leq 1, \; \text{for all $x$ with $Ax \leq b$} \} \\
 \label{eq:v_representation_dual}
 &= \bigg\{ \sum_{i=1}^m t_i \frac{a_i}{b_i} : \text{$t_i \geq 0$, for
   $i=1,\dots,m$, and $\sum_{i=1}^m t_i = 1$} \bigg\}.
@@ -287,7 +287,7 @@ Suppose instead that we have the V-representation $P =
 \conv\{x_1,\dots,x_n\}$. Again by definition,  
 \begin{align}
 \nonumber
-P^* &= \big\{ x : y^\T x \leq 1, \; x \in \conv\{x_1,\dots,x_n\} \big\} \\
+P^* &= \big\{ y : y^\T x \leq 1, \; x \in \conv\{x_1,\dots,x_n\} \big\} \\
 \label{eq:h_representation_dual}
 &= \{ y : y^\T x_i \leq 1, \; i = 1,\dots,n \},
 \end{align}
@@ -746,8 +746,20 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
 \end{enumerate}
   
 \item \label{ex:v_representation_dual}
-  
+  To verify \eqref{eq:v_representation_dual}, argue that the inclusion
+  $\supseteq$ follows directly, whereas the inclusion $\subseteq$ follows using
+  the Farkas' lemma variation from Exercise \ref{ex:farkas_variations} part b
+  (or Exercise \ref{ex:farkas_variations_conic} with $D = \R^d$). Hint: fixing
+  $y$ such that $Ax \leq b$ implies $y^\T x \leq 1$; we know that there exists  
+  $\mu \geq 0$ such that $\mu^\T (Ax - b) \geq y^\T x - 1$ for all $x \in 
+  \R^d$. Show that this implies $y = A^\T \mu$, and $\mu^\T b \leq 1$.
+  We can then reparametrize, using $b_1,\dots,b_m > 0$, since $0 \in
+  \interior(P)$, to obtain the desired statement. 
+
 \item \label{ex:h_representation_dual}
+  To verify \eqref{eq:h_representation_dual}, argue that the inclusion
+  $\subseteq$ follows directly, whereas the inclusion $\supseteq$ follows
+  by convexity of the set $\{x : y^\T x \leq 1\}$ for a given $y$.
 
 \item \label{ex:hv_representation_dual}
 
