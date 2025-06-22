@@ -1388,14 +1388,15 @@ hence must be equal, which gives us another way of understanding Theorem
   P = \bigcap_{i=1}^m H_i,
   \]
   where each $H_i \subseteq \R^d$ is a halfspace, whose boundary we denote by 
-  $M_i = \boundary(H_i)$ (a hyperplane), for $i=1,\dots,m$. We assume that this  
-  representation is \emph{irredundant}: this means removing any of the
-  halfspaces from the intersection gives rise to a different polyhedron. 
+  $M_i = \boundary(H_i)$ (a hyperplane), for $i=1,\dots,m$. 
 
 % For example, Theorems 2-6 in Chapter 2.6 of Grunbaum (2003)
 \begin{enumerate}[label=\alph*.]
-\item Prove that each $F_i = M_i \cap P$ is a facet of $P$ (face of dimension
-  $d-1$), for $i=1,\dots,m$. 
+\item Prove that each $F_i = M_i \cap P$ is a facet of $P$ (recall, this is a
+  face of dimension $d-1$), for $i=1,\dots,m$. Hint: it will be convenient to
+  assume, without a loss of generality, that the given H-representation for $P$
+  is \emph{irredundant}: this means removing any of the halfspaces from the
+  intersection gives rise to a different polyhedron.  
 
 \item Prove that $\boundary(P) = \cup_{i=1}^m F_i$, where $F_i$, $i=1,\dots,m$
   are the facets from part a.
