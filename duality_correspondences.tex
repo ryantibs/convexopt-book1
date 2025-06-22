@@ -308,7 +308,7 @@ $P^*$: not only vertices and facets, but all faces of $P$ and $P^*$ obey a
 precise one-to-one correspondence. 
 
 \begin{Theorem}
-\label{thm:face_representation_dual}
+\label{thm:face_duality}
 Let $P \subseteq \R^d$ be a polytope with $0 \in \interior(P)$, and let $P^*$ be
 its dual polytope in \eqref{eq:dual_polyhedron}. Define a map $\Psi$ from faces
 $\cF(P)$ of $P$ to faces $\cF(P^*)$ of $P^*$ by  
@@ -320,20 +320,22 @@ G \implies \Psi(F) \supseteq \Psi(G)$, and it satisfies $\dim(F) + \dim(\Psi(F))
 = d-1$ for all $F \in \cF(P)$. 
 \end{Theorem}
 
-This theorem, whose proof is outlined in Exercise
-\ref{ex:face_representation_dual}, gives us a rich way of understanding the
-relation between a polytope $P$ and its dual $P^*$. Duality provides a
-representation map $\Psi$, which maps vertices of $P$ to facets of $P^*$, edges
-(1-faces) of $P$ to ridges ($(d-2)$-faces) of $P^*$, and so on. In short, the 
-entire facial structure of $P$ is determined by $P^*$, and vice versa. A
-canonical example of a dual polytope pair is the $\ell_1$ ball and $\ell_\infty$
-ball, explored in Exercise \ref{ex:l1_linf_ball_dual}.  
+This theorem, whose proof is outlined in Exercise \ref{ex:face_duality}, gives
+us a rich way of understanding the relation between a polytope $P$ and its dual
+$P^*$. Duality provides a representation map $\Psi$, which maps vertices of $P$
+to facets of $P^*$, edges (1-faces) of $P$ to ridges ($(d-2)$-faces) of $P^*$,
+and so on. In short, the  entire facial structure of $P$ is determined by $P^*$,
+and vice versa. A canonical example of a dual polytope pair is the $\ell_1$ ball
+and $\ell_\infty$ ball, explored in Exercise \ref{ex:l1_linf_ball_duality}.  
 
 \section{Polar sets*}
 \label{sec:polar_sets}
 
 
-
+\begin{equation}
+\label{eq:polar_set_polar}
+C^{\circ\circ} = C.
+\end{equation}
 
   
   The \emph{tangent cone} to $C$ at $x$,
@@ -762,28 +764,26 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
   by convexity of the set $\{x : y^\T x \leq 1\}$ for a given $y$.
 
 \item \label{ex:hv_representation_dual}
+  In this exercise, we step through a proof of the main representation theorem,
+  Theorem \ref{thm:hv_representation}, for polytopes. We treat each direction 
+  separately. 
 
+\begin{enumerate}[label=\alph*.]
+\item Suppose $P = \{x : Ax \leq b\}$ is an H-representation and $P$ is
+  bounded. Use the fact that $P$ has a finite number of faces (Exercise
+  \ref{ex:face_structure} part f), along with the Krein-Milman theorem
+  (Exercise \ref{ex:extreme_points} part b), to show that $P =
+  \conv\{x_1,\dots,x_n\}$ for vertices $x_1,\dots,x_n$.
 
-H-representation implies finitely many faces. Use Krein-MIlman to get finitely 
-many vertices, and V-representation.
+\item Suppose $P = \conv\{x_1,\dots,x_n\}$ is a V-representation. Show that the
+  dual polytope $P^*$ has an H-representation, then use the argument from part a
+  applied to $P^*$, and duality once again along with $P^{**} = P$ by
+  \eqref{eq:polar_set_polar}, to form an H-representation for $P$.    
+\end{enumerate}
 
-V-representation gives H-representation in the dual. Replay the same argument to
-get V-representation in the dual. Use duality.
+\item \label{ex:face_duality}
 
-H-representation for P implies V-representation for P* (Theorem 2.11 (vii) of
-Ziegler). Then we argue that the number of facets of P* has to be finite
-(Chapter 3.1 on page 31 of Grunbaum). Then we use the duality map (Theorem 2.12
-and its corollaries of Ziegler, or Theorem 4 page 47 of Grumbaum) to give us
-vertices of P.
-
-V-representation for P implies H-representation for P* (Theorem 2.11 (vi) of
-Ziegler). Again we argue that it must have a finite number of vertices (Theorem
-2.6.6. of Grunbaum or Theorem 19.1(b) of Rockafellar). Then we use the duality
-map to give us halfspaces for P.    
-
-\item \label{ex:face_representation_dual}
-
-\item \label{ex:l1_linf_ball_dual}
+\item \label{ex:l1_linf_ball_duality}
 
 \item \label{ex:minkowski_weyl}
   We say that a set $C \subseteq \R^d$ is \emph{finitely generated} provided
