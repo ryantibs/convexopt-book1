@@ -237,18 +237,19 @@ straightforward to verify, and the third is verified in Exercise
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.7\textwidth]{fig/dual_cone.pdf}
-\caption{A cone $K$ and its dual $K^*$, defined by the normal vectors to all
-  halfspaces containing $K$.}   
+\caption{A cone $K$ and its negative dual cone $-K^*$ (equivalently, its polar
+  cone $K^\circ$), which can be easier to visualize. The set $-K^*$ is
+  characterized by the normal vectors $y$ to all halfspaces $\{y : y^\T x \leq
+  0\}$ containing $K$.}     
 \label{fig:dual_cone}
 \end{figure}
 
 \section{Dual polyhedra*}
 \label{sec:dual_polyhedra}
 
-Recall (as briefly in Chapter \ref{sec:polyhedra}), a polyhedron is an
-intersection of halfspaces, which we can write as $P = \{x : Ax \leq b\}$ for 
-a matrix-vector pair $A,b$ of compatible dimensions. The \emph{dual polyhedron} 
-to $P$ is defined as  
+Recall (as covered in Chapter \ref{sec:polyhedra}), a polyhedron is an
+intersection of halfspaces, $P = \{x : Ax \leq b\}$, for a matrix-vector pair 
+$A,b$ of compatible dimensions. The \emph{dual polyhedron} to $P$ is defined as    
 \index{polyhedron!dual polyhedron}
 \index{polytope!dual polytope}
 \begin{equation}
