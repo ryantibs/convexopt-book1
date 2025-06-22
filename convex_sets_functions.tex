@@ -911,10 +911,10 @@ their faces. The faces of a polyhedron $P$ obey a beautiful recursive
 structure: each face of a face of $P$ is also a face of $P$, each face of $P$
 can be expressed as an intersection of facets of $P$, and so on. 
 % For example, Theorems 1 and 5 in Chapter 2.6 of Grunbaum (2003)  
-We will not cover this in much more detail, but will later explore the
-relationship between faces of $P$ and faces of a certain dual object $P^*$ in
-Chapter \ref{sec:dual_polyhedra}, when we interpret Theorem
-\ref{thm:hv_representation} using polyhedral duality.  
+Exercise \ref{ex:face_structure} explores this in some detail. In Chapter
+\ref{sec:dual_polyhedra}, we will learn about the relationship between faces of
+$P$ and faces of a certain dual object $P^*$, when we interpret Theorem
+\ref{thm:hv_representation} using polyhedral duality.   
 
 \SkipTocEntry\section*{Chapter notes}
 
@@ -1380,5 +1380,35 @@ hence must be equal, which gives us another way of understanding Theorem
   set. As a generalization of the last exercise, show that the maximum of $f$
   over $C$ is attained by one of the extreme points of $C$. Hint: use the
   Krein-Milman theorem, in Exercise \ref{ex:extreme_points} part b. 
+
+\item \label{ex:face_structure} 
+  Let $P \subseteq \R^d$ be a polyhedron. This exercise explores the special
+  relationship between faces of $P$. Write
+  \[
+  P = \bigcap_{i=1}^m H_i,
+  \]
+  where each $H_i \subseteq \R^d$ is a halfspace, whose boundary we denote by 
+  $M_i = \boundary(H_i)$ (a hyperplane), for $i=1,\dots,m$. We assume that this  
+  representation is \emph{irredundant}: this means removing any of the
+  halfspaces from the intersection gives rise to a different polyhedron. 
+
+% For example, Theorems 2-6 in Chapter 2.6 of Grunbaum (2003)
+\begin{enumerate}[label=\alph*.]
+\item Prove that each $F_i = M_i \cap P$ is a facet of $P$ (face of dimension
+  $d-1$), for $i=1,\dots,m$. 
+
+\item Prove that $\boundary(P) = \cup_{i=1}^m F_i$, where $F_i$, $i=1,\dots,m$
+  are the facets from part a.
+
+\item Prove that each facet $F_i$, $i=1,\dots,m$ is itself a polyhedron. 
+
+\item Prove that each facet of a facet of $P$ is the intersection of two facets
+  of $P$. 
+
+\item Prove that each face of $P$ is the intersection of some number of facets
+  of $P$. 
+
+\item Conclude that $P$ has a finite number of faces. 
+\end{enumerate}
 \end{enumerate}
 \end{xcb}
