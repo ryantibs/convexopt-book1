@@ -237,8 +237,8 @@ straightforward to verify, and the third is verified in Exercise
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.7\textwidth]{fig/dual_cone.pdf}
-\caption{A cone $K$ and its dual cone $K^*$, defined by the normal vector to all
-  halfspaces containing $K$.}  
+\caption{A cone $K$ and its dual $K^*$, defined by the normal vectors to all
+  halfspaces containing $K$.}   
 \label{fig:dual_cone}
 \end{figure}
 
@@ -250,6 +250,7 @@ intersection of halfspaces, which we can write as $P = \{x : Ax \leq b\}$ for
 a matrix-vector pair $A,b$ of compatible dimensions. The \emph{dual polyhedron} 
 to $P$ is defined as  
 \index{polyhedron!dual polyhedron}
+\index{polytope!dual polytope}
 \begin{equation}
 \label{eq:dual_polyhedron}
 P^* = \{ y : y^\T x \leq 1, \; x \in P \}.
@@ -257,15 +258,14 @@ P^* = \{ y : y^\T x \leq 1, \; x \in P \}.
 The set $P^*$ is indeed a polyhedron (an intersection of halfspaces),  
 % For example, Corollary 19.2.2 of Rockafellar (1970)
 although this may be nonobvious at face value. The developments below will make
-it clear that $P^*$ is itself polyhedral in the case that $P$ is bounded. The 
-unbounded case is discussed in Exercise \ref{ex:dual_polyhedron}.  
+it clear that $P^*$ is polyhedral in the case that $P$ is bounded. The unbounded
+case is discussed in Exercise \ref{ex:minkowski_weyl}. 
  
 Let us assume henceforth that $P$ is bounded polyhedron, which recall we call a
-polytope, with $0 \in \interior(K)$. While Theorem \ref{thm:hv_representation},
+polytope, with $0 \in \interior(P)$. While Theorem \ref{thm:hv_representation},
 the main representation theorem for polytopes, can be established directly using 
-algebraic arguments and Carath\'{e}odory's theorem (Theorem
-\ref{thm:caratheodory}), we demonstrate in this section how it can be
-alternatively understood using polyhedral duality.   
+algebraic arguments, we demonstrate in this section how it can be explained from 
+the perspective of polyhedral duality. 
 
 To this end, suppose that we have the H-representation $P = \{ x : Ax \leq
 b\}$. Then by definition, 
@@ -276,10 +276,11 @@ P^* &= \{ x : y^\T x \leq 1, \; \text{for all $x$ with $Ax \leq b$} \} \\
 &= \bigg\{ \sum_{i=1}^m t_i \frac{a_i}{b_i} : \text{$t_i \geq 0$, for
   $i=1,\dots,m$, and $\sum_{i=1}^m t_i = 1$} \bigg\}.
 \end{align}
-The second step above can be verified using Farkas' lemma (Exercise 11.20),
-where $a_1,\dots,a_m \in \R^d$ denote the rows of $A$, and $b_1,\dots,b_m > 0$ 
-(as $0 \in \interior(P)$). Defining $y_i = a_i/b_i$, $i = 1,\dots,m$, we have
-thus produced the dual V-representation $P^* = \conv\{y_1,\dots,y_m\}$.      
+The second step above can be verified using Farkas' lemma (Exercise
+\ref{ex:v_representation_dual}), where $a_1,\dots,a_m \in \R^d$ denote the rows
+of $A$, and $b_1,\dots,b_m > 0$ (as $0 \in \interior(P)$). Defining $y_i =
+a_i/b_i$, $i = 1,\dots,m$, we have thus produced the dual V-representation $P^*
+= \conv\{y_1,\dots,y_m\}$.       
 
 Suppose instead that we have the V-representation $P =
 \conv\{x_1,\dots,x_n\}$. Again by definition,  
@@ -289,36 +290,43 @@ P^* &= \big\{ x : y^\T x \leq 1, \; x \in \conv\{x_1,\dots,x_n\} \big\} \\
 \label{eq:h_representation_dual}
 &= \{ y : y^\T x_i \leq 1, \; i = 1,\dots,n \},
 \end{align}
-the second step holding by convexity (Exercise 11.21). In other words, we have
-produced the dual H-representation $P^* = \{ y : Xy \leq 1\}$, where $X$ is the 
-matrix with rows $x_1,\dots,x_n \in \R^d$.   
+where the second step holds by convexity (Exercise
+\ref{ex:h_representation_dual}). In other words, we have produced the dual
+H-representation $P^* = \{ y : Xy \leq 1\}$, where $X$ is the matrix with rows
+$x_1,\dots,x_n \in \R^d$.    
 
-Thus we have established, in a sense made precise above, that halfspaces in an  
-H-representation of $P$ correspond to vertices in a V-representation of $P^*$,
-whereas vertices in a V-representation of $P$ correspond to halfspaces in an
-H-representation of $P^*$. In fact, more is true---there is a one-to-one 
-correspondence between all faces of $P$ and faces of $P^*$.  
+We have therefore established that the H-representation and V-representation for
+polytopes are dual to one another: facets (halfspaces in an H-representation) of
+$P$ correspond to vertices (points in a V-representation) of $P^*$, and vice 
+versa. This dual relationship can actually be used as a key step in proving
+Theorem \ref{thm:hv_representation} in the first place; see Exercise 
+\ref{ex:hv_representation_dual}.    
+
+There is in fact even more to be said about the relationship between $P$ and
+$P^*$: not only vertices and facets, but all faces of $P$ and $P^*$ obey a
+precise one-to-one correspondence. 
 
 \begin{Theorem}
-face theorem
+\label{thm:face_representation_dual}
+Let $P \subseteq \R^d$ be a polytope with $0 \in \interior(P)$, and let $P^*$ be
+its dual polytope in \eqref{eq:dual_polyhedron}. Define a map $\Psi$ from faces
+$\cF(P)$ of $P$ to faces $\cF(P^*)$ of $P^*$ by  
+\[
+\Psi(F) = \{ y \in P^* : y^\T x = 1, \; x \in F \}.
+\]
+Then $\Psi$ is a bijection. Furthermore, it is inclusion-reversing: $F \subseteq
+G \implies \Psi(F) \supseteq \Psi(G)$, and it satisfies $\dim(F) + \dim(\Psi(F))
+= d-1$ for all $F \in \cF(P)$. 
 \end{Theorem}
 
-This theorem, which can be verified using direct arguments (Exercise 11.22),
-gives us a way to understand Theorem \ref{thm:hv_representation}.
-
-
-
-H-representation for P implies V-representation for P* (Theorem 2.11 (vii) of
-Ziegler). Then we argue that the number of facets of P* has to be finite
-(Chapter 3.1 on page 31 of Grunbaum). Then we use the duality map (Theorem 2.12
-and its corollaries of Ziegler, or Theorem 4 page 47 of Grumbaum) to give us
-vertices of P.
-
-V-representation for P implies H-representation for P* (Theorem 2.11 (vi) of
-Ziegler). Again we argue that it must have a finite number of vertices (Theorem
-2.6.6. of Grunbaum or Theorem 19.1(b) of Rockafellar). Then we use the duality
-map to give us halfspaces for P.    
-
+This theorem, whose proof is outlined in Exercise
+\ref{ex:face_representation_dual}, gives us a rich way of understanding the
+relation between a polytope $P$ and its dual $P^*$. Duality provides a
+representation map $\Psi$, which maps vertices of $P$ to facets of $P^*$, edges
+(1-faces) of $P$ to ridges ($(d-2)$-faces) of $P^*$, and so on. In short, the 
+entire facial structure of $P$ is determined by $P^*$, and vice versa. A
+canonical example of a dual polytope pair is the $\ell_1$ ball and $\ell_\infty$
+ball, explored in Exercise \ref{ex:l1_linf_ball_dual}.  
 
 \section{Polar sets*}
 \label{sec:polar_sets}
@@ -433,8 +441,9 @@ Polarity: Chapter 14 of Rockafellar, and Chapter 19 for polyhedral theory.
 
 Exercises \ref{ex:dubovitski_milutin_lemma}, \ref{ex:farkas_variations_conic}, 
 and \ref{ex:convex_theorem_alternatives_conic} are based on
-\cite{bental2023convex} (Chapters 1.2 and 3.2). Exercise
-\ref{ex:dual_polyhedron} is based on \cite{rockafellar1970convex} (Chapter 19). 
+\cite{bental2023convex} (Chapters 1.2 and 3.2). 
+% Exercise \ref{ex:dual_polyhedron} is based on \cite{rockafellar1970convex}
+% (Chapter 19).  
 
 \clearpage
 
@@ -734,8 +743,36 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
   $\mu \geq 0$ such that $[A \, -b]^\T \mu = \phi$, in other words, $\phi^\T
   (x,t) = \mu^\T (Ax - tb)$ for all $x,t$. Use this to prove the desired result.       
 \end{enumerate}
+  
+\item \label{ex:v_representation_dual}
+  
+\item \label{ex:h_representation_dual}
 
-\item \label{ex:dual_polyhedron}
+\item \label{ex:hv_representation_dual}
+
+
+H-representation implies finitely many faces. Use Krein-MIlman to get finitely 
+many vertices, and V-representation.
+
+V-representation gives H-representation in the dual. Replay the same argument to
+get V-representation in the dual. Use duality.
+
+H-representation for P implies V-representation for P* (Theorem 2.11 (vii) of
+Ziegler). Then we argue that the number of facets of P* has to be finite
+(Chapter 3.1 on page 31 of Grunbaum). Then we use the duality map (Theorem 2.12
+and its corollaries of Ziegler, or Theorem 4 page 47 of Grumbaum) to give us
+vertices of P.
+
+V-representation for P implies H-representation for P* (Theorem 2.11 (vi) of
+Ziegler). Again we argue that it must have a finite number of vertices (Theorem
+2.6.6. of Grunbaum or Theorem 19.1(b) of Rockafellar). Then we use the duality
+map to give us halfspaces for P.    
+
+\item \label{ex:face_representation_dual}
+
+\item \label{ex:l1_linf_ball_dual}
+
+\item \label{ex:minkowski_weyl}
   We say that a set $C \subseteq \R^d$ is \emph{finitely generated} provided
   there exists $x_1,\dots,x_n \in \R^d$ and $k \leq n$ such that $C = 
   \conv\{x_1,\dots,x_k\} + \cone\{x_{k+1},\dots,x_n\}$, or in other words  
@@ -746,7 +783,10 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
   \]
   When $k = n$, note that $C$ reduces to the convex hull of $x_1,\dots,x_n$,
   which is bounded, but when $k < n$, the set $C$ will be unbounded. A 
-  generalization of Theorem \ref{thm:hv_representation} is as follows:      
+  generalization of Theorem \ref{thm:hv_representation}, sometimes called the 
+  \emph{Minkowski-Weyl theorem}, is as follows: 
+  \index{Minkowski-Weyl theorem}
+  \index{polyhedron!dual polyhedron}
   \begin{equation}
   \label{eq:hv_representation_generalized}
   \text{a set $P$ is a polyhedron if and only if it is finitely generated.}
@@ -767,7 +807,7 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
 \item Show that the dual $P^*$ defined in \eqref{eq:dual_polyhedron} is a 
   polyhedron. Hint: use \eqref{eq:hv_representation_generalized}.
 \end{enumerate}
-  
+
 \item \label{ex:convex_theorem_alternatives_conic}
   just guide them through the conic theorem of alternatives from 3.2.2 in BTN
   and the conic slater condition in the main text, by generalizing earlier
