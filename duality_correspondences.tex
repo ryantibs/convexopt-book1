@@ -337,10 +337,10 @@ Given a set $C$, its \emph{polar set} is defined by
 \label{eq:polar_set}
 C^\circ = \{ y : y^\T x \leq 1, \; x \in P \}.
 \end{equation}
-Note that for a polyhedron $P$, its polar set is just another term for its dual
-polyhedron in \eqref{eq:dual_polyhedron}, $P^\circ = P^*$. Meanwhile, for a cone
-$K$, its is polar set is the negative dual cone in \eqref{eq:dual_polyhedron},
-$K^\circ = -K^*$. To see this, note ...
+Notice that for a polyhedron $P$, its polar set is just another term for its
+dual polyhedron in \eqref{eq:dual_polyhedron}, $P^\circ = P^*$. Meanwhile, for a
+cone $K$, its is polar set is the negative dual cone in \eqref{eq:dual_cone},
+$K^\circ = -K^*$. To see this, note ... 
 
 \begin{equation}
 \label{eq:polar_set_polar}
@@ -357,7 +357,7 @@ C^{\circ\circ} = C.
   \index{tangent cone}
   \begin{equation}
   \label{eq:tangent_cone}
-  T_C(x) = \{ y \in C : x + ty \in C, \; \text{for small enough $t>0$} \},
+  T_C(x) = \{ y : x + ty \in C, \; \text{for small enough $t>0$} \},
   \end{equation}
   Need not be convex. Need not be closed. 
 
@@ -796,7 +796,26 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
 \end{enumerate}
 
 \item \label{ex:face_duality}
-  
+  This exercise outlines the proof of Theorem \ref{thm:face_duality}. Let $P$
+  be a polytope with $0 \in \interior(P)$, $P^*$ be its dual, and $\Psi$ be the
+  map defined in the theorem. It is trivial to check that $\Psi(\emptyset) =
+  P^*$ and $\Psi(P) = \emptyset$, so we may restrict our attention to a proper
+  face $F \in \cF(P)$.  
+
+% Following Theorem 4 in Chapter 3.4 of Grunbaum (2003)
+
+\begin{enumerate}[label=\alph*.]
+\item Let $x_0 \in \relint(F)$, and $F^* = \{ y \in P^* : y^\T x_0 = 1 \}$.
+  Prove that $\Psi(F) = F^*$, and so $\Psi(F)$ is indeed a face of
+  $P^*$. Hint: suppose that $\Psi(F) \not= F^*$, and take $y_0 \in F^* \setminus
+  \Psi(F)$. Argue there exists $x_1 \in F$ such that $y_0^\T x_1 < 1$. Use $x_0
+  \in \relint(F)$ to argue that $y_0^\T x_0 < 1$. 
+
+\item Prove the inclusion-reversing property: given $G \supseteq F$, we have
+  $\Psi(G) \subseteq \Psi(G)$.  
+
+\item Prove the dimensionality property: $\dim(F) + \dim(\Psi(F)) = d-1$.  
+\end{enumerate}
 
 \item \label{ex:l1_linf_ball_duality}
   Consider the $\ell_1$ and $\ell_\infty$ balls in $\R^d$,
