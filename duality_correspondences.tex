@@ -325,18 +325,32 @@ us a rich way of understanding the relation between a polytope $P$ and its dual
 $P^*$. Duality provides a representation map $\Psi$, which maps vertices of $P$
 to facets of $P^*$, edges (1-faces) of $P$ to ridges ($(d-2)$-faces) of $P^*$,
 and so on. In short, the  entire facial structure of $P$ is determined by $P^*$,
-and vice versa. A canonical example of a dual polytope pair is the $\ell_1$ ball
-and $\ell_\infty$ ball, explored in Exercise \ref{ex:l1_linf_ball_duality}.  
+and vice versa. A canonical example of a dual polytope pair is given by the
+$\ell_1$ and $\ell_\infty$ balls, explored in Exercise
+\ref{ex:l1_linf_ball_duality}.    
 
 \section{Polar sets*}
 \label{sec:polar_sets}
 
+Given a set $C$, its \emph{polar set} is defined by 
+\begin{equation}
+\label{eq:polar_set}
+C^\circ = \{ y : y^\T x \leq 1, \; x \in P \}.
+\end{equation}
+Note that for a polyhedron $P$, its polar set is just another term for its dual
+polyhedron in \eqref{eq:dual_polyhedron}, $P^\circ = P^*$. Meanwhile, for a cone
+$K$, its is polar set is the negative dual cone in \eqref{eq:dual_polyhedron},
+$K^\circ = -K^*$. To see this, note ...
 
 \begin{equation}
 \label{eq:polar_set_polar}
 C^{\circ\circ} = C.
 \end{equation}
-
+% Indeed, it is immediate from the definitions that K c K**. On the
+% other hand, if X o ¢ K there exists a hyperplane H= {z E Rd I<z,Yo)= I}
+% strictly separating X o and K, i.e. such that ( x, Yo) < 1 for all x E K and
+% <xo, Yo) > 1. Therefore Yo E K* and then <xo, Yo) > 1 shows that
+% xo ¢ K** .
   
   The \emph{tangent cone} to $C$ at $x$,
   \index{normal cone!dual cone}
@@ -782,8 +796,28 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
 \end{enumerate}
 
 \item \label{ex:face_duality}
+  
 
 \item \label{ex:l1_linf_ball_duality}
+  Consider the $\ell_1$ and $\ell_\infty$ balls in $\R^d$,
+  \[
+  P = \bigg\{ x : \sum_{i=1}^d |x_i| \leq 1 \bigg\} \quad \text{and} \quad 
+  Q = \bigg\{ x : \max_{i=1,\dots,d} \, |x_i| \leq 1 \bigg\}. 
+  \]
+  In geometry these are often referred to as the \emph{cross-polytope} and
+  \emph{hypercube}, respectively.  
+
+\begin{enumerate}[label=\alph*.]
+\item Prove directly with a counting argument that the number of $k$-faces of
+  $P$ is $2^{k+1} {d \choose k+1}$.  
+
+\item Prove directly with a counting argument that the number of $k$-faces of
+  $Q$ is $2^{d-k} {d \choose d-k}$. 
+
+\item Prove that $P^* = Q$, and check that the relationship between the faces of
+  $P$ and $Q$ from Theorem \ref{thm:face_duality} is consistent with parts a and
+  b above. 
+\end{enumerate}
 
 \item \label{ex:minkowski_weyl}
   We say that a set $C \subseteq \R^d$ is \emph{finitely generated} provided
@@ -796,8 +830,8 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
   \]
   When $k = n$, note that $C$ reduces to the convex hull of $x_1,\dots,x_n$,
   which is bounded, but when $k < n$, the set $C$ will be unbounded. A 
-  generalization of Theorem \ref{thm:hv_representation}, sometimes called the 
-  \emph{Minkowski-Weyl theorem}, is as follows: 
+  generalization of Theorem \ref{thm:hv_representation}, sometimes referred to
+  as the \emph{Minkowski-Weyl theorem}, is as follows: 
   \index{Minkowski-Weyl theorem}
   \index{polyhedron!dual polyhedron}
   \begin{equation}
@@ -805,14 +839,12 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
   \text{a set $P$ is a polyhedron if and only if it is finitely generated.}
   \end{equation}
   % For example, Theorem 19.1 in Rockafellar (1970)
-  As with Theorem \ref{thm:hv_representation}, one can prove the above
-  generalization without appealing to polyhedral duality. In what follows, we
-  will use this generalization to prove certain facts about polyhedra. Denote by
-  $P = \{x : Ax \leq b\} \subseteq \R^d$ a polyhedron, and $f : \R^d \to \R^m$ a
-  linear transformation.   
+  In what follows, we will use this generalization to prove certain facts about
+  polyhedra. Denote by $P = \{x : Ax \leq b\} \subseteq \R^d$ a polyhedron, and
+  $f : \R^d \to \R^m$ a linear transformation.     
 
 \begin{enumerate}[label=\alph*.]
-\item Show that the primage $f^{-1}(P)$ of $P$ under $F$ is a polyhedron.
+\item Show that the preimage $f^{-1}(P)$ of $P$ under $F$ is a polyhedron. 
 
 \item Show that the image $f(P)$ of $P$ under $F$ is a polyhedron. Hint: use
   \eqref{eq:hv_representation_generalized}. 
