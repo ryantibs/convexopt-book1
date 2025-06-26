@@ -359,8 +359,7 @@ K$ for a closed convex cone, as claimed earlier in
 using the separating hyperplane theorem (Exercise \ref{ex:polar_set_polar}). 
 
 \begin{Example}
-Given a set $C$ and a point $x \in C$, the \emph{tangent cone} to $C$ at $x$ is
-defined as 
+The \emph{tangent cone} to a set $C$ at a point $x \in C$ is defined as 
 \index{normal cone!dual cone}
 \index{tangent cone}
 \begin{equation}
@@ -919,6 +918,19 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
 \end{enumerate}
 
 \item \label{ex:tangent_cone}
+  This exercise studies the tangent cone \eqref{eq:tangent_cone} to a set $C$ at
+  a point $x \in C$. 
+
+\begin{enumerate}[label=\alph*.] 
+\item Give an example to show that $T_C(x)$ can be nonconvex.
+\item For convex $C$, prove that $T_C(x)$ is convex. 
+\item For convex $C$, prove that $N_C(x) = (T_C(x))^\circ$. Hint: prove the two 
+  directions of inclusion ($\subseteq$ and $\supseteq$) separately. Only one 
+  will require convexity.     
+\item For convex $C$, use part c, the fact that $N_C(x)$ is always closed,
+  convex, and contains 0, and \eqref{eq:polar_set_polar} to establish that
+  $(N_C(x))^\circ = T_C(x)$.     
+\end{enumerate}
 
 \item \label{ex:convex_theorem_alternatives_conic}
   just guide them through the conic theorem of alternatives from 3.2.2 in BTN
