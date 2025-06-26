@@ -93,9 +93,9 @@ characteristic function of the dual norm unit ball:
 \label{eq:norm_conjugate}
 (\|\cdot\|)^* = I_{\{u : \|u\|_* \leq 1\}}.
 \end{equation}
- Meanwhile, an arguably even simpler relationship holds for 
-the squared norm; the convex conjugate of one half times a norm squared is one 
-half times its dual norm squared (Exercise \ref{ex:norm_squared_conjugate}):       
+Meanwhile, an arguably even simpler relationship holds for the squared norm; the
+convex conjugate of one half times a norm squared is one half times its dual
+norm squared (Exercise \ref{ex:norm_squared_conjugate}):       
 \begin{equation}
 \label{eq:norm_squared_conjugate}
 \Big( \frac{1}{2} \|\cdot\|^2 \Big)^{\hspace{-2pt}*} = \frac{1}{2}
@@ -197,17 +197,17 @@ be characterized by $x, y \in K \implies s x + t y \in K$, for all $s, t \geq
 \label{eq:dual_cone}
 K^* = \{ y : y^\T x \geq 0, \; x \in K \}.
 \end{equation}
-It is straightforward to check that $K^*$ is always a convex cone, regardless of
-the convexity of $K$. Furthermore, if $K$ is itself a closed convex cone, then
-(Exercise \ref{ex:dual_cone_dual}):
+It is straightforward to check that $K^*$ is always a closed convex cone,
+regardless of the convexity of $K$. Furthermore, if $K$ is itself a closed
+convex cone, then the dual of its dual cone is 
 \begin{equation}
 \label{eq:dual_cone_dual}
-K^{**} = K.
+K^{**} = K,
 \end{equation}
-
-In general, we can interpret $K^*$ as containing the normal vectors to all
-halfspaces containing $K$: we have $y \in K^* \iff \{ x : y^\T x \geq 0 \}
-\supseteq K$. See Figure \ref{fig:dual_cone} for an illustration.
+which will be verified shortly, when we discuss polarity. In general, we can
+interpret elements of $K^*$ as normal vectors to halfspaces containing $K$,
+since $y \in K^* \iff \{ x : y^\T x \geq 0 \} \supseteq K$. Figure
+\ref{fig:dual_cone} gives an illustration.      
 
 \begin{Example}
 The following are examples of duals of common convex cones. The first two are
@@ -333,47 +333,77 @@ $\ell_1$ and $\ell_\infty$ balls, explored in Exercise
 \label{sec:polar_sets}
 
 Given a set $C$, its \emph{polar set} is defined by 
+\index{polar set}
 \begin{equation}
 \label{eq:polar_set}
-C^\circ = \{ y : y^\T x \leq 1, \; x \in P \}.
+C^\circ = \{ y : y^\T x \leq 1, \; x \in C \}.
 \end{equation}
-Notice that for a polyhedron $P$, its polar set is just another term for its
-dual polyhedron in \eqref{eq:dual_polyhedron}, $P^\circ = P^*$. Meanwhile, for a
-cone $K$, its is polar set is the negative dual cone in \eqref{eq:dual_cone},
-$K^\circ = -K^*$. To see this, note ... 
+For a polyhedron $P$, its polar set is simply another name for its dual
+polyhedron \eqref{eq:dual_polyhedron}, $P^\circ = P^*$. Moreover, for a cone
+$K$, its polar set is in fact the negative dual cone \eqref{eq:dual_cone},
+$K^\circ = -K^*$: clearly we have $-K^* \subseteq K^\circ$, and for the opposite
+inclusion, take any $y \in K^\circ$, $x \in K$, $t>0$, then observe that $y^\T x  
+\leq 1 \implies y^\T (tx) \leq 1 \iff y^\T x \leq 1/t$, thus sending $t \to
+\infty$ gives $y^\T x \leq 0$.          
 
+One can check that the polar $C^\circ$ is always a closed convex set. When $C$
+itself a closed convex set containing 0, the polar of its polar set is
 \begin{equation}
 \label{eq:polar_set_polar}
 C^{\circ\circ} = C.
 \end{equation}
-% Indeed, it is immediate from the definitions that K c K**. On the
-% other hand, if X o ¢ K there exists a hyperplane H= {z E Rd I<z,Yo)= I}
-% strictly separating X o and K, i.e. such that ( x, Yo) < 1 for all x E K and
-% <xo, Yo) > 1. Therefore Yo E K* and then <xo, Yo) > 1 shows that
-% xo ¢ K** .
+As polarity generalizes duality for both polyhedra and cones, the above fact
+implies $P^{**} = P$ for a polyhedron containing the origin, and also $K^{**} =
+K$ for a closed convex cone, as claimed earlier in
+\eqref{eq:dual_cone_dual}. The fact \eqref{eq:polar_set_polar} can be verified
+using the separating hyperplane theorem (Exercise \ref{ex:polar_set_polar}). 
+
+\begin{Example}
+Given a set $C$ and a point $x \in C$, the \emph{tangent cone} to $C$ at $x$ is
+defined as 
+\index{normal cone!dual cone}
+\index{tangent cone}
+\begin{equation}
+\label{eq:tangent_cone}
+T_C(x) = \closure \{ y : x + ty \in C, \; \text{for small enough $t>0$} \}. 
+\end{equation}
+This is a closed cone, but need not be convex in general. However, if $C$ is
+convex then $T_C(x)$ is convex too, and in this case it is actually the polar to
+the normal cone, $(N_C(x))^\circ = T_C(x)$. Exercise \ref{ex:tangent_cone}
+explores these and related details.     
+\end{Example}
+
+Polarity and conjugacy share a connection for characteristic functions. By
+direct inspection, the conjugate of $I_C$, which recall (Example
+\parref{xa:support_function_conjugate}) is the support function $h_C = I^*_C$,
+satisfies        
+\[
+h_C(y) \leq 1 \iff y \in C^\circ.
+\]
+Moreover, if $C$ is a cone, then we can see from the above that $h_C$ can
+only take the values 0 and $\infty$ (since $h_C(y) \leq 1 \implies h_C(ty) = t
+h_C(y) \leq 1$ for all $y \in C^\circ$ and $t>0$); more precisely, $h_C$ is 0 
+on $C^\circ$ and $\infty$ otherwise, which leads to 
+\begin{equation}
+\label{eq:support_function_cone}
+h_C = I_{C^\circ}.
+\end{equation}
+That is, the conjugate (support function) of the characteristic function of a
+cone is the characteristic function of its polar cone. This fact will be useful
+in our discussion of conic duality, next.  
   
-  The \emph{tangent cone} to $C$ at $x$,
-  \index{normal cone!dual cone}
-  \index{tangent cone}
-  \begin{equation}
-  \label{eq:tangent_cone}
-  T_C(x) = \{ y : x + ty \in C, \; \text{for small enough $t>0$} \},
-  \end{equation}
-  Need not be convex. Need not be closed. 
+% Where do we want to prove conjugate of sum of indicators is conjugate of
+% indicator of intersection?  
 
-  Closed and convex if $C$ is. Indeed, in this case, $-T_C(x)$ is the dual cone
-  of the normal cone $N_C(x)$.
-
-Make sure to mention that conjugate of indicator of convex cone is indicator of
-its polar cone. 
-
-Also where do we want to prove conjugate of sum of indicators is conjugate of
-indicator of intersection?
-
-Dual in terms of gauge of polar set 
+% Dual in terms of gauge of polar set?
 
 \section{Conic duality*}
 \label{sec:conic_duality}
+
+blah blah
+
+% Make sure to mention that conjugate of indicator of convex cone is indicator
+% of its polar cone. 
 
 How to write in a unified way?
 
@@ -688,15 +718,16 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
 \item When is dual of dual problem the primal problem? Describe a class of
   problems for which this holds, using Fenchel duality.  
 
-\item \label{ex:dual_cone_dual}
-  Given an arbitrary cone $K$, consider the dual of its dual cone: 
-  \[
-  K^{**} = \{x : x^\T y \geq 0, \; y \in K^*\}.
-  \]
-  Prove that $K^{**}$ is the intersection of all closed halfspaces containing
-  $K$, and therefore, if $K$ is closed and convex, then $K^{**} = K$, verifying 
-  \eqref{eq:dual_cone_dual}. Hint: recall \eqref{eq:halfspace_intersection} from
-  Exercise \ref{ex:affine_minorant_revisited}. 
+% \item \label{ex:dual_cone_dual}
+%   Given an arbitrary cone $K$, consider the dual of its dual cone:  
+%   \[
+%   K^{**} = \{x : x^\T y \geq 0, \; y \in K^*\}.
+%   \]
+%   Prove that $K^{**}$ is the intersection of all closed halfspaces containing
+%   $K$, and therefore, if $K$ is closed and convex, then $K^{**} = K$,   
+%   verifying \eqref{eq:dual_cone_dual}. Hint: recall
+%   \eqref{eq:halfspace_intersection} from Exercise
+%   \ref{ex:affine_minorant_revisited}.   
 
 \item Let $K_1,\dots,K_m$ be cones, and $K = K_1 \cap \dots \cap K_m$. Prove
   that 
@@ -869,6 +900,25 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
 \item Show that the dual $P^*$ defined in \eqref{eq:dual_polyhedron} is a 
   polyhedron. Hint: use \eqref{eq:hv_representation_generalized}.
 \end{enumerate}
+
+\item \label{ex:polar_set_polar}
+  Given an arbitrary set $C$, consider the polar of its polar set:
+  \[
+  C^{\circ\circ} = \{ x : x^\T y \leq 1, \; y \in C^\circ \}.
+  \]
+  In this exercise, we verify \eqref{eq:polar_set_polar}, assuming $C$ is closed
+  and convex with $0 \in C$.
+  
+\begin{enumerate}[label=\alph*.] 
+\item Prove that $C \subseteq C^{\circ\circ}$.
+\item Prove that $C \supseteq C^{\circ\circ}$. Hint: fix $x_0 \notin C$, and
+  argue that $x_0 \notin C^{\circ\circ}$ using the strict version of the
+  separating hyperplane theorem given in Exercise \ref{ex:farkas_lemma}. Use $0
+  \in C$ to show that the separating hyperplane can be expressed as $y^\T x_0 >
+  1$ and $y^\T x < 1$ for all $x \in C$.
+\end{enumerate}
+
+\item \label{ex:tangent_cone}
 
 \item \label{ex:convex_theorem_alternatives_conic}
   just guide them through the conic theorem of alternatives from 3.2.2 in BTN
