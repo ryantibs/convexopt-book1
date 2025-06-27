@@ -364,7 +364,8 @@ The \emph{tangent cone} to a set $C$ at a point $x \in C$ is defined as
 \index{tangent cone}
 \begin{equation}
 \label{eq:tangent_cone}
-T_C(x) = \closure \{ y : x + ty \in C, \; \text{for small enough $t>0$} \}. 
+T_C(x) = \closure \Big\{ y : \text{there exists $\beta>0$ such that $x + \alpha
+  y \in C$, for all $\alpha \in [0,\beta]$} \Big\}.  
 \end{equation}
 This is a closed cone, but need not be convex in general. However, if $C$ is
 convex then $T_C(x)$ is convex too, and in this case it is actually the polar to
@@ -921,10 +922,13 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
   This exercise studies the tangent cone \eqref{eq:tangent_cone} to a set $C$ at
   a point $x \in C$. 
 
+% See Theorems 6.5 and 6.9 of Rockafellar and Wets (2009), although our
+% presentation is slightly different, but equivalent for convex sets 
+
 \begin{enumerate}[label=\alph*.] 
 \item Give an example to show that $T_C(x)$ can be nonconvex.
 \item For convex $C$, prove that $T_C(x)$ is convex. 
-\item For convex $C$, prove that $N_C(x) = (T_C(x))^\circ$. Hint: prove the two 
+\item For convex $C$, prove that $N_C(x) = (T_C(x))^\circ$. Hint: prove the two  
   directions of inclusion ($\subseteq$ and $\supseteq$) separately. Only one 
   will require convexity.     
 \item For convex $C$, use part c, the fact that $N_C(x)$ is always closed,
