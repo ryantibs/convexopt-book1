@@ -281,18 +281,18 @@ SDP is of the form
 \end{alignedat}
 \end{equation}
 for $c \in \R^d$, symmetric matrices $A_1,\dots,A_d,B$ of equal dimensions, and
-a matrix-vector pair $G,h$ of compatible dimensions. Though less obvious than 
+a matrix-vector pair $G,h$ of compatible dimensions. Though less obvious than
 the case of LPs and QPs, an SDP \eqref{eq:semidefinite_program} is always a
 convex problem; this follows from the fact that the constraints in
 \eqref{eq:semidefinite_program}, which are known as \emph{linear matrix
 inequalities}, always form a convex set (Exercise
 \ref{ex:linear_matrix_ineq}). Notably, we do not require the matrices
-$A_1,\dots,A_d,B$ to be positive semidefinite (they are only assumed to be  
-symmetric). One might then ask: where does the name semidefinite program come  
+$A_1,\dots,A_d,B$ to be positive semidefinite (they are only assumed to be
+symmetric). One might then ask: where does the name semidefinite program come
 from? It is a reflection of the fact that in an SDP, the usual ordering $\leq$
-on vectors (recall that this is interpreted componentwise) is replaced by the
-ordering $\preceq$ induced by the positive semidefinite cone (recall that we
-write $X \preceq Y$ to mean $Y-X \succeq 0$ for matrices $X,Y$).
+on vectors (where recall we interpret this coordinatewise) is replaced by the
+ordering $\preceq$ induced by the positive semidefinite cone (where recall $X
+\preceq Y \iff Y-X \succeq 0$ for matrices $X,Y$).
 
 Below we list some basic properties of semidefinite programs.
 

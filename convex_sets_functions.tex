@@ -63,7 +63,7 @@ The following are examples of convex sets.
 \item A \emph{polyhedron} $\{x: a_i^\T x \leq b_i, \, i=1,\dots,m\}$. This is
   the intersection of a finite number of halfspaces. We can express this
   succinctly as $\{x : Ax \leq b\}$, where here and throughout we read the
-  inequality componentwise.   
+  inequality coordinatewise.   
 \end{enumerate}
 \end{Example}  
 
@@ -840,9 +840,9 @@ halfspaces, which we can express generically as
 \[
 P = \{x : Ax \leq b\}
 \] 
-for a matrix $A$ and vector $b$, where recall we interpret this inequality
-componentwise. It should be clear that $\{x : Ax \geq b\}$, $\{x : \ell \leq Ax
-\leq u\}$, and $\{x : Ax \leq b, \, Gx = h\}$ are all also polyhedra, as we
+for a matrix $A$ and vector $b$, where recall that we interpret the inequality 
+coordinatewise. It should be clear that $\{x : Ax \geq b\}$, $\{x : \ell \leq Ax
+\leq u\}$, and $\{x : Ax \leq b, \, Gx = h\}$ are each also polyhedra, as we 
 can rewrite each of them in the form of the above display, for appropriately
 (re)defined $A,b$.
 
