@@ -400,6 +400,54 @@ in our discussion of conic duality, next.
 \section{Conic duality*}
 \label{sec:conic_duality}
 
+We are now prepared to develop a theory of conic duality, which recall was
+alluded to in Chapter \ref{sec:sdp_duality} (in particular, Corollary
+\ref{cor:slater_sdp}). We will study a convex program said to be in    
+\emph{conic form}:   
+\begin{equation}
+\label{eq:primal_conic}
+\begin{alignedat}{2}
+&\minimize_{x \in D} \quad && f(x) \\ 
+&\st \quad && h(x) \leq_K 0 \\
+& && Ax = b.
+\end{alignedat}
+\end{equation}
+Above, $D \subseteq \R^d$ (viewed as the intersection of effective domains of
+the functions in the optimization problem, which is typically implicit, but in
+the current context is useful to make explicit), $f : D \to \R$ is a
+convex function, $A \in \R^{k \times   d}$, $b \in \R^k$, $K \subseteq \R^m$ is
+a convex cone, and $h : D \to \R^m$ is what we call a $K$-convex function, which
+means         
+\[
+h \big(t x + (1-t) y \big) \leq_K t h(x) + (1-t) h(y),  \quad \text{for all $x,y
+  \in \dom(f)$ and $t \in [0,1]$}.
+\]
+Here we write $a \leq_K b \iff b \geq_K a$ to mean $b-a \in K$. If $K$ is a
+\emph{regular} convex cone, which means that $K$ is closed, has a nonempty
+interior, and is \emph{pointed}: $K \cap -K = \{0\}$, then one can check that
+$\leq_K$ is indeed a partial ordering (it is reflexive: $a \leq_K a$ for all
+$a$; antisymmetric: $a \leq_K b$ and $b \leq_K a$ implies $a = b$; and
+transitive: $a \leq_K b$ and $b \leq_K c$ implies $a \leq_K c$). Two notable
+examples of conic ordering are given by $K = \R_+^d$, the nonnegative orthant,
+in which $\leq_K$ reduces to the coordinatewise ordering $\leq$ on vectors, and
+$K = \SS_+^d$, the positive semidefinite cone, in which $\leq_K$ reduces to the 
+positive semidefinite ordering $\preceq$ on matrices.  
+
+\index{cone program}
+As $h(x) \leq_K 0 \iff -h(x) \in K$, note that we can take $f$ to be linear and
+$h$ to be affine in order to recover the cone program in
+\eqref{eq:cone_program} from Chapter \ref{sec:cone_programs}. Hence, the
+convex program in conic form \eqref{eq:primal_conic} encompasses cone programs,
+and thus SDPs. Further, when we take $K = \R_+^d$, then problem
+\eqref{eq:primal_conic} recovers the convex form of programs which were the
+focus of Chapter \ref{sec:lagrangian_duality}. In this sense, the 
+duality theory developed below both generalizes that covered in the previous 
+chapter (Theorem \ref{thm:slater_condition}) and also implies the previously
+claimed result for SDPs (Corollary \ref{cor:slater_sdp}). 
+
+
+
+
 blah blah
 
 % Make sure to mention that conjugate of indicator of convex cone is indicator
@@ -415,14 +463,6 @@ it will be helpful to write this as: min $f(x)$ subject to $h(x) \leq 0$, $Ax =
 b$, where $h$ is $K$-convex and $K$ is a regular cone (regular means: closed,
 convex, nonempty interior, pointed)
 
-\begin{equation}
-\label{eq:primal_conic}
-\begin{alignedat}{2}
-&\minimize_x \quad && f(x) \\
-&\st \quad && h(x) \leq_K 0 \\
-& && Ax = b.
-\end{alignedat}
-\end{equation}
 
 \index{Slater's condition}
 \index{strong duality}
@@ -715,8 +755,8 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
     \frac{1}{2} \|\beta\|_2^2$}.    
 \end{enumerate}
 
-\item When is dual of dual problem the primal problem? Describe a class of
-  problems for which this holds, using Fenchel duality.  
+\item When is the dual of dual problem the primal problem? Describe a class of
+  problems in which this holds, using Fenchel duality.   
 
 % \item \label{ex:dual_cone_dual}
 %   Given an arbitrary cone $K$, consider the dual of its dual cone:  
