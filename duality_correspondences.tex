@@ -119,7 +119,7 @@ Introducing an auxiliary variable (and equality constraint), this becomes
 whose Lagrangian is $L(x,z,u) = f(z) + g(x) + u^\T (z - Ax)$. Observe that  
 \begin{align*}
 \inf_{x,z} \, \Big\{ f(z) + g(x) + u^\T (z - Ax) \Big\} 
-&= -\sup_z \Big\{ -u^\T z - f(z) \Big\} - \sup_x \, \Big\{ u^\T Ax - g(x) 
+&= -\sup_z  \,\Big\{ -u^\T z - f(z) \Big\} - \sup_x \, \Big\{ u^\T Ax - g(x)  
   \Big\} \\ 
 &= -f^*(-u) - g^*(A^\T u),
 \end{align*}
@@ -390,114 +390,102 @@ h_C = I_{C^\circ}.
 \end{equation}
 That is, the conjugate (support function) of the characteristic function of a
 cone is the characteristic function of its polar cone. This fact will be useful
-in our discussion of conic duality, next.  
+in derivations involving conic duality. 
   
-% Where do we want to prove conjugate of sum of indicators is conjugate of
-% indicator of intersection?  
-
-% Dual in terms of gauge of polar set?
-
 \section{Conic duality*}
 \label{sec:conic_duality}
 
 We are now prepared to develop a theory of conic duality, which recall was
 alluded to in Chapter \ref{sec:sdp_duality} (in particular, Corollary
-\ref{cor:slater_sdp}). We will study a convex program said to be in    
-\emph{conic form}:   
+\ref{cor:slater_sdp}). We will study an optimization problem said to be in
+\emph{conic form}:     
+% Note: convenient to write it this way because we are effectively separating
+% out affine and nonaffine inequality constraints ahead of time ...
 \begin{equation}
 \label{eq:primal_conic}
 \begin{alignedat}{2}
 &\minimize_{x \in D} \quad && f(x) \\ 
 &\st \quad && h(x) \leq_K 0 \\
-& && Ax = b.
+& && Ax \leq b,
 \end{alignedat}
 \end{equation}
-Above, $D \subseteq \R^d$ (viewed as the intersection of effective domains of
-the functions in the optimization problem, which is typically implicit, but in
-the current context is useful to make explicit), $f : D \to \R$ is a
-convex function, $A \in \R^{k \times   d}$, $b \in \R^k$, $K \subseteq \R^m$ is
-a convex cone, and $h : D \to \R^m$ is what we call a $K$-convex function, which
-means         
+where $D \subseteq \R^d$ (viewed as the intersection of effective domains of
+the functions in the optimization problem, which is typically implicit, but is
+explicit here for convenience in what follows), $f : D \to \R$, $h : D \to 
+\R^m$, $K \subseteq \R^m$ is a cone, $A \in \R^{k \times d}$, and $b \in
+\R^k$. The relation $\leq_K$ in \eqref{eq:primal_conic} is defined by
 \[
-h \big(t x + (1-t) y \big) \leq_K t h(x) + (1-t) h(y),  \quad \text{for all $x,y
-  \in \dom(f)$ and $t \in [0,1]$}.
+a \leq_K b \iff b-a \in K.
 \]
-Here we write $a \leq_K b \iff b \geq_K a$ to mean $b-a \in K$. If $K$ is a
-\emph{regular} convex cone, which means that $K$ is closed, has a nonempty
-interior, and is \emph{pointed}: $K \cap -K = \{0\}$, then it is straightforward
-to verify that $\leq_K$ is indeed a partial ordering (it is reflexive: $a \leq_K
-a$ for all $a$; antisymmetric: $a \leq_K b$ and $b \leq_K a$ implies $a = b$;
-and transitive: $a \leq_K b$ and $b \leq_K c$ implies $a \leq_K c$). Notable
-examples of conic ordering are $K = \R_+^d$, the nonnegative orthant, where
-$\leq_K$ becomes the usual (coordinatewise) ordering $\leq$ on vectors, and $K = 
-\SS_+^d$, the positive semidefinite cone, where $\leq_K$ becomes the positive
-semidefinite ordering $\preceq$ on matrices.  
+When $K$ is a \emph{regular} cone $K$, which is a closed convex cone with
+nonempty interior, that is \emph{pointed}: $K \cap -K = \{0\}$, one can check
+that $\leq_K$ is indeed a partial ordering.\footnote{This means that it is
+  reflexive: $a \leq_K a$, for all $a$; antisymmetric: $a \leq_K b$ and $b
+  \leq_K a$ implies $a = b$; and transitive: $a \leq_K b$ and $b \leq_K c$
+  implies $a \leq_K c$.}    
+Notable examples are given by $K = \R_+^d$, the nonnegative orthant, where
+$\leq_K$ reduces to the usual (coordinatewise) ordering $\leq$ on vectors, and
+$K = \SS_+^d$, the positive semidefinite cone, where $\leq_K$ reduces to the
+positive semidefinite ordering $\preceq$ on matrices.
 
 \index{cone program}
 As $h(x) \leq_K 0 \iff -h(x) \in K$, note that we can take $f$ to be linear and
-$h$ to be affine in order to recover the cone program in
-\eqref{eq:cone_program} from Chapter \ref{sec:cone_programs}. Hence, the
-convex program in conic form \eqref{eq:primal_conic} encompasses cone programs,
-and thus SDPs. Further, when we take $K = \R_+^d$, then problem
-\eqref{eq:primal_conic} recovers standard convex programs which were the
-central focus of Chapter \ref{sec:lagrangian_duality}. In this sense, the 
-duality theory developed below both generalizes the previous one for standard
-convex programs (Theorem \ref{thm:slater_condition}) and also implies the 
-previously claimed result for SDPs (Corollary \ref{cor:slater_sdp}).  
+$h$ to be affine in order to recover the cone program in \eqref{eq:cone_program}
+from Chapter \ref{sec:cone_programs}. Thus, the general problem in conic form 
+\eqref{eq:primal_conic} encompasses cone programs, and hence SDPs. Furthermore,
+when we take $K = \R_+^d$, then problem \eqref{eq:primal_conic} is able to
+recover standard convex programs, which were the focus of Chapter
+\ref{chap:lagrangian_duality}. In this sense, the strong duality theorem below
+both generalizes the previous one for standard convex programs (Theorem
+\ref{thm:slater_condition}), and implies the previously claimed result for SDPs
+(Corollary \ref{cor:slater_sdp}).
 
-
-
-
-blah blah
-
-% Make sure to mention that conjugate of indicator of convex cone is indicator
-% of its polar cone. 
-
-How to write in a unified way?
-
-Write cone program as follows in a way that allows Fenchel duality to be applied
-elegantly. For example, min $c^\T x$ subject $Ax + b \in K$
-
-See Theorems 3.2.2 and 3.2.5 in Ben Tal and Nemirovski. This is more general and 
-it will be helpful to write this as: min $f(x)$ subject to $h(x) \leq 0$, $Ax =
-b$, where $h$ is $K$-convex and $K$ is a regular cone (regular means: closed,
-convex, nonempty interior, pointed)
-
+Defining \smash{$g(u,v) = \inf_{x \in D} \, \{ f(x) + u^\T h(x) + v^\T (Ax - b) 
+  \}$}, the dual of \eqref{eq:primal_conic} is  
+\begin{equation}
+\label{eq:dual_conic}
+\begin{alignedat}{2}
+&\maximize_{u,v} \quad && g(u,v) \\ 
+&\st \quad && u \geq_{K^*} 0 \\
+& && v \geq 0,
+\end{alignedat}
+\end{equation}
+which can be verified using familiar calculations from Lagrangian duality, along
+with property \eqref{eq:support_function_cone}. The following generalizes
+Slater's condition to problems of conic form. 
 
 \index{Slater's condition}
 \index{strong duality}
 \begin{Theorem}
 \label{thm:slater_conic}
-TODO. MAKE SURE TO GIVE STATEMENTS OF ATTAINMENT SO WE CAN USE THAT IN AN
-EARLIER EXERCISE.    
+Consider the optimization problem \eqref{eq:primal_conic}. Assume the following.           
 
-State as in the earlier Slater, that we get strong duality. Then say,
-furthermore, when the common optimal value is finite, that this is attained in 
-the dual, i.e., dual solution exists. 
+\begin{enumerate}[label=(\roman*)]
+\item The set $D$ is convex, $K$ is a regular (closed, convex, pointed, with a
+  nonempty interior) cone, $f : D \to \R$ is convex, and $h : D \to \R^m$ is
+  $K$-convex, which means          
+  \[
+  h \big(t x + (1-t) y \big) \leq_K t h(x) + (1-t) h(y),  \quad \text{for all $x,y
+  \in D$ and $t \in [0,1]$}.
+  \]
 
-% Consider the optimization problem \eqref{eq:primal_problem}, where after 
-% relabeling, if needed, we take $h_1, \dots, h_r$ to be inequality constraint
-% functions which are affine ($r = 0$ if none are affine). Assume the following.         
+\item There exists $x \in \relint(D)$, such that $Ax \leq b$ and $h(x) <_K 0
+  \iff -h(x) \in \interior(K)$.
+\end{enumerate}
 
-% \begin{enumerate}[label=(\roman*)]
-% \item The functions $f$ and $h_i$, $i=1,\dots,m$ are convex, and $\ell_j$,
-%   $j=1,\dots,k$ are affine; in other words, problem \eqref{eq:primal_problem} is
-%   convex, and we can write its equality constraints as $Ax = b$.      
-
-% \item There exists $x \in \relint(D)$, where \smash{$D = \dom(f) \cap
-%     \bigcap_{i=r+1}^m \dom(h_i)$} denotes the common effective domain, such that      
-%   \begin{equation}
-%   \label{eq:slater_condition}
-%   h_i(x) \leq 0 \;\, \text{for all $i \leq r$}, \quad
-%   h_i(x) < 0 \;\, \text{for all $i \geq r+1$}, \quad 
-%   Ax = b.
-%   \end{equation}
-% \end{enumerate}
-
-% Then strong duality holds: the optimal values $f^\star$ in problem
-% \eqref{eq:primal_problem} and $g^\star$ in the corresponding dual problem  
-% \eqref{eq:dual_problem} satisfy $f^\star = g^\star$.
+Then strong duality holds between \eqref{eq:primal_conic} and its dual
+problem. Moreover, when the common optimal value is finite, a dual
+solution exists (the optimal value in the dual is attained).    
 \end{Theorem}
+
+This result is an extension and refinement of Slater's condition from Theorem 
+\ref{thm:slater_condition}, and its proof proceeds similarly, outlined in
+Exercises \ref{ex:convex_theorem_alternatives_conic} and \ref{ex:slater_conic}.  
+Recall, applying Theorem \ref{thm:slater_conic} to SDPs yields Corollary 
+\ref{cor:slater_sdp}, once we realize that we can learn from applying it to the
+primal and the dual separately (the dual of the dual SDP being the primal SDP). 
+A similar conclusion can be reached for conic programs (with $f,h$ being linear)
+which we cover in Exercise \ref{ex:slater_conic_program}.
 
 \section{Minimax theorems*}
 \label{sec:minimax_theorems}
@@ -526,11 +514,12 @@ MAKE Sure to talk about interpretation of logistic interpretation
 Polyhedral duality: Chapter 2 of Ziegler, Chapter 3 of Grunbaum.
 Polarity: Chapter 14 of Rockafellar, and Chapter 19 for polyhedral theory.
 
-Exercises \ref{ex:dubovitski_milutin_lemma}, \ref{ex:farkas_variations_conic}, 
-and \ref{ex:convex_theorem_alternatives_conic} are based on
-\cite{bental2023convex} (Chapters 1.2 and 3.2). 
-% Exercise \ref{ex:dual_polyhedron} is based on \cite{rockafellar1970convex}
-% (Chapter 19).  
+Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based 
+\cite{bental2023convex} (Chapter 3). Moreover, Exercises
+\ref{ex:dubovitski_milutin_lemma}, \ref{ex:farkas_variations_conic}, 
+\ref{ex:convex_theorem_alternatives_conic}, \ref{ex:slater_conic}, and 
+\ref{ex:slater_conic_program} are all based on \cite{bental2023convex} (Chapters
+1.2 and 3.2).  
 
 \clearpage
 
@@ -758,17 +747,6 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
 \item When is the dual of dual problem the primal problem? Describe a class of
   problems in which this holds, using Fenchel duality.   
 
-% \item \label{ex:dual_cone_dual}
-%   Given an arbitrary cone $K$, consider the dual of its dual cone:  
-%   \[
-%   K^{**} = \{x : x^\T y \geq 0, \; y \in K^*\}.
-%   \]
-%   Prove that $K^{**}$ is the intersection of all closed halfspaces containing
-%   $K$, and therefore, if $K$ is closed and convex, then $K^{**} = K$,   
-%   verifying \eqref{eq:dual_cone_dual}. Hint: recall
-%   \eqref{eq:halfspace_intersection} from Exercise
-%   \ref{ex:affine_minorant_revisited}.   
-
 \item Let $K_1,\dots,K_m$ be cones, and $K = K_1 \cap \dots \cap K_m$. Prove
   that 
   \[
@@ -806,7 +784,7 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
     \geq g^\T x - h$ for all $x \in D$.
   \end{itemize}
   We will prove that these two statements are equivalent in what follows.
-  % Lemma 3.2.1 in Ben-Tal and Nemirovski (2023)
+  % Following Lemma 3.2.1 in Ben-Tal and Nemirovski (2023)
   
 \begin{enumerate}[label=\alph*.]
 \item Prove that the second statement implies the first.
@@ -870,7 +848,6 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
   This exercise outlines the proof of Theorem \ref{thm:face_duality}. It is
   trivial to check that $\Psi(\emptyset) = P^*$ and $\Psi(P) = \emptyset$, and
   we restrict our attention to a proper face $F \in \cF(P)$.  
-
 % Following Theorem 4 in Chapter 3.4 of Grunbaum (2003)
 
 \begin{enumerate}[label=\alph*.]
@@ -961,7 +938,6 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
 \item \label{ex:tangent_cone}
   This exercise studies the tangent cone \eqref{eq:tangent_cone} to a set $C$ at
   a point $x \in C$. 
-
 % See Theorems 6.5 and 6.9 of Rockafellar and Wets (2009), although our
 % presentation is slightly different, but equivalent for convex sets 
 
@@ -975,16 +951,61 @@ and \ref{ex:convex_theorem_alternatives_conic} are based on
   convex, and contains 0, and \eqref{eq:polar_set_polar} to establish that
   $(N_C(x))^\circ = T_C(x)$.     
 \end{enumerate}
+  
+\item Prove conjugate of sum of indicators is conjugate of indicator of
+  intersection?   
+
+\item Derive dual in terms of gauge of polar set? 
 
 \item \label{ex:convex_theorem_alternatives_conic}
+  Given a set $D$, cone $K$, functions $f,h$, and matrix-vector pair $A,b$,
+  consider the problems:
+  \begin{align}
+  \label{eq:feasibility_conic1}
+  &\begin{alignedat}{2}  
+  &\find \quad && x \\  
+  &\st \quad && f(x) < c \\
+  & && h(x) \leq_K 0 \\
+  & && Ax \leq b \\
+  & && x \in D,
+  \end{alignedat} \\[10pt]
+  \label{eq:feasibility_conic2}
+  &\begin{alignedat}{2}  
+  &\find \quad && u,v \\ 
+  &\st \quad && \inf_{x \in D} \, \big\{ f(x) + u^\T h(x) + v^\T (Ax - b) \big\}
+  \geq c \\  
+  & && u \geq_{K^*} 0 \\ 
+  & && v \geq 0.
+  \end{alignedat}
+  \end{align}
+  The value of $c$ here is fixed and arbitrary. Following Theorem
+  3.2.2 in \cite{bental2023convex}, we will prove what these authors call the 
+  \emph{convex theorem of alternatives} for problems in conic form, which says
+  that under conditions (i) and (ii) in Theorem \ref{thm:slater_conic}, problem 
+  \eqref{eq:feasibility_conic1} is feasible if and only if
+  \eqref{eq:feasibility_conic2} is infeasible. (Note that this generalizes the
+  result in Exercise \ref{ex:convex_theorem_alternatives}.)
+  
+\begin{enumerate}[label=\alph*.]
+\item Assume that problem \eqref{eq:feasibility_conic1} is feasible. Prove that
+  \eqref{eq:feasibility_conic2} is infeasible. Hint: recalling $K^*$ denotes the  
+  dual cone to $K$, and \smash{$u \geq_{K^*} 0 \iff u \in K^*$}, argue there
+  exists $x$ with $f(x) +u^\T h(x) + v^\T (Ax - b) < c$, for any \smash{$u
+    \geq_{K^*} 0 \iff u \in K^*$}, and $v \geq 0$. Note that nothing about this
+  direction of the argument requires Slater's condition in conic form.      
+  
+\item 
+\end{enumerate}
+
   just guide them through the conic theorem of alternatives from 3.2.2 in BTN
   and the conic slater condition in the main text, by generalizing earlier
   proofs, and using the above Farkas lemma variation
 
+\item \label{ex:slater_conic}
+
+\item \label{ex:slater_conic_program}
+
 \item \label{ex:trace_norm_semidefinite} 
-  
-
-
 
 % \begin{enumerate}
 % \item[(a, 5pts)]

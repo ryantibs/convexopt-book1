@@ -14,13 +14,13 @@ denoted by $\prox_f$, that maps each $x \in \R^d$ to a subset of $\R^d$
 \index{proximal mapping}
 \begin{equation}
 \label{eq:proximal_mapping}
-\prox_f(x) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 + f(z) \bigg\}. 
+\prox_f(x) = \argmin_z \, \bigg\{ \frac{1}{2} \|x - z\|_2^2 + f(z) \bigg\}.  
 \end{equation}
-Here and throughout, we denote by $\argmin_{z \in S} F(z)$ the set of
-minimizers of a function $F$ over a set $S$, and denote by $\argmin_z F(z)$ 
-the set of minimizers of $F$ over its entire effective domain. We will abide by
-the common convention that $\argmin$ returns the minimizer itself when the
-latter is unique (not the set containing the minimizer).     
+Here and throughout we denote by $\argmin_{z \in S} \, F(z)$ the set of 
+minimizers of a function $F$ over a set $S$, and denote by $\argmin_z \, F(z)$  
+the set of minimizers of $F$ over its entire effective domain. We will also
+abide by the convention that the $\argmin$ operator returns the minimizer itself
+when the latter is unique (and not the set containing the minimizer).       
 
 As mentioned, we can think of $\prox_f$ as a generalization of the projecton map
 onto a set. Indeed for $f = I_C$, the characteristic function of a set $C$,  
@@ -39,7 +39,7 @@ this chapter,
 \index{proximal mapping}
 \begin{equation}
 \label{eq:proximal_mapping_lambda}
-\prox_{\lambda f}(x) = \argmin_z \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + 
+\prox_{\lambda f}(x) = \argmin_z \, \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 +  
 f(z) \bigg\},  
 \end{equation}
 which is simply the proximal map associated with the scaled function $\lambda f$
@@ -48,8 +48,8 @@ than the minimizer),
 \index{Moreau envelope}
 \begin{equation}
 \label{eq:moreau_envelope_lambda}
-f_\lambda(x) = \inf_z \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
-\bigg\}, 
+f_\lambda(x) = \inf_z \, \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
+\bigg\},  
 \end{equation}
 called the \emph{Moreau envelope} of $\lambda f$, which will be studied a bit
 later in Chapter \ref{sec:moreau_envelope}. 
@@ -280,15 +280,15 @@ specialized  algorithms.
   operator 
   \index{exponential family!proximal mapping}
   \[
-  \prox_{\lambda f}(\eta) = \argmin_{u} \bigg\{ \frac{1}{2} \|\eta - u\|_2^2 +
-  \lambda \sum_{i=1}^n \Big( \psi(u_i) - T(y_i) u_i \Big) \bigg\}
+  \prox_{\lambda f}(\eta) = \argmin_{u} \, \bigg\{ \frac{1}{2} \|\eta - u\|_2^2
+  + \lambda \sum_{i=1}^n \Big( \psi(u_i) - T(y_i) u_i \Big) \bigg\}
   \]
   is not generally available in closed-form, but is efficiently computable for
   differentiable convex $\psi$ (recall that $\psi$ is always convex in any
   exponential family distribution). First note that the proximal map decomposes
   across coordinates: for each $i=1,\dots,n$,    
   \[
-  [\prox_{\lambda f}(\eta)]_i = \argmin_{u_i} \bigg\{ \frac{1}{2} (\eta_i -
+  [\prox_{\lambda f}(\eta)]_i = \argmin_{u_i} \, \bigg\{ \frac{1}{2} (\eta_i - 
   u_i)^2 + \lambda \Big( \psi(u_i) - T(y_i) u_i \Big) \bigg\}. 
   \]
   The first-order optimality condition for the above problem is 
@@ -309,7 +309,7 @@ specialized  algorithms.
   This is a convex function (it is a seminorm). Its proximal operator    
   \index{total variation (TV) penalty!proximal mapping}
   \[
-  \prox_{\lambda f}(x) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 + 
+  \prox_{\lambda f}(x) = \argmin_z \, \bigg\{ \frac{1}{2} \|x - z\|_2^2 +  
   \lambda \sum_{i=1}^{d-1} |z_{i+1} - z_i| \bigg\}
   \]
   is efficiently computable (in linear-time, by which we mean the number of
@@ -329,8 +329,8 @@ specialized  algorithms.
   \dots, |x_d|$. This is a convex function (it is indeed a norm, reducing to
   the $\ell_1$ norm for $\lambda_1 = \cdots = \lambda_d$). Its proximal map   
   \[
-  \prox_f(x) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_2^2 +
-  \sum_{i=1}^d \lambda_i |z|_{(i)} \bigg\}
+  \prox_f(x) = \argmin_z \, \bigg\{ \frac{1}{2} \|x - z\|_2^2 + \sum_{i=1}^d
+  \lambda_i |z|_{(i)} \bigg\} 
   \]
   can be reduced to isotonic projection, as in \eqref{eq:isotonic_projection},
   and is thus efficiently computable (in linear-time) with the pool adjacent
@@ -800,8 +800,8 @@ a closed convex function $f$, as defined in \eqref{eq:moreau_envelope_lambda}.
 Repeating its definition here for convenience, for $\lambda > 0$:
 \index{Moreau envelope}
 \[
-f_\lambda(x) = \inf_z \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
-\bigg\}.
+f_\lambda(x) = \inf_z \, \bigg\{ \frac{1}{2\lambda} \|x - z\|_2^2 + f(z)
+\bigg\}. 
 \]
 The Moreau envelope $f_\lambda$ can be seen as a smoothed or regularized version
 of $f$, and accordingly it is also called \emph{Moreau regularization}. Figure
@@ -992,8 +992,8 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   on $\R^{k \times d}$, its proximal map is  
   \begin{equation}
   \label{eq:proximal_mapping_matrix}
-  \prox_{\lambda f}(X) = \argmin_z \bigg\{ \frac{1}{2} \|X -
-  Z\|_F^2 + \lambda f(Z) \bigg\}, 
+  \prox_{\lambda f}(X) = \argmin_z \, \bigg\{ \frac{1}{2} \|X - Z\|_F^2 +
+  \lambda f(Z) \bigg\},  
   \end{equation}
   which is consistent with interpreting the space $k \times d$ of matrices as a
   $kd$-dimensional vector space defined by its entries, and applying the usual
@@ -1071,8 +1071,8 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   rank function, from Example \parref{xa:rank_proximal_mapping}. 
 \end{enumerate}
 
-\item For \smash{$f(x) = \inf_{z \in C} \|x - z\|_2 = \|x - P_C(x)\|_2$},
-  where $C$ is a closed convex set, prove that   
+\item For \smash{$f(x) = \inf_{z \in C} \, \|x - z\|_2 = \|x - P_C(x)\|_2$},
+  where $C$ is a closed convex set, prove that    
   \[
   \prox_{\lambda f}(x) = 
   \begin{cases}
@@ -1286,7 +1286,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
 \index{proximal mapping!fixed-point equation}
 \item In this exercise, we study a \emph{contractive} property of proximal
   operators (and projections): for closed convex $f$ and $\lambda > 0$, show
-  that if $f(x^\star) = f^\star = \inf_x f(x)$, then   
+  that if $f(x^\star) = f^\star = \inf_x \, f(x)$, then   
   \[
   \| \prox_{\lambda f}(x) - x^\star\|_2 < \|x - x^\star\|_2, \quad \text{for
     all $x$ with $f(x) > f^\star$}.
@@ -1358,7 +1358,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   of an \emph{infimal convolution} of functions $f,g$: 
   \index{infimal convolution}
   \[
-  (f \infconv g)(x) = \inf_z \Big\{ f(z) + g(x-z) \Big\}.
+  (f \infconv g)(x) = \inf_z \, \Big\{ f(z) + g(x-z) \Big\}.
   \]
   In this notation, observe that \smash{$f_\lambda = f \infconv \|\cdot\|_2^2 / 
     (2\lambda)$}, that is, the Moreau envelope is the infimal convolution of $f$
@@ -1369,8 +1369,8 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
 \item Assume that $f \infconv h = g \infconv h$ for a closed, convex, and
   coercive function $h$. Prove that for any value of $\lambda > 0$,  
   \[
-  \inf_x \Big\{ f_\lambda(x) - v^\T x \Big\} = \inf_x \Big\{ g_\lambda(x) - v^\T
-  x \Big\}, \quad \text{for all $v$}.
+  \inf_x \, \Big\{ f_\lambda(x) - v^\T x \Big\} = \inf_x \, \Big\{ g_\lambda(x)
+  - v^\T x \Big\}, \quad \text{for all $v$}.
   \]
   Hint: first observe that $f_\lambda \infconv h = g_\lambda \infconv h$ by the
   commutative property of infimal convolutions. Then use basic algebra to
@@ -1383,9 +1383,9 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   generality) $f(x) > g(x)$, and thus $f_\lambda(x) > g_\lambda(x)$ for small 
   enough $\lambda > 0$. Show that for $v = \nabla f_\lambda(x)$, we get   
   \[
-  \inf_y \Big\{ f_\lambda(y) - v^\T y \Big\} = 
+  \inf_y \, \Big\{ f_\lambda(y) - v^\T y \Big\} = 
   f_\lambda(x) - v^\T x > g_\lambda(x) - v^\T x \geq 
-  \inf_y \Big\{ g_\lambda(y) - v^\T y \Big\},
+  \inf_y \, \Big\{ g_\lambda(y) - v^\T y \Big\},
   \]
   which would violate the result from part a.
 
@@ -1403,7 +1403,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   function $f$, by   
   \begin{equation}
   \label{eq:scaled_proximal_mapping}
-  \prox_f^H(x) = \argmin_z \bigg\{ \frac{1}{2} \|x - z\|_H^2 + f(z) \bigg\}, 
+  \prox_f^H(x) = \argmin_z \, \bigg\{ \frac{1}{2} \|x - z\|_H^2 + f(z) \bigg\},  
   \end{equation}
   where $\|\cdot\|_H$ denotes the scaled Euclidean norm, defined by $\|x\|_H^2 = 
   x^\T H x$. The parts of this exercise that follow walk through several nice

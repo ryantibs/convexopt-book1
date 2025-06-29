@@ -252,7 +252,7 @@ the most notable calculus rule for convex conjugates, we recall the notion of an
 \index{infimal convolution!conjugate}
 \begin{equation}
 \label{eq:infimal_convolution}
-(f \infconv g)(x) = \inf_z \Big\{ f(z) + g(x-z) \Big\}.
+(f \infconv g)(x) = \inf_z \, \Big\{ f(z) + g(x-z) \Big\}.
 \end{equation}
 For any $f,g$, a straightforward calculation shows that $(f \infconv g)^* = f^*
 + g^*$. Meanwhile, for closed and convex $f,g$ whose effective domains have
@@ -755,10 +755,10 @@ $\nabla f$---is called the \emph{Baillon-Haddad theorem}, due to
 \item Use the representation in \eqref{eq:moreau_envelope_conjugate} to prove
   that $f_\lambda(x)$ decreases as $\lambda$ increases.   
 
-\item Prove that $f_\lambda(x) \to f(x)$ as $\lambda \to 0$. Hint: by part a, 
-  \smash{$\lim_{\lambda \to 0} f_\lambda(x) = \sup_{\lambda > 0}
-    f_\lambda(x)$}. Then plug in the representation in
-  \eqref{eq:moreau_envelope_conjugate} for the Moreau envelope, and exchange the 
+\item Prove that $f_\lambda(x) \to f(x)$ as $\lambda \to 0$. Hint:
+  \smash{$\lim_{\lambda \to 0} f_\lambda(x) = \sup_{\lambda > 0} \,
+    f_\lambda(x)$} by part a. Then plug in the representation in 
+  \eqref{eq:moreau_envelope_conjugate} for the Moreau envelope, and exchange the  
   order of the suprema.   
 \end{enumerate}
 

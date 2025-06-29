@@ -248,7 +248,7 @@ and $\cap_{i=1}^n \relint(\dom(f_i)) \not= \emptyset$, then for any $x \in
 
 Let $f$ be a function acting on a block variable $(x,z)$. If $f(\cdot,z)$ is
 convex for each $z \in Z$, then the partial supremum \smash{$F = \sup_{z \in Z}
-  f(\cdot,z)$} satisfies, for any $x \in \dom(F)$,
+  \, f(\cdot,z)$} satisfies, for any $x \in \dom(F)$,
 \index{partial supremum!subgradients}
 \[
 \partial F(x) \supseteq \closure\left( \conv\Bigg( \bigcup_{z \in \bar{Z}(x)} 
@@ -276,7 +276,7 @@ satisfies \smash{$\partial F(x) = \conv(\cup_{i : f_i(x) = F(x)} \, \partial
 \parlab{par:subgradient_infimum}
 
 Let $f$ be a function acting on a block variable $(x,z)$. If $f$ is convex and
-$Z$ is a convex set, then the partial infimum \smash{$F = \inf_{z \in Z}
+$Z$ is a convex set, then the partial infimum \smash{$F = \inf_{z \in Z} \,
   f(\cdot,z)$} satisfies, for any $x \in \dom(F)$ such that $F(x) > -\infty$,  
 where we now denote \smash{$\bar{Z}(x) = \{z \in Z : f(x,z) = F(z)\}$}, 
 \index{partial infimum!subgradients}
@@ -360,7 +360,7 @@ The following examples can be checked using subgradient calculus rules.
   \]
   Here $\|\cdot\|_*$ the dual norm of $\|\cdot\|$, as in the last example.
 
-\item For $f(x) = \inf_{z \in C} \|x - z\|_2$, where $C$ is closed and
+\item For $f(x) = \inf_{z \in C} \, \|x - z\|_2$, where $C$ is closed and
   convex, suppose $x \notin C$. Letting $P_C$ denote the (Euclidean)
   projection operator onto $C$, which satisfies $\|x - P_C(x)\|_2 = f(x)$, we
   have  
@@ -587,7 +587,7 @@ compact. Then:
   |f(x) - f(y)| \leq L \|x-y\|_2, \quad \text{for all $x,y \in C$},
   \]
   with Lipschitz constant \smash{$L = \sup_{s \in \cup_{x \in C} \partial f(x)}
-    \|s\|_2$}. 
+    \, \|s\|_2$}. 
 \end{enumerate}
 Further, as a converse to (i), the condition $x \in \interior(\dom(f))$ is also 
 necessary for $\partial f(x)$ to be nonempty and bounded.   
