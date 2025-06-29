@@ -450,9 +450,10 @@ Defining \smash{$g(u,v) = \inf_{x \in D} \, \{ f(x) + u^\T h(x) + v^\T (Ax - b)
 & && v \geq 0,
 \end{alignedat}
 \end{equation}
-which can be verified using familiar calculations from Lagrangian duality, along
-with property \eqref{eq:support_function_cone}. The following generalizes
-Slater's condition to problems of conic form. 
+which can be verified using familiar calculations in Lagrangian duality, along
+with property \eqref{eq:support_function_cone} (Exercise
+\ref{ex:dual_conic}). The following generalizes Slater's condition to problems
+of conic form.  
 
 \index{Slater's condition}
 \index{strong duality}
@@ -473,9 +474,10 @@ Consider the optimization problem \eqref{eq:primal_conic}. Assume the following.
   \iff -h(x) \in \interior(K)$.
 \end{enumerate}
 
-Then strong duality holds between \eqref{eq:primal_conic} and its dual
-problem. Moreover, when the common optimal value is finite, a dual
-solution exists (the optimal value in the dual is attained).    
+Then strong duality holds: the optimal values $f^\star$ in
+\eqref{eq:primal_conic} and $g^\star$ in the dual \eqref{eq:dual_conic} satisfy
+$f^\star = g^\star$. Furthermore, when this common optimal value is finite, then
+a dual solution exists (the optimal value in \eqref{eq:dual_conic} is attained).      
 \end{Theorem}
 
 This result is an extension and refinement of Slater's condition from Theorem 
@@ -952,10 +954,12 @@ Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based
   $(N_C(x))^\circ = T_C(x)$.     
 \end{enumerate}
   
-\item Prove conjugate of sum of indicators is conjugate of indicator of
-  intersection?   
+% \item Conjugate of sum of indicators is conjugate of indicator of
+% intersection?     
 
-\item Derive dual in terms of gauge of polar set? 
+% \item Derive dual in terms of gauge of polar set? 
+
+\item \label{ex:dual_conic}
 
 \item \label{ex:convex_theorem_alternatives_conic}
   Given a set $D$, cone $K$, functions $f,h$, and matrix-vector pair $A,b$,
