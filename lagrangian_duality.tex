@@ -959,15 +959,14 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   3.2.1 in \cite{bental2023convex}, we will prove what these authors call the 
   \emph{convex theorem of alternatives}, which says that under conditions (i)
   and (ii) in Theorem \ref{thm:slater_condition}, problem
-  \eqref{eq:feasibility_problem1} is feasible if and only if
-  \eqref{eq:feasibility_problem2} is infeasible.           
+  \eqref{eq:feasibility_problem2} is feasible if and only if
+  \eqref{eq:feasibility_problem1} is infeasible.            
   
 \begin{enumerate}[label=\alph*.]
-\item Assume that problem \eqref{eq:feasibility_problem1} is feasible. Prove
-  that \eqref{eq:feasibility_problem2} is infeasible. Hint: argue that there
-  exists $x$ such that \smash{$f(x) +\sum_{i=1}^m u_i h_i(x) + \sum_{j=1}^k  v_j
-    \ell_j(x) < c$}, for any $u \geq 0$ and any $v$. Note that nothing about
-  this direction of the argument requires Slater's condition.   
+\item Assume that problem \eqref{eq:feasibility_problem2} is feasible. Prove
+  that \eqref{eq:feasibility_problem1} is infeasible. Hint: argue the
+  contrapositive. Note that nothing about this direction of the argument
+  actually requires Slater's condition.       
   
 \item The other direction---that infeasibility of problem
   \eqref{eq:feasibility_problem1} implies feasibility of
@@ -994,7 +993,8 @@ in Corollary \ref{cor:slater_sdp}. Exercises
       $f(x) \leq t_0$, $h(x) \leq t_1$, and $Ax \leq b$} \Big\}. 
   \end{align*}
   Assume that \eqref{eq:feasibility_problem1} is infeasible. Prove that there
-  exists a nonzero vector $a = (a_0, a_1) \in \R \times \R^m$ such that 
+  exists a nonzero vector $a = (a_0, a_1) \in \R \times \R^m$, with $a \geq 0$,
+  such that  
   \[
   \inf_{t \in T} \, a^\T t \geq 0.  
   \]
