@@ -758,6 +758,7 @@ Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based
   equality holds above. Hint: use the strict separating hyperplane theorem, from
   Exercise \ref{ex:farkas_lemma}.
 
+\index{Dubovitski-Milutin lemma}
 \item \label{ex:dubovitski_milutin_lemma}
   Let $K_1,\dots,K_m$ be closed convex cones, where $K_1 \cap \interior(K_2) 
   \cap \cdots \cap \interior(K_m) \not= \emptyset$. Prove that $K_1 ^* + \cdots
@@ -772,14 +773,16 @@ Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based
   in $K_i^*$. 
   % Proposition 1.2.7 in Ben-Tal and Nemirovski (2023) 
 
+\index{Farkas' lemma}
 \item \label{ex:farkas_variations_conic} 
   In this exercise, we will show that the Dubovitski-Milutin lemma, studied in
-  the last exercise, leads to an important variation on Farkas' lemma. This will 
-  slightly generalize the result from Exercise \ref{ex:farkas_variations} part
-  b, which was a key tool used in proving the convex theorem of alternatives
-  from Exercise \ref{ex:convex_theorem_alternatives}. Given $A \in \R^{k \times
-    d}$, $b \in \R^k$, $g \in \R^d$, $h \in \R$, and a convex set $D \subseteq
-  \R^d$, with $b \geq 0$ and $0 \in \interior(D)$, consider two statements:       
+  the last exercise, leads to an important variation on Farkas' lemma. This
+  result will generalize the result from Exercise \ref{ex:farkas_variations}
+  part b, which was a key tool used in proving the convex theorem of
+  alternatives from Exercise \ref{ex:convex_theorem_alternatives}. Given $A \in
+  \R^{k \times d}$, $b \in \R^k$, $g \in \R^d$, $h \in \R$, and a convex set $D
+  \subseteq \R^d$, with $b \geq 0$ and $0 \in \interior(D)$, consider two
+  statements:        
   \begin{itemize}
   \item for all $x \in D$, it holds that $Ax \leq b \implies g^\T x \leq h$;  
   \item there exists $\mu \in \R^k$ such that $\mu \geq 0$ and $\mu^\T (Ax - b) 
@@ -807,7 +810,7 @@ Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based
   decompose $f = \psi + \phi$, where $\psi^\T(x,t) \leq 0$ for all $x \in K_1$,
   and $\phi^\T (x,t) \leq 0$ for all $x \in K_2$.
 
-\item Use Exercise \ref{ex:farkas_variations} part a to show that there exists
+\item Use Exercise \ref{ex:farkas_variations} part a to prove that there exists
   $\mu \geq 0$ such that $[A \, -b]^\T \mu = \phi$, in other words, $\phi^\T
   (x,t) = \mu^\T (Ax - tb)$ for all $x,t$. Use this to prove the desired result.       
 \end{enumerate}
@@ -953,13 +956,6 @@ Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based
   convex, and contains 0, and \eqref{eq:polar_set_polar} to establish that
   $(N_C(x))^\circ = T_C(x)$.     
 \end{enumerate}
-  
-% \item Conjugate of sum of indicators is conjugate of indicator of
-% intersection?     
-
-% \item Derive dual in terms of gauge of polar set? 
-
-\item \label{ex:dual_conic}
 
 \item \label{ex:convex_theorem_alternatives_conic}
   Given a set $D$, cone $K$, functions $f,h$, and matrix-vector pair $A,b$,
@@ -983,29 +979,126 @@ Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based
   \end{alignedat}
   \end{align}
   The value of $c$ here is fixed and arbitrary. Following Theorem
-  3.2.2 in \cite{bental2023convex}, we will prove what these authors call the 
-  \emph{convex theorem of alternatives} for problems in conic form, which says
-  that under conditions (i) and (ii) in Theorem \ref{thm:slater_conic}, problem 
-  \eqref{eq:feasibility_conic1} is feasible if and only if
-  \eqref{eq:feasibility_conic2} is infeasible. (Note that this generalizes the
-  result in Exercise \ref{ex:convex_theorem_alternatives}.)
+  3.2.2 in \cite{bental2023convex}, we will prove what these authors call the
+  \emph{convex theorem of alternatives} for problems in conic form, which
+  generalizes the result in Exercise \ref{ex:convex_theorem_alternatives}. This
+  theorem says that under conditions (i) and (ii) in Theorem
+  \ref{thm:slater_conic}, problem \eqref{eq:feasibility_conic2} is feasible if 
+  and only if \eqref{eq:feasibility_conic1} is infeasible.    
   
 \begin{enumerate}[label=\alph*.]
-\item Assume that problem \eqref{eq:feasibility_conic1} is feasible. Prove that
-  \eqref{eq:feasibility_conic2} is infeasible. Hint: recalling $K^*$ denotes the  
-  dual cone to $K$, and \smash{$u \geq_{K^*} 0 \iff u \in K^*$}, argue there
-  exists $x$ with $f(x) +u^\T h(x) + v^\T (Ax - b) < c$, for any \smash{$u
-    \geq_{K^*} 0 \iff u \in K^*$}, and $v \geq 0$. Note that nothing about this
-  direction of the argument requires Slater's condition in conic form.      
+\item Assume that problem \eqref{eq:feasibility_conic2} is feasible. Prove that
+  problem \eqref{eq:feasibility_conic1} is infeasible. Hint: argue the
+  contrapositive, recalling that $K^*$ is the dual cone, and \smash{$u
+    \geq_{K^*} 0 \iff u \in K^*$}. Note that this part of the argument does not
+  use conic Slater's condition.   
   
-\item 
+\item The other direction---that infeasibility of \eqref{eq:feasibility_conic2}
+  implies feasibility of \eqref{eq:feasibility_conic1}---is much more involved,
+  and we will prove this in several steps, following closely the structure of
+  arguments in Exercise \ref{ex:convex_theorem_alternatives}. We assume without
+  a loss of generality that $c = 0$, and that $x = 0$ satisfies condition (ii)
+  in Theorem \ref{thm:slater_conic}. Define the sets         
+  \begin{align*}
+  S &= \Big\{ (t_0, t_1) \in \R \times \R^m : t_0 < 0, \, t_1 \leq_K 0 \Big\},
+    \\    
+  T &= \Big\{ (t_0, t_1) \in \R \times \R^m : \text{there exists $x \in D$ such
+      that $f(x) \leq t_0$, $h(x) \leq_K t_1$, and $Ax \leq b$} \Big\}.  
+  \end{align*}
+  Assume that \eqref{eq:feasibility_conic1} is infeasible. Prove that there
+  exists a nonzero vector $a = (a_0, a_1) \in \R \times \R^m$, with $a_0 \geq 0$
+  and \smash{$a_1 \geq_{K^*} 0$}, such that    
+  \[
+  \inf_{t \in T} \, a^\T t \geq 0.  
+  \]
+  Hint: apply the separating hyperplane theorem, Theorem
+  \ref{thm:separating_hyperplane}, to $S,T$. Then argue that we must have $a_0
+  \geq 0$, \smash{$a_1 \geq_{K^*} 0$}, and $b = 0$ in the supporting hyperplane.    
+
+\item Prove that $a_0 > 0$. Hint: assume in order to achieve a contradiction 
+  that $a_0 = 0$. Then use $(f(0), h(0)) \in T$, and the fact that $x = 0$
+  satisfies condition (ii) in Theorem \ref{thm:slater_conic}, by assumption,
+  to conclude $a_1 = 0$.
+
+\item Define $\alpha = a_1 / a_0 \in \R^m$, and  
+  \[
+  F(x) = f(x) + \alpha^\T h(x),
+  \]
+  where $h(x) = (h_1(x), \dots, h_m(x))$. Noting that \smash{$\alpha \geq_{K^*}
+    0$} (as $a_0 > 0$ and \smash{$a_1 \geq_{K^*} 0$}), prove 
+  \[
+ \text{for all $x \in D$}, \quad Ax \leq b \implies F(x) \geq 0.
+  \]
+  Hint: for any $x \in D$ with $Ax \leq b$, we have $t = (f(x), h(x)) \in T$, so
+  that $a^\T t \geq 0$.
+
+\item In what remains, we seek to show that there exists $\beta \in \R^k$ such
+  that $\beta \geq 0$ and  
+  \begin{equation}
+  \label{eq:feasibility_conic3}
+  F(x) + \beta^\T (Ax - b) \geq 0, \quad \text{for all $x \in D$}. 
+  \end{equation}
+  Notice that this would complete the proof as it would prove that 
+  \eqref{eq:feasibility_conic2} is feasible, for $u = \alpha$ and $v = \beta$
+  (recall that we have taken $c = 0$). Towards verifying the existence of such a
+  vector $\beta$, define the sets     
+  \begin{align*}
+  G &= \Big\{ (x, z) \in \R^d \times \R : x \in D, \, Ax \leq b, \, z < 0
+      \Big\}, \\    
+  H &= \Big\{ (x, z) \in \R^d \times \R : x \in D, \, F(x) \leq z \Big\},  
+  \end{align*}
+  Prove that there exists a nonzero vector $(w, \eta) \in \R^d \times \R$ such
+  that  
+  \[
+  \sup \, \Big\{ w^\T x + \eta z : x \in D, \, Ax \leq b, \, z < 0 \Big\} \leq 
+  \inf \, \Big\{ w^\T x + \eta z : x \in D, \, F(x) \leq z \Big\}. 
+  \]
+  Hint: apply the separating hyperplane theorem again, this time to $G,H$. 
+
+\item Argue that $\eta \geq 0$, so that 
+  \[
+  \sup \Big\{ w^\T x : x \in D, \, Ax \leq b \Big\} \leq \inf \Big\{ w^\T x +
+  \eta F(x) : x \in D \Big\}.
+  \]
+
+\item Argue further that $\eta > 0$, so that by defining $\rho = w / z$, we
+  have  
+  \[
+  \sup \Big\{ \rho^\T x : x \in D, \, Ax \leq b \Big\} \leq \inf \Big\{
+  \rho^\T x + F(x) : x \in D \Big\}.
+  \]
+  Hint: assume for the sake of contradiction that $\eta = 0$. Then as the origin
+  $x = 0$ satisfies condition (ii) from Theorem \ref{thm:slater_conic}, the
+  left-hand side in the display from part f is at least zero, so that $w^\T x
+  \geq 0$ for all $x \in D$, which can only happen (recalling $0 \in
+  \interior(D)$, and assuming without a loss of generality that $D$ is
+  full-dimensional) if $w = 0$.
+
+\item Let $\theta = \sup \, \{\rho^\T x : x \in D, \, Ax \leq b\}$. Then $x \in
+  D$ and $Ax \leq b \implies \rho^\T x \leq \theta$, hence by Exercise 
+  \ref{ex:farkas_variations_conic}, there exists a vector $\beta \geq 0$ such that
+  $\beta^\T (Ax - b) \geq \rho^\T x - \theta$ for all $x \in D$. Use this along 
+  with part g to establish \eqref{eq:feasibility_conic3} and complete the proof.    
 \end{enumerate}
 
-  just guide them through the conic theorem of alternatives from 3.2.2 in BTN
-  and the conic slater condition in the main text, by generalizing earlier
-  proofs, and using the above Farkas lemma variation
-
+\index{Slater's condition}
 \item \label{ex:slater_conic}
+  In this exercise, we prove the conic generalization of Slater's condition for
+  strong duality, in Theorem \ref{thm:slater_conic}. Let $f^\star, g^\star$ be
+  the optimal values in \eqref{eq:primal_conic} and \eqref{eq:dual_conic},
+  respectively. Note that if $f^\star = -\infty$, then the desired conclusion
+  $f^\star = g^\star$ is already implied by weak duality. Hence, assume that
+  $f^\star > -\infty$. Use the result in Exercise
+  \ref{ex:convex_theorem_alternatives_conic} to prove $f^\star = g^\star$, and
+  moreover, that there exists dual feasible $u,v$ which achieve the optimal
+  criterion value. Hint: set $c = f^\star$.   
+
+% \item Conjugate of sum of indicators is conjugate of indicator of
+% intersection?     
+
+% \item Derive dual in terms of gauge of polar set? 
+
+\item \label{ex:dual_conic}
 
 \item \label{ex:slater_conic_program}
 
