@@ -120,7 +120,7 @@ function $f$. In fact, the double conjugate function $f^{**}$ is not just any
 of $f$ (Exercise \ref{ex:double_conjugate_affine_minorant}):       
 \begin{equation}
 \label{eq:double_conjugate_affine_minorant} 
-f^{**}(x) = \sup \{ g(x) : \text{$g$ is affine, and $g \leq f$} \}, \quad
+f^{**}(x) = \sup \, \{ g(x) : \text{$g$ is affine, and $g \leq f$} \}, \quad
 \text{for all $x \in \dom(f)$}. 
 \end{equation}
 See Figure \ref{fig:conjugate} again for an illustration. Lastly, an important
@@ -498,13 +498,13 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   least the right-hand side.     
 
 \begin{enumerate}[label=\alph*.]
-\item Prove that $f^{**}(x) \geq \sup \{ g(x) : \text{$g$ is affine, and $g \leq
-    f$} \}$. Hint: if $g(x) = u^\T x + b$ satisfies $g \leq f$, then show that
-  $f^*(u) \leq -b$, and thus $f^{**}(x) \geq u^\T x + b = g(x)$. 
+\item Prove that $f^{**}(x) \geq \sup \, \{ g(x) : \text{$g$ is affine, and $g
+    \leq f$} \}$. Hint: if $g(x) = u^\T x + b$ satisfies $g \leq f$, then show
+  that $f^*(u) \leq -b$, and thus $f^{**}(x) \geq u^\T x + b = g(x)$. 
   
-\item Prove that $f^{**}(x) \leq \sup \{ g(x) : \text{$g$ is affine, and $g \leq
-    f$} \}$. Hint: observe that $f^{**}(x)$ is the supremum of $g(x)$ over all
-  affine minorants $g$ that take the form $g(y) = u^\T y - f^*(u)$.  
+\item Prove that $f^{**}(x) \leq \sup \, \{ g(x) : \text{$g$ is affine, and $g
+    \leq f$} \}$. Hint: observe that $f^{**}(x)$ is the supremum of $g(x)$ over
+  all affine minorants $g$ of the form $g(y) = u^\T y - f^*(u)$.  
 \end{enumerate}
 
 \item \label{ex:affine_minorant_revisited}
@@ -512,8 +512,8 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   \ref{ex:affine_minorant}: for closed and convex $f$,  
   \begin{equation}
   \label{eq:affine_minorant_revisited}
-  f(x) = \sup \{ g(x) : \text{$g$ is affine, and $g \leq f$} \}, \quad \text{for
-    all $x \in \dom(f)$}.
+  f(x) = \sup \, \{ g(x) : \text{$g$ is affine, and $g \leq f$} \}, \quad
+  \text{for all $x \in \dom(f)$}.
   \end{equation}
  % Theorem 12.1 in Rockafellar (1970)
   Note that we really only need to prove that the equality holds for $x \in
@@ -578,8 +578,8 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   Show that 
   \begin{equation}
   \label{eq:double_conjugate_convex_minorant}
-  f^{**}(x) = \sup \{ g(x) : \text{$g$ is closed and convex, and $g \leq f$} \},
-  \quad \text{for all $x \in \dom(f)$}.
+  f^{**}(x) = \sup \, \{ g(x) : \text{$g$ is closed and convex, and $g \leq f$}
+  \}, \quad \text{for all $x \in \dom(f)$}.
   \end{equation}
   This provides the view of the double conjugate $f^{**}$ as the greatest closed 
   convex minorant of $f$.  Hint: start with the representation in
