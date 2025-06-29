@@ -938,7 +938,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 
 \item \label{ex:convex_theorem_alternatives}
   Given functions $f$, $h_i$, $i=1,\dots,m$, and $\ell_j$, $j=1,\dots,k$,
-  consider two feasibility problems:
+  consider the feasibility problems:
   \begin{align}
   \label{eq:feasibility_problem1}
   &\begin{alignedat}{2}  
@@ -965,8 +965,8 @@ in Corollary \ref{cor:slater_sdp}. Exercises
 \begin{enumerate}[label=\alph*.]
 \item Assume that problem \eqref{eq:feasibility_problem2} is feasible. Prove
   that \eqref{eq:feasibility_problem1} is infeasible. Hint: argue the
-  contrapositive. Note that nothing about this direction of the argument
-  actually requires Slater's condition.       
+  contrapositive. Note that this part of the argument does not use Slater's
+  condition.          
   
 \item The other direction---that infeasibility of problem
   \eqref{eq:feasibility_problem1} implies feasibility of
@@ -1052,10 +1052,10 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   \sup \, \Big\{ \beta^\T x : Ax \leq b \Big\} \leq \inf \, \Big\{ \beta^\T x +
   F(x) : x \in \R^d \Big\}. 
   \]
-  Hint: assume for the sake of contradiction that $\eta = 0$. Then, as $b \geq
-  0$ (implied by our assumption that the origin $x = 0$ satisfies $Ax \leq b$),
-  the left-hand side in the display from part f is at least zero, thus $w^\T x
-  \geq 0$ for all $x$, which can only happen if $w = 0$.   
+  Hint: assume for the sake of contradiction that $\eta = 0$. Then as the
+  origin $x = 0$ satisfies $Ax \leq b$ (by assumption), the left-hand side in
+  the display from part f is at least zero, so that $w^\T x \geq 0$ for all $x$, 
+  which can only happen if $w = 0$.     
 
 \item Let $\theta = \sup \, \{\beta^\T x : Ax \leq b\}$. Then $Ax \leq b
   \implies \beta^\T x \leq \theta$, hence by Exercise \ref{ex:farkas_variations} 
