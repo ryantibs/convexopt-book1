@@ -1025,7 +1025,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   F(x) + \beta^\T (Ax - b) \geq 0, \quad \text{for all $x$}. 
   \end{equation}
   Notice that this would complete the proof as it would verify that 
-  \eqref{eq:feasibility_problem2} is feasible, with $u = \alpha$ and $v = \beta$
+  \eqref{eq:feasibility_problem2} is feasible, with $u = \alpha$ and $v = \beta$ 
   (recall that we have relabeled the constraint system and taken $c =
   0$). Towards verifying the existence of such a vector $\beta$, define the sets   
   \begin{align*}
@@ -1046,10 +1046,10 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   F(x) : x \in \R^d \Big\}.
   \]
 
-\item Argue further that $\eta > 0$, so that by defining $\beta = w / z$, we
+\item Argue further that $\eta > 0$, so that by defining $\rho = w / z$, we 
   have  
   \[
-  \sup \, \Big\{ \beta^\T x : Ax \leq b \Big\} \leq \inf \, \Big\{ \beta^\T x +
+  \sup \, \Big\{ \rho^\T x : Ax \leq b \Big\} \leq \inf \, \Big\{ \rho^\T x +
   F(x) : x \in \R^d \Big\}. 
   \]
   Hint: assume for the sake of contradiction that $\eta = 0$. Then as the
@@ -1057,10 +1057,10 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   the display from part f is at least zero, so that $w^\T x \geq 0$ for all $x$, 
   which can only happen if $w = 0$.     
 
-\item Let $\theta = \sup \, \{\beta^\T x : Ax \leq b\}$. Then $Ax \leq b
-  \implies \beta^\T x \leq \theta$, hence by Exercise \ref{ex:farkas_variations} 
-  part b, there exists a vector $\mu \geq 0$ such that $\mu^\T (Ax - b) \geq
-  \beta^\T x - \theta$ for all $x$. Use this and part g to establish
+\item Let $\theta = \sup \, \{\rho^\T x : Ax \leq b\}$. Then $Ax \leq b
+  \implies \rho^\T x \leq \theta$, hence by Exercise \ref{ex:farkas_variations} 
+  part b, there exists a vector $\beta \geq 0$ such that $\beta^\T (Ax - b) \geq 
+  \rho^\T x - \theta$ for all $x$. Use this along with part g to establish
   \eqref{eq:feasibility_problem3} and complete the proof. 
 \end{enumerate}
 
