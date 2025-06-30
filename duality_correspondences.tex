@@ -486,8 +486,8 @@ Exercises \ref{ex:convex_theorem_alternatives_conic} and \ref{ex:slater_conic}.
 Recall, applying Theorem \ref{thm:slater_conic} to SDPs yields Corollary 
 \ref{cor:slater_sdp}, once we realize that we can learn from applying it to the
 primal and the dual separately (the dual of the dual SDP being the primal SDP). 
-A similar conclusion can be reached for conic programs (with $f,h$ being linear)
-which we cover in Exercise \ref{ex:slater_conic_program}.
+A similar conclusion can be reached for cone programs (with $f,h$ being linear)
+which we cover in Exercise \ref{ex:slater_cone_program}.
 
 \section{Minimax theorems*}
 \label{sec:minimax_theorems}
@@ -520,7 +520,7 @@ Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based
 \cite{bental2023convex} (Chapter 3). Moreover, Exercises
 \ref{ex:dubovitski_milutin_lemma}, \ref{ex:farkas_variations_conic}, 
 \ref{ex:convex_theorem_alternatives_conic}, \ref{ex:slater_conic}, and 
-\ref{ex:slater_conic_program} are all based on \cite{bental2023convex} (Chapters
+\ref{ex:slater_cone_program} are all based on \cite{bental2023convex} (Chapters
 1.2 and 3.2).  
 
 \clearpage
@@ -949,12 +949,9 @@ Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based
 \begin{enumerate}[label=\alph*.] 
 \item Give an example to show that $T_C(x)$ can be nonconvex.
 \item For convex $C$, prove that $T_C(x)$ is convex. 
-\item For convex $C$, prove that $N_C(x) = (T_C(x))^\circ$. Hint: prove the two  
-  directions of inclusion ($\subseteq$ and $\supseteq$) separately. Only one 
-  will require convexity.     
-\item For convex $C$, use part c, the fact that $N_C(x)$ is always closed,
-  convex, and contains 0, and \eqref{eq:polar_set_polar} to establish that
-  $(N_C(x))^\circ = T_C(x)$.     
+\item For convex $C$, prove that $N_C(x) = (T_C(x))^\circ$ and thus
+  $(N_C(x))^\circ = T_C(x)$. Hint: for the first claim, establish each inclusion
+  ($\subseteq$ and $\supseteq$) separately. Only one requires convexity.        
 \end{enumerate}
 
 \item \label{ex:convex_theorem_alternatives_conic}
@@ -1094,8 +1091,70 @@ Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based
   value. Hint: set $c = f^\star$.      
 
 \item \label{ex:dual_conic}
+  We derive the dual of problem \eqref{eq:primal_conic}. Show that we can
+  rewrite this as  
+  \begin{alignat*}{2}
+  &\minimize_{x,z} \quad && f(x) + I_K(z) \\ 
+  &\st \quad && h(x) = -z \\ 
+  & && Ax \leq b,
+  \end{alignat*} 
 
-\item \label{ex:slater_conic_program}
+  whose Lagrangian is
+  \[
+  L(x,z,u,v) = f(x) + I_K(z) + u^\T (h(x) + z) + v^\T (Ax - b).
+  \]
+  Then, by minimizing over $x,z$, and using $I^*_K = I_{K^\circ} = I_{-K^*}$
+  from \eqref{eq:support_function_cone}, show that the dual problem is as
+  claimed in \eqref{eq:dual_conic}.  
+
+\item \label{ex:slater_cone_program}
+  Recall that a cone program is a special case of \eqref{eq:primal_conic} where 
+  $f(x) = c^\T x$ and $h(x) = Px - q$, for $c \in \R^d$, $P \in \R^{m \times d}$,
+  and $q \in \R^m$, explicitly   
+  \begin{equation}
+  \label{eq:primal_cone_program}
+  \begin{alignedat}{2}
+  &\minimize_x \quad && c^\T x \\ 
+  &\st \quad && Px \leq_K q \\
+  & && Ax \leq b.
+  \end{alignedat}
+  \end{equation}
+  We examine duality and optimality in \eqref{eq:primal_cone_program},
+  generalizing previous conclusions for SDPs. 
+
+\begin{enumerate}[label=\alph*.]
+\item Prove that the dual of \eqref{eq:primal_cone_program} is 
+  \begin{equation}
+  \label{eq:dual_cone_program}
+  \begin{alignedat}{2}
+  &\maximize_{u,v} \quad && -q^\T u -b^\T v \\
+  &\st \quad && P^\T u + A^\T v = -c \\
+  & && u \geq_{K*} 0 \\
+  & && v \geq 0.
+  \end{alignedat}
+  \end{equation}
+
+\item Prove that the dual of \eqref{eq:dual_cone_program} is equivalent to
+  \eqref{eq:primal_cone_program}. 
+
+\item Prove that the dual cone $K^*$ is regular if $K$ is regular. 
+
+\item Assume $K$ is a regular cone. Conclude based on Theorem
+  \ref{thm:slater_conic} that the following holds for problems
+  \eqref{eq:primal_cone_program}, \eqref{eq:dual_cone_program}.
+  
+  \begin{enumerate}[label=(\roman*)]  
+  \item If there exists $x$ such that $Ax \leq b$ and $Px - q <_K 0 \iff q - Px 
+    \in \interior(K)$, then strong duality holds. Furthermore, $f^\star >
+    -\infty$ if and only if the dual is feasible, in which case a dual solution 
+    exists.  
+  \item If there exists $u$ and $v$ such that $P^\T u + A^\T v = -c$ and $u
+    >_{K^*} 0 \iff u \in \interior(K^*)$, then strong duality
+    holds. Furthermore, $g^\star < \infty$ if and only if the primal is
+    feasible, in which case a primal solution exists. 
+  \end{enumerate}
+\end{enumerate}
+
 
 \item \label{ex:trace_norm_semidefinite} 
 
