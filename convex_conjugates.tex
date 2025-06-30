@@ -123,8 +123,9 @@ of $f$ (Exercise \ref{ex:double_conjugate_affine_minorant}):
 f^{**}(x) = \sup \, \{ g(x) : \text{$g$ is affine, and $g \leq f$} \}, \quad
 \text{for all $x \in \dom(f)$}. 
 \end{equation}
-See Figure \ref{fig:conjugate} again for an illustration. Lastly, an important
-special reduction occurs for closed and convex $f$: in this case, we get   
+See Figure \ref{fig:conjugate} again for an illustration. Finally, a special
+reduction occurs for closed and convex $f$: in this case, we get that the double 
+conjugate reduces to the original function, 
 \begin{equation}
 \label{eq:double_conjugate_reduction}
 f^{**} = f.
@@ -354,7 +355,8 @@ The duality between Lipschitz smoothness and strong convexity is illustrated
 nicely by the quadratic function $f(x) = \frac{1}{2} x^\T Q x$, for $Q \succ
 0$, where $f^*(u) = \frac{1}{2} u^\T Q^{-1}u$. Denote by
 \smash{$\lambda_{\max}(A)$} and \smash{$\lambda_{\min}(A)$} the largest and
-smallest eigenvalues, respectively, of a matrix $A \succeq 0$. Then:
+smallest eigenvalues, respectively, of a matrix $A \succeq 0$. Then the
+following holds:
 \begin{itemize}
 \item the Lipschitz constant of $\nabla f$ is \smash{$\lambda_{\max}(Q)$},
   whereas the strong convexity constant of $f^*$ is
@@ -367,8 +369,8 @@ smallest eigenvalues, respectively, of a matrix $A \succeq 0$. Then:
 
 \section{Proximal connections*}
 
-Conjugate functions bear important connections to proximal maps, which we
-describe in this section.
+Conjugate functions bear a number of important connections to proximal maps,
+which we describe in this section.
 
 \subsection{Moreau decomposition}
 \label{sec:moreau_decomposition}

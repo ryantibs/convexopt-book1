@@ -507,11 +507,9 @@ and hence also equivalent to, for any decreasing $\psi$,
 It is worth noting that monotone transformations can influence convexity or
 concavity in nontrivial ways. For example, \smash{$f(x) = e^{-x^2}$} is neither
 convex nor concave, but for $\psi(u) = -\log(u)$ (decreasing) we get $\psi(f(x))
-= x^2$, which is convex. Therefore it can be useful to apply a monotone
-transformation to the criterion in an optimization problem, because it can turn
-a nonconvex problem into a convex problem. An important example of this is
-maximum likelihood estimation in log-concave families, as discussed in Chapter 
-\ref{sec:maximum_likelihood}. 
+= x^2$, which is convex. Thus, it can be useful to apply a monotone
+transformation to the criterion in an optimization problem, as it can turn a
+nonconvex problem into a convex one.  
 
 It is also worth noting that monotone transformations can just as well be
 applied in order to recast constraints; for example, if $\phi$ is increasing and
@@ -1065,9 +1063,8 @@ $X \in \R^{n \times d}$ the feature matrix.
     \geq 0$, $i=1,\dots,n$}. 
   \end{equation}
 
-\item In Poisson regression \eqref{eq:poisson_regression}, where $\cY = \N$
-  (recall that $\N = \{0, 1, 2, \dots\}$ denotes the set of natural numbers), a
-  solution exists provided: 
+\item In Poisson regression \eqref{eq:poisson_regression}, where $\cY = \{0, 1,
+  2, \dots\}$, a solution exists provided:  
   \begin{equation}
   \label{eq:existence_poisson}
   \text{there exists $\delta \in \nul(X^\T)$ such that $y_i + \delta_i > 0$,
