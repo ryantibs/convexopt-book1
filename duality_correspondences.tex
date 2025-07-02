@@ -130,16 +130,15 @@ associated dual problem is thus
 \label{eq:fenchel_dual}
 \maximize_u \quad -f^*(-u) - g^*(A^\T u),
 \end{equation}
-which is called the \emph{Fenchel dual} of \eqref{eq:fenchel_primal}. 
-
-Applying Slater's condition (Theorem \ref{thm:slater_condition}) and the KKT
-stationarity condition \eqref{eq:kkt_stationarity} leads to the following
-result. 
+which is often called the \emph{Fenchel dual} of
+\eqref{eq:fenchel_primal}. Applying Slater's condition (Theorem
+\ref{thm:slater_condition}) and the KKT stationarity condition
+\eqref{eq:kkt_stationarity} now leads to the following result.   
 
 \begin{Corollary}
 \label{cor:fenchel_dual}
 For convex $f,g$ such that $\relint(A^{-1}(\dom(f)) \cap \dom(g)) \not=
-\emptyset$ (where $A^{-1}(S)$ denotes the preimage of a set $S$ under $A$), the
+\emptyset$ (with $A^{-1}(S)$ being the preimage of a set $S$ under $A$), the
 problems \eqref{eq:fenchel_primal}, \eqref{eq:fenchel_dual} exhibit strongly 
 duality. Further, the pair of conditions
 \[
@@ -175,7 +174,7 @@ Again for a norm $\|\cdot\|$ and parameter $\lambda \geq 0$, the problem
 \[
 \minimize_x \quad f(Ax) + \frac{\lambda}{2} \|x\|^2
 \]
-now has Fenchel dual 
+has Fenchel dual 
 \[
 \maximize_u \quad -f^*(-u) - \frac{1}{2\lambda} \|A^\T u\|_*^2. 
 \]
@@ -190,8 +189,8 @@ Exercise \ref{ex:svm_fenchel_dual}).
 In this section, we examine dual cones. Recall (as studied in Chapter
 \ref{sec:cones}), a cone is a set $K$ such that $x \in K \implies t x \in K$,
 for all $t \geq 0$. A convex cone $K$ is a cone that is also convex, which can
-be characterized by $x, y \in K \implies s x + t y \in K$, for all $s, t \geq
-0$. Now, given a cone $K$, its \emph{dual cone} is 
+be characterized by the property: $x, y \in K \implies s x + t y \in K$, for all
+$s, t \geq 0$. Now, given a cone $K$, its \emph{dual cone} is defined as
 \label{dual cone}
 \begin{equation}
 \label{eq:dual_cone}
@@ -513,15 +512,23 @@ MAKE Sure to talk about interpretation of logistic interpretation
 
 \SkipTocEntry\section*{Chapter notes}
 
-Polyhedral duality: Chapter 2 of Ziegler, Chapter 3 of Grunbaum.
-Polarity: Chapter 14 of Rockafellar, and Chapter 19 for polyhedral theory.
+This chapter has covered a wide range of topics related to duality, with the
+title inspired by \cite{rockafellar1970convex} (Part III: Chapters 11--16). 
+Fenchel duality is named after the developments in Fenchel's influential lecture
+notes \cite{fenchel1951convex}, and was further developed by
+\cite{rockafellar1963convex}. For more detail, we refer to
+\cite{rockafellar1970convex} (Chapter 31). The geometry associated with convex 
+duality---dual cones, dual polyhedra, and polar sets---is in it of itself a rich
+topic. To learn more, we recommend \cite{rockafellar1970convex} (Chapters 14,
+19), \cite{bertsekas2009convex} (Chapters 3.2, 3.3), \cite{grunbaum2003convex}  
+(Chapters 3.1, 3.4), and \cite{ziegler1995lectures} (Chapters 2.3, 2.4).       
 
-Our treatment of conic duality, in Chapter \ref{sec:conic_duality}, is based 
-\cite{bental2023convex} (Chapter 3). Moreover, Exercises
+Our treatment of conic duality is based on \cite{bental2023convex} (Chapter
+3.2), whose extension of Slater's condition for problems in conic form is
+presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
 \ref{ex:dubovitski_milutin_lemma}, \ref{ex:farkas_variations_conic}, 
-\ref{ex:convex_theorem_alternatives_conic}, \ref{ex:slater_conic}, and 
-\ref{ex:slater_cone_program} are all based on \cite{bental2023convex} (Chapters
-1.2 and 3.2).  
+\ref{ex:convex_theorem_alternatives_conic}, \ref{ex:slater_conic}, and   
+\ref{ex:slater_cone_program} are all based on \cite{bental2023convex}. 
 
 \clearpage
 
