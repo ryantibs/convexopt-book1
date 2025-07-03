@@ -497,9 +497,9 @@ viewed as a generalization of the Lagrangian function featured in convex duality
 and the KKT conditions, with $x$ and $y$ representing the primal and dual
 variables, constrained to lie in subsets $X \subseteq \R^d$ and $Y \subseteq  
 \R^m$, respectively. We will investigate conditions under which $L$ admits a 
-saddle point, with the corresponding results being called \emph{minimax 
-  theorems}. What distinguishes our study here from that in previous chapters is 
-that the function $L$ is not restricted to be linear in $y$ (as all Lagrangian are).   
+saddle point. What distinguishes our study here from that in previous chapters
+is that the function $L$ is no longer restricted to be linear in $y$ (as all
+Lagrangians are).     
 
 To be clear, as before, a point \smash{$(\bar{x}, \bar{y}) \in X \times Y$} is
 said to be a saddle point of $L$ provided that  
@@ -509,10 +509,11 @@ said to be a saddle point of $L$ provided that
 L(\bar{x}, y) \leq L(\bar{x}, \bar{y}) \leq L(x, \bar{y}) \quad \text{for any
   $x \in X$ and any $y \in Y$}. 
 \end{equation}
-An equivalent definition is that 
+An equivalent definition is 
 \begin{equation}
 \label{eq:saddle_point3}
-\sup_y \, L(\bar{x}, y) \leq L(\bar{x}, \bar{y}) \leq \inf_x L(x, \bar{y}).
+\sup_{y \in Y} \, L(\bar{x}, y) \leq L(\bar{x}, \bar{y}) \leq \inf_{x \in X}
+L(x, \bar{y}). 
 \end{equation}
 Defining the functions
 \begin{equation}
@@ -520,7 +521,7 @@ Defining the functions
 f(x) = \sup_{y \in Y} \, L(x,y) \quad \text{and} \quad 
 g(y) = \inf_{x \in X} \, L(x,y),
 \end{equation}
-we can directly observe $g(y) \leq L(x,y) \leq f(x)$, for any $x \in X$ and any
+we observe directly that $g(y) \leq L(x,y) \leq f(x)$, for any $x \in X$ and any 
 $y \in Y$, whereas \eqref{eq:saddle_point3} calls for \smash{$(\bar{x},
   \bar{y})$} to satisfy \smash{$g(\bar{y}) \geq  L(\bar{x}, \bar{y}) \geq
   f(\bar{x})$}. This leads to the following conclusion (a generalization of
@@ -531,11 +532,39 @@ Theorem \ref{thm:saddle_point_optimality} for Lagrangian functions).
 For any function $L : X \times Y \to \R$, a point \smash{$(\bar{x}, \bar{y}) \in
   X \times Y$} is a saddle point as in \eqref{eq:saddle_point2} if and only if 
 \smash{$\bar{x}$} minimizes $f$ over $X$, \smash{$\bar{y}$} maximizes $g$ 
-over $Y$, and \smash{$f(\bar{x}) = g(\bar{y})$}, for $f$ and $g$ defined as in  
+over $Y$, and \smash{$f(\bar{x}) = g(\bar{y})$}, with $f$ and $g$ defined as in   
 \eqref{eq:saddle_functions}. 
 \end{Theorem}
 
-?? consider Bert chap 5.5 or BTN chap 3.4.2 
+When \smash{$(\bar{x}, \bar{y}) \in X \times Y$} is a saddle point, the
+statement \smash{$f(\bar{x}) = g(\bar{y})$} is equivalent to 
+\begin{equation}
+\label{eq:saddle_point4}
+\inf_{x \in X} \, \sup_{y \in Y} \, L(x,y) = \sup_{x \in X} \, \inf_{y \in Y} \,
+L(x,y).
+\end{equation}
+The existence of a saddle point is therefore, according to
+\eqref{eq:saddle_point4}, the assertion that ``minimax'' (min over $x$ and max
+over $y$) and ``maximin'' problems (max over $y$ and min over $y$) are one in
+the same. Conditions which guarantee the existence of saddle points are
+thus often called \emph{minimax theorems}. 
+
+We have already seen minimax theorems in Chapters \ref{sec:slater_condition},
+\ref{sec:sdp_duality}, and \ref{sec:conic_duality}: these are (successively more  
+general) versions of Slater's condition, which guarantees strong duality---and 
+hence a saddle point of the associated Lagrangian $L$---in convex programs.   
+
+Below is a more general minimax theorem, known as the \emph{Sion-Kakutani
+  theorem}, for functions $L$ that are convex in their first argument and
+concave in their second.
+
+\begin{Theorem}
+Let $X \subseteq \R^d$ and $Y \subseteq \R^m$ be compact and let $L : X \times Y
+\to \R$ be continuous. Assume that $L(\cdot,y)$ is convex for each fixed $y \in
+Y$ and $L(x,\cdot)$ is concave for each fixed $x \in X$. Then there exists a
+saddle point \smash{$(\bar{x}, \bar{y}) \in X \times Y$} of $L$, and thus
+\eqref{eq:saddle_point4} holds. 
+\end{Theorem}
 
 \section{Existence of minima revisited*}
 \label{sec:existence_minima_revisited}
