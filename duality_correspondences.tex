@@ -496,7 +496,7 @@ variable $(x,y) \in X \times Y$, denoted $L : X \times Y \to \R$. This can be
 viewed as a generalization of the Lagrangian function featured in convex duality 
 and the KKT conditions, with $x$ and $y$ representing the primal and dual
 variables, constrained to lie in subsets $X \subseteq \R^d$ and $Y \subseteq  
-\R^m$, respectively. We will investigate conditions under which $L$ admits a 
+\R^p$, respectively. We will investigate conditions under which $L$ admits a 
 saddle point. What distinguishes our study here from that in previous chapters
 is that the function $L$ is no longer restricted to be linear in $y$ (as all
 Lagrangians are).     
@@ -554,17 +554,25 @@ We have already seen minimax theorems in Chapters \ref{sec:slater_condition},
 general) versions of Slater's condition, which guarantees strong duality---and 
 hence a saddle point of the associated Lagrangian $L$---in convex programs.   
 
-Below is a more general minimax theorem, known as the \emph{Sion-Kakutani
-  theorem}, for functions $L$ that are convex in their first argument and
-concave in their second.
+Below is a somewhat more general minimax theorem, known as the
+\emph{Sion-Kakutani theorem}, for functions $L$ that are convex in their first
+argument and concave in their second.
 
+\index{Sion-Kakutani theorem}
 \begin{Theorem}
-Let $X \subseteq \R^d$ and $Y \subseteq \R^m$ be compact and let $L : X \times Y
+\label{thm:sion_kakutani}
+Let $X \subseteq \R^d$ and $Y \subseteq \R^p$ be compact and let $L : X \times Y
 \to \R$ be continuous. Assume that $L(\cdot,y)$ is convex for each fixed $y \in
 Y$ and $L(x,\cdot)$ is concave for each fixed $x \in X$. Then there exists a
 saddle point \smash{$(\bar{x}, \bar{y}) \in X \times Y$} of $L$, and thus
 \eqref{eq:saddle_point4} holds. 
 \end{Theorem}
+
+Theorem \ref{thm:sion_kakutani} is more general than (say) Theorem
+\ref{thm:slater_condition}, because $L$ is allowed to be concave (not
+necessarily linear) in the argument $y$ representing the dual variable; and at
+the same time, it is also less general in that the sets $X,Y$ are assumed
+compact. Its proof is developed in Exercise \ref{ex:sion_kakutani}.  
 
 \section{Existence of minima revisited*}
 \label{sec:existence_minima_revisited}
@@ -1237,7 +1245,6 @@ presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
   \end{enumerate}
 \end{enumerate}
 
-
 \item \label{ex:trace_norm_semidefinite} 
 
 % \begin{enumerate}
@@ -1317,6 +1324,8 @@ presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
 
 % Hint: you will probably need to ruse each of the above parts (in different ways) here.
 
+\index{Sion-Kakutani theorem}
+\item \label{ex:sion_kakutani}
 
 % \item Prove conjugate of sum of indicators is conjugate of indicator of 
 % intersection?     
