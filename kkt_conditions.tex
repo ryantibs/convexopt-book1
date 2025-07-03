@@ -489,23 +489,22 @@ For differentiable nonconvex problems, the gradient-based stationarity condition
 \eqref{eq:kkt_stationarity4} is often studied in combination with the rest of
 the KKT conditions
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility}. As
-\smash{$\nabla_x L(\bar{x}, \bar{u}, \bar{v}) = 0$} does not imply
-\smash{$\bar{x}$} minimizes \smash{$L(\cdot, \bar{u}, \bar{v})$} in this
-setting, extra (second-order) conditions are used to certify optimality. On the
-other hand, under strong duality, optimality implies
-\eqref{eq:kkt_stationarity4}: if \smash{$L(\cdot, \bar{u}, \bar{v})$} attains
-its unconstrained infimum at \smash{$\bar{x}$}, then it must have zero gradient
-at \smash{$\bar{x}$} (assuming it is continuously differentiable on an open
-neighborhood of this point). Complementary slackness and feasibility are still
-implied under strong duality, as argued earlier. Hence
-\eqref{eq:kkt_stationarity4} and
+\smash{$\nabla_x L(\bar{x}, \bar{u}, \bar{v}) = 0$} does not imply that
+\smash{$\bar{x}$} minimizes \smash{$L(\cdot, \bar{u}, \bar{v})$} in this case,
+extra (second-order) conditions are used to certify optimality. On the other
+hand, under strong duality, optimality implies \eqref{eq:kkt_stationarity4}: if
+\smash{$L(\cdot, \bar{u}, \bar{v})$} attains its unconstrained infimum at
+\smash{$\bar{x}$}, then it must have zero gradient at \smash{$\bar{x}$}
+(assuming it is continuously differentiable on an open neighborhood of this
+point). Complementary slackness and feasibility are still implied under strong
+duality, as argued earlier. Hence \eqref{eq:kkt_stationarity4} and
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} are
 sometimes called the KKT \emph{necessary} conditions in the literature on
 differentiable nonconvex programming, as they are necessary for optimality under
 strong duality. More broadly, they are necessary under what are called
 \emph{constraint qualification (CQ)} conditions in this literature. Slater's
 condition is an example of CQ, but there are several others, such as
-\emph{linear independence CQ (LICQ)}. This states:   
+\emph{linear independence CQ (LICQ)}. This states:
 \index{KKT conditions!constraint qualification}
 \index{KKT conditions!constraint qualification!linear independence}
 \begin{multline}
