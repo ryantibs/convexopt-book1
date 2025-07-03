@@ -491,6 +491,50 @@ which we cover in Exercise \ref{ex:slater_cone_program}.
 \section{Minimax theorems*}
 \label{sec:minimax_theorems}
 
+Now we broaden our perspective and study a real-valued function of a block
+variable $(x,y) \in X \times Y$, denoted $L : X \times Y \to \R$. This can be
+viewed as a generalization of the Lagrangian function featured in convex duality 
+and the KKT conditions, with $x$ and $y$ representing the primal and dual
+variables, constrained to lie in subsets $X \subseteq \R^d$ and $Y \subseteq  
+\R^m$, respectively. We will investigate conditions under which $L$ admits a 
+saddle point, with the corresponding results being called \emph{minimax 
+  theorems}. What distinguishes our study here from that in previous chapters is 
+that the function $L$ is not restricted to be linear in $y$ (as all Lagrangian are).   
+
+To be clear, as before, a point \smash{$(\bar{x}, \bar{y}) \in X \times Y$} is
+said to be a saddle point of $L$ provided that  
+\index{saddle point}
+\begin{equation}
+\label{eq:saddle_point2}
+L(\bar{x}, y) \leq L(\bar{x}, \bar{y}) \leq L(x, \bar{y}) \quad \text{for any
+  $x \in X$ and any $y \in Y$}. 
+\end{equation}
+An equivalent definition is that 
+\begin{equation}
+\label{eq:saddle_point3}
+\sup_y \, L(\bar{x}, y) \leq L(\bar{x}, \bar{y}) \leq \inf_x L(x, \bar{y}).
+\end{equation}
+Defining the functions
+\begin{equation}
+\label{eq:saddle_functions}
+f(x) = \sup_{y \in Y} \, L(x,y) \quad \text{and} \quad 
+g(y) = \inf_{x \in X} \, L(x,y),
+\end{equation}
+we can directly observe $g(y) \leq L(x,y) \leq f(x)$, for any $x \in X$ and any
+$y \in Y$, whereas \eqref{eq:saddle_point3} calls for \smash{$(\bar{x},
+  \bar{y})$} to satisfy \smash{$g(\bar{y}) \geq  L(\bar{x}, \bar{y}) \geq
+  f(\bar{x})$}. This leads to the following conclusion (a generalization of
+Theorem \ref{thm:saddle_point_optimality} for Lagrangian functions). 
+
+\begin{Theorem}
+\label{thm:saddle_point_optimality2}
+For any function $L : X \times Y \to \R$, a point \smash{$(\bar{x}, \bar{y}) \in
+  X \times Y$} is a saddle point as in \eqref{eq:saddle_point2} if and only if 
+\smash{$\bar{x}$} minimizes $f$ over $X$, \smash{$\bar{y}$} maximizes $g$ 
+over $Y$, and \smash{$f(\bar{x}) = g(\bar{y})$}, for $f$ and $g$ defined as in  
+\eqref{eq:saddle_functions}. 
+\end{Theorem}
+
 ?? consider Bert chap 5.5 or BTN chap 3.4.2 
 
 \section{Existence of minima revisited*}
@@ -947,6 +991,8 @@ presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
   1$ and $y^\T x < 1$ for all $x \in C$.
 \end{enumerate}
 
+\index{normal cone!dual cone}
+\index{tangent cone}
 \item \label{ex:tangent_cone}
   This exercise studies the tangent cone \eqref{eq:tangent_cone} to a set $C$ at
   a point $x \in C$. 
@@ -1105,7 +1151,6 @@ presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
   &\st \quad && h(x) = -z \\ 
   & && Ax \leq b,
   \end{alignat*} 
-
   whose Lagrangian is
   \[
   L(x,z,u,v) = f(x) + I_K(z) + u^\T (h(x) + z) + v^\T (Ax - b).
@@ -1114,6 +1159,7 @@ presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
   from \eqref{eq:support_function_cone}, show that the dual problem is as
   claimed in \eqref{eq:dual_conic}.  
 
+\index{cone program!dual problem}
 \item \label{ex:slater_cone_program}
   Recall that a cone program is a special case of \eqref{eq:primal_conic} where 
   $f(x) = c^\T x$ and $h(x) = Px - q$, for $c \in \R^d$, $P \in \R^{m \times d}$,
@@ -1146,8 +1192,8 @@ presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
 
 \item Prove that the dual cone $K^*$ is regular if $K$ is regular. 
 
-\item Assume $K$ is a regular cone. Conclude based on Theorem
-  \ref{thm:slater_conic} that the following holds for problems
+\item When $K$ is a regular cone, conclude based on Theorem
+  \ref{thm:slater_conic} that the following holds for problems 
   \eqref{eq:primal_cone_program}, \eqref{eq:dual_cone_program}.
   
   \begin{enumerate}[label=(\roman*)]  
