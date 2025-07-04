@@ -498,8 +498,8 @@ and the KKT conditions, with $x$ and $y$ representing the primal and dual
 variables, constrained to lie in subsets $X \subseteq \R^d$ and $Y \subseteq  
 \R^p$, respectively. We will investigate conditions under which $L$ admits a 
 saddle point. What distinguishes our study here from that in previous chapters
-is that the function $L$ is no longer restricted to be linear in $y$ (as all
-Lagrangians are).     
+is that the function $L$ is not restricted to be linear in $y$ (all Lagrangians
+are linear in $u,v$).        
 
 To be clear, as before, a point \smash{$(\bar{x}, \bar{y}) \in X \times Y$} is
 said to be a saddle point of $L$ provided that  
@@ -554,13 +554,15 @@ We have already seen minimax theorems in Chapters \ref{sec:slater_condition},
 general) versions of Slater's condition, which guarantees strong duality---and 
 hence a saddle point of the associated Lagrangian $L$---in convex programs.   
 
-Below is a somewhat more general minimax theorem, known as the
-\emph{Sion-Kakutani theorem}, for functions $L$ that are convex in their first
-argument and concave in their second.
+The first and arguably the most famous minimax theorem is known as \emph{von
+  Neumann's minimax theorem}, which concerns bilinear functions, of the form
+$L(x,y) = x^\T P y$ (and assumes that $X,Y$ are probability simplices). Below is
+a more general minimax result, known as \emph{Sion's minimax theorem}, for 
+functions that are convex in their first argument and concave in their second.      
 
-\index{Sion-Kakutani theorem}
+\index{Sion's minimax theorem}
 \begin{Theorem}
-\label{thm:sion_kakutani}
+\label{thm:sion_minimax}
 Let $X \subseteq \R^d$ and $Y \subseteq \R^p$ be compact and let $L : X \times Y
 \to \R$ be continuous. Assume that $L(\cdot,y)$ is convex for each fixed $y \in
 Y$ and $L(x,\cdot)$ is concave for each fixed $x \in X$. Then there exists a
@@ -568,11 +570,11 @@ saddle point \smash{$(\bar{x}, \bar{y}) \in X \times Y$} of $L$, and thus
 \eqref{eq:saddle_point4} holds. 
 \end{Theorem}
 
-Theorem \ref{thm:sion_kakutani} is more general than (say) Theorem
-\ref{thm:slater_condition}, because $L$ is allowed to be concave (not
-necessarily linear) in the argument $y$ representing the dual variable; and at
-the same time, it is also less general in that the sets $X,Y$ are assumed
-compact. Its proof is developed in Exercise \ref{ex:sion_kakutani}.  
+Theorem \ref{thm:sion_minimax} is more general than (say) Theorem
+\ref{thm:slater_condition} because $L$ is allowed to be concave (not
+necessarily linear) in the argument $y$ representing the dual variable; at the
+same time, it is also less general in that the sets $X,Y$ are assumed to be 
+compact. Its proof is developed in Exercise \ref{ex:sion_minimax}.   
 
 \section{Existence of minima revisited*}
 \label{sec:existence_minima_revisited}
@@ -609,7 +611,23 @@ Our treatment of conic duality is based on \cite{bental2023convex} (Chapter
 presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
 \ref{ex:dubovitski_milutin_lemma}, \ref{ex:farkas_variations_conic}, 
 \ref{ex:convex_theorem_alternatives_conic}, \ref{ex:slater_conic}, and   
-\ref{ex:slater_cone_program} are all based on \cite{bental2023convex}. 
+\ref{ex:slater_cone_program} are all based on \cite{bental2023convex}. These
+authors give a beautiful treatment of duality in conic form convex programs, 
+which exposes the role of the underlying geometry.
+
+Sion's minimax theorem is named after \cite{sion1958general}, who extended  
+von Neumann's minimax result \cite{vonneumann1928theorie} beyond bilinear  
+functions. Also inspired by von Neumann, John Nash developed the concept of
+(what is now called) \emph{Nash equilibria} \cite{nash1950equilibrium,
+  nash1951noncooperative}, generalizing von Neumann's theorem in a different   
+direction: to games in which the utility functions used by the two players 
+(corresponding to $x$ and $y$ variables) are asymmetric, called non-zero-sum
+games. Von Neumman's minimax theorem, Sion's minimax theorem, and the existence
+of Nash equilibria can each be proved using fixed-point theorems, notably,
+Kakutani's fixed-point theorem \cite{kakutani1941generalization} for set-valued
+mappings. Instead, the proof laid out in Exercise \ref{ex:sion_minimax} below, 
+which is based on \cite{bental2023convex} (Section 3.4), proceeds in such a way
+that reveals connections to convex duality.    
 
 \clearpage
 
@@ -1324,8 +1342,8 @@ presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
 
 % Hint: you will probably need to ruse each of the above parts (in different ways) here.
 
-\index{Sion-Kakutani theorem}
-\item \label{ex:sion_kakutani}
+\index{Sion's minimax theorem}
+\item \label{ex:sion_minimax}
 
 % \item Prove conjugate of sum of indicators is conjugate of indicator of 
 % intersection?     
