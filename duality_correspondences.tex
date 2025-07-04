@@ -540,7 +540,7 @@ When \smash{$(\bar{x}, \bar{y}) \in X \times Y$} is a saddle point, the
 statement \smash{$f(\bar{x}) = g(\bar{y})$} is equivalent to 
 \begin{equation}
 \label{eq:saddle_point4}
-\inf_{x \in X} \, \sup_{y \in Y} \, L(x,y) = \sup_{x \in X} \, \inf_{y \in Y} \,
+\inf_{x \in X} \, \sup_{y \in Y} \, L(x,y) = \sup_{y \in Y} \, \inf_{x \in X} \,
 L(x,y).
 \end{equation}
 The existence of a saddle point is therefore, according to
@@ -616,11 +616,11 @@ authors give a beautiful treatment of duality in conic form convex programs,
 which exposes the role of the underlying geometry.
 
 Sion's minimax theorem is named after \cite{sion1958general}, who extended  
-von Neumann's minimax result \cite{vonneumann1928theorie} beyond bilinear  
+von Neumann's minimax theorem \cite{vonneumann1928theorie} beyond bilinear   
 functions. Also inspired by von Neumann, John Nash developed the concept of
 (what is now called) \emph{Nash equilibria} \cite{nash1950equilibrium,
   nash1951noncooperative}, generalizing von Neumann's theorem in a different   
-direction: to games in which the utility functions used by the two players 
+direction---to games in which the utility functions used by the two players  
 (corresponding to $x$ and $y$ variables) are asymmetric, called non-zero-sum
 games. Von Neumman's minimax theorem, Sion's minimax theorem, and the existence
 of Nash equilibria can each be proved using fixed-point theorems, notably,
@@ -1344,6 +1344,47 @@ that reveals connections to convex duality.
 
 \index{Sion's minimax theorem}
 \item \label{ex:sion_minimax}
+  This exercise traces out the proof of Sion's minimax theorem, in Theorem 
+  \ref{thm:sion_minimax}. Let us define 
+  \[
+  \alpha = \inf_{x \in X} \, \sup_{y \in Y} \, L(x,y) \quad \text{and} \quad  
+  \beta = \sup_{y \in Y} \, \inf_{x \in X} \, L(x,y),
+  \]
+  each of which are finite because $X,Y$ are compact and $L$ is continuous.
+  Recall by the general inf-sup inequality (Exercise \ref{ex:inf_sup_rules}
+  part d), we know that $\beta \leq \alpha$. Thus, it remains to prove the
+  opposite inequality, that $\alpha \leq \beta$.  
+
+\begin{enumerate}[label=\alph*.]
+\item Define $X(y) = \{x \in X : L(x,y) \leq \beta\}$. Prove that for each $y
+  \in Y$, the set $X(y)$ is closed, convex, and nonempty. 
+  
+\item Prove that to show $\alpha \leq \beta$, it suffices to show that the sets
+  $X(y)$, $y \in Y$ have a point in common (have nonempty intersection).    
+
+\item Fix any $y_i \in Y$, $i=1,\dots,n$, and abbreviate $f_i = L(\cdot,
+  y_i)$, $i=1,\dots,n$. Notice that these are convex continuous functions on 
+  $X$. Prove using strong duality (Slater's condition) that there exists $u \geq
+  0$ with \smash{$\sum_{i=1}^n u_i = 1$} such that       
+  \[
+  \inf_{x \in X} \, \max_{i=1,\dots,n} \, f_i(x) = \inf_{x \in X} \,
+  \sum_{i=1}^n u_i f_i(x). 
+  \]
+
+\item Prove that \smash{$\sum_{i=1}^n u_i f_i(x) \leq \beta$} for all $x \in
+  X$. Hint: use the concavity of $L$ in its second argument, and the definition
+  of $\beta$. 
+
+\item Prove based on parts c and d that any finite number of sets $X(y_i)$, $i =
+  1,\dots,n$ have a point in common.    
+
+\index{Helly's theorem}
+\item Complete the proof of Sion's minimax theorem by concluding that $X(y)$, $y
+  \in Y$ have a point in common. Hint: you may use \emph{Helly's theorem}, which
+  says that for a collection of convex and compact sets in $\R^d$, their
+  intersection is nonempty provided that the same is true of any subcollection
+  of at most $d+1$ sets.
+\end{enumerate}
 
 % \item Prove conjugate of sum of indicators is conjugate of indicator of 
 % intersection?     
