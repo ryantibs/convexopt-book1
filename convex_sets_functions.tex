@@ -932,15 +932,15 @@ about polyhedra and their structure, a classic reference is
 \cite{grunbaum2003convex}.  
 
 As briefly discussed in Remark \ref{rem:extended_value}, our definition of a
-convex function does not allow it to take the value $-\infty$ (and likewise, we
-do not allow a concave function to take the value $\infty$). This is not in line
-with the standard approach in convex analysis, which allows a convex
-function to take values in $[-\infty,\infty]$, and defines a \emph{proper} 
+convex function does not allow it to take the value $-\infty$ (and similarly, we
+do not allow a concave function to take the value $\infty$). This differs
+slightly from a standard approach in convex analysis, which allows a convex
+function to take values in $[-\infty,\infty]$, and defines a \emph{proper}
 convex function $f$ as one such that $f \not= \infty$ and $f > -\infty$ ($f$ is
 not identically $\infty$, and never $-\infty$). Of course, proper convex
 functions are the real topic of interest, but \emph{improper} convex functions
-arise in various settings, and there are improper convex functions which are 
-not trivially identical to $\pm \infty$, for example  
+arise in various settings, and there are improper convex functions which are not
+trivially identical to $\pm \infty$, for example
 \[
 f(x) = \begin{cases}
 -\infty & \text{if $\|x\| < 1$} \\
@@ -950,10 +950,12 @@ f(x) = \begin{cases}
 \]
 for a norm $\|\cdot\|$. Thus, from a general mathematical perspective, it is
 important to be able to deal with them. However, for our purposes, we find it
-simpler to rule them out completely. Accordingly, we must occasionally add
-explicit qualifiers to statements about certain functions lying above $-\infty$,  
-as we did in Property \parref{par:function_infimum}, the convexity-preserving
-rule for a partial infimum.
+simpler to rule them out completely. In short, \emph{all convex functions
+  considered in this book (with nonempty effective domains) are
+  proper}. Accordingly, we must occasionally add  explicit qualifiers to
+statements about certain functions lying above $-\infty$, as we did in Property
+\parref{par:function_infimum}, the convexity-preserving rule for a partial
+infimum.  
 
 \clearpage
 
