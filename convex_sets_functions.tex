@@ -704,11 +704,11 @@ of its conjugate.
 Much of this chapter studies convex functions through the lens of their
 gradients (or Hessians). Of course, a convex function need not be differentiable
 (or twice differentiable); the function $f(x) = |x|$, for example, is convex but
-not differentiable at $x=0$. Meanwhile, if we stick to the univariate case,
-then it seems intuitively that for a convex function the only possibilities for 
+not differentiable at $x=0$. Meanwhile, if we stick to the univariate case, then
+it seems intuitively that for a convex function the only possibilities for
 nondifferentiability are ``kink'' points, like the behavior of the absolute
 value function at the origin. This leads us to wonder: to what extent can a
-convex function lack smoothness in general? Can it be arbitrarily nonsmooth, or 
+convex function lack smoothness in general? Can it be arbitrarily nonsmooth, or
 does convexity itself impose restrictions on how ``much'' nonsmootheness is
 permitted? The next theorem answers these questions.
 
@@ -757,14 +757,14 @@ zero.
 % Rockafellar (1970)  
 
 While the almost everywhere differentiability and twice differentiability of
-convex functions is quite remarkable, we should be mindful to not overinterpret
-the implications of Theorem \ref{thm:smoothness_properties}, as they pertain to
-convex optimization. Generally speaking, sets of Lebesgue measure zero cannot be
-ignored in mathematical optimization (unlike, say, functional analysis),
-particularly because many optimization problems of interest lack smoothness at
-their minima; when this happens, as we will see in the subsequent chapters, we
-must account for it, both analytically and algorithmically, and subgradients
-will be one of our main tools for doing so.
+convex functions is seomwhat remarkable, we should be careful to not
+overinterpret the implications of Theorem \ref{thm:smoothness_properties}, with
+respect to convex optimization. Generally speaking, sets of Lebesgue 
+measure zero cannot be ignored in mathematical optimization (unlike, say,
+functional analysis), particularly because many optimization problems of
+interest lack smoothness at their minima; when this happens, as we will see in
+the subsequent chapters, we must account for it---both analytically and 
+algorithmically---and subgradients will be one of our main tools for doing so. 
 
 \section{Cones and polyhedra*}
 \label{sec:cones_polyhedra}
