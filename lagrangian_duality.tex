@@ -14,7 +14,7 @@ the form
 \label{eq:lp_primal}
 \begin{alignedat}{2}
 &\minimize_x \quad && c^\T x \\
-&\st && Ax \leq b \\
+&\st \quad && Ax \leq b \\
 & && Gx = h, 
 \end{alignedat}
 \end{equation}
@@ -64,7 +64,7 @@ associated with an optimization problem, indeed an LP,
 \label{eq:lp_dual}
 \begin{alignedat}{2}
 &\maximize_{u,v} \quad && -b^\T u - h^\T v \\
-&\st && A^\T u + G^\T v = -c \\
+&\st \quad && A^\T u + G^\T v = -c \\
 & && u \geq 0.
 \end{alignedat}
 \end{equation}
@@ -194,7 +194,7 @@ For the quadratic program (QP):
 \label{eq:qp_primal}
 \begin{alignedat}{2}
 &\minimize_x \quad && \frac{1}{2} x^\T Q x + c^\T x\\ 
-&\st && Ax \leq b \\
+&\st \quad && Ax \leq b \\
 & && Gx = h,
 \end{alignedat}
 \end{equation}
@@ -217,7 +217,7 @@ The dual problem is thus
 \begin{alignedat}{2}
 &\maximize_{u,v} \quad && - \frac{1}{2} (c + A^\T u + G^\T v)^\T Q^{-1} (c +
 A^\T u + G^\T v) - b^\T u - h^\T v \\
-&\st && u \geq 0.
+&\st \quad && u \geq 0.
 \end{alignedat}
 \end{equation}
 This is itself a QP. If instead $Q \succeq 0$, then similar arguments (Exercise
@@ -227,7 +227,7 @@ This is itself a QP. If instead $Q \succeq 0$, then similar arguments (Exercise
 \begin{alignedat}{2}
 &\maximize_{u,v} \quad && - \frac{1}{2} (c + A^\T u + G^\T v)^\T Q^\pinv (c + 
 A^\T u + G^\T v) - b^\T u - h^\T v \\
-&\st && c + A^\T u + G^\T v \in \col(Q) \\ 
+&\st \quad && c + A^\T u + G^\T v \in \col(Q) \\ 
 & && u \geq 0.
 \end{alignedat}
 \end{equation}
@@ -718,14 +718,14 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   Consider the standard form LP,
   \begin{alignat*}{2}
   &\minimize_x \quad && c^\T x \\
-  &\st && Ax = b \\
+  &\st \quad && Ax = b \\
   & && x \geq 0.
   \end{alignat*}
   Prove that its dual problem is 
 %  \label{eq:lp_std_dual}
   \begin{alignat*}{2}
   &\maximize_{u,v} \quad && b^\T v \\
-  &\st && A^\T v + u = c \\
+  &\st \quad && A^\T v + u = c \\
   & && u \geq 0.
   \end{alignat*}
 
@@ -735,7 +735,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   Consider the standard form QP,
   \begin{alignat*}{2}
   &\minimize_x \quad && \frac{1}{2} x^\T Q x + c^\T x \\
-  &\st && Ax = b \\
+  &\st \quad && Ax = b \\
   & && x \geq 0,
   \end{alignat*}
   with $Q \succ 0$. Prove that its dual problem is
@@ -743,7 +743,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   \begin{alignat*}{2}
   &\maximize_{u,v} \quad && -\frac{1}{2} (c - A^\T v - u)^\T Q^{-1} (c - A^\T v
   - u) + b^\T v \\
-  &\st && A^\T v + u = c \\
+  &\st \quad && A^\T v + u = c \\
   & && u \geq 0.
   \end{alignat*}
 
@@ -802,7 +802,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   duality, as in Chapter \ref{sec:lagrangian_duality}. Show that this gives       
   \begin{alignat*}{2}
   &\maximize_{x,y} \quad && -c^\T x \\ 
-  &\st &&  Ax + y = b \\
+  &\st \quad &&  Ax + y = b \\
   & && Gx = h \\
   & && y \geq 0.
   \end{alignat*}
@@ -1093,13 +1093,13 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   Consider the standard form SDP,
   \begin{alignat*}{2}
   &\minimize_X \quad && \langle C, X \rangle \\
-  &\st && \langle A_i, X \rangle = b_i, \; i=1,\dots,m \\
+  &\st \quad && \langle A_i, X \rangle = b_i, \; i=1,\dots,m \\
   & && X \succeq 0.
   \end{alignat*}
   Prove that its dual problem is 
   \begin{alignat*}{2}
   &\maximize_{U,v} \quad && b^\T v \\
-  &\st && v_1 A_1 + \cdots v_m A_m + U = C \\
+  &\st \quad && v_1 A_1 + \cdots v_m A_m + U = C \\
   & && U \succeq 0.
   \end{alignat*}
 
@@ -1111,7 +1111,7 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   that this gives    
   \begin{alignat*}{2}
   &\maximize_{x,Y} \quad && -c^\T x \\ 
-  &\st && x_1 A_1 + \cdots + x_d A_d + Y = B \\
+  &\st \quad && x_1 A_1 + \cdots + x_d A_d + Y = B \\
   & && Gx = h \\
   & && Y \succeq 0.
   \end{alignat*}

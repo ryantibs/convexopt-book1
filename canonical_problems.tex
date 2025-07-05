@@ -16,7 +16,7 @@ optimization problem which takes the form
 \label{eq:linear_program}
 \begin{alignedat}{2}
 &\minimize_x \quad && c^\T x \\
-&\st && Ax \leq b \\
+&\st \quad && Ax \leq b \\
 & && Gx = h, 
 \end{alignedat}
 \end{equation}
@@ -73,7 +73,7 @@ A linear program can always be written in the form (Exercise
 \label{eq:linear_program_std}
 \begin{alignedat}{2}
 &\minimize_x \quad && c^\T x \\
-&\st && Ax = b \\
+&\st \quad && Ax = b \\
 & && x \geq 0,
 \end{alignedat}
 \end{equation}
@@ -88,12 +88,12 @@ be recast using linear penalties and constraints: the problem
 \index{linf norm@$\ell_\infty$ norm}
 \begin{alignat*}{2}
 &\minimize_x \quad && f(x) + \lambda \|x\|_1 + \gamma \|x\|_\infty \\ 
-&\st && x \in C
+&\st \quad && x \in C
 \end{alignat*}
 is equivalent to (Exercise \ref{ex:l1_linf_linear} part a)
 \begin{alignat*}{2}
 &\minimize_{x,y,z} \quad && f(x) + \lambda \one^\T y + \gamma z \\  
-&\st && -y \leq x \leq y \\
+&\st \quad && -y \leq x \leq y \\
 & && -z\one \leq x \leq z\one \\
 & && x \in C, \; y,z \geq 0.
 \end{alignat*}
@@ -118,7 +118,7 @@ SVM, and are LPs by inspection.
   \label{eq:basis_pursuit}
   \begin{alignedat}{2}
   &\minimize_\beta \quad && \|\beta\|_1 \\
-  &\st && X\beta = y.
+  &\st \quad && X\beta = y.
   \end{alignedat}
   \end{equation}
   This can be seen as a special case of the lasso problem \eqref{eq:lasso} as
@@ -132,7 +132,7 @@ SVM, and are LPs by inspection.
   \label{eq:dantzig_selector}
   \begin{alignedat}{2}
   &\minimize_\beta \quad && \|\beta\|_1 \\
-  &\st && \|X^\T (y - X\beta) \|_\infty \leq \lambda, 
+  &\st \quad && \|X^\T (y - X\beta) \|_\infty \leq \lambda, 
   \end{alignedat}
   \end{equation}
   where $\lambda \geq 0$ is a tuning parameter. The constraint in
@@ -181,7 +181,7 @@ of the form
 \label{eq:quadratic_program}
 \begin{alignedat}{2}
 &\minimize_x \quad && c^\T x + \frac{1}{2} x^\T Q x \\ 
-&\st && Ax \leq b \\
+&\st \quad && Ax \leq b \\
 & && Gx = h,
 \end{alignedat}
 \end{equation}
@@ -210,7 +210,7 @@ As with an LP, a QP can always be written in the form (Exercise
 \label{eq:quadratic_program_std}
 \begin{alignedat}{2}
 &\minimize_x \quad && c^\T x + \frac{1}{2} x^\T Q x \\
-&\st && Ax = b \\
+&\st \quad && Ax = b \\
 & && x \geq 0,
 \end{alignedat}
 \end{equation}
@@ -221,7 +221,7 @@ which is again known as standard form.
 The QP 
 \begin{alignat*}{2}
 &\minimize_x \quad && c^\T x + \frac{1}{2} x^\T Q x \\
-&\st && Ax = b
+&\st \quad && Ax = b
 \end{alignat*}
 has a closed-form solution which can be found by solving the Lagrange 
 multiplier condition \eqref{eq:lagrange_multiplier} (a special case of the
@@ -342,7 +342,7 @@ standard form of an SDP:
 \label{eq:semidefinite_program_std}
 \begin{alignedat}{2}
 &\minimize_X \quad && \langle C, X \rangle \\
-&\st && \langle A_i, X \rangle = b_i, \; i=1,\dots,m \\
+&\st \quad && \langle A_i, X \rangle = b_i, \; i=1,\dots,m \\
 & && X \succeq 0.
 \end{alignedat}
 \end{equation}
@@ -371,13 +371,13 @@ semidefinite constraints: the problem
 \index{operator norm}
 \begin{alignat*}{2}
 &\minimize_X \quad && f(X) + \lambda \|X\|_{\op} \\
-&\st && x \in C
+&\st \quad && x \in C
 \end{alignat*}
 (where recall $\|X\|_{\op}$ is the largest singular value of $X$, as in
 \eqref{eq:operator_norm}) is equivalent to  
 \begin{alignat*}{2}
 &\minimize_{X,t} \quad && f(X) + \lambda t \\
-&\st && \begin{bmatrix} t I & X \\ 
+&\st \quad && \begin{bmatrix} t I & X \\ 
 X^\T & t I \end{bmatrix} \succeq 0 \\
 & && X \in C.
 \end{alignat*}
@@ -385,8 +385,8 @@ This can be shown using elementary arguments (properties of Schur complements),
 and when $f$ is linear and $C$ is the intersection of a linear subspace and the
 positive semidefinite cone, as in \eqref{eq:semidefinite_program_std}, the above
 problem is an SDP (Exercise \ref{ex:operator_norm_semidefinite} part a). A
-similar equivalence holds for operator norm constraints (Exercise
-\ref{ex:operator_norm_semidefinite} part b).
+similar equivalence exists for operator norm constraints (Exercise
+\ref{ex:operator_norm_semidefinite} part b).  
 
 \paragraph{Recasting trace norm penalties.}
 \parlab{par:trace_norm_semidefinite}
@@ -395,13 +395,13 @@ A trace norm penalty also has an equivalent semidefinite form: the problem
 \index{trace norm}
 \begin{alignat*}{2}
 &\minimize_X \quad && f(X) + \lambda \|X\|_{\tr} \\
-&\st && x \in C
+&\st \quad && x \in C
 \end{alignat*}
 (where recall $\|X\|_{\tr}$ is the sum of singular values of $X$, as in  
 \eqref{eq:trace_norm}) is equivalent to 
 \begin{alignat*}{2}
 &\minimize_{X,U,V} \quad && f(X) + \lambda(\tr(U) + \tr(V)) \\ 
-&\st && \begin{bmatrix} U & \frac{1}{2} X^\T \\ 
+&\st \quad && \begin{bmatrix} U & \frac{1}{2} X^\T \\ 
 \frac{1}{2} X & V \end{bmatrix} \succeq 0 \\
 & && X \in C.
 \end{alignat*}  
@@ -493,7 +493,7 @@ computer science.
   \label{eq:max_cut}
   \begin{alignedat}{2}
   &\maximize_u \quad && \frac{1}{2} \sum_{i<j} w_{ij} (1 - u_iu_j) \\ 
-  &\st && |u_i| = 1, \; i-1,\dots,n.
+  &\st \quad && |u_i| = 1, \; i-1,\dots,n.
   \end{alignedat}
   \end{equation}
   In \eqref{eq:max_cut}, any feasible point $u$ has entries that are either 1 
@@ -506,7 +506,7 @@ computer science.
   \label{eq:max_cut_relaxed}
   \begin{alignedat}{2}
   &\maximize_U \quad && \frac{1}{2} \sum_{i<j} w_{ij} (1 - u_i^\T u_j) \\   
-  &\st && \|u_i\|_2 = 1, \; i-1,\dots,n.
+  &\st \quad && \|u_i\|_2 = 1, \; i-1,\dots,n.
   \end{alignedat}
   \end{equation}
   In \eqref{eq:max_cut}, each $u_i$ is a scalar, but in
@@ -528,7 +528,7 @@ computer science.
   \label{eq:max_cut_relaxed_sdp}
   \begin{alignedat}{2}
   &\maximize_X \quad && \frac{1}{2} \sum_{i<j} w_{ij} (1 - X_{ij}) \\   
-   &\st && X_{ii} = 1, \; i-1,\dots,n \\
+   &\st \quad && X_{ii} = 1, \; i-1,\dots,n \\
    & && X \succeq 0,
   \end{alignedat}
   \end{equation}
@@ -697,14 +697,14 @@ programming in general.
 \item Now for the analogous constrained equivalence, prove that
   \begin{alignat*}{2}
   &\minimize_x \quad && f(x) \\ 
-  &\st && \|x\|_1 \leq s \\
+  &\st \quad && \|x\|_1 \leq s \\
   & && \|x\|_\infty \leq t \\
   & && x \in C
   \end{alignat*}
   and 
   \begin{alignat*}{2}
   &\minimize_{x,y,z} \quad && f(x) \\  
-  &\st && \one^\T y \leq s \\
+  &\st \quad && \one^\T y \leq s \\
   & && z \leq t \\
   & && -y \leq x \leq y \\
   & && -z\one \leq x \leq z\one \\
@@ -807,7 +807,7 @@ programming in general.
 \begin{enumerate}[label=\alph*.]
 \item Prove the equivalence in \eqref{eq:quadratic_semidefinite} using
   properties of Schur complements, as reviewed in Appendix
-  \ref{chap:linear_algebra}. 
+  \ref{sec:schur_complement}.
 
 \item Show that the right-hand side in \eqref{eq:quadratic_semidefinite} can be
   expressed as a linear matrix inequality in $(x,t)$, and use this to show that  
@@ -836,13 +836,13 @@ programming in general.
 \item Now for the constrained analogs, by similar arguments, prove that   
   \begin{alignat*}{2}
   &\minimize_X \quad && f(X) \\
-  &\st && \|X\|_{\op} \leq s \\
+  &\st \quad && \|X\|_{\op} \leq s \\
   & && x \in C
   \end{alignat*}
   and
   \begin{alignat*}{2}
   &\minimize_X \quad && f(X) \\
-  &\st && \begin{bmatrix} s I & X \\ 
+  &\st \quad && \begin{bmatrix} s I & X \\ 
     X^\T & s I \end{bmatrix} \succeq 0 \\
   & && X \in C
   \end{alignat*}
@@ -881,7 +881,8 @@ programming in general.
   \label{eq:quadratically_constrained_quadratic_program}
   \begin{alignedat}{2}
   &\minimize_x \quad && \frac{1}{2} x^\T Q x + c^\T x \\ 
-  &\st && \frac{1}{2} x^\T Q_i x + c_i^\T x + b_i \leq 0, \; i=1,\dots,m \\    
+  &\st \quad && \frac{1}{2} x^\T Q_i x + c_i^\T x + b_i \leq 0, \;
+  i=1,\dots,m \\     
   & && Gx = h,
   \end{alignedat}
   \end{equation}
@@ -917,7 +918,8 @@ programming in general.
   \label{eq:geometric_program}
   \begin{alignedat}{2}
   &\minimize_x \quad && \sum_{k=1}^{K_0} \exp(a_{0k}^\T x + b_{0k}) \\
-  &\st && \sum_{k=1}^{K_i} \exp(a_{ik}^\T x + b_{ik}) \leq 1, \; i=1,\dots,m \\  
+  &\st \quad && \sum_{k=1}^{K_i} \exp(a_{ik}^\T x + b_{ik}) \leq 1, \;
+  i=1,\dots,m \\   
   & && Gx = h, 
   \end{alignedat}
   \end{equation}
@@ -933,7 +935,7 @@ programming in general.
 \item Prove that \eqref{eq:geometric_program} can be rewritten as 
   \begin{alignat*}{2}
   &\minimize_{x,y} \quad && c_0^\T y_0 \\
-  &\st && c_i^\T y_i \leq 1, i=1,\dots,m \\
+  &\st \quad && c_i^\T y_i \leq 1, i=1,\dots,m \\
   & && \exp(a_{ik}^\T x) \leq y_{ik}, \; k=1,\dots,K_i, \; i=0,\dots,m \\ 
   & && Gx = h,
   \end{alignat*}
