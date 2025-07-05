@@ -1186,9 +1186,41 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   \end{alignat*}
   for arbitrary $\alpha > 0$. Compute the primal optimal value, then compute the
   dual optimal value, to conclude that the duality gap is $\alpha$. Explain why 
-  this example does not violate Theorem \ref{thm:slater_conic}.  Note: this
+  this example does not violate Theorem \ref{thm:slater_conic}. Note: this
   example is taken from \cite{ramana1997exact}, who in turn credits
   \cite{vandenberghe1996semidefinite} for a related example.  
+\end{enumerate}
+
+\index{trace norm}
+\index{semidefinite program!dual program}
+\item \label{ex:trace_norm_semidefinite} 
+  This exercise investigates relationships involving the trace norm
+  $\|X\|_{\tr}$ of a matrix $X \in \R^{d \times k}$, using SDP duality. 
+
+\begin{enumerate}[label=\alph*.]
+\item Show that the $\|X\|_{\tr}$ is the optimal value of the following convex
+  optimization (concave maximization) problem:
+  \begin{alignat*}{2}
+  &\maximize_Y \quad && \tr(X^T Y) \\
+  &\st \quad && \begin{bmatrix} I & Y \\ 
+    Y^T & I \end{bmatrix} \succeq 0.
+  \end{alignat*}
+  Hint: use properties of Schur complements, as reviewed in Appendix
+  \ref{sec:schur_complement}.
+
+\item Show that the dual associated with the problem in part a is 
+  \begin{alignat*}{2}
+  &\minimize_{U,V} \quad && \tr(U) + \tr(V) \\
+  &\st \quad && \begin{bmatrix} U & \frac{1}{2} X^\T \\  
+    \frac{1}{2} X & V \end{bmatrix} \succeq 0.
+  \end{alignat*}
+
+\item Show that the optimal values for the problems in parts a and b are equal
+  to each other, and both are attained. Hint: for attainment, use Theorem
+  \ref{thm:slater_conic}.   
+
+\item Confirm that the two problems in Property
+  \parref{par:trace_norm_semidefinite} are equivalent, as claimed.
 \end{enumerate}
 \end{enumerate}
 \end{xcb}

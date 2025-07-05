@@ -842,7 +842,7 @@ that reveals connections to convex duality.
   to prove that the dual of \eqref{eq:svm_hinge3} is
   \begin{alignat*}{2}
   &\maximize_u \quad && 1^\T u - \frac{1}{2} \|\tilde{X}^\T u\|_2^2 \\
-  &\st && u \in [0,C]^n.
+  &\st \quad && u \in [0,C]^n.
   \end{alignat*}
 
 \item Adapt the arguments in the previous parts to accommodate the intercept in
@@ -1262,85 +1262,6 @@ that reveals connections to convex duality.
     feasible, in which case a primal solution exists. 
   \end{enumerate}
 \end{enumerate}
-
-\item \label{ex:trace_norm_semidefinite} 
-
-% \begin{enumerate}
-% \item[(a, 5pts)]
-% Show that computing the trace norm of a matrix, i.e., computing $\| X \|_{\tr}$, can be expressed as the following (convex) optimization problem:
-% \begin{equation}
-% \begin{array}{ll}
-% \maximizewrt{Y \in \mathbb{R}^{m \times n}} & \tr(X^T Y) \\
-% \subjectto & 
-% \left[
-% \begin{array}{cc}
-% I_m & Y \\
-% Y^T & I_n
-% \end{array}
-% \right]
-% \succeq 0,
-% \end{array}
-% \label{eq:aa:primal}
-% \end{equation}
-% where $I_p$ is the $p \times p$ identity matrix.  (By the way, problem \eqref{eq:aa:primal} is a semidefinite program; more on this in part (d) below.)
-
-% Hint: think about using the ``Schur complement'' somewhere here.  A good reference for this might be Section A.5.5 in the ``Convex Optimization'' book, by Stephen Boyd and Lieven Vandenberghe.
-
-% \item[(b, 5pts)]
-% Show that the dual problem associated with \eqref{eq:aa:primal} can be expressed as
-% %\begin{equation}
-% %\begin{array}{ll}
-% %\minimizewrt{\substack{W_{1} \in \symm^{m}, \\ W_{2} \in \symm^{n}}} & (1/2) ( \tr(I_m W_1) + \tr(I_n W_2) ) \\
-% %\subjectto &
-% %\left[
-% %\begin{array}{cc}
-% %W_1 & X \\
-% %X^T & W_2
-% %\end{array}
-% %\right]
-% %\succeq 0,
-% %\end{array}
-% %\label{eq:aa:dual}
-% %\end{equation}
-% \begin{equation}
-% \begin{array}{ll}
-% \minimizewrt{\substack{W_{1} \in \symm^{m}, \\ W_{2} \in \symm^{n}}} & \tr(W_{1}) + \tr(W_{2}) \\
-% \subjectto & 
-% \left[
-% \begin{array}{cc}
-% W_{1} & (1/2) X \\
-% (1/2) X^T & W_{2}
-% \end{array}
-% \right]
-% \succeq 0,
-% \end{array}
-% \label{eq:aa:dual}
-% \end{equation}
-% where, just to remind you, $\symm^p$ is the space of $p \times p$ real, symmetric matrices.
-
-% \item[(c, 2pts)]
-% Show that the optimal values for problems \eqref{eq:aa:primal} and \eqref{eq:aa:dual} are equal to each other, and that both optimal values are attained.
-
-% \item[(d, 5pts)]
-% In the \textit{matrix completion problem}, we want to find a matrix $X \in \reals^{m \times n}$ of low rank that is close, in a squared error sense, to some observed matrix $Z \in \reals^{m \times n}$.  We do not assume that all of the entries of $Z$ are observed, so we will look at the squared error over $Z$'s observed entries only, which we store in a set $\Omega$ of (observed) row and column indices.  Putting all this together leads us to the following (convex) optimization problem:
-% \begin{equation}
-% \begin{array}{ll}
-% \minimizewrt{X \in \mathbb{R}^{m \times n}} & \sum_{(i,j) \in \Omega} ( X_{ij} - Z_{ij} )^2 + \lambda \| X \|_{\tr},
-% \end{array}
-% \label{eq:aa:mtxcomp}
-% \end{equation}
-% with tuning parameter $\lambda > 0$.
-
-% Show that problem \eqref{eq:aa:mtxcomp} can be expressed as a semidefinite program of the form
-% \begin{equation*}
-% \begin{array}{ll}
-% \minimizewrt{x \in \mathbb{R}^p} & c^T x \\
-% \subjectto & x_1 A_1 + \cdots + x_p A_p \preceq B,
-% \end{array}
-% \end{equation*}
-% for some fixed $c, B, A_i, \; i=1,\ldots,p$.
-
-% Hint: you will probably need to ruse each of the above parts (in different ways) here.
 
 \index{Sion's minimax theorem}
 \item \label{ex:sion_minimax}
