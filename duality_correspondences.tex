@@ -137,10 +137,10 @@ which is often called the \emph{Fenchel dual} of
 
 \begin{Corollary}
 \label{cor:fenchel_dual}
-For convex $f,g$ such that $\relint(A^{-1}(\dom(f)) \cap \dom(g)) \not=
-\emptyset$ (with $A^{-1}(S)$ being the preimage of a set $S$ under $A$), the
-problems \eqref{eq:fenchel_primal}, \eqref{eq:fenchel_dual} exhibit strongly 
-duality. Further, the pair of conditions
+For convex functions $f,g$ such that there exists a point $x \in
+\relint(\dom(g))$ and $Ax \in \relint(\dom(f))$, the problems 
+\eqref{eq:fenchel_primal}, \eqref{eq:fenchel_dual} are strongly
+dual. Also, the conditions  
 \[
 A^\T u \in \partial g(x), \quad u \in - \partial f(Ax)
 \]
@@ -611,9 +611,8 @@ Our treatment of conic duality is based on \cite{bental2023convex} (Chapter
 presented in our Theorem \ref{thm:slater_conic}. In addition, Exercises
 \ref{ex:dubovitski_milutin_lemma}, \ref{ex:farkas_variations_conic}, 
 \ref{ex:convex_theorem_alternatives_conic}, \ref{ex:slater_conic}, and   
-\ref{ex:slater_cone_program} are all based on \cite{bental2023convex}. These
-authors give a beautiful treatment of duality in conic form convex programs, 
-which exposes the role of the underlying geometry.
+\ref{ex:slater_cone_program} are all based the masterful treatment in
+\cite{bental2023convex}.  
 
 Sion's minimax theorem is named after \cite{sion1958general}, who extended  
 von Neumann's minimax theorem \cite{vonneumann1928theorie} beyond bilinear   
