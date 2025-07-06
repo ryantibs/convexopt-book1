@@ -374,8 +374,8 @@ explores these and related details.
 
 Polarity and conjugacy share a connection for characteristic functions. By
 direct inspection, the conjugate of $I_C$, which recall (Example
-\parref{xa:support_function_conjugate}) is the support function $h_C = I^*_C$,
-satisfies        
+\parref{xa:characteristic_function_conjugate}) is the support function $h_C =
+I^*_C$, satisfies        
 \[
 h_C(y) \leq 1 \iff y \in C^\circ.
 \]
@@ -577,21 +577,127 @@ same time, it is also less general in that the sets $X,Y$ are assumed to be
 compact. Its proof is developed in Exercise \ref{ex:sion_minimax}.   
 
 \section{Existence of minima revisited*}
-\label{sec:existence_minima_revisited}
+\label{sec:duality_minima}
+\index{optimization problem!existence of solutions}
 
-discuss 0 being in int(dom(f)) being equivalent to f* having no directions
-of recession.  give nice proposition/theorem about existence of solutions of 
-$$
-\minimize_\theta \quad g(X \theta) + h_C(x),
-$$
-where $C$ is a convex set. prove in exercises. specialize to generalized linear
-model case, interpret sufficient conditions, and prove theorems in Chapter
-\ref{sec:maximum_likelihood} about existence of logistic and Poisson regression
-solutions. 
+We once again revisit the existence of solutions in convex optimization
+problems, now through the lens of duality. The refined form of Slater's
+condition given in Theorem \ref{thm:slater_conic} (the conic formulation aside) 
+showed that certain strict feasibility conditions on the primal problem imply
+the existence of dual solutions (attainment of the dual optimal
+value). Likewise, for a problem in which the dual of the dual is the primal, we
+can apply Slater's condition to the dual problem in order to conclude the
+existence of primal solutions (this was done for SDPs in Exercise
+\ref{ex:lp_sdp_differences} parts a and b, and for cone programs in Exercise
+\ref{ex:slater_cone_program}). 
 
-% Lemma 14 here: https://www.stat.berkeley.edu/~ryantibs/papers/genlasuni.pdf 
+Motivated to derive and extend the results in Theorem \ref{thm:existence_glms}
+of Chapter \ref{sec:maximum_likelihood} on generalized linear models (GLMs), we
+will study a problem of the form       
+\begin{equation}
+\label{eq:primal_legendre}
+\minimize_\beta \quad f(X\beta) + h_C(\beta),
+\end{equation}
+where $f : \R^n \to (-\infty,\infty]$ is closed and convex, $X \in \R^{n \times
+  d}$, and \smash{$h_C(\beta) = \sup_{z \in C} \, \beta^\T z$} is the support
+function of a closed, convex, and nonempty set $C \subseteq \R^d$. The Fenchel
+dual of \eqref{eq:primal_legendre} is
+\begin{equation}
+\label{eq:dual_legendre}
+\maximize_u \quad -f^*(-u) \quad \st \quad X^\T u \in C,
+\end{equation}
+where we have used the fact that $h^*_C = I_C$ (by Example
+\parref{xa:support_function_conjugate}). It is straightforward to check (again
+using Fenchel duality, the fact that $f^{**} = f$ by
+\eqref{eq:double_conjugate_identity}, and that $I^*_C = h_C$ by Example
+\parref{xa:characteristic_function_conjugate}) that the dual of
+\eqref{eq:dual_legendre} is \eqref{eq:primal_legendre}. Therefore, to reiterate
+our strategy, we will investigate Slater's condition for
+\eqref{eq:dual_legendre} in order to assert existence of solutions in
+\eqref{eq:primal_legendre}.
 
-MAKE Sure to talk about interpretation of logistic interpretation
+To this end, let us assume that $f$ is of Legendre type (essentially smooth and
+essentially strictly convex, as in Chapter \ref{sec:conjugate_smoothness}), as
+this will enable us to easily relate the domain of its conjugate $f^*$ to $f$.
+In particular, by Theorem \ref{thm:conjugate_legendre}, the gradient map $\nabla
+f$ is a bijection from $\interior(\dom(f))$ to $\interior(\dom(f^*))$, which
+means $\interior(\dom(f^*)) = \interior(\ran(\nabla f))$, where $\ran(\nabla f)$
+denotes the range of $\nabla f$. Now, Slater's condition for
+\eqref{eq:dual_legendre} requires the existence of $-u \in \interior(\ran(\nabla
+f))$ and $X^\T u \in \relint(C)$, or
+\begin{equation}
+\label{eq:slater_dual_legendre}
+\interior(\ran(\nabla f)) \cap (X^\T)^{-1} \relint(-C) \not= \emptyset,
+\end{equation}
+where $(X^\T)^{-1}$ denotes the inverse image under $X$. By Theorem
+\ref{thm:slater_conic}, the condition \eqref{eq:slater_dual_legendre} guarantees
+strong duality between \eqref{eq:primal_legendre}, \eqref{eq:dual_legendre}. To
+ensure the existence of a primal solution, it remains to ensure that the optimal
+dual value is finite, which happens if and only if the primal is feasible. This
+leads us to the following result.
+
+\begin{Theorem}
+\label{thm:duality_minima}
+Consider the optimization problem \eqref{eq:primal_legendre}, assumed to be
+feasible, where $f$ is a closed and convex function of Legendre type, and $C$ is
+a closed, convex, and nonempty set. Then, under condition
+\eqref{eq:slater_dual_legendre}, a solution exists.
+\end{Theorem}
+
+To specialize to GLMs, where $X \in \R^{n \times d}$ is the feature matrix, we
+take $f$ to be of the form  
+\begin{equation}
+\label{eq:glm_loss}
+f(\eta) = -y^\T \eta + \Psi(\eta),
+\end{equation}
+where $y \in \R^n$ is the response vector, and $\Psi : \R^n \to (-\infty,
+\infty]$ is the log-partition function, assumed to be itself of Legendre
+type. Recall that for $f(X\beta)$ to represent the negative log likelihood in
+linear regression, we take \smash{$\Psi(\eta) = \sum_{i=1}^n \eta_i^2/2$}; for
+logistic regression, we take \smash{$\Psi(\eta) = \sum_{i=1}^n
+  \log(1+e^{\eta_i})$}; and for Poisson regression, we take \smash{$\Psi(\eta) =
+  \sum_{i=1}^n e^{\eta_i}$}. We thus see that \eqref{eq:primal_legendre} can 
+represent regularized maximum likelihood in a GLM where the support function
+$h_C$ acts as the regularizer. For example, if $C = \{ z : \|z\|_* \leq \lambda
+\}$, then $h_C(\beta) = \lambda \|\beta\|$ is a norm penalty. Further, as
+$\nabla f(\eta) = -y + \nabla \Psi(\eta)$, the condition
+\eqref{eq:slater_dual_legendre} reduces to        
+\begin{equation}
+\label{eq:slater_dual_regularized_glm}
+y \in \interior(\ran(\nabla \Psi)) + (X^\T)^{-1} \relint(C).
+\end{equation}
+We therefore arrive at the following conclusion for regularized GLMs. 
+
+\index{generalized linear model!existence of solutions}
+\begin{Corollary}
+\label{cor:existence_regularized_glms}
+Consider the regularized GLM problem \eqref{eq:primal_legendre}, assumed to be 
+feasible, for $f$ as in \eqref{eq:glm_loss}, with $\Psi$ a closed and convex
+function of Legendre type, and $C$ a closed, convex, and nonempty set. Then,
+under condition \eqref{eq:slater_dual_regularized_glm}, a regularized GLM
+solution exists.    
+
+\setlength{\parindent}{\normalparindent}
+Note in particular that when $C = \{0\}$, the condition in
+\eqref{eq:slater_dual_glm} further reduces to  
+\begin{equation}
+\label{eq:slater_dual_glm}
+y \in \interior(\ran(\nabla \Psi)) + \nul(X^\T),
+\end{equation}
+which guarantees the existence of an ordinary (unregularized) GLM solution.  
+\end{Corollary}
+
+For Poisson regression, recalling \smash{$\nabla_i \Psi(\eta) = e^{\eta_i}$}, $i
+= 1,\dots,n$, we can see that $\interior(\ran(\nabla \Psi)) = \R_{++}^n$ is the 
+positive orthant. In this case, it is clear that \eqref{eq:slater_dual_glm} is
+equivalent to \eqref{eq:existence_poisson}, which verifies part (iii) of Theorem
+\ref{thm:existence_glms}. For logistic regression, showing that
+\eqref{eq:slater_dual_glm} is equivalent to \eqref{eq:existence_logistic} in
+part (ii) of the same theorem requires a more nuanced argument, where a theorem
+of the alternative (known as Stiemke's lemma) in needed to recast
+\eqref{eq:slater_dual_glm}. This argument is outlined in Exercises
+\ref{ex:stiemke_lemma}--\ref{ex:existence_logistic}. The case of a norm
+penalty is studied in Exercise \ref{ex:existence_regularized_glms}. 
 
 \SkipTocEntry\section*{Chapter notes}
 
@@ -622,11 +728,18 @@ functions. Also inspired by von Neumann, John Nash developed the concept of
 direction---to games in which the utility functions used by the two players  
 (corresponding to $x$ and $y$ variables) are asymmetric, called non-zero-sum
 games. Von Neumman's minimax theorem, Sion's minimax theorem, and the existence
-of Nash equilibria can each be proved using fixed-point theorems, notably,
+of Nash equilibria can each be proved using fixed-point theorems, typically,
 Kakutani's fixed-point theorem \cite{kakutani1941generalization} for set-valued
 mappings. Instead, the proof laid out in Exercise \ref{ex:sion_minimax} below, 
 which is based on \cite{bental2023convex} (Section 3.4), proceeds in such a way
 that reveals connections to convex duality.    
+
+The existence of solutions in optimization problems of regularized GLM-type
+\eqref{eq:dual_legendre}, based on duality arguments, was studied in
+\cite{ali2019generalized}. The arguments presented here are similar to those
+from that paper. The fact that this approach is able to reproduce well-known 
+results on the existence of logistic and Poisson regression solutions
+is also from \cite{ali2019generalized}.    
 
 \clearpage
 
@@ -801,7 +914,7 @@ that reveals connections to convex duality.
 
 \item \label{ex:dual_norm_dual3}
   Use \eqref{eq:norm_squared_conjugate}, and the fact that $f^{**} = f$ for
-  closed convex $f$, as in \eqref{eq:double_conjugate_reduction}, to verify
+  closed convex $f$, as in \eqref{eq:double_conjugate_identity}, to verify
   $\|x\|_{**} = \|x\|$.  
 
 \index{lasso!dual problem}
@@ -835,12 +948,13 @@ that reveals connections to convex duality.
   \eqref{eq:svm_dual}, we proceed in steps. 
 
 \begin{enumerate}[label=\alph*.] 
-\item Prove by direct calculation that $f^*(u) = 1^\T u \cdot I_{[-C,0]^n}(u)$. 
+\item Prove by direct calculation that $f^*(u) = \one^\T u \cdot
+  I_{[-C,0]^n}(u)$.   
 
 \item Use Fenchel duality, as given in Example \parref{xa:fenchel_norm_squared}, 
   to prove that the dual of \eqref{eq:svm_hinge3} is
   \begin{alignat*}{2}
-  &\maximize_u \quad && 1^\T u - \frac{1}{2} \|\tilde{X}^\T u\|_2^2 \\
+  &\maximize_u \quad && \one^\T u - \frac{1}{2} \|\tilde{X}^\T u\|_2^2 \\ 
   &\st \quad && u \in [0,C]^n.
   \end{alignat*}
 
@@ -1307,12 +1421,71 @@ that reveals connections to convex duality.
   (which can be seen via manipulation using De Morgan's laws).      
 \end{enumerate}
 
-% \item Prove conjugate of sum of indicators is conjugate of indicator of 
-% intersection?     
+\item \label{ex:stiemke_lemma}
+  Use the separating hyperplane theorem (as in Theorem
+  \ref{thm:separating_hyperplane}---notably, not the strict version) to prove  
+  \emph{Stiemke's lemma}: given $A \in \R^{k \times d}$, exactly one of the
+  following statements is true:            
+  \index{Stiemke's lemma}
+  \begin{itemize}
+  \item there exists $x \in \R^d$ such that $Ax=0$, $x > 0$;
+  \item there exists $y \in \R^k$ such that $A^\T y \geq 0$, $A^\T y \not=0$. 
+  \end{itemize}
+  Hint: in the separating hyperplane application, take $C = \R_{++}^d$ and $D = 
+  \nul(A)$.
 
-% \item Derive dual in terms of gauge of polar set? 
+\index{generalized linear model!existence of solutions}
+\item \label{ex:existence_logistic}
+  Consider the log-partition function for logistic regression, 
+  \smash{$\Psi(\eta) = \sum_{i=1}^n \log(1+e^{\eta_i})$}, where we have
+  $\interior(\ran(\nabla \Psi)) = (0,1)^n$. Let $y = (y_1,\dots,y_n) \in
+  \{0,1\}^n$ denote the response vector.  
 
-% \item Exercise on plurality of dual problems?
+\begin{enumerate}[label=\alph*.]
+\item Prove that \eqref{eq:slater_dual_glm} is equivalent to the existence of $a
+  \in (0,1)^n$ such that $X^\T (y - a) = 0$.
+
+\item Prove that the condition from part a is equivalent to $\nul(X^\T 
+  D_Y) \cap \R_{++}^n \not= \emptyset$, where we define $D_Y =
+  \diag(Y_1,\dots,Y_n)$, for $Y = (Y_1,\dots,Y_n)$ with each $Y_i = 2y_i - 1 \in
+  \{-1,1\}$.
+
+\item Prove that the condition from part b is itself equivalent to $\col(D_Y X)
+  \cap \R_+^n = \{0\}$. Hint: use Stiemke's lemma from Exercise 
+  \ref{ex:stiemke_lemma}, with $A = X^\T D_Y$. 
+
+\item Prove that the condition from part c is equivalent to
+  \eqref{eq:existence_logistic}, concluding that part (ii) of Theorem
+  \ref{thm:existence_glms} follows from Corollary
+  \ref{cor:existence_regularized_glms}.  
+\end{enumerate}
+
+\item \label{ex:existence_regularized_glms}
+  In the context of Corollary \ref{cor:existence_regularized_glms}, consider the
+  case $h_C(\beta) = \lambda \|\beta\|$ for a norm $\|\cdot\|$ and $\lambda >
+  0$.  
+
+\begin{enumerate}[label=\alph*.]
+\item For logistic regression, where \smash{$\Psi(\eta) = \sum_{i=1}^n
+    \log(1+e^{\eta_i})$}, prove that \eqref{eq:slater_dual_glm} always holds,
+  thus a regularized logistic regression solution always exists. Hint: decompose
+  $y = z + \delta$, with $z \in (0,1)^n$ and $\delta$ having arbitrarily small 
+  $\|\cdot\|$-norm. Then argue that \eqref{eq:slater_dual_glm} holds as long as
+  $(X^\T)^{-1} \relint(C) = \{ u : \|X^\T u\|_* < \lambda\}$ contains a
+  $\|\cdot\|$-norm ball of arbitrarily small radius centered at the origin. 
+
+\item For Poisson regression, where \smash{$\Psi(\eta) = \sum_{i=1}^n e^{\eta_i}$},
+  prove that \eqref{eq:slater_dual_glm} always holds, thus a regularized Poisson
+  regression solution always exists. Hint: similarly, let $y = z + \delta$, with
+  $z \in \R_{++}^n$ and $\delta$ having small $\|\cdot\|$-norm; then complete
+  the argument as in part a.  
+\end{enumerate}
+
+% Ideas for unwritten exercises (we have way too much already ...)
+% Interpret the existence condition for logistic regression?
+% Derive conjugate of sum of indicators?
+% Derive dual in terms of gauge of polar set? 
+% Exercise on plurality of dual problems?
 
 \end{enumerate}
 \end{xcb}
