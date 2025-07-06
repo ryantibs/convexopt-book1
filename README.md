@@ -11,10 +11,10 @@ Book 2 has no GitHub repo at the moment.
 This repo is for book 1. Currently I'm done with Parts 2 and 3.
 
 Tentative plan: 
-- [ ] Write Part 4 (duality and optimality)
+- [x] Write Part 4 (duality and optimality)
     - [x] Lagrange duality
     - [x] KKT conditions
-    - [ ] Duality correspondences 
+    - [x] Duality correspondences 
 - [ ] Write Part 5 (case studies on lasso and SVMs)
 - [ ] Write Part 1 (introduction) and technical appendices
 - [ ] Collect ideas for Part 6 (advanced topics). Some ideas:
