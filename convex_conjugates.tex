@@ -127,11 +127,11 @@ See Figure \ref{fig:conjugate} again for an illustration. Finally, a special
 reduction occurs for closed and convex $f$: in this case, we get that the double 
 conjugate reduces to the original function, 
 \begin{equation}
-\label{eq:double_conjugate_reduction}
+\label{eq:double_conjugate_identity}
 f^{**} = f.
 \end{equation}
 Exercises
-\ref{ex:affine_minorant_revisited}--\ref{ex:double_conjugate_reduction} walk
+\ref{ex:affine_minorant_revisited}--\ref{ex:double_conjugate_identity} walk
 through the proof of this and related facts.
 
 \medskip
@@ -428,7 +428,7 @@ where we used Example \parref{xa:quadratic_conjugate} for the conjugate of
 \smash{$\frac{1}{2\lambda} \|\cdot\|_2^2$}. Meanwhile, if $f$ is closed, then
 $f_\lambda$ is too (recall, it is differentiable, and hence continuous), so we
 can take the conjugate of both sides above and apply
-\eqref{eq:double_conjugate_reduction} to conclude   
+\eqref{eq:double_conjugate_identity} to conclude   
 \index{Moreau envelope}
 \begin{equation}
 \label{eq:moreau_envelope_conjugate}
@@ -635,8 +635,8 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   \ref{ex:affine_minorant_revisited} to each closed convex function $g$ in the
   supremum.      
   
-\item \label{ex:double_conjugate_reduction} 
-  Prove \eqref{eq:double_conjugate_reduction} for closed convex $f$. Hint: use
+\item \label{ex:double_conjugate_identity} 
+  Prove \eqref{eq:double_conjugate_identity} for closed convex $f$. Hint: use
   \eqref{eq:double_conjugate_affine_minorant} and
   \eqref{eq:affine_minorant_revisited}.  
 
@@ -644,7 +644,7 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
 \item \label{ex:support_function_conjugate}
   Prove the statement in Example \parref{xa:support_function_conjugate}. Hint:
   argue that, since $C$ is a closed and convex set, $I_C$ is a closed and convex
-  function, then use \eqref{eq:double_conjugate_reduction} and the fact from 
+  function, then use \eqref{eq:double_conjugate_identity} and the fact from 
   Example \parref{xa:characteristic_function_conjugate}. 
 
 \index{norm!conjugate}
