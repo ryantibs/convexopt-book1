@@ -257,7 +257,7 @@ the most notable calculus rule for convex conjugates, we recall the notion of an
 \end{equation}
 For any $f,g$, a straightforward calculation shows that $(f \infconv g)^* = f^*
 + g^*$. Meanwhile, for closed and convex $f,g$ whose effective domains have
-relative interiors have a point in common, it holds that $(f + g)^* = f^*
+relative interiors with a point in common, it holds that $(f + g)^* = f^*
 \infconv g^*$. That is, for such closed and convex functions, infimal
 convolution and addition are dual operations to each other. This provides an
 interesting perspective on the Moreau envelope (a special case of an infimal
@@ -660,6 +660,13 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
 \item Prove the conjugate sum rules in Property
   \parref{par:conjugate_general_sum} (both the rule for general $f,g$, and the
   rule for closed and convex $f,g$).  
+  % For example, Theorem 16.4 in Rockafellar (1970)
+
+\item Prove that if $C,D$ are nonempty convex sets whose relative interiors have
+  a point in common, then the support function of set sum $C+D = \{ c + d : c 
+  \in C, \, d \in D \}$ satisfies $h_{C+D} = h_C + h_D$. Hint: use Property
+  \parref{par:conjugate_general_sum}. 
+  % For example, Corollary 16.4.1 in Rockafellar (1970)
 
 \item \label{ex:conjugate_essentials} 
   In this exercise, we will prove Theorem \ref{thm:conjugate_essentials}.
