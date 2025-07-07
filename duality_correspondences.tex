@@ -968,29 +968,34 @@ is also from \cite{ali2019generalized}.
 \item When is the dual of dual problem the primal problem? Describe a class of
   problems in which this holds, using Fenchel duality.   
 
-\item Let $K_1,\dots,K_m$ be cones, and $K = K_1 \cap \dots \cap K_m$. Prove
-  that 
-  \[
-  K^* \supseteq \closure(K_1^* + \cdots + K_m^*).
-  \]
-  Prove additionally that if each of the cones $K_1,\dots,K_m$ are closed, then
-  equality holds above. Hint: use the strict separating hyperplane theorem, from
-  Exercise \ref{ex:farkas_lemma}.
-
 \index{Dubovitski-Milutin lemma}
-\item \label{ex:dubovitski_milutin_lemma}
-  Let $K_1,\dots,K_m$ be closed convex cones, where $K_1 \cap \interior(K_2) 
-  \cap \cdots \cap \interior(K_m) \not= \emptyset$. Prove that $K_1 ^* + \cdots
-  + K_m^*$ is closed, and hence by the last exercise, $K^* = K_1^* + \cdots
-  + K_m^*$. This is known as the \emph{Dubovitski-Milutin lemma}. Hint: consider
-  a sequence $y_j = \sum_{i=1}^k y_{ij}$, with $y_{ij} \in K_i^*$ for $j =
-  1,2,3,\dots$ and each $i$, with $y_j \to y$ as $j \to \infty$. It remains to
+\item \label{ex:dubovitski_milutin_lemma} 
+  Let $K_1,\dots,K_m$ be cones, and $K = K_1 \cap \dots \cap K_m$. 
+
+\begin{enumerate}[label=\alph*.] 
+\item Prove that $K^* \supseteq \closure(K_1^* + \cdots + K_m^*)$. 
+\item Assuming additionally that $K_1,\dots,K_m$ are closed, prove that
+  $K^* = \closure(K_1^* + \cdots + K_m^*)$. Hint: use the strict separating
+  hyperplane theorem, from Exercise \ref{ex:farkas_lemma}.      
+  % Proposition 1.2.6 in Ben-Tal and Nemirovski (2023) 
+
+\item Assuming additionally that $K_1,\dots,K_m$ are convex (altogether, these
+  are closed convex cones), and $K_1 \cap \interior(K_2) \cap \cdots \cap
+  \interior(K_m) \not= \emptyset$, prove that $K_1 ^* + \cdots + K_m^*$ is
+  closed, thus 
+  \[
+  K^* = K_1^* + \cdots + K_m^*.
+  \] 
+  This is known as the \emph{Dubovitski-Milutin lemma}. Hint: consider a
+  sequence $y_j = \sum_{i=1}^k y_{ij}$, with $y_{ij} \in K_i^*$ for $j =
+  1,2,3,\dots$ and each $i$, where $y_j \to y$ as $j \to \infty$. It remains to
   show that $y \in K_1^* + \cdots + K_m^*$. For this, use the existence of $x
   \in K_1 \cap \interior(K_2) \cap \cdots \cap \interior(K_m)$ to show that
-  $y_{ij}$, $j = 1,2,3,\dots$ is a bounded sequence for each $i$, and therefore, 
+  $y_{ij}$, $j = 1,2,3,\dots$ is a bounded sequence for each $i$, and therefore,
   passing to a subsequence if needed, it has a subsequence converging to a point
-  in $K_i^*$. 
+  in $K_i^*$.  
   % Proposition 1.2.7 in Ben-Tal and Nemirovski (2023) 
+\end{enumerate}
 
 \index{Farkas' lemma}
 \item \label{ex:farkas_variations_conic} 
@@ -1025,13 +1030,13 @@ is also from \cite{ali2019generalized}.
 \item Define $f = (g,-h) \in \R^{d+1}$, and show that $f^\T (x,t) \leq 0$ for
   all $(x,t) \in K_1 \cap K_2$.  
 
-\item Use Exercise \ref{ex:dubovitski_milutin_lemma} to argue that we can
-  decompose $f = \psi + \phi$, where $\psi^\T(x,t) \leq 0$ for all $x \in K_1$,
-  and $\phi^\T (x,t) \leq 0$ for all $x \in K_2$.
+\item Use Exercise \ref{ex:dubovitski_milutin_lemma} part c to argue that we can
+  write $f = \psi + \phi$, where $\psi^\T(x,t) \leq 0$ for all $x \in K_1$, and
+  $\phi^\T (x,t) \leq 0$ for all $x \in K_2$. 
 
-\item Use Exercise \ref{ex:farkas_variations} part a to prove that there exists
-  $\mu \geq 0$ such that $[A \, -b]^\T \mu = \phi$, in other words, $\phi^\T
-  (x,t) = \mu^\T (Ax - tb)$ for all $x,t$. Use this to prove the desired result.       
+\item Use Exercise \ref{ex:farkas_variations} part a to argue that there exists
+  $\mu \geq 0$ with $[A \, -b]^\T \mu = \phi$, in other words, $\phi^\T (x,t) =
+  \mu^\T (Ax - tb)$ for all $x,t$. Use this to prove the desired result.        
 \end{enumerate}
   
 \item \label{ex:v_representation_dual}
@@ -1481,11 +1486,10 @@ is also from \cite{ali2019generalized}.
   the argument as in part a.  
 \end{enumerate}
 
-% Ideas for unwritten exercises (we have way too much already ...)
-% Interpret the existence condition for logistic regression?
-% Derive conjugate of sum of indicators?
-% Derive dual in terms of gauge of polar set? 
-% Exercise on plurality of dual problems?
+% Ideas for unwritten exercises (we have way too much already ...):
+% - Interpret the existence condition for logistic regression?
+% - Derive dual in terms of gauge of polar set? 
+% - Exercise on plurality of dual problems?
 
 \end{enumerate}
 \end{xcb}
