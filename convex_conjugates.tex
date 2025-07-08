@@ -263,6 +263,54 @@ convolution and addition are dual operations to each other. This provides an
 interesting perspective on the Moreau envelope (a special case of an infimal
 convolution), which we return to in Chapter \ref{sec:moreau_revisited}.    
 
+\section{Conjugates and minima*}
+\label{sec:conjugate_minima}
+
+Conjugacy provides a lens through which we can interpret infima and minima. To
+explore this, we can begin by simply observing that $f^*(0) = \sup_x \, - f(x)$,
+or 
+\[
+-f^*(0) = \inf_x \, f(x),
+\]
+that is, the conjugate $f^*$ at zero equals the infimum of $f$, and this holds
+whether of not the infimum is attained. Toward understanding attainment, for
+closed convex $f$ with nonempty domain we know that $x \in \partial f(y) \iff y
+\in \partial f^*(x)$ (Theorem \ref{thm:conjugate_subgradients}). In particular,
+choosing $y = 0$ reveals the following equivalence: $f$ has a minimizer at $x$ if
+and only if and only if $x \in \partial f^*(0)$. In other words, the set of
+minimizers of $f$ equals $\partial f^*(0)$, and therefore, this set is nonempty 
+provided $0 \in \relint(\dom(f^*))$ (Theorem \ref{thm:subgradient_existence}).    
+
+More can be said: the subdifferential $\partial f^*(0)$, and thus the set of
+minimizers of $f$, is nonempty and bounded if and only if $0 \in
+\interior(\dom(f))$ (Theorem \ref{thm:subgradient_boundedness}). Lastly, $f$ has
+a unique minimizer if and only if $\partial f^*(0)$ is a singleton, which
+happens if and only if $f^*$ is differentiable at zero (Theorem
+\ref{thm:subgradient_uniqueness}). The next theorem collects these results, for
+completeness.
+
+\begin{Theorem}
+For closed and convex $f$ with nonempty domain, the following holds.
+
+\begin{enumerate}[label=(\roman*)]
+\label{thm:conjugate_minima} 
+\item The set $S^\star$ of minimizers of $f$ satisfies $S^\star = \partial
+  f^*(0)$, and thus $f$ attains its infimum if and only $f^*$ is
+  subdifferentiable at zero, which holds if $0 \in \relint(\dom(f^*))$.    
+
+\item The set $S^\star$ is nonempty and bounded if and only if $0 \in
+  \interior(\dom(f^*))$.   
+
+\item The set $S^\star$ is a singleton if and only if $f^*$ is differentiable
+  at zero. 
+\end{enumerate}
+\end{Theorem}
+\index{optimization problem!existence of solutions}
+ 
+Exercise \ref{ex:conjugate_recession} explores the relation between the above
+theorem and our previous analysis of the existence of minima (Chapter
+\ref{sec:existence_minima}), involving directions of recession.   
+
 \section{Conjugates and smoothness*}
 \label{sec:conjugate_smoothness}
 
@@ -370,7 +418,7 @@ following holds:
 \section{Proximal connections*}
 
 Conjugate functions bear a number of important connections to proximal maps,
-which we describe in this section.
+which we describe in this section to conclude the chapter.
 
 \subsection{Moreau decomposition}
 \label{sec:moreau_decomposition}
@@ -441,49 +489,6 @@ leads to a smaller amount of regularization. In fact, we might guess from
 $f_\lambda\to f$ (recalling that $f$ is closed and convex, which means $f^{**} =
 f$). This claim is indeed true, and Exercise \ref{ex:moreau_envelope_conjugate}
 outlines its proof.    
-
-\section{Existence of minima, revisited*}
-\label{sec:conjugate_minima}
-\index{optimization problem!existence of solutions}
-
-Conjugacy provides a lens through which we can interpret the existence of
-minima. To see this, we can revisit the previously established connections
-between subgradients and conjugate functions: for closed convex $f$ with
-nonempty domain, recall (Theorem \ref{thm:conjugate_subgradients}) that $x \in
-\partial f(y) \iff y \in \partial f^*(x)$. In particular, taking $y = 0$ reveals
-the following equivalence: $f$ has a minimizer at $x$ if and only if and only if
-$x \in \partial f^*(0)$. In other words, the set of minimizers of $f$ is equal
-to $\partial f^*(0)$, and hence, this set is nonempty provided $0 \in
-\relint(\dom(f^*))$ (Theorem \ref{thm:subgradient_existence}).  
-
-More can be said: the subdifferential $\partial f^*(0)$, and thus the set of
-minimizers of $f$, is nonempty and bounded if and only if $0 \in
-\interior(\dom(f))$ (Theorem \ref{thm:subgradient_boundedness}). Lastly, $f$ has
-a unique minimizer if and only if $\partial f^*(0)$ is a singleton, which
-happens if and only if $f^*$ is differentiable at zero (Theorem
-\ref{thm:subgradient_uniqueness}). The next theorem collects these results, for
-completeness.
-
-\begin{Theorem}
-For closed and convex $f$ with nonempty domain, the following holds.
-
-\begin{enumerate}[label=(\roman*)]
-\label{thm:conjugate_minima} 
-\item The set $S^\star$ of minimizers of $f$ satisfies $S^\star = \partial
-  f^*(0)$, and thus $f$ attains its infimum if and only $f^*$ is
-  subdifferentiable at zero, which holds if $0 \in \relint(\dom(f^*))$.    
-
-\item The set $S^\star$ is nonempty and bounded if and only if $0 \in
-  \interior(\dom(f^*))$.   
-
-\item The set $S^\star$ is a singleton if and only if $f^*$ is differentiable
-  at zero. 
-\end{enumerate}
-\end{Theorem}
- 
-Exercise \ref{ex:conjugate_recession} explores the relation between the above
-theorem and our previous analysis of the existence of minima (Chapter
-\ref{sec:existence_minima}), involving directions of recession.   
 
 \SkipTocEntry\section*{Chapter notes}
 
@@ -668,6 +673,27 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   \parref{par:conjugate_general_sum}. 
   % For example, Corollary 16.4.1 in Rockafellar (1970)
 
+\index{optimization problem!existence of solutions}
+\index{direction of recession}
+\item \label{ex:conjugate_recession}
+  Let $f$ be closed and convex. We study the relation between directions of
+  recession of $f$ \eqref{eq:direction_recession} and the effective domain of
+  its conjugate $f^*$.      
+  % For example, parts (b) and (d) in Theorem 27.1 in Rockafellar (1970)
+
+\begin{enumerate}[label=\alph*.]
+\item Prove that $0 \in \interior(\dom(f^*))$ if and only if $f$ has no
+  directions of recession. In this sense, statement (ii) in Theorem
+  \ref{thm:conjugate_minima} is similar to the first part of Theorem
+  \ref{thm:weierstrass_convex}.   
+
+\item Prove that $0 \in \relint(\dom(f^*))$ if and only if the only directions
+  of recession of $f$ (if any exist) are directions in which $f$ is
+  constant. In this sense, statement (i) in Theorem
+  \ref{thm:conjugate_minima} is similar to the second part of Theorem
+  \ref{thm:weierstrass_convex}.     
+\end{enumerate}
+
 \item \label{ex:conjugate_essentials} 
   In this exercise, we will prove Theorem \ref{thm:conjugate_essentials}.
 
@@ -699,10 +725,10 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   convexity of $f$, to get the desired result. 
 \end{enumerate}
 
+\item \label{ex:conjugate_smoothness}
+  In this exercise, we will prove Theorem \ref{thm:conjugate_smoothness}. 
 \index{Lipschitz smoothness}
 \index{strong convexity}
-\item \label{ex:conjugate_smoothness}
-  In this exercise, we will prove Theorem \ref{thm:conjugate_smoothness}.
 
 \begin{enumerate}[label=\alph*.]
 \item Suppose that $f$ is strongly convex with parameter $m$. Fix any $u,v$ and
@@ -837,27 +863,6 @@ $\nabla f$---is called the \emph{Baillon-Haddad theorem}, due to
   \]
   Hint: combine part b with Theorems \ref{thm:conjugate_essentials} and
   \ref{thm:conjugate_legendre}. 
-\end{enumerate}
-
-\index{optimization problem!existence of solutions}
-\index{direction of recession}
-\item \label{ex:conjugate_recession}
-  Let $f$ be closed and convex. Here we examine the relation between directions
-  of recession of $f$ \eqref{eq:direction_recession} and the effective domain of
-  its conjugate $f^*$.    
-  % For example, parts (b) and (d) in Theorem 27.1 in Rockafellar (1970)
-
-\begin{enumerate}[label=\alph*.]
-\item Prove that $0 \in \interior(\dom(f^*))$ if and only if $f$ has no
-  directions of recession. In this sense, statement (ii) in Theorem
-  \ref{thm:conjugate_minima} is similar to the first part of Theorem
-  \ref{thm:weierstrass_convex}.   
-
-\item Prove that $0 \in \relint(\dom(f^*))$ if and only if the only directions
-  of recession of $f$ (if any exist) are directions in which $f$ is
-  constant. In this sense, statement (i) in Theorem
-  \ref{thm:conjugate_minima} is similar to the second part of Theorem
-  \ref{thm:weierstrass_convex}.     
 \end{enumerate}
 \end{enumerate}
 \end{xcb}
