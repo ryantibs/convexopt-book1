@@ -627,7 +627,7 @@ denotes the range of $\nabla f$. Now, Slater's condition for
 f))$ and $X^\T u \in \relint(C)$, or
 \begin{equation}
 \label{eq:slater_dual_legendre}
-\interior(\ran(\nabla f)) \cap (X^\T)^{-1} \relint(-C) \not= \emptyset,
+\interior(\ran(\nabla f)) \cap (X^\T)^{-1} (\relint(-C)) \not= \emptyset,
 \end{equation}
 where $(X^\T)^{-1}$ denotes the inverse image under $X$. By Theorem
 \ref{thm:slater_conic}, the condition \eqref{eq:slater_dual_legendre} guarantees
@@ -664,7 +664,7 @@ $\nabla f(\eta) = -y + \nabla \Psi(\eta)$, the condition
 \eqref{eq:slater_dual_legendre} reduces to        
 \begin{equation}
 \label{eq:slater_dual_regularized_glm}
-y \in \interior(\ran(\nabla \Psi)) + (X^\T)^{-1} \relint(C).
+y \in \interior(\ran(\nabla \Psi)) + (X^\T)^{-1} (\relint(C)).
 \end{equation}
 We therefore arrive at the following conclusion for regularized GLMs. 
 
@@ -1475,9 +1475,9 @@ is also from \cite{ali2019generalized}.
     \log(1+e^{\eta_i})$}, prove that \eqref{eq:slater_dual_glm} always holds,
   thus a regularized logistic regression solution always exists. Hint: decompose
   $y = z + \delta$, with $z \in (0,1)^n$ and $\delta$ having arbitrarily small 
-  $\|\cdot\|$-norm. Then argue that \eqref{eq:slater_dual_glm} holds as long as
-  $(X^\T)^{-1} \relint(C) = \{ u : \|X^\T u\|_* < \lambda\}$ contains a
-  $\|\cdot\|$-norm ball of arbitrarily small radius centered at the origin. 
+  $\|\cdot\|$-norm. Then argue that \eqref{eq:slater_dual_glm} holds if
+  $(X^\T)^{-1} (\relint(C)) = \{ u : \|X^\T u\|_* < \lambda\}$ contains a
+  $\|\cdot\|$-norm ball of arbitrarily small radius centered at the origin.  
 
 \item For Poisson regression, where \smash{$\Psi(\eta) = \sum_{i=1}^n e^{\eta_i}$},
   prove that \eqref{eq:slater_dual_glm} always holds, thus a regularized Poisson
