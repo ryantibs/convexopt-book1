@@ -490,14 +490,15 @@ For differentiable nonconvex problems, the gradient-based stationarity condition
 the KKT conditions
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility}. As
 \smash{$\nabla_x L(\bar{x}, \bar{u}, \bar{v}) = 0$} does not imply that
-\smash{$\bar{x}$} minimizes \smash{$L(\cdot, \bar{u}, \bar{v})$} in this case,
-extra (second-order) conditions are used to certify optimality. On the other
-hand, under strong duality, optimality implies \eqref{eq:kkt_stationarity4}: if
-\smash{$L(\cdot, \bar{u}, \bar{v})$} attains its unconstrained infimum at
-\smash{$\bar{x}$}, then it must have zero gradient at \smash{$\bar{x}$}
-(assuming it is continuously differentiable on an open neighborhood of this
-point). Complementary slackness and feasibility are still implied under strong
-duality, as argued earlier. Hence \eqref{eq:kkt_stationarity4} and
+\smash{$\bar{x}$} minimizes \smash{$L(\cdot, \bar{u}, \bar{v})$} in this
+setting, additional conditions would be needed to certify optimality. On the
+other hand, under strong duality, optimality implies
+\eqref{eq:kkt_stationarity4}: if \smash{$L(\cdot, \bar{u}, \bar{v})$} attains
+its unconstrained infimum at \smash{$\bar{x}$}, then it must have zero gradient
+at \smash{$\bar{x}$} (assuming it is continuously differentiable on an open
+neighborhood of this point). Complementary slackness and feasibility are still
+implied under strong duality, as argued earlier. Hence
+\eqref{eq:kkt_stationarity4} and
 \eqref{eq:kkt_complementary_slackness}--\eqref{eq:kkt_dual_feasibility} are
 sometimes called the KKT \emph{necessary} conditions in the literature on
 differentiable nonconvex programming, as they are necessary for optimality under
