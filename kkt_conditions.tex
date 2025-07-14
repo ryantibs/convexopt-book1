@@ -213,9 +213,8 @@ the problem in question is convex and strong duality holds by Slater's condition
   X^\T (y - X\beta) = \lambda s, \quad \text{where $s \in \partial
     \|\beta\|_1$}. 
   \end{equation}
-  This condition characterizes lasso solutions. We will see later, in Chapter
-  \ref{sec:lasso_structure}, that it provides a way to understand the structure
-  of lasso solutions.    
+  We will see later, in Chapter \ref{sec:lasso_structure}, that this provides a
+  basis for understanding the finer structure of lasso solutions.      
   
 \item \parlab{xa:svm_kkt}
   Consider the SVM problem
@@ -250,9 +249,8 @@ the problem in question is convex and strong duality holds by Slater's condition
     u_i \xi_i = 0, \quad i=1,\dots,n. 
   \end{equation}
   Together with primal and dual feasibility, the above two conditions
-  characterize SVM solutions. We will see later, in Chapter
-  \ref{sec:svm_structure}, that these conditions provide a basis for
-  understanding the structure of SVM solutions.   
+  characterize SVM solutions; the discussion is continued below to demonstrate
+  how they reveal the finer structure of SVM solutions.       
 \end{enumerate}
 \end{Example}
 
@@ -280,21 +278,39 @@ that it uniquely specifies the primal solution $x^\star$, a primal-dual
 relationship enables us to solve the primal \eqref{eq:primal_problem2} via the
 dual \eqref{eq:dual_problem2}, which is useful in practice when the latter is
 easier solve than the former. Second, a primal-dual relationship can provide an
-avenue for inferring properties of solutions.
+avenue for inferring properties of solutions. A nice example of this is given
+by SVM duality, as studied previously in Example \parref{xa:svm_kkt}. 
 
-\index{support vector machine!primal-dual relationship}
-A clear example of this is given by SVM duality, as studied in Example
-\parref{xa:svm_kkt}. The stationarity condition \eqref{eq:svm_stationarity}
+\begin{Example}
+The SVM stationarity condition \eqref{eq:svm_stationarity}
 immediately reveals that the primal solution \smash{$\hbeta$} can be written in
 terms of the dual solution via \smash{$\hbeta = \sum_{i=1}^n \halpha_i y_i
-  x_i$}. Generally, some coordinates of the dual solution will be equal to
-zero, \smash{$\halpha_i = 0$}, by the nonnegativity constraint in
-\eqref{eq:svm_dual}; the corresponding feature vectors $x_i$ and labels $y_i$
-play no role in shaping \smash{$\hbeta$}, which determines the orientation of
-the linear SVM classifier. Meanwhile, the coordinates for which
-\smash{$\halpha_i \not= 0$} index what are called \emph{support points} $x_i$
-and $y_i$ of the classifier; we revisit this in more detail in Chapter
-\ref{sec:svm_structure}.      
+  x_i$}. Generally, some coordinates of the dual solution will be equal to zero,
+\smash{$\halpha_i = 0$}, by the nonnegativity constraint in \eqref{eq:svm_dual};
+the corresponding feature vectors $x_i$ and labels $y_i$ play no role in shaping
+\smash{$\hbeta$}, which determines the orientation of the linear SVM
+classifier. 
+
+\setlength{\parindent}{\normalparindent}
+Meanwhile, the coordinates for which \smash{$\halpha_i \not= 0$} correspond to
+what are called \emph{support points} of the SVM classifier. By complementary
+slackness \eqref{eq:svm_complementary_slackness}, note that \smash{$\halpha_i
+  \not= 0$} can hold only if \smash{$y_i (\hbeta_0 + x_i^\T \hbeta) =
+  1-\hat\xi_i$}. Further, by carefully inspecting the interaction of the
+complementary slackness and stationarity conditions, we can infer the following 
+more precise description: 
+\index{support vector machine!primal-dual relationship}
+\begin{itemize}
+\item if \smash{$\halpha_i \not= 0$} and \smash{$\hat\xi = 0$}, then $x_i$ is on
+  the ``edge'' of the margin: \smash{$y_i (\hbeta_0 + x_i^\T \hbeta) = 1$};    
+\item if \smash{$\halpha_i \not= 0$} and \smash{$\hat\xi \not= 0$}, then $x_i$
+  is on the ``wrong side'' of the margin: \smash{$y_i (\hbeta_0 + x_i^\T \hbeta)
+    < 1$}, so \smash{$\hat{u}_i = 0$} by complementary slackness
+  \eqref{eq:svm_complementary_slackness}, and \smash{$\halpha_i = C$} by   
+  stationarity \eqref{eq:svm_stationarity}.
+\end{itemize}
+Figure XYZ gives a visualization.
+\end{Example}
 
 For the lasso, as studied in Example \parref{xa:lasso_kkt}, the problem
 \eqref{eq:lasso_primal2} has no constraints and thus no associated dual   
