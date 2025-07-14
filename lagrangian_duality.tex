@@ -315,23 +315,23 @@ coefficients are
 where \smash{$\epsilon_1 = (-1 + i \sqrt{3})/2$}, \smash{$\epsilon_2 = (-1 -    
   i \sqrt{3})/2$}, and $i$ is the imaginary unit. The right panel of Figure
 \ref{fig:nonconvex_quartic} plots the dual criterion; observe that this function
-is concave, which is a fact that we know is guaranteed by Property
-\parref{par:convex_dual}, but is not at all obvious from its analytic form!       
+is concave, which is a fact that we know is true by Property
+\parref{par:convex_dual}, but is not at all obvious from its analytic form!        
 \end{Example}
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.89\textwidth]{fig/nonconvex_quartic.pdf}
-\caption{Left: the nonconvex quartic criterion in problem
-  \eqref{eq:nonconvex_quartic}, drawn as a solid curve. The dashed lines show
-  $uh(x)$ as a function of $x$ for different values of the dual variable $u$,
-  where $h(x) = -x-4 \leq 0$ is the inequality constraint in
-  \eqref{eq:nonconvex_quartic}. The thin solid curves show the Lagrangian
-  $L(x,u)$ as a function of $x$, for the same values of $u$. Right: the
-  associated dual function, as in \eqref{eq:nonconvex_quartic_dual}, which at
-  each $u$ is given by minimizing $L(x,u)$ over all $x$. The dashed horizontal
-  line marks the optimal primal value $f^\star$. We see that weak duality
-  $f^\star \geq g^\star$ holds, and the inequality is strict.}  
+\caption{Left: the quartic criterion in problem \eqref{eq:nonconvex_quartic},
+  drawn as a solid curve. The dashed lines show $uh(x)$ as a function of $x$ for
+  different values of the dual variable $u$, where $h(x) = -x-4 \leq 0$ is the
+  inequality constraint in \eqref{eq:nonconvex_quartic}. The thin solid curves
+  show the Lagrangian $L(x,u)$ as a function of $x$, for the same values of
+  $u$. Right: the associated dual function, as in
+  \eqref{eq:nonconvex_quartic_dual}, which at each $u$ is given by minimizing 
+  $L(x,u)$ over all $x$. The dashed horizontal line marks the optimal primal
+  value $f^\star$. We see that weak duality $f^\star \geq g^\star$ holds, and
+  the inequality is strict.}   
 \label{fig:nonconvex_quartic}
 \end{figure}
 
