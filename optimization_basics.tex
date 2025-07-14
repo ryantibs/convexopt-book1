@@ -150,11 +150,11 @@ and machine learning. Both problems are convex.
   \end{alignedat}
   \end{equation}
   Here $C \geq 0$ is a tuning parameter governing the tradeoff between the size
-  of the margin (the first term above is actually the \emph{inverse} margin; see
-  Exercise \ref{ex:svm_margin}) and violations to the margin condition (the
-  second term is the sum of violation costs, and each violation is an instance  
-  of a prediction $\beta_0 + x_i^\T \beta$ lying on the wrong side of the
-  margin).               
+  of the margin (the first term above is related to the inverse margin, see
+  Exercise \ref{ex:svm_margin}), and violations to the margin condition (the
+  second term is the sum of violation costs, where each violation is an instance
+  of a prediction $\beta_0 + x_i^\T \beta$ lying on the ``wrong side'' of the
+  margin).   
 \end{enumerate}
 \end{Example}
 
@@ -1147,9 +1147,9 @@ case can be found in \cite{haberman1973log}.
   H_+ = \{x : \beta_0 + x^\T \beta = 1\} \quad \text{and} \quad 
   H_- = \{x : \beta_0 + x^\T \beta = -1\}
   \] 
-  is equal to $2/\|\beta\|_2^2$. Hint: pick two points $x_+ \in H_+$ and
-  $x_- \in H_-$, and argue that the margin is the inner product of $x_+-x_-$
-  with the outward normal $\beta/\|\beta\|_2$ pointing from $H_-$ to $H_+$. 
+  is equal to $2/\|\beta\|_2$. Hint: pick two points $x_+ \in H_+$ and $x_- \in
+  H_-$, and argue that the margin is the inner product of $x_+-x_-$ with the
+  outward normal $\beta/\|\beta\|_2$ pointing from $H_-$ to $H_+$.  
 
 \item \label{ex:convex_solution} 
   We explore the convexity of various important sets that can be defined
