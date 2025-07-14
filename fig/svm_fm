@@ -1,0 +1,5 @@
+\psfrag{yi = -1}{$y_i = -1$}
+\psfrag{yi = +1}{$y_i = +1$}
+\psfrag{xtb + b0 = 0}{$\hat\beta_0 + x^\mathsf{T} \hat\beta = 0$}
+\psfrag{xtb + b0 = +1}{$\hat\beta_0 + x^\mathsf{T} \hat\beta = +1$}
+\psfrag{xtb + b0 = -1}{$\hat\beta_0 + x^\mathsf{T} \hat\beta = -1$}

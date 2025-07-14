@@ -302,15 +302,28 @@ more precise description:
 \index{support vector machine!primal-dual relationship}
 \begin{itemize}
 \item if \smash{$\halpha_i \not= 0$} and \smash{$\hat\xi = 0$}, then $x_i$ is on
-  the ``edge'' of the margin: \smash{$y_i (\hbeta_0 + x_i^\T \hbeta) = 1$};    
+  the ``edge'' of the margin, \smash{$y_i (\hbeta_0 + x_i^\T \hbeta) = 1$};    
 \item if \smash{$\halpha_i \not= 0$} and \smash{$\hat\xi \not= 0$}, then $x_i$
-  is on the ``wrong side'' of the margin: \smash{$y_i (\hbeta_0 + x_i^\T \hbeta)
+  is on the ``wrong side'' of the margin, \smash{$y_i (\hbeta_0 + x_i^\T \hbeta)
     < 1$}, so \smash{$\hat{u}_i = 0$} by complementary slackness
   \eqref{eq:svm_complementary_slackness}, and \smash{$\halpha_i = C$} by   
   stationarity \eqref{eq:svm_stationarity}.
 \end{itemize}
-Figure XYZ gives a visualization.
+Figure \ref{fig:svm} gives a visualization.
 \end{Example}
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.7\textwidth]{fig/svm.pdf}
+\caption{An example of the SVM classifier. The solid line denotes the
+  separating hyperplane, defined by \smash{$\hbeta_0 + x^\T \hbeta = 0$}. There
+  are 14 support points (of a total of $n = 50$ samples), corresponding to
+  nonzero coordinates of the dual solution \smash{$\halpha$}; for visual 
+  emphasis, each one is met by a line segment which runs normal to the
+  separating hyperplane. Of the support points, only two are on the ``edge'' of
+  the margin, met by the solid line segments.} 
+\label{fig:svm}
+\end{figure}
 
 For the lasso, as studied in Example \parref{xa:lasso_kkt}, the problem
 \eqref{eq:lasso_primal2} has no constraints and thus no associated dual   
