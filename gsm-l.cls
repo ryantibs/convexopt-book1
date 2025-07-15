@@ -114,7 +114,7 @@
     \chapter@number
     \vss
   }\penalty\@M
-  \Huge\bfseries \hsize24pc \raggedright
+  \Huge\bfseries \hsize=\textwidth \raggedright
   \top@space{11pc}%
   \noindent\ignorespaces #1\par \endgroup
   \if@index
