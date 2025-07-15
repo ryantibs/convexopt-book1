@@ -235,12 +235,17 @@ expressions should be interpreted as functions of $x$.
   (the positive real numbers) for $0 < a <  1$. It is also convex on $\R_{++}$
   for $a < 0$.
 
-\item The exponential function $e^x$ is convex on $\R$. The logarithm function
-  $\log(x)$ is concave on $\R_{++}$. The \emph{negative entropy} function $x
-  \log(x)$ is convex on $\R_{++}$. 
-\index{negative entropy function}
+\item The exponential function $e^x$ is convex on $\R$.
 
-\item A linear function $a^\T x + b$ is both convex and concave on $\R^d$. 
+\item The logarithm function $\log(x)$ is concave on $\R_{++}$.  
+
+\index{negative entropy function}
+\item The negative entropy function $x \log(x)$ is convex on $\R_{++}$. 
+
+\item The positive part $x_+ = \max\{x,0\}$ is convex on $\R$. 
+
+\item A linear function $a^\T x + b$ is both convex and concave on $\R^d$;
+  it is the only such function with this property. 
 
 \item A quadratic function $\frac{1}{2} x^\T A x + b^\T x + c$ is convex on
   $\R^d$ for $A \succeq 0$ (positive semidefinite) and concave on $\R^d$
