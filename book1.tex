@@ -35,28 +35,27 @@
 
 %    Dedication.  If the dedication is longer than a few lines,
 %    remove the centering instructions and the line break.
-%\cleardoublepage
-%\thispagestyle{empty}
-%\vspace*{13.5pc}
-%\begin{center}
-%  Dedication text (use \\[2pt] for line break if necessary)
-%\end{center}
-%\cleardoublepage
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{13.5pc}
+\begin{center}
+To Jessica, Lukas, and Layla
+\end{center}
+\cleardoublepage
 
-\setcounter{page}{5} % Change page number to 7 if a dedication is present
+\setcounter{page}{7} % Change page number to 7 if a dedication is present
 \setcounter{tocdepth}{1} % Depth 1 means include sections
 \tableofcontents
 
 %    Include unnumbered chapters (preface, acknowledgments, etc.) here.
-%\include{}
 
-\mainmatter
-%    Include main chapters here.
-
-\part{Introduction}
 \include{why_read_this_book}
 \include{how_read_this_book}
-%\include{} % what about deep learning
+\include{acknowledgements}
+
+\mainmatter
+
+%    Include main chapters here.
 
 \part{Fundamentals}
 \include{convex_sets_functions}
@@ -73,9 +72,6 @@
 \include{kkt_conditions}
 \include{duality_correspondences}
 
-%\part{Case studies}
-%\include{svm}
-
 \part{Advanced topics}
 \include{bregman_divergences} % See sketch in bregman_notes
 \include{lasso}
@@ -89,7 +85,7 @@
 % - Group lasso: see Thm 12 here: https://arxiv.org/abs/2305.16534
 % - Locally adaptive regression splines, RTV splines, etc.
 
-% Monotone operators?
+% Monotone operators? Not sure ...
 
 % Something on pertubation/sensitivity analysis? MAYBE if I can find enough?
 % - Chapter 5.6 of BV gives KKT interpretation.
@@ -103,7 +99,6 @@
 \include{app_point_set_topology}
 \include{app_multivariate_calculus}
 \include{app_linear_algebra}
-% Numerical linear algebra?
 
 \backmatter
 %    Bibliographies can be prepared with BibTeX using amsplain,
