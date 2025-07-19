@@ -673,8 +673,8 @@ infimum:
   $x$, say $s_1$ and $s_2$, where $\spa\{s_1, s_2\} = \partial f(x)$; 
 \item and so on, up through category-$d$, where $\dom(f) \subseteq \R^d$. 
 \end{itemize}
-Points in category-1 can be thought of as the ``most smooth'', and points in
-category-$d$ as the ``least smooth'' (among categories 1 through $d$, excluding
+Points in category-1 can be interpreted as the ``most smooth'', while points in
+category-$d$ are ``least smooth'' (among categories 1 through $d$, excluding
 0): for a point $x$ in category-$d$ the normal cone to the sublevel set $\{y :
 f(y) \leq f(x)\}$ at $x$ is $d$-dimensional, which means the sublevel set looks
 ``pointy'' at $x$, like a vertex on a polyhedron, or the bottom left and top
@@ -682,11 +682,11 @@ right points along the level set drawn in Figure \ref{fig:subgradient_normal}.
 
 We already know from Theorem \ref{thm:smoothness_properties} part (iii) that
 categories 2 through $d$ are, altogether, ``rare'' compared to category-1: the
-union of category-2 through $d$ points only make up a set of Lebesgue measure 
+union of points in categories 2 through $d$ only form a set of Lebesgue measure
 zero in $\interior(\dom(f))$. But in fact, we can say something much finer along
-any slice through the graph of a convex function $f$: on any such slice, it
+any slice through the graph of a convex function $f$. On any such slice, it
 turns out that $f$ can only have a \emph{countable} number of category-$d$
-points, in the ``least  smooth'' category.   
+points, in the ``least smooth'' category.
 
 \begin{Theorem}
 \label{thm:subgradient_category_d}
@@ -697,14 +697,14 @@ points along the level set $\{x : f(x) = t\}$.
 
 % For example, Proposition 11.6.2 in Berger (2004), Part I
 
-The proof of Theorem \ref{thm:subgradient_category_d} is elementary, and it
-rests critically on the normal cone formulation of subgradients in Theorem 
+The proof of Theorem \ref{thm:subgradient_category_d} is elementary and 
+rests critically on the normal cone representation of subgradients in Theorem 
 \ref{thm:subgradient_normal}. Essentially, it uses the normal cone relationship
-(and convexity of the sublevel set) to argue that the interiors of 
-conic hulls of category-$d$ subdifferentials along the level set form a
-collection of disjoint open sets in $\R^d$, and hence by classical arguments in 
+(and convexity of the sublevel set) to argue that the interiors of the
+conic hulls of category-$d$ subdifferentials along a level set form a
+collection of disjoint open sets in $\R^d$, hence by classical arguments in
 analysis, there can be at most a countable number of them. See Exercise
-\ref{ex:subgradient_category_d}.   
+\ref{ex:subgradient_category_d}.    
 
 \SkipTocEntry\section*{Chapter notes}
 
