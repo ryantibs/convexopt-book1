@@ -401,13 +401,12 @@ positively homogeneous $f$ (Exercise
 \prox_{f + \frac{m}{2}\|\cdot\|_2^2} = 
 \prox_{\frac{m}{2}\|\cdot\|_2^2} \circ \prox_f.
 \end{equation}
-Finally, denoting by \smash{$\|\cdot\|_{\TV}$} the TV seminorm defined in
-\eqref{eq:tv}, for any permutation invariant $f$ and $\lambda > 0$, it holds
-that (Exercise \ref{ex:generalized_tv_proximal_mapping}):  
+Finally, denoting by \smash{$|\cdot|_{\TV}$} the TV seminorm in \eqref{eq:tv},
+for any permutation invariant $f$ and $\lambda > 0$, it holds that (Exercise
+\ref{ex:generalized_tv_proximal_mapping}):   
 \begin{equation}
 \label{eq:generalized_tv_proximal_mapping}
-\prox_{f + \lambda \|\cdot\|_{\TV}} = \prox_f \circ \prox_{\lambda
-  \|\cdot\|_{\TV}}.   
+\prox_{f + \lambda |\cdot|_{\TV}} = \prox_f \circ \prox_{\lambda |\cdot|_{\TV}}.    
 \end{equation}
 See the chapter notes for further discussion of the proximal decomposition 
 phenomenon \eqref{eq:proximal_general_sum}.  
@@ -1166,11 +1165,11 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
    $x \in \R^d$ and $i,j$}.
  \]
 
-\item Let \smash{$\|x\|_{\TV} = \sum_{(i,j) \in E} |x_i - x_j|$} be a
-  generalized TV seminorm, defined with respect to an edge set $E$ (notice that  
-  this generalizes \eqref{eq:tv}, which corresponds to $E = \{(i, i+1) : i =
+\item Denote by \smash{$|x|_{\TV} = \sum_{(i,j) \in E} |x_i - x_j|$}, a
+  generalized TV seminorm, defined with respect to an edge set $E$ (note that
+  this generalizes \eqref{eq:tv} which corresponds to $E = \{(i, i+1) : i =
   1,\dots,d-1\}$. Prove that \eqref{eq:generalized_tv_proximal_mapping} holds
-  for any permutation invariant $f$ and any edge set $E$. Hint: check that the
+  for any permutation invariant $f$ and any edge set $E$. Hint: check that the 
   condition in part a holds, for the appropriate instantiation of cones $K_i$,
   $i=1,\dots,k$; and for this, use the order-preserving property from part b.   
 \index{total variation (TV) penalty!proximal mapping}
