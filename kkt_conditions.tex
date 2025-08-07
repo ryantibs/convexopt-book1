@@ -788,7 +788,7 @@ nonlinear equality and inequality constraints). Exercise
 \item \label{ex:penalized_limit}
   Consider the penalized \eqref{eq:penalized_problem} and constrained
   \eqref{eq:constrained_problem} problems, for $\ell$ convex and $r =
-  \|\cdot\|$ a norm. Note that when $t = 0$, the solution in
+  \|\cdot\|$, a norm. Note that when $t = 0$, the solution in
   \eqref{eq:constrained_problem} is \smash{$\htheta = 0$}, however, Slater's
   condition does not hold and Theorem \ref{thm:constrained_penalized} cannot be
   applied to infer \smash{$\htheta =  0$} solves
@@ -796,7 +796,7 @@ nonlinear equality and inequality constraints). Exercise
   \ell(0)$ is bounded, show directly that \smash{$\htheta = 0$} solves
   \eqref{eq:penalized_problem} for large enough $\lambda$, in particular for 
   \[
-  \lambda \geq \sup \, \{ \|s\|_* : s \in \partial \ell(0) \},
+  \lambda \geq \inf \, \{ \|s\|_* : s \in \partial \ell(0) \},
   \]
   where $\|\cdot\|_*$ is the dual norm of $\|\cdot\|$. Hint: recall the fact in 
   \eqref{eq:norm_subgradients} about subgradients of $\|\cdot\|$.
