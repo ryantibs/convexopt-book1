@@ -1113,7 +1113,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
 
 \item Assume that 
   \begin{equation}
-  \label{eq:proximal_decomposition_condition1}
+  \label{eq:proximal_decomposition_condition}
   \partial g(x) \subseteq \partial g(\prox_f(x)), \quad \text{for all $x$}. 
   \end{equation}
   Show that, for any $x$, the point $\prox_f(\prox_g(x))$ must then satisfy   
@@ -1128,9 +1128,8 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
 
 \item Let \smash{$g = \sum_{i=1}^k g_i$}, with each $g_i$ closed and convex, 
   and \smash{$\cap_{i=1}^k \relint(\dom(g_i)) \not= \emptyset$}. Prove that
-  \eqref{eq:proximal_decomposition_condition1} is implied by
+  \eqref{eq:proximal_decomposition_condition} is implied by
   \begin{equation}
-  \label{eq:proximal_decomposition_condition2}
   \partial g_i(x) \subseteq \partial g_i(\prox_f(x)), \quad \text{for all $x$, 
     and $i=1,\dots,k$},  
   \end{equation}
@@ -1147,10 +1146,10 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   
 \begin{enumerate}[label=\alph*.]
 \item Show that the sufficient condition in
-  \eqref{eq:proximal_decomposition_condition2}, from Exercise
-  \ref{ex:proximal_general_sum} part c, is equivalent to  
+  \eqref{eq:proximal_decomposition_condition}, from Exercise
+  \ref{ex:proximal_general_sum} part b, is equivalent to  
   \[
-  \prox_g(K_i) \subseteq K_i, \quad i=1,\dots,k,
+  \prox_f(K_i) \subseteq K_i, \quad i=1,\dots,k,
   \]
   where each $K_i = \{x : a_i^\T x = g(x)\}$ is a polyhedral cone. Hint: use the
   subgradient rule for a pointwise maximum from Property
