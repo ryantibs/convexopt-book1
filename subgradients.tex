@@ -446,7 +446,7 @@ differentiable convex function.
 
 It is natural to ask whether there is a converse to the subgradient monotonicity
 condition. For gradients, recall, there is a converse result: if $f$ is
-differentiable, and $(\nabla f(x) - \nabla (y))^\T (x-y) \geq 0$ for all $x,y$,
+differentiable, and $(\nabla f(x) - \nabla f(y))^\T (x-y) \geq 0$ for all $x,y$, 
 then $f$ is convex (Exercise \ref{ex:gradient_monotonicity}). However, for
 subgradients we will need to be careful at the outset, in even just posing the
 question precisely. For example, if $\partial f(x) = \emptyset$ for all $x$, as
@@ -456,7 +456,7 @@ convex. On the other hand, if we assumed that subgradients exist on
 $\relint(\dom(f))$, then $f$ would already be convex (provided $f$ is closed;
 recall Theorem \ref{thm:subgradient_existence}).
 
-A way to pose the converse question precisely is as follows. Given a set-valued
+One way to pose a converse question precisely is as follows: given a set-valued  
 operator $T$, with $T(x) \subseteq \R^d$ for each $x \in \R^d$ (and possibly
 $T(x) = \emptyset$ for some $x$), if 
 \index{monotone operator}
@@ -477,9 +477,10 @@ f(y) \geq f(x_i) + s_i^\T (y-x_i), \quad i \in I.
 
 Interestingly, monotonicity of $T$, as in \eqref{eq:T_monotonicity}, is not
 enough, but a suitable generalization of this condition is. To motivate this,
-let $(x_i, s_i)$, $i=1,\dots,n$ denote any $n$ points in the graph of $\partial
-f$; that is, satisfying $s_i \in \partial f(x_i)$, $i=1,\dots,n$. Writing
-$x_{n+1}=x_1$ for convenience, adding together the $n$ subgradient inequalities  
+let $(x_i, s_i)$, $i=1,\dots,n$ denote any $n$ points which lie in the graph of
+$\partial f$; that is, satisfying $s_i \in \partial f(x_i)$,
+$i=1,\dots,n$. Writing $x_{n+1}=x_1$ for convenience, adding together the $n$
+subgradient inequalities
 \[
 f(x_{i+1}) \geq f(x_i) \geq s_i^\T (x_{i+1} - x_i), \quad i=1,\dots,n,
 \]
@@ -495,8 +496,10 @@ monotone}. The argument just given shows that $\partial f$ is itself cyclically
 monotone.
 \index{monotone operator!cyclical}
 
-The next result, which we call \emph{Rockafellar's embedding theorem}, gives a
-complete characterization of subgradients and monotonicity.  
+The key insight in what we call \emph{Rockafellar's embedding theorem}, given
+next, is that a converse statement is true as well: cyclical monotonicity
+(together with maximality) is enough to ensure that a given operator is the
+subdifferential of a convex function.      
 
 \index{Rockafellar's embedding theorem}
 \index{monotone operator!maximal}
@@ -673,8 +676,8 @@ infimum:
   $x$, say $s_1$ and $s_2$, where $\spa\{s_1, s_2\} = \partial f(x)$; 
 \item and so on, up through category-$d$, where $\dom(f) \subseteq \R^d$. 
 \end{itemize}
-Points in category-1 can be interpreted as the ``most smooth'', while points in
-category-$d$ are ``least smooth'' (among categories 1 through $d$, excluding
+Points in category-1 can be interpreted as the ``most smooth'', whereas points
+in category-$d$ are ``least smooth'' (among categories 1 through $d$, excluding 
 0): for a point $x$ in category-$d$ the normal cone to the sublevel set $\{y :
 f(y) \leq f(x)\}$ at $x$ is $d$-dimensional, which means the sublevel set looks
 ``pointy'' at $x$, like a vertex on a polyhedron, or the bottom left and top
