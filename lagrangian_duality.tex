@@ -772,10 +772,10 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   of the (real part of the) Lagrangian over these roots. 
 
 \item The transportation problem from Example \parref{xa:transportation}   
-  offers an intuitive example of LP duality. In this setting, recall, we have a
-  per unit transportation cost $c_{ij}$ from location $i$ to $j$, a supply $s_i$
-  at $i$, and a demand $d_j$ at $j$. The problem is to minimize the total
-  transportation cost:  
+  provides an intuitive example of LP duality. In this setting, recall, we have
+  a per unit transportation cost $c_{ij}$ from location $i$ to $j$, a supply
+  $s_i$ at $i$, and a demand $d_j$ at $j$. The problem is to minimize the total
+  transportation cost:   
   \begin{alignat*}{2}
   &\minimize_x \quad && \sum_{i=1}^m \sum_{j=1}^n c_{ij} x_{ij} \\ 
   &\st \quad && \sum_{j=1}^n x_{ij} = s_i, \; i=1,\dots,m \\
@@ -785,9 +785,9 @@ in Corollary \ref{cor:slater_sdp}. Exercises
   Prove that its dual is (equivalent to, after reparametrization):    
   \begin{alignat*}{2}
   &\maximize_{u,v} \quad && \sum_{i=1}^m u_i s_i + \sum_{j=1}^n v_j d_j \\  
-  &\st \quad && u_i + v_i \leq c_{ij}, \; i=1,\dots,m, \; j=1,\dots,n,
+  &\st \quad && u_i + v_i \leq c_{ij}, \; i=1,\dots,m, \; j=1,\dots,n.
   \end{alignat*}
-  which is sometimes referred to as the \emph{shipper's problem}. The
+  This is sometimes referred to as the \emph{shipper's problem}, and the 
   interpretation is as follows. A shipper puts forth a proposal to charge $u_i$
   to load each unit from location $i$ and $v_j$ to unload each unit from
   location $j$. The shipper will try to maximize their profit, but must not
