@@ -715,7 +715,7 @@ f(x) \leq \liminf_{k \to \infty} f(x_k).
 \]
 (We emphasize that in our definition the point $x$ does not need to be in
 $\dom(f)$, and the sequence \smash{$\{x_k\}_{k=1}^\infty$} does need to be
-contained in $\dom(f)$.)  We call a function $f$ lower semicontinuous if it
+contained in $\dom(f)$.)  We say a function $f$ is lower semicontinuous if it 
 is lower semicontinuous at each $x \in \R^d$. The next lemma collects a few 
 relevant equivalences.
 
@@ -731,7 +731,7 @@ For any $f : \R^d \to [-\infty, \infty]$, the following statements are equivalen
 \end{Lemma}
 
 \index{closed function}
-We call a function \emph{closed} if its epigraph is closed, and we use this
+We say a function is \emph{closed} if its epigraph is closed, and we use this
 terminology interchangeably with lower semicontinuity (since, according to the
 above, they are equivalent properties). Recall by Theorem
 \ref{thm:smoothness_properties} part (i) that a convex function $f$ is
@@ -761,7 +761,7 @@ set of minima if there exists some $t \in \R$ such that $\{ x : f(x) \leq t\}$
 is nonempty and bounded. Two simple sufficient conditions for the latter to
 hold (existence of a nonempty bounded sublevel set) are:
 \begin{enumerate}[label=(\roman*)]
-\item $\dom(f)$ is bounded; 
+\item $\dom(f)$ is bounded; or
 \item $f$ is \emph{coercive}, which means that \smash{$\lim_{k \to \infty}
     f(x_k) \to \infty$} whenever \smash{$\lim_{k \to \infty} \|x_k\|_2 \to
     \infty$}.  
@@ -795,7 +795,7 @@ has a nonempty and compact solution set if there exists $t \in \R$ such that
 $\{x \in C : f(x) \leq t\}$ is nonempty and bounded. Two simple sufficient
 conditions for the latter to hold are:
 \begin{enumerate}[label=(\roman*)]
-\item $C$ is bounded; 
+\item $C$ is bounded; or
 \item $f$ is \emph{coercive on $C$}, which means that \smash{$\lim_{k \to
       \infty} f(x_k) \to \infty$} whenever \smash{$\{x_k\}_{k=1}^\infty
     \subseteq C$} and \smash{$\lim_{k \to   \infty} \|x_k\|_2 \to \infty$}. 
