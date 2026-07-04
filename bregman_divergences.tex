@@ -1,6 +1,68 @@
 \chapter{Bregman divergences}
 
+This chapter studies a concept which generalizes Euclidean distance. This
+generalization measures the discrepancy between two points using the curvature
+of a given convex function.   
+
 \section{Definition and properties}
+
+\index{Legendre function}
+Let $\phi$ be a function of Legendre type with $\Omega = \interior(\dom(\phi)) 
+\subseteq \R^d$. Recall, as defined in Chapter \ref{sec:conjugate_smoothness},
+this is a function that is essentially smooth and essentially strictly convex. 
+The \emph{Bregman divergence} $D_\phi$ corresponding to $\phi$ is a real-valued
+map on $\Omega \times \Omega$ defined as  
+\index{Bregman divergence}
+\begin{equation}
+\label{eq:bregman_divergence}
+D_\phi(x,y) = \phi(x) - \phi(y) - \nabla \phi(y)^\T (x - y).
+\end{equation}
+The value $D_\phi(x,y)$ can be interpreted as the gap between the value
+$\phi(x)$ and its first-order approximation $\phi(y) + \nabla \phi(y)^\T (x -
+y)$ centered at $y$. Since $\phi$ is convex, we know that $D_\phi(x,y) \geq
+0$. Further, as $\phi$ is strictly convex on the line segment joining $x$ and
+$y$, we know that $D_\phi(x,y) > 0$ for $x \not= y$. 
+
+In what follows, we refer to $\phi$ as the \emph{potential function} underlying
+the Bregman divergence $D_\phi$. An important special case is the quadratic
+potential \smash{$\phi(x) = \frac{1}{2} \|x\|_2^2$}. In this case, one can check
+that \smash{$D_\phi(x,y) = \frac{1}{2} \|x-y\|_2^2$}, half of the squared
+Euclidean distance between $x$ and $y$. In general, we note that $D_\phi$ is not
+necessarily a proper distance (or monotone transformation of a distance); for
+example, it does not even need to be symmetric in its arguments. Still, Bregman 
+divergences admit a number of useful properties, described next.    
+
+\paragraph{Convexity in its first argument.}
+
+For any fixed $y$, the map $x \mapsto D_\phi(x,y)$ is convex; to see this, note
+that this can be written as $x \mapsto \phi(x) + a^\T x + b$, for $a,b$
+depending on $y$. This means that a Bregman ball centered around its second 
+argument, of the form     
+\[
+\{ x : D_\phi(x,y) \leq t \},
+\]
+for fixed $y,t$, is a convex set. Furthermore, Bregman balls of this type are
+also compact if $\phi$ is closed (Exercise \ref{ex:bregman_first}).     
+
+\paragraph{Star-convexity in its second argument.} 
+
+\index{Star-convex function}
+Meanwhile, for any fixed $x$, the map $y \mapsto D_\phi(x,y)$ is not necessarily
+convex. However, it satisfies a weaker property called \emph{star-convexity}.
+Precisely, the map $y \mapsto D_\phi(x,y)$ attains its minimum at $x$, and it is 
+convex along any line passing through $x$ (Exercise \ref{ex:bregman_second}).       
+This means that a Bregman ball centered around its first argument, of the form   
+\[
+\{ y : D_\phi(x,y) \leq t \},
+\]
+for fixed $x,t$, is a star-convex set: for any $y$ in this set, the line segment 
+joining $x$ and $y$ lies entirely in the set. 
+
+\paragraph{Three-point identity.}
+
+
+
+
 
 % In what ways do these preserve properties of distances? In what ways do they
 % not? 
@@ -12,6 +74,8 @@
 
 % This paper: https://cmps-people.ok.ubc.ca/bauschke/Research/103.pdf may help
 % as a resource 
+
+Pythagorean theorem from law of cosines
 
 \section{Conjugacy connections}
 
@@ -34,8 +98,10 @@
 % Deviance in exponential family can be written in terms of a Bregman
 % divergence, in TWO ways. These two ways are related by conjugacy.
 
-% Does this help for optimism / covariance formula type results? I think Brad's
-% work shows that it does? 
+% The usual "primal" representation D_\phi(\theta,\theta^*) is most useful for
+% training since this loss is convex in \theta. The alternative "dual"
+% representation D_\phi(y,\mu) is more useful for evaluation b/c the covariance
+% formula for excess risk works more cleanly this way. Brad's work shows this. 
 
 \section{Proper loss functions*}
 
@@ -44,3 +110,17 @@
 
 % Conjugacy relation gives rise to a way to define a surrogate loss (credit to
 % John Duchi)
+
+\SkipTocEntry\section*{Chapter notes}
+
+\clearpage
+
+\begin{xcb}{Exercises}
+\begin{enumerate}[label=\thechapter.\arabic*]
+\settowidth{\leftmargini}{00.00.\hskip\labelsep}
+\item \label{ex:bregman_first}
+
+\item \label{ex:bregman_second}
+
+\end{enumerate}
+\end{xcb}
