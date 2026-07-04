@@ -1,11 +1,26 @@
 \chapter{Fine properties of the lasso}
 \label{chap:lasso}
 
-In this chapter, we revisit the lasso problem and study in finer detail some of
-the properties of its solutions. 
+We revisit the lasso problem and study in finer detail some properties of its
+solutions.    
 
 \section{Structure of solutions}
 \label{sec:lasso_structure}
+
+Given a response vector $y \in \R^n$ and feature matrix $X \in \R^{n \times p}$,
+the lasso problem is
+\begin{equation}
+\label{eq:lasso_primal3}
+\minimize_\beta \quad \frac{1}{2} \|y - X \beta\|_2^2 + \lambda \|\beta\|_1. 
+\end{equation}
+The KKT conditions, which for this problem reduce to subgradient optimality, are  
+\index{lasso!optimality conditions}
+\begin{equation}
+\label{eq:lasso_optimality2}
+X^\T (y - X\beta) = \lambda s, \quad \text{where $s \in \partial
+  \|\beta\|_1$}. 
+\end{equation}
+
 
 % Give basic properties (unique fit, unique \ell_1 norm)
 % Give algebraic form of lasso solutions by KKT manipulation 
