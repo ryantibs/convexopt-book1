@@ -7,21 +7,21 @@ of a given convex function.
 \section{Definition and properties}
 
 \index{Legendre function}
-Let $\phi$ be a function of Legendre type with $\Omega = \interior(\dom(\phi)) 
-\subseteq \R^d$. Recall, as defined in Chapter \ref{sec:conjugate_smoothness},
-this is a function that is essentially smooth and essentially strictly convex. 
-The \emph{Bregman divergence} $D_\phi$ corresponding to $\phi$ is a real-valued
-map on $\Omega \times \Omega$ defined as  
+Let $\phi : \R^d \to (-\infty,\infty]$ be a function of Legendre type, which we
+recall (Chapter \ref{sec:conjugate_smoothness}) means that $\phi$ is essentially
+smooth and essentially strictly convex. The \emph{Bregman divergence} $D_\phi$
+corresponding to $\phi$ is a map defined for \smash{$x \in \bar\Omega =
+  \dom(\phi)$} and $y \in \Omega = \interior(\dom(\phi))$ by     
 \index{Bregman divergence}
 \begin{equation}
 \label{eq:bregman_divergence}
-D_\phi(x,y) = \phi(x) - \phi(y) - \nabla \phi(y)^\T (x - y).
+D_\phi(x,y) = \phi(x) - \phi(y) - \nabla\phi(y)^\T (x - y).
 \end{equation}
 The value $D_\phi(x,y)$ can be interpreted as the gap between the value
-$\phi(x)$ and its first-order approximation $\phi(y) + \nabla \phi(y)^\T (x -
+$\phi(x)$ and its first-order approximation $\phi(y) + \nabla\phi(y)^\T (x -
 y)$ centered at $y$. Since $\phi$ is convex, we know that $D_\phi(x,y) \geq
-0$. Further, as $\phi$ is strictly convex on the line segment joining $x$ and
-$y$, we know that $D_\phi(x,y) > 0$ for $x \not= y$. 
+0$. Further, since $\phi$ is strictly convex on the line segment joining $x$ and 
+$y$, we have $D_\phi(x,y) > 0$ for $x \not= y$. 
 
 In what follows, we refer to $\phi$ as the \emph{potential function} underlying
 the Bregman divergence $D_\phi$. An important special case is the quadratic
@@ -32,40 +32,98 @@ necessarily a proper distance (or monotone transformation of a distance); for
 example, it does not even need to be symmetric in its arguments. Still, Bregman 
 divergences admit a number of useful properties, described next.    
 
-\paragraph{Convexity in its first argument.}
+\paragraph{Convex in its first argument.}
+\parlab{par:bregman_first}
 
-For any fixed $y$, the map $x \mapsto D_\phi(x,y)$ is convex; to see this, note
-that this can be written as $x \mapsto \phi(x) + a^\T x + b$, for $a,b$
-depending on $y$. This means that a Bregman ball centered around its second 
-argument, of the form     
+For any fixed $y$, the map $x \mapsto D_\phi(x,y)$ is convex. To see this, note
+that this map can be written as $x \mapsto \phi(x) + a^\T x + b$, where $a,b$ 
+depend on $y$. This means that a Bregman ball centered around the second
+argument, of the form 
 \[
-\{ x : D_\phi(x,y) \leq t \},
+\{ x : D_\phi(x,y) \leq r \}
 \]
-for fixed $y,t$, is a convex set. Furthermore, Bregman balls of this type are
+for fixed $y,r$, is a convex set. Furthermore, Bregman balls of this type are
 also compact if $\phi$ is closed (Exercise \ref{ex:bregman_first}).     
 
-\paragraph{Star-convexity in its second argument.} 
+\paragraph{Star-shaped in its second argument.} 
+\parlab{par:bregman_second}
 
-\index{Star-convex function}
-Meanwhile, for any fixed $x$, the map $y \mapsto D_\phi(x,y)$ is not necessarily
-convex. However, it satisfies a weaker property called \emph{star-convexity}.
-Precisely, the map $y \mapsto D_\phi(x,y)$ attains its minimum at $x$, and it is 
-convex along any line passing through $x$ (Exercise \ref{ex:bregman_second}).       
-This means that a Bregman ball centered around its first argument, of the form   
+Meanwhile, for fixed $x$, the map $y \mapsto D_\phi(x,y)$ is not necessarily
+convex. However, it satisfies a weaker property: it is \emph{star-shaped}, with
+the point $x$ called the star-center. Precisely, this means that $t \mapsto
+D_\phi(x, (1-t) x + ty)$ is nonincreasing on $[0,1]$ for any point $y$
+(Exercise \ref{ex:bregman_second}). Consequently, a Bregman ball centered
+around the first argument,   
 \[
-\{ y : D_\phi(x,y) \leq t \},
+\{ y : D_\phi(x,y) \leq r \}
 \]
-for fixed $x,t$, is a star-convex set: for any $y$ in this set, the line segment 
-joining $x$ and $y$ lies entirely in the set. 
+for fixed $x,r$, is what is known as a \emph{star-convex} set: for any $y$ in
+this set, the line segment joining $x$ and $y$ lies entirely in the set. 
+\index{star-convex set}
+
+\paragraph{Conditions for quadratic growth.}
+
+If $\phi$ is Lipschitz smooth with parameter $L>0$, then it is easy to verify
+(using Theorem \ref{thm:lipschitz_smoothness} part (iii)) that 
+\index{Bregman divergence!quadratic growth}
+\[
+D_\phi(x,y) \leq \frac{L}{2} \|x-y\|_2^2.
+\]
+If $\phi$ is strongly convex with parameter $m>0$, then it is similarly easy to
+verify (using Theorem \ref{thm:strong_convexity} part (iii)) that 
+\[
+D_\phi(x,y) \geq \frac{m}{2} \|x-y\|_2^2.
+\]
+Therefore, for a Lipschitz smooth and strongly convex potential $\phi$, the
+Bregman divergence $D_\phi(x,y)$ grows quadratically in $x-y$ (in the sense that
+it is upper and lower bounded by constant multiples of the squared Euclidean
+distance between $x$ and $y$).
 
 \paragraph{Three-point identity.}
+\parlab{par:bregman_three_point}
 
+Euclidean distance satisfies the following \emph{three-point identity}: 
+\[
+\frac{1}{2} \|x-z\|_2^2 = \frac{1}{2} \|x-y\|_2^2 + \frac{1}{2} \|y-z\|_2^2 + 
+(y-z)^\T (x-y), 
+\]
+for any points $x,y,z \in \R^d$, which can be checked by direct
+calculation. This is sometimes called the \emph{law of cosines}. To interpret 
+this, note that the third term on the right-hand side is $(y-z)^\T (x-y) =
+-\|x-y\|_2 \|z-y\|_2 \cos(\theta)$, where $\theta$ is the angle in between $x-y$  
+and $z-y$; thus the above identity relates one side length of a triangle with
+vertices $x,y,z$ to the other two side lengths and the cosine of the angle in
+between them. (This generalizes the Pythagorean theorem for right triangles,
+which corresponds to $\cos(\theta) = 0$). Bregman divergences admit an
+analogous three-point identity:     
+\index{Bregman divergence!three-point identity}
+\[
+D_\phi(x,z) = D_\phi(x,y) + D_\phi(y,z) + (\nabla\phi(y) - \nabla(\phi(z))^\T
+(x-y),  
+\]
+for any \smash{$x \in \bar\Omega$} and $y,z \in \Omega$, which can again be
+checked by direct calculation.  
+\medskip
 
-
-
-
-% In what ways do these preserve properties of distances? In what ways do they
-% not? 
+\begin{Example}
+A key example of a Bregman divergence is the Kullback-Leibler divergence. This
+corresponds to the negative entropy potential function   
+\[
+\phi(x) = \sum_{i=1}^d x_i \log(x_i),
+\]
+also called the negative Shannon entropy. This is Legendre with $\dom(\phi) = \{
+x : \one^\T x = 1, \, x \geq 0 \}$, the probability simplex. In this case, we
+write $D_\phi(x,y) = \KL(x,y)$, where
+\index{Kullback-Leibler divergence} 
+\begin{equation}
+\label{eq:kullback_leibler}
+\KL(x,y) = \sum_{i=1}^d x_i \log(x_i / y_i),
+\end{equation}
+verified by direct calculation. The Kullback-Leibler divergence is a notable 
+case (like squared Euclidean distance) where the Bregman divergence is jointly
+convex in $x,y$ (Exercise \ref{ex:loss_functions} part d), recalling that in
+general we only know it is convex in $x$ for fixed $y$.
+\end{Example}
 
 \section{Bregman projection}
 
@@ -118,9 +176,50 @@ Pythagorean theorem from law of cosines
 \begin{xcb}{Exercises}
 \begin{enumerate}[label=\thechapter.\arabic*]
 \settowidth{\leftmargini}{00.00.\hskip\labelsep}
-\item \label{ex:bregman_first}
+\item Let $f$ be a closed convex function. Prove that $u \in
+  \interior(\dom(f^*))$ if and only if $x \mapsto f(x) - u^\T x$ has no
+  directions of recession. Hint: use Exercise \ref{ex:conjugate_recession} part
+  (i) combined with the translation rule for convex conjugates in Property
+  \parref{par:conjugate_translation}.  
+
+\item \label{ex:bregman_first} 
+  Let $\phi$ be a closed Legendre potential function, and fix $y \in
+  \interior(\dom(\phi))$. 
+
+\begin{enumerate}[label=\alph*.]
+\item Use the last exercise to prove that $x \mapsto \phi(x) - \nabla\phi(y)^\T
+  x$ has no directions of recession. Hint: use Theorem
+  \ref{thm:conjugate_legendre} to show that $\nabla\phi(y) \in
+  \interior(\dom(\phi^*))$. 
+
+\item Use part a to prove that $x \mapsto D_\phi(x,y)$ has no directions of
+  recession, and therefore has compact sublevel sets. Hint: recall Lemma
+  \ref{lem:direction_recession}. 
+\end{enumerate}
 
 \item \label{ex:bregman_second}
+  Let $\phi$ be a Legendre potential function, and fix $x \in
+  \interior(\dom(\phi))$.
 
+\begin{enumerate}[label=\alph*.]
+\item Fix $v \in \R^d$, and define $d_x(t) = D_\phi(x, x+tv)$ for $t \in \R$.
+  For $t \geq s \geq 0$, check that   
+  \[
+  d_x(t) - d_x(s) = \phi(x+sv) - \phi(x+tv) + (t\nabla(x+tv) - s\nabla(x+sv))^\T
+  v. 
+  \]
+
+\item Using convexity of $\phi$, show that 
+  \[
+  d_x(t) - d_x(s) \geq s (\nabla(x+tv) - \nabla(x+sv))^\T v \geq 0. 
+  \]
+  Use this to verify the star-shaped claim in Property
+  \parref{par:bregman_second}.   
+
+\item Now suppose $D_\phi(x,y) \leq r$. Use the star-shaped property just
+  established to verify the star-convexity claim in Property
+  \parref{par:bregman_second}, that is, $D_\phi(x, (1-t) x + ty) \leq r$ for $t
+  \in [0,1]$.   
+\end{enumerate}
 \end{enumerate}
 \end{xcb}
