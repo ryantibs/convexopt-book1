@@ -524,7 +524,7 @@ well-defined function for any closed and convex set $C$.
 Projections play a key role in various parts of convex analysis, and the design
 of optimization algorithms. We have already covered various aspects of
 projections in earlier chapters of this book, to do with optimality conditions 
-\eqref{eq:variational_inequality} and subgradients
+\eqref{eq:variational_inequality}, and subgradients
 \eqref{eq:set_distance_subgradients}. In this section, we cover numerous
 examples of projections and then discuss two of their central properties, which 
 serve as motivation for analogous properties held by proximal operators.  
@@ -724,19 +724,20 @@ subspaces is straightforward to verify. From the variational inequality
 we first note that this is actually equivalent to a variational \emph{equality}
 \begin{equation}
 \label{eq:variational_equality}
-(x - z)^\T (z - y) = 0, \quad \text{for any $y \in L$}. 
+(z - x)^\T (y - z) = 0, \quad \text{for any $y \in L$}. 
 \end{equation}
-as $v = z - y$ with $z, y \in L$ implies $v \in L$, and hence $-v \in L$. The 
+as $v = y - z$ with $y, z \in L$ implies $v \in L$, and hence $-v \in L$. The 
 corresponding variational equality for \smash{$z' = P_{L^\perp}(x)$} is
 therefore     
 \[
-(x - z')^\T (z' - y') = 0, \quad \text{for any $y' \in L^\perp$}.
+(z' - x)^\T (y' - z') = 0, \quad \text{for any $y' \in L^\perp$}.
 \]
-This is satisfied for $z' = x - z$, as we get $z^\T (x - z - y') = z^\T (x -
-z) + z^\T y' = 0 + 0$ for any $y' \in L^\perp$, the first term being zero due to 
-\eqref{eq:variational_equality} with $y = 0$, and the second term being zero due
-to the fact that $z \in L$ and $y' \in L$. This confirms \smash{$P_{L^\perp}(x) 
-  = x - P_L(x)$} and proves \eqref{eq:projection_decomposition}.   
+This holds for $z' = x - z$, as this choice leads to $-z^\T (y' - x + z) = -z^\T
+y' + z^\T (x - z) = 0 + 0$, for any $y' \in L^\perp$, the first term being zero
+due to $z \in L$ and $y' \in L$, and the second term being zero due to
+\eqref{eq:variational_equality} with $y = 0$. This confirms
+\smash{$P_{L^\perp}(x) = x - P_L(x)$} and proves  
+\eqref{eq:projection_decomposition}.     
 
 \section{Proximal nonexpansiveness*}
 \label{sec:proximal_nonexpansiveness}
@@ -1241,8 +1242,8 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   $p_y = P_C(y)$. From the variational inequality
   \eqref{eq:variational_inequality}, note that     
   \begin{align*}
-  (x - p_x)^\T (p_x - y) \geq 0, \\
-  (y - p_y)^\T (p_y - x) \geq 0.
+  (p_x - x)^\T (y - p_x) \geq 0, \\
+  (p_y - y)^\T (x - p_y) \geq 0.
   \end{align*}
 
 \begin{enumerate}[label=\alph*.]
@@ -1251,8 +1252,8 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   \big( x - p_x - (y - p_y) \big)^\T (p_x - p_y) \geq 0, \quad \text{for all
     $x,y$}. 
   \]
-  Hint: expand $p_x - y = p_x - p_y + p_y - y$ in the first inequality, $p_y - x
-  = p_y - p_x + p_x - x$ in the second inequality, then subtract the two and
+  Hint: expand $y - p_x = y - p_y + p_y - p_x$ in the first inequality, $x - p_y
+  = x - p_x + p_x - p_y$ in the second inequality, then subtract the two and
   simplify.   
   
 \item Show that the condition from part a is equivalent to firm nonexpansiveness 

@@ -314,15 +314,16 @@ convex optimization.
   \minimize_z \quad \|x - z\|_2^2 \quad \st \quad z \in C.
   \]
   The condition \eqref{eq:first_order_optimality} (now interpreted with respect
-  to $z$) gives, after rearrangement,  
+  to $z$) gives
   \index{projection!variational inequality} 
   \begin{equation}
   \label{eq:variational_inequality}
-  (x - z)^\T (z - y) \geq 0, \quad \text{for any $y \in C$}. 
+  %(x - z)^\T (z - y) \geq 0, \quad \text{for any $y \in C$}. 
+  (z - x)^\T (y - z) \geq 0, \quad \text{for any $y \in C$}. 
   \end{equation}
   This is often referred to as the \emph{variational inequality} for a
-  projection. It says that the vector pointing from $z$ to $x$ must have a
-  positive inner product with the vector pointing from $y$ to $z$, for any $y
+  projection. It says that the vector pointing from $x$ to $z$ must have a
+  positive inner product with the vector pointing from $z$ to $y$, for any $y
   \in C$. See Figure \ref{fig:variational_inequality}.    
 
 \item \parlab{xa:zero_gradient_quadratic}
@@ -356,8 +357,8 @@ convex optimization.
 \includegraphics[width=0.475\textwidth]{fig/variational_inequality.pdf}
 \caption{Illustration of the variational inequality determining the optimality
   of the projection $z$ of a point $x$ onto a convex set. The angle between the
-  line segments $zx$ and $zy$ must be at least a right angle (at least
-  $90^\circ$), for any other point $y$ in the set.}  
+  line segments $xz$ and $yz$ must be at least a right angle (at least
+  $90^\circ$), for any other point $y$ in the set.}   
 \label{fig:variational_inequality}
 \end{figure}
 
