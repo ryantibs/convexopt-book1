@@ -166,17 +166,18 @@ for Euclidean projection. The \emph{firmly nonexpansive} property
 \eqref{eq:projection_firm_nonexpansiveness1} 
 of Euclidean projection has a Bregman generalization as well: denoting 
 \smash{$z_x = P^\phi_C(x)$} and \smash{$z_y = P^\phi_C(y)$}, we have 
+\index{Bregman projection!firm nonexpansiveness}
 \begin{equation}
 \label{eq:bregman_firm_nonexpansiveness}
 (\nabla\phi(x) - \nabla\phi(y))^\T (z_x - z_y) \geq (\nabla\phi(z_x) -
-\nabla\phi(z_y))^\T (z_x - z_y) \geq 0, \quad \text{for all $x,y \in \Omega$}.  
+\nabla\phi(z_y))^\T (z_x - z_y) \geq 0, \quad \text{for all $x,y \in \Omega$},
 \end{equation}
-This follows from the variational inequality
+which follows from the variational inequality
 \eqref{eq:bregman_variational_inequality} (Exercise
 \ref{ex:bregman_firm_nonexpansiveness}). Further, a generalization of the
-Pythogorean theorem holds for Bregman projections, which can be used to
-establish a different type of nonexpansiveness (called
-quasi-nonexpansiveness, see Exercise \ref{ex:bregman_quasi_nonexpansiveness}).       
+Pythagorean theorem holds for Bregman projections (Exercise
+\ref{ex:bregman_pythagorean_theorem}), which can be used to establish
+a different type of nonexpansiveness (called quasi-nonexpansiveness). 
 
 From another angle, to examine the differences between Bregman and Euclidean
 projections, it may help build intuition to visualize projection as follows. We
@@ -315,12 +316,12 @@ Bregman proximal: \cite{bauschke2017descent}
   0$. Then use monotonicity of the derivative to argue that indeed $g$ must
   approach $-\infty$ at 0. 
 
+\index{Bregman projection}
 \item \label{ex:bregman_projection}
-  In this exercise, we study existence and uniqueness of Bregman
-  projections. Let $\phi$ be closed and Legendre, let
-  $\Omega = \interior(\dom(\phi))$, and let $C$ be a closed convex set with $C
-  \cap \Omega \not= \emptyset$. Let  $S^\star$ denote the set of minima of the
-  problem in \eqref{eq:bregman_projection}. 
+  We study existence and uniqueness of Bregman projections; let $\phi$ be closed 
+  and Legendre, let $\Omega = \interior(\dom(\phi))$, and let $C$ be a closed
+  convex set with $C \cap \Omega \not= \emptyset$. Let $S^\star$ denote the set
+  of minima of the problem in \eqref{eq:bregman_projection}. 
   % Theorem 3.12 in Bauschke and Borwein (1997)
 
 \begin{enumerate}[label=\alph*.]
@@ -337,9 +338,72 @@ Bregman proximal: \cite{bauschke2017descent}
   convexity implies $\phi$ is strictly convex on $\Omega$. 
 \end{enumerate}
 
+\index{Bregman projection!firm nonexpansiveness}
 \item \label{ex:bregman_firm_nonexpansiveness}
+  Show that the Bregman variational inequality
+  \eqref{eq:bregman_variational_inequality} for \smash{$z_y = P^\phi_C(y)$}
+  implies  
+  \[
+  (\nabla\phi(z_y) - \nabla\phi(y))^\T (z_x - z_y) \geq 0.
+  \]
+  Show similarly that for \smash{$z_x = P^\phi_C(x)$},
+  \[
+  (\nabla\phi(z_x) - \nabla\phi(x))^\T (z_y - z_x) \geq 0.
+  \]
+  Use these two inequalities to establish the firmly nonexpansive property
+  \eqref{eq:bregman_firm_nonexpansiveness}. 
 
-\item \label{ex:bregman_quasi_nonexpansiveness}
+\item \label{ex:bregman_pythagorean_theorem}
+  In this exercise, we explore Pythagorean theorems for Euclidean projection and
+  their generalizations for Bregman projection. Let $\phi$ be closed and
+  Legendre, let $\Omega = \interior(\dom(\phi))$, and let $C$ be a closed convex
+  set with $C \cap \Omega \not= \emptyset$. 
+
+\begin{enumerate}[label=\alph*.]
+\item Use the three-point identity \eqref{eq:three_point} with $z = P_C(y)$,
+  the Euclidean projection of $y$ onto $C$, to prove that   
+  \index{Euclidean projection!Pythagorean theorem}
+  \[
+  \|x-y\|_2^2 \geq \|x - P_C(y)\|_2^2 + \|P_C(y) - y\|_2^2, \quad \text{for any
+    $x \in C$}. 
+  \]
+  Hint: use the variational inequality \eqref{eq:variational_inequality} (but
+  note in the present case, the roles of $x,y$ are reversed). 
+
+\item If $C$ is an affine subspace, prove that equality holds in the above:  
+  \[
+  \|x-y\|_2^2 = \|x - P_C(y)\|_2^2 + \|P_C(y) - y\|_2^2, \quad \text{for any
+    $x \in C$}. 
+  \]
+  Hint: prove that the variational equality \eqref{eq:variational_equality}
+  holds for affine projection, as it does for linear projection. Note: this can
+  be seen as the multivariate formulation of the classical Pythagorean theorem
+  for right triangles.  
+
+\item Extend the result in part a to Bregman projection, using the three-point
+  identity \eqref{eq:bregman_three_point} with \smash{$z = P^\phi_C(y)$}:
+  \index{Bregman projection!Pythagorean theorem}
+  \[
+  D_\phi(x,y) \geq D_\phi(x,P_C(y)) + D_\phi(P_C(y),y), \quad \text{for any $x
+    \in C$}.  
+  \]
+
+\item Extend the result in part b to Bregman projection, in the case that $C$ is
+  affine: 
+  \[
+  D_\phi(x,y) = D_\phi(x,P_C(y)) + D_\phi(P_C(y),y), \quad \text{for any $x
+    \in C$}.  
+  \]
+  Hint: prove again that the equality holds in
+  \eqref{eq:bregman_variational_inequality}, when $C$ is affine.
+
+\item Use part c to derive a property called \emph{quasi-nonexpansiveness} of
+  Bregman projection: 
+  \index{Bregman projection!quasi-nonexpansiveness}
+  \[
+  D_\phi(x,y) \geq D_\phi(x,P_C(y)), \quad \text{for any $x \in C$}.  
+  \]
+\end{enumerate}
 
 \item \label{ex:bregman_proximal}
 
