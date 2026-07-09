@@ -189,14 +189,14 @@ point $x$ is defined by
 -\nabla_x D_\phi(x,y) = \nabla\phi(y) - \phi(x).
 \]
 In the case of Euclidean projection, \smash{$\phi(x) = \frac{1}{2} \|x\|_2^2$},
-hence this normal direction evolves as a straight line $y-x$ as a function of
+thus this normal direction evolves as a straight line $y-x$ as a function of
 $x$. However, for a general potential $\phi$, the direction evolves as a curved
 line $\nabla\phi(y) - \phi(x)$ in $x$. In other words, while this
-constructed ``shortest path'' from \smash{$z = P^\phi_C(y)$} to $y$ is straight
-for Euclidean projection, it is curved for Bregman projection. This reflects
-the fact that Bregman divergence measures discrepancy between its arguments in a
+constructed ``shortest path'' from $y$ to  \smash{$z = P^\phi_C(y)$} is straight
+for Euclidean projection, it is curved for Bregman projection. This reflects the
+fact that Bregman divergence measures discrepancy between its arguments in a
 geometry informed by the curvature of $\phi$. Figure
-\ref{fig:bregman_projection} gives an illustration. 
+\ref{fig:bregman_projection} gives an illustration.
 
 \begin{figure}[tb]
 \centering
@@ -210,7 +210,7 @@ geometry informed by the curvature of $\phi$. Figure
 \end{figure}
 
 Lastly, a generalization of the proximal operator \eqref{eq:proximal_mapping}
-using Bregman divergences is also possible. Exercise \ref{ex:bregman_proximal}
+using Bregman divergence is also possible. Exercise \ref{ex:bregman_proximal}
 develops this and associated properties.
 
 \section{Conjugacy connections}
@@ -248,6 +248,9 @@ develops this and associated properties.
 % John Duchi)
 
 \SkipTocEntry\section*{Chapter notes}
+
+Bregman projection: \cite{bauschke1997legendre}
+Bregman proximal: \cite{bauschke2017descent}
 
 \clearpage
 
@@ -300,7 +303,39 @@ develops this and associated properties.
   \in [0,1]$.   
 \end{enumerate}
 
+\item \label{ex:essentially_smooth_boundary}
+  Let $\phi$ be essentially smooth with $\Omega = \interior(\dom(\phi)$. Prove
+  that for any $z \in \Omega$ and $x \in \boundary(\Omega)$, 
+  \[
+  \nabla\phi(x + t(z-x))^\T (z-x) \to -\infty, \quad \text{as $t \to 0$}.
+  \]
+  % Lemma 26.3 in Rockafellar (1970)
+  Hint: consider the univariate convex function $g(t) = \phi(x+t(z-x))$, and
+  argue that essential smoothness implies $|g(t)| \to \infty$ as $t \to
+  0$. Then use monotonicity of the derivative to argue that indeed $g$ must
+  approach $-\infty$ at 0. 
+
 \item \label{ex:bregman_projection}
+  In this exercise, we study existence and uniqueness of Bregman
+  projections. Let $\phi$ be closed and Legendre, let
+  $\Omega = \interior(\dom(\phi))$, and let $C$ be a closed convex set with $C
+  \cap \Omega \not= \emptyset$. Let  $S^\star$ denote the set of minima of the
+  problem in \eqref{eq:bregman_projection}. 
+  % Theorem 3.12 in Bauschke and Borwein (1997)
+
+\begin{enumerate}[label=\alph*.]
+\item First prove that $S^\star \not= \emptyset$. Hint: recall Theorem
+  \ref{thm:weierstrass} and Exercise \ref{ex:bregman_first} part b. 
+
+\item Next prove that $S^\star \subseteq \Omega$. Suppose not and fix any 
+  \smash{$\bar{z} \in S^\star \setminus \Omega$}. Also fix $z \in \Omega$ and
+  define $g(t) = D_\phi(tz + (1-t)\bar{z}, y)$. Use Exercise 
+  \ref{ex:essentially_smooth_boundary} to show that $g(t) < g(0)$ for
+  sufficiently small positive $t$, which is a contradiction. 
+
+\item Lastly prove that $S^\star$ is a singleton. Hint: essentially strict
+  convexity implies $\phi$ is strictly convex on $\Omega$. 
+\end{enumerate}
 
 \item \label{ex:bregman_firm_nonexpansiveness}
 
