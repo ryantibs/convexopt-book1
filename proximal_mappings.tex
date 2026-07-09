@@ -670,7 +670,7 @@ general property for convex projections that is called \emph{firm
 \index{projection!firm nonexpansiveness}
 \begin{equation}
 \label{eq:projection_firm_nonexpansiveness1}
-\big( P_C(x) - P_C(y) \big)^\T (x - y) \geq \| P_C(x) - P_C(y) \|_2^2, \quad
+(x - y)^\T \big( P_C(x) - P_C(y) \big) \geq \| P_C(x) - P_C(y) \|_2^2, \quad 
 \text{for all $x,y$}. 
 \end{equation}
 Firm nonexpansiveness follows from variational inequality
@@ -748,7 +748,7 @@ onto convex sets, it turns out that $\prox_f$ is \emph{firmly nonexpansive},
 \index{proximal mapping!firm nonexpansiveness}
 \begin{equation}
 \label{eq:proximal_firm_nonexpansiveness1}
-\big( \prox_{\lambda f}(x) - \prox_{\lambda f}(y) \big)^\T (x - y) \geq 
+(x - y)^\T \big( \prox_{\lambda f}(x) - \prox_{\lambda f}(y) \big) \geq 
 \| \prox_{\lambda f}(x) - \prox_{\lambda f}(y) \|_2^2, \quad \text{for all  
   $x,y$},   
 \end{equation}
@@ -759,8 +759,8 @@ appropriate tools: the proximal subgradient characterization, and subgradient
 monotonicity. To see this, without loss of generality, we take $\lambda = 1$,
 and abbreviate $z_x = \prox_f(x)$ and $z_y = \prox_f(y)$. Observe that 
 \[
-(z_x - z_y)^\T (x - y) = (z_x - z_y)^\T \big((x - z_x) - (y - z_y)\big) + 
-\|z_x - z_y\|_2^2.   
+(x - y) ^\T (z_x - z_y) = \big((x - z_x) - (y - z_y)\big)^\T (z_x - z_y) + \|z_x
+- z_y\|_2^2.    
 \]
 By the proximal subgradient characterization
 \eqref{eq:proximal_subgradient_characterization}, note that $x - z_x \in
@@ -772,7 +772,7 @@ $\prox_f$, as desired.
 Again, as in the case of projections (proved in part d of Exercise
 \ref{ex:projection_firm_nonexpansiveness}), firm nonexpansiveness
 \eqref{eq:proximal_firm_nonexpansiveness1} is equivalent to the more evocative   
-property   
+property:   
 \begin{equation}
 \label{eq:proximal_firm_nonexpansiveness2}
 \| \prox_{\lambda f}(x) - \prox_{\lambda f}(y) \|_2^2 + 
@@ -1262,7 +1262,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   \eqref{eq:projection_firm_nonexpansiveness1}, and show that it also equivalent
   to   
   \[
-  (r_x - r_y)^\T (x - y) \geq \|r_x - r_y\|_2^2, \quad \text{for all $x,y$},
+    (x - y)^\T (r_x - r_y) \geq \|r_x - r_y\|_2^2, \quad \text{for all $x,y$},
   \]
   where we abbreviate $r_x = x - P_C(x)$ and $r_y = x - P_C(y)$.
 
@@ -1298,9 +1298,9 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   \| P_C(x) - y\|_2 < \|x - y\|_2, \quad \text{for all $x \notin C$ and $y \in
     C$}.    
   \]
-  Hint: recall the implication \eqref{eq:proximal_firm_nonexpansiveness2} from
-  firm nonexpansiveness, and the proximal fixed-point characterization of 
-  minimizers in \eqref{eq:proximal_optimality}.  
+  Hint: recall the formulation in \eqref{eq:proximal_firm_nonexpansiveness2} of 
+  firm nonexpansiveness, and the proximal fixed-point characterization of
+  minimizers in \eqref{eq:proximal_optimality}.     
 
 \item \label{ex:moreau_envelope}
   We examine key facts about the Moreau envelope $f_\lambda$ of a closed convex
@@ -1443,7 +1443,7 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
 \item \emph{Firm nonexpansiveness.} Prove that \smash{$\prox_f^H$} is firmly
   nonexpansive in the $\|\cdot\|_H$ norm, 
   \[
-  \big( \prox_f^H(x) - \prox_f^H(y) \big)^\T (x - y) \geq 
+  (x - y)^\T \big( \prox_f^H(x) - \prox_f^H(y) \big) \geq 
   \| \prox_f^H(x) - \prox_f^H(y) \|_H^2, \quad \text{for all $x,y$}.   
   \]
   Show that this in turn implies that it is both nonexpansive and residual
