@@ -83,29 +83,36 @@ distance between $x$ and $y$).
 \parlab{par:bregman_three_point}
 
 Euclidean distance satisfies the following \emph{three-point identity}: 
-\[
-\frac{1}{2} \|x-z\|_2^2 = \frac{1}{2} \|x-y\|_2^2 + \frac{1}{2} \|y-z\|_2^2 + 
-(y-z)^\T (x-y), 
-\]
+\begin{equation}
+\label{eq:three_point}
+\frac{1}{2} \|x-y\|_2^2 = \frac{1}{2} \|x-z\|_2^2 + \frac{1}{2} \|z-y\|_2^2 + 
+(z-y)^\T (x-z), 
+\end{equation}
 for any points $x,y,z \in \R^d$, which can be checked by direct
 calculation. This is sometimes called the \emph{law of cosines}. To interpret 
-this, note that the third term on the right-hand side is $(y-z)^\T (x-y) =
--\|x-y\|_2 \|z-y\|_2 \cos(\theta)$, where $\theta$ is the angle in between $x-y$  
-and $z-y$; thus the above identity relates one side length of a triangle with
+this, note that the third term on the right-hand side is $(z-y)^\T (x-z) =
+-\|x-z\|_2 \|y-z\|_2 \cos(\theta)$, where $\theta$ is the angle in between $x-z$  
+and $y-z$; thus the above identity relates one side length of a triangle with
 vertices $x,y,z$ to the other two side lengths and the cosine of the angle in
 between them. (This generalizes the Pythagorean theorem for right triangles,
-which corresponds to $\cos(\theta) = 0$). Bregman divergences admit an
+which corresponds to $\cos(\theta) = 0$.) Bregman divergences admit an
 analogous three-point identity:     
 \index{Bregman divergence!three-point identity}
-\[
-D_\phi(x,z) = D_\phi(x,y) + D_\phi(y,z) + (\nabla\phi(y) - \nabla(\phi(z))^\T
-(x-y),  
-\]
+\begin{equation}
+\label{eq:bregman_three_point}
+D_\phi(x,y) = D_\phi(x,z) + D_\phi(z,y) + (\nabla\phi(z) - \nabla\phi(y))^\T
+(x-z),  
+\end{equation}
 for any \smash{$x \in \bar\Omega$} and $y,z \in \Omega$, which can again be
-checked by direct calculation.  
+checked by direct calculation. Now the inner product on the right-hand side can
+be interpreted as measuring the cosine of the angle in between $x-z$ and
+$\nabla\phi(z) - \nabla\phi(y)$, and \eqref{eq:bregman_three_point} can be
+understood as a kind of generalized cosine law.  
+
 \medskip
 
 \begin{Example}
+\label{xa:kullback_leibler}
 A key example of a Bregman divergence is the Kullback-Leibler divergence. This
 corresponds to the negative entropy potential function   
 \[
@@ -127,13 +134,84 @@ general we only know it is convex in $x$ for fixed $y$.
 
 \section{Bregman projection}
 
-% In what ways do these preserve properties of projections/proximals? In what
-% ways do they not?
+A Bregman divergence can be used to define an associated projection operator, as 
+follows. Let $\phi$ be a closed Legendre potential, let $\Omega =
+\interior(\dom(\phi))$, and let $C$ be a closed convex set with $C \cap \Omega
+\not= \emptyset$. The \emph{Bregman projection} of a point $y \in \Omega$ onto
+$C$ is then defined by         
+\index{Bregman projection}
+\begin{equation}
+\label{eq:bregman_projection}
+P^\phi_C(y) = \argmin_{x \in C} \, D_\phi(x,y). 
+\end{equation}
+Under the stated conditions, this is well-defined, meaning that the minimizer in 
+\eqref{eq:bregman_projection} exists and is unique; furthermore, it holds that
+\smash{$P^\phi_C(y) \in \Omega$} (Exercise \ref{ex:bregman_projection}). The
+latter fact implies, for instance, that iterated projection is well-defined and 
+idempotent: \smash{$P^\phi_C(P^\phi_C(y)) = P^\phi_C(y)$}.  
 
-% This paper: https://cmps-people.ok.ubc.ca/bauschke/Research/103.pdf may help
-% as a resource 
+In a variety of ways, Bregman projections generalize Euclidean projections, in
+that they exhibit analogous properties. Noting that $\nabla_x D_\phi(x,y) =
+\nabla\phi(x) - \nabla\phi(y)$, the first-order optimality condition
+\eqref{eq:first_order_optimality} for problem in \eqref{eq:bregman_projection}
+says that, for \smash{$z = P^\phi_C(y)$}, 
+\index{Bregman projection!variational inequality}
+\begin{equation}
+\label{eq:bregman_variational_inequality}
+(\nabla\phi(z) - \nabla\phi(y))^\T (x - z) \geq 0, \quad \text{for any $x \in
+  C$}, 
+\end{equation}
+which generalizes the variational inequality \eqref{eq:variational_inequality}
+for Euclidean projection. The \emph{firmly nonexpansive} property
+\eqref{eq:projection_firm_nonexpansiveness1} 
+of Euclidean projection has a Bregman generalization as well: denoting 
+\smash{$z_x = P^\phi_C(x)$} and \smash{$z_y = P^\phi_C(y)$}, we have 
+\begin{equation}
+\label{eq:bregman_firm_nonexpansiveness}
+(\nabla\phi(x) - \nabla\phi(y))^\T (z_x - z_y) \geq (\nabla\phi(z_x) -
+\nabla\phi(z_y))^\T (z_x - z_y) \geq 0, \quad \text{for all $x,y \in \Omega$}.  
+\end{equation}
+This follows from the variational inequality
+\eqref{eq:bregman_variational_inequality} (Exercise
+\ref{ex:bregman_firm_nonexpansiveness}). Further, a generalization of the
+Pythogorean theorem holds for Bregman projections, which can be used to
+establish a different type of nonexpansiveness (called
+quasi-nonexpansiveness, see Exercise \ref{ex:bregman_quasi_nonexpansiveness}).       
 
-Pythagorean theorem from law of cosines
+From another angle, to examine the differences between Bregman and Euclidean
+projections, it may help build intuition to visualize projection as follows. We
+begin at the projection \smash{$z = P^\phi_C(y)$} of $y$ onto $C$: this is
+the point at which the lowest level contour of the map $x \mapsto D_\phi(x,y)$
+intersects $C$. Now suppose we continually follow the direction normal to the
+contours, until we reach the point $y$. Such a normal direction at any
+point $x$ is defined by       
+\[
+-\nabla_x D_\phi(x,y) = \nabla\phi(y) - \phi(x).
+\]
+In the case of Euclidean projection, \smash{$\phi(x) = \frac{1}{2} \|x\|_2^2$},
+hence this normal direction evolves as a straight line $y-x$ as a function of
+$x$. However, for a general potential $\phi$, the direction evolves as a curved
+line $\nabla\phi(y) - \phi(x)$ in $x$. In other words, while this
+constructed ``shortest path'' from \smash{$z = P^\phi_C(y)$} to $y$ is straight
+for Euclidean projection, it is curved for Bregman projection. This reflects
+the fact that Bregman divergence measures discrepancy between its arguments in a
+geometry informed by the curvature of $\phi$. Figure
+\ref{fig:bregman_projection} gives an illustration. 
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.7\textwidth]{fig/conjugate.pdf}
+\caption{The conjugate $f^*$ evaluated at $u$ is the maximum gap between a
+  linear function with slope $u$ and $f$, illustrated by the dotted line. The
+  double conjugate $f^{**}$ is the pointwise supremum of all affine minorants to
+  $f$ (equivalently, the greatest closed convex minorant to $f$), illustrated by
+  the dashed line.}     
+\label{fig:bregman_projection}
+\end{figure}
+
+Lastly, a generalization of the proximal operator \eqref{eq:proximal_mapping}
+using Bregman divergences is also possible. Exercise \ref{ex:bregman_proximal}
+develops this and associated properties.
 
 \section{Conjugacy connections}
 
@@ -221,5 +299,14 @@ Pythagorean theorem from law of cosines
   \parref{par:bregman_second}, that is, $D_\phi(x, (1-t) x + ty) \leq r$ for $t
   \in [0,1]$.   
 \end{enumerate}
+
+\item \label{ex:bregman_projection}
+
+\item \label{ex:bregman_firm_nonexpansiveness}
+
+\item \label{ex:bregman_quasi_nonexpansiveness}
+
+\item \label{ex:bregman_proximal}
+
 \end{enumerate}
 \end{xcb}
