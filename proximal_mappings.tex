@@ -792,8 +792,6 @@ from which we can see that proximal \emph{nonexpansiveness} and \emph{residual
 \end{align}
 respectively.
 
-% Proposition 4.2 in Bauschke and Combettes (2011) 
-
 \section{Moreau regularization*}
 \label{sec:moreau_envelope} 
 
@@ -1242,21 +1240,23 @@ penalties. Exercise \ref{ex:proximal_general_sum} is based on
   \eqref{eq:projection_firm_nonexpansiveness1} of the projection operator $P_C$
   onto a convex set $C$. For any $x,y$, let us abbreviate $p_x = P_C(x)$ and
   $p_y = P_C(y)$. From the variational inequality
-  \eqref{eq:variational_inequality}, note that     
-  \begin{align*}
-  (p_x - x)^\T (y - p_x) \geq 0, \\
-  (p_y - y)^\T (x - p_y) \geq 0.
-  \end{align*}
+  \eqref{eq:variational_inequality}, note that (with $p_x$ in place of $z$ and
+  $p_y$ in place of $y$):
+  \[
+  (p_x - x)^\T (p_y - p_x) \geq 0.
+  \]
+  Similarly, reversing the roles of $x$ and $y$,
+  \[
+  (p_y - y)^\T (p_x - p_y) \geq 0.
+  \]
 
 \begin{enumerate}[label=\alph*.]
-\item Use the above pair of inequalities to prove that 
+\item By adding the above two inequalities together and rearranging, show that 
   \[
   \big( x - p_x - (y - p_y) \big)^\T (p_x - p_y) \geq 0, \quad \text{for all
     $x,y$}. 
   \]
-  Hint: expand $y - p_x = y - p_y + p_y - p_x$ in the first inequality, $x - p_y
-  = x - p_x + p_x - p_y$ in the second inequality, then subtract the two and
-  simplify.   
+  Hint: add the two inequalities together and rearrange.
   
 \item Show that the condition from part a is equivalent to firm nonexpansiveness 
   \eqref{eq:projection_firm_nonexpansiveness1}, and show that it also equivalent
