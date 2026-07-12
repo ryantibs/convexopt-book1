@@ -184,20 +184,21 @@ projections, it may help build intuition to visualize projection as follows. We
 begin at the projection \smash{$z = P^\phi_C(y)$} of $y$ onto $C$: this is
 the point at which the lowest level contour of the map $x \mapsto D_\phi(x,y)$
 intersects $C$. Now suppose we continually follow the direction normal to the
-contours, until we reach the point $y$. Such a normal direction at any
-point $x$ is defined by       
+contours, tracing the path of steepest descent until we reach the target point
+$y$. Such a normal direction at any point $x$ is defined by 
 \[
--\nabla_x D_\phi(x,y) = \nabla\phi(y) - \phi(x).
+-\nabla_x D_\phi(x,y) = \nabla\phi(y) - \nabla\phi(x).
 \]
 In the case of Euclidean projection, \smash{$\phi(x) = \frac{1}{2} \|x\|_2^2$},
-thus this normal direction evolves as a straight line $y-x$ as a function of
-$x$. However, for a general potential $\phi$, the direction evolves as a curved
-line $\nabla\phi(y) - \phi(x)$ in $x$. In other words, while this
-constructed ``shortest path'' from $y$ to  \smash{$z = P^\phi_C(y)$} is straight
-for Euclidean projection, it is curved for Bregman projection. This reflects the
-fact that Bregman divergence measures discrepancy between its arguments in a
-geometry informed by the curvature of $\phi$. Figure
-\ref{fig:bregman_projection} gives an illustration.
+hence this normal direction evolves as a straight line $y-x$ as a function of
+$x$. However, for a general potential $\phi$, this direction evolves as a curved 
+line $\nabla\phi(y) - \nabla\phi(x)$ in $x$. In other words, while this
+constructed path from $y$ to $z$ is a straight line for Euclidean projection, it
+is curved for Bregman projection in general. This reflects the fact that Bregman  
+divergence $D_\phi(x,y)$ measures the discrepancy between $x,y$ in a geometry
+informed by the curvature of $\phi$. Figure \ref{fig:bregman_projection} gives
+an illustration, and Exercise \ref{fig:bregman_gradient_flow} formalizes related
+ideas.   
 
 \begin{figure}[tb]
 \centering
@@ -401,9 +402,11 @@ Bregman proximal: \cite{bauschke2017descent}
   Bregman projection: 
   \index{Bregman projection!quasi-nonexpansiveness}
   \[
-  D_\phi(x,y) \geq D_\phi(x,P_C(y)), \quad \text{for any $x \in C$}.  
+  D_\phi(x,P_C(y)) \leq D_\phi(x,y), \quad \text{for any $x \in C$}.  
   \]
 \end{enumerate}
+
+\item \label{ex:bregman_gradient_flow}
 
 \item \label{ex:bregman_proximal}
 
