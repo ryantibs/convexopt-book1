@@ -112,11 +112,10 @@ understood as a kind of generalized cosine law.
 \medskip
 
 \begin{Example}
-\label{xa:kullback_leibler}
 A key example of a Bregman divergence is the Kullback-Leibler divergence. This
 corresponds to the negative entropy potential function   
 \begin{equation}
-\label{eq:shannon_entropy}
+\label{eq:negative_entropy}
 \phi(x) = \sum_{i=1}^d x_i \log(x_i),
 \end{equation}
 This is Legendre with $\dom(\phi) = \R_+^d$, the nonnegative orthant (we
@@ -200,7 +199,7 @@ $x$. However, for a general potential $\phi$, this direction evolves as a curved
 line $\nabla\phi(y) - \nabla\phi(x)$ in $x$. In other words, while this
 constructed path from $y$ to $z$ is a straight line for Euclidean projection, it
 is curved for Bregman projection in general. This reflects the fact that Bregman  
-divergence measures the discrepancy between its arguments in a geometry
+divergence $D_\phi(x,y)$ measures the discrepancy between $x,y$ in a geometry 
 informed by the curvature of $\phi$. Figure \ref{fig:bregman_projection} gives
 an illustration, and Exercise \ref{ex:bregman_gradient_flow} formalizes related
 ideas.   
@@ -216,8 +215,23 @@ ideas.
 \label{fig:bregman_projection}
 \end{figure}
 
-A notable example of Bregman projection is the Kullback-Leibler projection onto
-the probability simplex (Exercise \ref{ex:kullback_leibler_projection}).   
+\begin{Example}
+\label{xa:simplex_kl_projection}
+Consider the negative entropy potential \eqref{eq:negative_entropy} of the
+last example, and let $C = \{x : 1^\T x, \, x \geq 0\}$, the probability
+simplex. In this case, the Bregman projection of $y$ onto $C$ is (Exercise
+\ref{ex:kullback_leibler_projection}): 
+\begin{equation}
+\label{eq:simplex_kl_projection}
+P^\phi_C(y) = \frac{y}{\|y\|_1}.
+\end{equation}
+Note that this is considerably simpler than Euclidean projection onto the
+simplex (studied in Exercise \ref{ex:simplex_projection}). Note further that 
+we might interpret this result as saying that Kullback-Leibler divergence 
+\eqref{eq:kullback_leibler} is to the $\ell_1$ ball (simplex) as Euclidean
+distance is to the $\ell_2$ ball: projection in each case reduces to
+normalization.
+\end{Example}
 
 Lastly, a generalization of the proximal operator \eqref{eq:proximal_mapping}
 using Bregman divergence is also possible. Exercise
