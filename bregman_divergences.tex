@@ -221,6 +221,8 @@ Consider the negative entropy potential \eqref{eq:negative_entropy} of the
 last example, and let $C = \{x : 1^\T x, \, x \geq 0\}$, the probability
 simplex. In this case, the Bregman projection of $y$ onto $C$ is (Exercise
 \ref{ex:kullback_leibler_projection}): 
+\index{Kullback-Leibler divergence}  
+\index{probability simplex!projection}
 \begin{equation}
 \label{eq:simplex_kl_projection}
 P^\phi_C(y) = \frac{y}{\|y\|_1}.
@@ -344,7 +346,7 @@ Bregman proximal: \cite{bauschke2017descent}
   We study existence and uniqueness of Bregman projections; let $\phi$ be closed 
   and Legendre, let $\Omega = \interior(\dom(\phi))$, and let $C$ be a closed
   convex set with $C \cap \Omega \not= \emptyset$. Let $S^\star$ denote the set
-  of minima of the problem in \eqref{eq:bregman_projection}. 
+  of minimizers of the problem in \eqref{eq:bregman_projection}. 
   % Theorem 3.12 in Bauschke and Borwein (1997)
 
 \begin{enumerate}[label=\alph*.]
@@ -428,8 +430,10 @@ Bregman proximal: \cite{bauschke2017descent}
   \]
 \end{enumerate}
 
-\index{Kullback-Leibler divergence}
 \item \label{ex:kullback_leibler_projection}
+  Verify the projection \eqref{eq:simplex_kl_projection} from Example
+  \ref{xa:simplex_kl_projection}. Hint: check the variational inequality
+  \eqref{eq:bregman_variational_inequality}.   
 
 \item \label{ex:bregman_gradient_flow}
 
