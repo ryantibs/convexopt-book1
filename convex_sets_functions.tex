@@ -1080,8 +1080,8 @@ infimum.
   \[
   f(p,q) = \sum_{i=1}^d p_i \log(p_i / q_i) 
   \]
-  is a convex function of $(p,q) \in \{ x \in \R^{2d} : \one^\T x = 1, \, x >
-  0\}$.
+  is a convex function of $(p,q) \in P \times P$, where $P = \{ x : \one^\T x =
+  1, \, x > 0\}$.
 
 \item \emph{Gaussian log likelihood for precision matrix.} Prove that 
   \index{Gaussian likelihood}
@@ -1092,8 +1092,8 @@ infimum.
   is a concave function of $\Sigma^{-1} \in \SS_{++}^d$ (the inverse
   covariance matrix, called the \emph{precision matrix}), for any $x_i \in
   \R^d$, $i=1,\dots,d$ and $\mu \in \R^d$. Hint: use the relationship between 
-  $\det(A)$ and $\det(A^{-1})$ for an invertible matrix $A$, and also linearity
-  of the trace operator $\tr(\cdot)$. 
+  $\det(A)$ and $\det(A^{-1})$ for an invertible matrix $A$, and linearity of
+  the trace operator $\tr(\cdot)$.  
 
 \item Let $f$ be strictly convex with $\dom(f)=\R^d$. By Property
   \parref{par:function_linear}, the linear composition rule, we know that  

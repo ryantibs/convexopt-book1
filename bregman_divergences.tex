@@ -115,21 +115,24 @@ understood as a kind of generalized cosine law.
 \label{xa:kullback_leibler}
 A key example of a Bregman divergence is the Kullback-Leibler divergence. This
 corresponds to the negative entropy potential function   
-\[
+\begin{equation}
+\label{eq:shannon_entropy}
 \phi(x) = \sum_{i=1}^d x_i \log(x_i),
-\]
-also called the negative Shannon entropy. This is Legendre with $\dom(\phi) = \{
-x : \one^\T x = 1, \, x \geq 0 \}$, the probability simplex. In this case, we
-write $D_\phi(x,y) = \KL(x,y)$, where
-\index{Kullback-Leibler divergence} 
+\end{equation}
+This is Legendre with $\dom(\phi) = \R_+^d$, the nonnegative orthant (we
+interpret $0 \log(0) = 0$, by continuous extension). In this case, one can check 
+that    
+\index{Kullback-Leibler divergence}  
 \begin{equation}
 \label{eq:kullback_leibler}
-\KL(x,y) = \sum_{i=1}^d x_i \log(x_i / y_i),
+D_\phi(x,y) = \sum_{i=1}^d x_i \log(x_i / y_i) + \sum_{i=1}^d (y_i - x_i).
 \end{equation}
-verified by direct calculation. The Kullback-Leibler divergence is a notable 
-case (like squared Euclidean distance) where the Bregman divergence is jointly
-convex in $x,y$ (Exercise \ref{ex:loss_functions} part d), recalling that in
-general we only know it is convex in $x$ for fixed $y$.
+If $x,y$ lie on the probability simplex, then the above reduces to
+\smash{$\sum_{i=1}^d x_i \log(x_i / y_i)$}, called the \emph{Kullback-Leibler 
+  divergence} between $x,y$. Observe that \eqref{eq:kullback_leibler} is a
+notable case of a Bregman divergence (like squared Euclidean distance) which is
+jointly convex in $x,y$ (Exercise \ref{ex:loss_functions} part d), recalling
+that in general we only know it is convex in $x$ for fixed $y$. 
 \end{Example}
 
 \section{Bregman projection}
@@ -145,16 +148,17 @@ $C$ is then defined by
 P^\phi_C(y) = \argmin_{x \in C} \, D_\phi(x,y). 
 \end{equation}
 Under the stated conditions, this is well-defined, meaning that the minimizer in 
-\eqref{eq:bregman_projection} exists and is unique; furthermore, it holds that
-\smash{$P^\phi_C(y) \in \Omega$} (Exercise \ref{ex:bregman_projection}). The
-latter fact implies, for instance, that iterated projection is well-defined and 
-idempotent: \smash{$P^\phi_C(P^\phi_C(y)) = P^\phi_C(y)$}.  
+\eqref{eq:bregman_projection} exists and is unique, and furthermore, it holds
+that \smash{$P^\phi_C(y) \in \Omega$} (Exercise
+\ref{ex:bregman_projection}). The last fact implies that iterated projection is
+well-defined. It follows that Bregman projection is idempotent:
+\smash{$P^\phi_C(P^\phi_C(y)) = P^\phi_C(y)$}.       
 
 In a variety of ways, Bregman projections generalize Euclidean projections, in
 that they exhibit analogous properties. Noting that $\nabla_x D_\phi(x,y) =
 \nabla\phi(x) - \nabla\phi(y)$, the first-order optimality condition
-\eqref{eq:first_order_optimality} for problem in \eqref{eq:bregman_projection}
-says that, for \smash{$z = P^\phi_C(y)$}, 
+\eqref{eq:first_order_optimality} for the problem in
+\eqref{eq:bregman_projection} says that, for \smash{$z = P^\phi_C(y)$},   
 \index{Bregman projection!variational inequality}
 \begin{equation}
 \label{eq:bregman_variational_inequality}
@@ -179,13 +183,14 @@ Pythagorean theorem holds for Bregman projections (Exercise
 \ref{ex:bregman_pythagorean_theorem}), which can be used to establish
 a different type of nonexpansiveness (called quasi-nonexpansiveness). 
 
-From another angle, to examine the differences between Bregman and Euclidean
-projections, it may help build intuition to visualize projection as follows. We
-begin at the projection \smash{$z = P^\phi_C(y)$} of $y$ onto $C$: this is
-the point at which the lowest level contour of the map $x \mapsto D_\phi(x,y)$
-intersects $C$. Now suppose we continually follow the direction normal to the
-contours, tracing the path of steepest descent until we reach the target point
-$y$. Such a normal direction at any point $x$ is defined by 
+From another angle, to understand the differences between Bregman and Euclidean 
+projections, we can build intuition as follows. We begin by interpreting the
+projection \smash{$z = P^\phi_C(y)$} of $y$ onto $C$ as the point at which the
+lowest level contour of the map $x \mapsto D_\phi(x,y)$ intersects $C$. Now
+suppose we trace a path which cuts through the contours back to $y$, in the  
+steepest way possible: by following the normal direction to
+the contours as we decrease the contour level down to zero. Such a normal
+direction at any point $x$ is defined by   
 \[
 -\nabla_x D_\phi(x,y) = \nabla\phi(y) - \nabla\phi(x).
 \]
@@ -195,9 +200,9 @@ $x$. However, for a general potential $\phi$, this direction evolves as a curved
 line $\nabla\phi(y) - \nabla\phi(x)$ in $x$. In other words, while this
 constructed path from $y$ to $z$ is a straight line for Euclidean projection, it
 is curved for Bregman projection in general. This reflects the fact that Bregman  
-divergence $D_\phi(x,y)$ measures the discrepancy between $x,y$ in a geometry
+divergence measures the discrepancy between its arguments in a geometry
 informed by the curvature of $\phi$. Figure \ref{fig:bregman_projection} gives
-an illustration, and Exercise \ref{fig:bregman_gradient_flow} formalizes related
+an illustration, and Exercise \ref{ex:bregman_gradient_flow} formalizes related
 ideas.   
 
 \begin{figure}[tb]
@@ -211,9 +216,12 @@ ideas.
 \label{fig:bregman_projection}
 \end{figure}
 
+A notable example of Bregman projection is the Kullback-Leibler projection onto
+the probability simplex (Exercise \ref{ex:kullback_leibler_projection}).   
+
 Lastly, a generalization of the proximal operator \eqref{eq:proximal_mapping}
-using Bregman divergence is also possible. Exercise \ref{ex:bregman_proximal}
-develops this and associated properties.
+using Bregman divergence is also possible. Exercise
+\ref{ex:bregman_proximal_operator} develops this and associated properties. 
 
 \section{Conjugacy connections}
 
@@ -406,9 +414,12 @@ Bregman proximal: \cite{bauschke2017descent}
   \]
 \end{enumerate}
 
+\index{Kullback-Leibler divergence}
+\item \label{ex:kullback_leibler_projection}
+
 \item \label{ex:bregman_gradient_flow}
 
-\item \label{ex:bregman_proximal}
+\item \label{ex:bregman_proximal_operator}
 
 \end{enumerate}
 \end{xcb}
