@@ -206,13 +206,20 @@ ideas.
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.46\textwidth]{fig/bregman_projection1.pdf}
-\includegraphics[width=0.46\textwidth]{fig/bregman_projection2.pdf}
-\caption{The conjugate $f^*$ evaluated at $u$ is the maximum gap between a
-  linear function with slope $u$ and $f$, illustrated by the dotted line. The
-  double conjugate $f^{**}$ is the pointwise supremum of all affine minorants to
-  $f$ (equivalently, the greatest closed convex minorant to $f$), illustrated by
-  the dashed line.}     
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[width=\textwidth]{fig/bregman_projection1.pdf}
+\caption{Quadratic potential}
+\end{subfigure}
+\hspace{15pt}
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[width=\textwidth]{fig/bregman_projection2.pdf}
+\caption{Exponential potential}
+\end{subfigure}
+\caption{Left: Euclidean projection \smash{$z=P_C(y)$}, that is, Bregman
+  projection with the quadratic potential \smash{$\phi(x) = \frac{1}{2}
+    \|x\|_2^2$}. Right: Bregman projection \smash{$z=P^\phi_C(y)$} with an
+  exponential potential of the form \smash{$\phi(x) = e^{ax_1} + e^{bx_2}$},  
+  for constants $a,b$.} 
 \label{fig:bregman_projection}
 \end{figure}
 
