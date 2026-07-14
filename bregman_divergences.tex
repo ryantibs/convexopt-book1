@@ -438,6 +438,17 @@ Bregman proximal: \cite{bauschke2017descent}
   \]
 \end{enumerate}
 
+\item After part e above, it is tempting to seek a stronger form of Bregman
+  nonexpansiveness:   
+  \[
+  D_\phi(P_C(x),P_C(y)) \leq D_\phi(x,y), \quad \text{for any $x,y \in \Omega$}.   
+  \]
+  (Note that quasi-nonexpansiveness would be correspond to the restriction of
+  the above condition to $x \in C$.) Give a counterexample to prove that this
+  is not true in general, while maintaining the conditions on $\phi,C$ required
+  to keep Bregman projection well-defined. 
+  % \phi(x) = -\log(x_1) - \log(x_2), and C = a line. 
+
 \item \label{ex:kullback_leibler_projection}
   Verify the projection \eqref{eq:simplex_kl_projection} from Example
   \ref{xa:simplex_kl_projection}. Hint: check the variational inequality
