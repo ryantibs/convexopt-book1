@@ -19,41 +19,41 @@ D_\phi(x,y) = \phi(x) - \phi(y) - \nabla\phi(y)^\T (x - y).
 \end{equation}
 The value $D_\phi(x,y)$ can be interpreted as the gap between the value
 $\phi(x)$ and its first-order approximation $\phi(y) + \nabla\phi(y)^\T (x -
-y)$ centered at $y$. Since $\phi$ is convex, we know that $D_\phi(x,y) \geq
-0$. Further, since $\phi$ is strictly convex on the line segment joining $x$ and 
-$y$, we have $D_\phi(x,y) > 0$ for $x \not= y$. 
+y)$ centered at $y$. As $\phi$ is convex, we know that $D_\phi(x,y) \geq
+0$. Moreover, as $\phi$ is strictly convex on the line segment joining $x$ and
+$y$, we have $D_\phi(x,y) > 0$ for $x \not= y$.  
 
-In what follows, we refer to $\phi$ as the \emph{potential function} underlying
-the Bregman divergence $D_\phi$. An important special case is the quadratic
+We refer to $\phi$ as the \emph{potential function} of the Bregman divergence
+$D_\phi$. An important special case is the quadratic 
 potential \smash{$\phi(x) = \frac{1}{2} \|x\|_2^2$}. In this case, one can check
 that \smash{$D_\phi(x,y) = \frac{1}{2} \|x-y\|_2^2$}, half of the squared
 Euclidean distance between $x$ and $y$. In general, we note that $D_\phi$ is not
-necessarily a proper distance (or monotone transformation of a distance); for
-example, it does not even need to be symmetric in its arguments. Still, Bregman 
-divergences admit a number of useful properties, described next.    
+necessarily a proper distance (or monotone transformation of a distance); it
+does not even need to be symmetric in its arguments. Still, Bregman divergences
+admit a number of useful properties, described next.     
 
-\paragraph{Convex in its first argument.}
+\paragraph{Convex in the first argument.}
 \parlab{par:bregman_first}
 
-For any fixed $y$, the map $x \mapsto D_\phi(x,y)$ is convex. To see this, note
-that this map can be written as $x \mapsto \phi(x) + a^\T x + b$, where $a,b$ 
-depend on $y$. This means that a Bregman ball centered around the second
-argument, of the form 
+For any fixed point $y$, the map $x \mapsto D_\phi(x,y)$ is convex. This is
+because such a map can be expressed as $x \mapsto \phi(x) + a^\T x + b$, where
+$a,b$ depend on $y$. This means that a Bregman ball centered around the second 
+argument, of the form   
 \[
 \{ x : D_\phi(x,y) \leq r \}
 \]
 for fixed $y,r$, is a convex set. Furthermore, Bregman balls of this type are
 also compact if $\phi$ is closed (Exercise \ref{ex:bregman_first}).     
 
-\paragraph{Star-shaped in its second argument.} 
+\paragraph{Star-shaped in the second argument.} 
 \parlab{par:bregman_second}
 
-Meanwhile, for fixed $x$, the map $y \mapsto D_\phi(x,y)$ is not necessarily
-convex. However, it satisfies a weaker property: it is \emph{star-shaped}, with
-the point $x$ called the star-center. Precisely, this means that $t \mapsto
-D_\phi(x, (1-t) x + ty)$ is nonincreasing on $[0,1]$ for any point $y$
-(Exercise \ref{ex:bregman_second}). Consequently, a Bregman ball centered
-around the first argument,   
+For fixed $x$, the map $y \mapsto D_\phi(x,y)$ is not necessarily
+convex. However, it satisfies a weaker property: it is \emph{star-shaped}, where 
+$x$ serves as its star-center. To be precise, for any $y$, the map $t \mapsto 
+D_\phi(x, (1-t) x + ty)$ is nonincreasing on $[0,1]$ (Exercise
+\ref{ex:bregman_second}). Consequently, a Bregman ball centered around the first 
+argument,          
 \[
 \{ y : D_\phi(x,y) \leq r \}
 \]
@@ -201,8 +201,8 @@ constructed path from $y$ to $z$ is a straight line for Euclidean projection, it
 is curved for Bregman projection in general. This reflects the fact that Bregman  
 divergence $D_\phi(x,y)$ measures the discrepancy between $x,y$ in a geometry 
 informed by the curvature of $\phi$. Figure \ref{fig:bregman_projection} gives
-an illustration, and Exercise \ref{ex:bregman_gradient_flow} formalizes related
-ideas.   
+an illustration. Exercise \ref{ex:bregman_gradient_flow} formalizes related
+ideas.    
 
 \begin{figure}[tb]
 \centering
@@ -217,18 +217,18 @@ ideas.
 \end{subfigure}
 \caption{Left: Euclidean projection \smash{$z=P_C(y)$}, that is, Bregman
   projection with the quadratic potential \smash{$\phi(x) = \frac{1}{2}
-    \|x\|_2^2$}. Right: Bregman projection \smash{$z=P^\phi_C(y)$} with an
-  exponential potential of the form \smash{$\phi(x) = e^{ax_1} + e^{bx_2}$},  
-  for constants $a,b$.} 
+    \|x\|_2^2$}. Right: Bregman projection \smash{$z=P^\phi_C(y)$} with an 
+  exponential potential of the form \smash{$\phi(x) = e^{ax_1} + e^{bx_2}$},
+  for constants $a,b$.}  
 \label{fig:bregman_projection}
 \end{figure}
 
 \begin{Example}
 \label{xa:simplex_kl_projection}
-Consider the negative entropy potential \eqref{eq:negative_entropy} of the
+We return to the negative entropy potential \eqref{eq:negative_entropy} of the 
 last example, and let $C = \{x : 1^\T x, \, x \geq 0\}$, the probability
-simplex. In this case, the Bregman projection of $y$ onto $C$ is (Exercise
-\ref{ex:kullback_leibler_projection}): 
+simplex. In this case, the Bregman projection of $y$ onto $C$ is (Exercise   
+\ref{ex:kullback_leibler_projection}):  
 \index{Kullback-Leibler divergence}  
 \index{probability simplex!projection}
 \begin{equation}
@@ -245,14 +245,86 @@ normalization.
 
 Lastly, a generalization of the proximal operator \eqref{eq:proximal_mapping}
 using Bregman divergence is also possible. Exercise
-\ref{ex:bregman_proximal_operator} develops this and associated properties. 
+\ref{ex:bregman_proximal_operator} develops this operator and its properties.  
 
-\section{Conjugacy connections}
+\section{Conjugacy relations}
 
-% For any Legendre function h and its conjugate h^*:
-% D_h(y, x) = D_{h^*}(u, v)
-% with u = \nabla h(x) and v = \nabla h(y). Note the reversal of the order of
-% arguments! Proof is elementary
+Recall that a closed convex function $\phi$ is of Legendre type if and only if
+its convex conjugate $\phi^*$ is (Theorem \ref{thm:conjugate_legendre}).
+This means that to each Bregman divergence $D_\phi$ (with $\phi$ closed), we can
+associate a conjugate divergence \smash{$D_{\phi^*}$}, namely     
+\index{Bregman divergence!conjugate divergence}  
+\begin{equation}
+\label{eq:conjugate_divergence}
+D_{\phi^*}(u,v) = \phi^*(u) - \phi^*(v) - \nabla\phi^*(v)^\T (u - v).
+\end{equation}
+This is defined for $u,v \in \interior(\dom(\phi^*)) =
+\interior(\ran(\nabla\phi))$. Now suppose we set
+\[
+v = \nabla\phi(x) \quad \text{and} \quad u = \nabla\phi(y).
+\]
+We call $v,u$ the image of $x,y$ in mirror space, respectively, since
+$\nabla\phi$ is often called the \emph{mirror map} in the context of Bregman 
+divergences. Using $(\nabla\phi)^{-1} = \nabla\phi^*$ (Theorem
+\ref{thm:conjugate_legendre}), we also have
+\[
+x = \nabla\phi^*(v) \quad \text{and} \quad y = \nabla\phi^*(u). 
+\]
+Since equality holds in Fenchel's inequality for the pairs $x,v$ and $y,u$
+(Theorem \ref{thm:conjugate_subgradients}), we have   
+\[
+\phi(x) + \phi^*(v) = v^\T x \quad \text{and} \quad
+\phi(y) + \phi^*(u) = u^\T y.
+\]
+Combining the relations in the last three displays, observe that
+\begin{align*}
+\phi(x) - \phi(y) - \nabla\phi(y)^\T (x - y) 
+&= \phi(x) - u^\T x - \phi(y) + u^\T y \\
+&= (v - u)^\T x - \phi^*(v) + \phi^*(u) \\ 
+&= \phi^*(u) - \phi^*(v) - \nabla\phi^*(v)^\T (u-v). 
+\end{align*}
+In other words, through these elementary calculations we have established the
+following, which we codify into a theorem.   
+
+\begin{Theorem}
+\label{thm:conjugate_divergence}
+For closed convex $\phi,\phi^*$ of Legendre type, and any points $x,y \in 
+\interior(\dom(\phi))$, it holds that 
+\[
+D_\phi(x,y) = D_{\phi^*}(\nabla\phi(y), \nabla\phi(x)). 
+\]
+\end{Theorem}
+
+In other words, the Bregman divergence between $x,y$ can be formulated in terms
+of the conjugate divergence once we pass $x,y$ to mirror space. An implication
+of this result is given next. We will see it appear again in the coming sections
+on exponential families and proper losses.
+
+\paragraph{Mirror-convex in the second argument.}
+
+We revisit the structure of the map $y \mapsto D_\phi(x,y)$ for fixed 
+$x$, through the lens of Theorem \ref{thm:conjugate_divergence}. Provided that
+$\phi$ is closed and $x \in \interior(\dom(\phi))$, note that we can express
+this map as  
+\[
+y \mapsto D_{\phi^*}(\nabla\phi(y), \nabla\phi(x)).
+\]
+This is \emph{mirror-convex}: the composition of a convex function (as 
+$D_{\phi^*}$ is convex in its first argument, by Property
+\parref{par:bregman_first}) with the mirror map $\nabla\phi$. 
+% The mirror map is continuous by Theorem 26.5/25.5 of Rockafellar (1970). 
+Similarly, a Bregman divergence ball centered around the second argument can be
+expressed as 
+\[
+\{ y : D_\phi(x,y) \leq r \} = \nabla\phi^*\Big( \big\{ u : D_{\phi^*}(u,
+\nabla(\phi(x)) \leq r \big\} \Big).
+\]
+For fixed $x,r$, the right-hand side is the transformation of a convex set by
+the conjugate mirror map $\nabla\phi^*$. We thus see that the conjugate
+formulation of Bregman divergences provides further insights into their
+structure and geometry, beyond the coarser (star-shaped and star-convex)
+conclusions in Property \parref{par:bregman_second}.      
+
 
 \section{Exponential families*}
 
