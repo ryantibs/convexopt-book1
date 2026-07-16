@@ -135,6 +135,7 @@ that in general we only know it is convex in $x$ for fixed $y$.
 \end{Example}
 
 \section{Bregman projection}
+\label{sec:bregman_projection}
 
 A Bregman divergence can be used to define an associated projection operator, as 
 follows. Let $\phi$ be a closed Legendre potential, let $\Omega =
@@ -516,10 +517,10 @@ Bregman proximal: \cite{bauschke2017descent}
   \[
   D_\phi(P_C(x),P_C(y)) \leq D_\phi(x,y), \quad \text{for any $x,y \in \Omega$}.   
   \]
-  (Note that quasi-nonexpansiveness would be correspond to the restriction of
-  the above condition to $x \in C$.) Give a counterexample to prove that this
-  is not true in general, while maintaining the conditions on $\phi,C$ required
-  to keep Bregman projection well-defined. 
+  Note: quasi-nonexpansiveness would be correspond to the restriction of
+  the above condition to $x \in C$. Give a counterexample to prove that the
+  above is not true in general, while maintaining the conditions on $\phi,C$
+  required to keep Bregman projection well-defined.  
   % \phi(x) = -\log(x_1) - \log(x_2), and C = a line. 
 
 \item \label{ex:kullback_leibler_projection}
@@ -528,6 +529,105 @@ Bregman proximal: \cite{bauschke2017descent}
   \eqref{eq:bregman_variational_inequality}.   
 
 \item \label{ex:bregman_gradient_flow}
+  This exercise studies the gradient-following path discussed in Chapter
+  \ref{sec:bregman_projection} and illustrated in Figure
+  \ref{fig:bregman_projection}. Formally, this path is defined the differential 
+  equation   
+  \[
+  x'(t) = - \nabla_x D_\phi(x(t),y), \quad \text{for $t > 0$}, 
+  \]
+  with the initial condition $x(0) = z$. This is an instance of \emph{gradient 
+    flow}. Here $x : \R_+ \to \R^d$ is a curve through which we think of as a
+  function of time $t$, and $x'(t)$ denotes its derivative at $t$. Equivalently,
+  the gradient flow path of interest is   
+  \begin{equation}
+  \label{eq:bregman_gradient_flow}
+  x'(t) = \nabla\phi(y) - \nabla\phi(x(t)), \quad \text{for $t > 0$}.
+  \end{equation}
+  In the following parts, we will study this path in a special case in which it
+  admits an analytic solution, and compare to the behavior of the solution in a
+  related differential equation.  
+  
+\begin{enumerate}[label=\alph*.]
+\item Set $d=2$, $\phi(x) = e^{x_1} + e^{x_2}$, and $y=0$. The gradient flow
+  path \eqref{eq:bregman_gradient_flow} becomes 
+  \[
+  x'_i(t) = 1 - e^{x_i}, \quad \text{for $i=1,2$}.
+  \]
+  Prove that the solution, subject to the initial condition $x(0) = z$, is 
+  \[
+  x_i(t) = -\log(1 - a_i e^{-t}), \quad \text{for $i=1,2$}.
+  \]
+  for constants $a_i = 1-e^{-z_i}$, $i=1,2$. 
+
+\item Eliminate time to derive the following equation for the second coordinate
+  of the solution as a function of the first: 
+  \[
+  x_2 = -\log(\alpha e^{-x_1} + (1-\alpha)),
+  \]
+  where $\alpha = a_2/a_1$. Verify that this is a curved path whenever $z_1
+  \not= z_2$.  
+
+\item Instead of gradient flow, consider the path defined by (assuming twice
+  differentiable $\phi$): 
+  \[
+  x'(t) = - (\nabla^2 \phi(x(t))^{-1} \nabla_x D_\phi(x(t),y), \quad \text{for
+    $t > 0$}.
+  \]
+  This is an instance of what is called \emph{Riemannian gradient flow}. At each
+  time $t$, the local geometry is warped by the Hessian of the potential
+  function at $x(t)$. Equivalently, 
+  \begin{equation} 
+  \label{eq:bregman_riemannian_flow}
+  x'(t) = (\nabla^2 \phi(x(t))^{-1} \big( \nabla\phi(y) - \nabla\phi(x(t))
+  \big), \quad \text{for $t > 0$}.
+  \end{equation}
+  Prove that in the setting considered in parts a and b, the solution, subject
+  to the same initial condition $x(0) = z$, is   
+  \[
+  x_i(t) = \log(1 + b_i e^{-t}), \quad \text{for $i=1,2$},
+  \]
+  for constants $b_i = e^{z_i}-1$, $i=1,2$. Eliminate time to derive the
+  following expression for the solution:
+  \[
+  x_2 = \log(\beta e^{x_1} + (1-\beta)),
+  \]
+  where $\beta = b_2/b_1$. Verify again that this is a curved path whenever $z_1
+  \not= z_2$.   
+
+\item The gradient flow \eqref{eq:bregman_gradient_flow} and Riemannian
+  gradient flow \eqref{eq:bregman_riemannian_flow} paths do not seem too
+  different at this point: they each produce curved paths in the original (primal) 
+  space. A key difference is revealed once we map to mirror (dual) space. Let 
+  $u(t) = \nabla\phi(x(t))$, that is, $u_i(t) = e^{x_i(t)}$ for $i=1,2$. Prove
+  that the gradient flow solution from part b has the mirror space
+  representation   
+  \[
+  \frac{1}{u_2} = \frac{\alpha}{u_1} + 1-\alpha,
+  \]
+  which is still a curved path (for $\alpha \not= 1$), whereas the Riemannian
+  gradient flow solution from part c transforms to
+  \[
+  u_2 = \beta u_1 + 1-\beta.
+  \]
+  which is a straight line.
+
+\item Finally, show that this is a general property: Riemannian gradient flow
+  is a straight line in mirror space (``dually flat''). Prove using the chain
+  rule that \eqref{eq:bregman_riemannian_flow} is the same as
+  \[
+  u'(t) = \nabla\phi(y) - u(t), \quad \text{for $t > 0$}.
+  \]
+  whose solution, subject to the same initial condition $u(0) = \nabla\phi(z)$,
+  is     
+  \[
+  u(t) = \nabla\phi(y) + e^{-t} (\nabla\phi(z) - \nabla\phi(y)). 
+  \]
+  Since all coordinates travel at the same speed, this is a perfectly straight
+  line in mirror space connecting $\nabla\phi(z)$ to $\nabla\phi(y)$.
+\end{enumerate}
+  
+\item Connection between KL projection and MLE?
 
 \item \label{ex:bregman_proximal_operator}
 
