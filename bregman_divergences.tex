@@ -283,8 +283,8 @@ Combining the relations in the last three displays, observe that
 &= (v - u)^\T x - \phi^*(v) + \phi^*(u) \\ 
 &= \phi^*(u) - \phi^*(v) - \nabla\phi^*(v)^\T (u-v). 
 \end{align*}
-In other words, through these elementary calculations we have established the
-following, which we codify into a theorem.   
+Through these elementary calculations we have established the following result,
+which we codify into a theorem.     
 
 \begin{Theorem}
 \label{thm:conjugate_divergence}
@@ -295,15 +295,17 @@ D_\phi(x,y) = D_{\phi^*}(\nabla\phi(y), \nabla\phi(x)).
 \]
 \end{Theorem}
 
-In other words, the Bregman divergence between $x,y$ can be formulated in terms
-of the conjugate divergence once we pass $x,y$ to mirror space. An implication
-of this result is given next. We will see it appear again in the coming sections
-on exponential families and proper losses.
+To summarize, the Bregman divergence between $x,y$ can be formulated in terms of
+the conjugate divergence once we map $x,y$ to mirror space (note carefully the
+reversal in the order of arguments in $D_\phi$ versus \smash{$D_{\phi^*}$}). An
+implication of this result is described next. We will see conjugacy connections 
+leveraged again in the coming sections on exponential families and proper
+losses.    
 
 \paragraph{Mirror-convex in the second argument.}
 
 We revisit the structure of the map $y \mapsto D_\phi(x,y)$ for fixed 
-$x$, through the lens of Theorem \ref{thm:conjugate_divergence}. Provided that
+$x$, through the lens of Theorem \ref{thm:conjugate_divergence}. Assuming that 
 $\phi$ is closed and $x \in \interior(\dom(\phi))$, note that we can express
 this map as  
 \[
@@ -319,12 +321,11 @@ expressed as
 \{ y : D_\phi(x,y) \leq r \} = \nabla\phi^*\Big( \big\{ u : D_{\phi^*}(u,
 \nabla(\phi(x)) \leq r \big\} \Big).
 \]
-For fixed $x,r$, the right-hand side is the transformation of a convex set by
-the conjugate mirror map $\nabla\phi^*$. We thus see that the conjugate
+For fixed $x,r$, the right-hand side is the image of a convex set under the
+conjugate mirror map $\nabla\phi^*$. We therefore see that the conjugate
 formulation of Bregman divergences provides further insights into their
 structure and geometry, beyond the coarser (star-shaped and star-convex)
-conclusions in Property \parref{par:bregman_second}.      
-
+conclusions in Property \parref{par:bregman_second}.       
 
 \section{Exponential families*}
 
