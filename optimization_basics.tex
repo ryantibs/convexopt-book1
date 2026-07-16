@@ -14,10 +14,10 @@ In this book, we denote an \emph{optimization problem} by
 \begin{alignedat}{2}
 &\minimize_x \quad && f(x) \\
 &\st \quad && g_i(x) \leq 0, \; i=1,\dots,m \\ 
-& && h_j(x) = 0, \; j=1,\dots,k.
+& && h_j(x) = 0, \; j=1,\dots,k,
 \end{alignedat}
 \end{equation}
-Here $f$, $g_i$, $i=1,\dots,m$, and $h_j$, $j=1,\dots,k$ are functions, from 
+where $f$, $g_i$, $i=1,\dots,m$ and $h_j$, $j=1,\dots,k$ are functions from  
 $\R^d$ to $[-\infty,\infty]$. In problem \eqref{eq:optimization}, the
 minimization is implicitly restricted to the intersection of relevant effective
 domains: 
@@ -55,9 +55,9 @@ optimization problems) is itself a rich topic, and is covered further in Chapter
 \ref{sec:existence_minima}.       
 
 A \emph{convex optimization problem} is one of the form
-\eqref{eq:optimization} such that $f$ and $g_i$, $i=1,\dots,m$ are all
-convex functions, and $h_j$, $j=1,\dots,k$ are all affine functions. In other
-words, the problem 
+\eqref{eq:optimization} where $f$, $g_i$, $i=1,\dots,m$ are all convex
+functions, and $h_j$, $j=1,\dots,k$ are all affine functions. In other words,
+the problem  
 \index{convex optimization problem}
 \begin{equation}
 \label{eq:convex_optimization}
@@ -67,8 +67,8 @@ words, the problem
 & && Ax = b,
 \end{alignedat}
 \end{equation}
-is convex whenever $f$ and $g_i$, $i=1,\dots,m$ are convex (and $A$ and $b$ are 
-arbitrary).
+is convex whenever $f$, $g_i$, $i=1,\dots,m$ are convex (and $A,b$ are
+arbitrary). 
 
 In general, we will say that two optimization problems are \emph{equivalent} if 
 solutions of one can be computed from solutions of the other, and vice versa. 
@@ -79,12 +79,13 @@ Clearly, problem \eqref{eq:optimization} is equivalent to:
 &\st \quad && g_i(x) \leq 0, \; i=1,\dots,m \\ 
 & && h_j(x) = 0, \; j=1,\dots,k,
 \end{alignat*}
-As $f$ is convex if and only if $-f$ is concave, the convex minimization 
-problem \eqref{eq:convex_optimization} is hence also equivalent to a concave 
+Since $f$ is convex if and only if $-f$ is concave, the convex minimization 
+problem \eqref{eq:convex_optimization} is thus also equivalent to a concave 
 maximization problem. In this book, we will use ``optimization'' to refer to
 both minimization and maximization (and we carry all definitions and notations
-introduced above over to maximization problems); likewise, we will use ``convex
-optimization'' to refer to both convex minimization and concave maximization.     
+introduced above over to maximization problems). Likewise, we will broadly use 
+the term ``convex optimization'', to refer to both convex minimization and
+concave maximization.      
 
 \begin{Remark}
 In statistics, we rarely denote the parameter in an optimization problem by $x$;
@@ -173,7 +174,7 @@ and if so, seeks any point $x^\star$ that is feasible. We write it as
 \end{alignedat}
 \end{equation}
 A \emph{convex feasibility problem} is one in which the constraint functions
-satisfy the usual requirements: $g_i$, $i=1,\dots,m$ are convex and $h_j$,
+satisfy the usual requirements: $g_i$, $i=1,\dots,m$ are convex, and $h_j$,
 $j=1,\dots,k$ are affine.   
 
 \section{Properties of convex problems} 
