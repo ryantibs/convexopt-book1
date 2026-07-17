@@ -464,14 +464,14 @@ as discussed next.
 
 \begin{Example}
 \label{xa:proximal_optimality}
-The examples below show how we can use the analytic form of proximal maps (when
+The examples below show how we can use the closed-form of proximal maps (when
 available) to confirm the structure of solutions in more general optimization
 problems. In each example, there is nothing special about squared loss, and the
 same conclusion holds for an arbitrary loss $f$.   
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
 \item How do we know that the $\ell_1$ penalty in the lasso problem
-  \eqref{eq:lasso} induces sparsity in its solution(s)? From the proximal
+  \eqref{eq:lasso} induces sparsity in its solution(s)? Using the proximal
   optimality condition \eqref{eq:proximal_optimality_fg}, with \smash{$f(\beta)
     = \frac{1}{2} \|y - X \beta\|_2^2$} and $g(\beta) = \lambda \|\beta\|_1$
   (and denoting by $t$ the proximal parameter), we can see that $\beta$ is a
@@ -484,7 +484,7 @@ same conclusion holds for an arbitrary loss $f$.
   where $s_{\lambda t}$ denotes soft-thresholding operator at the level
   $\lambda t$, as in \eqref{eq:soft_thresholding}. This certifies that the lasso
   problem admits a sparse solution (as the output of $s_{\lambda t}$ is sparse),
-  with generally a greater degree of sparsity for a larger $\lambda$.     
+  with generally a greater degree of sparsity for larger $\lambda$.     
 
 \item How do we know that the trace norm penalty in the matrix completion
   problem \eqref{eq:matrix_completion} induces a low-rank structure in its
@@ -500,8 +500,8 @@ same conclusion holds for an arbitrary loss $f$.
   with $m_{\lambda t}$ denoting matrix soft-thresholding at the level $\lambda
   t$, as in Example \parref{xa:trace_norm_proximal_mapping}. This certifies that
   the matrix completion problem admits a low-rank solution (as the output of
-  $m_{\lambda t}$ is low-rank), with generally a smaller rank for a larger
-  $\lambda$.      
+  $m_{\lambda t}$ is low-rank), with generally a smaller rank for larger
+  $\lambda$.       
 \end{enumerate}
 \end{Example}
 
