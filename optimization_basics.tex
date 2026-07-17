@@ -283,8 +283,8 @@ call the subgradient optimality condition, to be encountered later in Chapter
 \ref{sec:subgradient_optimality}. 
 
 \begin{Example}
-The following are three examples of the first-order optimality condition for
-convex optimization. 
+The following are examples of the first-order optimality condition for convex
+optimization.  
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
 \item For a differentiable convex optimization problem with only equality
@@ -955,16 +955,19 @@ structure. A probability density (or mass) function is said to be of
 p_\eta(z) = \exp\big(T(z)^\T \eta - \psi(\eta)\big) h(z),
 \end{equation}
 where $\eta \in \R^d$ is called the \emph{natural parameter} of the exponential  
-family (we use $\eta$, rather than $\theta$, to adhere to the standard notation
-in statistics). The function $\psi$ is called the \emph{log-partition function}.
+family (we use $\eta$, rather than $\theta$, to adhere to typical notation in
+statistics). The function $\psi$ is called the \emph{log-partition function},
+and we assume it to have open effective domain (in this case, the exponential 
+family is called regular). 
 % $T$ is the \emph{sufficient statistic}
 % $h$ is the \emph{base measure}
-A remarkable fact: in any exponential family distribution, the log-partition
-function $\psi$ is automatically convex, by virtue of the fact that
-$p_\eta$ must be a bona fide density and therefore must integrate to one (sum to
-one, in the discrete case); see This means that the map $\eta \mapsto
-p_\eta(z)$ is always log-concave (for fixed $z$), and the resulting maximum
-likelihood problem     
+
+A remarkable fact: in any such exponential family distribution, the
+log-partition function $\psi$ must be convex, by virtue of the fact that
+$p_\eta$ must be a bona fide density and therefore must integrate to one (or sum
+to one, in the discrete case); see Exercise \ref{ex:exponential_family_convex}. 
+This means that the map $\eta \mapsto p_\eta(z)$ is always log-concave (for
+fixed $z$), and the resulting maximum likelihood problem
 \[
 \minimize_\eta \quad -\frac{1}{n} \bigg( \sum_{i=1}^n T(Z_i)
 \bigg)^{\hspace{-2pt} \T} \eta + \psi(\eta)   
@@ -1507,10 +1510,10 @@ hold in general, without further assumptions.
 
 \index{exponential family}
 \item \label{ex:exponential_family_convex} 
-  In this exercise, we will prove that for an exponential family distribution, 
-  whose probability density or mass function is of the form
-  \eqref{eq:exponential_family}, the log-partition function $\psi$ must be 
-  convex. 
+  We will prove that for a regular exponential family distribution, with
+  probability density or mass function is of the form
+  \eqref{eq:exponential_family}, the log-partition function $\psi$ must be
+  convex.  
 
 \begin{enumerate}[label=\alph*.]
 \item Prove that $\psi$ must satisfy 
