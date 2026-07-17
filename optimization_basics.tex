@@ -89,9 +89,9 @@ concave maximization.
 
 \begin{Remark}
 In statistics, we do not typically denote the variable in an optimization
-problem by $x$. We instead often use $\beta$ or $\theta$, with $x$ usually being
-reserved for an input feature vector. We also rarely denote the solution to an
-optimization problem by $\beta^\star$ or $\theta^\star$; we commonly use
+problem by $x$. We instead typically use $\beta$ or $\theta$, with $x$ often
+being reserved for an input feature vector. We also rarely denote the solution
+to an optimization problem by $\beta^\star$ or $\theta^\star$; we commonly use
 \smash{$\hbeta$} or \smash{$\htheta$}, as these are typically seen as estimates
 of population-level parameters of interest. In this book, when discussing
 abstract properties of mathematical optimization, we will adhere to the standard
@@ -954,7 +954,7 @@ structure. A probability density (or mass) function is said to be of
 \label{eq:exponential_family}
 p_\eta(z) = \exp\big(T(z)^\T \eta - \psi(\eta)\big) h(z),
 \end{equation}
-Here $\eta \in \R^d$ is called the \emph{natural parameter} of the exponential 
+where $\eta \in \R^d$ is called the \emph{natural parameter} of the exponential  
 family (we use $\eta$, rather than $\theta$, to adhere to the standard notation
 in statistics). The function $\psi$ is called the \emph{log-partition function}.
 % $T$ is the \emph{sufficient statistic}
@@ -962,9 +962,9 @@ in statistics). The function $\psi$ is called the \emph{log-partition function}.
 A remarkable fact: in any exponential family distribution, the log-partition
 function $\psi$ is automatically convex, by virtue of the fact that
 $p_\eta$ must be a bona fide density and therefore must integrate to one (sum to
-one, in the discrete case); see Exercise \ref{ex:exponential_family}. This means
-that the map $\eta \mapsto p_\eta(z)$ is always log-concave (for fixed $z$),
-and the resulting maximum likelihood problem    
+one, in the discrete case); see This means that the map $\eta \mapsto
+p_\eta(z)$ is always log-concave (for fixed $z$), and the resulting maximum
+likelihood problem     
 \[
 \minimize_\eta \quad -\frac{1}{n} \bigg( \sum_{i=1}^n T(Z_i)
 \bigg)^{\hspace{-2pt} \T} \eta + \psi(\eta)   
@@ -1506,7 +1506,7 @@ hold in general, without further assumptions.
 \end{enumerate}
 
 \index{exponential family}
-\item \label{ex:exponential_family} 
+\item \label{ex:exponential_family_convex} 
   In this exercise, we will prove that for an exponential family distribution, 
   whose probability density or mass function is of the form
   \eqref{eq:exponential_family}, the log-partition function $\psi$ must be 
@@ -1514,14 +1514,14 @@ hold in general, without further assumptions.
 
 \begin{enumerate}[label=\alph*.]
 \item Prove that $\psi$ must satisfy 
-\[
-\psi(\eta) = \begin{cases}
-\log \Big(\int \exp\big(T(z)^\T \eta \big) h(z) \, \d{z}\Big) &
-\text{(continuous case)} \\    
-\log \Big(\sum_z \exp\big(T(z)^\T \eta \big) h(z)\Big) & 
-\text{(discrete case)}.
-\end{cases}
-\]
+  \[
+  \psi(\eta) = \begin{cases}
+  \log \Big(\int \exp\big(T(z)^\T \eta \big) h(z) \, \d{z}\Big) &
+  \text{(continuous case)} \\    
+  \log \Big(\sum_z \exp\big(T(z)^\T \eta \big) h(z)\Big) & 
+  \text{(discrete case)}.
+  \end{cases}
+  \]
 
 \item Show that $\dom(\psi)$ is a convex set. Hint: use part a.
 
