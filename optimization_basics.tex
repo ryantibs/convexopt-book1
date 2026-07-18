@@ -1002,17 +1002,17 @@ linear, logistic, and Poisson regression problems.
 \index{Poisson regression}
 \begin{alignat}{3}
 \label{eq:linear_regression}
-&\text{Gaussian}: \quad
+&\text{Gaussian:} \quad
 &&\minimize_\beta \quad \sum_{i=1}^n \bigg(-y_i x_i^\T \beta + 
 \frac{(x_i^\T \beta)^2}{2} \bigg) \quad  
 &\text{(linear regression)} \\
 \label{eq:logistic_regression}
-&\text{Bernoulli}: \quad 
+&\text{Bernoulli:} \quad 
 &&\minimize_\beta \quad \sum_{i=1}^n \Big( -y_i x_i^\T \beta + 
 \log(1 + \exp(x_i^\T \beta)) \Big) \quad
 &\text{(logistic regression)} \\
 \label{eq:poisson_regression}
-&\text{Poisson}: \quad
+&\text{Poisson:} \quad
 &&\minimize_\beta \quad \sum_{i=1}^n \Big( -y_i x_i^\T \beta + 
 \exp(x_i^\T \beta) \Big) \quad  
 &\text{(Poisson regression)}
