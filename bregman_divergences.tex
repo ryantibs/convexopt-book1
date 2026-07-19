@@ -290,7 +290,7 @@ which we codify into a theorem.
 \begin{Theorem}
 \label{thm:conjugate_divergence}
 For closed convex $\phi,\phi^*$ of Legendre type, and any points $x,y \in 
-\interior(\dom(\phi))$, it holds that 
+\interior(\dom(\phi))$, 
 \[
 D_\phi(x,y) = D_{\phi^*}(\nabla\phi(y), \nabla\phi(x)). 
 \]
@@ -329,7 +329,123 @@ conclusions in Property \parref{par:bregman_second}.
 
 \section{Exponential families*}
 
+Exponential families are intimately connected to Bregman divergences, and they
+provide us with a helpful language to interpret conjugacy relations from the
+last section. Recall (Chapter \ref{sec:maximum_likelihood}) that a regular
+exponential family is of the form           
+\index{exponential family}
+\[
+p_\eta(z) = \exp\big(T(z)^\T \eta - \psi(\eta)\big) h(z),
+\]
+where $\eta \in \R^k$ is called the natural parameter, and $\psi$ is the
+log-partition function with $\dom(\psi)$ open. In any such exponential 
+family, we know that $\psi$ is convex and differentiable (Exercise
+\ref{ex:exponential_family_convex}). In this section, we will further assume
+$\psi$ is of Legendre type. This is true for exponential families satisfying a
+minimal representation condition (Exercise
+\ref{ex:exponential_family_legendre}).       
 
+\subsection{Mirror map as mean map}
+
+In an exponential family, the mirror map in the log-partition function
+$\nabla\psi$ has an intuitive interpretation: it is the \emph{mean map},
+as it maps the natural parameter $\eta$ to the corresponding mean of the
+statistic $T(Z)$ under the distribution $p_\eta$. Precisely,  
+\[
+\nabla\psi(\eta) = \E_\eta[T(Z)],
+\]
+where the expectation on the right-hand side is with respect to $Z \sim
+p_\eta$. This identity is verified by the calculations in parts c and d of
+Exercise \ref{ex:exponential_family_convex}. Denoting $\mu_\eta =
+\nabla\psi(\eta)$, below are some common examples (each with identity sufficient  
+statistic $T(z) = z$):    
+\begin{alignat*}{3}
+&\text{Gaussian:} \quad &&\psi(\eta) = \tfrac{1}{2} \eta^2, \quad &&\mu_\eta =
+\eta; \\
+&\text{Bernoulli:} \quad &&\psi(\eta) = \log(1+e^\eta), \quad &&\mu_\eta =
+\tfrac{e^\eta}{1+e^\eta}; \\
+&\text{Poisson:} \quad &&\psi(\eta) = e^\eta, \quad &&\mu_\eta = e^\eta. 
+\end{alignat*}
+As $\nabla\psi$ can be understood as the mean map, its inverse $\nabla\psi^{-1}
+= \nabla\psi^*$ is the natural parameter map: it takes each mean value $\mu$ to 
+its corresponding natural parameter $\eta_\mu$. For the same three families:    
+\begin{alignat*}{3}
+&\text{Gaussian:} \quad &&\psi^*(\mu) = \tfrac{1}{2} \mu^2, \quad &&\eta_\mu =
+\mu; \\
+&\text{Bernoulli:} \quad &&\psi^*(\mu) = \mu\log\mu + (1-\mu) \log(1-\mu), \quad
+&&\eta_\mu = \log\hspace{-2pt} \big( \tfrac{\mu}{1-\mu} \big); \\
+&\text{Poisson:} \quad &&\psi^*(\eta) = \mu\log\mu - \mu, \quad &&\eta_\mu =
+\log(\mu). 
+\end{alignat*}
+
+\subsection{Maximum likelihood as Bregman projection}
+
+Now let $y_i$, $i=1,\dots,n$ be independent samples, where each $y_i$ is drawn
+from a common exponential family distribution (common $T,\psi,h$), but has a
+separate natural parameter value $\eta_i \in \R^k$. Let $\eta =
+(\eta_1,\dots,\eta_n) \in N$ be a restriction of the parameter space, where $N
+\in \R^{nk}$ is a given convex set. For example, in a generalized linear model
+(GLM), we would take       
+\[
+N = \Big\{ (\eta_1,\dots,\eta_n) : \eta_i = x_i^\T \beta, \, i=1,\dots,n \;\,
+\text{for some $\beta \in \R^d$} \Big\}, 
+\]
+where $x_i \in \R^d$, $i=1,\dots,n$ are given feature vectors. In what follows,
+we will additionally assume $T(y_i) \in \interior(\dom(\psi^*)) =
+\interior(\ran(\nabla\psi))$, $i=1,\dots,n$; note that this is a harmless
+assumption for some families (Gaussian) but not others (Bernoulli). We make 
+this assumption for simplicity of exposition, and the general case
+(allowing $T(y_i) \in \boundary(\dom(\psi^*))$) is treated in Exercise 
+\ref{ex:exponential_family_boundary}.   
+
+With this setup in place, define $\lambda_i = \nabla\psi^*(T(y_i))$, and compute 
+\begin{align*}
+D_\psi( \eta_i, \lambda_i) &= \psi(\eta_i) - \psi(\lambda_i) -
+  \nabla\psi(\lambda_i)^\T (\eta_i - \lambda_i) \\  
+&= \psi(\eta_i) - T(y_i)^\T \eta_i + c_i,
+\end{align*}
+where $c_i$ denotes a constant not depending on $\eta_i$. This is, up to
+constants, the negative log likelihood $-\ell(\eta_i; y_i) =
+-\log(p_{\eta_i}(y_i))$. Summing over $i=1,\dots,n$, we obtain    
+\[
+\sum_{i=1}^n D_\psi(\eta_i, \lambda_i) = -\sum_{i=1}^n \ell(\eta_i; y_i) + c, 
+\]
+for a constant $c$. In other words, maximum likelihood in this problem is
+equivalent to minimizing a sum of Bregman divergences between each natural
+parameter $\eta_i$ and $\lambda_i = \nabla\psi^*(T(y_i))$, the result of mapping
+of the sufficient statistic $T(y_i)$ to the natural parameter space. 
+
+This can be expressed even more succinctly: defining an aggregate potential
+\smash{$\Psi(\eta) = \sum_{i=1}^n \psi(\eta_i)$}, maximum likelihood over $\eta
+\in N$ is equivalent to    
+\begin{equation}
+\label{eq:exponential_family_bregman}
+\minimize_{\eta \in N} \quad D_{\Psi}\big( \eta, \nabla\Psi^*(T(y)) \big),
+\end{equation}
+Maximum likelihood in an exponential family can thus be understood as
+follows: we map the vector of sufficient statistics $\nabla\Psi^*(T(y)) =
+(\nabla\psi^*(T(y_1)), \dots, \nabla\psi^*(T(y_n))$ to the natural parameter
+space, and then we perform a Bregman projection onto the feasible set $N$.    
+
+\subsection{Maximum likelihood as conjugate Bregman minimization} 
+
+The conjugate formulation of Bregman divergence developed previously provides a
+nice way to reinterpret problem \eqref{eq:exponential_family_bregman}. Let
+$\mu_\eta = \nabla\Psi(\eta) = (\nabla\psi(\eta_1), \dots, \nabla\psi(\eta_n))$
+be the mean vector associated with the natural parameter vector $\eta$. Then, by
+Theorem \ref{thm:conjugate_divergence}, maximum likelihood
+\eqref{eq:exponential_family_bregman} is equivalent to
+\begin{equation}
+\label{eq:exponential_family_conjugate}
+\minimize_{\eta \in N} \quad D_{\Psi^*}( T(y), \mu_\eta).
+\end{equation}
+Once again this is highly intuitive: we are minimizing the discrepancy between 
+the sufficient statistic vector $T(y)$ and the mean vector $\mu_\eta$, over
+feasible parameters $\eta \in N$.  
+
+The fundamental relation here, \smash{$D_\psi(\eta_i, \nabla\psi^*(T(y_i))) = 
+D_{\psi^*}(T(y), \nabla\psi(\eta))$}, has important statistical implications,
+which are explored in Exercise \ref{ex:exponential_family_conjugate}. 
 
 % In exponential families, the gradient of the LPF is the map between natural
 % parameter and the mean (cf Barndoff and Nielsen, Brad, Martin and Mike).  
@@ -627,10 +743,18 @@ Bregman proximal: \cite{bauschke2017descent}
   Since all coordinates travel at the same speed, this is a perfectly straight
   line in mirror space connecting $\nabla\phi(z)$ to $\nabla\phi(y)$.
 \end{enumerate}
-  
-\item Connection between KL projection and MLE?
 
 \item \label{ex:bregman_proximal_operator}
+
+\item \label{ex:exponential_family_legendre}
+
+% Proposition B.2 in Wainwright and Jordan (2008)
+
+\item \label{ex:exponential_family_boundary}
+
+\item \label{ex:exponential_family_conjugate}
+
+\item Connection between KL projection and MLE?
 
 \end{enumerate}
 \end{xcb}
