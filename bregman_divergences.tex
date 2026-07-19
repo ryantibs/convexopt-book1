@@ -256,7 +256,7 @@ This means that to each Bregman divergence $D_\phi$ (with $\phi$ closed), we can
 associate a conjugate divergence \smash{$D_{\phi^*}$}, namely     
 \index{Bregman divergence!conjugate divergence}  
 \begin{equation}
-\label{eq:conjugate_divergence}
+\label{eq:conjugate_bregman}
 D_{\phi^*}(u,v) = \phi^*(u) - \phi^*(v) - \nabla\phi^*(v)^\T (u - v).
 \end{equation}
 This is defined for $u,v \in \interior(\dom(\phi^*)) =
@@ -288,7 +288,7 @@ Through these elementary calculations we have established the following result,
 which we codify into a theorem.     
 
 \begin{Theorem}
-\label{thm:conjugate_divergence}
+\label{thm:conjugate_bregman}
 For closed convex $\phi,\phi^*$ of Legendre type, and any points $x,y \in 
 \interior(\dom(\phi))$, 
 \[
@@ -306,7 +306,7 @@ losses.
 \paragraph{Mirror-convex in the second argument.}
 
 We revisit the structure of the map $y \mapsto D_\phi(x,y)$ for fixed 
-$x$, through the lens of Theorem \ref{thm:conjugate_divergence}. Assuming $\phi$
+$x$, through the lens of Theorem \ref{thm:conjugate_bregman}. Assuming $\phi$
 is closed and $x \in \interior(\dom(\phi))$, note that we can express this map as  
 \[
 y \mapsto D_{\phi^*}(\nabla\phi(y), \nabla\phi(x)).
@@ -366,9 +366,9 @@ statistic $T(z) = z$):
 \tfrac{e^\eta}{1+e^\eta}; \\
 &\text{Poisson:} \quad &&\psi(\eta) = e^\eta, \quad &&\mu_\eta = e^\eta. 
 \end{alignat*}
-As $\nabla\psi$ can be understood as the mean map, its inverse $\nabla\psi^{-1}
-= \nabla\psi^*$ is the natural parameter map: it takes each mean value $\mu$ to 
-its corresponding natural parameter $\eta_\mu$. For the same three families:    
+Just as $\nabla\psi$ can be seen as the mean map, its inverse $\nabla\psi^{-1} =
+\nabla\psi^*$ is the natural parameter map: it takes each mean $\mu$ to the
+corresponding natural parameter $\eta_\mu$. For the same three families:      
 \begin{alignat*}{3}
 &\text{Gaussian:} \quad &&\psi^*(\mu) = \tfrac{1}{2} \mu^2, \quad &&\eta_\mu =
 \mu; \\
@@ -400,7 +400,7 @@ this assumption for simplicity of exposition, and the general case
 
 With this setup in place, define $\lambda_i = \nabla\psi^*(T(y_i))$, and compute 
 \begin{align*}
-D_\psi( \eta_i, \lambda_i) &= \psi(\eta_i) - \psi(\lambda_i) -
+D_\psi(\eta_i, \lambda_i) &= \psi(\eta_i) - \psi(\lambda_i) -
   \nabla\psi(\lambda_i)^\T (\eta_i - \lambda_i) \\  
 &= \psi(\eta_i) - T(y_i)^\T \eta_i + c_i,
 \end{align*}
@@ -424,7 +424,7 @@ This can be expressed even more succinctly: defining an aggregate potential
 \end{equation}
 Maximum likelihood in an exponential family can thus be understood as
 follows: we map the vector of sufficient statistics $\nabla\Psi^*(T(y)) =
-(\nabla\psi^*(T(y_1)), \dots, \nabla\psi^*(T(y_n))$ to the natural parameter
+(\nabla\psi^*(T(y_1)), \dots, \nabla\psi^*(T(y_n)))$ to the natural parameter 
 space, and then we perform a Bregman projection onto the feasible set $N$.    
 
 \subsection{Maximum likelihood as conjugate Bregman minimization} 
@@ -433,7 +433,7 @@ The conjugate formulation of Bregman divergence developed previously provides a
 nice way to reinterpret problem \eqref{eq:exponential_family_bregman}. Let
 $\mu_\eta = \nabla\Psi(\eta) = (\nabla\psi(\eta_1), \dots, \nabla\psi(\eta_n))$
 be the mean vector associated with the natural parameter vector $\eta$. Then, by
-Theorem \ref{thm:conjugate_divergence}, maximum likelihood
+Theorem \ref{thm:conjugate_bregman}, maximum likelihood
 \eqref{eq:exponential_family_bregman} is equivalent to
 \begin{equation}
 \label{eq:exponential_family_conjugate}
@@ -537,8 +537,8 @@ Bregman proximal: \cite{bauschke2017descent}
   % Lemma 26.3 in Rockafellar (1970)
   Hint: consider the univariate convex function $g(t) = \phi(x+t(z-x))$, and
   argue that essential smoothness implies $|g(t)| \to \infty$ as $t \to
-  0$. Then use monotonicity of the derivative to argue that indeed $g$ must
-  approach $-\infty$ at 0. 
+  0$; then use monotonicity of the derivative $g'$ to argue that indeed $g$ must  
+  approach $-\infty$ at 0.  
 
 \index{Bregman projection}
 \item \label{ex:bregman_projection}
@@ -751,6 +751,40 @@ Bregman proximal: \cite{bauschke2017descent}
 % Proposition B.2 in Wainwright and Jordan (2008)
 
 \item \label{ex:exponential_family_boundary}
+  We examine the representations \eqref{eq:exponential_family_bregman} and 
+  \eqref{eq:exponential_family_conjugate} for maximum likelihood in an
+  exponential family in the case that $T(y_i) \in \dom(\psi^*) \setminus
+  \interior(\dom(\psi^*))$.  
+
+\begin{enumerate}[label=\alph*.]
+\item We begin with the conjugate Bregman representation. Show that for any
+  $\eta_i \in \dom(\psi) = \interior(\dom(\psi))$ (since $\dom(\psi)$ is open,
+  by assumption),  
+  \[
+  D_{\psi^*}(T(y_i), \nabla\psi(\eta_i)) = \psi(\eta_i) - T(y_i)^\T \eta_i + c_i,
+  \]
+  for a constant $c_i$ not depending on $\eta_i$. (Hint: use the fact that
+  equality holds in Fenchel's inequality for the pair $\eta, \nabla\psi(\eta)$ 
+  by Theorem \ref{thm:conjugate_subgradients}.) Show that the conjugate
+  representation \eqref{eq:exponential_family_conjugate} therefore generally
+  holds for any $T(y) = (T(y_1), \dots, T(y_n)) \in \dom(\psi^*)^n$.    
+
+\item Turning to the Bregman representation, again for $\eta_i \in \dom(\psi)
+  = \interior(\dom(\psi))$, define  
+  \[
+  D_\psi\big( \eta_i, \nabla\psi^*(T(y_i)) \big) = \lim_{\substack{\tau_i \to 
+      T(y_i), \\ \tau_i \in \interior(\dom(\psi^*))}} \hspace{-5pt}
+  D_\psi(\eta_i, \nabla\psi^*(\tau_i)). 
+  \]
+  Show that this is well-defined: for any sequence $\tau^k_i \in
+  \interior(\dom(\psi^*))$, $k=1,2,3,\dots$ such that $\tau^k_i \to T(y_i)$ as
+  $k \to \infty$, the limit is the same and in fact equals $D_{\psi^*}(T(y_i), 
+  \nabla\psi(\eta_i))$. (Hint: apply Theorem \ref{thm:conjugate_bregman} along
+  the sequence.) Argue that the Bregman representation
+  \eqref{eq:exponential_family_bregman} generally holds for any $T(y) = (T(y_1),
+  \dots, T(y_n)) \in \dom(\psi^*)^n$, provided that we properly interpret the
+  divergence terms via interior limits, as above. 
+\end{enumerate}
 
 \item \label{ex:exponential_family_conjugate}
 
