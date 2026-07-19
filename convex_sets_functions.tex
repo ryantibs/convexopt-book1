@@ -373,8 +373,8 @@ where $\nabla f(x)$ denotes the gradient of $f$ at $x$. This says that
 first-order Taylor approximation to $f$ around any point $x$ must
 globally under-approximate $f$; this is illustrated in Figure
 \ref{fig:convex_function}. A similar result holds for strict convexity: a
-differentiable function $f : \R^d \to (-\infty, \infty]$ is strictly convex if
-and only if $\dom(f)$ is convex and 
+differentiable function $f$ is strictly convex if and only if $\dom(f)$ is
+convex and  
 \[
 f(y) > f(x) + \nabla f(x)^\T (y-x), \quad \text{for all $x \not= y \in
   \dom(f)$}.   
@@ -389,11 +389,10 @@ and only if $\dom(f)$ is convex and
 \nabla^2 f(x) \succeq 0, \quad \text{for all $x \in \dom(f)$},
 \end{equation}
 where $\nabla^2 f(x)$ denotes the Hessian of $f$ at $x$. This condition says
-that the function $f$, at any point $x$, must be ``curved upwards'' in any
-direction; more precisely, for $v \in \R^d$, letting $g(t)=f(x+tv)$, we see
-that $g''(0) = v^\T \nabla^2 f(x) v \geq 0$ (by positive semidefiniteness). For
-twice differentiable $f : \R^d \to (-\infty, \infty]$, if $\dom(f)$ is convex
-and     
+that $f$ must be ``curved upward'' at any point $x$, in any direction $v \in
+\R^d$; more precisely, letting $g(t)=f(x+tv)$, note that positive
+semidefiniteness of $\nabla^2 f(x)$ implies $g''(0) = v^\T \nabla^2 f(x) v \geq
+0$. For twice differentiable $f$, if $\dom(f)$ is convex and         
 \[
 \nabla^2 f(x) \succ 0, \quad \text{for all $x \in \dom(f)$},
 \]
