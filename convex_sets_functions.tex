@@ -392,13 +392,14 @@ where $\nabla^2 f(x)$ denotes the Hessian of $f$ at $x$. This condition says
 that $f$ must be ``curved upward'' at any point $x$, in any direction $v \in
 \R^d$; more precisely, letting $g(t)=f(x+tv)$, note that positive
 semidefiniteness of $\nabla^2 f(x)$ implies $g''(0) = v^\T \nabla^2 f(x) v \geq
-0$. For twice differentiable $f$, if $\dom(f)$ is convex and         
+0$. For twice differentiable $f$, if $\dom(f)$ is convex and the Hessian is
+positive definite everywhere, 
 \[
 \nabla^2 f(x) \succ 0, \quad \text{for all $x \in \dom(f)$},
 \]
-meaning $\nabla^2 f(x)$ is positive definite for all $x \in \dom(f)$, then $f$
-is strictly convex. However, we note that this is \emph{not} a necessary   
-condition; for example, $f(x) = x^4$ is strictly convex but $f''(0)=0$. 
+then $f$ is strictly convex. However, note that this is \emph{not} a necessary
+condition for strict convexity: for example, $f(x) = x^4$ is strictly convex
+but $f''(0)=0$.   
 
 \medskip
 
