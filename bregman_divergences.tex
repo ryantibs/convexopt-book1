@@ -379,6 +379,7 @@ corresponding natural parameter $\eta_\mu$. For the same three families:
 \end{alignat*}
 
 \subsection{Maximum likelihood as Bregman projection}
+\label{sec:exponential_family_bregman}
 
 Now let $y_i$, $i=1,\dots,n$ be independent samples, where each $y_i$ is drawn
 from a common exponential family distribution (common $T,\psi,h$), but has a
@@ -386,6 +387,7 @@ separate natural parameter value $\eta_i \in \R^k$. Let $\eta =
 (\eta_1,\dots,\eta_n) \in N$ be a restriction of the parameter space, where $N
 \in \R^{nk}$ is a given convex set. For example, in a generalized linear model
 (GLM), we would take       
+\index{generalized linear model}
 \[
 N = \Big\{ (\eta_1,\dots,\eta_n) : \eta_i = x_i^\T \beta, \, i=1,\dots,n \;\,
 \text{for some $\beta \in \R^d$} \Big\}, 
@@ -418,6 +420,7 @@ of the sufficient statistic $T(y_i)$ to the natural parameter space.
 This can be expressed even more succinctly: defining an aggregate potential
 \smash{$\Psi(\eta) = \sum_{i=1}^n \psi(\eta_i)$}, maximum likelihood over $\eta
 \in N$ is equivalent to    
+\index{exponential family!maximum likelihood estimation}
 \begin{equation}
 \label{eq:exponential_family_bregman}
 \minimize_{\eta \in N} \quad D_{\Psi}\big( \eta, \nabla\Psi^*(T(y)) \big),
@@ -443,9 +446,9 @@ Once again this is highly intuitive: we are minimizing the discrepancy between
 the sufficient statistic vector $T(y)$ and the mean vector $\mu_\eta$, over
 feasible parameters $\eta \in N$.  
 
-The fundamental relation here, \smash{$D_\psi(\eta_i, \nabla\psi^*(T(y_i))) = 
-D_{\psi^*}(T(y_i), \nabla\psi(\eta_i))$}, has important statistical implications,
-which are explored in Exercise \ref{ex:exponential_family_conjugate}. 
+The conjugate representation of the negative log-likelihood in exponential
+families has important statistical implications for analyzing what is called     
+optimism, which are explored in Exercise \ref{ex:exponential_family_optimism}. 
 
 % In exponential families, the gradient of the LPF is the map between natural
 % parameter and the mean (cf Barndoff and Nielsen, Brad, Martin and Mike).  
@@ -744,17 +747,20 @@ Bregman proximal: \cite{bauschke2017descent}
   line in mirror space connecting $\nabla\phi(z)$ to $\nabla\phi(y)$.
 \end{enumerate}
 
+\index{Bregman proximal operator}
 \item \label{ex:bregman_proximal_operator}
 
+\index{exponential family}
 \item \label{ex:exponential_family_legendre}
 
 % Proposition B.2 in Wainwright and Jordan (2008)
 
+\index{exponential family!maximum likelihood estimation}
 \item \label{ex:exponential_family_boundary}
-  We examine the representations \eqref{eq:exponential_family_bregman} and 
-  \eqref{eq:exponential_family_conjugate} for maximum likelihood in an
-  exponential family in the case that $T(y_i) \in \dom(\psi^*) \setminus
-  \interior(\dom(\psi^*))$.  
+  We examine the representations \eqref{eq:exponential_family_bregman},
+  \eqref{eq:exponential_family_conjugate} for the maximum likelihood estimator 
+  (MLE) in an exponential family in the case that $T(y_i) \in \dom(\psi^*)
+  \setminus \interior(\dom(\psi^*))$.  
 
 \begin{enumerate}[label=\alph*.]
 \item We begin with the conjugate Bregman representation. Show that for any
@@ -766,8 +772,8 @@ Bregman proximal: \cite{bauschke2017descent}
   for a constant $c_i$ not depending on $\eta_i$. (Hint: use the fact that
   equality holds in Fenchel's inequality for the pair $\eta, \nabla\psi(\eta)$ 
   by Theorem \ref{thm:conjugate_subgradients}.) Show that the conjugate
-  representation \eqref{eq:exponential_family_conjugate} therefore generally
-  holds for any $T(y) = (T(y_1), \dots, T(y_n)) \in \dom(\psi^*)^n$.    
+  representation \eqref{eq:exponential_family_conjugate} for the MLE therefore
+  holds for any $T(y) = (T(y_1), \dots, T(y_n)) \in \dom(\psi^*)^n$.     
 
 \item Turning to the Bregman representation, again for $\eta_i \in \dom(\psi)
   = \interior(\dom(\psi))$, define  
@@ -781,12 +787,64 @@ Bregman proximal: \cite{bauschke2017descent}
   $k \to \infty$, the limit is the same and in fact equals $D_{\psi^*}(T(y_i), 
   \nabla\psi(\eta_i))$. (Hint: apply Theorem \ref{thm:conjugate_bregman} along
   the sequence.) Argue that the Bregman representation
-  \eqref{eq:exponential_family_bregman} generally holds for any $T(y) = (T(y_1),
-  \dots, T(y_n)) \in \dom(\psi^*)^n$, provided that we properly interpret the
-  divergence terms via interior limits, as above. 
+  \eqref{eq:exponential_family_bregman} for the MLE thus holds for any 
+  $T(y) = (T(y_1), \dots, T(y_n)) \in \dom(\psi^*)^n$, provided that we properly
+  interpret the divergence terms via interior limits, as above. 
 \end{enumerate}
 
-\item \label{ex:exponential_family_conjugate}
+\index{exponential family!optimism}
+\item \label{ex:exponential_family_optimism}
+  Consider samples $y_i$, $i=1,\dots,n$ as in Chapter
+  \ref{sec:exponential_family_bregman}, and for each $i=1,\dots,n$, let $y^*_i$
+  be an independent copy of $y_i$. We will view $y_i$, $i=1,\dots,n$ as the
+  training set, which we use to form estimates \smash{$\hat\eta_i$},
+  $i=1,\dots,n$ of the natural parameters, and we then view $y_i^*$,
+  $i=1,\dots,n$ as the test set, which we use to evaluate the estimates.   
+  Accordingly, we define the \emph{optimism} of the natural parameter estimates
+  by  
+  \[
+  \mathrm{Opt} = \sum_{i=1}^n \E\big[ \ell(\hat\eta_i; y_i) -
+  \ell(\hat\eta_i; y_i^*) \big],
+  \]
+  where $\ell(\cdot; y_i)$ denotes the log-likelihood function associated
+  with sample $y_i$, and similarly for $\ell(\cdot; y_i^*)$. This is typically
+  positive: since the natural parameter estimates are fit on the training set 
+  (usually by maximum likelihood or a regularized variant), we would expect the 
+  in-sample log-likelihood value \smash{$\ell(\hat\eta_i; y_i)$} to be biased 
+  upward relative to out-of-sample value \smash{$\ell(\hat\eta_i; y_i^*)$}. 
+  
+  In what follows, we assume that each \smash{$\hat\eta_i \in \dom(\psi) =
+    \interior(\dom(\psi))$} (since $\dom(\psi)$ is open, by assumption), and
+  that each $T(y_i), T(y_i^*) \in \dom(\psi^*)$. 
+
+\begin{enumerate}[label=\alph*.]
+\item Recalling $\ell(\cdot; y_i)$ denotes the log-likelihood function
+  associated with $y_i$, prove that 
+  \[
+  \E\big[ \ell(\hat\eta_i; y_i) - \ell(\hat\eta_i; y_i^*) \big] = 
+  \E\Big[ D_{\psi^*}(T(y_i^*); \hat\mu_i) - D_{\psi^*}(T(y_i); \hat\mu_i)
+  \Big], 
+  \]
+  where \smash{$\hat\mu_i = \nabla\psi(\hat\eta_i)$}. Hint: follow the
+  calculation in Exercise \ref{ex:exponential_family_boundary} part a. 
+
+\item Prove that 
+  \[ 
+  \E\Big[ D_{\psi^*}(T(y_i^*); \hat\mu_i) - D_{\psi^*}(T(y_i); \hat\mu_i)
+  \Big] = \Cov(T(y_i), \hat\eta_i),
+  \]
+  and therefore
+  \[
+  \mathrm{Opt} = \sum_{i=1}^n \Cov(T(y_i), \hat\eta_i),
+  \]
+  which is called \emph{Efron's covariance formula} for optimism, due to 
+  \cite{efron1986biased}.  
+
+  \smallskip
+  Note: this is an important result because the right-hand side above is
+  estimable (without needing access to test samples) using resampling methods
+  such as the bootstrap.  
+\end{enumerate}
 
 \item Connection between KL projection and MLE?
 
