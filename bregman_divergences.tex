@@ -480,6 +480,9 @@ optimism, which are explored in Exercise \ref{ex:exponential_family_optimism}.
 Bregman projection: \cite{bauschke1997legendre}
 Bregman proximal: \cite{bauschke2017descent}
 
+Exponential families: Brown (1986), Wainwright and Jordan (2008),
+Barndorff-Nielsen (2014) 
+
 \clearpage
 
 \begin{xcb}{Exercises}
@@ -769,20 +772,20 @@ Bregman proximal: \cite{bauschke2017descent}
   lemma. 
 
 \item Prove that $\psi$ is essentially smooth. Hint: let $\eta_1 \in
-  \boundary(\dom(\psi)$ and $\eta_0 \in \dom(\psi)$. Define $\theta_t = (1-t)
-  \theta_0 + t \theta_1$ for $t \in [0,1)$. Show that  
+  \boundary(\dom(\psi))$ and $\eta_0 \in \dom(\psi)$. Define $\eta_t = (1-t) 
+  \eta_0 + t \eta_1$ for $t \in [0,1)$. Show that  
   \[
-  \psi(\theta_t) - \psi(\theta_0) \leq \nabla\psi(\theta_t)^\T (\theta_t -
-  \theta_0), 
+  \psi(\eta_t) - \psi(\eta_0) \leq \nabla\psi(\eta_t)^\T (\eta_t - \eta_0), 
   \]
   and use lower semicontinuity and Cauchy-Schwarz to prove
-  $\|\nabla\psi(\theta_t)\|_2 \to \infty$ as $t \to 1$.  
+  $\|\nabla\psi(\eta_t)\|_2 \to \infty$ as $t \to 1$.  
 
-\item The exponential family is called \emph{minimal} provided that for any
+\item The exponential family is called \emph{minimal} provided that for any  
   $\eta \in \dom(\psi)$, there is no nonzero vector $a \in \R^k$ whose inner
-  product with the sufficient statistic $T(Z)$ is constant almost everywhere
-  (interpreted with respect to the base measure underlying the family: Lebesgue
-  measure for the continuous case, and counting measure for the discrete case). 
+  product with the sufficient statistic $T(Z)$ is constant almost everywhere 
+  (interpreted with respect to the underlying base measure: Lebesgue measure for 
+  continuous distributions, and counting measure for the discrete ones).   
+
   Prove that in this case $\psi$ must be strictly convex, and hence
   Legendre. Hint: show that minimality implies $\Var_\eta(T(Z)^\T a) > 0$ for
   any $\eta$ and $a$, then return to the calculation in Exercise
