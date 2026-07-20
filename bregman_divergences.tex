@@ -752,8 +752,43 @@ Bregman proximal: \cite{bauschke2017descent}
 
 \index{exponential family}
 \item \label{ex:exponential_family_legendre}
+  Let $\psi$ be the log-partition function in a regular exponential family,
+  with open effective domain $\dom(\psi)$. Recall (Exercise
+  \ref{ex:exponential_family_convex}) that $\psi$ must always be convex and        
+  differentiable. In fact, more can be said and this exercise develops further
+  properties.     
 
-% Proposition B.2 in Wainwright and Jordan (2008)
+\begin{enumerate}[label=\alph*.]
+\item Prove that $\psi$ is lower semicontinuous, which recall, means that for
+  any $\eta \in \R^k$ and any sequence such that \smash{$\lim_{j \to \infty}
+    \eta_j = \eta$} (this sequence need not lie in $\dom(\psi)$), 
+  \[
+  \psi(\eta) \leq \liminf_{j \to \infty} \psi(\eta_j). 
+  \]
+  Hint: use Exercise \ref{ex:exponential_family_convex} part a, and Fatou's
+  lemma. 
+
+\item Prove that $\psi$ is essentially smooth. Hint: let $\eta_1 \in
+  \boundary(\dom(\psi)$ and $\eta_0 \in \dom(\psi)$. Define $\theta_t = (1-t)
+  \theta_0 + t \theta_1$ for $t \in [0,1)$. Show that  
+  \[
+  \psi(\theta_t) - \psi(\theta_0) \leq \nabla\psi(\theta_t)^\T (\theta_t -
+  \theta_0), 
+  \]
+  and use lower semicontinuity and Cauchy-Schwarz to prove
+  $\|\nabla\psi(\theta_t)\|_2 \to \infty$ as $t \to 1$.  
+
+\item The exponential family is called \emph{minimal} provided that for any
+  $\eta \in \dom(\psi)$, there is no nonzero vector $a \in \R^k$ whose inner
+  product with the sufficient statistic $T(Z)$ is constant almost everywhere
+  (interpreted with respect to the base measure underlying the family: Lebesgue
+  measure for the continuous case, and counting measure for the discrete case). 
+  Prove that in this case $\psi$ must be strictly convex, and hence
+  Legendre. Hint: show that minimality implies $\Var_\eta(T(Z)^\T a) > 0$ for
+  any $\eta$ and $a$, then return to the calculation in Exercise
+  \ref{ex:exponential_family_convex} part d to show that this implies $\nabla^2
+  \psi(\eta) \succ 0$.  
+\end{enumerate}
 
 \index{exponential family!maximum likelihood estimation}
 \item \label{ex:exponential_family_boundary}
@@ -782,14 +817,14 @@ Bregman proximal: \cite{bauschke2017descent}
       T(y_i), \\ \tau_i \in \interior(\dom(\psi^*))}} \hspace{-5pt}
   D_\psi(\eta_i, \nabla\psi^*(\tau_i)). 
   \]
-  Show that this is well-defined: for any sequence $\tau^k_i \in
-  \interior(\dom(\psi^*))$, $k=1,2,3,\dots$ such that $\tau^k_i \to T(y_i)$ as
-  $k \to \infty$, the limit is the same and in fact equals $D_{\psi^*}(T(y_i), 
-  \nabla\psi(\eta_i))$. (Hint: apply Theorem \ref{thm:conjugate_bregman} along
-  the sequence.) Argue that the Bregman representation
-  \eqref{eq:exponential_family_bregman} for the MLE thus holds for any 
-  $T(y) = (T(y_1), \dots, T(y_n)) \in \dom(\psi^*)^n$, provided that we properly
-  interpret the divergence terms via interior limits, as above. 
+  Show that this is well-defined: for any sequence \smash{$\tau^j_i \in 
+    \interior(\dom(\psi^*))$}, $j=1,2,3,\dots$ with \smash{$\tau^j_i \to
+    T(y_i)$} as $j \to \infty$, the limit is the same and furthermore equals 
+  $D_{\psi^*}(T(y_i), \nabla\psi(\eta_i))$. (Hint: apply Theorem
+  \ref{thm:conjugate_bregman} along the sequence.) Argue that the Bregman
+  representation \eqref{eq:exponential_family_bregman} for the MLE thus holds
+  for any $T(y) = (T(y_1), \dots, T(y_n)) \in \dom(\psi^*)^n$, provided that we
+  properly interpret the divergence terms via interior limits, as above.  
 \end{enumerate}
 
 \index{exponential family!optimism}
