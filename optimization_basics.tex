@@ -1608,9 +1608,9 @@ hold in general, without further assumptions.
   \end{equation}
   
 \begin{enumerate}[label=\alph*.]
-\item Let \smash{$\Lambda_0(t) = \int_0^t \lambda_0(t)$} denote the base
-  cumulative hazard function. Show that under the Cox model
-  \eqref{eq:cox_model}, the density of the survival time $t_i$ for subject $i$
+\item Let \smash{$\Lambda_0(t) = \int_0^t \lambda_0(t) \, \d{t}$} be the
+  base cumulative hazard function. Under the Cox model \eqref{eq:cox_model},
+  show that the density of the survival time $t_i$ for subject $i$  
   is 
   \[
   f(t; \theta, \Lambda_0) = \lambda_0(t) \exp(x_i^\T \theta)
