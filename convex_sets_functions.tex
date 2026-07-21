@@ -644,13 +644,13 @@ For differentiable $f : \R^d \to (-\infty, \infty]$ and $L>0$, consider the
 statements:  
 \begin{enumerate}[label=(\roman*)]
 \item $\|\nabla f(x) - \nabla f(y)\|_2 \leq L \|x-y\|_2$, for all $x,y \in
-  \dom(f)$; 
-\item the function $-f_L$ is convex, where $f_L(x) = f(x) - \frac{L}{2}
-  \|x\|_2^2$;   
+  \dom(f)$; \vphantom{$\frac{L}{2}$}
+\item the function $f_L$ is convex, where $f_L(x) = \frac{L}{2} \|x\|_2^2 -
+  f(x)$;     
 \item $f(y) \leq f(x) + \nabla f(x)^\T (y-x) + \frac{L}{2} \|y-x\|_2^2$, for all
   $x,y \in \dom(f)$;
 \item $(\nabla f(x) - \nabla f(y))^\T (x - y) \leq L\|x-y\|_2^2$, for all $x,y
-  \in \dom(f)$.
+  \in \dom(f)$. \vphantom{$\frac{L}{2}$}
 \end{enumerate}
 Then the following relations hold: 
 \[
@@ -675,13 +675,13 @@ For differentiable $f : \R^d \to (-\infty, \infty]$ and $m>0$, consider the
 statements:  
 \begin{enumerate}[label=(\roman*)]
 \item $\|\nabla f(x) - \nabla f(y)\|_2 \geq m \|x-y\|_2$, for all $x,y \in
-  \dom(f)$; 
+  \dom(f)$; \vphantom{$\frac{m}{2}$}
 \item the function $f_m$ is convex, where $f_m(x) = f(x) - \frac{m}{2}
-  \|x\|_2^2$;   
+  \|x\|_2^2$; 
 \item $f(y) \geq f(x) + \nabla f(x)^\T (y-x) + \frac{m}{2} \|y-x\|_2^2$, for all
   $x,y \in \dom(f)$;
 \item $(\nabla f(x) - \nabla f(y))^\T (x - y) \geq m\|x-y\|_2^2$, for all $x,y
-  \in \dom(f)$.
+  \in \dom(f)$. \vphantom{$\frac{m}{2}$}
 \end{enumerate}
 Then the following relations hold: 
 \[
