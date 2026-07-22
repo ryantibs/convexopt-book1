@@ -552,6 +552,7 @@ Barndorff-Nielsen (2014)
   and Legendre, let $\Omega = \interior(\dom(\phi))$, and let $C$ be a closed
   convex set with $C \cap \Omega \not= \emptyset$. Let $S^\star$ denote the set
   of minimizers of the problem in \eqref{eq:bregman_projection}. 
+
   % Theorem 3.12 in Bauschke and Borwein (1997)
 
 \begin{enumerate}[label=\alph*.]
@@ -886,5 +887,47 @@ Barndorff-Nielsen (2014)
 
 \item Connection between KL projection and MLE?
 
+\item In this exercise, we develop a generalization of Theorem
+  \ref{thm:lipschitz_smoothness} using Bregman divergences. As before, let
+  $\phi$ be Legendre and $\Omega = \interior(\dom(\phi))$. Let $f : \R^d \to
+  (-\infty, \infty]$ be differentiable with $\dom(f) \supseteq \Omega$, and let 
+  $L>0$. Consider the following statements:        
+  % Lemma 1 and Proposition 1 of Bauschke, Bolte, and Teboulle (2017)
+\begin{enumerate}[label=(\roman*)]
+\item $\|\nabla f(x) - \nabla f(y)\|_2 \leq L \frac{D_\phi(x,y) + D_\phi(y,x)}
+  {\|x-y\|_2}$, for all $x,y \in \Omega$, $x \not= y$;
+\item the function $L\phi-f$ is convex on $\Omega$;
+\item $f(y) \leq f(x) + \nabla f(x)^\T (y-x) + L D_\phi(y,x)$, for all $x,y \in
+  \Omega$; 
+\item $(\nabla f(x) - \nabla f(y))^\T (x - y) \leq L (D_\phi(x,y) +
+  D_\phi(y,x))$, for all $x,y \in \Omega$. 
+\end{enumerate}
+Consider the following additional statement (for twice differentiable $f,\phi$):  
+\begin{enumerate}
+\item[(v)] $\nabla^2 f(x) \preceq L \nabla^2 \phi(x)$, for all $x \in \Omega$. 
+\end{enumerate} 
+Now we prove various connections between the above statements (mirroring
+Exercise \ref{ex:lipschitz_smoothness}).
+
+\begin{enumerate}[label=\alph*.]
+\item Prove that $\text{(ii)} \iff \text{(iii)}$ using the first-order
+  characterization for convexity \eqref{eq:first_order_characterization}.   
+
+\item Prove that $\text{(ii)} \iff \text{(iv)}$ using gradient monotonicity
+  \eqref{eq:gradient_monotonicity} and the simple identity:
+  \[
+  D_\phi(x,y) + D_\phi(y,x) = (\nabla\phi(x) - \nabla\phi(y))^\T (x-y).
+  \]
+
+\item Prove that $\text{(i)} \implies \text{(iv)}$ by the Cauchy-Schwarz
+  inequality, which proves:  
+  \[
+  \text{(i)} \implies \text{(ii)} \iff \text{(iii)} \iff \text{(iv)}. 
+  \]
+
+\item For twice differentiable $f,\phi$, prove that $\text{(ii)} \iff \text{(v)}$
+    using the second-order characterization for convexity
+    \eqref{eq:second_order_characterization}.    
+\end{enumerate}
 \end{enumerate}
 \end{xcb}
