@@ -552,7 +552,6 @@ Barndorff-Nielsen (2014)
   and Legendre, let $\Omega = \interior(\dom(\phi))$, and let $C$ be a closed
   convex set with $C \cap \Omega \not= \emptyset$. Let $S^\star$ denote the set
   of minimizers of the problem in \eqref{eq:bregman_projection}. 
-
   % Theorem 3.12 in Bauschke and Borwein (1997)
 
 \begin{enumerate}[label=\alph*.]
@@ -892,7 +891,6 @@ Barndorff-Nielsen (2014)
   $\phi$ be Legendre and $\Omega = \interior(\dom(\phi))$. Let $f : \R^d \to
   (-\infty, \infty]$ be differentiable with $\dom(f) \supseteq \Omega$, and let 
   $L>0$. Consider the following statements:        
-  % Lemma 1 and Proposition 1 of Bauschke, Bolte, and Teboulle (2017)
 \begin{enumerate}[label=(\roman*)]
 \item $\|\nabla f(x) - \nabla f(y)\|_2 \leq L \frac{D_\phi(x,y) + D_\phi(y,x)}
   {\|x-y\|_2}$, for all $x,y \in \Omega$, $x \not= y$;
@@ -908,6 +906,7 @@ Consider the following additional statement (for twice differentiable $f,\phi$):
 \end{enumerate} 
 Now we prove various connections between the above statements (mirroring
 Exercise \ref{ex:lipschitz_smoothness}).
+  % Lemma 1 and Proposition 1 of Bauschke, Bolte, and Teboulle (2017)
 
 \begin{enumerate}[label=\alph*.]
 \item Prove that $\text{(ii)} \iff \text{(iii)}$ using the first-order
@@ -928,6 +927,12 @@ Exercise \ref{ex:lipschitz_smoothness}).
 \item For twice differentiable $f,\phi$, prove that $\text{(ii)} \iff \text{(v)}$
     using the second-order characterization for convexity
     \eqref{eq:second_order_characterization}.    
+
+\item Prove that for convex $f$, statement (i) is not implied by (ii)--(iv)
+  (provide an example in which, say, (ii) holds but (i) does not). Note: this is
+  a way in which the general result for Bregman divergences does not extend that
+  in Theorem \ref{thm:lipschitz_smoothness} for Euclidean distance. 
+  % \phi(x) = 1/2 x_1^2 + 100/2 x_2^2, f = \phi, L = 1, x = (0,0), y = (1,0.1) 
 \end{enumerate}
 \end{enumerate}
 \end{xcb}
