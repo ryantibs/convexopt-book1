@@ -244,10 +244,6 @@ distance is to the $\ell_2$ ball: projection in each case reduces to
 normalization.
 \end{Example}
 
-Lastly, a generalization of the proximal operator \eqref{eq:proximal_mapping}
-using Bregman divergence is also possible. Exercise
-\ref{ex:bregman_proximal_operator} develops this operator and its properties.  
-
 \section{Conjugacy relations}
 
 Recall that a closed convex function $\phi$ is of Legendre type if and only if
@@ -273,11 +269,11 @@ x = \nabla\phi^*(v) \quad \text{and} \quad y = \nabla\phi^*(u).
 \]
 Since equality holds in Fenchel's inequality for the pairs $x,v$ and $y,u$
 (Theorem \ref{thm:conjugate_subgradients}), we have   
-\[
-\phi(x) + \phi^*(v) = v^\T x \quad \text{and} \quad
-\phi(y) + \phi^*(u) = u^\T y.
-\]
-Combining the relations in the last three displays, observe that
+\begin{align*}
+\phi(x) + \phi^*(v) &= v^\T x, \\
+\phi(y) + \phi^*(u) &= u^\T y.
+\end{align*}
+Combining the relations in the above displays, observe that
 \begin{align*}
 \phi(x) - \phi(y) - \nabla\phi(y)^\T (x - y) 
 &= \phi(x) - u^\T x - \phi(y) + u^\T y \\
@@ -478,7 +474,7 @@ optimism, which are explored in Exercise \ref{ex:exponential_family_optimism}.
 \SkipTocEntry\section*{Chapter notes}
 
 Bregman projection: \cite{bauschke1997legendre}
-Bregman proximal: \cite{bauschke2017descent}
+Bregman proximal: \cite{bauschke2017descent} and references therein
 
 Exponential families: Brown (1986), Wainwright and Jordan (2008),
 Barndorff-Nielsen (2014) 
@@ -750,9 +746,6 @@ Barndorff-Nielsen (2014)
   line in mirror space connecting $\nabla\phi(z)$ to $\nabla\phi(y)$.
 \end{enumerate}
 
-\index{Bregman proximal operator}
-\item \label{ex:bregman_proximal_operator}
-
 \index{exponential family}
 \item \label{ex:exponential_family_legendre}
   Let $\psi$ be the log-partition function in a regular exponential family,
@@ -836,7 +829,7 @@ Barndorff-Nielsen (2014)
   \ref{sec:exponential_family_bregman}, and for each $i=1,\dots,n$, let $y^*_i$
   be an independent copy of $y_i$. We will view $y_i$, $i=1,\dots,n$ as the
   training set, which we use to form estimates \smash{$\hat\eta_i$},
-  $i=1,\dots,n$ of the natural parameters, and we then view $y_i^*$,
+  $i=1,\dots,n$ of the natural parameters, and we will view $y_i^*$,
   $i=1,\dots,n$ as the test set, which we use to evaluate the estimates.   
   Accordingly, we define the \emph{optimism} of the natural parameter estimates
   by  
@@ -932,7 +925,9 @@ Exercise \ref{ex:lipschitz_smoothness}).
   (provide an example in which, say, (ii) holds but (i) does not). Note: this is
   a way in which the general result for Bregman divergences does not extend that
   in Theorem \ref{thm:lipschitz_smoothness} for Euclidean distance. 
-  % \phi(x) = 1/2 x_1^2 + 100/2 x_2^2, f = \phi, L = 1, x = (0,0), y = (1,0.1) 
+  % \phi(x) = 1/2 x_1^2 + 100/2 x_2^2, f = \phi, L = 1, x = (0,0), y = (1,0.1).
+  % Fundamentally we just need x,y for which \nabla f(x) - \nabla f(y) and x - y
+  % lack tightness in Cauchy-Schwarz. 
 \end{enumerate}
 \end{enumerate}
 \end{xcb}
