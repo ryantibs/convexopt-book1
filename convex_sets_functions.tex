@@ -656,13 +656,13 @@ Then the following relations hold:
 \[
 \text{(i)} \implies \text{(ii)} \iff \text{(iii)} \iff \text{(iv)}. 
 \]
-If $f$ is twice continuously differentiable, then (ii)--(iv) are also equivalent
-to the statement: 
+If $f$ is twice differentiable, then (ii)--(iv) are also equivalent to the
+statement:  
 \begin{enumerate}
 \item[(v)] $\nabla^2 f(x) \preceq LI$, for all $x \in \dom(f)$.
 \end{enumerate} 
-Lastly, for convex $f$, statements (i)--(iv) are all equivalent, and for twice  
-continuously differentiable convex $f$, statements (i)--(v) are all equivalent. 
+Lastly, for convex $f$, statements (i)--(iv) are all equivalent (and again (v)
+is equivalent if $f$ is additionally twice differentiable).
 \end{Theorem}
 
 Interestingly, the concept of strong convexity admits a similar string of
@@ -687,8 +687,8 @@ Then the following relations hold:
 \[
 \text{(i)} \impliedby \text{(ii)} \iff \text{(iii)} \iff \text{(iv)}. 
 \]
-If $f$ is twice continuously differentiable, then (ii)--(iv) are also equivalent
-to the statement: 
+If $f$ is twice differentiable, then (ii)--(iv) are also equivalent to the
+statement:  
 \begin{enumerate}
 \item[(v)] $\nabla^2 f(x) \succeq mI$, for all $x \in \dom(f)$.
 \end{enumerate}
@@ -1242,13 +1242,15 @@ infimum.
   \ref{thm:lipschitz_smoothness}.  
 
 \index{Lipschitz smoothness} 
-\item When $f$ is twice continuously differentiable, show that $\text{(v)}
-  \implies \text{(iii)}$ using a first-order Taylor expansion of $f$ with 
-  remainder; show that $\text{(iv)} \implies \text{(v)}$ by expressing $\nabla^2
-  f(x) h$ as the directional derivative of $\nabla f(x)$ in the direction $h$,
-  applying (iv), and taking $h$ to be the top eigenvector of $\nabla^2
-  f(x)$. This establishes the second part of Theorem
-  \ref{thm:lipschitz_smoothness}. 
+\item For twice differentiable $f$, show $\text{(ii)} \iff \text{(v)}$
+  using the second-order characterization for convexity
+  \eqref{eq:second_order_characterization}.   
+  % show that $\text{(v)} \implies \text{(iii)}$ using a first-order Taylor
+  % expansion of $f$ (with remainder); then show that 
+  % $\text{(iv)} \implies \text{(v)}$ by expressing $\nabla^2 f(x) h$ as the
+  % directional derivative of $\nabla f(x)$ in the direction $h$, applying (iv),
+  % and taking $h$ to be the top eigenvector of $\nabla^2 f(x)$.  
+  This establishes the second part of Theorem \ref{thm:lipschitz_smoothness}.  
 
 \item Moving now to Theorem \ref{thm:strong_convexity}, show that 
   $\text{(ii)} \iff \text{(iii)} \iff \text{(iv)}$ by invoking equivalent 
@@ -1260,25 +1262,27 @@ infimum.
   \ref{thm:strong_convexity}.  
 
 \index{strong convexity}
-\item When $f$ is twice continuously differentiable, show that $\text{(v)}
-  \implies \text{(iii)}$ using a first-order Taylor expansion of $f$ with 
-  remainder; show that $\text{(iv)} \implies \text{(v)}$ by expressing $\nabla^2
-  f(x) h$ as the directional derivative of $\nabla f(x)$ in the direction $h$,
-  applying (iv), and taking $h$ to be the bottom eigenvector of $\nabla^2
-  f(x)$. This establishes the second part of Theorem
-  \ref{thm:strong_convexity}. 
+\item For twice differentiable $f$, show $\text{(ii)} \iff \text{(v)}$
+  using the second-order characterization for convexity
+  \eqref{eq:second_order_characterization}.   
+  % show that $\text{(v)} \implies \text{(iii)}$ using a first-order Taylor
+  % expansion of $f$ (with remainder); then show that 
+  % $\text{(iv)} \implies \text{(v)}$ by expressing $\nabla^2 f(x) h$ as the
+  % directional derivative of $\nabla f(x)$ in the direction $h$, applying
+  % (iv), and taking $h$ to be the bottom eigenvector of $\nabla^2 f(x)$. 
+  This establishes the second part of Theorem \ref{thm:strong_convexity}. 
 
 \item For convex $f$, prove the final part of Theorem
-  \ref{thm:lipschitz_smoothness} by showing $\text{(iv)} \implies \text{(i)}$,
-  using the following steps. Fix any $x,y$ and define $F_x(z) = f(z) - \nabla
-  f(x)^\T z$. Argue that $F_x$ satisfies (iv), and thus also satisfies (iii),
-  that is,    
+  \ref{thm:lipschitz_smoothness} by showing that $\text{(iv)} \implies
+  \text{(i)}$, using the following steps. Fix $x,y$ and define $F_x(z) = f(z) -
+  \nabla f(x)^\T z$. Argue that $F_x$ satisfies (iv), and thus also satisfies
+  (iii), that is,     
   \[
   F_x(z) \leq F_x(y) + \nabla F_x(y)^\T (z-y) + \frac{L}{2}\|z-y\|_2^2. 
   \]
   Minimize each side of the above display over $z$. (Hint: use the fact that a 
-  differentiable convex function is minimized by setting its gradient to zero
-  applied to each of the left- and right-hand sides separately.) 
+  differentiable convex function can be minimized by setting its gradient to
+  zero, applied on each of the left- and right-hand sides separately.) 
   % LHS is minimized when $z = x$
   % RHS is minimized when $z - y = (\nabla f(x) - \nabla f(y)) / L$
   Show that, after rearrangement, this yields
@@ -1307,11 +1311,11 @@ infimum.
 
 \begin{enumerate}[label=\alph*.]
 \item First, show that the conditions $L>0$, $m>0$ in the theorems are
-  not necessary, in the sense that the stated results still hold for $L=0$ and 
+  not necessary, in the sense that the stated results still hold when $L=0$ and  
   $m=0$. Hint: what is a Lipschitz smooth function with $L=0$? What is a 
   strongly convex function with $m=0$?
 
-\item Next, show that each of the four statements, (ii)--(v), in Theorem 
+\item Next, show that each of the latter four statements, (ii)--(v), in Theorem  
   \ref{thm:strong_convexity} imply that $f$ is convex (meaning, convexity is 
   implicit in all of the equivalences/implications). 
 
@@ -1370,10 +1374,10 @@ infimum.
 
 \smallskip
 A note on Straszewicz's theorem, from Chapter \ref{sec:polyhedra}: we can
-interpret this, in light of parts b, c, d, as saying that for any compact convex
-set $C$, the set of exposed points $\mathrm{exp}(C)$ is dense in the set of
-extreme points $\mathrm{ext}(C)$. For polytopes, these two sets are finite, and
-hence must be equal, which gives us another way of understanding Theorem 
+interpret this result, in light of parts b, c, d, as saying that for any compact
+convex set $C$, the set of exposed points $\mathrm{exp}(C)$ is dense in the set
+of extreme points $\mathrm{ext}(C)$. For polytopes, these two sets are finite,
+and thus must be equal, which gives us another way of understanding Theorem  
 \ref{thm:hv_representation}.  
 
 \item Let $f$ be a convex function and $P \subseteq \dom(f)$ a polytope
