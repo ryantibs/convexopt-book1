@@ -87,12 +87,17 @@ implying convexity, is based on a converse supporting hyperplane theorem; see
 Exercises \ref{ex:converse_supporting_hyperplane} and
 \ref{ex:subdifferentiability_implies_convexity}. 
 
+% Note: a simpler direct proof is possible if f is subdifferentiable on all of
+% dom(f): this is equivalent to convexity (without requiring closedness of f). 
+% Furthermore, strict inequality in the subgradient definition is equivalent to
+% strict convexity. See Exercise \ref{ex:strict_convexity_subgradient}.
+
 \paragraph{Uniqueness of subgradients.}
 
 The subgradient of $f$ at a given point $x \in \dom(f)$ need not be unique, that
 is, the subdifferential $\partial f(x)$ (when nonempty) need not be a
 singleton. So, when it is unique at $x$, what can we say about $f$ at $x$,
-vis-a-vis differentiability? The answer is nothing, in general (Exercise
+with respect to differentiability? The answer is nothing, in general (Exercise
 \ref{ex:subgradient_nonuniqueness}). However, for convex $f$, the subgradient of
 $f$ is unique at $x$ if and only it is differentiable at $x$. This result is
 stated formally next; Exercise \ref{ex:subgradient_uniqueness} walks through its
@@ -101,10 +106,10 @@ proof.
 \index{subgradient!uniqueness}
 \begin{Theorem}
 \label{thm:subgradient_uniqueness}
-Let $f$ be a convex function. If $f$ is differentiable at $x \in
-\dom(f)$, then it has a unique subgradient $s = \nabla f(x)$ at $x$. Conversely,
-if $f$ has a unique subgradient $s$ at $x$, then it is differentiable at $x$ and
-$\nabla f(x) = s$.  
+Let $f$ be convex, and let $x \in \dom(f)$. If $f$ is differentiable at $x$,
+then it has a unique subgradient $s = \nabla f(x)$ at $x$. Conversely, if $f$
+has a unique subgradient $s$ at $x$, then it is differentiable at $x$ and
+$\nabla f(x) = s$.     
 \end{Theorem} 
 
 % Theorem 25.1 in Rockafellar (1970)
@@ -121,8 +126,7 @@ principles. This is the case in several of the next examples.
 The following are examples of subgradients of common norms. For the first two
 examples, the claims can be checked directly using the definition. The others
 follow from Property \parref{par:subgradient_supremum} and the dual
-representation of the norm in question. % and for these we refer to exercises
-% that trace out the details.      
+representation of the norm in question. 
 
 \begin{enumerate}[label=\alph*., ref=\alph*]
 \item For $f(x) = |x|$, we have 
@@ -215,9 +219,6 @@ representation of the norm in question. % and for these we refer to exercises
 \section{Subgradient calculus}
 
 We describe rules that will be helpful in the calculation of subgradients. 
-
-%(We note the similarity in functional operations covered here to those covered
-%in Chapter \ref{sec:operations_preserving_convexity}.)  
 
 \paragraph{Scaling.}
 
@@ -602,7 +603,7 @@ necessary for $\partial f(x)$ to be nonempty and bounded.
 % Note: the last statement shows we cannot relax \interior(\dom(f)) to
 % \relint(\dom(f)) here! Outside of \interior(\dom(f)), the subdifferential is
 % not bounded. This in particular also means that we cannot relax
-% \interior(\dom(f)) to \relint(\dom(f)) in statements (ii)--(iv) of Theorem  
+% \interior(\dom(f)) to \relint(\dom(f)) in statements (ii)--(iv) of Theorem   
 % \ref{thm:smoothness_properties}, or at least doing so seems nontrivial. 
 
 \section{Subgradients and geometry*}
@@ -638,7 +639,7 @@ N_{\{y : f(y) \leq f(x)\}}(x) = \cone\big(\partial f(x)\big).
 
 % For example, Theorem 23.7 in Rockafellar (1970). Removing the cl() because the
 % subdifferential is closed convex bounded and does not contain the origin, so
-% its convex hull should be closed. As in Corollary 9.6.1 of Rockafellar (1970)
+% its convex hull should be closed. As in Corollary 9.6.1 of Rockafellar (1970).
 
 Just like the subgradient optimality condition \eqref{eq:subgradient_optimality}
 generalizes the zero-gradient condition \eqref{eq:zero_gradient} from classical
@@ -766,13 +767,13 @@ an alternative short proof that $\text{(iv)} \implies \text{(ii)}$ in Theorem
 
   We will assume, without a loss of generality, that $C$ is full-dimensional
   ($\aff(C) = \R^d$), and so its relative interior and relative boundary are its
-  interior and boundary, respectively. (Note: having proved this
+  interior and boundary, respectively. (Note: having proved such a
   full-dimensional result, to accommodate the case when $\aff(C)$ is a proper
   subspace of $\R^d$, we can reparametrize to the affine subspace, and apply the
-  result just proved to conclude that the set $D$---the reparametrization of $C$
-  to the affine subspace---is convex in this coordinate system, and then simply
-  view $C$ as an affine image of $D$ in order to conclude that $C$ itself is
-  convex.)  
+  result just proved to conclude that this set, say, $D$ (the reparametrization 
+  of $C$ to the affine subspace) is convex in this coordinate system. Then we 
+  simply view $C$ as an affine image of $D$ in order to conclude that $C$ itself
+  is convex.)  
 
   Let $H$ be the intersection of all supporting halfspaces to $C$, 
   \[
@@ -1113,7 +1114,7 @@ approximate subgradients and duality; see also Theorems 12.17 and 12.25 in
   direction, use the condition from part a, and consider the rearrangement
   inequality.        
 
-% \item Show that when $d>1$, this equivalence is not true, by giving an example 
+% \item Show that when $d>1$, this equivalence is not true, by giving an example  
 %   of a monotone operator that is not cyclically monotone.  
 \end{enumerate}
 
@@ -1150,6 +1151,13 @@ approximate subgradients and duality; see also Theorems 12.17 and 12.25 in
   Now use closedness of $g$ and \eqref{eq:embedding_equality} to prove that $g$
   is convex. 
 \end{enumerate}
+
+\item \label{ex:strict_convexity_subgradient} 
+  Prove that a strictly convex function must exhibit a strict inequality in
+  \eqref{eq:subgradient} whenever $y \not= x$. And conversely, prove that if $f$
+  is finite and subdifferentiable on a convex set $C$, and satisfies
+  \eqref{eq:subgradient} on $C$ with strict inequality for $y \not =x$, then $f$
+  must be strictly convex.   
 
 \index{coercive function}
 \item \label{ex:strong_convexity_coercive}
