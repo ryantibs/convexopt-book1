@@ -711,7 +711,7 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   $u$. Note that this proves the ``only if'' direction in Theorem
   \ref{thm:conjugate_essentials}.  
 % True because of the equivalence of (iii) in the definition of essential strong
-% convexity and the fact the subgradient is empty outside of $\interior(dom(f))$  
+% convexity and the fact the subgradient is empty outside $\interior(dom(f))$.
 
 \item Instead, suppose that $f^*$ is not essentially smooth. Then there exists 
   $u$ such that $\partial f^*(u)$ contains at least two elements, $x_1 \not= 
@@ -774,7 +774,7 @@ regularization (the fact that $f_\lambda$ smoothly approximates $f$ as $\lambda
   \big(\nabla g(u) - \nabla g(v)\big)^\T (u-v) \geq \frac{1}{L}\|\nabla g(u) -
   \nabla g(v)\|_2^2. 
   \]
-  % We're implicitly using the fact that \nabla g is surjective ... ?
+  % We're implicitly using the fact that \nabla g = \nabla f^* is surjective?
   Use the subgradient relation in Theorem \ref{thm:conjugate_subgradients} and
   Theorem \ref{thm:strong_convexity_nonsmooth} property (iv) to conclude $f$ is
   strongly convex with parameter $m$. 
