@@ -462,14 +462,16 @@ probabilistic prediction. Common examples include:
 \begin{alignat*}{3}
 &\text{log loss:} \quad &&\ell(p,y) = -\log(p_y); \\
 &\text{quadratic loss:} \quad &&\ell(p,y) = -p_y + \frac{1}{2} \|p\|_2^2; \\
-&\text{spherical loss:} \quad &&\ell(p,y) = -\frac{p_y}{\|p\|_2}.
+&\text{misclassification loss:} \quad &&\ell(p,y) = 1 - 
+  \frac{1\{\argmax_{i=1,\dots,k} \, p_k = y \}}{|\argmax_{i=1,\dots,k} \, p_k|}.  
+%&\text{spherical loss:} \quad &&\ell(p,y) = -\frac{p_y}{\|p\|_2}.
 \end{alignat*}
 A common feature of these example losses is that they are \emph{proper}:
 this means that for $y \sim q$ (that is, $\P(y = i) = q_i$, $i=1,\dots,k$), 
-the choice $p=q$ minimizes the expected score $\E_q[\ell(p,y)]$ over the
-simplex $p \in \Delta^k$. It will be convenient to overload notation and define
-$\ell(p,q) = \E_q[\ell(p,y)]$, with the expectation understood as being with
-respect to $y \sim q$. Then a proper loss is defined by:
+the choice $p=q$ minimizes the expected loss over $p \in \Delta^k$, the
+simplex. It will be convenient to overload notation and define $\ell(p,q) =
+\E_q[\ell(p,y)]$, where the expectation is understood as being with respect to
+$y \sim q$. Then a proper loss is defined by 
 \index{proper loss}
 \begin{equation}
 \label{eq:proper_loss}
@@ -495,18 +497,19 @@ d(p,q) = \ell(p,q) - \ell(q,q).
 Clearly, a proper loss \eqref{eq:proper_loss} admits a nonnegative divergence:
 $d(p,q) \geq 0$, for $p,q \in \Delta^k$.  
 
-A fundamental result is that divergences of proper losses $\ell$ correspond to
-Bregman divergences in convex potentials $\phi$. 
+A fundamental result, described formally below, is that divergences of proper
+losses correspond to (generalized) Bregman divergences in convex potential
+functions. 
 
 \begin{Theorem}
 \label{thm:proper_loss_bregman}
 Let $\ell : \Delta^k \times \Delta^k \to \R$. Then $\ell$ is proper
 \eqref{eq:proper_loss} if and only if its divergence $d$ satisfies for all $p,q
 \in \Delta^k$, 
-\index{proper loss!Bregman representation}
+\index{proper loss!Savage representation}
 \begin{equation}
 \label{eq:proper_loss_bregman1}
-d(p,q) = \phi(q) - \phi(p) - s_p^\T (q-p), \quad \text{with $s_p \in \partial
+d(p,q) = \phi(q) - \phi(p) - s_p^\T (q-p), \quad \text{for $s_p \in \partial
   \phi(p)$},  
 \end{equation}
 for a convex function $\phi$ that is subdifferentiable on
@@ -522,18 +525,35 @@ where $D_\phi$ denotes the Bregman divergence with potential $\phi$, as in
 \eqref{eq:bregman_divergence}. 
 \end{Theorem}
 
-The convex potential $\phi$ in Theorem \ref{thm:proper_loss_bregman} that
+The convex function $\phi$ in Theorem \ref{thm:proper_loss_bregman} that
 fulfills the representation \eqref{eq:proper_loss_bregman1} is not mysterious:
 it has the explicit form $\phi(p) = -\ell(p,p)$ (unique up to an affine term in
 $p$). The proof of this theorem uses elementary arguments in convex analysis and
 is outlined in Exercise \ref{ex:proper_loss_bregman}. 
+
+The result in Theorem \ref{thm:proper_loss_bregman} takes a general concept---a
+proper loss, and maps this nicely onto a structured class of
+objects---generalized Bregman divergences in convex potentials $\phi$
+(``generalized'' because $\phi$ is only convex, not necessarily differentiable
+or Legendre). In fact, we can use this result to express the sample loss
+$\ell(p,y)$ in terms of $\phi$, as well. To see this, note that we can equate
+$\ell(p,y)$ with the expected loss $\ell(p,q)$ for $q = e_y$ (the vector with 1
+in component $y$ and 0s otherwise); then taking $\phi(p) = -\ell(p,p)$, we have 
+from \eqref{eq:proper_loss_bregman1},
+\begin{equation}
+\label{eq:proper_loss_savage}
+\ell(p,y) = -\phi(p) - s_p^\T (e_y-p), \quad \text{for $s_p \in \partial
+  \phi(p)$},   
+\end{equation}
+This is known as the \emph{Savage representation} of a proper loss. 
 
 Returning to the previous examples, we can identify the potential functions in
 each case:
 \begin{alignat*}{3}
 &\text{log loss:} \quad &&\phi(p) = \sum_{i=1}^k p_i \log(p_i); \\
 &\text{quadratic loss:} \quad &&\phi(p) = \frac{1}{2} \|p\|_2^2; \\
-&\text{spherical loss:} \quad &&\phi(p) = \|p\|_2.
+&\text{misclassification loss:} \quad &&\phi(p) = \max_{i=1,\dots,k} \, p_k - 1. 
+%&\text{spherical loss:} \quad &&\phi(p) = \|p\|_2.
 \end{alignat*}
 These are verified in Exercise \ref{ex:proper_loss_examples}. (Note that,
 technically, Theorem \ref{thm:proper_loss_bregman} does not apply to log loss
@@ -542,6 +562,37 @@ simplex. An extension of this theorem to such unbounded losses is given in
 Exercise \ref{ex:proper_loss_unbounded}.) 
 
 \subsection{Conjugate Bregman representation} 
+
+Theorem \ref{thm:proper_loss_bregman} takes a general concept---a proper 
+loss, and maps this nicely onto a structured class of objects:
+
+However, looking at 
+\eqref{eq:proper_loss_bregman2} (the case of differentiable 
+$\phi$, for ease of interpretation), notice carefully the order of arguments: this
+result says the loss divergence $d(p,q)$, where recall $p$ stands for the
+forecast distribution and $q$ the response distribution, is equal to the Bregman
+divergence $D_\phi(q,p)$. This is in general nonconvex in $p$ (Property
+\parref{par:bregman_second}), which means that for a given target distribution
+$q$, minimizing the loss $\ell(p,q)$ over $p \in \Delta^k$ is not necessarily a
+convex optimization problem.
+
+Fortunately, we can appeal to the conjugate Bregman result from Theorem
+\ref{thm:conjugate_bregman}: under suitable conditions on $\phi$, this says
+that $D_\phi$ can be expressed in terms of the conjugate Bregman divergence 
+$D_{\phi^*}$, where we reverse arguments once again. This second reversal is
+now to our favor since it puts the forecast distribution back in the first
+argument, as detailed below.
+
+Before presenting the result, which is a direct corollary of Theorem ...
+
+
+\ref{thm:bregman_conjugate} and \ref{thm:}
+
+ the loss divergence can be expressed   
+
+ this says that
+\smash{$D_\phi(q,p) = D_{\phi^*}(u_p, u_q)$}, where $u_p = \nabla\phi(p)$ and
+$u_q = \nabla\phi(q)$. This is convex in the first argument 
 
 % Conjugacy relation gives rise to a way to define a surrogate loss (credit to
 % John Duchi)
@@ -1019,13 +1070,13 @@ Barndorff-Nielsen (2014)
 
 \item \label{ex:proper_loss_unbounded}
   We study an extension of Theorem \ref{thm:proper_loss_bregman} to losses
-  which can be infinite on the relative boundary of the simplex
+  that can be infinite on the relative boundary of the simplex
   $\Delta^k$. An important example is log loss: here \smash{$\ell(p,q)
     = -\sum_{i=1}^k \log(p_i) q_i$} is infinite if there exists $i$ with $p_i = 
   0$ and $q_i > 0$. Let $\ell$ be a loss such that $\ell(p,q) < \infty$ for $p 
-  \in \relint(\Delta^k)$. Note that this is satisfied by log loss. Adapt the
-  arguments from Exercise \ref{ex:proper_loss_bregman} to prove the equivalence 
-  of the following two statements: 
+  \in \relint(\Delta^k)$ and $q \in \Delta^k$. (Note: this is satisfied by log
+  loss.) Adapt the arguments from Exercise \ref{ex:proper_loss_bregman} to prove
+  the equivalence of the following two statements:  
   \begin{itemize}
   \item $\ell$ is proper on $\relint(\Delta^k)$, which means
     \eqref{eq:proper_loss} is satisfied restricted to $p,q \in
@@ -1035,16 +1086,18 @@ Barndorff-Nielsen (2014)
     $p,q \in\relint(\Delta^k)$.   
   \end{itemize}
   Moreover, prove that the above equivalence holds if we replace proper by
-  strictly proper and convex by strictly convex.  
+  strictly proper and convex by strictly convex. Finally, argue that in this
+  setting, the Savage representation \eqref{eq:proper_loss_savage} continues to
+  hold for $\ell$ proper on $\relint(\Delta^k)$ and $p \in \relint(\Delta^k)$.    
 
 \item \label{ex:proper_loss_examples}
   Using \smash{$\ell(p,q) = \sum_{i=1}^k \ell(p, i) q_i$}, derive the potential
-  function $\phi(p) = -\ell(p,p)$ that corresponds to log, quadratic, and
-  spherical losses.  
+  function $\phi(p) = -\ell(p,p)$ in the case of log, quadratic, and
+  misclassification losses.   
 
 \item \label{ex:proper_loss_differentiability}
   We investigate differentiability of the potential function associated with a
-  strictly proper loss.  
+  strictly proper loss.   
   
 \begin{enumerate}[label=\alph*.]
 \item Assume that $\ell : \Delta^k \times \Delta^k \to \R$ is strictly proper,
@@ -1055,7 +1108,7 @@ Barndorff-Nielsen (2014)
 
 \item Give an example of a strictly proper loss which does not admit a
   differentiable potential. Hint: based on the last part, we know that such an
-  example loss cannot be continuous in its first argument, for all values of the
+  example loss cannot be continuous in the first argument, for all values of the
   second.   
   % Example: k = 2 and \phi(p) = 1/2 \|p\|^2 + |p_2 - 1/2|. This is strictly
   % convex and gives rise to a strictly proper loss but if we pick subgradients
