@@ -509,7 +509,6 @@ correspond to (generalized) Bregman divergences of convex potential functions.
 Let $\ell : \Delta^k \times \Delta^k \to \R$. Then $\ell$ is proper
 \eqref{eq:proper_loss} if and only if its divergence $d$ satisfies for all $p,q
 \in \Delta^k$, 
-\index{proper loss!Savage representation}
 \begin{equation}
 \label{eq:proper_loss_bregman1}
 d(p,q) = \phi(q) - \phi(p) - s_p^\T (q-p), \quad \text{for $s_p \in \partial
@@ -520,6 +519,7 @@ $\Delta^k$. Furthermore, a loss is strictly proper if and only if the above
 holds for a strictly convex function $\phi$. Finally, when $\phi$ is
 differentiable, note that \eqref{eq:proper_loss_bregman1} can be written 
 succinctly as 
+\index{proper loss!Bregman representation}
 \begin{equation}
 \label{eq:proper_loss_bregman2}
 d(p,q) = D_\phi(q,p),
@@ -543,6 +543,7 @@ $\ell(p,y)$ in terms of $\phi$ as well. To see this, note that we can identify
 $\ell(p,y)$ with the expected loss $\ell(p,q)$ for $q = e_y$ (the vector with 1
 in component $y$ and 0s otherwise); then taking $\phi(p) = -\ell(p,p)$, we have
 from \eqref{eq:proper_loss_bregman1}, 
+\index{proper loss!Savage representation}
 \begin{equation}
 \label{eq:proper_loss_savage}
 \ell(p,y) = -\phi(p) - s_p^\T (e_y-p), \quad \text{for $s_p \in \partial
@@ -607,10 +608,10 @@ In other words, we have shown that the surrogate loss
 \eqref{eq:proper_loss_surrogate} recreates the original loss
 \eqref{eq:proper_loss_savage} at all forecast distributions $p \in
 \interior(\dom(\phi)) \cap \Delta^k$. This determines the relevant feasible set
-for our conjugate loss $\ell^*$. Provided the mirror map $\nabla\phi$ is
+for our conjugate loss $\ell^*$. Provided the mirror map $\nabla\phi$ is also
 well-defined at the response distribution $q$, we can safely optimize the
-surrogate loss to construct the forecast distribution $p$, as we explain
-precisely in the next result.    
+surrogate loss to construct the forecast distribution $p$, as explained
+precisely in the next result.
 
 \begin{Theorem}
 \label{thm:proper_loss_conjugate}
@@ -626,6 +627,7 @@ Consequently, the expected losses also agree: \smash{$\ell^*(u,q) =
   \E_q[\ell^*(u,y)] = \ell(p,q)$}, for $q \in \Delta^k$. In addition, if $q
 \in \Omega^k$, then we have a conjugate Bregman representation for the
 divergence:    
+\index{proper loss!conjugate Bregman representation}
 \begin{equation}
 \label{eq:proper_loss_bregman3}
 d(p,q) = D_{\phi^*}(\nabla\phi(p), \nabla\phi(q)),
@@ -634,17 +636,19 @@ and minimizing $\ell(p,q)$ over $p \in \Delta^k$ is equivalent to minimizing
 $\ell^*(u,q)$ over $u \in \nabla\phi^*(\Omega^k)$.  
 \end{Theorem}
 
-The conjugate Bregman representation in \eqref{eq:proper_loss_bregman3} 
-can be understood by combining our previous results: Theorem
-\ref{thm:conjugate_bregman} and \eqref{eq:proper_loss_bregman2}. A central 
-feature of the conjugate loss \eqref{eq:proper_loss_surrogate} is that it is
-always convex in $u$, as $\phi^*$ is. Examples are studied in Exercises
-\ref{ex:proper_loss_surrogate} and \ref{ex:spherical_loss}.   
+The conjugate Bregman representation \eqref{eq:proper_loss_bregman3} 
+can be seen as an application of Theorem \ref{thm:conjugate_bregman} to 
+\eqref{eq:proper_loss_bregman2}. A central feature of the conjugate loss
+\eqref{eq:proper_loss_surrogate} is that it is always convex in $u$, owing to
+the convexity of $\phi^*$. Exercises \ref{ex:proper_loss_surrogate} and
+\ref{ex:spherical_loss} work through some examples.      
 
 \SkipTocEntry\section*{Chapter notes}
 
 Bregman projection: \cite{bauschke1997legendre}
 Bregman proximal: \cite{bauschke2017descent} and references therein
+
+Amari information geometry
 
 Exponential families: 
 Brown (1986)
@@ -1088,8 +1092,9 @@ Duchi (2026)
   \]
   is the discretization of the given family of densities to the data sites.
 
+\index{proper loss!Bregman representation}
 \item \label{ex:proper_loss_bregman}
-  We will prove Theorem \ref{thm:proper_loss_bregman}. 
+  In this exercise, we prove Theorem \ref{thm:proper_loss_bregman}. 
 
 \begin{enumerate}[label=\alph*.]
 \item Let $\phi$ be convex, subdifferentiable on $\Delta^k$, and define $d$
@@ -1174,6 +1179,7 @@ Duchi (2026)
   % carefully at the kink p_2 = 1/2, the loss will not be continuous in p. 
 \end{enumerate}
 
+\index{proper loss!surrogate loss}
 \item \label{ex:proper_loss_surrogate}
   We study two examples of surrogate losses. In the first example, the original
   loss is convex in $p$; in the second, the original loss is nonconvex in
@@ -1187,26 +1193,81 @@ Duchi (2026)
   \[
   \phi^*(u) = \log\bigg( \sum_{i=1}^k e^{u_i} \bigg),
   \]
-  then derive the surrogate loss.
+  then derive the surrogate loss, and verify it is convex.
 
 \item Consider the potential \smash{$\phi(p) = \sum_{i=1}^k \cosh(p_i)$}, which
   leads to
   \[
   \ell(p,y) = \sum_{i=1}^k (p_i \sinh(p_i) - \cosh(p_i)) - \sinh(p_y).
   \]
-  Derive the conjugate potential:
+  Verify this is nonconvex. Derive the conjugate potential:
   \[
-  \phi^*(u) = \sum_{i=1}^k \Big( u_i \sinh^{-1}(u_i) + \sqrt{u_i^2+1} \, \Big),
+  \phi^*(u) = \sum_{i=1}^k \Big( u_i \sinh^{-1}(u_i) - \sqrt{u_i^2+1} \, \Big),
   \]
-  then derive the surrogate loss.
+  then derive the surrogate loss, and verify it is convex.
 \end{enumerate}
 
 \item \label{ex:spherical_loss}
-  Define spherical loss
-  a. Conjugate representation is useless
-  b. Define modified conjugate representation over simplex
-  c. Show that the inverse mirror map is well-defined (strict convexity)
-  d. Develop connection between original and surrogate losses
+  This exercise studies spherical loss $\ell(p,y) = -p_y / \|p\|_2$, which has 
+  potential $\phi(p) = \|p\|_2$, and investigates different perspectives on its
+  surrogate loss.    
+
+\begin{enumerate}[label=\alph*.]
+\item Verify that $\ell$ is nonconvex in $p$, but nonetheless proper.
+
+\item Derive the conjugate $\phi^*$ and show that this does not lead to a useful
+  surrogate loss. 
+
+\item Following \cite{blondel2020learning}, we will now lift the simplex
+  constraint into the construction of the conjugate potential. Namely, define
+  \smash{$\psi = \phi + I_{\Delta^k}$}, with \smash{$ I_{\Delta^k}$} the
+  characteristic function of $\Delta^k$. Fix $u \in \R^k$. Prove that $p_u$
+  achieves the supremum in \smash{$\psi^*(u) = \sup_u \, \{ u^\T p - \psi(u)
+    \}$} if and only  
+  if 
+  \[
+  u = \frac{p_u}{\|p_u\|_2} + \lambda 1 + \nu,
+  \]
+  for $\lambda \in \R$ and \smash{$\nu \in N_{\R^k_+}(p_u)$}. 
+
+\item If $p_u \in \relint(\Delta^k)$, derive the explicit form
+  \[
+  \psi^*(u) = \frac{1^\T u - \sqrt{(1^\T u)^2 - k \|u\|_2^2 + k}}{k}.
+  \]
+
+\item If $p_u \in \relbd(\Delta^k)$, such that $p_i > 0 \iff i \in S$, show that
+  instead 
+  \[
+  \psi^*(u) = \frac{1^\T u_S - \sqrt{(1^\T u_S)^2 - |S| \|u_S\|_2^2 +
+      |S|}}{|S|}.  
+  \]
+  where $u_S \in \R^{|S|}$ is the restriction of $u \in \R^k$ to the coordinates
+  in $S \subseteq \{1,\dots,k\}$.  
+
+\item Show that the general form for the conjugate can be computed using the
+  following steps. Relabel the entries of $u$ so that $u_1 \geq u_2 \geq \cdots
+  \geq u_k$. Then part e gives the solution with $S = \{1,\dots,m\}$, for the
+  unique integer $m$ such that  
+  \[
+  u_m > g(\{1,\dots,m\}) \quad \text{and} \quad u_{m+1} \leq g(\{1,\dots,m\}), 
+  \]
+  where \smash{$g(T) = (1^\T u_T - \sqrt{(1^\T u_T)^2 - |T| \|u_T\|_2^2 + 
+      |T|}) / |T|$} for $T \subseteq \{1,\dots,k\}$. Moreover, 
+  \[
+  \lambda = g(\{1,\dots,m\}) \quad \text{and} \quad
+  p_{u,S} = \frac{u_S - \lambda 1}{1^\T u_S - m \lambda},
+  \]
+  with \smash{$p_{u,S^c} = 0$}. 
+
+\item Define now the surrogate loss $\ell^*(u,y) = \psi^*(u) - e_y^\T u$. Show
+  that 
+  \[
+  \ell^*(u,y) = \ell(p_u,y) + (\lambda - u_y)_+,
+  \]
+  which connects the surrogate loss to the original loss plus a hinge
+  penalty. Observe that the penalty is active if and only if $y \notin S \iff
+  p_y = 0$. 
+\end{enumerate}
 
 \item In this exercise, we will develop a generalization of Theorem
   \ref{thm:lipschitz_smoothness} using Bregman divergences. As usual let
