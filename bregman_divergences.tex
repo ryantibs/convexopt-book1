@@ -1175,8 +1175,31 @@ Duchi (2026)
 \end{enumerate}
 
 \item \label{ex:proper_loss_surrogate}
-  a. Log loss
-  b. cosh loss
+  We study two examples of surrogate losses. In the first example, the original
+  loss is convex in $p$; in the second, the original loss is nonconvex in
+  $p$. In both examples (as will always be true), the surrogate loss is
+  convex in $u$.
+
+\begin{enumerate}[label=\alph*.]
+\item Consider the negative entropy potential \smash{$\phi(p) = \sum_{i=1}^k p_i
+    \log(p_i)$}, which underlies log loss $\ell(p,y) = -\log(p_y)$. Derive the
+  conjugate potential: 
+  \[
+  \phi^*(u) = \log\bigg( \sum_{i=1}^k e^{u_i} \bigg),
+  \]
+  then derive the surrogate loss.
+
+\item Consider the potential \smash{$\phi(p) = \sum_{i=1}^k \cosh(p_i)$}, which
+  leads to
+  \[
+  \ell(p,y) = \sum_{i=1}^k (p_i \sinh(p_i) - \cosh(p_i)) - \sinh(p_y).
+  \]
+  Derive the conjugate potential:
+  \[
+  \phi^*(u) = \sum_{i=1}^k \Big( u_i \sinh^{-1}(u_i) + \sqrt{u_i^2+1} \, \Big),
+  \]
+  then derive the surrogate loss.
+\end{enumerate}
 
 \item \label{ex:spherical_loss}
   Define spherical loss
@@ -1186,10 +1209,10 @@ Duchi (2026)
   d. Develop connection between original and surrogate losses
 
 \item In this exercise, we will develop a generalization of Theorem
-  \ref{thm:lipschitz_smoothness} using Bregman divergences. As before, let
-  $\phi$ be Legendre and let $\Omega = \interior(\dom(\phi))$. Let $f : \R^d \to  
-  (-\infty, \infty]$ be differentiable with $\dom(f) \supseteq \Omega$, and let 
-  $L>0$. Consider the following statements:        
+  \ref{thm:lipschitz_smoothness} using Bregman divergences. As usual let
+  $\phi$ be Legendre, and let $\Omega = \interior(\dom(\phi))$. Let $f : \R^d
+  \to (-\infty, \infty]$ be differentiable with $\dom(f) \supseteq \Omega$, and
+  let $L>0$. Consider the following statements:          
 \begin{enumerate}[label=(\roman*)]
 \item $\|\nabla f(x) - \nabla f(y)\|_2 \leq L \frac{D_\phi(x,y) + D_\phi(y,x)}
   {\|x-y\|_2}$, for all $x,y \in \Omega$, $x \not= y$;
