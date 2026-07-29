@@ -50,10 +50,10 @@ also compact if $\phi$ is closed (Exercise \ref{ex:bregman_first}).
 
 For fixed $x$, the map $y \mapsto D_\phi(x,y)$ is not necessarily
 convex. However, it satisfies a weaker property: it is \emph{star-shaped}, where 
-$x$ serves as its star-center. To be precise, for any $y$, the map $t \mapsto 
-D_\phi(x, (1-t) x + ty)$ is nonincreasing on $[0,1]$ (Exercise
-\ref{ex:bregman_second}). Consequently, a Bregman ball centered around the first 
-argument:          
+$x$ is known as its star-center. To be precise, for any $y$, the map $t \mapsto 
+D_\phi(x, (1-t) x + ty)$ is nondecreasing on $[0,1]$ (Exercise
+\ref{ex:bregman_second}). Consequently, a Bregman ball centered around the 
+first argument:          
 \[
 \{ y : D_\phi(x,y) \leq r \}
 \]
@@ -633,7 +633,7 @@ divergence:
 d(p,q) = D_{\phi^*}(\nabla\phi(p), \nabla\phi(q)),
 \end{equation}
 and minimizing $\ell(p,q)$ over $p \in \Delta^k$ is equivalent to minimizing
-$\ell^*(u,q)$ over $u \in \nabla\phi^*(\Omega^k)$.  
+$\ell^*(u,q)$ over $u \in \nabla\phi(\Omega^k)$.  
 \end{Theorem}
 
 The conjugate Bregman representation \eqref{eq:proper_loss_bregman3} 
@@ -897,16 +897,16 @@ given in \cite{duchi2026lecture}.
 \item Instead of gradient flow, consider the path defined by (assuming twice
   differentiable $\phi$): 
   \[
-  x'(t) = - (\nabla^2 \phi(x(t))^{-1} \nabla_x D_\phi(x(t),y), \quad \text{for
-    $t > 0$}.
+  x'(t) = - \big( \nabla^2 \phi(x(t)) \big)^{-1} \nabla_x D_\phi(x(t),y), \quad
+  \text{for $t > 0$}.
   \]
   This is an instance of what is called \emph{Riemannian gradient flow}. At each
   time $t$, the local geometry is warped by the Hessian of the potential
   function at $x(t)$. Equivalently, 
   \begin{equation} 
   \label{eq:bregman_riemannian_flow}
-  x'(t) = (\nabla^2 \phi(x(t))^{-1} \big( \nabla\phi(y) - \nabla\phi(x(t))
-  \big), \quad \text{for $t > 0$}.
+  x'(t) = \big(\nabla^2 \phi(x(t)) \big)^{-1} \big( \nabla\phi(y) -
+  \nabla\phi(x(t)) \big), \quad \text{for $t > 0$}. 
   \end{equation}
   Prove that in the setting considered in parts a and b, the solution, subject
   to the same initial condition $x(0) = z$, is   
