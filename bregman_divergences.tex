@@ -511,8 +511,8 @@ Let $\ell : \Delta^k \times \Delta^k \to \R$. Then $\ell$ is proper
 \in \Delta^k$, 
 \begin{equation}
 \label{eq:proper_loss_bregman1}
-d(p,q) = \phi(q) - \phi(p) - s_p^\T (q-p), \quad \text{for $s_p \in \partial
-  \phi(p)$},  
+d(p,q) = \phi(q) - \phi(p) - s_p^\T (q-p), \quad \text{for some $s_p \in
+  \partial \phi(p)$},  
 \end{equation}
 for a convex function $\phi$ that is subdifferentiable on
 $\Delta^k$. Furthermore, a loss is strictly proper if and only if the above
@@ -1084,33 +1084,38 @@ given in \cite{duchi2026lecture}.
   such as the bootstrap.  
 \end{enumerate}
 
-\index{maximum likelihood estimation}
-\index{Kullback-Leibler divergence}
-\item The Kullback-Leibler divergence \eqref{eq:kullback_leibler} can be
-  generally defined between any two probability measures $P,Q$ for which $P$ is 
-  absolutely continuous with respect to $Q$. This is:
-  \[
-  \KL(P,Q) = \int \log\bigg( \frac{\d{P}}{\d{Q}} \bigg) \, \d{P}.
-  \]
-  Consider a generic maximum likelihood problem,
-  \[
-  \minimize_{\theta \in \Theta} \quad -\sum_{i=1}^n \ell(\theta; Z_i),
-  \]
-  where $\ell(\theta; z) = \log(p_\theta(z))$ is a family of densities,
-  parametrized by $\theta \in \Theta$. Prove that this can be represented as a 
-  \emph{right} Kullback-Leibler projection (as opposed to what may be called a 
-  \emph{left} Bregman projection, as in \eqref{eq:bregman_projection}), of the 
-  form: 
-  \[
-  \minimize_{P^n_\theta \in \cP^n_\Theta} \quad \KL(P^n, P^n_\theta),
-  \]
-  where \smash{$P^n = \frac{1}{n} \sum_{i=1}^n \delta_{Z_i}$} is the empirical
-  distribution of the data, and
-  \[
-  \cP^n_\Theta = \bigg\{ P^n_\theta = \frac{\sum_{i=1}^n p_\theta(Z_i)
-    \delta_{Z_i}}{\sum_{i=1}^n p_\theta(Z_i)} : \theta \in \Theta \bigg\}
-  \]
-  is the discretization of the given family of densities to the data sites.
+% \index{maximum likelihood estimation}
+% \index{Kullback-Leibler divergence}
+% \item The Kullback-Leibler divergence \eqref{eq:kullback_leibler} can be
+%   generally defined between any two probability measures $P,Q$ for which $P$
+%   is absolutely continuous with respect to $Q$. This is: 
+%   \[
+%   \KL(P,Q) = \int \log\bigg( \frac{\d{P}}{\d{Q}} \bigg) \, \d{P}.
+%   \]
+%   Consider a generic maximum likelihood problem,
+%   \[
+%   \minimize_{\theta \in \Theta} \quad -\sum_{i=1}^n \ell(\theta; Z_i),
+%   \]
+%   where $\ell(\theta; z) = \log(p_\theta(z))$ is a family of densities,
+%   parametrized by $\theta \in \Theta$. Prove that this can be represented as a  
+%   \emph{right} Kullback-Leibler projection (as opposed to what may be called a  
+%   \emph{left} Bregman projection, as in \eqref{eq:bregman_projection}), of the  
+%   form: 
+%   \[
+%   \minimize_{P^n_\theta \in \cP^n_\Theta} \quad \KL(P^n, P^n_\theta),
+%   \]
+%   where \smash{$P^n = \frac{1}{n} \sum_{i=1}^n \delta_{Z_i}$} is the empirical 
+%   distribution of the data, and
+%   \[
+%   \cP^n_\Theta = \bigg\{ P^n_\theta = \frac{\sum_{i=1}^n p_\theta(Z_i) 
+%     \delta_{Z_i}}{\sum_{i=1}^n p_\theta(Z_i)} : \theta \in \Theta \bigg\}
+%   \]
+%   is the discretization of the given family of densities to the data sites.
+
+% Wrong as written because the normalization in the denominator of P^n_\theta 
+% also depends on \theta (in general; though not for discrete distributions),
+% and this affects the equivalence to maximum likelihood. Seems like there are
+% ways to fix this but it becomes too complicated and not worth it. 
 
 \index{proper loss!Bregman representation}
 \item \label{ex:proper_loss_bregman}
