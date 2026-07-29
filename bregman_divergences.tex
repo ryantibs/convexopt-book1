@@ -38,7 +38,7 @@ admit a number of useful properties, described next.
 For any fixed point $y$, the map $x \mapsto D_\phi(x,y)$ is convex. This is
 because such a map can be expressed as $x \mapsto \phi(x) + a^\T x + b$, where
 $a,b$ depend on $y$. This means that a Bregman ball centered around the second 
-argument, of the form   
+argument:
 \[
 \{ x : D_\phi(x,y) \leq r \}
 \]
@@ -53,7 +53,7 @@ convex. However, it satisfies a weaker property: it is \emph{star-shaped}, where
 $x$ serves as its star-center. To be precise, for any $y$, the map $t \mapsto 
 D_\phi(x, (1-t) x + ty)$ is nonincreasing on $[0,1]$ (Exercise
 \ref{ex:bregman_second}). Consequently, a Bregman ball centered around the first 
-argument,          
+argument:          
 \[
 \{ y : D_\phi(x,y) \leq r \}
 \]
@@ -463,7 +463,7 @@ probabilistic prediction. Common examples include:
 &\text{log loss:} \quad &&\ell(p,y) = -\log(p_y); \\
 &\text{quadratic loss:} \quad &&\ell(p,y) = -p_y + \frac{1}{2} \|p\|_2^2; \\
 &\text{misclassification loss:} \quad &&\ell(p,y) = 1 - 
-  \frac{1\{\argmax_{i=1,\dots,k} \, p_k = y \}}{|\argmax_{i=1,\dots,k} \, p_k|}.  
+  \frac{1\{\argmax_{i=1,\dots,k} \, p_i = y \}}{|\argmax_{i=1,\dots,k} \, p_i|}.  
 %&\text{spherical loss:} \quad &&\ell(p,y) = -\frac{p_y}{\|p\|_2}.
 \end{alignat*}
 A common feature of such example losses is that they are \emph{proper}:
@@ -556,7 +556,7 @@ each case:
 \begin{alignat*}{3}
 &\text{log loss:} \quad &&\phi(p) = \sum_{i=1}^k p_i \log(p_i); \\
 &\text{quadratic loss:} \quad &&\phi(p) = \frac{1}{2} \|p\|_2^2; \\
-&\text{misclassification loss:} \quad &&\phi(p) = \max_{i=1,\dots,k} \, p_k - 1. 
+&\text{misclassification loss:} \quad &&\phi(p) = \max_{i=1,\dots,k} \, p_i - 1. 
 %&\text{spherical loss:} \quad &&\phi(p) = \|p\|_2.
 \end{alignat*}
 These are verified in Exercise \ref{ex:proper_loss_examples}. (Note that,
@@ -608,7 +608,7 @@ In other words, we have shown that the surrogate loss
 \eqref{eq:proper_loss_surrogate} recreates the original loss
 \eqref{eq:proper_loss_savage} at all forecast distributions $p \in
 \interior(\dom(\phi)) \cap \Delta^k$. This determines the relevant feasible set
-for our conjugate loss $\ell^*$. Provided the mirror map $\nabla\phi$ is also
+for our surrogate loss $\ell^*$. Provided the mirror map $\nabla\phi$ is also
 well-defined at the response distribution $q$, we can safely optimize the
 surrogate loss to construct the forecast distribution $p$, as explained
 precisely in the next result.
@@ -638,33 +638,53 @@ $\ell^*(u,q)$ over $u \in \nabla\phi^*(\Omega^k)$.
 
 The conjugate Bregman representation \eqref{eq:proper_loss_bregman3} 
 can be seen as an application of Theorem \ref{thm:conjugate_bregman} to 
-\eqref{eq:proper_loss_bregman2}. A central feature of the conjugate loss
+\eqref{eq:proper_loss_bregman2}. A central feature of the surrogate loss
 \eqref{eq:proper_loss_surrogate} is that it is always convex in $u$, owing to
 the convexity of $\phi^*$. Exercises \ref{ex:proper_loss_surrogate} and
 \ref{ex:spherical_loss} work through some examples.      
 
 \SkipTocEntry\section*{Chapter notes}
 
-Bregman projection: \cite{bauschke1997legendre}
-Bregman proximal: \cite{bauschke2017descent} and references therein
+The notion of a Bregman divergence is named after
+\cite{bregman1967relaxation}, who used it to develop an extension of
+classical cyclic projection methods for convex feasibility problems (finding a
+point in the intersection of given convex sets) where Euclidean projections are
+replaced by Bregman projections. Apparently, the importance of Bregman's work
+went largely unnoticed for many years, until \cite{censor1981iterative} proposed
+an iterative algorithm for solving polyhedrally-constrained convex programs
+using Bregman projections. Shortly after, \cite{nemirovski1983problem}
+introduced mirror descent, a seminal generalization of gradient descent based on
+Bregman geometry; they did not explicitly refer to Bregman divergences, and the
+connection was later clarified by \cite{beck2003mirror}.
 
-Amari information geometry
+Our treatment of Bregman projections (and Exercise \ref{ex:bregman_projection}.
+below) leverages the work of \cite{bauschke1997legendre}, who derived analytical
+foundations for these operators, including what are now considered standard
+conditions for existence and uniqueness. The view in Figure
+\ref{fig:bregman_projection} and the accompanying discussion hints at the
+framework of information geometry, pioneered by \cite{amari2000methods}. In the
+language of this field, the Riemannian gradient flow path in Exercise
+\ref{ex:bregman_projection} is known as an $m$-geodesic. Furthermore, though not
+covered in this chapter, an extension of the concept of a proximal operator
+(Chapter \ref{chap:proximal_mappings}) based on Bregman divergence can also be
+developed, for example, see \cite{censor1992proximal, teboulle1992entropic,
+  chen1993convergence, eckstein1993nonlinear}.
 
-Exponential families: 
-Brown (1986)
-Wainwright and Jordan (2008)
-Barndorff-Nielsen (2014) 
-
-Proper losses:
-Savage (1971)
-Gneiting and Raftery (2007)
-
-Surrogate losses:
-Reid, Williamson (2010)
-Agarwal (2014)
-Peters, Niculae, Martins (2019) 
-Blondel, Martins, Niculae (2020)
-Duchi (2026)
+To learn more about the deep geometry underlying exponential families, we 
+recommend \cite{brown1986fundamentals, wainwright2008graphical,
+  barndorff2014information, efron2022exponential}. In particular, the monograph 
+\cite{wainwright2008graphical} nicely explains the role of conjugacy. A key
+reference on the theory of proper losses is \cite{gneiting2007strictly}. The
+Savage representation is named after \cite{savage1971elicitation}, although it was 
+discovered earlier by \cite{mccarthy1956measures}. We focus on discrete response
+variables for simplicity (and therefore probability distributions are vectors in
+finite-dimensional spaces); however, infinite-dimensional generalizations for
+continuous sample spaces are also possible, as developed by 
+\cite{hendrickson1971proper, gneiting2007strictly, ovcharov2018proper}. 
+Surrogate losses were studied by \cite{reid2010composite,
+  agarwal2014surrogate, blondel2020learning, martins2022sparse}, 
+among others. A nice treatment of proper losses and convex surrogates is given
+in \cite{duchi2026lecture}.        
 
 \clearpage
 
@@ -1269,11 +1289,11 @@ Duchi (2026)
   p_y = 0$. 
 \end{enumerate}
 
-\item In this exercise, we will develop a generalization of Theorem
-  \ref{thm:lipschitz_smoothness} using Bregman divergences. As usual let
-  $\phi$ be Legendre, and let $\Omega = \interior(\dom(\phi))$. Let $f : \R^d
-  \to (-\infty, \infty]$ be differentiable with $\dom(f) \supseteq \Omega$, and
-  let $L>0$. Consider the following statements:          
+\item Following \cite{bauschke2017descent}, we will prove a generalization of
+  Theorem \ref{thm:lipschitz_smoothness} using Bregman divergences. As usual,
+  let $\phi$ be Legendre, and let $\Omega = \interior(\dom(\phi))$. Let $f :
+  \R^d \to (-\infty, \infty]$ be differentiable with $\dom(f) \supseteq \Omega$,
+  and let $L>0$. Consider the following statements:          
 \begin{enumerate}[label=(\roman*)]
 \item $\|\nabla f(x) - \nabla f(y)\|_2 \leq L \frac{D_\phi(x,y) + D_\phi(y,x)}
   {\|x-y\|_2}$, for all $x,y \in \Omega$, $x \not= y$;
