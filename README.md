@@ -10,15 +10,13 @@ Book 2 has no GitHub repo at the moment.
 
 This repo is for book 1. Currently I'm done with Parts 1-3.
 
-Tentative plan: 
+Path to the finish line: 
 - [x] Write Part 3 (duality and optimality)
     - [x] Lagrange duality
     - [x] KKT conditions
     - [x] Duality correspondences
-- [ ] Collect ideas for Part 4 (advanced topics). Some ideas:
-  * Bregman divergences, projections, proximals?
-  * Uniqueness without strict convexity?
-  * Caratheodory theorems on sparsity?
-  * Perturbation/sensitivity analysis?
-  * Fine properties of the lasso?
+- [ ] Write Part 4 (advanced topics)
+    - [x] Bregman divergences
+    - [ ] Fine properties of the lasso
+    - [ ] TBD other topics (suggestions welcome)!
 - [ ] Write the motivational chapters and technical appendices
