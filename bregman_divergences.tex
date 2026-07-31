@@ -328,7 +328,7 @@ conclusions in Property \parref{par:bregman_second}.
 Exponential families are intimately connected to Bregman divergences, and they
 provide us with a helpful language to interpret conjugacy relations from the
 last section. Recall (Chapter \ref{sec:maximum_likelihood}) that a regular
-exponential family is of the form           
+exponential family has a probability density (or mass) function of the form           
 \index{exponential family}
 \[
 p_\eta(z) = \exp\big(T(z)^\T \eta - \psi(\eta)\big) h(z),
@@ -347,9 +347,10 @@ In an exponential family, the mirror map in the log-partition function
 $\nabla\psi$ has an intuitive interpretation: it is the \emph{mean map},
 as it maps the natural parameter $\eta$ to the corresponding mean of the
 statistic $T(Z)$ under the distribution $p_\eta$. Precisely,  
-\[
+\begin{equation}
+\label{eq:mean_map}
 \nabla\psi(\eta) = \E_\eta[T(Z)],
-\]
+\end{equation}
 where the expectation on the right-hand side is with respect to $Z \sim
 p_\eta$. This identity is verified by the calculations in parts c and d of
 Exercise \ref{ex:exponential_family_convex}. Denoting $\mu_\eta =
@@ -953,6 +954,17 @@ given in \cite{duchi2026lecture}.
   line in mirror space connecting $\nabla\phi(z)$ to $\nabla\phi(y)$.
 \end{enumerate}
 
+\item Assuming that $\phi$ is twice continuously differentiable, show using
+  Taylor expansion that we can write Bregman divergence
+  \eqref{eq:bregman_divergence} as 
+  \[
+  D_\phi(x,y) = \int_0^1 (1-t) (x-y)^\T \nabla \phi^2(tx + (1-t)y) (x-y) \,
+  \d{t}.  
+  \]
+  Note: this is another perspective from which we can interpret Bregman
+  divergence between as measuring discrepancy according to the curvature
+  of $\phi$.  
+
 \index{exponential family}
 \item \label{ex:exponential_family_legendre}
   Let $\psi$ be the log-partition function in a regular exponential family,
@@ -992,6 +1004,21 @@ given in \cite{duchi2026lecture}.
   \ref{ex:exponential_family_convex} part d to show that this implies $\nabla^2
   \psi(\eta) \succ 0$.  
 \end{enumerate}
+
+\index{exponential family}
+\index{Kullback-Leibler divergence}
+\item The Kullback-Leibler divergence \eqref{eq:kullback_leibler} can be
+  generally defined between any two probability measures $P,Q$ for which $P$
+  is absolutely continuous with respect to $Q$. This is: 
+  \[
+  \KL(P,Q) = \int \log\bigg( \frac{\d{P}}{\d{Q}} \bigg) \, \d{P}.
+  \]
+  Prove that for a regular exponential family with probability density (or mass)
+  function $p_\eta$ and log-partition function $\psi$, 
+  \[
+  \KL(p_{\eta_1}, p_{\eta_2}) = D_\psi(\eta_2, \eta_1).
+  \]
+  Hint: recall \eqref{eq:mean_map}.
 
 \index{exponential family!maximum likelihood estimation}
 \item \label{ex:exponential_family_boundary}
@@ -1084,14 +1111,7 @@ given in \cite{duchi2026lecture}.
   such as the bootstrap.  
 \end{enumerate}
 
-% \index{maximum likelihood estimation}
-% \index{Kullback-Leibler divergence}
-% \item The Kullback-Leibler divergence \eqref{eq:kullback_leibler} can be
-%   generally defined between any two probability measures $P,Q$ for which $P$
-%   is absolutely continuous with respect to $Q$. This is: 
-%   \[
-%   \KL(P,Q) = \int \log\bigg( \frac{\d{P}}{\d{Q}} \bigg) \, \d{P}.
-%   \]
+
 %   Consider a generic maximum likelihood problem,
 %   \[
 %   \minimize_{\theta \in \Theta} \quad -\sum_{i=1}^n \ell(\theta; Z_i),
